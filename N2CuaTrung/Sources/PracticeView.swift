@@ -86,7 +86,7 @@ struct GrammarListView: View {
             } label: {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(item.pattern).font(.headline).foregroundColor(Palette.navy)
-                    Text(item.meaning).font(.subheadline).foregroundColor(.secondary)
+                    Text(item.displayMeaning).font(.subheadline).foregroundColor(.secondary)
                     Text("Tuần \(item.week)").font(.caption).foregroundColor(Palette.blue)
                 }.padding(.vertical, 5)
             }
@@ -107,12 +107,12 @@ struct GrammarDetailView: View {
                     Pill(text: "Tuần \(item.week)", color: Palette.blue)
                     Text(item.pattern).font(.largeTitle.bold()).foregroundColor(Palette.navy)
                     SectionTitle("Ý nghĩa")
-                    Text(item.meaning).foregroundColor(Palette.teal).font(.title3.weight(.semibold))
+                    Text(item.displayMeaning).foregroundColor(Palette.teal).font(.title3.weight(.semibold))
                     SectionTitle("Cấu trúc sử dụng")
                     Text(GrammarLibrary.structure(for: item))
                         .font(.headline).foregroundColor(Palette.blue)
                     SectionTitle("Dùng trong trường hợp nào?")
-                    Text(item.rule).font(.body)
+                    Text(item.displayRule).font(.body)
                 }
                 ForEach(Array(GrammarLibrary.examples(for: item).enumerated()), id: \.offset) { index, example in
                     LessonPanel {
@@ -167,7 +167,7 @@ struct KanjiListView: View {
                         .frame(width: 50, height: 55)
                         .foregroundColor(Palette.navy)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(item.meaning).font(.headline)
+                        Text(item.displayMeaning).font(.headline)
                         Text("On: \(item.on) • Kun: \(item.kun)")
                             .font(.caption).foregroundColor(.secondary)
                         Text("Ví dụ: \(item.word)").font(.caption).foregroundColor(Palette.blue)
@@ -192,7 +192,7 @@ struct KanjiDetailView: View {
                         .font(.system(size: 100))
                         .foregroundColor(Palette.navy)
                         .frame(maxWidth: .infinity)
-                    SectionTitle("Nghĩa", subtitle: item.meaning)
+                    SectionTitle("Nghĩa", subtitle: item.displayMeaning)
                     SectionTitle("Âm On", subtitle: item.on)
                     SectionTitle("Âm Kun", subtitle: item.kun)
                     SectionTitle("Từ ghép")

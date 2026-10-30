@@ -112,15 +112,15 @@ final class StudyReminders: ObservableObject {
                 if pool == 0, !kanji.isEmpty {
                     let item = kanji[Int((seed >> 17) % UInt64(kanji.count))]
                     message.title = "☘ Kanji N2: \(item.char)"
-                    message.body = "\(item.meaning) • On: \(item.on) • Kun: \(item.kun)"
+                    message.body = "\(item.displayMeaning) • On: \(item.on) • Kun: \(item.kun)"
                 } else if pool == 1, !grammar.isEmpty {
                     let item = grammar[Int((seed >> 17) % UInt64(grammar.count))]
                     message.title = "☘ Ngữ pháp: \(item.pattern)"
-                    message.body = "\(item.meaning) • \(item.example)"
+                    message.body = "\(item.displayMeaning) • \(item.example)"
                 } else if !vocab.isEmpty {
                     let item = vocab[Int((seed >> 17) % UInt64(vocab.count))]
                     message.title = "☘ Từ mới: \(item.word)（\(item.reading)）"
-                    message.body = "\(item.meaning) • \(item.example)"
+                    message.body = "\(item.displayMeaning) • \(item.example)"
                 } else { continue }
                 message.sound = .default
                 message.userInfo = ["source": "n2-study", "day": day]

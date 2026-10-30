@@ -44,9 +44,6 @@ struct AboutView: View {
                     Text("© 2026 Trần Phước Trung. Bảo lưu mọi quyền.")
                         .font(.subheadline.weight(.semibold))
                         .foregroundColor(Palette.navy)
-                    Text("Copyright © 2026 Trần Phước Trung. All rights reserved.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
                 }
 
                 NavigationLink {

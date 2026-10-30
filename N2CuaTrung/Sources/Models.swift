@@ -8,6 +8,10 @@ struct Vocabulary: Decodable, Identifiable {
     let example: String
     let topic: String
     let week: Int
+    let exampleVi: String?
+    var displayMeaning: String {
+        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+    }
 }
 
 struct Grammar: Decodable, Identifiable {
@@ -19,6 +23,12 @@ struct Grammar: Decodable, Identifiable {
     let translation: String
     let week: Int
     let samples: [GrammarSample]?
+    var displayMeaning: String {
+        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+    }
+    var displayRule: String {
+        meaning.hasPrefix("EN ·") ? "Đang bổ sung hướng dẫn ngữ pháp bằng tiếng Việt." : rule
+    }
 }
 
 struct Kanji: Decodable, Identifiable {
@@ -28,6 +38,9 @@ struct Kanji: Decodable, Identifiable {
     let kun: String
     let meaning: String
     let word: String
+    var displayMeaning: String {
+        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+    }
 }
 
 struct ReadingLesson: Decodable, Identifiable {
@@ -128,32 +141,32 @@ enum QuestionBank {
     }
 
     static func vocabulary(_ data: CourseData, week: Int) -> [ExamQuestion] {
-        let eligible = data.vocab.filter { $0.week <= week }
-        let meanings = data.vocab.map(\.meaning)
+        let eligible = data.vocab.filter { $0.week <= week && !$0.meaning.hasPrefix("EN ·") }
+        let meanings = data.vocab.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning)
         return eligible.shuffled().prefix(100).map { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
-                   passage: item.example, correct: item.meaning,
+                   passage: item.example, correct: item.displayMeaning,
                    others: meanings,
-                   explanation: "\(item.word)・\(item.reading): \(item.meaning). Ví dụ: \(item.example)")
+                   explanation: "\(item.word)・\(item.reading): \(item.displayMeaning). Ví dụ: \(item.exampleVi ?? item.example)")
         }
     }
 
     static func grammar(_ data: CourseData, week: Int) -> [ExamQuestion] {
-        let eligible = data.grammar.filter { $0.week <= week }
-        let meanings = data.grammar.map(\.meaning)
+        let eligible = data.grammar.filter { $0.week <= week && !$0.meaning.hasPrefix("EN ·") }
+        let meanings = data.grammar.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning)
         return eligible.shuffled().prefix(70).map { item in
             create(category: "Ngữ pháp", prompt: "Ý nghĩa của \(item.pattern) là gì?",
-                   passage: item.example, correct: item.meaning,
+                   passage: item.example, correct: item.displayMeaning,
                    others: meanings,
-                   explanation: "\(item.rule) Ví dụ: \(item.translation)")
+                   explanation: "\(item.displayRule) Ví dụ: \(item.translation)")
         }
     }
 
     static func kanji(_ data: CourseData) -> [ExamQuestion] {
-        data.kanji.map { item in
+        data.kanji.filter { !$0.meaning.hasPrefix("EN ·") }.map { item in
             create(category: "Kanji", prompt: "Chữ 「\(item.char)」 có nghĩa gì?",
-                   passage: "Từ liên quan: \(item.word)", correct: item.meaning,
-                   others: data.kanji.map(\.meaning),
+                   passage: "Từ liên quan: \(item.word)", correct: item.displayMeaning,
+                   others: data.kanji.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning),
                    explanation: "Âm On: \(item.on) · Âm Kun: \(item.kun) · Từ: \(item.word)")
         }
     }

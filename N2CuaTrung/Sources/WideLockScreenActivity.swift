@@ -49,7 +49,7 @@ final class WideStudyController: ObservableObject {
         do {
             _ = try Activity<StudyActivityAttributes>.request(
                 attributes: StudyActivityAttributes(title: "N2 của Trung"),
-                contentState: .init(word: word.word, reading: word.reading, meaning: word.meaning),
+                contentState: .init(word: word.word, reading: word.reading, meaning: word.displayMeaning),
                 pushType: nil
             )
             active = true
@@ -62,7 +62,7 @@ final class WideStudyController: ObservableObject {
     func next(course: CourseData) async {
         guard let next = newWord(from: course) else { return }
         for activity in Activity<StudyActivityAttributes>.activities {
-            await activity.update(using: .init(word: next.word, reading: next.reading, meaning: next.meaning))
+            await activity.update(using: .init(word: next.word, reading: next.reading, meaning: next.displayMeaning))
         }
         active = !Activity<StudyActivityAttributes>.activities.isEmpty
         message = active ? "Đã thay từ cho bảng học rộng." : "Hãy bật bảng học rộng trước."

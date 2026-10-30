@@ -6,6 +6,7 @@ private struct Word: Decodable {
     let word: String
     let reading: String
     let meaning: String
+    var displayMeaning: String { meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning }
 }
 private struct WordList: Decodable { let vocab: [Word] }
 private struct WordEntry: TimelineEntry {
@@ -85,7 +86,7 @@ private struct WordWidgetBody: View {
                 .font(.system(size: 18, weight: .heavy))
                 .minimumScaleFactor(0.67).lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .center)
-            Text(entry.word.meaning)
+            Text(entry.word.displayMeaning)
                 .font(.caption2.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.7)
                 .frame(maxWidth: .infinity, alignment: .center)
         }
@@ -120,7 +121,7 @@ private struct WordWidgetBody: View {
                         .font(.system(size: 16, weight: .medium))
                         .foregroundStyle(Color(red: 0.74, green: 1.0, blue: 0.78))
                         .lineLimit(1)
-                    Text(entry.word.meaning)
+                    Text(entry.word.displayMeaning)
                         .font(.system(size: family == .systemSmall ? 14 : 17, weight: .semibold))
                         .foregroundStyle(.white).lineLimit(3)
                 }
@@ -185,7 +186,7 @@ struct N2WideLiveActivityWidget: Widget {
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(Color(red: 0.69, green: 1.0, blue: 0.75))
                     .lineLimit(1)
-                Text(context.state.meaning)
+                Text(context.state.meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : context.state.meaning)
                     .font(.system(size: 17, weight: .bold))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
@@ -209,7 +210,7 @@ struct N2WideLiveActivityWidget: Widget {
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("\(context.state.reading) • \(context.state.meaning)")
+                    Text("\(context.state.reading) • \(context.state.meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : context.state.meaning)")
                         .font(.caption).lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }

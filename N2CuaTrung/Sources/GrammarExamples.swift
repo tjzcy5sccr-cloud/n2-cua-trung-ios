@@ -22,11 +22,14 @@ enum GrammarLibrary {
     }()
 
     static func structure(for grammar: Grammar) -> String {
-        stored[grammar.id]?.structure ?? grammar.rule
+        grammar.meaning.hasPrefix("EN ·") ? "Đang bổ sung cách dùng bằng tiếng Việt." : (stored[grammar.id]?.structure ?? grammar.rule)
     }
 
     static func examples(for grammar: Grammar) -> [GrammarSample] {
         let main = GrammarSample(text: grammar.example, translation: grammar.translation)
-        return [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
+        let all = [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
+        return all.map { part in
+            GrammarSample(text: part.text, translation: part.translation.hasPrefix("EN ·") ? "Bản dịch tiếng Việt đang được bổ sung." : part.translation)
+        }
     }
 }

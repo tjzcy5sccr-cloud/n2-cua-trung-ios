@@ -11,8 +11,9 @@ struct FlashcardDeckView: View {
     private var current: Vocabulary? { cards.indices.contains(position) ? cards[position] : nil }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
+        // Không đặt flashcard trong ScrollView: vuốt thẻ sẽ không kéo cả nền.
+        VStack(spacing: 0) {
+            VStack(spacing: 12) {
                 SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt lên/xuống để đổi từ ngẫu nhiên")
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
@@ -25,7 +26,7 @@ struct FlashcardDeckView: View {
                     HStack {
                         Pill(text: "\(position + 1) / \(cards.count)", color: Palette.blue)
                         Spacer()
-                        Pill(text: card.topic, color: Palette.teal)
+                        Pill(text: card.topic.hasPrefix("OpenJLPT") ? "Từ vựng N2" : card.topic, color: Palette.teal)
                     }
                     Button {
                         let revealAnswer = !revealed
@@ -39,12 +40,12 @@ struct FlashcardDeckView: View {
                     } label: {
                         VStack(spacing: 16) {
                             if !revealed {
-                                Spacer(minLength: 40)
+                                Spacer(minLength: 10)
                                 Text(card.word)
                                     .font(.system(size: 50, weight: .bold, design: .rounded))
                                     .minimumScaleFactor(0.5)
                                     .foregroundColor(Palette.navy)
-                                Spacer(minLength: 40)
+                                Spacer(minLength: 10)
                                 Label("Chạm để lật thẻ", systemImage: "hand.tap")
                                     .font(.subheadline).foregroundColor(.secondary)
                             } else {
@@ -53,19 +54,24 @@ struct FlashcardDeckView: View {
                                     .foregroundColor(Palette.navy)
                                 Text(card.reading)
                                     .font(.title3.weight(.medium)).foregroundColor(Palette.blue)
-                                Text(card.meaning)
+                                Text(card.displayMeaning)
                                     .font(.title3.weight(.bold)).foregroundColor(Palette.teal)
                                 Divider()
                                 Text("Ví dụ có Hiragana")
                                     .font(.caption.weight(.semibold)).foregroundColor(.secondary)
                                 FuriganaText(text: card.example, mainWord: card.word, mainReading: card.reading)
+                                Text(card.exampleVi ?? "Bản dịch tiếng Việt cho câu này đang được bổ sung.")
+                                    .font(.subheadline)
+                                    .foregroundColor(Palette.navy)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .multilineTextAlignment(.leading)
                                 Label("Chạm để xem lại mặt trước", systemImage: "arrow.uturn.backward")
                                     .font(.caption).foregroundColor(.secondary)
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(minHeight: 270)
-                        .padding(22)
+                        .frame(minHeight: 225)
+                        .padding(16)
                         .background(Color.white, in: RoundedRectangle(cornerRadius: 22))
                         .contentShape(RoundedRectangle(cornerRadius: 22))
                         .overlay(RoundedRectangle(cornerRadius: 22).stroke(Palette.teal.opacity(0.18)))
@@ -82,7 +88,7 @@ struct FlashcardDeckView: View {
                             }
                     )
                     .accessibilityAction(named: "Từ ngẫu nhiên kế tiếp") { advanceRandom() }
-                    .accessibilityLabel(revealed ? "\(card.word), \(card.reading), \(card.meaning)" : "Thẻ Kanji \(card.word). Chạm để xem đáp án")
+                    .accessibilityLabel(revealed ? "\(card.word), \(card.reading), \(card.displayMeaning)" : "Thẻ Kanji \(card.word). Chạm để xem đáp án")
                     HStack(spacing: 10) {
                         MainButton(title: "Nghe từ", symbol: "speaker.wave.2.fill", color: Palette.blue) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
@@ -103,7 +109,7 @@ struct FlashcardDeckView: View {
                             mark(true, id: card.id)
                         }
                     }
-                    Text("Vuốt lên hoặc xuống ngay trên thẻ để xem từ tiếp theo; các từ được xáo trộn mỗi lượt. Lật thẻ tự phát âm.")
+                    Text("Vuốt lên/xuống trên thẻ để đổi từ. Chạm để lật và nghe phát âm.")
                         .font(.caption).foregroundColor(.secondary)
                 } else {
                     LessonPanel {
@@ -117,8 +123,9 @@ struct FlashcardDeckView: View {
                     }
                 }
                 if let error = voice.lastError { Text(error).font(.caption).foregroundColor(.red) }
-            }.padding(16)
+            }.padding(12)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Palette.pale)
         .navigationTitle("Flashcard")
         .onAppear { if cards.isEmpty { reload() } }
@@ -172,7 +179,7 @@ struct GrammarFlashcardView: View {
                         VStack(spacing: 14) {
                             Text(g.pattern).font(.title.weight(.bold)).foregroundColor(Palette.navy)
                             if revealed {
-                                Text(g.meaning).font(.headline).foregroundColor(Palette.teal)
+                                Text(g.displayMeaning).font(.headline).foregroundColor(Palette.teal)
                                 Text("Cách sử dụng: \(GrammarLibrary.structure(for: g))")
                                     .font(.subheadline).foregroundColor(Palette.navy)
                                 ForEach(Array(GrammarLibrary.examples(for: g).enumerated()), id: \.offset) { i, example in

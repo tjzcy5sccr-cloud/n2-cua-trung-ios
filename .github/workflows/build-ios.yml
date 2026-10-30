@@ -5,6 +5,9 @@ name: Build Native iOS IPA (unsigned)
     branches: [main]
 permissions:
   contents: read
+concurrency:
+  group: n2-iphone-main-build
+  cancel-in-progress: true
 jobs:
   build-ios:
     runs-on: macos-15

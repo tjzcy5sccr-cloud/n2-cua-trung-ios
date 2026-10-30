@@ -1,6 +1,6 @@
 {
   "id": "openjlpt-n2-core",
-  "version": 11,
+  "version": 12,
   "title": "N2 Mở rộng mở: Từ vựng, Kanji, Ngữ pháp (OpenJLPT · CC BY-SA 4.0; nghĩa EN)",
   "attribution": {
     "source": "OpenJLPT",
@@ -19,9 +19,9 @@
       "week": 1,
       "sourceEntryID": "42c4654587",
       "exampleSourceID": 177085,
-      "exampleVi": "Trông cô vẫn khỏe mạnh.",
+      "exampleVi": "Trông bạn vẫn khỏe mạnh như mọi khi.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-79169045a2",
@@ -33,9 +33,9 @@
       "week": 1,
       "sourceEntryID": "79169045a2",
       "exampleSourceID": 234585,
-      "exampleVi": "Không có gì là thiếu ý tưởng cả.",
+      "exampleVi": "Không phải là chúng ta thiếu ý tưởng.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-08e45ae028",
@@ -47,9 +47,9 @@
       "week": 1,
       "sourceEntryID": "08e45ae028",
       "exampleSourceID": 106219,
-      "exampleVi": "Ông ấy trả lời thẳng thắn với tôi.",
+      "exampleVi": "Anh ấy đã trả lời tôi một cách mập mờ.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-5b1dbc60e6",
@@ -61,9 +61,9 @@
       "week": 1,
       "sourceEntryID": "5b1dbc60e6",
       "exampleSourceID": 188876,
-      "exampleVi": "Tôi bị mưa trên đường đến nhà ga.",
+      "exampleVi": "Trên đường đến ga, tôi gặp phải một trận mưa bất chợt.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-5c46e379a2",
@@ -75,9 +75,9 @@
       "week": 1,
       "sourceEntryID": "5c46e379a2",
       "exampleSourceID": 114979,
-      "exampleVi": "Ông ấy đã đốt nó.",
+      "exampleVi": "Anh ấy quạt cho ngọn lửa bùng lên.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-f24da46d2e",
@@ -89,9 +89,9 @@
       "week": 1,
       "sourceEntryID": "f24da46d2e",
       "exampleSourceID": 93246,
-      "exampleVi": "Cô luôn luôn nhìn chằm chằm vào khuôn mặt xanh xao của mình.",
+      "exampleVi": "Cô ấy lúc nào trông cũng xanh xao.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-b286c3e278",
@@ -103,9 +103,9 @@
       "week": 1,
       "sourceEntryID": "b286c3e278",
       "exampleSourceID": 150736,
-      "exampleVi": "Mở rộng chỗ trống giữa chữ và chữ.",
+      "exampleVi": "Hãy giãn khoảng cách giữa các chữ ra thêm.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-4bbc998853",
@@ -117,9 +117,9 @@
       "week": 1,
       "sourceEntryID": "4bbc998853",
       "exampleSourceID": 230776,
-      "exampleVi": "Tôi đã quá mệt mỏi với anh ta.",
+      "exampleVi": "Tôi thật sự ngán ngẩm người đó.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-f4f844d9b9",
@@ -131,9 +131,9 @@
       "week": 1,
       "sourceEntryID": "f4f844d9b9",
       "exampleSourceID": 234882,
-      "exampleVi": "Không có chỗ nào trong đoạn văn có chữ \"A\" trong tiếng Việt.",
+      "exampleVi": "Trọng âm của từ “Australia” nằm ở đâu?",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-4f70e78ef3",
@@ -145,9 +145,9 @@
       "week": 1,
       "sourceEntryID": "4f70e78ef3",
       "exampleSourceID": 230656,
-      "exampleVi": "Thầy giáo đó sẽ rất khó chịu.",
+      "exampleVi": "Bài giảng của thầy giáo đó khiến người nghe phải ngáp.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-a542a76c28",
@@ -159,9 +159,9 @@
       "week": 1,
       "sourceEntryID": "a542a76c28",
       "exampleSourceID": 112971,
-      "exampleVi": "\"Tôi không thể nói chuyện với anh ta.\"",
+      "exampleVi": "Anh ấy kiên quyết phản đối kế hoạch đó đến cùng.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-817ab81f5e",
@@ -173,9 +173,9 @@
       "week": 1,
       "sourceEntryID": "817ab81f5e",
       "exampleSourceID": 209818,
-      "exampleVi": "Vụ tai nạn xảy ra vào sáng sớm.",
+      "exampleVi": "Vụ tai nạn xảy ra lúc rạng sáng.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-8c256fc677",
@@ -187,9 +187,9 @@
       "week": 1,
       "sourceEntryID": "8c256fc677",
       "exampleSourceID": 149532,
-      "exampleVi": "Nếu bạn hỏi một câu, giơ tay phải lên.",
+      "exampleVi": "Nếu có câu hỏi, xin hãy giơ tay phải lên.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-d4d89391b7",
@@ -201,9 +201,9 @@
       "week": 1,
       "sourceEntryID": "d4d89391b7",
       "exampleSourceID": 112044,
-      "exampleVi": "Ông ấy đã kéo tôi lên.",
+      "exampleVi": "Anh ấy đã thả diều lên.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-36c77eda04",
@@ -215,9 +215,9 @@
       "week": 1,
       "sourceEntryID": "36c77eda04",
       "exampleSourceID": 230690,
-      "exampleVi": "Họ sống trong thành phố.",
+      "exampleVi": "Họ luôn khao khát cuộc sống nơi đô thị.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-c6ff7af051",
@@ -229,9 +229,9 @@
       "week": 1,
       "sourceEntryID": "c6ff7af051",
       "exampleSourceID": 139777,
-      "exampleVi": "Những dấu chân vẫn còn trên sàn nhà.",
+      "exampleVi": "Những dấu chân còn in trên sàn nhà.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-e62d8e80cc",
@@ -243,9 +243,9 @@
       "week": 1,
       "sourceEntryID": "e62d8e80cc",
       "exampleSourceID": 231304,
-      "exampleVi": "Tôi đã nếm mùi phấn khích ở công viên công viên đó.",
+      "exampleVi": "Tôi đã trải nghiệm cảm giác hồi hộp phấn khích tại công viên giải trí đó.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-eafba17b69",
@@ -257,9 +257,9 @@
       "week": 1,
       "sourceEntryID": "eafba17b69",
       "exampleSourceID": 235201,
-      "exampleVi": "Tôi có thể chuyển hàng cho anh lúc 4 giờ không?",
+      "exampleVi": "Bạn có thể giữ hộ hành lý của tôi đến bốn giờ được không?",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-4d006aea23",
@@ -271,9 +271,9 @@
       "week": 1,
       "sourceEntryID": "4d006aea23",
       "exampleSourceID": 224493,
-      "exampleVi": "Hãy ngồi yên ở đây và ấm lên.",
+      "exampleVi": "Xin mời ngồi đây cho ấm người.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-a7a7a09d5d",
@@ -285,9 +285,9 @@
       "week": 1,
       "sourceEntryID": "a7a7a09d5d",
       "exampleSourceID": 195031,
-      "exampleVi": "Cô có thể sưởi ấm sữa của tôi được không?",
+      "exampleVi": "Bạn hâm nóng sữa giúp tôi được không?",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-ac69e2e6fa",
@@ -299,9 +299,9 @@
       "week": 1,
       "sourceEntryID": "ac69e2e6fa",
       "exampleSourceID": 219403,
-      "exampleVi": "Vấn đề này sẽ không được giải quyết trên toàn cầu.",
+      "exampleVi": "Không thể giải quyết vấn đề này bằng cách thông thường.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-18818a506e",
@@ -313,9 +313,9 @@
       "week": 1,
       "sourceEntryID": "18818a506e",
       "exampleSourceID": 192844,
-      "exampleVi": "Tôi đã đi du lịch ở châu Âu.",
+      "exampleVi": "Tôi đã đi du lịch nhiều nơi ở châu Âu.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-a059581841",
@@ -327,9 +327,9 @@
       "week": 1,
       "sourceEntryID": "a059581841",
       "exampleSourceID": 107432,
-      "exampleVi": "Ông ta đã tìm kiếm sự giúp đỡ dũng cảm.",
+      "exampleVi": "Anh ta còn trơ trẽn đến mức đến nhờ giúp đỡ.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-869960843c",
@@ -341,9 +341,9 @@
       "week": 1,
       "sourceEntryID": "869960843c",
       "exampleSourceID": 211522,
-      "exampleVi": "Cơ thể anh bị nén lại và bị kẹt trong lò sưởi.",
+      "exampleVi": "Khí đó được nén lại rồi nạp vào bình chứa.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-d3825b176d",
@@ -355,9 +355,9 @@
       "week": 1,
       "sourceEntryID": "d3825b176d",
       "exampleSourceID": 221336,
-      "exampleVi": "Lá thư này có tên khác.",
+      "exampleVi": "Tên người nhận trên lá thư này bị ghi sai.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-83df753526",
@@ -369,9 +369,9 @@
       "week": 1,
       "sourceEntryID": "83df753526",
       "exampleSourceID": 237480,
-      "exampleVi": "Quy tắc này không phù hợp với năm nhất.",
+      "exampleVi": "Quy tắc này không áp dụng cho học sinh năm nhất.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-a5a037fa3e",
@@ -383,9 +383,9 @@
       "week": 1,
       "sourceEntryID": "a5a037fa3e",
       "exampleSourceID": 222422,
-      "exampleVi": "Luật này không thể áp dụng được.",
+      "exampleVi": "Không thể áp dụng quy tắc này cho bạn.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-f87fab18b5",
@@ -397,9 +397,9 @@
       "week": 1,
       "sourceEntryID": "f87fab18b5",
       "exampleSourceID": 146626,
-      "exampleVi": "Bọn nhóc đã ở trên lầu.",
+      "exampleVi": "Những cậu bé đang chạy nhảy ầm ĩ trên tầng hai.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-cab6203141",
@@ -411,9 +411,9 @@
       "week": 1,
       "sourceEntryID": "cab6203141",
       "exampleSourceID": 121343,
-      "exampleVi": "Và đây là một ví dụ khác.",
+      "exampleVi": "Da tôi khá nhờn.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-956a0a55ec",
@@ -425,9 +425,9 @@
       "week": 1,
       "sourceEntryID": "956a0a55ec",
       "exampleSourceID": 204808,
-      "exampleVi": "Nó được bọc bằng dầu.",
+      "exampleVi": "Thứ đó đã được hơ hoặc nướng bằng dầu.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-3365ac796d",
@@ -439,9 +439,9 @@
       "week": 1,
       "sourceEntryID": "3365ac796d",
       "exampleSourceID": 211688,
-      "exampleVi": "Thành phố đó rất bận rộn.",
+      "exampleVi": "Thành phố ấy tràn đầy sức sống.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-0823382f19",
@@ -453,9 +453,9 @@
       "week": 1,
       "sourceEntryID": "0823382f19",
       "exampleSourceID": 78466,
-      "exampleVi": "Cơn bão sắp sập rồi.",
+      "exampleVi": "Cơn bão khiến những cánh cửa chắn mưa kêu lạch cạch.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-e34ae82b35",
@@ -467,9 +467,9 @@
       "week": 1,
       "sourceEntryID": "e34ae82b35",
       "exampleSourceID": 157808,
-      "exampleVi": "Tôi ghét mấy đứa trẻ ngoan ngoãn.",
+      "exampleVi": "Tôi không thích những đứa trẻ được nuông chiều quá mức.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-89251f222d",
@@ -481,9 +481,9 @@
       "week": 1,
       "sourceEntryID": "89251f222d",
       "exampleSourceID": 122751,
-      "exampleVi": "Và đây là một ví dụ khác.",
+      "exampleVi": "Ở Nhật Bản đang dư gạo, còn ở châu Âu đang dư rượu vang.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-796332c2c7",
@@ -495,9 +495,9 @@
       "week": 1,
       "sourceEntryID": "796332c2c7",
       "exampleSourceID": 92651,
-      "exampleVi": "Cô ta đã đào bới và đào bới.",
+      "exampleVi": "Cô ấy đang chăm chỉ miệt mài đan len.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-fb73ee2899",
@@ -509,9 +509,9 @@
       "week": 1,
       "sourceEntryID": "fb73ee2899",
       "exampleSourceID": 89096,
-      "exampleVi": "Cô ấy mặc áo len tự may.",
+      "exampleVi": "Cô ấy mặc chiếc áo len do chính mình đan.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-488070d93a",
@@ -523,9 +523,9 @@
       "week": 1,
       "sourceEntryID": "488070d93a",
       "exampleSourceID": 183602,
-      "exampleVi": "Tôi đã cứu mạng anh.",
+      "exampleVi": "Tôi đã thoát khỏi một tình huống nguy hiểm trong gang tấc.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-36d05281eb",
@@ -537,9 +537,9 @@
       "week": 1,
       "sourceEntryID": "36d05281eb",
       "exampleSourceID": 74690,
-      "exampleVi": "Trời sắp mưa rồi.",
+      "exampleVi": "Bầu trời có vẻ đáng ngờ. Không biết có mưa không nhỉ?",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-c171dadc4a",
@@ -551,9 +551,9 @@
       "week": 1,
       "sourceEntryID": "c171dadc4a",
       "exampleSourceID": 82253,
-      "exampleVi": "Ông chủ của tôi đã quá bận rộn với việc sử dụng người khác.",
+      "exampleVi": "Ông chủ của tôi hay sai khiến nhân viên rất nặng nhọc.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-1c9be68b8f",
@@ -565,9 +565,9 @@
       "week": 1,
       "sourceEntryID": "1c9be68b8f",
       "exampleSourceID": 94682,
-      "exampleVi": "Quần áo của cô ta được làm bằng một chiếc khăn choàng thô lỗ.",
+      "exampleVi": "Chiếc váy của cô ấy được làm từ loại len có sợi thô.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-3741d0a778",
@@ -579,9 +579,9 @@
       "week": 1,
       "sourceEntryID": "3741d0a778",
       "exampleSourceID": null,
-      "exampleVi": "Tôi đã học được rất nhiều về những điều này.",
+      "exampleVi": "Chúng tôi đã học về phần tóm tắt nội dung.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-2c37f1e65a",
@@ -593,9 +593,9 @@
       "week": 1,
       "sourceEntryID": "2c37f1e65a",
       "exampleSourceID": 236092,
-      "exampleVi": "10 đội đã tranh đấu để giành được giải thưởng.",
+      "exampleVi": "Mười đội đã tranh tài để giành giải thưởng.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-ba30b2fc1e",
@@ -607,9 +607,9 @@
       "week": 1,
       "sourceEntryID": "ba30b2fc1e",
       "exampleSourceID": 185144,
-      "exampleVi": "Tôi sẽ không nói lại lần nữa.",
+      "exampleVi": "Không có gì cần phải nói lại một lần nữa.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-554088a0dc",
@@ -621,9 +621,9 @@
       "week": 1,
       "sourceEntryID": "554088a0dc",
       "exampleSourceID": 201465,
-      "exampleVi": "Tại sao ông ấy lại thay đổi quan điểm?",
+      "exampleVi": "Vì sao bạn lại thay đổi suy nghĩ?",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-173f8d3f42",
@@ -635,9 +635,9 @@
       "week": 1,
       "sourceEntryID": "173f8d3f42",
       "exampleSourceID": 79245,
-      "exampleVi": "Một nhà văn nổi tiếng viết về cuốn sách bán chạy nhất.",
+      "exampleVi": "Nhà văn nổi tiếng ấy lại cho ra mắt một cuốn sách bán chạy.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-89034be6d9",
@@ -649,9 +649,9 @@
       "week": 1,
       "sourceEntryID": "89034be6d9",
       "exampleSourceID": 199610,
-      "exampleVi": "Thật tốt khi được gặp bất cứ con Quỷ Lùn nào.",
+      "exampleVi": "Tôi rất biết ơn nếu được nhận bất kỳ ý kiến đóng góp nào.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-8c1e168b75",
@@ -663,9 +663,9 @@
       "week": 1,
       "sourceEntryID": "8c1e168b75",
       "exampleSourceID": 194487,
-      "exampleVi": "Bây giờ là 10 giờ.",
+      "exampleVi": "Bây giờ cũng đã khoảng mười giờ rồi.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-4fcdca6105",
@@ -677,9 +677,9 @@
       "week": 1,
       "sourceEntryID": "4fcdca6105",
       "exampleSourceID": 85687,
-      "exampleVi": "Mọi người đang di chuyển quanh máy bay.",
+      "exampleVi": "Mọi người quanh chiếc máy bay di chuyển rất tất bật.",
       "meaningStatus": "editorial_reviewed",
-      "exampleStatus": "machine_unreviewed"
+      "exampleStatus": "editorial_reviewed"
     },
     {
       "id": "olj-v-dedd8df548",

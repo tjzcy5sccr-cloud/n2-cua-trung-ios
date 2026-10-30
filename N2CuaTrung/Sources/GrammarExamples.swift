@@ -30,9 +30,16 @@ enum GrammarLibrary {
         let main = GrammarSample(text: grammar.example, translation: grammar.displayTranslation, translationStatus: grammar.translationStatus)
         let all = [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
         return all.map { part in
-            let visible = part.translationStatus == "needs_sentence_review" ?
-                "Bản dịch ví dụ này đang được đối chiếu." :
-                (part.translation.hasPrefix("EN ·") ? "Bản dịch tiếng Việt đang được bổ sung." : part.translation)
+            let visible: String
+            if part.translationStatus == "machine_translated_unreviewed" {
+                visible = "Dịch tự động theo nghĩa chính (cần kiểm tra): " + part.translation
+            } else if part.translationStatus == "needs_sentence_review" {
+                visible = "Bản dịch ví dụ này đang được đối chiếu."
+            } else if part.translation.hasPrefix("EN ·") {
+                visible = "Bản dịch tiếng Việt đang được bổ sung."
+            } else {
+                visible = part.translation
+            }
             return GrammarSample(text: part.text, translation: visible, translationStatus: part.translationStatus)
         }
     }

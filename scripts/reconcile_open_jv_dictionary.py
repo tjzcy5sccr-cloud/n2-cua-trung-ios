@@ -62,7 +62,7 @@ def main():
     stats = collections.Counter()
     examples = []
     for entry in pack["vocab"]:
-        if entry.get("meaningStatus") == "editorial_reviewed":
+        if entry.get("meaningStatus") in ("editorial_reviewed", "source_verified"):
             stats["editorial_preserved"] += 1
             continue
         match = source.get(unicodedata.normalize("NFC", entry["word"]))

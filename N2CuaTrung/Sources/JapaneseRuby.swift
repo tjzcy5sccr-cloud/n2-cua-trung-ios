@@ -85,6 +85,62 @@ struct FuriganaText: View {
     }
 }
 
+
+/// Các dạng của từ đang học có thể xuất hiện trong ví dụ: chia động từ,
+/// tính từ -い hoặc cách viết Kanji/kana khác nhau. Chỉ tô khi thật sự
+/// tìm thấy bề mặt trong câu, không tự khẳng định ngữ nghĩa của cả câu.
+enum VocabularyExampleFocus {
+    private static let alternativeSpellings: [String: [String]] = [
+        "アイデア": ["アイディア"], "曖昧": ["あいまい"], "扇ぐ": ["あおぐ"],
+        "明き": ["空き"], "呆れる": ["あきれる"], "飽くまで": ["あくまで"],
+        "憧れる": ["あこがれる"], "暖める": ["温める"],
+        "当たり前": ["あたりまえ"], "溢れる": ["あふれる"],
+        "編物": ["編み物"], "有難い": ["ありがたい"],
+        "彼此": ["かれこれ"], "慌ただしい": ["あわただしい"],
+        "慌てる": ["あわてる"], "粗筋": ["あらすじ"],
+        "炙る": ["あぶる"], "暖まる": ["温まる"],
+        "余る": ["あまる"], "佚": ["逸"]
+    ]
+
+    static func variants(word: String, reading: String, example: String) -> [String] {
+        guard !word.isEmpty, !example.isEmpty else { return [] }
+        var bases = [word]
+        bases.append(contentsOf: alternativeSpellings[word] ?? [])
+        if reading.count >= 2 && !bases.contains(reading) { bases.append(reading) }
+
+        var candidates = Set<String>()
+        for base in bases {
+            if example.contains(base) { candidates.insert(base) }
+            guard base.count >= 2, let final = base.last else { continue }
+            let stem = String(base.dropLast())
+            let suffixes: [String]
+            switch final {
+            case "い":
+                suffixes = ["く", "かった", "くて", "ければ", "さ", "そう"]
+            case "う", "つ", "る":
+                suffixes = final == "る"
+                    ? ["た", "て", "ない", "ます", "れば", "よう",
+                       "った", "って", "らない", "ります", "られる"]
+                    : ["った", "って", "わない", "います", "えば", "おう"]
+            case "く": suffixes = ["いた", "いて", "かない", "きます", "けば"]
+            case "ぐ": suffixes = ["いだ", "いで", "がない", "ぎます", "げば"]
+            case "す": suffixes = ["した", "して", "さない", "します", "せば"]
+            case "ぬ", "ぶ", "む":
+                suffixes = ["んだ", "んで", "ない", "ます"]
+            default: suffixes = []
+            }
+            for ending in suffixes {
+                let candidate = stem + ending
+                if example.contains(candidate) { candidates.insert(candidate) }
+            }
+            // Các câu ví dụ có thể thêm trợ động từ vào phần gốc.
+            // Không tô đỏ chỉ một Kanji rời rạc khi chưa xác định được từ.
+        }
+        // Ưu tiên chuỗi dài để không tô đỏ tràn sang từ khác.
+        return candidates.sorted { $0.count > $1.count }
+    }
+}
+
 private enum RubyAtlas {
     private struct Atlas: Decodable {
         let entries: [String: [[String?]]]

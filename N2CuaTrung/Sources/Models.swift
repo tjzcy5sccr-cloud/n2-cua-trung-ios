@@ -9,8 +9,21 @@ struct Vocabulary: Decodable, Identifiable {
     let topic: String
     let week: Int
     let exampleVi: String?
+    /// machine_unreviewed: bản dịch máy, chưa được phép dùng làm đáp án đúng.
+    let meaningStatus: String?
+    let exampleStatus: String?
+    var isMeaningVerified: Bool {
+        meaningStatus != "machine_unreviewed" && !meaning.hasPrefix("EN ·")
+            && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
     var displayMeaning: String {
-        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+        isMeaningVerified ? meaning : "Nghĩa đang chờ đối chiếu từ điển Nhật–Việt"
+    }
+    var displayExampleTranslation: String {
+        if exampleStatus == "machine_unreviewed" {
+            return "Bản dịch ví dụ chưa được kiểm chứng."
+        }
+        return exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung."
     }
 }
 
@@ -38,8 +51,13 @@ struct Kanji: Decodable, Identifiable {
     let kun: String
     let meaning: String
     let word: String
+    let meaningStatus: String?
+    var isMeaningVerified: Bool {
+        meaningStatus != "machine_unreviewed" && !meaning.hasPrefix("EN ·")
+            && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
     var displayMeaning: String {
-        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+        isMeaningVerified ? meaning : "Nghĩa chữ chưa được hiệu đính"
     }
 }
 
@@ -141,13 +159,13 @@ enum QuestionBank {
     }
 
     static func vocabulary(_ data: CourseData, week: Int) -> [ExamQuestion] {
-        let eligible = data.vocab.filter { $0.week <= week && !$0.meaning.hasPrefix("EN ·") }
-        let meanings = data.vocab.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning)
+        let eligible = data.vocab.filter { $0.week <= week && $0.isMeaningVerified }
+        let meanings = data.vocab.filter { $0.isMeaningVerified }.map(\.displayMeaning)
         return eligible.shuffled().prefix(100).map { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
                    passage: item.example, correct: item.displayMeaning,
                    others: meanings,
-                   explanation: "\(item.word)・\(item.reading): \(item.displayMeaning). Ví dụ: \(item.exampleVi ?? item.example)")
+                   explanation: "\(item.word)・\(item.reading): \(item.displayMeaning). Ví dụ: \(item.displayExampleTranslation)")
         }
     }
 
@@ -163,10 +181,10 @@ enum QuestionBank {
     }
 
     static func kanji(_ data: CourseData) -> [ExamQuestion] {
-        data.kanji.filter { !$0.meaning.hasPrefix("EN ·") }.map { item in
+        data.kanji.filter { $0.isMeaningVerified }.map { item in
             create(category: "Kanji", prompt: "Chữ 「\(item.char)」 có nghĩa gì?",
                    passage: "Từ liên quan: \(item.word)", correct: item.displayMeaning,
-                   others: data.kanji.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning),
+                   others: data.kanji.filter { $0.isMeaningVerified }.map(\.displayMeaning),
                    explanation: "Âm On: \(item.on) · Âm Kun: \(item.kun) · Từ: \(item.word)")
         }
     }

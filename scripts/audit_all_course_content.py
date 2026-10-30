@@ -56,9 +56,14 @@ for label, file in SOURCES:
             k.get("meaningStatus"),"Phân biệt nghĩa chữ và bộ thủ; xác minh âm Hán–Việt")
     for category in ("readings", "listening"):
         for item in content.get(category, []):
-            add(label,category+".explanation",item["id"],item.get("text") or item.get("script"),
+            source_text = item.get("text") if category == "readings" else item.get("script")
+            translation = item.get("textVi") if category == "readings" else item.get("scriptVi")
+            add(label,category+".full_translation",item["id"],source_text,
+                translation,item.get("passageTranslationStatus"),
+                "Thiếu bản dịch toàn bài đọc/hội thoại, lời giải câu hỏi không thay thế bản dịch",item.get("title",""))
+            add(label,category+".explanation",item["id"],source_text,
                 item.get("explanation"),item.get("translationStatus"),
-                "Kiểm đáp án đúng, giải thích và bản dịch đoạn; không xem lời giải là bản dịch toàn đoạn",item.get("title",""))
+                "Kiểm đáp án đúng và lời giải; không xem lời giải là bản dịch toàn đoạn",item.get("title",""))
 # Các ví dụ phụ trong grammar-details gốc lưu ở tệp riêng.
 details = ROOT / "N2CuaTrung/Resources/grammar-details.json"
 if details.exists():

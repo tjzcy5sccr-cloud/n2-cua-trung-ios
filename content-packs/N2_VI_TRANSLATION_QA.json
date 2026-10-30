@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 8,
+  "packVersion": 9,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 368,
@@ -9,7 +9,8 @@
     "kanjiTotal": 376,
     "kanjiEditorialRevised": 95,
     "kanjiMachineUnreviewed": 281,
-    "vocabDictionaryCandidates": 1388
+    "vocabDictionaryCandidates": 1378,
+    "vocabSourceVerified": 10
   },
   "exampleVietnameseTranslations": "1756 bản dịch ví dụ do máy tạo chưa được kiểm chứng; mặc định ẩn khỏi ứng dụng",
   "policy": {
@@ -59,7 +60,7 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "Gói N2 đã phủ nghĩa tiếng Việt cho toàn bộ 1756 mục: 368 nghĩa biên tập, 1388 nghĩa tham khảo từ từ điển Nhật–Việt mở. Chưa xác minh 1388 nghĩa theo kana/ngữ cảnh với Mazii/Jdict; không được đánh dấu đúng 100% hoặc dùng làm đáp án trắc nghiệm trước khi đối chiếu.",
+  "scopeLimitation": "1.756 mục đều có nghĩa tiếng Việt; 10 nghĩa đã đối chiếu và lưu liên kết ít nhất hai nguồn; 368 nghĩa được biên tập nhưng chưa đạt mức xác minh hai nguồn; 1.378 nghĩa từ từ điển mở chưa duyệt ngữ cảnh/cách đọc. Không có cơ sở tuyên bố 100% chính xác.",
   "candidateSource": {
     "name": "Từ điển Nhật–Việt mở (Bunchaway)",
     "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
@@ -150,5 +151,14 @@
     "dictionary_matched_unverified": "Bản giải nghĩa từ từ điển Nhật–Việt mở, khớp mặt chữ, chưa xác nhận kana + ngữ cảnh bằng Mazii/Jdict; không dùng làm đáp án trắc nghiệm",
     "machine_unreviewed": "Chưa có nguồn đối chiếu phù hợp, ẩn nghĩa máy khỏi giao diện",
     "source_verified": "Chỉ được dùng khi đã xác nhận cách viết/kana/nghĩa với ít nhất hai nguồn đáng tin"
+  },
+  "crossLanguageAudit": {
+    "source": "JMdict/EDRDG through jkindrix/japanese-language-data (CC BY-SA 4.0)",
+    "reportPath": "content-packs/N2_JMDICT_READING_AUDIT.json",
+    "coverage": 1756,
+    "writingAndKanaConfirmed": 1742,
+    "multiplePossibleEntries": 7,
+    "notInCommonSubset": 7,
+    "warning": "Kana/writing match does not prove Vietnamese semantic accuracy. The report reflects pack v8; new v9 corrections preserve Japanese written forms except reviewed examples."
   }
 }

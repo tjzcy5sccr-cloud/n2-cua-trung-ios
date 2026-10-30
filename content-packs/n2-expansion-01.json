@@ -1,0 +1,1398 @@
+{
+  "id": "n2-expansion-01",
+  "version": 1,
+  "title": "N2 Mở rộng 01: Công việc – xã hội – kinh tế",
+  "vocab": [
+    {
+      "id": "extra1-v001",
+      "word": "役割",
+      "reading": "やくわり",
+      "meaning": "vai trò",
+      "example": "チーム内の役割を明確にする。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v002",
+      "word": "責任",
+      "reading": "せきにん",
+      "meaning": "trách nhiệm",
+      "example": "自分の判断に責任を持つ。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v003",
+      "word": "任せる",
+      "reading": "まかせる",
+      "meaning": "giao phó",
+      "example": "この仕事は彼に任せよう。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v004",
+      "word": "担当",
+      "reading": "たんとう",
+      "meaning": "phụ trách",
+      "example": "新しい担当者を紹介します。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v005",
+      "word": "応募",
+      "reading": "おうぼ",
+      "meaning": "ứng tuyển",
+      "example": "求人広告を見て応募した。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v006",
+      "word": "採用",
+      "reading": "さいよう",
+      "meaning": "tuyển dụng",
+      "example": "今年は新卒を五人採用する。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v007",
+      "word": "退職",
+      "reading": "たいしょく",
+      "meaning": "nghỉ việc",
+      "example": "父は来年退職する予定だ。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v008",
+      "word": "転職",
+      "reading": "てんしょく",
+      "meaning": "chuyển việc",
+      "example": "経験を生かして転職した。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v009",
+      "word": "残業",
+      "reading": "ざんぎょう",
+      "meaning": "làm thêm giờ",
+      "example": "今日は残業せずに帰る。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v010",
+      "word": "給料",
+      "reading": "きゅうりょう",
+      "meaning": "tiền lương",
+      "example": "給料は毎月末に支払われる。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v011",
+      "word": "勤務",
+      "reading": "きんむ",
+      "meaning": "công tác; làm việc",
+      "example": "週に五日勤務している。",
+      "topic": "Công việc",
+      "week": 2
+    },
+    {
+      "id": "extra1-v012",
+      "word": "通勤",
+      "reading": "つうきん",
+      "meaning": "đi làm hằng ngày",
+      "example": "電車で通勤する人が多い。",
+      "topic": "Giao thông",
+      "week": 2
+    },
+    {
+      "id": "extra1-v013",
+      "word": "交渉",
+      "reading": "こうしょう",
+      "meaning": "đàm phán",
+      "example": "取引先と価格を交渉する。",
+      "topic": "Công việc",
+      "week": 3
+    },
+    {
+      "id": "extra1-v014",
+      "word": "契約",
+      "reading": "けいやく",
+      "meaning": "hợp đồng",
+      "example": "契約の内容をよく確認する。",
+      "topic": "Công việc",
+      "week": 3
+    },
+    {
+      "id": "extra1-v015",
+      "word": "納得",
+      "reading": "なっとく",
+      "meaning": "hiểu và chấp nhận",
+      "example": "説明を聞いて納得した。",
+      "topic": "Giao tiếp",
+      "week": 3
+    },
+    {
+      "id": "extra1-v016",
+      "word": "依頼",
+      "reading": "いらい",
+      "meaning": "nhờ; yêu cầu",
+      "example": "資料の作成を依頼した。",
+      "topic": "Công việc",
+      "week": 3
+    },
+    {
+      "id": "extra1-v017",
+      "word": "期限",
+      "reading": "きげん",
+      "meaning": "thời hạn",
+      "example": "提出期限を守ってください。",
+      "topic": "Công việc",
+      "week": 3
+    },
+    {
+      "id": "extra1-v018",
+      "word": "締め切り",
+      "reading": "しめきり",
+      "meaning": "hạn chót",
+      "example": "応募の締め切りは金曜日だ。",
+      "topic": "Công việc",
+      "week": 3
+    },
+    {
+      "id": "extra1-v019",
+      "word": "手続き",
+      "reading": "てつづき",
+      "meaning": "thủ tục",
+      "example": "入学の手続きを済ませた。",
+      "topic": "Đời sống",
+      "week": 3
+    },
+    {
+      "id": "extra1-v020",
+      "word": "証明",
+      "reading": "しょうめい",
+      "meaning": "chứng minh",
+      "example": "身分を証明する書類が必要だ。",
+      "topic": "Đời sống",
+      "week": 3
+    },
+    {
+      "id": "extra1-v021",
+      "word": "納品",
+      "reading": "のうひん",
+      "meaning": "giao sản phẩm",
+      "example": "商品は来週納品する予定だ。",
+      "topic": "Kinh doanh",
+      "week": 3
+    },
+    {
+      "id": "extra1-v022",
+      "word": "配達",
+      "reading": "はいたつ",
+      "meaning": "giao hàng",
+      "example": "荷物は明日配達される。",
+      "topic": "Đời sống",
+      "week": 3
+    },
+    {
+      "id": "extra1-v023",
+      "word": "預ける",
+      "reading": "あずける",
+      "meaning": "gửi nhờ giữ",
+      "example": "荷物を受付に預けた。",
+      "topic": "Đời sống",
+      "week": 3
+    },
+    {
+      "id": "extra1-v024",
+      "word": "届ける",
+      "reading": "とどける",
+      "meaning": "chuyển đến; giao",
+      "example": "忘れ物を駅員に届けた。",
+      "topic": "Đời sống",
+      "week": 3
+    },
+    {
+      "id": "extra1-v025",
+      "word": "招待",
+      "reading": "しょうたい",
+      "meaning": "mời",
+      "example": "友達を食事会に招待した。",
+      "topic": "Giao tiếp",
+      "week": 3
+    },
+    {
+      "id": "extra1-v026",
+      "word": "宣伝",
+      "reading": "せんでん",
+      "meaning": "quảng bá",
+      "example": "新商品をSNSで宣伝する。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v027",
+      "word": "広告",
+      "reading": "こうこく",
+      "meaning": "quảng cáo",
+      "example": "駅に新しい広告が貼られていた。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v028",
+      "word": "販売",
+      "reading": "はんばい",
+      "meaning": "bán hàng",
+      "example": "この商品は来月から販売される。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v029",
+      "word": "生産",
+      "reading": "せいさん",
+      "meaning": "sản xuất",
+      "example": "工場の生産量が増えた。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v030",
+      "word": "品質",
+      "reading": "ひんしつ",
+      "meaning": "chất lượng",
+      "example": "品質を維持することが大切だ。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v031",
+      "word": "設計",
+      "reading": "せっけい",
+      "meaning": "thiết kế kỹ thuật",
+      "example": "安全を考えて建物を設計する。",
+      "topic": "Công nghệ",
+      "week": 4
+    },
+    {
+      "id": "extra1-v032",
+      "word": "技術",
+      "reading": "ぎじゅつ",
+      "meaning": "kỹ thuật; công nghệ",
+      "example": "新しい技術が開発された。",
+      "topic": "Công nghệ",
+      "week": 4
+    },
+    {
+      "id": "extra1-v033",
+      "word": "開発",
+      "reading": "かいはつ",
+      "meaning": "nghiên cứu phát triển",
+      "example": "会社は新製品を開発している。",
+      "topic": "Công nghệ",
+      "week": 4
+    },
+    {
+      "id": "extra1-v034",
+      "word": "製造",
+      "reading": "せいぞう",
+      "meaning": "chế tạo",
+      "example": "この部品は国内で製造される。",
+      "topic": "Công nghệ",
+      "week": 4
+    },
+    {
+      "id": "extra1-v035",
+      "word": "原料",
+      "reading": "げんりょう",
+      "meaning": "nguyên liệu thô",
+      "example": "原料の価格が上がった。",
+      "topic": "Kinh doanh",
+      "week": 4
+    },
+    {
+      "id": "extra1-v036",
+      "word": "材料",
+      "reading": "ざいりょう",
+      "meaning": "vật liệu; nguyên liệu",
+      "example": "料理の材料をそろえた。",
+      "topic": "Đời sống",
+      "week": 4
+    },
+    {
+      "id": "extra1-v037",
+      "word": "吸収",
+      "reading": "きゅうしゅう",
+      "meaning": "hấp thụ",
+      "example": "植物は水分を吸収する。",
+      "topic": "Khoa học",
+      "week": 4
+    },
+    {
+      "id": "extra1-v038",
+      "word": "輸入",
+      "reading": "ゆにゅう",
+      "meaning": "nhập khẩu",
+      "example": "果物を海外から輸入する。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v039",
+      "word": "輸出",
+      "reading": "ゆしゅつ",
+      "meaning": "xuất khẩu",
+      "example": "自動車を多くの国へ輸出する。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v040",
+      "word": "貿易",
+      "reading": "ぼうえき",
+      "meaning": "thương mại quốc tế",
+      "example": "両国の貿易が盛んになった。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v041",
+      "word": "発展",
+      "reading": "はってん",
+      "meaning": "phát triển",
+      "example": "地方の産業が発展している。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v042",
+      "word": "競争",
+      "reading": "きょうそう",
+      "meaning": "cạnh tranh",
+      "example": "企業同士の競争が激しい。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v043",
+      "word": "実績",
+      "reading": "じっせき",
+      "meaning": "thành tích; kết quả đã đạt",
+      "example": "過去の実績を評価する。",
+      "topic": "Công việc",
+      "week": 5
+    },
+    {
+      "id": "extra1-v044",
+      "word": "価値",
+      "reading": "かち",
+      "meaning": "giá trị",
+      "example": "この経験には大きな価値がある。",
+      "topic": "Xã hội",
+      "week": 5
+    },
+    {
+      "id": "extra1-v045",
+      "word": "需要",
+      "reading": "じゅよう",
+      "meaning": "nhu cầu",
+      "example": "電力の需要が高まっている。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v046",
+      "word": "供給",
+      "reading": "きょうきゅう",
+      "meaning": "cung cấp; nguồn cung",
+      "example": "水の供給が止まった。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v047",
+      "word": "利益",
+      "reading": "りえき",
+      "meaning": "lợi nhuận",
+      "example": "今年の利益は去年より増えた。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v048",
+      "word": "損害",
+      "reading": "そんがい",
+      "meaning": "thiệt hại",
+      "example": "台風で大きな損害が出た。",
+      "topic": "Xã hội",
+      "week": 5
+    },
+    {
+      "id": "extra1-v049",
+      "word": "税金",
+      "reading": "ぜいきん",
+      "meaning": "thuế",
+      "example": "税金の使い道を考える。",
+      "topic": "Xã hội",
+      "week": 5
+    },
+    {
+      "id": "extra1-v050",
+      "word": "請求",
+      "reading": "せいきゅう",
+      "meaning": "yêu cầu thanh toán",
+      "example": "修理代を請求された。",
+      "topic": "Kinh tế",
+      "week": 5
+    },
+    {
+      "id": "extra1-v051",
+      "word": "支払う",
+      "reading": "しはらう",
+      "meaning": "thanh toán",
+      "example": "代金はカードで支払った。",
+      "topic": "Đời sống",
+      "week": 5
+    },
+    {
+      "id": "extra1-v052",
+      "word": "返金",
+      "reading": "へんきん",
+      "meaning": "hoàn tiền",
+      "example": "不良品なので返金を求めた。",
+      "topic": "Đời sống",
+      "week": 5
+    },
+    {
+      "id": "extra1-v053",
+      "word": "返却",
+      "reading": "へんきゃく",
+      "meaning": "hoàn trả đồ đã mượn",
+      "example": "借りた本を図書館に返却する。",
+      "topic": "Đời sống",
+      "week": 5
+    },
+    {
+      "id": "extra1-v054",
+      "word": "翻訳",
+      "reading": "ほんやく",
+      "meaning": "biên dịch",
+      "example": "記事を日本語からベトナム語に翻訳した。",
+      "topic": "Ngôn ngữ",
+      "week": 6
+    },
+    {
+      "id": "extra1-v055",
+      "word": "通訳",
+      "reading": "つうやく",
+      "meaning": "phiên dịch nói",
+      "example": "会議で通訳を担当した。",
+      "topic": "Ngôn ngữ",
+      "week": 6
+    },
+    {
+      "id": "extra1-v056",
+      "word": "調査",
+      "reading": "ちょうさ",
+      "meaning": "khảo sát; điều tra",
+      "example": "利用者の意見を調査する。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v057",
+      "word": "統計",
+      "reading": "とうけい",
+      "meaning": "thống kê",
+      "example": "統計によると人口は減少している。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v058",
+      "word": "資料",
+      "reading": "しりょう",
+      "meaning": "tài liệu",
+      "example": "会議の資料を配布した。",
+      "topic": "Công việc",
+      "week": 6
+    },
+    {
+      "id": "extra1-v059",
+      "word": "基準",
+      "reading": "きじゅん",
+      "meaning": "tiêu chuẩn",
+      "example": "安全基準を満たしている。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v060",
+      "word": "規則",
+      "reading": "きそく",
+      "meaning": "quy tắc",
+      "example": "学校の規則を守る。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v061",
+      "word": "法律",
+      "reading": "ほうりつ",
+      "meaning": "pháp luật",
+      "example": "新しい法律が施行された。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v062",
+      "word": "文化",
+      "reading": "ぶんか",
+      "meaning": "văn hóa",
+      "example": "異なる文化を理解する。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v063",
+      "word": "伝統",
+      "reading": "でんとう",
+      "meaning": "truyền thống",
+      "example": "地域の伝統を次世代に伝える。",
+      "topic": "Văn hóa",
+      "week": 6
+    },
+    {
+      "id": "extra1-v064",
+      "word": "世代",
+      "reading": "せだい",
+      "meaning": "thế hệ",
+      "example": "世代によって考え方が異なる。",
+      "topic": "Xã hội",
+      "week": 6
+    },
+    {
+      "id": "extra1-v065",
+      "word": "人口",
+      "reading": "じんこう",
+      "meaning": "dân số",
+      "example": "都市の人口が増加している。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v066",
+      "word": "都市",
+      "reading": "とし",
+      "meaning": "đô thị",
+      "example": "都市部では交通が便利だ。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v067",
+      "word": "農村",
+      "reading": "のうそん",
+      "meaning": "nông thôn",
+      "example": "農村の暮らしについて調べた。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v068",
+      "word": "住宅",
+      "reading": "じゅうたく",
+      "meaning": "nhà ở",
+      "example": "この地域には新しい住宅が多い。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v069",
+      "word": "建築",
+      "reading": "けんちく",
+      "meaning": "kiến trúc; xây dựng",
+      "example": "古い建築を保存する。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v070",
+      "word": "施設",
+      "reading": "しせつ",
+      "meaning": "cơ sở vật chất",
+      "example": "公共施設の利用が増えた。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v071",
+      "word": "復旧",
+      "reading": "ふっきゅう",
+      "meaning": "khôi phục hoạt động",
+      "example": "停電からの復旧が進んでいる。",
+      "topic": "Thiên tai",
+      "week": 7
+    },
+    {
+      "id": "extra1-v072",
+      "word": "救助",
+      "reading": "きゅうじょ",
+      "meaning": "cứu hộ",
+      "example": "消防隊が住民を救助した。",
+      "topic": "Thiên tai",
+      "week": 7
+    },
+    {
+      "id": "extra1-v073",
+      "word": "援助",
+      "reading": "えんじょ",
+      "meaning": "viện trợ; hỗ trợ",
+      "example": "被災地に援助物資を送った。",
+      "topic": "Thiên tai",
+      "week": 7
+    },
+    {
+      "id": "extra1-v074",
+      "word": "貢献",
+      "reading": "こうけん",
+      "meaning": "đóng góp",
+      "example": "地域の発展に貢献したい。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v075",
+      "word": "変化",
+      "reading": "へんか",
+      "meaning": "biến đổi",
+      "example": "社会の変化に対応する。",
+      "topic": "Xã hội",
+      "week": 7
+    },
+    {
+      "id": "extra1-v076",
+      "word": "予測",
+      "reading": "よそく",
+      "meaning": "dự đoán",
+      "example": "今後の需要を予測する。",
+      "topic": "Kinh tế",
+      "week": 8
+    },
+    {
+      "id": "extra1-v077",
+      "word": "備える",
+      "reading": "そなえる",
+      "meaning": "chuẩn bị đề phòng",
+      "example": "地震に備えて水を用意する。",
+      "topic": "Thiên tai",
+      "week": 8
+    },
+    {
+      "id": "extra1-v078",
+      "word": "防ぐ",
+      "reading": "ふせぐ",
+      "meaning": "ngăn chặn",
+      "example": "事故を防ぐために確認する。",
+      "topic": "An toàn",
+      "week": 8
+    },
+    {
+      "id": "extra1-v079",
+      "word": "果たす",
+      "reading": "はたす",
+      "meaning": "thực hiện; hoàn thành",
+      "example": "責任を果たすことが大切だ。",
+      "topic": "Công việc",
+      "week": 8
+    },
+    {
+      "id": "extra1-v080",
+      "word": "及ぼす",
+      "reading": "およぼす",
+      "meaning": "gây ảnh hưởng đến",
+      "example": "騒音は生活に悪影響を及ぼす。",
+      "topic": "Xã hội",
+      "week": 8
+    },
+    {
+      "id": "extra1-v081",
+      "word": "認める",
+      "reading": "みとめる",
+      "meaning": "công nhận",
+      "example": "努力が認められてうれしい。",
+      "topic": "Giao tiếp",
+      "week": 8
+    },
+    {
+      "id": "extra1-v082",
+      "word": "優れる",
+      "reading": "すぐれる",
+      "meaning": "xuất sắc; vượt trội",
+      "example": "この製品は耐久性に優れている。",
+      "topic": "Công nghệ",
+      "week": 8
+    },
+    {
+      "id": "extra1-v083",
+      "word": "劣る",
+      "reading": "おとる",
+      "meaning": "kém hơn",
+      "example": "性能が新型より劣る。",
+      "topic": "Công nghệ",
+      "week": 8
+    },
+    {
+      "id": "extra1-v084",
+      "word": "省く",
+      "reading": "はぶく",
+      "meaning": "lược bỏ",
+      "example": "不要な作業を省いて効率を上げる。",
+      "topic": "Công việc",
+      "week": 8
+    },
+    {
+      "id": "extra1-v085",
+      "word": "促す",
+      "reading": "うながす",
+      "meaning": "thúc giục; thúc đẩy",
+      "example": "教師は学生に質問を促した。",
+      "topic": "Giáo dục",
+      "week": 8
+    },
+    {
+      "id": "extra1-v086",
+      "word": "蓄える",
+      "reading": "たくわえる",
+      "meaning": "tích trữ; tích lũy",
+      "example": "災害に備えて食料を蓄える。",
+      "topic": "Thiên tai",
+      "week": 8
+    },
+    {
+      "id": "extra1-v087",
+      "word": "扱う",
+      "reading": "あつかう",
+      "meaning": "xử lý; đối xử",
+      "example": "個人情報を慎重に扱う。",
+      "topic": "Công việc",
+      "week": 8
+    },
+    {
+      "id": "extra1-v088",
+      "word": "避ける",
+      "reading": "さける",
+      "meaning": "tránh",
+      "example": "混雑する時間帯を避ける。",
+      "topic": "Đời sống",
+      "week": 8
+    },
+    {
+      "id": "extra1-v089",
+      "word": "支える",
+      "reading": "ささえる",
+      "meaning": "nâng đỡ; hỗ trợ",
+      "example": "家族が私を支えてくれた。",
+      "topic": "Đời sống",
+      "week": 8
+    },
+    {
+      "id": "extra1-v090",
+      "word": "見直す",
+      "reading": "みなおす",
+      "meaning": "xem xét lại",
+      "example": "勉強の計画を見直した。",
+      "topic": "Giáo dục",
+      "week": 8
+    },
+    {
+      "id": "extra1-v091",
+      "word": "引き受ける",
+      "reading": "ひきうける",
+      "meaning": "nhận đảm trách",
+      "example": "その仕事を引き受けた。",
+      "topic": "Công việc",
+      "week": 8
+    },
+    {
+      "id": "extra1-v092",
+      "word": "減らす",
+      "reading": "へらす",
+      "meaning": "làm giảm",
+      "example": "無駄な出費を減らしたい。",
+      "topic": "Đời sống",
+      "week": 8
+    },
+    {
+      "id": "extra1-v093",
+      "word": "増やす",
+      "reading": "ふやす",
+      "meaning": "làm tăng",
+      "example": "日本語を使う機会を増やそう。",
+      "topic": "Giáo dục",
+      "week": 8
+    }
+  ],
+  "grammar": [
+    {
+      "id": "extra1-g001",
+      "pattern": "〜に限らず",
+      "meaning": "không chỉ giới hạn ở",
+      "rule": "N + に限らず: không riêng N mà còn đối tượng khác",
+      "example": "若者に限らず、高齢者も利用している。",
+      "translation": "Không riêng giới trẻ, người cao tuổi cũng đang sử dụng.",
+      "week": 7
+    },
+    {
+      "id": "extra1-g002",
+      "pattern": "〜に限って",
+      "meaning": "riêng lúc; chính vào lúc",
+      "rule": "N + に限って: nhấn mạnh trường hợp đặc biệt, thường trái mong đợi",
+      "example": "忙しい日に限って、電話が多い。",
+      "translation": "Cứ đúng ngày bận thì lại có nhiều cuộc gọi.",
+      "week": 7
+    },
+    {
+      "id": "extra1-g003",
+      "pattern": "〜に限り",
+      "meaning": "chỉ dành cho",
+      "rule": "N + に限り: giới hạn đối tượng, thường thấy trong thông báo",
+      "example": "本日に限り、入場は無料です。",
+      "translation": "Chỉ hôm nay, vào cửa miễn phí.",
+      "week": 7
+    },
+    {
+      "id": "extra1-g004",
+      "pattern": "〜を問わず",
+      "meaning": "không phân biệt",
+      "rule": "N + を問わず: không xét sự khác biệt về điều kiện",
+      "example": "年齢を問わず、誰でも参加できます。",
+      "translation": "Không phân biệt tuổi tác, ai cũng tham gia được.",
+      "week": 7
+    },
+    {
+      "id": "extra1-g005",
+      "pattern": "〜にかかわらず",
+      "meaning": "bất kể",
+      "rule": "N + にかかわらず: không phụ thuộc vào điều kiện",
+      "example": "天候にかかわらず、試合を行います。",
+      "translation": "Trận đấu sẽ diễn ra bất kể thời tiết.",
+      "week": 7
+    },
+    {
+      "id": "extra1-g006",
+      "pattern": "〜に応えて",
+      "meaning": "đáp lại; hưởng ứng",
+      "rule": "N + に応えて: đáp lại kỳ vọng hoặc yêu cầu",
+      "example": "お客様の声に応えて、営業時間を延ばした。",
+      "translation": "Đáp lại ý kiến khách hàng, chúng tôi kéo dài giờ mở cửa.",
+      "week": 8
+    },
+    {
+      "id": "extra1-g007",
+      "pattern": "〜に先立って",
+      "meaning": "trước khi bắt đầu",
+      "rule": "N/động từ thể từ điển + に先立って: trước sự kiện chính",
+      "example": "出発に先立って、注意事項を説明します。",
+      "translation": "Trước khi khởi hành, tôi sẽ giải thích điều cần lưu ý.",
+      "week": 8
+    },
+    {
+      "id": "extra1-g008",
+      "pattern": "〜をきっかけに",
+      "meaning": "nhân cơ hội; lấy làm bước ngoặt",
+      "rule": "N + をきっかけに: bắt đầu thay đổi từ một sự kiện",
+      "example": "旅行をきっかけに、日本語を学び始めた。",
+      "translation": "Nhờ chuyến du lịch làm bước ngoặt, tôi bắt đầu học tiếng Nhật.",
+      "week": 8
+    },
+    {
+      "id": "extra1-g009",
+      "pattern": "〜ことから",
+      "meaning": "vì; từ việc... nên",
+      "rule": "Mệnh đề thể thông thường + ことから: suy ra nguyên nhân hay nguồn gốc",
+      "example": "駅に近いことから、この店は人気がある。",
+      "translation": "Vì gần ga nên cửa hàng này được yêu thích.",
+      "week": 8
+    },
+    {
+      "id": "extra1-g010",
+      "pattern": "〜末に",
+      "meaning": "sau một quá trình dài rồi",
+      "rule": "Vた/Nの + 末に: kết quả đạt được sau nhiều nỗ lực hoặc suy nghĩ",
+      "example": "話し合った末に、計画を変更した。",
+      "translation": "Sau khi thảo luận kỹ, chúng tôi đã thay đổi kế hoạch.",
+      "week": 9
+    },
+    {
+      "id": "extra1-g011",
+      "pattern": "〜あげく",
+      "meaning": "cuối cùng lại (thường kết quả xấu)",
+      "rule": "Vた/Nの + あげく: kết quả không mong muốn sau nhiều việc",
+      "example": "迷ったあげく、何も買わなかった。",
+      "translation": "Phân vân mãi rồi cuối cùng chẳng mua gì.",
+      "week": 9
+    },
+    {
+      "id": "extra1-g012",
+      "pattern": "〜たびに",
+      "meaning": "mỗi khi",
+      "rule": "Vる/Nの + たびに: mỗi lần xảy ra một việc",
+      "example": "この曲を聞くたびに、故郷を思い出す。",
+      "translation": "Mỗi lần nghe bài này tôi lại nhớ quê.",
+      "week": 9
+    },
+    {
+      "id": "extra1-g013",
+      "pattern": "〜ついでに",
+      "meaning": "tiện thể",
+      "rule": "Vる/Vた/Nの + ついでに: nhân làm việc A thì làm thêm B",
+      "example": "買い物のついでに、郵便局に寄った。",
+      "translation": "Tiện đi mua sắm, tôi ghé bưu điện.",
+      "week": 9
+    },
+    {
+      "id": "extra1-g014",
+      "pattern": "〜からといって",
+      "meaning": "không phải cứ vì... mà",
+      "rule": "Thể thông thường + からといって: không thể lấy lý do đó để kết luận",
+      "example": "安いからといって、品質が悪いとは限らない。",
+      "translation": "Không phải cứ rẻ là chất lượng kém.",
+      "week": 9
+    },
+    {
+      "id": "extra1-g015",
+      "pattern": "〜以上は",
+      "meaning": "một khi đã... thì",
+      "rule": "Vる/Vた + 以上は: có trách nhiệm làm theo điều đã quyết",
+      "example": "引き受けた以上は、最後までやる。",
+      "translation": "Một khi đã nhận thì sẽ làm đến cùng.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g016",
+      "pattern": "〜からには",
+      "meaning": "đã... thì nhất định",
+      "rule": "Vる/Vた + からには: ý chí hoặc trách nhiệm mạnh",
+      "example": "試験を受けるからには、合格したい。",
+      "translation": "Đã dự thi thì tôi muốn đỗ.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g017",
+      "pattern": "〜ものだから",
+      "meaning": "vì (giải thích lý do cá nhân)",
+      "rule": "Thể thông thường + ものだから: giải thích, thường để xin thông cảm",
+      "example": "道が混んでいたものだから、遅れました。",
+      "translation": "Vì đường đông nên tôi đến muộn.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g018",
+      "pattern": "〜ことなく",
+      "meaning": "không... mà",
+      "rule": "Vる + ことなく: không làm hành động V",
+      "example": "休むことなく働き続けた。",
+      "translation": "Tiếp tục làm việc mà không nghỉ.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g019",
+      "pattern": "〜抜きで",
+      "meaning": "không có; bỏ qua",
+      "rule": "N + 抜きで: không bao gồm N",
+      "example": "冗談抜きで、真剣に考えてください。",
+      "translation": "Không đùa nữa, hãy suy nghĩ nghiêm túc.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g020",
+      "pattern": "〜に反して",
+      "meaning": "trái với",
+      "rule": "N + に反して: trái với dự đoán hoặc ý muốn",
+      "example": "予想に反して、試験は難しくなかった。",
+      "translation": "Trái với dự đoán, bài thi không khó.",
+      "week": 10
+    },
+    {
+      "id": "extra1-g021",
+      "pattern": "〜に加えて",
+      "meaning": "ngoài... còn thêm",
+      "rule": "N + に加えて: bổ sung thông tin",
+      "example": "授業に加えて、自習も必要だ。",
+      "translation": "Ngoài giờ học trên lớp, tự học cũng cần thiết.",
+      "week": 11
+    },
+    {
+      "id": "extra1-g022",
+      "pattern": "〜に代わって",
+      "meaning": "thay cho",
+      "rule": "N + に代わって: làm thay người khác",
+      "example": "部長に代わって、私が説明します。",
+      "translation": "Thay trưởng phòng, tôi sẽ giải thích.",
+      "week": 11
+    },
+    {
+      "id": "extra1-g023",
+      "pattern": "〜のもとで",
+      "meaning": "dưới sự hướng dẫn hoặc điều kiện",
+      "rule": "N + のもとで: dưới sự chỉ đạo hoặc hoàn cảnh",
+      "example": "先生の指導のもとで研究を進めた。",
+      "translation": "Tôi tiến hành nghiên cứu dưới sự hướng dẫn của giáo viên.",
+      "week": 11
+    },
+    {
+      "id": "extra1-g024",
+      "pattern": "〜において",
+      "meaning": "tại; trong lĩnh vực",
+      "rule": "N + において: cách nói trang trọng chỉ địa điểm hoặc lĩnh vực",
+      "example": "教育において、経験は大切だ。",
+      "translation": "Trong giáo dục, kinh nghiệm rất quan trọng.",
+      "week": 11
+    }
+  ],
+  "kanji": [
+    {
+      "id": "extra1-k001",
+      "char": "責",
+      "on": "セキ",
+      "kun": "せめる",
+      "meaning": "trách nhiệm",
+      "word": "責任（せきにん）"
+    },
+    {
+      "id": "extra1-k002",
+      "char": "任",
+      "on": "ニン",
+      "kun": "まかせる",
+      "meaning": "giao phó; nhiệm vụ",
+      "word": "任せる（まかせる）"
+    },
+    {
+      "id": "extra1-k003",
+      "char": "担",
+      "on": "タン",
+      "kun": "かつぐ",
+      "meaning": "đảm trách",
+      "word": "担当（たんとう）"
+    },
+    {
+      "id": "extra1-k004",
+      "char": "募",
+      "on": "ボ",
+      "kun": "つのる",
+      "meaning": "tuyển mộ",
+      "word": "応募（おうぼ）"
+    },
+    {
+      "id": "extra1-k005",
+      "char": "採",
+      "on": "サイ",
+      "kun": "とる",
+      "meaning": "thu nhận; tuyển",
+      "word": "採用（さいよう）"
+    },
+    {
+      "id": "extra1-k006",
+      "char": "職",
+      "on": "ショク",
+      "kun": "—",
+      "meaning": "nghề nghiệp",
+      "word": "転職（てんしょく）"
+    },
+    {
+      "id": "extra1-k007",
+      "char": "給",
+      "on": "キュウ",
+      "kun": "たまう",
+      "meaning": "cấp phát; lương",
+      "word": "給料（きゅうりょう）"
+    },
+    {
+      "id": "extra1-k008",
+      "char": "勤",
+      "on": "キン",
+      "kun": "つとめる",
+      "meaning": "chăm chỉ; làm việc",
+      "word": "勤務（きんむ）"
+    },
+    {
+      "id": "extra1-k009",
+      "char": "契",
+      "on": "ケイ",
+      "kun": "ちぎる",
+      "meaning": "giao ước",
+      "word": "契約（けいやく）"
+    },
+    {
+      "id": "extra1-k010",
+      "char": "約",
+      "on": "ヤク",
+      "kun": "—",
+      "meaning": "hứa hẹn; ràng buộc",
+      "word": "契約（けいやく）"
+    },
+    {
+      "id": "extra1-k011",
+      "char": "締",
+      "on": "テイ",
+      "kun": "しめる",
+      "meaning": "siết chặt; đóng",
+      "word": "締め切り（しめきり）"
+    },
+    {
+      "id": "extra1-k012",
+      "char": "証",
+      "on": "ショウ",
+      "kun": "あかし",
+      "meaning": "bằng chứng",
+      "word": "証明（しょうめい）"
+    },
+    {
+      "id": "extra1-k013",
+      "char": "販",
+      "on": "ハン",
+      "kun": "—",
+      "meaning": "buôn bán",
+      "word": "販売（はんばい）"
+    },
+    {
+      "id": "extra1-k014",
+      "char": "売",
+      "on": "バイ",
+      "kun": "うる",
+      "meaning": "bán",
+      "word": "販売（はんばい）"
+    },
+    {
+      "id": "extra1-k015",
+      "char": "製",
+      "on": "セイ",
+      "kun": "—",
+      "meaning": "chế tạo",
+      "word": "製造（せいぞう）"
+    },
+    {
+      "id": "extra1-k016",
+      "char": "造",
+      "on": "ゾウ",
+      "kun": "つくる",
+      "meaning": "tạo ra",
+      "word": "製造（せいぞう）"
+    },
+    {
+      "id": "extra1-k017",
+      "char": "輸",
+      "on": "ユ",
+      "kun": "—",
+      "meaning": "vận chuyển; xuất nhập",
+      "word": "輸出（ゆしゅつ）"
+    },
+    {
+      "id": "extra1-k018",
+      "char": "貿",
+      "on": "ボウ",
+      "kun": "—",
+      "meaning": "thương mại",
+      "word": "貿易（ぼうえき）"
+    },
+    {
+      "id": "extra1-k019",
+      "char": "競",
+      "on": "キョウ",
+      "kun": "きそう",
+      "meaning": "thi đấu; cạnh tranh",
+      "word": "競争（きょうそう）"
+    },
+    {
+      "id": "extra1-k020",
+      "char": "税",
+      "on": "ゼイ",
+      "kun": "—",
+      "meaning": "thuế",
+      "word": "税金（ぜいきん）"
+    },
+    {
+      "id": "extra1-k021",
+      "char": "需",
+      "on": "ジュ",
+      "kun": "—",
+      "meaning": "nhu cầu",
+      "word": "需要（じゅよう）"
+    },
+    {
+      "id": "extra1-k022",
+      "char": "供",
+      "on": "キョウ",
+      "kun": "とも",
+      "meaning": "cung cấp",
+      "word": "供給（きょうきゅう）"
+    },
+    {
+      "id": "extra1-k023",
+      "char": "納",
+      "on": "ノウ",
+      "kun": "おさめる",
+      "meaning": "nộp; thu nhận",
+      "word": "納品（のうひん）"
+    },
+    {
+      "id": "extra1-k024",
+      "char": "技",
+      "on": "ギ",
+      "kun": "わざ",
+      "meaning": "kỹ năng",
+      "word": "技術（ぎじゅつ）"
+    },
+    {
+      "id": "extra1-k025",
+      "char": "統",
+      "on": "トウ",
+      "kun": "すべる",
+      "meaning": "thống nhất",
+      "word": "統計（とうけい）"
+    },
+    {
+      "id": "extra1-k026",
+      "char": "規",
+      "on": "キ",
+      "kun": "—",
+      "meaning": "quy tắc",
+      "word": "規則（きそく）"
+    },
+    {
+      "id": "extra1-k027",
+      "char": "律",
+      "on": "リツ",
+      "kun": "—",
+      "meaning": "luật lệ",
+      "word": "法律（ほうりつ）"
+    },
+    {
+      "id": "extra1-k028",
+      "char": "都",
+      "on": "ト",
+      "kun": "みやこ",
+      "meaning": "đô thành",
+      "word": "都市（とし）"
+    },
+    {
+      "id": "extra1-k029",
+      "char": "市",
+      "on": "シ",
+      "kun": "いち",
+      "meaning": "thành phố; chợ",
+      "word": "都市（とし）"
+    },
+    {
+      "id": "extra1-k030",
+      "char": "援",
+      "on": "エン",
+      "kun": "—",
+      "meaning": "viện trợ",
+      "word": "援助（えんじょ）"
+    }
+  ],
+  "readings": [
+    {
+      "id": "extra1-r001",
+      "title": "Đọc hiểu: Thói quen đi làm",
+      "topic": "Công việc",
+      "text": "最近、会社に出勤せずに自宅で仕事をする人が増えている。通勤時間がなくなるため、時間を有効に使えるという利点がある。一方で、同僚と直接話す機会が減り、相談しにくいと感じる人もいる。そのため、ある会社では週に二日だけ出勤する制度を導入した。社員の意見を調査した結果、多くの社員がこの制度に満足していることが分かった。",
+      "question": "会社が週に二日出勤する制度を導入した理由として、最も適切なものはどれか。",
+      "choices": [
+        "通勤時間をさらに長くするため",
+        "自宅勤務の利点を保ちながら、対面で話す機会も作るため",
+        "社員の給料を減らすため",
+        "社員全員に毎日出勤してもらうため"
+      ],
+      "answer": 1,
+      "explanation": "Làm việc tại nhà tiết kiệm thời gian đi lại, nhưng thiếu giao tiếp trực tiếp; đi làm 2 ngày/tuần giúp cân bằng hai mặt."
+    },
+    {
+      "id": "extra1-r002",
+      "title": "Đọc hiểu: Giảm rác thải",
+      "topic": "Môi trường",
+      "text": "ある町では、ごみを減らすために、買い物の際に自分の袋を持参するよう市民に呼びかけている。最初は面倒だという意見も多かった。しかし、店が袋を有料にしたことをきっかけに、マイバッグを使う人が増えた。市の調査によると、袋の使用量は一年で約三割減ったそうだ。ただし、袋を減らすだけでは十分ではなく、食品を無駄にしない工夫も必要だと市は考えている。",
+      "question": "文章の内容と合っているものはどれか。",
+      "choices": [
+        "市は食品の無駄について考えていない",
+        "袋の使用量は一年で約三割増えた",
+        "袋の有料化をきっかけにマイバッグを使う人が増えた",
+        "市民は最初から全員賛成していた"
+      ],
+      "answer": 2,
+      "explanation": "Nhờ thu phí túi, nhiều người dùng túi cá nhân hơn; lượng sử dụng giảm 30%."
+    },
+    {
+      "id": "extra1-r003",
+      "title": "Đọc hiểu: Học kỹ năng mới",
+      "topic": "Giáo dục",
+      "text": "新しい技術を学ぶとき、最初からすべて理解しようとすると、時間がかかりすぎることがある。まず基本的な操作を覚え、実際に使ってみることが大切だ。うまくいかなかった場合は、原因を調べてもう一度試す。このような経験を重ねることで、知識だけでなく、問題に対応する力も身につく。もちろん、間違いをそのままにせず、必要に応じて専門家に相談することも重要である。",
+      "question": "筆者が特に勧めている学び方はどれか。",
+      "choices": [
+        "理解できるまで実際には使わない",
+        "失敗したら新しい勉強をやめる",
+        "基本を学んで試し、問題の原因を調べて改善する",
+        "専門家にすべて任せ、自分では調べない"
+      ],
+      "answer": 2,
+      "explanation": "Tác giả đề xuất học cơ bản, thực hành, tìm nguyên nhân khi sai và cải thiện."
+    }
+  ],
+  "listening": [
+    {
+      "id": "extra1-l001",
+      "title": "Nghe hiểu: Thay đổi thời hạn",
+      "speaker": "Nhân viên và trưởng nhóm",
+      "script": "女：来週の会議の資料ですが、提出期限は金曜日でしたよね。\n男：それが、会議が一日早くなったので、木曜日の午前中までに提出してください。\n女：分かりました。水曜日のうちに確認しておきます。",
+      "question": "資料はいつまでに提出しなければなりませんか。",
+      "choices": [
+        "水曜日の午前中",
+        "木曜日の午前中",
+        "金曜日の午前中",
+        "来週の月曜日"
+      ],
+      "answer": 1,
+      "explanation": "Cuộc họp sớm hơn một ngày, phải nộp trước sáng thứ Năm."
+    },
+    {
+      "id": "extra1-l002",
+      "title": "Nghe hiểu: Giao hàng",
+      "speaker": "Nhân viên cửa hàng và khách",
+      "script": "男：注文した商品は今日届く予定でしたが、まだ来ていません。\n女：申し訳ありません。交通の影響で配達が遅れています。明日の午後にはお届けできる見込みです。\n男：明日の午後なら家にいます。よろしくお願いします。",
+      "question": "商品はいつ届く見込みですか。",
+      "choices": [
+        "今日の午前",
+        "今日の午後",
+        "明日の午前",
+        "明日の午後"
+      ],
+      "answer": 3,
+      "explanation": "Cửa hàng dự kiến giao hàng chiều ngày mai."
+    },
+    {
+      "id": "extra1-l003",
+      "title": "Nghe hiểu: Tuyển dụng",
+      "speaker": "Người hỏi và nhân viên",
+      "script": "女：このアルバイトに応募したいのですが、経験がなくても大丈夫ですか。\n男：はい。経験は問いません。ただし、土曜日か日曜日のどちらかに勤務できる方に限ります。\n女：日曜日なら働けます。では、応募します。",
+      "question": "応募するために必要な条件は何ですか。",
+      "choices": [
+        "仕事の経験があること",
+        "毎日勤務できること",
+        "土曜日か日曜日に働けること",
+        "日本語の資格を持っていること"
+      ],
+      "answer": 2,
+      "explanation": "Không cần kinh nghiệm; cần làm được ít nhất một ngày thứ Bảy hoặc Chủ nhật."
+    }
+  ]
+}

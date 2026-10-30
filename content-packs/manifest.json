@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "packs": [
+    {
+      "id": "n2-expansion-01",
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/n2-expansion-01.json"
+    }
+  ]
+}

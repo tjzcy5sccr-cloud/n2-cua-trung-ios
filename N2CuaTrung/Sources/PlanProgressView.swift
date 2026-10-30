@@ -104,6 +104,13 @@ struct ProgressDashboardView: View {
                     }
                 }
                 NavigationLink {
+                    ContentUpdatesView()
+                } label: {
+                    ActionTile(icon: "arrow.down.circle", color: Palette.teal,
+                               title: "Cập nhật kho bài học", detail: "Tải hoặc nhập gói học, dùng offline")
+                }
+                .buttonStyle(.plain)
+                NavigationLink {
                     AboutView()
                 } label: {
                     ActionTile(icon: "info.circle", color: Palette.blue,

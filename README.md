@@ -70,3 +70,15 @@ Trong Signing & Capabilities chọn tài khoản Apple, kiểm tra Bundle ID `vn
 ## Các giới hạn còn lại
 
 Ứng dụng chưa có ngân hàng đề N2 đầy đủ, audio MP3 bản quyền, viết Kanji bằng tay, nhận dạng phát âm và đồng bộ iCloud. Nội dung luyện đề được biên soạn độc lập, không sử dụng nguyên đề thi hoặc nội dung sách trả phí khi chưa được phép. Mỗi đợt nâng cấp nội dung phải kiểm tra độ chính xác của bài học.
+
+## Kho dữ liệu cập nhật độc lập (v1.2)
+
+- Vào **Tiến độ → Cập nhật kho bài học**, chọn **Kiểm tra bài học mới** khi có mạng.
+- Có thể tải riêng `content-packs/n2-expansion-01.json` vào iPhone qua ứng dụng Tệp và chọn **Nhập gói học JSON từ Tệp**.
+- Nội dung mới được lưu trong Application Support, tiếp tục học offline sau khi tải. Dữ liệu lịch ôn và điểm số nằm trong kho riêng, không bị xóa khi cập nhật.
+- `content-packs/manifest.json` công bố các gói mới để ứng dụng tải về theo phiên bản. Có thể bổ sung gói và cập nhật manifest mà không cần build IPA mới.
+- Mỗi mục có ID ổn định; bản cập nhật gói có cùng ID, phiên bản tăng sẽ thay thế nội dung cùng ID mà giữ lịch sử thẻ.
+- Bài nghe trong gói khởi đầu dùng giọng đọc tiếng Nhật có sẵn trên máy, không phải audio chính thức của JLPT.
+- Đây là nội dung luyện thi JLPT N2 định hướng, **không phải danh sách từ vựng chính thức do JLPT công bố**.
+
+**Tác giả:** Trần Phước Trung — © 2026 Trần Phước Trung. Bảo lưu mọi quyền.

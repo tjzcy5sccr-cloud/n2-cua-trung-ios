@@ -3,12 +3,15 @@ import SwiftUI
 import AVFoundation
 
 final class StudyStore: ObservableObject {
-    let course: CourseData
+    @Published var course: CourseData
+    @Published var installedPacks: [CoursePack]
     @Published private(set) var saved: SavedProgress
     private let key = "N2CuaTrung.progress.v1"
 
     init() {
-        self.course = CourseData.load()
+        let packs = CoursePackManager.readInstalled()
+        self.installedPacks = packs
+        self.course = CoursePackManager.mergedCourse(packs: packs)
         if let bytes = UserDefaults.standard.data(forKey: key),
            let model = try? JSONDecoder().decode(SavedProgress.self, from: bytes) {
             self.saved = model

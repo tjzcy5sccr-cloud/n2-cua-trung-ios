@@ -1,6 +1,6 @@
 {
   "id": "openjlpt-n2-core",
-  "version": 8,
+  "version": 9,
   "title": "N2 Mở rộng mở: Từ vựng, Kanji, Ngữ pháp (OpenJLPT · CC BY-SA 4.0; nghĩa EN)",
   "attribution": {
     "source": "OpenJLPT",
@@ -5219,16 +5219,21 @@
       "id": "olj-v-d84448f0f9",
       "word": "ぎっしり",
       "reading": "ぎっしり",
-      "meaning": "Lèn chặt, đầy ắp, chật kín",
+      "meaning": "chật kín, đầy ắp; xếp khít vào nhau",
       "example": "エレベーターにぎっしりいっぱいに乗った。",
       "topic": "Từ vựng JLPT N2",
       "week": 8,
       "sourceEntryID": "d84448f0f9",
       "exampleSourceID": 227889,
       "exampleVi": "Tôi đã ở trong thang máy.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-629536cb8c",
@@ -7813,16 +7818,21 @@
       "id": "olj-v-9bc707785c",
       "word": "こっそり",
       "reading": "こっそり",
-      "meaning": "Lén lút, vụng trộm, giấu giếm",
+      "meaning": "lén lút; kín đáo, không để người khác biết",
       "example": "彼はそのことを私にこっそり話してくれた。",
       "topic": "Từ vựng JLPT N2",
       "week": 11,
       "sourceEntryID": "9bc707785c",
       "exampleSourceID": 113186,
       "exampleVi": "Ông đã không bao giờ nói chuyện với tôi.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-6c5c091b7a",
@@ -8742,16 +8752,21 @@
       "id": "olj-v-d49f6c4d95",
       "word": "さっさと",
       "reading": "さっさと",
-      "meaning": "Nhanh chóng, khẩn trương",
+      "meaning": "nhanh chóng, khẩn trương, không chần chừ",
       "example": "さっさと宿題をしなさい。",
       "topic": "Từ vựng JLPT N2",
       "week": 12,
       "sourceEntryID": "d49f6c4d95",
       "exampleSourceID": 216786,
       "exampleVi": "Con phải làm bài tập ngay bây giờ.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tu-vung-tieng-nhat-n2-luyen-thi-n2.html/9",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-256e7a9058",
@@ -9072,16 +9087,21 @@
       "id": "olj-v-d374033b31",
       "word": "しいんと",
       "reading": "しいんと",
-      "meaning": "Im phăng phắc, tĩnh mịch (trạng thái im lặng hoàn toàn)",
-      "example": "叔父の死因は癌だったそうです。",
+      "meaning": "im phăng phắc; hoàn toàn yên lặng, tĩnh mịch",
+      "example": "先生が教室に入ると、生徒たちはしいんと静かになった。",
       "topic": "Từ vựng JLPT N2",
       "week": 13,
       "sourceEntryID": "d374033b31",
       "exampleSourceID": 147929,
-      "exampleVi": "Bác tôi bị ung thư.",
-      "meaningStatus": "dictionary_matched_unverified",
-      "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "exampleVi": "Khi giáo viên bước vào lớp, các học sinh im phăng phắc.",
+      "meaningStatus": "source_verified",
+      "exampleStatus": "editorial_reviewed",
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tu-vung-n2-sach-mimi-kara-oboeru-112.html",
+        "https://mazii.net/ne-NP/qa/detail/12255"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-43664d2055",
@@ -12761,16 +12781,21 @@
       "id": "olj-v-0011c40f28",
       "word": "せっせと",
       "reading": "せっせと",
-      "meaning": "Siêng năng, cần cù, mẫn cán",
+      "meaning": "siêng năng, cần mẫn, chăm chỉ liên tục",
       "example": "彼女はせっせと編み物に精を出していた。",
       "topic": "Từ vựng JLPT N2",
       "week": 18,
       "sourceEntryID": "0011c40f28",
       "exampleSourceID": 92651,
       "exampleVi": "Cô ta đã đào bới và đào bới.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-50810e22cf",
@@ -16822,16 +16847,21 @@
       "id": "olj-v-368baf2dfb",
       "word": "どうせ",
       "reading": "どうせ",
-      "meaning": "Đằng nào thì, dù sao đi nữa",
+      "meaning": "dù sao thì; đằng nào cũng",
       "example": "どうせやるなら上手にやれ。",
       "topic": "Từ vựng JLPT N2",
       "week": 23,
       "sourceEntryID": "368baf2dfb",
       "exampleSourceID": 201388,
       "exampleVi": "Cứ làm đi.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-4ab329eb4e",
@@ -17242,16 +17272,21 @@
       "id": "olj-v-c1935c3827",
       "word": "どっと",
       "reading": "どっと",
-      "meaning": "1. Ồ ạt, bất ngờ (số lượng lớn người hoặc vật)\n2. Bất thình lình (cảm giác)",
+      "meaning": "đột ngột đồng loạt (cười, vỗ tay); ùa vào, ồ ạt",
       "example": "学童たちはどっと笑った。",
       "topic": "Từ vựng JLPT N2",
       "week": 24,
       "sourceEntryID": "c1935c3827",
       "exampleSourceID": 184190,
       "exampleVi": "Các học sinh cười nhạo tôi.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tu-vung-tieng-nhat-n2-luyen-thi-n2.html/9",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-49bd373b1e",
@@ -18112,16 +18147,21 @@
       "id": "olj-v-2b565b647a",
       "word": "虹",
       "reading": "にじ",
-      "meaning": "Cầu vồng",
+      "meaning": "cầu vồng",
       "example": "虹は自然現象である。",
       "topic": "Từ vựng JLPT N2",
       "week": 25,
       "sourceEntryID": "2b565b647a",
       "exampleSourceID": 122964,
       "exampleVi": "Cầu vồng là hiện tượng tự nhiên.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://mazii.net/vi-VN/search/word/javi/%E8%99%B9",
+        "https://jdict.net/kanji/%E8%99%B9"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-20f5e4a462",
@@ -21336,16 +21376,21 @@
       "id": "olj-v-b14b139308",
       "word": "ふわふわ",
       "reading": "ふわふわ",
-      "meaning": "1. Trạng thái mềm mại, xốp, nhẹ nhàng (như bánh bông lan, lông thú)\n2. Trạng thái lâng lâng, không vững vàng (do chóng mặt hoặc tâm trạng)",
+      "meaning": "mềm xốp, bồng bềnh, nhẹ như bông; lâng lâng, không vững",
       "example": "寝不足で足元がふわふわしています。",
       "topic": "Từ vựng JLPT N2",
       "week": 29,
       "sourceEntryID": "b14b139308",
       "exampleSourceID": 8555368,
       "exampleVi": "Tôi không ngủ được.",
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-560025d6c1",
@@ -22461,16 +22506,21 @@
       "id": "olj-v-887dd59c85",
       "word": "まごまご",
       "reading": "まごまご",
-      "meaning": "Loay hoay, lúng túng, bối rối (trạng thái không biết làm gì)",
-      "example": "まごまごについて学びました。",
+      "meaning": "luống cuống, lúng túng, loay hoay chưa biết làm gì",
+      "example": "初めての仕事で、何をすればよいか分からずまごまごしてしまった。",
       "topic": "Từ vựng JLPT N2",
       "week": 30,
       "sourceEntryID": "887dd59c85",
       "exampleSourceID": null,
-      "exampleVi": "Tôi đã học được điều này từ những người này.",
-      "meaningStatus": "dictionary_matched_unverified",
-      "exampleStatus": "machine_unreviewed",
-      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)"
+      "exampleVi": "Vì là công việc đầu tiên nên tôi lúng túng, không biết phải làm gì.",
+      "meaningStatus": "source_verified",
+      "exampleStatus": "editorial_reviewed",
+      "meaningSource": "bunchaway/tu-dien-nhat-viet (CC BY-SA 4.0)",
+      "meaningSources": [
+        "https://tuhoconline.net/tong-hop-pho-tu-n2.html",
+        "https://github.com/bunchaway/tu-dien-nhat-viet"
+      ],
+      "meaningReviewDate": "2026-10-30"
     },
     {
       "id": "olj-v-b9ac4b3de8",

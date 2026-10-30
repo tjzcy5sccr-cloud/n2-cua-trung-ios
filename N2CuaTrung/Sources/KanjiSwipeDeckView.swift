@@ -199,6 +199,7 @@ struct KanjiSwipeDeckView: View {
             .padding(15)
         }
         .frame(height: height)
+        .clipped()
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
         // Duy nhất một cử chỉ cho cả chạm lật và vuốt 4 hướng.

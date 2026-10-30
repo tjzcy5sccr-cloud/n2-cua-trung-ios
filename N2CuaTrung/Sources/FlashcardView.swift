@@ -336,6 +336,7 @@ struct GrammarFlashcardView: View {
     @State private var revealed = false
     @State private var reviewMessage: String?
     @State private var isSavingReview = false
+    @State private var showFullGrammar = false
     @ObservedObject private var voice = JapaneseVoice.shared
 
     var body: some View {
@@ -345,54 +346,26 @@ struct GrammarFlashcardView: View {
                 if content.indices.contains(position) {
                     let g = content[position]
                     Pill(text: "\(position + 1) / \(content.count)", color: Palette.blue)
-                    ScrollView {
-                        Button {
-                            flipGrammar()
-                        } label: {
-                            VStack(spacing: 14) {
-                                Text(g.pattern)
-                                    .font(.title.weight(.bold))
-                                    .foregroundColor(Palette.navy)
-                                if revealed {
-                                    Text(g.displayMeaning).font(.headline).foregroundColor(Palette.teal)
-                                    Text("Cách sử dụng: \(GrammarLibrary.structure(for: g))")
-                                        .font(.subheadline).foregroundColor(Palette.navy)
-                                    ForEach(Array(GrammarLibrary.examples(for: g).enumerated()), id: \.offset) { i, example in
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            Text("Ví dụ \(i + 1)").font(.caption.bold()).foregroundColor(Palette.blue)
-                                            FuriganaText(text: example.text,
-                                                         highlightTerms: GrammarFocus.terms(from: g.pattern), size: 16)
-                                            Text(example.translation).font(.caption).foregroundColor(.secondary)
-                                        }
-                                    }
-                                } else {
-                                    Spacer(minLength: 65)
-                                    Label("Chạm để xem cách dùng + 3 ví dụ", systemImage: "hand.tap")
-                                        .font(.subheadline).foregroundColor(.secondary)
-                                    Spacer(minLength: 65)
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                            .frame(minHeight: 326)
-                            .padding(12)
-                            .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(revealed ? "Mặt sau ngữ pháp. Chạm xem mặt trước." :
-                                                      "Mặt trước ngữ pháp. Chạm xem lời giải.")
+                    grammarCard(g)
+                    // Cố định hàng điều khiển chi tiết dù thẻ đang ở mặt nào.
+                    Button {
+                        if revealed { showFullGrammar = true }
+                    } label: {
+                        Label("Xem đủ cách dùng và 3 ví dụ", systemImage: "text.book.closed")
+                            .font(.caption.weight(.semibold))
+                            .frame(maxWidth: .infinity, minHeight: 32)
                     }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 350)
-                    .background(.white, in: RoundedRectangle(cornerRadius: 20))
+                    .opacity(revealed ? 1 : 0)
+                    .disabled(!revealed)
+                    .accessibilityHidden(!revealed)
                     MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
                         voice.speak(GrammarLibrary.examples(for: g)[0].text)
                     }
-                    if let reviewMessage {
-                        Label(reviewMessage, systemImage: "checkmark.circle.fill")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundColor(Palette.teal)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
+                    Text(reviewMessage ?? " ")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity, minHeight: 22, maxHeight: 22, alignment: .leading)
                     HStack(spacing: 10) {
                         MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) { next(g.id, known: false) }
                             .disabled(isSavingReview)
@@ -405,19 +378,123 @@ struct GrammarFlashcardView: View {
                         MainButton(title: "Ôn lại ngẫu nhiên", symbol: "shuffle") { reload() }
                     }
                 }
-                if let error = voice.lastError { Text(error).font(.caption).foregroundColor(.red) }
+                Text(voice.lastError ?? " ")
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, minHeight: 17, maxHeight: 17, alignment: .leading)
             }.padding(16)
         }
         .background(Palette.pale)
         .navigationTitle("Ngữ pháp")
+        .sheet(isPresented: $showFullGrammar) {
+            if content.indices.contains(position) {
+                let item = content[position]
+                NavigationStack {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 14) {
+                            Text(item.pattern).font(.title2.bold()).foregroundColor(Palette.navy)
+                            Text(item.displayMeaning).font(.headline).foregroundColor(Palette.teal)
+                            Text("Cách sử dụng: \(GrammarLibrary.structure(for: item))")
+                                .font(.body).foregroundColor(Palette.navy)
+                            ForEach(Array(GrammarLibrary.examples(for: item).enumerated()), id: \.offset) { index, example in
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text("Ví dụ \(index + 1)")
+                                        .font(.subheadline.bold()).foregroundColor(Palette.blue)
+                                    FuriganaText(text: example.text,
+                                                 highlightTerms: GrammarFocus.terms(from: item.pattern),
+                                                 size: 17)
+                                    Text(example.translation).font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                Divider()
+                            }
+                        }
+                        .padding(20)
+                    }
+                    .navigationTitle("Chi tiết ngữ pháp")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Đóng") { showFullGrammar = false }
+                        }
+                    }
+                }
+            }
+        }
         .onAppear { if content.isEmpty { reload() } }
         .onDisappear { voice.stop() }
     }
 
-    private func flipGrammar() {
-        withAnimation(.easeInOut(duration: 0.15)) {
-            revealed.toggle()
+
+    /// Thẻ luôn có chiều cao cố định, không ScrollView lồng nhau và không dùng .offset.
+    private func grammarCard(_ g: Grammar) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20).fill(.white)
+            VStack(spacing: 14) {
+                Text(g.pattern)
+                    .font(.title2.bold())
+                    .foregroundColor(Palette.navy)
+                    .lineLimit(3)
+                    .minimumScaleFactor(0.7)
+                    .multilineTextAlignment(.center)
+                if revealed {
+                    Text(g.displayMeaning)
+                        .font(.headline)
+                        .foregroundColor(Palette.teal)
+                        .lineLimit(3)
+                        .multilineTextAlignment(.center)
+                    Text(GrammarLibrary.structure(for: g))
+                        .font(.subheadline)
+                        .foregroundColor(Palette.navy)
+                        .lineLimit(5)
+                        .minimumScaleFactor(0.75)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Spacer(minLength: 48)
+                    Label("Chạm để xem nghĩa và cách dùng", systemImage: "hand.tap")
+                        .font(.subheadline).foregroundColor(.secondary)
+                }
+                Spacer(minLength: 0)
+                Text("Vuốt 4 hướng để đổi mẫu")
+                    .font(.caption2).foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(18)
         }
+        .frame(height: 286)
+        .clipped()
+        .contentShape(RoundedRectangle(cornerRadius: 20))
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.blue.opacity(0.18)))
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .onEnded { drag in
+                    let dx = drag.translation.width
+                    let dy = drag.translation.height
+                    if max(abs(dx), abs(dy)) <= 12 {
+                        flipGrammar()
+                    } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                        changeGrammarCard(by: dx < 0 ? 1 : -1)
+                    } else if abs(dy) >= 45 {
+                        changeGrammarCard(by: dy < 0 ? 1 : -1)
+                    }
+                }
+        )
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction(named: "Lật thẻ") { flipGrammar() }
+        .accessibilityAction(named: "Mẫu tiếp theo") { changeGrammarCard(by: 1) }
+    }
+
+    private func changeGrammarCard(by step: Int) {
+        guard !content.isEmpty, !isSavingReview else { return }
+        voice.stop()
+        position = (position + step + content.count) % content.count
+        revealed = false
+        reviewMessage = nil
+    }
+
+    private func flipGrammar() {
+        revealed.toggle()
         if !revealed { voice.stop() }
     }
 
@@ -435,15 +512,13 @@ struct GrammarFlashcardView: View {
         reviewMessage = known ? "Đã lưu: đã thuộc • Chuyển mẫu tiếp theo" : "Đã lưu: cần ôn lại • Chuyển mẫu tiếp theo"
         voice.stop()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
-            withAnimation(.easeInOut(duration: 0.15)) {
-                if position + 1 < content.count {
-                    position += 1
-                    revealed = false
-                    reviewMessage = nil
-                    isSavingReview = false
-                } else {
-                    reload()
-                }
+            if position + 1 < content.count {
+                position += 1
+                revealed = false
+                reviewMessage = nil
+                isSavingReview = false
+            } else {
+                reload()
             }
         }
     }

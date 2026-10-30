@@ -1,13 +1,64 @@
 {
+  "date": "2026-10-30",
+  "packId": "openjlpt-n2-core",
+  "packVersion": 5,
   "coverage": {
-    "vocab": 1756,
-    "grammar": 93,
-    "kanji": 376
+    "vocabTotal": 1756,
+    "vocabEditorialRevised": 179,
+    "vocabMachineUnreviewed": 1577,
+    "kanjiTotal": 376,
+    "kanjiEditorialRevised": 95,
+    "kanjiMachineUnreviewed": 281
   },
-  "fieldTranslationCoverage": "all requested user-visible strings filled",
-  "translationMethod": "machine translation, not human reviewed",
-  "modelEnglishVietnamese": "Helsinki-NLP/opus-mt-en-vi (Apache-2.0)",
-  "modelJapaneseVietnamese": "Helsinki-NLP/opus-mt-ja-vi (Apache-2.0)",
-  "warnings": [],
-  "note": "Máy dịch có thể nhầm nghĩa/ngữ cảnh. Cần rà soát thủ công trước khi công bố bản dịch chính xác 100%."
+  "exampleVietnameseTranslations": "1756 bản dịch ví dụ do máy tạo chưa được kiểm chứng; mặc định ẩn khỏi ứng dụng",
+  "policy": {
+    "editorial_reviewed": "Nghĩa đã biên tập, không tuyên bố được kiểm chứng 100%",
+    "machine_unreviewed": "Ẩn khỏi flashcard và đáp án bài thi để tránh ghi nhớ sai"
+  },
+  "examples": [
+    {
+      "jp": "あくび",
+      "was": "Huýt sáo",
+      "now": "ngáp; cái ngáp"
+    },
+    {
+      "jp": "一昨年",
+      "was": "năm ngoái",
+      "now": "năm kia"
+    },
+    {
+      "jp": "脂",
+      "was": "mỡ; dương vật; mỡ",
+      "now": "mỡ, chất béo"
+    },
+    {
+      "jp": "粗筋",
+      "was": "Hình vẽ; tổng kết",
+      "now": "tóm tắt nội dung, cốt truyện"
+    },
+    {
+      "jp": "県",
+      "was": "quận trưởng",
+      "now": "tỉnh (đơn vị hành chính Nhật Bản)"
+    },
+    {
+      "jp": "エプロン",
+      "was": "Tạp chí",
+      "now": "tạp dề"
+    }
+  ],
+  "referenceSites": [
+    "https://mazii.net/vi-VN",
+    "https://jdict.net/",
+    "https://www.vnjp.org/translate",
+    "https://www.cjk.org/kv/",
+    "https://www.vnjpclub.com/han-tu-co-ban/214-bo-thu.html",
+    "https://tiengtrungcomai.vn/tools/214-bo-thu.html"
+  ],
+  "referenceData": {
+    "name": "KANJIDIC2 (EDRDG)",
+    "via": "https://github.com/jkindrix/japanese-language-data",
+    "license": "CC BY-SA 4.0"
+  },
+  "scopeLimitation": "Đã rà soát một tập con 179 từ và 95 Kanji. Chưa kiểm chứng độc lập từng mục ở hai nguồn. Không tuyên bố toàn bộ kho từ điển đã chính xác."
 }

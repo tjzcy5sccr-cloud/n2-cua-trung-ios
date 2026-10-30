@@ -5,10 +5,11 @@
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 359,
-    "vocabMachineUnreviewed": 1397,
+    "vocabMachineUnreviewed": 9,
     "kanjiTotal": 376,
     "kanjiEditorialRevised": 95,
-    "kanjiMachineUnreviewed": 281
+    "kanjiMachineUnreviewed": 281,
+    "vocabDictionaryCandidates": 1388
   },
   "exampleVietnameseTranslations": "1756 bản dịch ví dụ do máy tạo chưa được kiểm chứng; mặc định ẩn khỏi ứng dụng",
   "policy": {
@@ -50,10 +51,8 @@
   "referenceSites": [
     "https://mazii.net/vi-VN",
     "https://jdict.net/",
-    "https://www.vnjp.org/translate",
-    "https://www.cjk.org/kv/",
-    "https://www.vnjpclub.com/han-tu-co-ban/214-bo-thu.html",
-    "https://tiengtrungcomai.vn/tools/214-bo-thu.html"
+    "https://kanji.vn/",
+    "https://tuhoconline.net/tu-vung-tieng-nhat-ve-tinh-cach-cap-do-n2.html"
   ],
   "referenceData": {
     "name": "KANJIDIC2 (EDRDG)",
@@ -145,5 +144,11 @@
       "reading": "きばん",
       "suggested": "Nền móng, cơ sở hạ tầng"
     }
-  ]
+  ],
+  "qualityPolicy": {
+    "editorial_reviewed": "Đã biên tập lại, cần tiếp tục kiểm chứng trường hợp đa nghĩa và cách dùng",
+    "dictionary_matched_unverified": "Bản giải nghĩa từ từ điển Nhật–Việt mở, khớp mặt chữ, chưa xác nhận kana + ngữ cảnh bằng Mazii/Jdict; không dùng làm đáp án trắc nghiệm",
+    "machine_unreviewed": "Chưa có nguồn đối chiếu phù hợp, ẩn nghĩa máy khỏi giao diện",
+    "source_verified": "Chỉ được dùng khi đã xác nhận cách viết/kana/nghĩa với ít nhất hai nguồn đáng tin"
+  }
 }

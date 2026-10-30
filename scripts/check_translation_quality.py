@@ -20,7 +20,7 @@ assert len(vocab) == 1756 and len(kanji) == 376, "Unexpected dataset truncation"
 assert len({v["id"] for v in vocab}) == len(vocab), "Duplicate vocab IDs"
 assert len({v["id"] for v in kanji}) == len(kanji), "Duplicate Kanji IDs"
 for record in vocab:
-    assert record.get("meaningStatus") in ("editorial_reviewed", "machine_unreviewed"), record["id"]
+    assert record.get("meaningStatus") in ("editorial_reviewed", "machine_unreviewed", "dictionary_matched_unverified"), record["id"]
     assert record.get("exampleStatus") == "machine_unreviewed", record["id"]
     assert record["word"] and record["reading"], record["id"]
 for record in kanji:
@@ -58,5 +58,7 @@ mapped = {m[0] for m in mapping}
 assert {k["char"] for k in kanji}.issubset(mapped)
 print("PASS: 214 canonical radicals, Kanji reference mapping, consistent pack version")
 print("Vietnamese editorial review:", vetted_vocab, "vocab;", vetted_kanji, "Kanji")
+candidates = sum(v.get("meaningStatus") == "dictionary_matched_unverified" for v in vocab)
+print("Dictionary candidates (NOT VERIFIED):", candidates)
 print("Pending verification:", len(vocab)-vetted_vocab, "vocab;", len(kanji)-vetted_kanji, "Kanji")
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

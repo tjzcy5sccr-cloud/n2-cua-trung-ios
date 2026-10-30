@@ -12,18 +12,18 @@ struct KanjiVocabularyView: View {
                                            options: .regularExpression)
                     .trimmingCharacters(in: .whitespacesAndNewlines)
             }
-            .filter { !$0.isEmpty }
+            .filter { !$0.isEmpty && vocabByWord[$0] != nil }
     }
 
     private var vocabByWord: [String: Vocabulary] {
-        Dictionary(vocabulary.map { ($0.word, $0) },
+        Dictionary(vocabulary.filter { $0.isApprovedForStudy }.map { ($0.word, $0) },
                    uniquingKeysWith: { old, _ in old })
     }
 
     private var related: [Vocabulary] {
         let shown = Set(compounds)
         return Array(vocabulary
-            .filter { $0.word.contains(item.char) && !shown.contains($0.word) }
+            .filter { $0.isApprovedForStudy && $0.word.contains(item.char) && !shown.contains($0.word) }
             .sorted { $0.word.count < $1.word.count }
             .prefix(12))
     }
@@ -31,10 +31,6 @@ struct KanjiVocabularyView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionTitle("Nghĩa chữ Kanji", subtitle: item.displayMeaning)
-            if !item.isMeaningVerified {
-                Text("Nghĩa chữ của mục này từng được dịch máy và chưa được kiểm chứng; không dùng làm đáp án luyện thi.")
-                    .font(.caption).foregroundColor(Palette.orange)
-            }
             if let info = KangxiReference.info(for: item.char) {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
@@ -71,8 +67,10 @@ struct KanjiVocabularyView: View {
                     Text(item.kun).font(.subheadline).foregroundColor(Palette.navy)
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }
-            Divider()
-            SectionTitle("Từ ghép", subtitle: "Nghĩa tiếng Việt dưới mỗi từ")
+            if !compounds.isEmpty {
+                Divider()
+                SectionTitle("Từ ghép", subtitle: "Nghĩa tiếng Việt dưới mỗi từ")
+            }
             ForEach(compounds, id: \.self) { word in
                 VStack(alignment: .leading, spacing: 3) {
                     FuriganaText(text: word,
@@ -81,18 +79,12 @@ struct KanjiVocabularyView: View {
                     if let value = vocabByWord[word] {
                         Text(value.displayMeaning)
                             .font(.subheadline).foregroundColor(Palette.teal)
-                    } else {
-                        Text("Nghĩa tiếng Việt chưa được xác minh trong kho từ vựng.")
-                            .font(.caption).foregroundColor(.secondary)
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }
-            Divider()
-            SectionTitle("Từ liên quan", subtitle: "Các từ có chứa chữ Kanji này")
-            if related.isEmpty {
-                Text("Chưa có từ liên quan khác trong kho N2.")
-                    .font(.caption).foregroundColor(.secondary)
-            } else {
+            if !related.isEmpty {
+                Divider()
+                SectionTitle("Từ liên quan", subtitle: "Các từ có chứa chữ Kanji này")
                 ForEach(related, id: \.id) { value in
                     VStack(alignment: .leading, spacing: 3) {
                         HStack(spacing: 8) {

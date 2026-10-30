@@ -160,7 +160,7 @@ struct GrammarDetailView: View {
                 ForEach(Array(GrammarLibrary.examples(for: item).enumerated()), id: \.offset) { index, example in
                     LessonPanel {
                         HStack {
-                            SectionTitle("Ví dụ \(index + 1) / 3")
+                            SectionTitle("Ví dụ \(index + 1)")
                             Button { voice.speak(example.text) } label: {
                                 Image(systemName: "speaker.wave.2.fill")
                                     .font(.title3).padding(10)
@@ -224,7 +224,8 @@ struct KanjiListView: View {
                         Text(item.displayMeaning).font(.headline)
                         Text("On: \(item.on) • Kun: \(item.kun)")
                             .font(.caption).foregroundColor(.secondary)
-                        Text("Ví dụ: \(item.word)").font(.caption).foregroundColor(Palette.blue)
+                        // Chỉ hiển thị chữ Kanji đã duyệt; từ ghép chưa được duyệt
+                        // nằm trong JSON nguồn và không xuất hiện ở danh sách học.
                     }
                 }
             }
@@ -249,8 +250,16 @@ struct KanjiDetailView: View {
                         .foregroundColor(Palette.navy)
                         .frame(maxWidth: .infinity)
                     KanjiVocabularyView(item: item, vocabulary: store.course.vocab)
-                    MainButton(title: "Nghe từ ghép", symbol: "speaker.wave.2") {
-                        voice.speak(item.word)
+                    if let approved = store.course.vocab.first(where: {
+                        candidate in
+                        let compounds = item.word
+                            .components(separatedBy: CharacterSet(charactersIn: "、,，/"))
+                            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        return candidate.isApprovedForStudy && compounds.contains(candidate.word)
+                    }) {
+                        MainButton(title: "Nghe từ ghép", symbol: "speaker.wave.2") {
+                            voice.speak(approved.word)
+                        }
                     }
                 }
             }.padding(16)

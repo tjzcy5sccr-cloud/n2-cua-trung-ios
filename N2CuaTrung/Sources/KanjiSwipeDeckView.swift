@@ -35,6 +35,18 @@ struct KanjiSwipeDeckView: View {
                             .foregroundColor(Palette.blue)
                     }
                 }
+                NavigationLink {
+                    QuestionSessionView(questions: QuestionBank.kanji(store.course).shuffled(),
+                                        type: "Kanji")
+                } label: {
+                    Label("Luyện câu hỏi Kanji · Bỏ qua / Tiếp / Kết quả",
+                          systemImage: "checklist")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 42)
+                        .foregroundColor(.white)
+                        .background(Palette.blue, in: RoundedRectangle(cornerRadius: 12))
+                }
+                .buttonStyle(.plain)
                 if let card = current {
                     cardSurface(card, height: min(320, max(220, geometry.size.height * 0.42)))
                     if revealed {

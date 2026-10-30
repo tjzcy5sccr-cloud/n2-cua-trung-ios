@@ -1,11 +1,11 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 7,
+  "packVersion": 8,
   "coverage": {
     "vocabTotal": 1756,
-    "vocabEditorialRevised": 359,
-    "vocabMachineUnreviewed": 9,
+    "vocabEditorialRevised": 368,
+    "vocabMachineUnreviewed": 0,
     "kanjiTotal": 376,
     "kanjiEditorialRevised": 95,
     "kanjiMachineUnreviewed": 281,
@@ -59,7 +59,7 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "Nghĩa 'dictionary_matched_unverified' là gợi ý có nguồn mở, không phải nghĩa đã duyệt; không được dùng làm đáp án thi. Mọi từ đa nghĩa, đồng tự khác cách đọc phải đối chiếu thêm Mazii/Jdict.",
+  "scopeLimitation": "Gói N2 đã phủ nghĩa tiếng Việt cho toàn bộ 1756 mục: 368 nghĩa biên tập, 1388 nghĩa tham khảo từ từ điển Nhật–Việt mở. Chưa xác minh 1388 nghĩa theo kana/ngữ cảnh với Mazii/Jdict; không được đánh dấu đúng 100% hoặc dùng làm đáp án trắc nghiệm trước khi đối chiếu.",
   "candidateSource": {
     "name": "Từ điển Nhật–Việt mở (Bunchaway)",
     "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
@@ -69,9 +69,9 @@
     "limitations": "Chưa khớp kana, chưa đối chiếu Mazii/Jdict; KHÔNG tính là verified."
   },
   "automaticDictionaryAudit": {
-    "editorial_preserved": 359,
+    "editorial_preserved": 368,
     "new_candidate": 1388,
-    "no_exact_match": 9
+    "no_exact_match": 0
   },
   "automaticDictionaryExamples": [
     {

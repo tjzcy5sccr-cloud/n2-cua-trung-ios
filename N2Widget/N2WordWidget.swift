@@ -7,15 +7,13 @@ private struct Word: Decodable {
     let reading: String
     let meaning: String
     let meaningStatus: String?
-    var displayMeaning: String {
-        if meaning.hasPrefix("EN ·") || meaningStatus == "machine_unreviewed" {
-            return "Nghĩa Việt đang đối chiếu"
-        }
-        if meaningStatus == "dictionary_matched_unverified" {
-            return "Tham khảo: " + meaning
-        }
-        return meaning
+    // Kiểm duyệt thuộc dữ liệu nguồn; widget chỉ nhận từ đã được duyệt.
+    var isApprovedForStudy: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(meaningStatus ?? "") && !meaning.hasPrefix("EN ·")
+            && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
+    var displayMeaning: String { meaning }
 }
 private struct WordList: Decodable { let vocab: [Word] }
 private struct WordEntry: TimelineEntry {
@@ -33,7 +31,7 @@ private struct WordProvider: TimelineProvider {
             guard let path = Bundle.main.url(forResource: filename, withExtension: "json"),
                   let bytes = try? Data(contentsOf: path),
                   let list = try? JSONDecoder().decode(WordList.self, from: bytes) else { continue }
-            for word in list.vocab where !existing.contains(word.word) {
+            for word in list.vocab where word.isApprovedForStudy && !existing.contains(word.word) {
                 existing.insert(word.word)
                 all.append(word)
             }
@@ -195,7 +193,7 @@ struct N2WideLiveActivityWidget: Widget {
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(Color(red: 0.69, green: 1.0, blue: 0.75))
                     .lineLimit(1)
-                Text(context.state.meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : context.state.meaning)
+                Text(context.state.meaning)
                     .font(.system(size: 17, weight: .bold))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)

@@ -1,0 +1,10 @@
+.DS_Store
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+Payload/
+*.xcuserstate
+xcuserdata/
+*.xcresult
+N2CuaTrung.xcodeproj/

@@ -1,0 +1,51 @@
+name: Build Native iOS IPA (unsigned)
+"on":
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build-ios:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+      - name: Generate Xcode Project
+        run: xcodegen generate --spec project.yml
+      - name: Compile iPhone app (without code signing)
+        shell: bash
+        run: |
+          set -euo pipefail
+          xcodebuild -project N2CuaTrung.xcodeproj \
+            -scheme N2CuaTrung -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY='' build | tee xcodebuild.log
+      - name: Package unsigned IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Payload
+          test -d build/Build/Products/Release-iphoneos/N2CuaTrung.app
+          cp -R build/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
+          zip -qry N2_cua_Trung_unsigned.ipa Payload
+          unzip -l N2_cua_Trung_unsigned.ipa | head -25
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-iOS-unsigned-IPA
+          path: N2_cua_Trung_unsigned.ipa
+          if-no-files-found: error
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-build-log
+          path: xcodebuild.log
+          if-no-files-found: ignore

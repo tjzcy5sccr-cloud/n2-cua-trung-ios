@@ -26,7 +26,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: N2-translation-audit-report
-          path: qa-reports/n2-content-audit.json
+          path: |
+            qa-reports/n2-content-audit.json
+            qa-reports/n2-untranslated-audit.json
           if-no-files-found: error
       - name: Validate Vietnamese glossary and 214 radical table
         run: python3 scripts/check_translation_quality.py

@@ -42,11 +42,17 @@ struct Grammar: Decodable, Identifiable {
     let translation: String
     let week: Int
     let samples: [GrammarSample]?
+    let grammarStatus: String?
+    let translationStatus: String?
     var displayMeaning: String {
         meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
     }
     var displayRule: String {
         meaning.hasPrefix("EN ·") ? "Đang bổ sung hướng dẫn ngữ pháp bằng tiếng Việt." : rule
+    }
+    var displayTranslation: String {
+        if translationStatus == "needs_sentence_review" { return "Bản dịch câu ví dụ đang được đối chiếu." }
+        return translation
     }
 }
 

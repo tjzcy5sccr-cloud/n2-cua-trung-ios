@@ -10,7 +10,6 @@ struct KanjiSwipeDeckView: View {
     @State private var autoPlay = false
     @State private var intervalSeconds = 5
     @State private var elapsed = 0
-    @State private var dragOffset: CGSize = .zero
     @State private var isDraggingCard = false
     @State private var showFullDetails = false
     @State private var feedback: String?
@@ -19,7 +18,7 @@ struct KanjiSwipeDeckView: View {
     private var current: Kanji? { cards.indices.contains(position) ? cards[position] : nil }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             VStack(spacing: 10) {
                 SectionTitle("Kanji N2", subtitle: "Vuốt ngang / dọc để đổi chữ • Chạm để lật")
                 HStack {
@@ -47,22 +46,23 @@ struct KanjiSwipeDeckView: View {
                 }
                 .buttonStyle(.plain)
                 if let card = current {
-                    cardSurface(card, height: min(320, max(220, geometry.size.height * 0.42)))
-                    if revealed {
-                        Button {
-                            showFullDetails = true
-                        } label: {
-                            Label("Xem đầy đủ từ ghép và bộ thủ", systemImage: "text.book.closed")
-                                .font(.caption.weight(.semibold))
-                                .frame(maxWidth: .infinity, minHeight: 32)
-                        }
-                    }
-                    if let feedback {
-                        Label(feedback, systemImage: "checkmark.circle.fill")
+                    cardSurface(card, height: 286)
+                    // Giữ cố định chiều cao của hàng chi tiết ở cả hai mặt Kanji.
+                    Button {
+                        if revealed { showFullDetails = true }
+                    } label: {
+                        Label("Xem đầy đủ từ ghép và bộ thủ", systemImage: "text.book.closed")
                             .font(.caption.weight(.semibold))
-                            .foregroundColor(Palette.teal)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, minHeight: 32)
                     }
+                    .opacity(revealed ? 1 : 0)
+                    .disabled(!revealed)
+                    .accessibilityHidden(!revealed)
+                    Text(feedback ?? " ")
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .leading)
                     HStack(spacing: 8) {
                         actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                      symbol: autoPlay ? "pause.fill" : "play.fill",
@@ -107,9 +107,11 @@ struct KanjiSwipeDeckView: View {
                         MainButton(title: "Tải lại", symbol: "arrow.clockwise") { reload() }
                     }
                 }
-                if let error = voice.lastError {
-                    Text(error).font(.caption2).foregroundColor(.red)
-                }
+                Text(voice.lastError ?? " ")
+                    .font(.caption2)
+                    .foregroundColor(.red)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                 Spacer(minLength: 0)
             }
             .padding(12)
@@ -199,7 +201,6 @@ struct KanjiSwipeDeckView: View {
         .frame(height: height)
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
-        .offset(x: dragOffset.width, y: dragOffset.height)
         // Duy nhất một cử chỉ cho cả chạm lật và vuốt 4 hướng.
         // DragGesture(minimumDistance: 0) không cần TapGesture, tránh xung đột recognizer.
         .gesture(
@@ -212,10 +213,7 @@ struct KanjiSwipeDeckView: View {
                             isDraggingCard = true
                             voice.stop()
                         }
-                        dragOffset = CGSize(
-                            width: max(-64, min(64, dx * 0.35)),
-                            height: max(-64, min(64, dy * 0.35))
-                        )
+                        // Khung Kanji đứng yên khi vuốt; chỉ ghi nhận hướng.
                     }
                 }
                 .onEnded { drag in
@@ -228,10 +226,6 @@ struct KanjiSwipeDeckView: View {
                         changeCard(by: dx < 0 ? 1 : -1)
                     } else if abs(dy) >= 45 {
                         changeCard(by: dy < 0 ? 1 : -1)
-                    } else {
-                        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
-                            dragOffset = .zero
-                        }
                     }
                     isDraggingCard = false
                 }
@@ -246,7 +240,7 @@ struct KanjiSwipeDeckView: View {
     }
 
     private func flip(_ card: Kanji) {
-        withAnimation(.easeInOut(duration: 0.15)) { revealed.toggle() }
+        revealed.toggle()
         elapsed = 0
         // Giữ chế độ tự chạy ở trạng thái ngừng khi thẻ đang lật mặt sau.
         if !revealed { voice.stop() }
@@ -273,7 +267,6 @@ struct KanjiSwipeDeckView: View {
         revealed = false
         feedback = nil
         elapsed = 0
-        dragOffset = .zero
         isDraggingCard = false
         voice.stop()
     }
@@ -288,11 +281,9 @@ struct KanjiSwipeDeckView: View {
         let nextIndex = (position + step + cards.count) % cards.count
         let next = cards[nextIndex]
         voice.stop()
-        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
-            position = nextIndex
-            revealed = false
-            dragOffset = .zero
-        }
+        // Đổi nội dung trong vị trí cố định; không dùng animation làm khung nảy.
+        position = nextIndex
+        revealed = false
         elapsed = 0
         voice.speak(next.word)
     }

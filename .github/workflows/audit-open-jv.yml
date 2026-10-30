@@ -1,0 +1,40 @@
+name: Audit open Japanese-Vietnamese dictionary format
+"on":
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-open-jv.yml'
+jobs:
+  audit-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect CC BY-SA Vietnamese dictionary format (no bulk copying)
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --output /tmp/jv-final.csv https://raw.githubusercontent.com/bunchaway/tu-dien-nhat-viet/main/final.csv
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          p = Path("/tmp/jv-final.csv")
+          b = p.read_bytes()
+          print("SOURCE_BYTES:", len(b))
+          for enc in ["utf-8-sig", "utf-8", "utf-16", "shift_jis"]:
+              try:
+                  text = b[:25000].decode(enc)
+                  print("DECODE:",enc)
+                  break
+              except UnicodeError: pass
+          else: raise ValueError("Unknown source encoding")
+          print("FIRST_300_CHARS:",repr(text[:300]))
+          dialect=csv.Sniffer().sniff(text[:10000],delimiters=",;\\t|")
+          print("DELIMITER:",repr(dialect.delimiter))
+          with p.open("r", encoding=enc, newline="") as f:
+              rows=csv.reader(f,dialect=dialect)
+              for i,row in enumerate(rows):
+                  print("ROW",i,repr(row[:6])[:400])
+                  if i>=5: break
+          PY

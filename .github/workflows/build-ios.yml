@@ -37,6 +37,42 @@ jobs:
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY='' build | tee xcodebuild.log
+      - name: Validate Live Activities in IPA payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release-iphoneos/N2CuaTrung.app"
+          test -f "$APP/Info.plist"
+          echo "App Live Activity entitlement in Info.plist:"
+          LIVE_VALUE=$(/usr/libexec/PlistBuddy -c 'Print :NSSupportsLiveActivities' "$APP/Info.plist")
+          echo "$LIVE_VALUE"
+          echo "$LIVE_VALUE" | grep -qi '^true        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Payload
+          test -d build/Build/Products/Release-iphoneos/N2CuaTrung.app
+          cp -R build/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
+          zip -qry N2_cua_Trung_unsigned.ipa Payload
+          unzip -l N2_cua_Trung_unsigned.ipa | head -25
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-iOS-unsigned-IPA
+          path: N2_cua_Trung_unsigned.ipa
+          if-no-files-found: error
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-build-log
+          path: xcodebuild.log
+          if-no-files-found: ignore
+          WIDGET=$(find "$APP/PlugIns" -maxdepth 1 -type d -name '*.appex' -print -quit)
+          test -n "$WIDGET"
+          WIDGET_TYPE=$(/usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionPointIdentifier' "$WIDGET/Info.plist")
+          echo "Widget extension type: $WIDGET_TYPE"
+          test "$WIDGET_TYPE" = 'com.apple.widgetkit-extension'
+          echo "PASS: Live Activities supported and embedded widget extension present."
       - name: Package unsigned IPA
         shell: bash
         run: |

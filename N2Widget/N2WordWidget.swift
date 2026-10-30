@@ -59,7 +59,7 @@ private struct WordWidgetBody: View {
             VStack(alignment: .leading, spacing: 1) {
                 Text("☘ N2 của Trung").font(.caption2.weight(.semibold)).lineLimit(1)
                 HStack(spacing: 5) {
-                    Text(entry.word).font(.headline.bold()).lineLimit(1).minimumScaleFactor(0.6)
+                    Text(entry.word.word).font(.headline.bold()).lineLimit(1).minimumScaleFactor(0.6)
                     Text(entry.reading).font(.caption2).lineLimit(1)
                 }
                 Text(entry.word.meaning)

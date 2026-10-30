@@ -19,7 +19,7 @@ struct FlashcardDeckView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 9) {
-                SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt dọc để đổi Kanji")
+                SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt ngang hoặc dọc để đổi từ")
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
                     Text("Đến tuần").tag(1)
@@ -185,15 +185,7 @@ struct FlashcardDeckView: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("Mặt trước. Chạm để xem nghĩa.")
-                // Vuốt chỉ trên mặt trước; không can thiệp vào ScrollView mặt sau.
-                .simultaneousGesture(
-                    DragGesture(minimumDistance: 35).onEnded { drag in
-                        let dy = drag.translation.height
-                        if abs(dy) > 48 && abs(dy) > abs(drag.translation.width) * 1.25 {
-                            advanceRandom()
-                        }
-                    }
-                )
+
             }
         }
         .frame(maxWidth: .infinity)
@@ -201,6 +193,16 @@ struct FlashcardDeckView: View {
         .padding(.horizontal, 15)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
+        // Một cử chỉ cho cả hai mặt. Không chiếm sự kiện chạm hoặc cuộn.
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 28).onEnded { movement in
+                let dx = movement.translation.width
+                let dy = movement.translation.height
+                let horizontal = abs(dx) >= 58 && abs(dx) > abs(dy) * 1.15
+                let vertical = abs(dy) >= 92 && abs(dy) > abs(dx) * 1.15
+                if horizontal || vertical { advanceRandom() }
+            }
+        )
         .accessibilityAction(named: "Thẻ tiếp theo") { advanceRandom() }
     }
 
@@ -256,6 +258,10 @@ struct FlashcardDeckView: View {
             position += 1
         } else {
             reload()
+        }
+        // Phát âm thẻ MỚI, không dùng card đã bị SwiftUI giữ trong gesture cũ.
+        if let next = current {
+            voice.speak(next.reading.isEmpty ? next.word : next.reading)
         }
     }
 

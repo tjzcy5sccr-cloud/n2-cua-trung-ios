@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 6,
+  "packVersion": 7,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 359,
@@ -60,5 +60,90 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "359 từ vựng đã được biên tập tiếng Việt; vẫn cần kiểm chứng từng trường hợp ở nguồn Nhật–Việt. 1397 mục chưa được đối chiếu trong gói v6; không được tuyên bố chính xác 100%. 95/376 Kanji đã được biên tập."
+  "scopeLimitation": "Nghĩa 'dictionary_matched_unverified' là gợi ý có nguồn mở, không phải nghĩa đã duyệt; không được dùng làm đáp án thi. Mọi từ đa nghĩa, đồng tự khác cách đọc phải đối chiếu thêm Mazii/Jdict.",
+  "candidateSource": {
+    "name": "Từ điển Nhật–Việt mở (Bunchaway)",
+    "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "method": "Khớp chính xác mặt chữ Nhật + 1 nghĩa duy nhất từ CSV",
+    "limitations": "Chưa khớp kana, chưa đối chiếu Mazii/Jdict; KHÔNG tính là verified."
+  },
+  "automaticDictionaryAudit": {
+    "editorial_preserved": 359,
+    "new_candidate": 1388,
+    "no_exact_match": 9
+  },
+  "automaticDictionaryExamples": [
+    {
+      "jp": "佚",
+      "reading": "いつ",
+      "suggested": "1. Mất mát, thất lạc\n2. Ẩn dật, trốn tránh\n3. Lỗi lầm\n4. Đẹp đẽ"
+    },
+    {
+      "jp": "器具",
+      "reading": "きぐ",
+      "suggested": "Dụng cụ, thiết bị, đồ đạc"
+    },
+    {
+      "jp": "記号",
+      "reading": "きごう",
+      "suggested": "Ký hiệu, dấu hiệu, mã hiệu"
+    },
+    {
+      "jp": "刻む",
+      "reading": "きざむ",
+      "suggested": "1. Thái, băm nhỏ\n2. Khắc, chạm trổ\n3. Ghi dấu (vào tâm trí)"
+    },
+    {
+      "jp": "儀式",
+      "reading": "ぎしき",
+      "suggested": "Nghi thức, nghi lễ"
+    },
+    {
+      "jp": "規準",
+      "reading": "きじゅん",
+      "suggested": "Chuẩn mực, quy chuẩn"
+    },
+    {
+      "jp": "起床",
+      "reading": "きしょう",
+      "suggested": "Việc thức dậy (sau khi ngủ)"
+    },
+    {
+      "jp": "着せる",
+      "reading": "きせる",
+      "suggested": "1. Mặc quần áo cho người khác\n2. Đổ tội, vu khống"
+    },
+    {
+      "jp": "基礎",
+      "reading": "きそ",
+      "suggested": "1. Cơ sở, nền tảng\n2. Móng (công trình xây dựng)"
+    },
+    {
+      "jp": "気体",
+      "reading": "きたい",
+      "suggested": "Thể khí, chất khí"
+    },
+    {
+      "jp": "基地",
+      "reading": "きち",
+      "suggested": "1. Căn cứ địa, căn cứ quân sự\n2. Địa bàn, cơ sở hoạt động"
+    },
+    {
+      "jp": "切っ掛け",
+      "reading": "きっかけ",
+      "suggested": "1. Nguyên cớ, lý do\n2. Cơ hội, sự khởi đầu"
+    },
+    {
+      "jp": "ぎっしり",
+      "reading": "ぎっしり",
+      "suggested": "Lèn chặt, đầy ắp, chật kín"
+    },
+    {
+      "jp": "基盤",
+      "reading": "きばん",
+      "suggested": "Nền móng, cơ sở hạ tầng"
+    }
+  ]
 }

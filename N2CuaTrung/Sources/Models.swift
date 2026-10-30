@@ -11,13 +11,19 @@ struct Vocabulary: Decodable, Identifiable {
     let exampleVi: String?
     /// machine_unreviewed: bản dịch máy, chưa được phép dùng làm đáp án đúng.
     let meaningStatus: String?
+    let meaningSource: String?
     let exampleStatus: String?
     var isMeaningVerified: Bool {
-        meaningStatus != "machine_unreviewed" && !meaning.hasPrefix("EN ·")
+        (meaningStatus == nil || meaningStatus == "editorial_reviewed" || meaningStatus == "source_verified")
+            && !meaning.hasPrefix("EN ·")
             && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     var displayMeaning: String {
-        isMeaningVerified ? meaning : "Nghĩa đang chờ đối chiếu từ điển Nhật–Việt"
+        if isMeaningVerified { return meaning }
+        if meaningStatus == "dictionary_matched_unverified" {
+            return "Tham khảo (chưa duyệt): " + meaning
+        }
+        return "Nghĩa đang chờ đối chiếu từ điển Nhật–Việt"
     }
     var displayExampleTranslation: String {
         if exampleStatus == "machine_unreviewed" {

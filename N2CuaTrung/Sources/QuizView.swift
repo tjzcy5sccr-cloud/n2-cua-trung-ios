@@ -60,6 +60,23 @@ struct QuestionSessionView: View {
     @State private var speed: Float = 0.47
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    // Tìm từ/mẫu ngữ pháp ngay trong đề, không dựa vào ngẫu nhiên hay tô màu cả câu.
+    private func focusTerms(for question: ExamQuestion) -> [String] {
+        if question.category == "Ngữ pháp" {
+            let pattern = question.prompt
+                .replacingOccurrences(of: "Ý nghĩa của ", with: "")
+                .replacingOccurrences(of: " là gì?", with: "")
+            return GrammarFocus.terms(from: pattern)
+        }
+        if question.category == "Từ vựng" || question.category == "Kanji" {
+            if let left = question.prompt.range(of: "「"),
+               let right = question.prompt.range(of: "」", range: left.upperBound..<question.prompt.endIndex) {
+                return [String(question.prompt[left.upperBound..<right.lowerBound])]
+            }
+        }
+        return []
+    }
+
     private var current: ExamQuestion? {
         questions.indices.contains(position) ? questions[position] : nil
     }
@@ -85,10 +102,14 @@ struct QuestionSessionView: View {
                         .tint(Palette.teal)
                     LessonPanel {
                         if let text = question.passage {
-                            Text(text)
-                                .font(.system(size: question.category == "Đọc hiểu" ? 17 : 16))
-                                .foregroundColor(Palette.navy)
-                                .textSelection(.enabled)
+                            if question.category == "Ngữ pháp" || question.category == "Từ vựng" || question.category == "Kanji" {
+                                FuriganaText(text: text, highlightTerms: focusTerms(for: question), size: 17)
+                            } else {
+                                Text(text)
+                                    .font(.system(size: 17))
+                                    .foregroundColor(Palette.navy)
+                                    .textSelection(.enabled)
+                            }
                         }
                         if let text = question.audioText {
                             SectionTitle("Nghe tình huống")

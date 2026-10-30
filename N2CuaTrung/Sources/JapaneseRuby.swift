@@ -6,6 +6,8 @@ struct FuriganaText: View {
     let text: String
     var mainWord: String = ""
     var mainReading: String = ""
+    /// Cụm từ đang học được tô đỏ ngay trong câu ví dụ.
+    var highlightTerms: [String] = []
     var size: CGFloat = 18
 
     var body: some View {
@@ -14,12 +16,12 @@ struct FuriganaText: View {
                 VStack(spacing: 0) {
                     Text(part.reading ?? " ")
                         .font(.system(size: max(10, size * 0.54)))
-                        .foregroundColor(part.reading == nil ? .clear : Palette.teal)
+                        .foregroundColor(part.reading == nil ? .clear : (part.highlighted ? .red : Palette.teal))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                     Text(part.text)
                         .font(.system(size: size, weight: .medium))
-                        .foregroundColor(Palette.navy)
+                        .foregroundColor(part.highlighted ? .red : Palette.navy)
                         .lineLimit(1)
                 }
                 .fixedSize(horizontal: true, vertical: false)
@@ -53,6 +55,24 @@ struct FuriganaText: View {
                 }
             }
         }
+        // Ghép các đoạn đã nhận dạng để tô chính xác vị trí của từ/mẫu câu.
+        // Không tô đỏ các từ khác chỉ vì chúng có cùng một chữ Kanji.
+        let searchTerms = ([mainWord] + highlightTerms).filter { !$0.isEmpty }
+        var targetRanges: [Range<String.Index>] = []
+        for term in searchTerms {
+            var searchRange = text.startIndex..<text.endIndex
+            while let match = text.range(of: term, range: searchRange) {
+                targetRanges.append(match)
+                if match.upperBound == text.endIndex { break }
+                searchRange = match.upperBound..<text.endIndex
+            }
+        }
+        var start = text.startIndex
+        for i in segments.indices {
+            let end = text.index(start, offsetBy: segments[i].text.count)
+            segments[i].highlighted = targetRanges.contains { $0.overlaps(start..<end) }
+            start = end
+        }
         return segments
     }
 }
@@ -60,6 +80,7 @@ struct FuriganaText: View {
 private struct RubyPart {
     var text: String
     let reading: String?
+    var highlighted = false
 }
 
 private extension String {
@@ -137,4 +158,26 @@ enum RubyLexicon {
         "客":"きゃく", "店":"みせ", "物価":"ぶっか", "効果":"こうか", "改善":"かいぜん",
         "影響":"えいきょう", "調査":"ちょうさ", "会話":"かいわ", "自習":"じしゅう", "授業":"じゅぎょう"
     ]
+}
+
+/// Chỉ nhận diện các cụm ngữ pháp có từ hai ký tự trở lên, tránh tô đỏ nhầm trợ từ.
+enum GrammarFocus {
+    static func terms(from pattern: String) -> [String] {
+        let standardized = pattern
+            .replacingOccurrences(of: "～", with: "〜")
+            .replacingOccurrences(of: "／", with: "/")
+            .replacingOccurrences(of: "（", with: "")
+            .replacingOccurrences(of: "）", with: "")
+        var terms: [String] = []
+        for alternative in standardized.components(separatedBy: "/") {
+            for portion in alternative.components(separatedBy: "〜") {
+                let term = portion.trimmingCharacters(in: .whitespacesAndNewlines)
+                if term.count >= 2 && term.unicodeScalars.contains(where: { $0.value > 127 })
+                    && !terms.contains(term) {
+                    terms.append(term)
+                }
+            }
+        }
+        return terms.sorted { $0.count > $1.count }
+    }
 }

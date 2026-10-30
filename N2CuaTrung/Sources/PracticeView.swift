@@ -125,7 +125,7 @@ struct GrammarDetailView: View {
                             }
                             .accessibilityLabel("Nghe ví dụ \(index + 1)")
                         }
-                        FuriganaText(text: example.text)
+                        FuriganaText(text: example.text, highlightTerms: GrammarFocus.terms(from: item.pattern))
                         Text(example.translation).font(.body).foregroundColor(.secondary)
                     }
                 }

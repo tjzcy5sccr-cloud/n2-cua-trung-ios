@@ -178,7 +178,7 @@ struct GrammarFlashcardView: View {
                                 ForEach(Array(GrammarLibrary.examples(for: g).enumerated()), id: \.offset) { i, example in
                                     VStack(alignment: .leading, spacing: 5) {
                                         Text("Ví dụ \(i + 1)").font(.caption.bold()).foregroundColor(Palette.blue)
-                                        FuriganaText(text: example.text, size: 16)
+                                        FuriganaText(text: example.text, highlightTerms: GrammarFocus.terms(from: g.pattern), size: 16)
                                         Text(example.translation).font(.caption).foregroundColor(.secondary)
                                     }
                                 }

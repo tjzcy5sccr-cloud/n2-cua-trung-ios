@@ -1,30 +1,28 @@
 import SwiftUI
 
-/// Bố cục thuần SwiftUI: cách đọc nằm ngay phía trên từ Kanji đã có phiên âm xác nhận.
-/// Không tự đoán cách đọc của Kanji đa âm; các từ chưa có phiên âm vẫn hiện chữ gốc.
+/// Furigana tiếng Nhật được phân tích theo ngữ cảnh và đóng gói offline trước khi biên dịch.
 struct FuriganaText: View {
     let text: String
     var mainWord: String = ""
     var mainReading: String = ""
-    /// Cụm từ đang học được tô đỏ ngay trong câu ví dụ.
     var highlightTerms: [String] = []
     var size: CGFloat = 18
 
     var body: some View {
-        RubyFlow(spacing: 1, lineSpacing: 8) {
+        RubyFlow(spacing: 2, lineSpacing: 12) {
             ForEach(Array(parts.enumerated()), id: \.offset) { _, part in
-                VStack(spacing: 0) {
+                VStack(spacing: 2) {
                     Text(part.reading ?? " ")
-                        .font(.system(size: max(10, size * 0.54)))
+                        .font(.system(size: max(12, size * 0.70), weight: .semibold))
                         .foregroundColor(part.reading == nil ? .clear : (part.highlighted ? .red : Palette.teal))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.78)
                     Text(part.text)
                         .font(.system(size: size, weight: .medium))
                         .foregroundColor(part.highlighted ? .red : Palette.navy)
                         .lineLimit(1)
                 }
-                .fixedSize(horizontal: true, vertical: false)
+                .fixedSize(horizontal: true, vertical: true)
                 .accessibilityElement(children: .combine)
                 .accessibilityLabel(part.reading.map { "\(part.text)、\($0)" } ?? part.text)
             }
@@ -33,59 +31,84 @@ struct FuriganaText: View {
     }
 
     private var parts: [RubyPart] {
-        var dictionary = RubyLexicon.words
-        if !mainWord.isEmpty && !mainReading.isEmpty { dictionary[mainWord] = mainReading }
-        let tokens = dictionary.keys.filter { !$0.isEmpty }.sorted {
-            if $0.count == $1.count { return $0 < $1 }
-            return $0.count > $1.count
-        }
-        var rest = text[...]
-        var segments: [RubyPart] = []
-        while !rest.isEmpty {
-            if let key = tokens.first(where: { rest.hasPrefix($0) }) {
-                segments.append(RubyPart(text: key, reading: dictionary[key]))
-                rest.removeFirst(key.count)
-            } else {
-                let character = String(rest.removeFirst())
-                // Gộp Hiragana/Katakana và ký tự Latin liền nhau để không bị ngắt quá nhỏ.
-                if let last = segments.last, last.reading == nil, !character.containsKanji {
-                    segments[segments.count - 1].text += character
+        var segments: [RubyPart]
+        // Ưu tiên atlas theo từng câu để xử lý Kanji đa âm chính xác hơn so với tra chữ đơn.
+        if text == mainWord, !mainReading.isEmpty {
+            segments = [RubyPart(text: text, reading: mainReading)]
+        } else if let stored = RubyAtlas.entries[text] {
+            segments = stored.compactMap { pair in
+                guard let surface = pair.first ?? nil, !surface.isEmpty else { return nil }
+                return RubyPart(text: surface, reading: pair.count > 1 ? pair[1] : nil)
+            }
+        } else {
+            // Văn bản ngoài kho bài học vẫn có thể tận dụng từ điển cơ bản cũ.
+            var dictionary = RubyLexicon.words
+            if !mainWord.isEmpty && !mainReading.isEmpty { dictionary[mainWord] = mainReading }
+            let tokens = dictionary.keys.sorted { $0.count > $1.count }
+            var rest = text[...]
+            segments = []
+            while !rest.isEmpty {
+                if let key = tokens.first(where: { rest.hasPrefix($0) }) {
+                    segments.append(RubyPart(text: key, reading: dictionary[key]))
+                    rest.removeFirst(key.count)
                 } else {
-                    segments.append(RubyPart(text: character, reading: nil))
+                    let ch = String(rest.removeFirst())
+                    if let previous = segments.last, previous.reading == nil, !ch.containsKanji {
+                        segments[segments.count - 1].text += ch
+                    } else {
+                        segments.append(RubyPart(text: ch, reading: nil))
+                    }
                 }
             }
         }
-        // Ghép các đoạn đã nhận dạng để tô chính xác vị trí của từ/mẫu câu.
-        // Không tô đỏ các từ khác chỉ vì chúng có cùng một chữ Kanji.
-        let searchTerms = ([mainWord] + highlightTerms).filter { !$0.isEmpty }
-        var targetRanges: [Range<String.Index>] = []
-        for term in searchTerms {
-            var searchRange = text.startIndex..<text.endIndex
-            while let match = text.range(of: term, range: searchRange) {
-                targetRanges.append(match)
-                if match.upperBound == text.endIndex { break }
-                searchRange = match.upperBound..<text.endIndex
+
+        // Chỉ tô đỏ đúng đoạn trùng từ vựng hoặc cụm ngữ pháp đang học.
+        let terms = ([mainWord] + highlightTerms).filter { !$0.isEmpty }
+        var targets: [Range<String.Index>] = []
+        for term in terms {
+            var search = text.startIndex..<text.endIndex
+            while let found = text.range(of: term, range: search) {
+                targets.append(found)
+                if found.upperBound == text.endIndex { break }
+                search = found.upperBound..<text.endIndex
             }
         }
-        var start = text.startIndex
+        var offset = text.startIndex
         for i in segments.indices {
-            let end = text.index(start, offsetBy: segments[i].text.count)
-            segments[i].highlighted = targetRanges.contains { $0.overlaps(start..<end) }
-            start = end
+            guard let end = text.index(offset, offsetBy: segments[i].text.count, limitedBy: text.endIndex) else { break }
+            segments[i].highlighted = targets.contains { $0.overlaps(offset..<end) }
+            offset = end
         }
         return segments
     }
 }
 
+private enum RubyAtlas {
+    private struct Atlas: Decodable {
+        let entries: [String: [[String?]]]
+    }
+    static let entries: [String: [[String?]]] = {
+        guard let url = Bundle.main.url(forResource: "furigana-atlas", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let atlas = try? JSONDecoder().decode(Atlas.self, from: data) else {
+            return [:]
+        }
+        return atlas.entries
+    }()
+}
+
 private struct RubyPart {
     var text: String
-    let reading: String?
+    var reading: String?
     var highlighted = false
 }
 
 private extension String {
     var containsKanji: Bool {
-        unicodeScalars.contains { (0x4E00...0x9FFF).contains(Int($0.value)) }
+        unicodeScalars.contains {
+            (0x3400...0x9FFF).contains(Int($0.value)) ||
+            (0xF900...0xFAFF).contains(Int($0.value))
+        }
     }
 }
 

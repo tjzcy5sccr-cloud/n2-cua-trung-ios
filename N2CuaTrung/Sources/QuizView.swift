@@ -105,10 +105,7 @@ struct QuestionSessionView: View {
                             if question.category == "Ngữ pháp" || question.category == "Từ vựng" || question.category == "Kanji" {
                                 FuriganaText(text: text, highlightTerms: focusTerms(for: question), size: 17)
                             } else {
-                                Text(text)
-                                    .font(.system(size: 17))
-                                    .foregroundColor(Palette.navy)
-                                    .textSelection(.enabled)
+                                FuriganaText(text: text, size: 18)
                             }
                         }
                         if let text = question.audioText {
@@ -136,10 +133,14 @@ struct QuestionSessionView: View {
                                 Button(revealedTranscript ? "Ẩn hội thoại" : "Xem hội thoại") {
                                     revealedTranscript.toggle()
                                 }
-                                if revealedTranscript { Text(text).font(.subheadline).foregroundColor(.secondary) }
+                                if revealedTranscript { FuriganaText(text: text, size: 17) }
                             }
                         }
-                        SectionTitle(question.prompt)
+                        if question.prompt.unicodeScalars.contains(where: { $0.value >= 0x3040 && $0.value <= 0x9FFF }) {
+                            FuriganaText(text: question.prompt, size: 19)
+                        } else {
+                            SectionTitle(question.prompt)
+                        }
                     }
 
                     ForEach(Array(question.choices.enumerated()), id: \.offset) { index, choice in
@@ -149,7 +150,11 @@ struct QuestionSessionView: View {
                                     .font(.subheadline.weight(.bold))
                                     .frame(width: 27, height: 27)
                                     .background(Palette.navy.opacity(0.06), in: Circle())
-                                Text(choice).font(.subheadline).multilineTextAlignment(.leading)
+                                if choice.unicodeScalars.contains(where: { $0.value >= 0x3040 && $0.value <= 0x9FFF }) {
+                                    FuriganaText(text: choice, size: 16)
+                                } else {
+                                    Text(choice).font(.subheadline).multilineTextAlignment(.leading)
+                                }
                                 Spacer(minLength: 0)
                                 if selected != nil && index == question.answer {
                                     Image(systemName: "checkmark.circle.fill").foregroundColor(Palette.teal)

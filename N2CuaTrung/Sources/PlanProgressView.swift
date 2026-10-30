@@ -78,12 +78,6 @@ struct ProgressDashboardView: View {
                 }
                 LessonPanel {
                     SectionTitle("Kết quả kiểm tra")
-                    HStack {
-                        Text("Bài số 01 (trước khi dùng app)")
-                            .font(.subheadline)
-                        Spacer()
-                        Text("3/6").font(.headline).foregroundColor(Palette.orange)
-                    }
                     if store.saved.tests.isEmpty {
                         Text("Chưa làm bài kiểm tra trong ứng dụng.")
                             .font(.subheadline).foregroundColor(.secondary)

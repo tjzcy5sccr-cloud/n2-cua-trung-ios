@@ -84,16 +84,6 @@ struct DashboardView: View {
                     ActionTile(icon: "checkmark.circle", color: Palette.orange,
                                title: "Luyện đề tổng hợp", detail: "20 câu • Đọc, nghe, từ, ngữ pháp, Kanji")
                 }.buttonStyle(.plain)
-                LessonPanel {
-                    SectionTitle("Điểm đầu vào")
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("3 / 6").font(.title.weight(.bold)).foregroundColor(Palette.blue)
-                        Text("Bài học số 01 • 50%")
-                            .font(.subheadline).foregroundColor(.secondary)
-                    }
-                    Text("Kết quả cũ được hiển thị để đối chiếu; bài mới sẽ lưu riêng trong mục Tiến độ.")
-                        .font(.caption).foregroundColor(.secondary)
-                }
                 NavigationLink {
                     AboutView()
                 } label: {

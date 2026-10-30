@@ -166,6 +166,8 @@ struct GrammarFlashcardView: View {
     @State private var content: [Grammar] = []
     @State private var position = 0
     @State private var revealed = false
+    @State private var reviewMessage: String?
+    @State private var isSavingReview = false
     @ObservedObject private var voice = JapaneseVoice.shared
 
     var body: some View {
@@ -204,9 +206,17 @@ struct GrammarFlashcardView: View {
                     MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
                         voice.speak(GrammarLibrary.examples(for: g)[0].text)
                     }
+                    if let reviewMessage {
+                        Label(reviewMessage, systemImage: "checkmark.circle.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(Palette.teal)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                     HStack(spacing: 10) {
-                        MainButton(title: "Chưa nhớ", symbol: "xmark", color: Palette.orange) { next(g.id, known: false) }
-                        MainButton(title: "Đã nhớ", symbol: "checkmark", color: Palette.teal) { next(g.id, known: true) }
+                        MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) { next(g.id, known: false) }
+                            .disabled(isSavingReview)
+                        MainButton(title: "Đã thuộc", symbol: "checkmark", color: Palette.teal) { next(g.id, known: true) }
+                            .disabled(isSavingReview)
                     }
                 } else {
                     LessonPanel {
@@ -227,11 +237,26 @@ struct GrammarFlashcardView: View {
         content = store.course.grammar.filter { $0.week <= store.week }.shuffled()
         position = 0
         revealed = false
+        reviewMessage = nil
+        isSavingReview = false
     }
     private func next(_ id: String, known: Bool) {
+        guard !isSavingReview else { return }
+        isSavingReview = true
         store.review("g:\(id)", known: known)
-        position += 1
-        revealed = false
+        reviewMessage = known ? "Đã lưu: đã thuộc • Chuyển mẫu tiếp theo" : "Đã lưu: cần ôn lại • Chuyển mẫu tiếp theo"
         voice.stop()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+            withAnimation(.easeInOut(duration: 0.15)) {
+                if position + 1 < content.count {
+                    position += 1
+                    revealed = false
+                    reviewMessage = nil
+                    isSavingReview = false
+                } else {
+                    reload()
+                }
+            }
+        }
     }
 }

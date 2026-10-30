@@ -12,6 +12,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python for offline Japanese Furigana
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build full Japanese Furigana atlas (dictionary-based)
+        run: |
+          python -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python scripts/generate_furigana_atlas.py --strict
       - name: Install XcodeGen
         run: |
           if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi

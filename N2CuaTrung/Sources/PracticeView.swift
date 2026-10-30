@@ -100,6 +100,7 @@ struct GrammarDetailView: View {
     let item: Grammar
     @EnvironmentObject private var store: StudyStore
     @StateObject private var voice = JapaneseVoice.shared
+    @State private var reviewFeedback: String?
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -132,12 +133,23 @@ struct GrammarDetailView: View {
                 if let error = voice.lastError {
                     Text(error).font(.caption).foregroundColor(.red)
                 }
+                if let reviewFeedback {
+                    Label(reviewFeedback, systemImage: "checkmark.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(12)
+                        .background(Palette.teal.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
+                        .accessibilityAddTraits(.updatesFrequently)
+                }
                 HStack(spacing: 12) {
                     MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) {
                         store.review("g:\(item.id)", known: false)
+                        reviewFeedback = "Đã lưu: chưa thuộc. Mẫu này sẽ được nhắc ôn lại."
                     }
                     MainButton(title: "Đã thuộc", symbol: "checkmark", color: Palette.teal) {
                         store.review("g:\(item.id)", known: true)
+                        reviewFeedback = "Đã lưu: đã thuộc. Tiến độ ôn tập được cập nhật."
                     }
                 }
             }.padding(16)

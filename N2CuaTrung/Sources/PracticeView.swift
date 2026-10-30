@@ -40,13 +40,13 @@ struct PracticeHubView: View {
                                title: "Trắc nghiệm Kanji", detail: "Tập nhận biết mặt chữ")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.reading(store.course), type: "Đọc hiểu")
+                    QuestionSessionView(questions: QuestionBank.reading(store.course).shuffled(), type: "Đọc hiểu")
                 } label: {
                     ActionTile(icon: "doc.text", color: Palette.blue,
                                title: "Đọc hiểu", detail: "\(store.course.readings.count) đoạn và bài tập")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.listening(store.course), type: "Nghe hiểu")
+                    QuestionSessionView(questions: QuestionBank.listening(store.course).shuffled(), type: "Nghe hiểu")
                 } label: {
                     ActionTile(icon: "headphones", color: Palette.teal,
                                title: "Nghe hiểu", detail: "\(store.course.listening.count) hội thoại với giọng iOS")
@@ -104,16 +104,29 @@ struct GrammarDetailView: View {
                     Text(item.pattern).font(.largeTitle.bold()).foregroundColor(Palette.navy)
                     SectionTitle("Ý nghĩa")
                     Text(item.meaning).foregroundColor(Palette.teal).font(.title3.weight(.semibold))
-                    SectionTitle("Cách sử dụng")
+                    SectionTitle("Cấu trúc sử dụng")
+                    Text(GrammarLibrary.structure(for: item))
+                        .font(.headline).foregroundColor(Palette.blue)
+                    SectionTitle("Dùng trong trường hợp nào?")
                     Text(item.rule).font(.body)
                 }
-                LessonPanel {
-                    SectionTitle("Ví dụ")
-                    Text(item.example).font(.title3.weight(.medium)).foregroundColor(Palette.navy)
-                    Text(item.translation).foregroundColor(.secondary)
-                    MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
-                        voice.speak(item.example)
+                ForEach(Array(GrammarLibrary.examples(for: item).enumerated()), id: \.offset) { index, example in
+                    LessonPanel {
+                        HStack {
+                            SectionTitle("Ví dụ \(index + 1) / 3")
+                            Button { voice.speak(example.text) } label: {
+                                Image(systemName: "speaker.wave.2.fill")
+                                    .font(.title3).padding(10)
+                                    .background(Palette.teal.opacity(0.12), in: Circle())
+                            }
+                            .accessibilityLabel("Nghe ví dụ \(index + 1)")
+                        }
+                        FuriganaText(text: example.text)
+                        Text(example.translation).font(.body).foregroundColor(.secondary)
                     }
+                }
+                if let error = voice.lastError {
+                    Text(error).font(.caption).foregroundColor(.red)
                 }
                 HStack(spacing: 12) {
                     MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) {
@@ -178,7 +191,8 @@ struct KanjiDetailView: View {
                     SectionTitle("Nghĩa", subtitle: item.meaning)
                     SectionTitle("Âm On", subtitle: item.on)
                     SectionTitle("Âm Kun", subtitle: item.kun)
-                    SectionTitle("Từ ghép", subtitle: item.word)
+                    SectionTitle("Từ ghép")
+                    FuriganaText(text: item.word)
                     MainButton(title: "Nghe từ ghép", symbol: "speaker.wave.2") {
                         voice.speak(item.word)
                     }

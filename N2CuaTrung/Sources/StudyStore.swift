@@ -83,29 +83,52 @@ final class StudyStore: ObservableObject {
     }
 }
 
+/// Sử dụng giọng Nhật sẵn có trên iOS; không yêu cầu Internet hay server audio.
+/// AudioSession `.playback` khắc phục việc máy để im lặng khiến bài nghe không phát.
 final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     static let shared = JapaneseVoice()
     private let synthesizer = AVSpeechSynthesizer()
-    @Published var speaking = false
+    @Published private(set) var speaking = false
+    @Published private(set) var lastError: String?
+
     private override init() {
         super.init()
         synthesizer.delegate = self
     }
 
-    func speak(_ text: String, rate: Float = 0.47) {
-        synthesizer.stopSpeaking(at: .immediate)
-        // Eliminate speaker labels and leave the Japanese dialogue intact.
+    func speak(_ text: String, rate: Float = 0.46) {
         let cleaned = text
             .replacingOccurrences(of: "女：", with: "")
             .replacingOccurrences(of: "男：", with: "")
-        let speech = AVSpeechUtterance(string: cleaned)
-        speech.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-        speech.rate = rate
-        speech.pitchMultiplier = 1.0
-        synthesizer.speak(speech)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !cleaned.isEmpty else {
+            lastError = "Không tìm thấy văn bản tiếng Nhật để phát."
+            return
+        }
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+            try session.setActive(true)
+            lastError = nil
+        } catch {
+            lastError = "Không kích hoạt được loa: \(error.localizedDescription). Hãy kiểm tra loa, âm lượng và thiết bị Bluetooth."
+            return
+        }
+        synthesizer.stopSpeaking(at: .immediate)
+        let utterance = AVSpeechUtterance(string: cleaned)
+        // Nếu chưa cài giọng ja-JP, iOS sẽ dùng giọng Nhật có sẵn khi phù hợp.
+        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+        utterance.rate = min(0.62, max(0.35, rate))
+        utterance.pitchMultiplier = 1.0
+        // Đưa vào vòng sự kiện kế tiếp, tránh lỗi stop+speak cùng một nhịp.
+        DispatchQueue.main.async { [weak self] in self?.synthesizer.speak(utterance) }
     }
 
-    func stop() { synthesizer.stopSpeaking(at: .immediate) }
+    func stop() {
+        synthesizer.stopSpeaking(at: .immediate)
+        speaking = false
+    }
+
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { self.speaking = true }
     }

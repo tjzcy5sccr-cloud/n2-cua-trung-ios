@@ -107,6 +107,9 @@ struct QuestionSessionView: View {
                                     Text("Nhanh").tag(Float(0.54))
                                 }.pickerStyle(.segmented)
                             }
+                            if let error = voice.lastError {
+                                Text(error).font(.caption).foregroundColor(.red)
+                            }
                             if selected != nil {
                                 Button(revealedTranscript ? "Ẩn hội thoại" : "Xem hội thoại") {
                                     revealedTranscript.toggle()
@@ -150,8 +153,8 @@ struct QuestionSessionView: View {
                                     .font(.headline).foregroundColor(Palette.navy)
                             }
                             Text(question.explanation).font(.subheadline).foregroundColor(.secondary)
-                            MainButton(title: position + 1 == questions.count ? "Xem kết quả" : "Câu tiếp theo",
-                                       symbol: "arrow.right") { next() }
+                            Text("Nút chuyển câu nằm cố định ở cuối màn hình, không cần kéo xuống.")
+                                .font(.caption).foregroundColor(.secondary)
                         }
                     }
                 } else {
@@ -163,6 +166,22 @@ struct QuestionSessionView: View {
         .background(Palette.pale)
         .navigationTitle(type)
         .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            if !completed && !questions.isEmpty {
+                HStack(spacing: 10) {
+                    Text("Câu \(position + 1)/\(questions.count)")
+                        .font(.subheadline.monospacedDigit())
+                        .foregroundColor(Palette.navy)
+                    MainButton(
+                        title: position + 1 == questions.count ? "Xem kết quả" : (selected == nil ? "Bỏ qua / Tiếp" : "Câu tiếp theo"),
+                        symbol: "arrow.right", color: Palette.teal
+                    ) { next() }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(.regularMaterial)
+            }
+        }
         .onDisappear { voice.stop() }
         .onReceive(ticker) { _ in
             guard timed && !completed && !questions.isEmpty else { return }

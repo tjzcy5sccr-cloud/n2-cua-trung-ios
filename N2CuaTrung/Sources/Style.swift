@@ -57,12 +57,13 @@ struct MainButton: View {
         Button(action: action) {
             Label(title, systemImage: symbol)
                 .font(.subheadline.weight(.semibold))
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
+                .frame(maxWidth: .infinity, minHeight: 46)
+                .padding(.horizontal, 10)
+                .foregroundColor(.white)
+                .background(color, in: RoundedRectangle(cornerRadius: 13))
+                .contentShape(RoundedRectangle(cornerRadius: 13))
         }
         .buttonStyle(.plain)
-        .foregroundColor(.white)
-        .background(color, in: RoundedRectangle(cornerRadius: 13))
     }
 }
 

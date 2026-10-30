@@ -57,6 +57,14 @@ struct DashboardView: View {
                     }
                 }
 
+                LessonPanel {
+                    HStack(spacing: 10) {
+                        Image(systemName: "leaf.fill").font(.title2).foregroundColor(.green)
+                        SectionTitle("Từ vựng trên màn hình khóa", subtitle: "Widget N2 của Trung tự đổi từ mỗi giờ khi iOS cho phép")
+                    }
+                    Text("Chạm giữ màn hình khóa → Tùy chỉnh → Thêm tiện ích → N2 của Trung. Mở lại app sẽ yêu cầu widget làm mới, nhưng iOS không đảm bảo đổi từ sau từng lần bật/tắt màn hình.")
+                        .font(.caption).foregroundColor(.secondary)
+                }
                 SectionTitle("Bắt đầu học", subtitle: "90 phút/ngày • 6 ngày/tuần")
                 NavigationLink {
                     FlashcardDeckView()

@@ -1,0 +1,1081 @@
+{
+  "g1": {
+    "structure": "普通形＋わけではない",
+    "extra": [
+      {
+        "text": "日本に住んでいるからといって、漢字が全部読めるわけではない。",
+        "translation": "Sống ở Nhật không có nghĩa là đọc được hết Kanji."
+      },
+      {
+        "text": "忙しいわけではないが、今日は出かけたくない。",
+        "translation": "Không phải tôi bận, chỉ là hôm nay không muốn ra ngoài."
+      }
+    ]
+  },
+  "g2": {
+    "structure": "普通形／ナ形な／名詞の＋一方で",
+    "extra": [
+      {
+        "text": "この仕事は大変な一方で、やりがいもある。",
+        "translation": "Công việc này vất vả nhưng cũng đáng làm."
+      },
+      {
+        "text": "都会は便利な一方で、生活費が高い。",
+        "translation": "Thành phố tiện lợi nhưng sinh hoạt phí cao."
+      }
+    ]
+  },
+  "g3": {
+    "structure": "名詞／普通形＋にもかかわらず",
+    "extra": [
+      {
+        "text": "熱があるにもかかわらず、彼は出勤した。",
+        "translation": "Dù bị sốt, anh ấy vẫn đi làm."
+      },
+      {
+        "text": "準備したにもかかわらず、試験に落ちた。",
+        "translation": "Dù đã chuẩn bị, tôi vẫn trượt kỳ thi."
+      }
+    ]
+  },
+  "g4": {
+    "structure": "辞書形／ない形＋ようにする",
+    "extra": [
+      {
+        "text": "毎朝日本語のニュースを聞くようにしている。",
+        "translation": "Tôi cố nghe tin tức Nhật mỗi sáng."
+      },
+      {
+        "text": "寝る前にスマホを見ないようにする。",
+        "translation": "Tôi cố không xem điện thoại trước khi ngủ."
+      }
+    ]
+  },
+  "g5": {
+    "structure": "可能形／ない形＋ようになる",
+    "extra": [
+      {
+        "text": "毎日練習して、速く読めるようになった。",
+        "translation": "Luyện mỗi ngày nên tôi đã đọc nhanh hơn."
+      },
+      {
+        "text": "日本の生活にも慣れるようになった。",
+        "translation": "Tôi đã dần quen cuộc sống ở Nhật."
+      }
+    ]
+  },
+  "g6": {
+    "structure": "辞書形／ない形＋ことにする",
+    "extra": [
+      {
+        "text": "今週から毎日漢字を十個覚えることにした。",
+        "translation": "Tôi quyết định học mười Kanji mỗi ngày từ tuần này."
+      },
+      {
+        "text": "今日は外食しないことにした。",
+        "translation": "Hôm nay tôi quyết định không ăn ngoài."
+      }
+    ]
+  },
+  "g7": {
+    "structure": "辞書形＋ために／名詞の＋ために",
+    "extra": [
+      {
+        "text": "日本で働くために、資格を取った。",
+        "translation": "Tôi lấy chứng chỉ để làm việc tại Nhật."
+      },
+      {
+        "text": "健康のために、毎朝歩いている。",
+        "translation": "Vì sức khỏe tôi đi bộ mỗi sáng."
+      }
+    ]
+  },
+  "g8": {
+    "structure": "辞書形／ない形＋ように",
+    "extra": [
+      {
+        "text": "間違えないように、もう一度確認してください。",
+        "translation": "Hãy kiểm tra lại để khỏi sai."
+      },
+      {
+        "text": "子どもにも分かるように、簡単に説明した。",
+        "translation": "Tôi giải thích đơn giản để cả trẻ em hiểu."
+      }
+    ]
+  },
+  "g9": {
+    "structure": "名詞の／普通形＋おかげで",
+    "extra": [
+      {
+        "text": "友達が手伝ってくれたおかげで、早く終わった。",
+        "translation": "Nhờ bạn giúp nên tôi xong sớm."
+      },
+      {
+        "text": "毎日練習したおかげで、会話が上達した。",
+        "translation": "Nhờ tập hằng ngày, hội thoại đã tiến bộ."
+      }
+    ]
+  },
+  "g10": {
+    "structure": "名詞の／普通形＋せいで",
+    "extra": [
+      {
+        "text": "寝不足のせいで、集中できなかった。",
+        "translation": "Do thiếu ngủ nên tôi không tập trung được."
+      },
+      {
+        "text": "電車が遅れたせいで、会議に間に合わなかった。",
+        "translation": "Vì tàu trễ nên tôi không kịp cuộc họp."
+      }
+    ]
+  },
+  "g11": {
+    "structure": "名詞＋ばかり／て形＋ばかりいる",
+    "extra": [
+      {
+        "text": "甘いものばかり食べている。",
+        "translation": "Toàn ăn đồ ngọt."
+      },
+      {
+        "text": "文句ばかり言わないで、手伝ってください。",
+        "translation": "Đừng chỉ than phiền, hãy giúp đi."
+      }
+    ]
+  },
+  "g12": {
+    "structure": "辞書形／ている／た形＋ところだ",
+    "extra": [
+      {
+        "text": "今、資料を作っているところです。",
+        "translation": "Tôi đang soạn tài liệu."
+      },
+      {
+        "text": "ちょうど会議が終わったところです。",
+        "translation": "Cuộc họp vừa mới kết thúc."
+      }
+    ]
+  },
+  "g13": {
+    "structure": "た形＋ばかり",
+    "extra": [
+      {
+        "text": "さっき昼ご飯を食べたばかりです。",
+        "translation": "Tôi vừa ăn trưa xong."
+      },
+      {
+        "text": "この会社に入ったばかりなので、まだ慣れません。",
+        "translation": "Vì mới vào công ty nên tôi chưa quen."
+      }
+    ]
+  },
+  "g14": {
+    "structure": "名詞＋に対して",
+    "extra": [
+      {
+        "text": "先生の質問に対して、学生が答えた。",
+        "translation": "Học sinh trả lời câu hỏi của giáo viên."
+      },
+      {
+        "text": "兄は静かなのに対して、弟は活発だ。",
+        "translation": "Anh trai trầm tính, trái lại em trai năng động."
+      }
+    ]
+  },
+  "g15": {
+    "structure": "名詞＋に関して",
+    "extra": [
+      {
+        "text": "新しい規則に関して、質問があります。",
+        "translation": "Tôi có câu hỏi về quy định mới."
+      },
+      {
+        "text": "健康に関して詳しく調べた。",
+        "translation": "Tôi tìm hiểu kỹ về sức khỏe."
+      }
+    ]
+  },
+  "g16": {
+    "structure": "名詞＋について",
+    "extra": [
+      {
+        "text": "日本の歴史について勉強している。",
+        "translation": "Tôi đang học về lịch sử Nhật Bản."
+      },
+      {
+        "text": "この問題についてどう思いますか。",
+        "translation": "Bạn nghĩ sao về vấn đề này?"
+      }
+    ]
+  },
+  "g17": {
+    "structure": "辞書形／名詞＋につれて",
+    "extra": [
+      {
+        "text": "日本語が上達するにつれて、自信もついた。",
+        "translation": "Càng giỏi tiếng Nhật tôi càng tự tin."
+      },
+      {
+        "text": "季節が変わるにつれて、日が短くなる。",
+        "translation": "Theo mùa thay đổi, ngày ngắn dần."
+      }
+    ]
+  },
+  "g18": {
+    "structure": "辞書形／名詞＋にしたがって",
+    "extra": [
+      {
+        "text": "先生の説明にしたがって、答えを書いた。",
+        "translation": "Tôi viết câu trả lời theo hướng dẫn của giáo viên."
+      },
+      {
+        "text": "気温が上がるにしたがって、雪が溶ける。",
+        "translation": "Theo nhiệt độ tăng, tuyết tan."
+      }
+    ]
+  },
+  "g19": {
+    "structure": "名詞＋に伴って",
+    "extra": [
+      {
+        "text": "生活の変化に伴って、習慣も変わった。",
+        "translation": "Cùng với thay đổi cuộc sống, thói quen cũng đổi."
+      },
+      {
+        "text": "景気の回復に伴って、雇用が増えた。",
+        "translation": "Cùng với kinh tế phục hồi, việc làm tăng."
+      }
+    ]
+  },
+  "g20": {
+    "structure": "辞書形＋一方だ",
+    "extra": [
+      {
+        "text": "最近、仕事は忙しくなる一方だ。",
+        "translation": "Gần đây công việc chỉ ngày càng bận."
+      },
+      {
+        "text": "人口は減る一方だ。",
+        "translation": "Dân số cứ tiếp tục giảm."
+      }
+    ]
+  },
+  "g21": {
+    "structure": "ます形 bỏ ます＋つつある",
+    "extra": [
+      {
+        "text": "新しい技術が広まりつつある。",
+        "translation": "Công nghệ mới đang dần phổ biến."
+      },
+      {
+        "text": "問題は解決しつつある。",
+        "translation": "Vấn đề đang dần được giải quyết."
+      }
+    ]
+  },
+  "g22": {
+    "structure": "名詞／普通形＋だけでなく",
+    "extra": [
+      {
+        "text": "勉強だけでなく、運動も大切だ。",
+        "translation": "Không chỉ học mà thể thao cũng quan trọng."
+      },
+      {
+        "text": "彼女は歌うだけでなく、作曲もする。",
+        "translation": "Cô ấy không chỉ hát mà còn sáng tác."
+      }
+    ]
+  },
+  "g23": {
+    "structure": "名詞／普通形＋のみならず",
+    "extra": [
+      {
+        "text": "彼は日本のみならず、海外でも働いた。",
+        "translation": "Anh ấy làm việc không chỉ ở Nhật mà cả nước ngoài."
+      },
+      {
+        "text": "この本は学生のみならず、大人にも役立つ。",
+        "translation": "Sách này hữu ích không chỉ với học sinh mà cả người lớn."
+      }
+    ]
+  },
+  "g24": {
+    "structure": "普通形／名詞＋ばかりか",
+    "extra": [
+      {
+        "text": "彼は料理が上手なばかりか、掃除も得意だ。",
+        "translation": "Anh ấy không chỉ nấu ăn giỏi mà còn dọn dẹp tốt."
+      },
+      {
+        "text": "雨が降ったばかりか、風も強くなった。",
+        "translation": "Không chỉ mưa mà gió còn mạnh lên."
+      }
+    ]
+  },
+  "g25": {
+    "structure": "た形／普通形＋ものの",
+    "extra": [
+      {
+        "text": "勉強したものの、点数は上がらなかった。",
+        "translation": "Tuy đã học nhưng điểm không tăng."
+      },
+      {
+        "text": "新しい靴を買ったものの、まだ履いていない。",
+        "translation": "Dù mua giày mới, tôi vẫn chưa mang."
+      }
+    ]
+  },
+  "g26": {
+    "structure": "ます形 bỏ ます＋ながらも",
+    "extra": [
+      {
+        "text": "難しいと分かりながらも、挑戦した。",
+        "translation": "Dù biết khó tôi vẫn thử."
+      },
+      {
+        "text": "疲れを感じながらも、最後まで歩いた。",
+        "translation": "Dù mệt vẫn đi đến cuối."
+      }
+    ]
+  },
+  "g27": {
+    "structure": "普通形＋わけがない",
+    "extra": [
+      {
+        "text": "彼がそんな約束を忘れるわけがない。",
+        "translation": "Không đời nào anh ấy quên lời hứa ấy."
+      },
+      {
+        "text": "一日で全部覚えられるわけがない。",
+        "translation": "Không thể nhớ hết trong một ngày."
+      }
+    ]
+  },
+  "g28": {
+    "structure": "辞書形／ない形＋わけにはいかない",
+    "extra": [
+      {
+        "text": "明日は試験なので、遊ぶわけにはいかない。",
+        "translation": "Mai có thi nên không thể đi chơi."
+      },
+      {
+        "text": "秘密だから、話すわけにはいきません。",
+        "translation": "Vì là bí mật nên tôi không thể nói."
+      }
+    ]
+  },
+  "g29": {
+    "structure": "普通形＋わけだ",
+    "extra": [
+      {
+        "text": "毎日練習しているのか。上手なわけだ。",
+        "translation": "À, ngày nào cũng tập. Bảo sao giỏi."
+      },
+      {
+        "text": "外は雪が降っている。寒いわけだ。",
+        "translation": "Ngoài trời đang có tuyết. Thảo nào lạnh."
+      }
+    ]
+  },
+  "g30": {
+    "structure": "普通形＋はずだ",
+    "extra": [
+      {
+        "text": "電車はもうすぐ来るはずです。",
+        "translation": "Theo lịch, tàu sắp đến."
+      },
+      {
+        "text": "彼女は日本語が話せるはずだ。",
+        "translation": "Chắc hẳn cô ấy nói được tiếng Nhật."
+      }
+    ]
+  },
+  "g31": {
+    "structure": "普通形＋に違いない",
+    "extra": [
+      {
+        "text": "あの店は人が多いから、おいしいに違いない。",
+        "translation": "Quán đông khách, chắc chắn ngon."
+      },
+      {
+        "text": "彼の表情を見ると、うれしいに違いない。",
+        "translation": "Nhìn nét mặt anh ấy, hẳn là vui."
+      }
+    ]
+  },
+  "g32": {
+    "structure": "普通形＋に決まっている",
+    "extra": [
+      {
+        "text": "毎日練習すれば上達するに決まっている。",
+        "translation": "Nếu tập mỗi ngày thì chắc chắn tiến bộ."
+      },
+      {
+        "text": "そんな話はうそに決まっている。",
+        "translation": "Chuyện đó chắc chắn là nói dối."
+      }
+    ]
+  },
+  "g33": {
+    "structure": "ます形 bỏ ます＋かねない",
+    "extra": [
+      {
+        "text": "不注意な運転は事故につながりかねない。",
+        "translation": "Lái xe bất cẩn có thể dẫn tới tai nạn."
+      },
+      {
+        "text": "このままでは計画が失敗しかねない。",
+        "translation": "Cứ thế này kế hoạch có nguy cơ thất bại."
+      }
+    ]
+  },
+  "g34": {
+    "structure": "辞書形／名詞の＋おそれがある",
+    "extra": [
+      {
+        "text": "大雪で電車が止まるおそれがあります。",
+        "translation": "Có nguy cơ tàu dừng do tuyết lớn."
+      },
+      {
+        "text": "情報が外に漏れるおそれがある。",
+        "translation": "Có nguy cơ thông tin bị rò rỉ."
+      }
+    ]
+  },
+  "g35": {
+    "structure": "普通形＋ということだ",
+    "extra": [
+      {
+        "text": "明日は授業がないということです。",
+        "translation": "Nghe nói ngày mai không có lớp."
+      },
+      {
+        "text": "つまり、会議は来週ということですね。",
+        "translation": "Nghĩa là cuộc họp vào tuần sau đúng không?"
+      }
+    ]
+  },
+  "g36": {
+    "structure": "普通形＋とされている",
+    "extra": [
+      {
+        "text": "この地域は安全だとされている。",
+        "translation": "Khu vực này được xem là an toàn."
+      },
+      {
+        "text": "早寝は健康によいとされている。",
+        "translation": "Ngủ sớm được cho là tốt cho sức khỏe."
+      }
+    ]
+  },
+  "g37": {
+    "structure": "名詞＋に基づいて",
+    "extra": [
+      {
+        "text": "調査結果に基づいて、方針を決めた。",
+        "translation": "Chúng tôi quyết định phương châm dựa trên khảo sát."
+      },
+      {
+        "text": "経験に基づいて、助言した。",
+        "translation": "Tôi đưa lời khuyên dựa trên kinh nghiệm."
+      }
+    ]
+  },
+  "g38": {
+    "structure": "名詞＋に沿って",
+    "extra": [
+      {
+        "text": "地図に沿って歩いてください。",
+        "translation": "Hãy đi theo bản đồ."
+      },
+      {
+        "text": "決められた手順に沿って作業した。",
+        "translation": "Làm việc theo đúng trình tự đã quy định."
+      }
+    ]
+  },
+  "g39": {
+    "structure": "名詞＋に応じて",
+    "extra": [
+      {
+        "text": "経験に応じて、仕事を任せます。",
+        "translation": "Giao việc tùy theo kinh nghiệm."
+      },
+      {
+        "text": "人数に応じて、席を用意する。",
+        "translation": "Chuẩn bị chỗ ngồi theo số người."
+      }
+    ]
+  },
+  "g40": {
+    "structure": "名詞＋に比べて",
+    "extra": [
+      {
+        "text": "昔に比べて、便利になった。",
+        "translation": "So với trước, nay tiện hơn."
+      },
+      {
+        "text": "先月に比べて、売上が増えた。",
+        "translation": "So với tháng trước, doanh thu tăng."
+      }
+    ]
+  },
+  "g41": {
+    "structure": "ない形＋限り",
+    "extra": [
+      {
+        "text": "行ってみない限り、分からない。",
+        "translation": "Không đi thử thì không biết."
+      },
+      {
+        "text": "努力しない限り、結果は変わらない。",
+        "translation": "Nếu không nỗ lực, kết quả không đổi."
+      }
+    ]
+  },
+  "g42": {
+    "structure": "ます形 bỏ ます＋次第",
+    "extra": [
+      {
+        "text": "到着次第、ご連絡します。",
+        "translation": "Đến nơi tôi sẽ liên hệ ngay."
+      },
+      {
+        "text": "結果が分かり次第、お知らせします。",
+        "translation": "Biết kết quả tôi sẽ thông báo ngay."
+      }
+    ]
+  },
+  "g43": {
+    "structure": "た形＋とたん（に）",
+    "extra": [
+      {
+        "text": "ドアを開けたとたん、猫が飛び出した。",
+        "translation": "Vừa mở cửa, con mèo lao ra."
+      },
+      {
+        "text": "立ち上がったとたん、目がくらんだ。",
+        "translation": "Vừa đứng dậy thì tôi hoa mắt."
+      }
+    ]
+  },
+  "g44": {
+    "structure": "辞書形／ない形／ている形＋うちに",
+    "extra": [
+      {
+        "text": "明るいうちに帰りましょう。",
+        "translation": "Hãy về khi trời còn sáng."
+      },
+      {
+        "text": "日本にいるうちに、京都へ行きたい。",
+        "translation": "Tôi muốn đến Kyoto khi còn ở Nhật."
+      }
+    ]
+  },
+  "g45": {
+    "structure": "名詞の／ている＋最中に",
+    "extra": [
+      {
+        "text": "食事の最中に、電話がかかってきた。",
+        "translation": "Đang ăn thì có điện thoại."
+      },
+      {
+        "text": "勉強している最中に、停電した。",
+        "translation": "Đang học thì mất điện."
+      }
+    ]
+  },
+  "g46": {
+    "structure": "名詞／辞書形＋にあたって",
+    "extra": [
+      {
+        "text": "新しい仕事を始めるにあたって、目標を立てた。",
+        "translation": "Khi bắt đầu công việc mới, tôi đặt mục tiêu."
+      },
+      {
+        "text": "結婚にあたって、家族に感謝を伝えた。",
+        "translation": "Nhân dịp kết hôn, tôi bày tỏ lòng biết ơn gia đình."
+      }
+    ]
+  },
+  "g47": {
+    "structure": "ない形（ない bỏ đi）＋ざるを得ない",
+    "extra": [
+      {
+        "text": "雨がひどく、試合を中止せざるを得なかった。",
+        "translation": "Mưa to nên đành phải hủy trận."
+      },
+      {
+        "text": "時間がないので、予定を変えざるを得ない。",
+        "translation": "Vì không có thời gian nên buộc phải đổi kế hoạch."
+      }
+    ]
+  },
+  "g48": {
+    "structure": "辞書形＋べきだ",
+    "extra": [
+      {
+        "text": "間違えたら、すぐ謝るべきだ。",
+        "translation": "Nếu sai thì nên xin lỗi ngay."
+      },
+      {
+        "text": "健康のために十分寝るべきだ。",
+        "translation": "Vì sức khỏe nên ngủ đủ giấc."
+      }
+    ]
+  },
+  "g49": {
+    "structure": "普通形／名詞＋にすぎない",
+    "extra": [
+      {
+        "text": "これは私の意見にすぎません。",
+        "translation": "Đây chỉ là ý kiến cá nhân tôi."
+      },
+      {
+        "text": "まだ始まったばかりにすぎない。",
+        "translation": "Mới chỉ là bắt đầu thôi."
+      }
+    ]
+  },
+  "g50": {
+    "structure": "普通形＋とは限らない",
+    "extra": [
+      {
+        "text": "人気の店がおいしいとは限らない。",
+        "translation": "Quán nổi tiếng chưa chắc ngon."
+      },
+      {
+        "text": "日本に長く住めば、話せるとは限らない。",
+        "translation": "Sống ở Nhật lâu chưa chắc nói giỏi."
+      }
+    ]
+  },
+  "g51": {
+    "structure": "名詞＋を通じて／を通して",
+    "extra": [
+      {
+        "text": "留学を通じて、多くの友達ができた。",
+        "translation": "Nhờ du học tôi có nhiều bạn."
+      },
+      {
+        "text": "インターネットを通じて、情報を集めた。",
+        "translation": "Tôi thu thập thông tin qua internet."
+      }
+    ]
+  },
+  "g52": {
+    "structure": "期間・範囲を表す名詞＋にわたって",
+    "extra": [
+      {
+        "text": "一週間にわたって、研修が行われた。",
+        "translation": "Khóa tập huấn diễn ra suốt một tuần."
+      },
+      {
+        "text": "広い地域にわたって、雨が降った。",
+        "translation": "Trời mưa trên một vùng rộng lớn."
+      }
+    ]
+  },
+  "g53": {
+    "structure": "普通形／名詞の＋わりに",
+    "extra": [
+      {
+        "text": "彼は年齢のわりに若く見える。",
+        "translation": "Anh ấy trông trẻ so với tuổi."
+      },
+      {
+        "text": "この問題は難しいわりに、正解者が多い。",
+        "translation": "Bài khó mà số người trả lời đúng nhiều."
+      }
+    ]
+  },
+  "g54": {
+    "structure": "名詞／普通形＋にしては",
+    "extra": [
+      {
+        "text": "彼は新人にしては、仕事が早い。",
+        "translation": "Là người mới mà anh ấy làm nhanh."
+      },
+      {
+        "text": "十月にしては、今日は暑い。",
+        "translation": "Đã tháng mười mà hôm nay nóng."
+      }
+    ]
+  },
+  "g55": {
+    "structure": "普通形／名詞の＋くせに",
+    "extra": [
+      {
+        "text": "彼は約束したくせに、来なかった。",
+        "translation": "Đã hứa mà anh ta không đến."
+      },
+      {
+        "text": "忙しいくせに、ゲームする時間はある。",
+        "translation": "Kêu bận mà vẫn có thời gian chơi game."
+      }
+    ]
+  },
+  "g56": {
+    "structure": "名詞／辞書形＋どころか",
+    "extra": [
+      {
+        "text": "旅行どころか、家で休む時間もない。",
+        "translation": "Đừng nói du lịch, ở nhà nghỉ cũng không có thời gian."
+      },
+      {
+        "text": "簡単どころか、とても難しかった。",
+        "translation": "Không hề dễ mà còn rất khó."
+      }
+    ]
+  },
+  "g57": {
+    "structure": "普通形＋かえって",
+    "extra": [
+      {
+        "text": "薬を飲んだら、かえって眠くなった。",
+        "translation": "Uống thuốc xong lại buồn ngủ hơn."
+      },
+      {
+        "text": "注意したら、かえって怒られた。",
+        "translation": "Nhắc nhở mà ngược lại bị mắng."
+      }
+    ]
+  },
+  "g58": {
+    "structure": "辞書形＋しかない",
+    "extra": [
+      {
+        "text": "終電がないから、タクシーで帰るしかない。",
+        "translation": "Hết chuyến tàu cuối nên chỉ còn cách về taxi."
+      },
+      {
+        "text": "分からないなら、先生に聞くしかない。",
+        "translation": "Không hiểu thì chỉ còn hỏi thầy cô."
+      }
+    ]
+  },
+  "g59": {
+    "structure": "辞書形＋ほかない",
+    "extra": [
+      {
+        "text": "今は努力するほかない。",
+        "translation": "Bây giờ chỉ còn cách cố gắng."
+      },
+      {
+        "text": "故障したので、新しいものを買うほかない。",
+        "translation": "Vì hỏng rồi nên đành mua cái mới."
+      }
+    ]
+  },
+  "extra1-g001": {
+    "structure": "名詞＋に限らず",
+    "extra": [
+      {
+        "text": "日本語に限らず、外国語を学ぶのは楽しい。",
+        "translation": "Không riêng tiếng Nhật, học ngoại ngữ rất vui."
+      },
+      {
+        "text": "子どもに限らず、大人にも人気だ。",
+        "translation": "Không chỉ trẻ em, người lớn cũng thích."
+      }
+    ]
+  },
+  "extra1-g002": {
+    "structure": "名詞＋に限って",
+    "extra": [
+      {
+        "text": "急いでいるときに限って、電車が遅れる。",
+        "translation": "Đúng lúc đang vội thì tàu lại trễ."
+      },
+      {
+        "text": "旅行の日に限って、雨が降った。",
+        "translation": "Đúng ngày du lịch lại mưa."
+      }
+    ]
+  },
+  "extra1-g003": {
+    "structure": "名詞＋に限り",
+    "extra": [
+      {
+        "text": "学生に限り、割引があります。",
+        "translation": "Chỉ học sinh được giảm giá."
+      },
+      {
+        "text": "今週に限り、受付時間を延長します。",
+        "translation": "Chỉ tuần này kéo dài giờ tiếp nhận."
+      }
+    ]
+  },
+  "extra1-g004": {
+    "structure": "名詞＋を問わず",
+    "extra": [
+      {
+        "text": "国籍を問わず、参加できます。",
+        "translation": "Bất kể quốc tịch đều có thể tham gia."
+      },
+      {
+        "text": "経験の有無を問わず、応募できます。",
+        "translation": "Dù có hay không có kinh nghiệm đều ứng tuyển được."
+      }
+    ]
+  },
+  "extra1-g005": {
+    "structure": "名詞＋にかかわらず",
+    "extra": [
+      {
+        "text": "結果にかかわらず、挑戦することが大切だ。",
+        "translation": "Bất kể kết quả, thử sức là quan trọng."
+      },
+      {
+        "text": "年齢にかかわらず、誰でも学べる。",
+        "translation": "Bất kể tuổi tác, ai cũng có thể học."
+      }
+    ]
+  },
+  "extra1-g006": {
+    "structure": "名詞＋に応えて",
+    "extra": [
+      {
+        "text": "期待に応えて、彼は優勝した。",
+        "translation": "Đáp lại kỳ vọng, anh ấy vô địch."
+      },
+      {
+        "text": "要望に応えて、新しい講座が始まった。",
+        "translation": "Đáp lại yêu cầu, khóa học mới đã mở."
+      }
+    ]
+  },
+  "extra1-g007": {
+    "structure": "名詞＋に先立って",
+    "extra": [
+      {
+        "text": "試験に先立って、注意事項を確認する。",
+        "translation": "Trước kỳ thi, xác nhận điều cần lưu ý."
+      },
+      {
+        "text": "開会に先立って、あいさつがあった。",
+        "translation": "Trước khai mạc đã có lời chào."
+      }
+    ]
+  },
+  "extra1-g008": {
+    "structure": "名詞＋をきっかけに",
+    "extra": [
+      {
+        "text": "友達の紹介をきっかけに、仕事を始めた。",
+        "translation": "Nhờ lời giới thiệu của bạn, tôi bắt đầu làm việc."
+      },
+      {
+        "text": "映画をきっかけに、日本文化に興味を持った。",
+        "translation": "Nhờ xem phim, tôi hứng thú văn hóa Nhật."
+      }
+    ]
+  },
+  "extra1-g009": {
+    "structure": "普通形＋ことから",
+    "extra": [
+      {
+        "text": "値段が安いことから、よく売れている。",
+        "translation": "Do giá rẻ nên bán chạy."
+      },
+      {
+        "text": "声が似ていることから、兄弟だと分かった。",
+        "translation": "Nhờ giọng giống nhau nên nhận ra là anh em."
+      }
+    ]
+  },
+  "extra1-g010": {
+    "structure": "た形＋末（に）",
+    "extra": [
+      {
+        "text": "長い議論の末に、結論が出た。",
+        "translation": "Sau thảo luận lâu, đã có kết luận."
+      },
+      {
+        "text": "何度も考えた末に、転職を決めた。",
+        "translation": "Sau khi cân nhắc nhiều lần, tôi quyết định đổi việc."
+      }
+    ]
+  },
+  "extra1-g011": {
+    "structure": "た形＋あげく（に）",
+    "extra": [
+      {
+        "text": "さんざん悩んだあげく、断った。",
+        "translation": "Đắn đo mãi rồi cuối cùng từ chối."
+      },
+      {
+        "text": "待たされたあげく、店は閉まった。",
+        "translation": "Bị bắt chờ mãi rồi cuối cùng cửa hàng đóng."
+      }
+    ]
+  },
+  "extra1-g012": {
+    "structure": "辞書形＋たびに",
+    "extra": [
+      {
+        "text": "旅行するたびに、新しい発見がある。",
+        "translation": "Mỗi lần du lịch lại có phát hiện mới."
+      },
+      {
+        "text": "写真を見るたびに、思い出す。",
+        "translation": "Mỗi lần xem ảnh lại nhớ đến."
+      }
+    ]
+  },
+  "extra1-g013": {
+    "structure": "辞書形／名詞の＋ついでに",
+    "extra": [
+      {
+        "text": "駅へ行くついでに、切符を買った。",
+        "translation": "Tiện đi ga tôi mua vé."
+      },
+      {
+        "text": "散歩のついでに、買い物した。",
+        "translation": "Tiện đi dạo tôi mua đồ."
+      }
+    ]
+  },
+  "extra1-g014": {
+    "structure": "普通形＋からといって",
+    "extra": [
+      {
+        "text": "忙しいからといって、連絡しないのはよくない。",
+        "translation": "Không phải vì bận mà không liên hệ là đúng."
+      },
+      {
+        "text": "日本人だからといって、全員が寿司を好きとは限らない。",
+        "translation": "Không phải người Nhật ai cũng thích sushi."
+      }
+    ]
+  },
+  "extra1-g015": {
+    "structure": "普通形＋以上（は）",
+    "extra": [
+      {
+        "text": "決めた以上は、最後まで頑張る。",
+        "translation": "Một khi đã quyết thì cố đến cuối."
+      },
+      {
+        "text": "約束した以上、守らなければならない。",
+        "translation": "Đã hứa thì phải giữ lời."
+      }
+    ]
+  },
+  "extra1-g016": {
+    "structure": "普通形＋からには",
+    "extra": [
+      {
+        "text": "日本へ来たからには、日本語を上達させたい。",
+        "translation": "Đã đến Nhật thì muốn giỏi tiếng Nhật."
+      },
+      {
+        "text": "やるからには、全力で取り組む。",
+        "translation": "Đã làm thì nỗ lực hết mình."
+      }
+    ]
+  },
+  "extra1-g017": {
+    "structure": "普通形＋ものだから",
+    "extra": [
+      {
+        "text": "初めてだったものだから、緊張しました。",
+        "translation": "Vì là lần đầu nên tôi căng thẳng."
+      },
+      {
+        "text": "寝坊したものだから、遅刻しました。",
+        "translation": "Vì ngủ quên nên tôi đi muộn."
+      }
+    ]
+  },
+  "extra1-g018": {
+    "structure": "辞書形＋ことなく",
+    "extra": [
+      {
+        "text": "諦めることなく、練習を続けた。",
+        "translation": "Không bỏ cuộc và tiếp tục tập."
+      },
+      {
+        "text": "一度も休むことなく、通った。",
+        "translation": "Không nghỉ lần nào, tôi đi học đều."
+      }
+    ]
+  },
+  "extra1-g019": {
+    "structure": "名詞＋抜きで",
+    "extra": [
+      {
+        "text": "説明抜きで、始めないでください。",
+        "translation": "Đừng bắt đầu khi chưa giải thích."
+      },
+      {
+        "text": "遠慮抜きで、意見を聞かせてください。",
+        "translation": "Cứ thẳng thắn cho tôi nghe ý kiến."
+      }
+    ]
+  },
+  "extra1-g020": {
+    "structure": "名詞＋に反して",
+    "extra": [
+      {
+        "text": "期待に反して、成績は下がった。",
+        "translation": "Trái kỳ vọng, điểm giảm."
+      },
+      {
+        "text": "説明に反して、操作は簡単だった。",
+        "translation": "Trái lời giải thích, thao tác lại dễ."
+      }
+    ]
+  },
+  "extra1-g021": {
+    "structure": "名詞＋に加えて",
+    "extra": [
+      {
+        "text": "英語に加えて、日本語も勉強している。",
+        "translation": "Ngoài tiếng Anh tôi còn học tiếng Nhật."
+      },
+      {
+        "text": "雨に加えて、風も強い。",
+        "translation": "Ngoài mưa, gió cũng mạnh."
+      }
+    ]
+  },
+  "extra1-g022": {
+    "structure": "名詞＋に代わって",
+    "extra": [
+      {
+        "text": "母に代わって、料理を作った。",
+        "translation": "Tôi nấu ăn thay mẹ."
+      },
+      {
+        "text": "彼に代わって、説明します。",
+        "translation": "Tôi sẽ giải thích thay anh ấy."
+      }
+    ]
+  },
+  "extra1-g023": {
+    "structure": "名詞＋のもとで",
+    "extra": [
+      {
+        "text": "経験豊かな上司のもとで働いている。",
+        "translation": "Tôi làm việc dưới cấp trên giàu kinh nghiệm."
+      },
+      {
+        "text": "安全な環境のもとで、学べる。",
+        "translation": "Có thể học trong môi trường an toàn."
+      }
+    ]
+  },
+  "extra1-g024": {
+    "structure": "名詞＋において",
+    "extra": [
+      {
+        "text": "会議において、意見を述べた。",
+        "translation": "Tôi phát biểu ý kiến tại hội nghị."
+      },
+      {
+        "text": "現代社会において、情報は重要だ。",
+        "translation": "Trong xã hội hiện đại, thông tin quan trọng."
+      }
+    ]
+  }
+}

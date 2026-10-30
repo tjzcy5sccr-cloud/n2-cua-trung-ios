@@ -1,7 +1,9 @@
 import SwiftUI
+import WidgetKit
 
 @main
 struct N2CuaTrungApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var store = StudyStore()
 
     var body: some Scene {
@@ -10,6 +12,12 @@ struct N2CuaTrungApp: App {
                 .environmentObject(store)
                 .tint(Palette.blue)
                 .preferredColorScheme(.light)
+                .onChange(of: scenePhase) { state in
+                    if state == .active {
+                        // iOS quyết định thời điểm hiển thị; không thể ép widget đổi ngay khi mở khóa.
+                        WidgetCenter.shared.reloadTimelines(ofKind: "N2TrungWordWidget")
+                    }
+                }
         }
     }
 }

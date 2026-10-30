@@ -110,4 +110,21 @@ for g in grammar:
             assert len(sample.get("translation", "")) >= 3
             assert sample.get("translationGloss")
 print("Automated examples must retain their main gloss, machine label, and check status.")
+# Hồi quy giao diện: ba nút tách biệt + bài mới mỗi lần mở + bộ thủ không ghi "Khang Hy".
+quiz = (app / "QuizView.swift").read_text(encoding="utf-8")
+practice = (app / "PracticeView.swift").read_text(encoding="utf-8")
+radicals_ui = (app / "KangxiRadicalsView.swift").read_text(encoding="utf-8")
+assert all(x in quiz for x in ['"Đọc hiểu"', '"Nghe hiểu"', '"Kanji"', '"Bỏ qua"', '"Kết quả"'])
+assert 'guard manualExplanation, !completed, !showCurrentExplanation else { return }' in quiz
+assert 'FreshPracticeSessionView(type: "Đọc hiểu")' in practice
+assert 'FreshPracticeSessionView(type: "Nghe hiểu")' in practice
+assert 'sessionIdentity = UUID()' in practice and '.onAppear { generateNewSession() }' in practice
+assert 'title: "214 bộ thủ"' in practice
+assert 'Section("214 bộ thủ")' in radicals_ui
+assert 'Section("214 bộ thủ Khang Hy")' not in radicals_ui
+voice = (app / "StudyStore.swift").read_text(encoding="utf-8")
+assert 'let newSynthesizer = AVSpeechSynthesizer()' in voice
+assert 'self.synthesizer === activeSynth' in voice
+print("PASS: independent quiz controls, session reshuffle, 214 radicals, isolated speech sessions.")
+
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

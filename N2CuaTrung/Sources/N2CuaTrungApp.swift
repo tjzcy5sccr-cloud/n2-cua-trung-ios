@@ -29,6 +29,9 @@ struct N2CuaTrungApp: App {
 }
 
 struct RootView: View {
+    @EnvironmentObject private var store: StudyStore
+    private let rotationTicker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         TabView {
             NavigationStack { DashboardView() }
@@ -43,5 +46,12 @@ struct RootView: View {
                 .tabItem { Label("Tiến độ", systemImage: "chart.bar.fill") }
         }
         .background(Palette.pale)
+        .onReceive(rotationTicker) { _ in
+            // Đổi từ khi ứng dụng đang hoạt động, ở bất kỳ tab nào.
+            // iOS có thể ngừng timer này khi app vào nền hoặc thiết bị khóa.
+            if #available(iOS 16.1, *) {
+                Task { await WideStudyController.shared.tick(course: store.course) }
+            }
+        }
     }
 }

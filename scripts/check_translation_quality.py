@@ -20,7 +20,7 @@ assert len(vocab) == 1756 and len(kanji) == 376, "Unexpected dataset truncation"
 assert len({v["id"] for v in vocab}) == len(vocab), "Duplicate vocab IDs"
 assert len({v["id"] for v in kanji}) == len(kanji), "Duplicate Kanji IDs"
 for record in vocab:
-    assert record.get("meaningStatus") in ("editorial_reviewed", "machine_unreviewed", "dictionary_matched_unverified"), record["id"]
+    assert record.get("meaningStatus") in ("editorial_reviewed", "source_verified", "machine_unreviewed", "dictionary_matched_unverified"), record["id"]
     assert record.get("exampleStatus") == "machine_unreviewed", record["id"]
     assert record["word"] and record["reading"], record["id"]
 for record in kanji:

@@ -784,7 +784,7 @@ struct KangxiRadicalsView: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
-            Section("214 bộ thủ Khang Hy") {
+            Section("214 bộ thủ") {
                 ForEach(filtered) { r in
                     HStack(spacing: 14) {
                         Text(r.character)

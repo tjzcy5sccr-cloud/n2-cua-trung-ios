@@ -86,7 +86,7 @@ print("Grammar extra sample translations still require individual review:",
 app = ROOT / "N2CuaTrung/Sources"
 for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
     code = (app / name).read_text(encoding="utf-8")
-    assert "TapGesture()" in code and ".exclusively(before: DragGesture(minimumDistance: 16))" in code, name
+    assert "DragGesture(minimumDistance: 0)" in code and "if distance <= 12" in code, name
     assert "ScrollView(.vertical)" not in code.split("private func cardSurface(", 1)[1].split("private func flip(", 1)[0], name
     assert "changeCard(by: dx < 0 ? 1 : -1)" in code, name
     assert "changeCard(by: dy < 0 ? 1 : -1)" in code, name

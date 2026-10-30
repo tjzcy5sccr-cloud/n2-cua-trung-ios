@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 10,
+  "packVersion": 11,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 368,
@@ -60,7 +60,7 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "Đã viết lại giải thích 93 mẫu ngữ pháp; KHÔNG xem 93 câu ví dụ và 1756 câu ví dụ từ vựng là đã dịch chính xác nếu chưa kiểm từng câu. Dữ liệu từ vựng có 368 nghĩa đã biên tập, còn nghĩa tham khảo cần xác minh.",
+  "scopeLimitation": "93/93 ngữ pháp trong gói N2 đã viết lại nghĩa, hướng dẫn, dịch ví dụ chính. Các câu phụ và 1756 ví dụ từ vựng vẫn cần rà soát, không được tuyên bố 100%. Các nghĩa từ vựng chưa kiểm chứng riêng vẫn giữ nhãn.",
   "candidateSource": {
     "name": "Từ điển Nhật–Việt mở (Bunchaway)",
     "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
@@ -164,7 +164,7 @@
   "grammarReview": {
     "total": 93,
     "explanationsEditoriallyRewritten": 93,
-    "mainExamplesNotYetVerified": 93,
+    "mainExamplesEditoriallyTranslated": 93,
     "additionalExamplesPending": 186
   }
 }

@@ -125,6 +125,25 @@ assert 'Section("214 bộ thủ Khang Hy")' not in radicals_ui
 voice = (app / "StudyStore.swift").read_text(encoding="utf-8")
 assert 'let newSynthesizer = AVSpeechSynthesizer()' in voice
 assert 'self.synthesizer === activeSynth' in voice
+
+# Hồi quy khung: thẻ và các nút giữ vị trí khi lật hoặc chuyển chữ.
+for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
+    source = (app / name).read_text(encoding="utf-8")
+    assert "cardSurface(card, height: 286)" in source, name
+    surface = source.split("private func cardSurface(", 1)[1].split("private func flip(", 1)[0]
+    assert ".frame(height: height)" in surface, name
+    assert ".clipped()" in surface, name
+    assert ".offset(" not in surface and "dragOffset" not in source, name
+    assert ".opacity(revealed ? 1 : 0)" in source, name
+    assert "withAnimation(.spring" not in source, name
+grammar = (app / "FlashcardView.swift").read_text(encoding="utf-8").split("struct GrammarFlashcardView", 1)[1]
+grammar_card = grammar.split("private func grammarCard(", 1)[1].split("private func changeGrammarCard(", 1)[0]
+assert ".frame(height: 286)" in grammar_card
+assert ".offset(" not in grammar_card and "ScrollView" not in grammar_card
+assert 'Text(reviewMessage ?? " ")' in grammar
+assert "showFullGrammar" in grammar
+print("PASS: 3 static 286pt cards; no drag offset, nested card scroll, spring or conditional detail rows.")
+
 print("PASS: independent quiz controls, session reshuffle, 214 radicals, isolated speech sessions.")
 
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

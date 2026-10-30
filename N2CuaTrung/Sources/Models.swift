@@ -26,6 +26,9 @@ struct Vocabulary: Decodable, Identifiable {
         return "Nghĩa đang chờ đối chiếu từ điển Nhật–Việt"
     }
     var displayExampleTranslation: String {
+        if exampleStatus == "machine_translated_unreviewed", let vi = exampleVi {
+            return "Dịch tự động theo nghĩa chính (chưa kiểm chứng): " + vi
+        }
         if exampleStatus == "machine_unreviewed" {
             return "Bản dịch ví dụ chưa được kiểm chứng."
         }

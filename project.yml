@@ -55,6 +55,10 @@ targets:
       - path: N2CuaTrung/Sources/StudyActivityAttributes.swift
       - path: N2CuaTrung/Resources/content.json
         buildPhase: resources
+      - path: content-packs/n2-expansion-01.json
+        buildPhase: resources
+      - path: content-packs/openjlpt-n2-core.json
+        buildPhase: resources
     info:
       path: N2Widget/WidgetInfo.plist
       properties:

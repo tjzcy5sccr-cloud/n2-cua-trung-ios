@@ -16,12 +16,19 @@ private struct WordEntry: TimelineEntry {
 private struct WordProvider: TimelineProvider {
     private static let fallback = Word(word: "努力", reading: "どりょく", meaning: "nỗ lực")
     private static let words: [Word] = {
-        guard let path = Bundle.main.url(forResource: "content", withExtension: "json"),
-              let data = try? Data(contentsOf: path),
-              let content = try? JSONDecoder().decode(WordList.self, from: data),
-              !content.vocab.isEmpty else { return [fallback] }
-        // Xáo trộn theo lần nạp timeline, tránh lặp từ liền kề.
-        return content.vocab
+        // Có đủ kho bài học đóng gói, không giới hạn ở content.json 125 từ.
+        var all: [Word] = []
+        var existing = Set<String>()
+        for filename in ["content", "n2-expansion-01", "openjlpt-n2-core"] {
+            guard let path = Bundle.main.url(forResource: filename, withExtension: "json"),
+                  let bytes = try? Data(contentsOf: path),
+                  let list = try? JSONDecoder().decode(WordList.self, from: bytes) else { continue }
+            for word in list.vocab where !existing.contains(word.word) {
+                existing.insert(word.word)
+                all.append(word)
+            }
+        }
+        return all.isEmpty ? [fallback] : all
     }()
 
     func placeholder(in context: Context) -> WordEntry { WordEntry(date: Date(), word: Self.fallback) }

@@ -63,18 +63,9 @@ struct FlashcardDeckView: View {
                         actionButton("Nghe từ", symbol: "speaker.wave.2.fill", color: Palette.blue) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
                         }
-                        actionButton("Ví dụ", symbol: "waveform", color: Palette.teal) {
+                        actionButton("Nghe ví dụ", symbol: "waveform", color: Palette.teal) {
                             voice.speak(card.example)
                         }
-                        Button { voice.stop() } label: {
-                            Image(systemName: "stop.fill")
-                                .font(.subheadline.weight(.bold))
-                                .frame(width: 47, height: 48)
-                                .foregroundColor(Palette.navy)
-                                .background(.white, in: RoundedRectangle(cornerRadius: 12))
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Dừng phát âm")
                     }
                     HStack(spacing: 8) {
                         actionButton("Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) {

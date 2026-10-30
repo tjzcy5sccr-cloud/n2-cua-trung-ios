@@ -96,9 +96,14 @@ enum CoursePackManager {
     static func mergedCourse(packs: [CoursePack]) -> CourseData {
         let original = CourseData.load()
         return CourseData(
-            vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] }),
-            grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] }),
-            kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] }),
+            // Không xóa JSON/source: chỉ những mục được duyệt mới vào dữ liệu app.
+            // Áp dụng sau khi gộp để chặn cả gói offline và cập nhật tải từ GitHub.
+            vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] })
+                .filter { $0.isApprovedForStudy },
+            grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] })
+                .filter { $0.isApprovedForStudy },
+            kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] })
+                .filter { $0.isApprovedForStudy },
             readings: merge(original.readings, packs.flatMap { $0.readings ?? [] }),
             listening: merge(original.listening, packs.flatMap { $0.listening ?? [] }),
             weeks: original.weeks

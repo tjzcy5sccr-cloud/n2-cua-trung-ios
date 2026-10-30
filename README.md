@@ -82,3 +82,12 @@ Trong Signing & Capabilities chọn tài khoản Apple, kiểm tra Bundle ID `vn
 - Đây là nội dung luyện thi JLPT N2 định hướng, **không phải danh sách từ vựng chính thức do JLPT công bố**.
 
 **Tác giả:** Trần Phước Trung — © 2026 Trần Phước Trung. Bảo lưu mọi quyền.
+
+## iOS 1.4 — Nhắc học + Widget dễ đọc
+
+- Trong tab **Tiến độ → Nhắc học & Widget**, bật thông báo (quyền iOS) và chọn 1–4 lần/ngày; lập lịch tối đa 14 ngày tới trong khoảng 09:00–21:00. Hoạt động offline khi đã được cấp quyền. App sẽ tự gia hạn lịch khi người dùng mở lại.
+- Widget màn hình chính hỗ trợ **Medium (trọn một hàng)** và Large, nền xanh đậm chữ trắng. Widget màn hình khóa iOS `accessoryRectangular` có kích thước và cách hiển thị nền do iOS quản lý, không thể kéo dài bằng mã ứng dụng.
+- Widget lên trước các mục `TimelineEntry` cách nhau 15 phút, nội dung đổi luân phiên; iOS có thể làm mới muộn. Không có API chính thức để nhận sự kiện khóa/mở khóa và buộc widget cập nhật ngay.
+- **Bảng học rộng Live Activity** (iOS 16.1+) là tùy chọn do người dùng bật thủ công, xuất hiện ở khu vực lớn hơn phía dưới đồng hồ. Live Activity hoạt động tối đa 8 giờ, có thể lưu trên màn hình khóa thêm tối đa 4 giờ; không tự thay đổi ở mỗi lần mở khóa.
+- Không sử dụng máy chủ, push token, Apple App Groups hay quyền đặc biệt. Thông báo và dữ liệu đều ở thiết bị.
+- Tác giả và bản quyền: **© 2026 Trần Phước Trung. Bảo lưu mọi quyền.**

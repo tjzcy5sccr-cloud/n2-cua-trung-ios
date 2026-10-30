@@ -104,6 +104,13 @@ struct ProgressDashboardView: View {
                     }
                 }
                 NavigationLink {
+                    RemindersAndWidgetsView()
+                } label: {
+                    ActionTile(icon: "bell.badge.fill", color: Palette.teal,
+                               title: "Nhắc học và Widget", detail: "Giờ ngẫu nhiên, widget xanh rõ chữ, bảng học rộng")
+                }
+                .buttonStyle(.plain)
+                NavigationLink {
                     ContentUpdatesView()
                 } label: {
                     ActionTile(icon: "arrow.down.circle", color: Palette.teal,

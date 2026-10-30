@@ -15,12 +15,13 @@ settings:
     GENERATE_INFOPLIST_FILE: YES
     INFOPLIST_KEY_CFBundleDisplayName: 'N2 của Trung'
     INFOPLIST_KEY_NSHumanReadableCopyright: 'Copyright © 2026 Trần Phước Trung. All rights reserved.'
-    MARKETING_VERSION: '1.3.0'
-    CURRENT_PROJECT_VERSION: '4'
+    MARKETING_VERSION: '1.4.0'
+    CURRENT_PROJECT_VERSION: '5'
     INFOPLIST_KEY_CFBundleDevelopmentRegion: vi
     INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
     INFOPLIST_KEY_UILaunchScreen_Generation: YES
     PRODUCT_BUNDLE_IDENTIFIER: vn.trung.n2master2027
+    INFOPLIST_KEY_NSSupportsLiveActivities: YES
 targets:
   N2CuaTrung:
     type: application
@@ -47,6 +48,7 @@ targets:
     deploymentTarget: '16.0'
     sources:
       - path: N2Widget/N2WordWidget.swift
+      - path: N2CuaTrung/Sources/StudyActivityAttributes.swift
       - path: N2CuaTrung/Resources/content.json
         buildPhase: resources
     info:

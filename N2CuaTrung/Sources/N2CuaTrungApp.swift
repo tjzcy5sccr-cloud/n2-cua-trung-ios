@@ -16,6 +16,7 @@ struct N2CuaTrungApp: App {
                     if state == .active {
                         // iOS quyết định thời điểm hiển thị; không thể ép widget đổi ngay khi mở khóa.
                         WidgetCenter.shared.reloadTimelines(ofKind: "N2TrungWordWidget")
+                        Task { await StudyReminders.shared.refreshIfNeeded(using: store.course) }
                     }
                 }
         }

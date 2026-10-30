@@ -189,36 +189,37 @@ struct KanjiSwipeDeckView: View {
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
         .offset(x: dragOffset.width, y: dragOffset.height)
+        // Duy nhất một cử chỉ cho cả chạm lật và vuốt 4 hướng.
+        // DragGesture(minimumDistance: 0) không cần TapGesture, tránh xung đột recognizer.
         .gesture(
-            TapGesture()
-                .exclusively(before: DragGesture(minimumDistance: 16))
-                .onChanged { value in
-                    if case .second(let drag) = value {
+            DragGesture(minimumDistance: 0)
+                .onChanged { drag in
+                    let dx = drag.translation.width
+                    let dy = drag.translation.height
+                    if max(abs(dx), abs(dy)) > 12 {
                         if !isDraggingCard {
                             isDraggingCard = true
                             voice.stop()
                         }
                         dragOffset = CGSize(
-                            width: max(-64, min(64, drag.translation.width * 0.35)),
-                            height: max(-64, min(64, drag.translation.height * 0.35))
+                            width: max(-64, min(64, dx * 0.35)),
+                            height: max(-64, min(64, dy * 0.35))
                         )
                     }
                 }
-                .onEnded { value in
-                    switch value {
-                    case .first:
+                .onEnded { drag in
+                    let dx = drag.translation.width
+                    let dy = drag.translation.height
+                    let distance = max(abs(dx), abs(dy))
+                    if distance <= 12 {
                         flip(card)
-                    case .second(let drag):
-                        let dx = drag.translation.width
-                        let dy = drag.translation.height
-                        if abs(dx) > abs(dy) && abs(dx) >= 45 {
-                            changeCard(by: dx < 0 ? 1 : -1)
-                        } else if abs(dy) >= 45 {
-                            changeCard(by: dy < 0 ? 1 : -1)
-                        } else {
-                            withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
-                                dragOffset = .zero
-                            }
+                    } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                        changeCard(by: dx < 0 ? 1 : -1)
+                    } else if abs(dy) >= 45 {
+                        changeCard(by: dy < 0 ? 1 : -1)
+                    } else {
+                        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
+                            dragOffset = .zero
                         }
                     }
                     isDraggingCard = false

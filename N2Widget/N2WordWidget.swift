@@ -205,14 +205,14 @@ struct N2WideLiveActivityWidget: Widget {
             // iOS vẫn có thể hiển thị trạng thái Live Activity theo quy tắc hệ thống.
             DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
-                    EmptyView()
+                    Color.clear.frame(width: 1, height: 1)
                 }
             } compactLeading: {
-                EmptyView()
+                Color.clear.frame(width: 1, height: 1)
             } compactTrailing: {
-                EmptyView()
+                Color.clear.frame(width: 1, height: 1)
             } minimal: {
-                EmptyView()
+                Color.clear.frame(width: 1, height: 1)
             }
         }
     }

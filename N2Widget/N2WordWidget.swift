@@ -163,18 +163,32 @@ struct N2WordWidget: Widget {
 struct N2WideLiveActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: StudyActivityAttributes.self) { context in
-            HStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("☘ N2 CỦA TRUNG").font(.caption2.bold()).foregroundStyle(.white.opacity(0.85))
-                    Text(context.state.word).font(.system(size: 30, weight: .heavy))
-                        .foregroundStyle(.white).lineLimit(1).minimumScaleFactor(0.5)
-                    Text(context.state.reading).font(.subheadline).foregroundStyle(Color.mint)
-                    Text(context.state.meaning).font(.subheadline.bold()).foregroundStyle(.white).lineLimit(2)
-                }
-                Spacer(minLength: 0)
-                Image(systemName: "leaf.fill").font(.system(size: 32)).foregroundStyle(Color.mint)
+            VStack(alignment: .center, spacing: 3) {
+                Text("☘ N2 CỦA TRUNG")
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .tracking(1.2)
+                    .foregroundStyle(.white.opacity(0.85))
+                Text(context.state.word)
+                    .font(.system(size: 39, weight: .heavy, design: .rounded))
+                    .minimumScaleFactor(0.55)
+                    .lineLimit(1)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                Text(context.state.reading)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(Color(red: 0.69, green: 1.0, blue: 0.75))
+                    .lineLimit(1)
+                Text(context.state.meaning)
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                    .frame(maxWidth: .infinity)
             }
-            .padding(18)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 13)
             .activityBackgroundTint(Color(red: 0.02, green: 0.21, blue: 0.12))
             .activitySystemActionForegroundColor(.white)
         } dynamicIsland: { context in
@@ -183,11 +197,14 @@ struct N2WideLiveActivityWidget: Widget {
                     Text("☘ N2 của Trung").font(.caption.bold())
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.word).font(.title2.bold())
+                    Text(context.state.word)
+                        .font(.title2.bold())
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     Text("\(context.state.reading) • \(context.state.meaning)")
                         .font(.caption).lineLimit(2)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             } compactLeading: {
                 Text("☘ N2").font(.caption2)

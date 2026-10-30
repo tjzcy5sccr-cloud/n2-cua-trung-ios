@@ -96,7 +96,15 @@ Trong Signing & Capabilities chọn tài khoản Apple, kiểm tra Bundle ID `vn
 
 - Flashcard tự phát âm Hiragana khi vừa lật sang mặt sau; có nút nghe lại từ và nghe câu ví dụ.
 - Phần Giọng đọc cho phép chọn giọng Nhật offline cài trên iPhone, mặc định ưu tiên Premium/Enhanced; mô phỏng hội thoại nam/nữ bằng giọng tương ứng nếu có.
-- Gói bổ sung `openjlpt-n2-core.json` có 1.756 từ vựng, 93 ngữ pháp, 376 Kanji mới sau khi lọc trùng. Tải qua mục **Tiến độ → Cập nhật kho bài học** sau khi có mạng, rồi sử dụng offline.
+- Gói bổ sung `openjlpt-n2-core.json` phiên bản 2 có đầy đủ 3 ví dụ cho từng ngữ pháp; có 1.756 từ vựng, 93 ngữ pháp, 376 Kanji mới sau khi lọc trùng. Tải qua mục **Tiến độ → Cập nhật kho bài học** sau khi có mạng, rồi sử dụng offline.
 - Tổng kho lý thuyết sau khi cài cả hai gói: 1.974 từ vựng, 176 ngữ pháp, 471 Kanji (chưa kiểm chứng chuyên môn từng mục). Nhiều mục mới có nghĩa tiếng Anh (`EN ·`), đang chờ biên tập Nhật–Việt.
 - Dữ liệu mở N2 phân phối CC BY-SA 4.0 (đọc `content-packs/OPENJLPT_SOURCES_AND_LICENSE.md`) và không phải nội dung chính thức của kỳ thi JLPT.
 - Không tự động lấy audio từ các website thương mại. Không kèm nhạc/âm thanh không rõ giấy phép.
+
+## iOS v1.6 — Chế độ offline mặc định
+
+- Hai gói `n2-expansion-01.json` và `openjlpt-n2-core.json` được đóng gói sẵn trong bản IPA để học ngay không cần Internet. Bản cập nhật tải sau ưu tiên phiên bản mới hơn.
+- Vuốt lên/xuống trên mặt thẻ từ vựng để sang thẻ đã xáo trộn, không lặp lại trong cùng một lượt.
+- Trắc nghiệm tự chuyển sau 0,85 giây xem đáp án, nút tiếp vẫn hoạt động.
+- Live Activity căn giữa, chữ lớn; tùy chọn 30/60 giây chỉ chạy khi app còn hoạt động ở foreground. iOS không cho phép bảo đảm đổi mỗi 30/60 giây khi thiết bị khóa.
+- Mục giấy phép dữ liệu được tách khỏi giao diện học nhưng luôn có thể truy cập trong Giới thiệu, theo điều kiện nguồn CC BY-SA 4.0.

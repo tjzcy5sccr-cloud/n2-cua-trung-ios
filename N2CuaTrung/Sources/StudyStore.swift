@@ -9,7 +9,7 @@ final class StudyStore: ObservableObject {
     private let key = "N2CuaTrung.progress.v1"
 
     init() {
-        let packs = CoursePackManager.readInstalled()
+        let packs = CoursePackManager.allAvailablePacks()
         self.installedPacks = packs
         self.course = CoursePackManager.mergedCourse(packs: packs)
         if let bytes = UserDefaults.standard.data(forKey: key),

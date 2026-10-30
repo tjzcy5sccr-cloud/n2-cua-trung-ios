@@ -9,15 +9,39 @@ final class WideStudyController: ObservableObject {
     static let shared = WideStudyController()
     @Published private(set) var message: String = ""
     @Published private(set) var active: Bool = false
+    @Published var rotateSeconds: Int {
+        didSet { UserDefaults.standard.set(rotateSeconds, forKey: "N2LiveActivityRotation") }
+    }
+    private var lastChange = Date.distantPast
+    private var previousWordID: String?
 
-    private init() { active = !Activity<StudyActivityAttributes>.activities.isEmpty }
+    private init() {
+        let saved = UserDefaults.standard.integer(forKey: "N2LiveActivityRotation")
+        rotateSeconds = [0, 30, 60].contains(saved) ? saved : 60
+        active = !Activity<StudyActivityAttributes>.activities.isEmpty
+    }
+
+    /// Không lặp lại ngay một từ, ưu tiên bộ từ đa dạng.
+    private func newWord(from course: CourseData) -> Vocabulary? {
+        let candidates = course.vocab.filter { $0.id != previousWordID }
+        guard let word = candidates.randomElement() ?? course.vocab.randomElement() else { return nil }
+        previousWordID = word.id
+        lastChange = Date()
+        return word
+    }
+
+    func tick(course: CourseData) async {
+        guard active, rotateSeconds > 0,
+              Date().timeIntervalSince(lastChange) >= Double(rotateSeconds) else { return }
+        await next(course: course)
+    }
 
     func start(course: CourseData) async {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else {
             message = "Live Activities đang tắt trong Cài đặt iPhone."
             return
         }
-        guard let word = course.vocab.randomElement() else { return }
+        guard let word = newWord(from: course) else { return }
         // Ngăn bảng học bị trùng nhiều phiên trên màn hình khóa.
         for old in Activity<StudyActivityAttributes>.activities {
             await old.end(using: nil, dismissalPolicy: .immediate)
@@ -36,7 +60,7 @@ final class WideStudyController: ObservableObject {
     }
 
     func next(course: CourseData) async {
-        guard let next = course.vocab.randomElement() else { return }
+        guard let next = newWord(from: course) else { return }
         for activity in Activity<StudyActivityAttributes>.activities {
             await activity.update(using: .init(word: next.word, reading: next.reading, meaning: next.meaning))
         }
@@ -57,12 +81,21 @@ final class WideStudyController: ObservableObject {
 struct WideLockScreenActivityPanel: View {
     let course: CourseData
     @StateObject private var controller = WideStudyController.shared
+    private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         LessonPanel {
             SectionTitle("Bảng học rộng trên màn hình khóa", subtitle: "Live Activity lớn, có nền xanh và chữ sáng")
             Text("Widget ở cạnh đồng hồ có kích cỡ cố định. Bảng Live Activity nằm phía dưới màn hình khóa và rộng hơn; bạn cần bật thủ công khi muốn ôn nhanh.")
                 .font(.subheadline).foregroundStyle(.secondary)
+            Picker("Đổi từ tự động", selection: $controller.rotateSeconds) {
+                Text("Tắt").tag(0)
+                Text("30 giây").tag(30)
+                Text("60 giây").tag(60)
+            }
+            .pickerStyle(.segmented)
+            Text("30/60 giây áp dụng khi ứng dụng đang mở. Sau khi khóa màn hình, iOS có thể tạm dừng app và không bảo đảm làm mới Live Activity theo chu kỳ.")
+                .font(.caption).foregroundStyle(.secondary)
             if controller.active {
                 MainButton(title: "Đổi ngay sang từ ngẫu nhiên", symbol: "shuffle", color: Palette.teal) {
                     Task { await controller.next(course: course) }
@@ -75,11 +108,14 @@ struct WideLockScreenActivityPanel: View {
                     Task { await controller.start(course: course) }
                 }
             }
-            Text("Live Activity không thể tự đổi từ mỗi lần mở khóa; chỉ thay khi app cập nhật nó. iOS tự kết thúc phiên sau tối đa 8 giờ.")
+            Text("Khi quay lại ứng dụng, thẻ được kiểm tra và làm mới. Không thể tự đổi liên tục mỗi 30 giây khi iPhone đã khóa mà không có cơ chế cập nhật được iOS cho phép.")
                 .font(.caption).foregroundStyle(.secondary)
             if !controller.message.isEmpty {
                 Text(controller.message).font(.caption).foregroundStyle(Palette.teal)
             }
+        }
+        .onReceive(ticker) { _ in
+            Task { await controller.tick(course: course) }
         }
     }
 }

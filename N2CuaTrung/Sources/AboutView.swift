@@ -49,15 +49,20 @@ struct AboutView: View {
                         .foregroundColor(.secondary)
                 }
 
-                LessonPanel {
-                    SectionTitle("Dữ liệu mở & ghi công")
-                    Text("Một phần nội dung mở rộng N2 sử dụng OpenJLPT (CC BY-SA 4.0), nguồn JMdict/KANJIDIC2 (EDRDG), Jonathan Waller và Tatoeba. Dữ liệu gốc của ứng dụng và mã SwiftUI thuộc Trần Phước Trung; nguồn dữ liệu mở giữ nguyên giấy phép riêng.")
-                        .font(.subheadline)
-                    Link("Nguồn và giấy phép OpenJLPT", destination: URL(string: "https://github.com/evanclan/OpenJLPT/blob/main/NOTICE.md")!)
-                        .font(.subheadline)
-                    Text("Một số mục mở rộng đang hiển thị nghĩa EN (tiếng Anh) để tránh dịch sai; nội dung Nhật–Việt gốc vẫn được giữ nguyên.")
-                        .font(.caption).foregroundColor(.secondary)
+                NavigationLink {
+                    DataLicensesView()
+                } label: {
+                    HStack {
+                        Image(systemName: "doc.text")
+                        Text("Thông tin pháp lý và giấy phép dữ liệu")
+                            .font(.caption)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                    }
+                    .foregroundStyle(.secondary)
+                    .padding(.vertical, 10)
                 }
+
 
                 LessonPanel {
                     SectionTitle("Về ứng dụng")
@@ -77,5 +82,25 @@ struct AboutView: View {
         .background(Palette.pale)
         .navigationTitle("Giới thiệu")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+/// Thông báo bắt buộc cho dữ liệu bên thứ ba theo CC BY-SA 4.0.
+/// Đặt tại trang pháp lý riêng để không ảnh hưởng giao diện học.
+private struct DataLicensesView: View {
+    var body: some View {
+        List {
+            Section("Quyền tác giả ứng dụng") {
+                Text("© 2026 Trần Phước Trung. Bảo lưu mọi quyền đối với mã nguồn và nội dung tự biên soạn.")
+            }
+            Section("Giấy phép dữ liệu được sử dụng") {
+                Text("Bộ dữ liệu N2 mở rộng có nội dung biên soạn từ OpenJLPT, JMdict/KANJIDIC2 (EDRDG), Jonathan Waller và Tatoeba. Dữ liệu được chia sẻ theo giấy phép tương ứng; phần phái sinh OpenJLPT tuân thủ CC BY-SA 4.0.")
+                Link("OpenJLPT và thông báo nguồn", destination: URL(string: "https://github.com/evanclan/OpenJLPT/blob/main/NOTICE.md")!)
+                Link("CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
+                Text("Các nguồn gốc giữ nguyên quyền tác giả của họ. Dữ liệu mở không chuyển thành sở hữu độc quyền của tác giả ứng dụng.")
+                    .font(.caption)
+            }
+        }
+        .navigationTitle("Giấy phép dữ liệu")
     }
 }

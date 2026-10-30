@@ -74,6 +74,25 @@ enum CoursePackManager {
             .sorted { $0.id < $1.id }
     }
 
+    /// Hai gói N2 đi kèm IPA, học offline ngay khi cài mà không cần bấm cập nhật.
+    static func bundledPacks() -> [CoursePack] {
+        ["n2-expansion-01", "openjlpt-n2-core"].compactMap { name in
+            guard let url = Bundle.main.url(forResource: name, withExtension: "json"),
+                  let data = try? Data(contentsOf: url) else { return nil }
+            return try? validate(data)
+        }
+    }
+
+    /// Bản mới hơn được ưu tiên. Không mất lịch ôn vì thẻ dùng ID ổn định.
+    static func allAvailablePacks() -> [CoursePack] {
+        var byID: [String: CoursePack] = [:]
+        for pack in bundledPacks() + readInstalled() {
+            if let old = byID[pack.id], old.version >= pack.version { continue }
+            byID[pack.id] = pack
+        }
+        return byID.values.sorted { $0.id < $1.id }
+    }
+
     static func mergedCourse(packs: [CoursePack]) -> CourseData {
         let original = CourseData.load()
         return CourseData(
@@ -152,7 +171,7 @@ extension StudyStore {
     }
 
     private func reloadCoursePacks() {
-        let packs = CoursePackManager.readInstalled()
+        let packs = CoursePackManager.allAvailablePacks()
         installedPacks = packs
         course = CoursePackManager.mergedCourse(packs: packs)
     }

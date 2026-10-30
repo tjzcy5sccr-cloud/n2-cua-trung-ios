@@ -13,7 +13,7 @@ struct FlashcardDeckView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                SectionTitle("Flashcard từ vựng", subtitle: "Mặt trước chỉ có Kanji • chạm bất kỳ chỗ nào trên thẻ để lật")
+                SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt lên/xuống để đổi từ ngẫu nhiên")
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
                     Text("Đến tuần").tag(1)
@@ -71,6 +71,17 @@ struct FlashcardDeckView: View {
                         .overlay(RoundedRectangle(cornerRadius: 22).stroke(Palette.teal.opacity(0.18)))
                     }
                     .buttonStyle(.plain)
+                    .highPriorityGesture(
+                        DragGesture(minimumDistance: 34)
+                            .onEnded { movement in
+                                let dy = movement.translation.height
+                                let dx = movement.translation.width
+                                if abs(dy) > 48 && abs(dy) > abs(dx) * 1.25 {
+                                    advanceRandom()
+                                }
+                            }
+                    )
+                    .accessibilityAction(named: "Từ ngẫu nhiên kế tiếp") { advanceRandom() }
                     .accessibilityLabel(revealed ? "\(card.word), \(card.reading), \(card.meaning)" : "Thẻ Kanji \(card.word). Chạm để xem đáp án")
                     HStack(spacing: 10) {
                         MainButton(title: "Nghe từ", symbol: "speaker.wave.2.fill", color: Palette.blue) {
@@ -92,7 +103,7 @@ struct FlashcardDeckView: View {
                             mark(true, id: card.id)
                         }
                     }
-                    Text("Lật thẻ sẽ tự phát âm bằng giọng Nhật chất lượng cao nhất đã cài trên iPhone. Thẻ được xáo trộn mỗi lượt.")
+                    Text("Vuốt lên hoặc xuống ngay trên thẻ để xem từ tiếp theo; các từ được xáo trộn mỗi lượt. Lật thẻ tự phát âm.")
                         .font(.caption).foregroundColor(.secondary)
                 } else {
                     LessonPanel {
@@ -126,11 +137,20 @@ struct FlashcardDeckView: View {
         voice.stop()
     }
 
+    private func advanceRandom() {
+        voice.stop()
+        revealed = false
+        if position + 1 < cards.count {
+            position += 1
+        } else {
+            // Hết bộ thẻ: xáo trộn và bắt đầu lượt tiếp theo tự động.
+            reload()
+        }
+    }
+
     private func mark(_ known: Bool, id: String) {
         store.review("v:\(id)", known: known)
-        position += 1
-        revealed = false
-        voice.stop()
+        advanceRandom()
     }
 }
 

@@ -47,13 +47,13 @@ struct ContentUpdatesView: View {
                 LessonPanel {
                     SectionTitle("Gói đã cài")
                     if store.installedPacks.isEmpty {
-                        Text("Đang dùng bộ bài học có sẵn trong ứng dụng.")
+                        Text("Đã cài bộ bài học offline đi kèm ứng dụng.")
                             .font(.subheadline).foregroundColor(.secondary)
                     } else {
                         ForEach(store.installedPacks) { pack in
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(pack.title).font(.subheadline.weight(.semibold))
+                                    Text(pack.id == "openjlpt-n2-core" ? "Bộ N2 mở rộng" : "Bộ bài học nâng cao").font(.subheadline.weight(.semibold))
                                     Text("Phiên bản \(pack.version) · \(pack.itemCount) mục")
                                         .font(.caption).foregroundColor(.secondary)
                                 }

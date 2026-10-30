@@ -52,6 +52,7 @@ struct QuestionSessionView: View {
     @StateObject private var voice = JapaneseVoice.shared
     @State private var position = 0
     @State private var selected: Int? = nil
+    @State private var nextQuestionTask: Task<Void, Never>?
     @State private var correct = 0
     @State private var completed = false
     @State private var revealedTranscript = false
@@ -153,7 +154,7 @@ struct QuestionSessionView: View {
                                     .font(.headline).foregroundColor(Palette.navy)
                             }
                             Text(question.explanation).font(.subheadline).foregroundColor(.secondary)
-                            Text("Nút chuyển câu nằm cố định ở cuối màn hình, không cần kéo xuống.")
+                            Text("Ứng dụng sẽ tự chuyển sang câu mới sau khi chọn đáp án.")
                                 .font(.caption).foregroundColor(.secondary)
                         }
                     }
@@ -182,7 +183,7 @@ struct QuestionSessionView: View {
                 .background(.regularMaterial)
             }
         }
-        .onDisappear { voice.stop() }
+        .onDisappear { voice.stop(); nextQuestionTask?.cancel() }
         .onReceive(ticker) { _ in
             guard timed && !completed && !questions.isEmpty else { return }
             if remainingSeconds > 0 { remainingSeconds -= 1 }
@@ -210,9 +211,19 @@ struct QuestionSessionView: View {
         guard selected == nil, let question = current else { return }
         selected = index
         if index == question.answer { correct += 1 }
+        // Hiện đáp án ngắn để người học kịp nhận ra đúng/sai.
+        let answeredID = question.id
+        nextQuestionTask?.cancel()
+        nextQuestionTask = Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 850_000_000)
+            guard !Task.isCancelled, !completed, current?.id == answeredID else { return }
+            next()
+        }
     }
 
     private func next() {
+        nextQuestionTask?.cancel()
+        nextQuestionTask = nil
         voice.stop()
         if position + 1 < questions.count {
             position += 1

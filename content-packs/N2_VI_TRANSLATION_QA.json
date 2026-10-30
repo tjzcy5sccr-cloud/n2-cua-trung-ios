@@ -8,20 +8,6 @@
   "translationMethod": "machine translation, not human reviewed",
   "modelEnglishVietnamese": "Helsinki-NLP/opus-mt-en-vi (Apache-2.0)",
   "modelJapaneseVietnamese": "Helsinki-NLP/opus-mt-ja-vi (Apache-2.0)",
-  "warnings": [
-    "olj-v-828b802390.meaning: katakana -> katakana",
-    "olj-v-1c91d6bc15.meaning: utensil -> Utensil",
-    "olj-v-1a83e76669.meaning: smoky -> smoky",
-    "olj-v-1fca295d01.meaning: slide -> Slide",
-    "olj-v-fa1efb5872.meaning: abacus -> abacus",
-    "olj-v-f28c668862.meaning: passbook -> passbook",
-    "olj-v-4b0f18eaab.meaning: alcove -> alcove",
-    "olj-v-5543a2efce.meaning: nylon -> nylon",
-    "olj-v-510fabace9.meaning: vitamin -> vitamin",
-    "olj-v-370b10e13a.meaning: adverb -> adverb",
-    "olj-v-6de846a293.meaning: brooch -> brooch",
-    "olj-v-9b7b87e488.meaning: poster -> poster",
-    "olj-v-1e3e361278.meaning: so-so -> so-so"
-  ],
+  "warnings": [],
   "note": "Máy dịch có thể nhầm nghĩa/ngữ cảnh. Cần rà soát thủ công trước khi công bố bản dịch chính xác 100%."
 }

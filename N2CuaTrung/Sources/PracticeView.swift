@@ -21,9 +21,17 @@ struct FreshPracticeSessionView: View {
     }
 
     private func generateNewSession() {
-        let next = type == "Đọc hiểu"
-            ? QuestionBank.reading(store.course)
-            : QuestionBank.listening(store.course)
+        let next: [ExamQuestion]
+        switch type {
+        case "Đọc hiểu":
+            next = QuestionBank.reading(store.course)
+        case "Nghe hiểu":
+            next = QuestionBank.listening(store.course)
+        case "Kanji":
+            next = Array(QuestionBank.kanji(store.course).shuffled().prefix(12))
+        default:
+            next = []
+        }
         questions = next.shuffled()
         sessionIdentity = UUID()
     }
@@ -68,8 +76,7 @@ struct PracticeHubView: View {
                                title: "Trắc nghiệm ngữ pháp", detail: "Hỏi nghĩa và ví dụ minh họa")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.kanji(store.course).shuffled(),
-                                        type: "Kanji")
+                    FreshPracticeSessionView(type: "Kanji")
                 } label: {
                     ActionTile(icon: "character.cursor.ibeam", color: Palette.orange,
                                title: "Trắc nghiệm Kanji", detail: "Tập nhận biết mặt chữ")

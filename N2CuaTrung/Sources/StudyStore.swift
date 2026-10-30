@@ -87,7 +87,7 @@ final class StudyStore: ObservableObject {
 /// TTS chạy trên thiết bị và hoạt động offline. Không phân phối trái phép audio của đơn vị khác.
 final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     static let shared = JapaneseVoice()
-    private let synthesizer = AVSpeechSynthesizer()
+    private var synthesizer = AVSpeechSynthesizer()
     private let preferenceKey = "N2CuaTrung.japaneseVoice.v1"
     private var speechGeneration = 0
     /// Chỉ giữ lệnh phát mới nhất; hủy mọi lần phát/khởi chạy còn chờ.
@@ -198,41 +198,34 @@ final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelega
         return utterance
     }
 
-    /// Luôn hủy giọng cũ rồi mới phát thẻ mới, không xếp từ mới vào hàng đợi cũ.
+    /// Tạo phiên synthesizer mới mỗi khi thay thẻ. Lệnh đang chờ của phiên trước
+    /// bị vô hiệu hóa theo generation và không thể phát sau khi người dùng đã vuốt.
     private func speakSequence(_ utterances: [AVSpeechUtterance]) {
         speechGeneration += 1
         let generation = speechGeneration
         pendingSpeechWork?.cancel()
         pendingSpeechWork = nil
-        pendingSpeech = utterances
-        speaking = false
-        synthesizer.stopSpeaking(at: .immediate)
-        scheduleLatestSpeech(generation: generation, attempt: 0)
-    }
+        pendingSpeech.removeAll()
 
-    private func scheduleLatestSpeech(generation: Int, attempt: Int) {
-        let task = DispatchWorkItem { [weak self] in
-            guard let self = self, generation == self.speechGeneration else { return }
-            // AVSpeechSynthesizer hủy bất đồng bộ; đừng phát khi câu cũ còn chạy.
-            if self.synthesizer.isSpeaking || self.synthesizer.isPaused {
-                self.synthesizer.stopSpeaking(at: .immediate)
-                if attempt < 16 {
-                    self.scheduleLatestSpeech(generation: generation, attempt: attempt + 1)
-                } else {
-                    self.pendingSpeech.removeAll()
-                    self.lastError = "iOS chưa dừng được câu trước. Bấm nghe lại để thử."
-                }
-                return
+        let previous = synthesizer
+        previous.delegate = nil
+        previous.stopSpeaking(at: .immediate)
+        let newSynthesizer = AVSpeechSynthesizer()
+        newSynthesizer.delegate = self
+        synthesizer = newSynthesizer
+        speaking = false
+
+        let task = DispatchWorkItem { [weak self, weak newSynthesizer] in
+            guard let self = self, let activeSynth = newSynthesizer,
+                  self.speechGeneration == generation,
+                  self.synthesizer === activeSynth else { return }
+            for utterance in utterances {
+                activeSynth.speak(utterance)
             }
-            let latest = self.pendingSpeech
-            self.pendingSpeech.removeAll()
-            self.pendingSpeechWork = nil
-            guard generation == self.speechGeneration else { return }
-            for utterance in latest { self.synthesizer.speak(utterance) }
         }
         pendingSpeechWork = task
-        DispatchQueue.main.asyncAfter(deadline: .now() + (attempt == 0 ? 0.10 : 0.13),
-                                      execute: task)
+        // Một khoảng nhỏ chống nhảy âm khi người dùng lướt liên tục.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.24, execute: task)
     }
 
     func stop() {
@@ -245,9 +238,11 @@ final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelega
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        guard synthesizer === self.synthesizer else { return }
         DispatchQueue.main.async { self.speaking = true }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        guard synthesizer === self.synthesizer else { return }
         DispatchQueue.main.async { self.speaking = false }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {

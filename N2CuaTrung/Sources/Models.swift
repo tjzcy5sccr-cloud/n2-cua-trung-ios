@@ -9,31 +9,29 @@ struct Vocabulary: Decodable, Identifiable {
     let topic: String
     let week: Int
     let exampleVi: String?
-    /// machine_unreviewed: bản dịch máy, chưa được phép dùng làm đáp án đúng.
+    /// Trạng thái kiểm duyệt chỉ lưu trong mã/JSON, không xuất hiện trong giao diện.
     let meaningStatus: String?
     let meaningSource: String?
     let exampleStatus: String?
-    var isMeaningVerified: Bool {
-        (meaningStatus == nil || meaningStatus == "editorial_reviewed" || meaningStatus == "source_verified")
+    private var approvedStatuses: Set<String> {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+    }
+    var isApprovedForStudy: Bool {
+        guard let meaningStatus else { return false }
+        return approvedStatuses.contains(meaningStatus)
             && !meaning.hasPrefix("EN ·")
             && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    var displayMeaning: String {
-        if isMeaningVerified { return meaning }
-        if meaningStatus == "dictionary_matched_unverified" {
-            return "Tham khảo (chưa duyệt): " + meaning
-        }
-        return "Nghĩa đang chờ đối chiếu từ điển Nhật–Việt"
+    var isMeaningVerified: Bool { isApprovedForStudy }
+    var hasApprovedExample: Bool {
+        guard let exampleStatus else { return false }
+        return approvedStatuses.contains(exampleStatus)
+            && !example.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && !(exampleVi ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    var displayExampleTranslation: String {
-        if exampleStatus == "machine_translated_unreviewed", let vi = exampleVi {
-            return "Dịch tự động theo nghĩa chính (chưa kiểm chứng): " + vi
-        }
-        if exampleStatus == "machine_unreviewed" {
-            return "Bản dịch ví dụ chưa được kiểm chứng."
-        }
-        return exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung."
-    }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
+    var displayExampleTranslation: String { hasApprovedExample ? (exampleVi ?? "") : "" }
+    var approvedExampleJapanese: String? { hasApprovedExample ? example : nil }
 }
 
 struct Grammar: Decodable, Identifiable {
@@ -47,16 +45,19 @@ struct Grammar: Decodable, Identifiable {
     let samples: [GrammarSample]?
     let grammarStatus: String?
     let translationStatus: String?
-    var displayMeaning: String {
-        meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning
+    var isApprovedForStudy: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(grammarStatus ?? "")
+            && !meaning.hasPrefix("EN ·")
+            && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    var displayRule: String {
-        meaning.hasPrefix("EN ·") ? "Đang bổ sung hướng dẫn ngữ pháp bằng tiếng Việt." : rule
+    var hasApprovedExample: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(translationStatus ?? "")
     }
-    var displayTranslation: String {
-        if translationStatus == "needs_sentence_review" { return "Bản dịch câu ví dụ đang được đối chiếu." }
-        return translation
-    }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
+    var displayRule: String { isApprovedForStudy ? rule : "" }
+    var displayTranslation: String { hasApprovedExample ? translation : "" }
 }
 
 struct Kanji: Decodable, Identifiable {
@@ -67,13 +68,14 @@ struct Kanji: Decodable, Identifiable {
     let meaning: String
     let word: String
     let meaningStatus: String?
-    var isMeaningVerified: Bool {
-        meaningStatus != "machine_unreviewed" && !meaning.hasPrefix("EN ·")
+    var isApprovedForStudy: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(meaningStatus ?? "")
+            && !meaning.hasPrefix("EN ·")
             && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    var displayMeaning: String {
-        isMeaningVerified ? meaning : "Nghĩa chữ chưa được hiệu đính"
-    }
+    var isMeaningVerified: Bool { isApprovedForStudy }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
 }
 
 struct ReadingLesson: Decodable, Identifiable {
@@ -178,9 +180,10 @@ enum QuestionBank {
         let meanings = data.vocab.filter { $0.isMeaningVerified }.map(\.displayMeaning)
         return eligible.shuffled().prefix(100).map { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
-                   passage: item.example, correct: item.displayMeaning,
+                   passage: item.approvedExampleJapanese, correct: item.displayMeaning,
                    others: meanings,
-                   explanation: "\(item.word)・\(item.reading): \(item.displayMeaning). Ví dụ: \(item.displayExampleTranslation)")
+                   explanation: "\(item.word)・\(item.reading): \(item.displayMeaning)"
+                     + (item.hasApprovedExample ? ". Ví dụ: \(item.displayExampleTranslation)" : ""))
         }
     }
 
@@ -196,11 +199,11 @@ enum QuestionBank {
     }
 
     static func kanji(_ data: CourseData) -> [ExamQuestion] {
-        data.kanji.filter { $0.isMeaningVerified }.map { item in
+        data.kanji.filter { $0.isApprovedForStudy }.map { item in
             create(category: "Kanji", prompt: "Chữ 「\(item.char)」 có nghĩa gì?",
-                   passage: "Từ liên quan: \(item.word)", correct: item.displayMeaning,
+                   passage: nil, correct: item.displayMeaning,
                    others: data.kanji.filter { $0.isMeaningVerified }.map(\.displayMeaning),
-                   explanation: "Âm On: \(item.on) · Âm Kun: \(item.kun) · Từ: \(item.word)")
+                   explanation: "Âm On: \(item.on) · Âm Kun: \(item.kun)")
         }
     }
 

@@ -1,8 +1,16 @@
 name: Build Native iOS IPA (unsigned)
 "on":
   workflow_dispatch:
-  push:
-    branches: [main]
+    inputs:
+      preview_approved:
+        description: "Da xem va duyet anh giao dien truoc khi build IPA?"
+        type: boolean
+        required: true
+        default: false
+      preview_commit:
+        description: "Nhap SHA commit da xem preview (40 ky tu). Bat buoc khop commit build."
+        type: string
+        required: true
 permissions:
   contents: read
 concurrency:
@@ -10,9 +18,24 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build-ios:
+    if: ${{ inputs.preview_approved == true }}
     runs-on: macos-15
     timeout-minutes: 40
     steps:
+      - name: Require approval of the exact previewed commit
+        shell: bash
+        env:
+          PREVIEW_SHA: ${{ inputs.preview_commit }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$PREVIEW_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Preview approval requires full 40-character commit SHA."
+            exit 1
+          fi
+          if [ "$PREVIEW_SHA" != "$GITHUB_SHA" ]; then
+            echo "::error::Preview SHA differs from source being built. Review a new preview first."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Python for offline Japanese Furigana

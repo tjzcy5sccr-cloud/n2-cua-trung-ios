@@ -86,7 +86,7 @@ struct QuestionSessionView: View {
 
     /// Đọc hiểu và đề thi tổng hợp: không tiết lộ đáp án trong khi làm bài.
     /// Các bài ôn từ vựng / ngữ pháp ngắn vẫn giữ phản hồi nhanh như trước.
-    private var reviewAtEnd: Bool { type == "Đọc hiểu" || timed }
+    private var reviewAtEnd: Bool { type == "Đọc hiểu" || type == "Ngữ pháp" || timed }
 
     var body: some View {
         ScrollView {

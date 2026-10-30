@@ -5,6 +5,8 @@ name: Reconcile Vietnamese N2 glossary from licensed dictionary
     branches: [main]
     paths:
       - '.github/workflows/reconcile-vi-glossary.yml'
+      - 'scripts/check_translation_quality.py'
+      - 'scripts/reconcile_open_jv_dictionary.py'
 permissions:
   contents: write
 jobs:

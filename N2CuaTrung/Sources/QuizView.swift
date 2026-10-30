@@ -55,6 +55,7 @@ struct QuestionSessionView: View {
     /// Lưu lựa chọn theo số thứ tự; bỏ qua được giữ là chưa trả lời.
     @State private var answersByQuestion: [Int: Int] = [:]
     @State private var showAllExplanations = false
+    @State private var showCurrentExplanation = false
     @State private var nextQuestionTask: Task<Void, Never>?
     @State private var correct = 0
     @State private var completed = false
@@ -84,9 +85,10 @@ struct QuestionSessionView: View {
         questions.indices.contains(position) ? questions[position] : nil
     }
 
-    /// Đọc hiểu và đề thi tổng hợp: không tiết lộ đáp án trong khi làm bài.
-    /// Các bài ôn từ vựng / ngữ pháp ngắn vẫn giữ phản hồi nhanh như trước.
+    /// Đọc hiểu và ngữ pháp: chỉ hiện lời giải khi người học bấm "Kết quả".
+    /// Đề thi bấm giờ vẫn chỉ chữa bài sau khi nộp.
     private var reviewAtEnd: Bool { type == "Đọc hiểu" || type == "Ngữ pháp" || timed }
+    private var manualExplanation: Bool { !timed && (type == "Đọc hiểu" || type == "Ngữ pháp") }
 
     var body: some View {
         ScrollView {
@@ -163,9 +165,9 @@ struct QuestionSessionView: View {
                                     Text(choice).font(.subheadline).multilineTextAlignment(.leading)
                                 }
                                 Spacer(minLength: 0)
-                                if !reviewAtEnd && selected != nil && index == question.answer {
+                                if ((!reviewAtEnd || showCurrentExplanation) && selected != nil || showCurrentExplanation) && index == question.answer {
                                     Image(systemName: "checkmark.circle.fill").foregroundColor(Palette.teal)
-                                } else if !reviewAtEnd && selected == index {
+                                } else if ((!reviewAtEnd || showCurrentExplanation) && selected == index) {
                                     Image(systemName: "xmark.circle.fill").foregroundColor(.red)
                                 }
                             }
@@ -175,10 +177,41 @@ struct QuestionSessionView: View {
                             .background(choiceColor(index, question: question),
                                         in: RoundedRectangle(cornerRadius: 14))
                         }
-                        .disabled(selected != nil)
+                        .disabled(selected != nil || (manualExplanation && showCurrentExplanation))
                         .buttonStyle(.plain)
                     }
-                    if let answer = selected, !reviewAtEnd {
+                    if manualExplanation && showCurrentExplanation {
+                        LessonPanel {
+                            HStack(spacing: 10) {
+                                Image(systemName: selected == question.answer ? "checkmark.circle.fill" : "info.circle.fill")
+                                    .foregroundColor(selected == question.answer ? Palette.teal : Palette.orange)
+                                Text(selected == nil ? "Chưa chọn đáp án" :
+                                        (selected == question.answer ? "Bạn đã trả lời đúng!" : "Bạn cần ôn lại câu này"))
+                                    .font(.headline)
+                                    .foregroundColor(Palette.navy)
+                            }
+                            if let answer = selected, question.choices.indices.contains(answer) {
+                                Text("Bạn đã chọn: \(String(UnicodeScalar(65 + answer)!)). \(question.choices[answer])")
+                                    .font(.subheadline)
+                                    .foregroundColor(Palette.navy)
+                            }
+                            if question.choices.indices.contains(question.answer) {
+                                Text("Đáp án đúng: \(String(UnicodeScalar(65 + question.answer)!)). \(question.choices[question.answer])")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundColor(Palette.teal)
+                            }
+                            Divider()
+                            Text("Giải thích")
+                                .font(.subheadline.weight(.bold))
+                                .foregroundColor(Palette.navy)
+                            Text(question.explanation)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            Text("Câu hỏi sẽ giữ nguyên đến khi bạn nhấn Tiếp.")
+                                .font(.caption)
+                                .foregroundColor(Palette.blue)
+                        }
+                    } else if let answer = selected, !reviewAtEnd {
                         LessonPanel {
                             HStack {
                                 Image(systemName: answer == question.answer ? "checkmark.seal.fill" : "info.circle.fill")
@@ -202,14 +235,34 @@ struct QuestionSessionView: View {
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if !completed && !questions.isEmpty {
-                HStack(spacing: 10) {
-                    Text("Câu \(position + 1)/\(questions.count)")
-                        .font(.subheadline.monospacedDigit())
-                        .foregroundColor(Palette.navy)
-                    MainButton(
-                        title: position + 1 == questions.count ? (reviewAtEnd ? "Hoàn thành bài" : "Xem kết quả") : (selected == nil ? "Bỏ qua / Tiếp" : "Câu tiếp theo"),
-                        symbol: "arrow.right", color: Palette.teal
-                    ) { next() }
+                VStack(spacing: 6) {
+                    if manualExplanation {
+                        HStack(spacing: 10) {
+                            MainButton(
+                                title: position + 1 == questions.count ? "Hoàn thành" :
+                                    (selected == nil && !showCurrentExplanation ? "Bỏ qua / Tiếp" : "Tiếp"),
+                                symbol: "arrow.right",
+                                color: Palette.teal
+                            ) { next() }
+                            MainButton(
+                                title: showCurrentExplanation ? "Ẩn kết quả" : "Kết quả",
+                                symbol: showCurrentExplanation ? "eye.slash.fill" : "list.bullet.clipboard.fill",
+                                color: Palette.blue
+                            ) { toggleCurrentExplanation() }
+                        }
+                    } else {
+                        HStack(spacing: 10) {
+                            Text("Câu \(position + 1)/\(questions.count)")
+                                .font(.subheadline.monospacedDigit())
+                                .foregroundColor(Palette.navy)
+                            MainButton(
+                                title: position + 1 == questions.count ? "Hoàn thành" :
+                                    (selected == nil ? "Bỏ qua / Tiếp" : "Câu tiếp theo"),
+                                symbol: "arrow.right",
+                                color: Palette.teal
+                            ) { next() }
+                        }
+                    }
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
@@ -317,17 +370,27 @@ struct QuestionSessionView: View {
     }
 
     private func choose(_ index: Int) {
-        guard selected == nil, let question = current else { return }
+        guard selected == nil, !showCurrentExplanation, let question = current else { return }
         selected = index
         answersByQuestion[position] = index
         if index == question.answer { correct += 1 }
-        // Chế độ đọc hiểu / thi: lưu đáp án rồi chuyển ngay, không bật mí đúng sai.
+        // Giữ nguyên câu đọc hiểu và ngữ pháp cho đến khi bấm "Tiếp".
+        guard !manualExplanation else { return }
         let answeredID = question.id
         nextQuestionTask?.cancel()
         nextQuestionTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: reviewAtEnd ? 260_000_000 : 850_000_000)
             guard !Task.isCancelled, !completed, current?.id == answeredID else { return }
             next()
+        }
+    }
+
+    private func toggleCurrentExplanation() {
+        guard manualExplanation, !completed else { return }
+        nextQuestionTask?.cancel()
+        nextQuestionTask = nil
+        withAnimation(.easeInOut(duration: 0.18)) {
+            showCurrentExplanation.toggle()
         }
     }
 
@@ -338,6 +401,7 @@ struct QuestionSessionView: View {
         if position + 1 < questions.count {
             position += 1
             selected = nil
+            showCurrentExplanation = false
             revealedTranscript = false
         } else { finish() }
     }
@@ -352,6 +416,14 @@ struct QuestionSessionView: View {
     }
 
     private func choiceColor(_ index: Int, question: ExamQuestion) -> Color {
+        if manualExplanation {
+            if showCurrentExplanation {
+                if index == question.answer { return Palette.teal.opacity(0.16) }
+                if selected == index { return Color.red.opacity(0.12) }
+                return .white
+            }
+            return selected == index ? Palette.blue.opacity(0.11) : .white
+        }
         guard !reviewAtEnd, selected != nil else { return .white }
         if index == question.answer { return Palette.teal.opacity(0.16) }
         if index == selected { return Color.red.opacity(0.12) }

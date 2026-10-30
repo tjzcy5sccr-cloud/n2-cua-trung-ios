@@ -257,7 +257,7 @@ struct FlashcardDeckView: View {
                     isDraggingCard = false
                 }
         )
-        .animation(.spring(response: 0.23, dampingFraction: 0.84), value: dragOffset)
+        // Kéo theo tay ngay lập tức; chỉ dùng spring khi nhả thẻ.
         .accessibilityAddTraits(.isButton)
         .accessibilityLabel(revealed ? "Mặt sau \(card.word), chạm để xem mặt trước." :
                                     "Mặt trước \(card.word), chạm để xem nghĩa.")

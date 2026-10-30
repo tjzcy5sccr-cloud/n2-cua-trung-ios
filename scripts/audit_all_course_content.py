@@ -76,3 +76,27 @@ REPORT.write_text(json.dumps({
 },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("FULL COURSE AUDIT:",len(rows),"fields.",dict(stats))
 print("Report:",REPORT)
+
+
+# Báo cáo riêng các mục chưa xác minh, phân biệt chưa dịch và bản dịch máy.
+from collections import Counter
+reviewed = {"editorial_reviewed", "source_verified", "independently_verified"}
+unresolved = [r for r in rows if r["status"] not in reviewed]
+by_section = {section: dict(Counter(r["status"] for r in unresolved if r["section"] == section))
+              for section in sorted({r["section"] for r in unresolved})}
+literal_missing = [
+    r for r in unresolved if r["status"] == "missing_or_corrupt" or
+    r["translation"].lstrip().startswith(("EN ·", "Đang bổ sung", "Bản dịch tiếng Việt đang"))
+]
+unreviewed = ROOT / "qa-reports" / "n2-untranslated-audit.json"
+unreviewed.write_text(json.dumps({
+    "purpose": "Toàn bộ trường chưa kiểm chứng/chưa dịch; không tự nhận đã chính xác 100%",
+    "unresolvedFieldCount": len(unresolved),
+    "literalMissingOrCorruptCount": len(literal_missing),
+    "bySectionAndStatus": by_section,
+    "literalMissing": literal_missing,
+    "unresolved": unresolved,
+}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+print("PENDING TRANSLATION/AUDIT:", len(unresolved),
+      "fields, literally missing or corrupt:", len(literal_missing))
+print("Breakdown:", json.dumps(by_section, ensure_ascii=False))

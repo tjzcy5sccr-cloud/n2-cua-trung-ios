@@ -1,3 +1,34 @@
+
+/// Tạo đề tại thời điểm màn hình thực sự xuất hiện, thay vì khi NavigationLink dựng trước.
+/// Khi rời rồi vào lại, một bộ câu hỏi mới được chọn và trộn cả câu hỏi lẫn đáp án.
+struct FreshPracticeSessionView: View {
+    let type: String
+    @EnvironmentObject private var store: StudyStore
+    @State private var questions: [ExamQuestion] = []
+    @State private var sessionIdentity = UUID()
+
+    var body: some View {
+        Group {
+            if questions.isEmpty {
+                ProgressView("Đang xáo trộn bài luyện…")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                QuestionSessionView(questions: questions, type: type)
+                    .id(sessionIdentity)
+            }
+        }
+        .onAppear { generateNewSession() }
+    }
+
+    private func generateNewSession() {
+        let next = type == "Đọc hiểu"
+            ? QuestionBank.reading(store.course)
+            : QuestionBank.listening(store.course)
+        questions = next.shuffled()
+        sessionIdentity = UUID()
+    }
+}
+
 import SwiftUI
 
 struct PracticeHubView: View {
@@ -20,7 +51,7 @@ struct PracticeHubView: View {
                 }
                 NavigationLink { KangxiRadicalsView() } label: {
                     ActionTile(icon: "text.book.closed", color: Palette.blue,
-                               title: "214 bộ thủ Khang Hy", detail: "Âm Hán–Việt, nghĩa và số thứ tự bộ thủ")
+                               title: "214 bộ thủ", detail: "Âm Hán–Việt, nghĩa và số thứ tự bộ thủ")
                 }
                 NavigationLink {
                     QuestionSessionView(questions: QuestionBank.vocabulary(store.course, week: store.week).shuffled(),
@@ -44,13 +75,13 @@ struct PracticeHubView: View {
                                title: "Trắc nghiệm Kanji", detail: "Tập nhận biết mặt chữ")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.reading(store.course).shuffled(), type: "Đọc hiểu")
+                    FreshPracticeSessionView(type: "Đọc hiểu")
                 } label: {
                     ActionTile(icon: "doc.text", color: Palette.blue,
                                title: "Đọc hiểu", detail: "\(store.course.readings.count) bài • 12 câu ngẫu nhiên mỗi lượt")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.listening(store.course).shuffled(), type: "Nghe hiểu")
+                    FreshPracticeSessionView(type: "Nghe hiểu")
                 } label: {
                     ActionTile(icon: "headphones", color: Palette.teal,
                                title: "Nghe hiểu", detail: "\(store.course.listening.count) bài • 12 câu ngẫu nhiên mỗi lượt")

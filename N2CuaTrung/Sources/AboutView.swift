@@ -94,6 +94,11 @@ private struct DataLicensesView: View {
                 Text("Bộ dữ liệu N2 mở rộng có nội dung biên soạn từ OpenJLPT, JMdict/KANJIDIC2 (EDRDG), Jonathan Waller và Tatoeba. Dữ liệu được chia sẻ theo giấy phép tương ứng; phần phái sinh OpenJLPT tuân thủ CC BY-SA 4.0.")
                 Link("OpenJLPT và thông báo nguồn", destination: URL(string: "https://github.com/evanclan/OpenJLPT/blob/main/NOTICE.md")!)
                 Link("CC BY-SA 4.0", destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
+                Text("Nghĩa từ vựng gợi ý lấy từ bộ Từ điển Nhật–Việt mở của Bunchaway (CC BY-SA 4.0). Những nghĩa được khớp tự động là tham khảo, chưa được kiểm chứng đầy đủ với cách đọc và ngữ cảnh.")
+                    .font(.caption)
+                Link("Từ điển Nhật–Việt mở · Bunchaway", destination: URL(string: "https://github.com/bunchaway/tu-dien-nhat-viet")!)
+                Text("Mazii, Jdict, Kanji.vn và các nguồn học tiếng Nhật tại Việt Nam được dùng để tra cứu, đối chiếu thủ công; ứng dụng không sao chép nguyên kho của các trang này.")
+                    .font(.caption)
                 Text("Các nguồn gốc giữ nguyên quyền tác giả của họ. Dữ liệu mở không chuyển thành sở hữu độc quyền của tác giả ứng dụng.")
                     .font(.caption)
             }

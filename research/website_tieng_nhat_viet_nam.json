@@ -1,0 +1,173 @@
+{
+  "updated": "2026-10-30",
+  "purpose": "Nguồn tiếng Nhật có giao diện và nội dung tiếng Việt; tham chiếu để kiểm tra, tự biên soạn nội dung JLPT N2",
+  "sites": [
+    {
+      "site": "Mazii",
+      "url": "https://mazii.net/vi-VN",
+      "focus": [
+        "tu-vung",
+        "nghia-viet",
+        "ngu-phap",
+        "vi-du"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Jdict",
+      "url": "https://jdict.net/",
+      "focus": [
+        "tu-dien",
+        "nghia-viet",
+        "kanji"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Tự học tiếng Nhật Online",
+      "url": "https://tuhoconline.net/ngu-phap-n2.html",
+      "focus": [
+        "ngu-phap-n2",
+        "cach-dung",
+        "vi-du"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Kosei",
+      "url": "https://kosei.vn/ngu-phap-n2",
+      "focus": [
+        "ngu-phap-n2",
+        "phan-biet-mau-de-nham"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "VNJPCLUB",
+      "url": "https://www.vnjpclub.com/",
+      "focus": [
+        "tu-vung",
+        "ngu-phap",
+        "kanji",
+        "nghe-doc"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "JLPT Sensei Việt Nam",
+      "url": "https://jlptvietnam.com/",
+      "focus": [
+        "ngu-phap-n2",
+        "cau-truc"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Tiếng Nhật Đơn Giản",
+      "url": "https://www.tiengnhatdongian.com/",
+      "focus": [
+        "flashcard-n2",
+        "nghia-viet",
+        "tu-vung"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Kanji.vn",
+      "url": "https://kanji.vn/",
+      "focus": [
+        "kanji",
+        "han-viet",
+        "bo-thu",
+        "tu-ghep"
+      ],
+      "priority": 1,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Ngữ Pháp Tiếng Nhật",
+      "url": "https://nguphaptiengnhat.net/",
+      "focus": [
+        "ngu-phap",
+        "tu-vung",
+        "kanji",
+        "nghe"
+      ],
+      "priority": 2,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "GOTOJLPT",
+      "url": "https://study.gotojlpt.com/",
+      "focus": [
+        "jlpt",
+        "tu-vung",
+        "ngu-phap",
+        "kanji",
+        "de-luyen"
+      ],
+      "priority": 2,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "TryNihongo",
+      "url": "https://trynihongo.com/vi",
+      "focus": [
+        "tu-dien",
+        "vi-du",
+        "ngu-phap",
+        "kanji"
+      ],
+      "priority": 2,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "OpenJLPT tiếng Việt",
+      "url": "https://openjlpt.com/",
+      "focus": [
+        "tu-dien-nhat-viet",
+        "jlpt-n2",
+        "kanji"
+      ],
+      "priority": 2,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Dũng Mori",
+      "url": "https://dungmori.com/",
+      "focus": [
+        "phuong-phap",
+        "jlpt-n2",
+        "nghe-doc"
+      ],
+      "priority": 3,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    },
+    {
+      "site": "Riki Nihongo",
+      "url": "https://riki.edu.vn/",
+      "focus": [
+        "phuong-phap",
+        "jlpt-n2",
+        "phan-tich-bai"
+      ],
+      "priority": 3,
+      "reuse_rights": "chưa xác minh quyền sao chép dữ liệu; chỉ dùng để tham chiếu và kiểm chứng, muốn nhập hàng loạt phải xin phép hoặc được cấp phép rõ ràng"
+    }
+  ],
+  "workflow": [
+    "Dùng ID từ hiện có; dò nghĩa tiếng Việt tại ít nhất hai nguồn độc lập",
+    "Biên soạn định nghĩa và ví dụ riêng, kiểm tra sắc thái ngữ pháp",
+    "Không trích xuất nguyên văn kho dữ liệu, video/audio hay bài giảng bản quyền chưa được cấp phép",
+    "Tách data gốc (giấy phép CC BY-SA) và data tự biên soạn, giữ ghi công theo giấy phép",
+    "Ưu tiên kiểm tra các mục báo cáo chất lượng N2_VI_TRANSLATION_QA.json",
+    "Chỉ xuất dữ liệu đã kiểm chứng tới flashcard và đề thi"
+  ]
+}

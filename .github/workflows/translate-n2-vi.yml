@@ -37,7 +37,5 @@ jobs:
           git add content-packs/openjlpt-n2-core.json content-packs/manifest.json content-packs/N2_VI_TRANSLATION_QA.json
           git commit -m 'content: Vietnamese N2 corpus generated; mark machine translations for review' || exit 0
           git push origin HEAD:main
-      - name: Build updated iOS app after translation
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run build-ios.yml --ref main
+      # Đẩy dữ liệu lên main sẽ kích hoạt workflow build-ios.yml qua sự kiện push.
+      # Không dùng gh workflow dispatch: GITHUB_TOKEN mặc định có thể thiếu quyền actions:write.

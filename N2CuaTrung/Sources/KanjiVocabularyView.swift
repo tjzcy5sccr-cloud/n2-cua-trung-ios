@@ -30,7 +30,37 @@ struct KanjiVocabularyView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionTitle("Nghĩa Hán tự", subtitle: item.displayMeaning)
+            SectionTitle("Nghĩa chữ Kanji", subtitle: item.displayMeaning)
+            if !item.isMeaningVerified {
+                Text("Nghĩa chữ của mục này từng được dịch máy và chưa được kiểm chứng; không dùng làm đáp án luyện thi.")
+                    .font(.caption).foregroundColor(Palette.orange)
+            }
+            if let info = KangxiReference.info(for: item.char) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Âm Hán–Việt")
+                            .font(.caption.weight(.semibold)).foregroundColor(.secondary)
+                        Text(info.sinoVietnamese)
+                            .font(.headline).foregroundColor(Palette.blue)
+                    }
+                    Spacer()
+                    if let radical = KangxiReference.radical(forKanji: item.char) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Bộ thủ #\(radical.id)")
+                                .font(.caption.weight(.semibold)).foregroundColor(.secondary)
+                            Text("\(radical.character) • \(radical.sinoVietnamese.capitalized)")
+                                .font(.headline).foregroundColor(Palette.navy)
+                            Text(radical.meaning)
+                                .font(.caption).foregroundColor(.secondary)
+                        }
+                    }
+                }
+            } else if let radical = KangxiReference.radical(for: item.char) {
+                Text("Bộ thủ #\(radical.id): \(radical.character) — \(radical.sinoVietnamese.capitalized) (\(radical.meaning))")
+                    .font(.subheadline).foregroundColor(Palette.blue)
+            }
+            Text("Bộ thủ dùng để phân loại chữ; không được lấy nghĩa bộ thủ thay cho nghĩa của cả Kanji hoặc từ ghép.")
+                .font(.caption2).foregroundColor(.secondary)
             HStack(alignment: .top, spacing: 12) {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Âm On").font(.caption.weight(.semibold)).foregroundColor(.secondary)
@@ -52,7 +82,7 @@ struct KanjiVocabularyView: View {
                         Text(value.displayMeaning)
                             .font(.subheadline).foregroundColor(Palette.teal)
                     } else {
-                        Text("Nghĩa tiếng Việt chưa có trong kho từ vựng.")
+                        Text("Nghĩa tiếng Việt chưa được xác minh trong kho từ vựng.")
                             .font(.caption).foregroundColor(.secondary)
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)

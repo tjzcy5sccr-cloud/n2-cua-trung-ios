@@ -20,6 +20,14 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
           python scripts/generate_furigana_atlas.py --strict
+      - name: Audit all course packages, grammar and example translations
+        run: python3 scripts/audit_all_course_content.py
+      - name: Upload full Japanese-Vietnamese review inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-translation-audit-report
+          path: qa-reports/n2-content-audit.json
+          if-no-files-found: error
       - name: Validate Vietnamese glossary and 214 radical table
         run: python3 scripts/check_translation_quality.py
       - name: Install XcodeGen

@@ -19,10 +19,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Build full Japanese Furigana atlas (dictionary-based)
-        run: |
-          python -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
-          python scripts/generate_furigana_atlas.py --strict
       - name: Audit all course packages, grammar and example translations
         run: python3 scripts/audit_all_course_content.py
       - name: Upload full Japanese-Vietnamese review inventory
@@ -35,6 +31,12 @@ jobs:
           if-no-files-found: error
       - name: Validate Vietnamese glossary and 214 radical table
         run: python3 scripts/check_translation_quality.py
+      - name: Keep unchecked meanings and examples only in GitHub source
+        run: python3 scripts/prepare_approved_app_resources.py
+      - name: Build full Japanese Furigana atlas (dictionary-based)
+        run: |
+          python -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python scripts/generate_furigana_atlas.py --strict
       - name: Install XcodeGen
         run: |
           if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi

@@ -6,7 +6,16 @@ private struct Word: Decodable {
     let word: String
     let reading: String
     let meaning: String
-    var displayMeaning: String { meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : meaning }
+    let meaningStatus: String?
+    var displayMeaning: String {
+        if meaning.hasPrefix("EN ·") || meaningStatus == "machine_unreviewed" {
+            return "Nghĩa Việt đang đối chiếu"
+        }
+        if meaningStatus == "dictionary_matched_unverified" {
+            return "Tham khảo: " + meaning
+        }
+        return meaning
+    }
 }
 private struct WordList: Decodable { let vocab: [Word] }
 private struct WordEntry: TimelineEntry {
@@ -15,7 +24,7 @@ private struct WordEntry: TimelineEntry {
 }
 
 private struct WordProvider: TimelineProvider {
-    private static let fallback = Word(word: "努力", reading: "どりょく", meaning: "nỗ lực")
+    private static let fallback = Word(word: "努力", reading: "どりょく", meaning: "nỗ lực", meaningStatus: nil)
     private static let words: [Word] = {
         // Có đủ kho bài học đóng gói, không giới hạn ở content.json 125 từ.
         var all: [Word] = []

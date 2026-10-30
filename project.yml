@@ -2,13 +2,13 @@ name: N2CuaTrung
 options:
   bundleIdPrefix: vn.trung
   deploymentTarget:
-    iOS: '16.0'
+    iOS: '16.2'
   xcodeVersion: '16.0'
   generateEmptyDirectories: true
 settings:
   base:
     SWIFT_VERSION: '5.0'
-    IPHONEOS_DEPLOYMENT_TARGET: '16.0'
+    IPHONEOS_DEPLOYMENT_TARGET: '16.2'
     TARGETED_DEVICE_FAMILY: '1'
     CODE_SIGN_STYLE: Automatic
     ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -26,7 +26,7 @@ targets:
   N2CuaTrung:
     type: application
     platform: iOS
-    deploymentTarget: '16.0'
+    deploymentTarget: '16.2'
     sources:
       - path: N2CuaTrung/Sources
       - path: N2CuaTrung/Resources/content.json
@@ -55,7 +55,7 @@ targets:
   N2WidgetExtension:
     type: app-extension
     platform: iOS
-    deploymentTarget: '16.0'
+    deploymentTarget: '16.2'
     sources:
       - path: N2Widget/N2WordWidget.swift
       - path: N2CuaTrung/Sources/StudyActivityAttributes.swift

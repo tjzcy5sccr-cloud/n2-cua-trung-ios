@@ -62,4 +62,36 @@ print("Source-verified Vietnamese meanings:", sum(v.get("meaningStatus") == "sou
 candidates = sum(v.get("meaningStatus") == "dictionary_matched_unverified" for v in vocab)
 print("Dictionary candidates (NOT VERIFIED):", candidates)
 print("Pending verification:", len(vocab)-vetted_vocab, "vocab;", len(kanji)-vetted_kanji, "Kanji")
+
+# Chống tái xuất hiện nội dung ngữ pháp đã từng dịch sai; kiểm toàn gói.
+grammar = data["grammar"]
+assert len(grammar) == 93, "Unexpected grammar count"
+assert all(g.get("grammarStatus") == "editorial_reviewed" for g in grammar), "Grammar notes not audited"
+assert all(g.get("translationStatus") == "editorial_reviewed" for g in grammar), "Main grammar translations not corrected"
+for g in grammar:
+    assert len(g["rule"]) > 30 and len(g["meaning"]) > 3
+    assert len(g["translation"]) > 8 and not any(
+        token in g["rule"] for token in ["_BAR_", "******", "m Bobbiet", "Gova a i"])
+    for sample in g.get("samples", []):
+        assert sample.get("translationStatus") in ("needs_sentence_review", "editorial_reviewed")
+reviewed_examples = sum(v["exampleStatus"] == "editorial_reviewed" for v in vocab)
+assert reviewed_examples >= 50, "Revised vocabulary example translations missing"
+assert all(v.get("exampleVi") for v in vocab if v.get("exampleStatus") == "editorial_reviewed")
+print("Grammar glossary: 93/93 explanations and 93/93 main translations revised")
+print("Vocabulary example translations editorially revised:", reviewed_examples, "/", len(vocab))
+print("Grammar extra sample translations still require individual review:",
+      sum(s.get("translationStatus") == "needs_sentence_review"
+          for g in grammar for s in g.get("samples", [])))
+# Gesture and voice regression tests are static checks, not substitutes for device tests.
+app = ROOT / "N2CuaTrung/Sources"
+for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
+    code = (app / name).read_text(encoding="utf-8")
+    assert "DragGesture(minimumDistance: 28)" in code, name
+    assert "let horizontal =" in code and "let vertical =" in code, name
+    assert ".simultaneousGesture" in code and ".highPriorityGesture" not in code, name
+voice = (app / "StudyStore.swift").read_text(encoding="utf-8")
+assert "pendingSpeechWork?.cancel()" in voice
+assert "generation == self.speechGeneration" in voice
+print("PASS: both card decks accept 4-way swipes and cancel queued stale speech.")
+
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

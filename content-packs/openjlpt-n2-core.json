@@ -1,6 +1,6 @@
 {
   "id": "openjlpt-n2-core",
-  "version": 9,
+  "version": 10,
   "title": "N2 Mở rộng mở: Từ vựng, Kanji, Ngữ pháp (OpenJLPT · CC BY-SA 4.0; nghĩa EN)",
   "attribution": {
     "source": "OpenJLPT",
@@ -26036,1769 +26036,2141 @@
     {
       "id": "olj-g-ni-saishite",
       "pattern": "〜に際して",
-      "meaning": "trong dịp; khi; vào thời điểm của",
-      "rule": "Danh từ + に際して / Động từ thể từ điển + に際して / Danh từ + に際しての + Danh từ · Hình m dời đi, cho nhem d jap đ gij vnm, mà vyo và nàm git giá nchu nn, ra i i, hợp vn*** th*******Gh*********Ghzn* nhan dhzuzu.",
+      "meaning": "khi, nhân dịp sự kiện quan trọng",
+      "rule": "N/Vる + に際して. Lối nói trang trọng, thường dùng khi bắt đầu hoặc chuẩn bị sự kiện.",
       "example": "新製品の発売に際して、記者会見が開かれた。",
       "translation": "Buổi họp báo đã được tổ chức vào dịp công bố sản phẩm mới.",
       "week": 1,
       "samples": [
         {
           "text": "海外へ渡航するに際しては、現地の安全情報を必ず確認してください。",
-          "translation": "Khi đi du lịch, hãy kiểm tra thông tin an toàn địa phương."
+          "translation": "Khi đi du lịch, hãy kiểm tra thông tin an toàn địa phương.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "契約の更新に際しての注意事項をまとめました。",
-          "translation": "Chúng tôi đã tóm tắt các điểm để ghi chú khi tái ký hợp đồng."
+          "translation": "Chúng tôi đã tóm tắt các điểm để ghi chú khi tái ký hợp đồng.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-megutte",
       "pattern": "〜をめぐって",
-      "meaning": "Hơn; liên quan; xung quanh (một vấn đề tranh cãi)",
-      "rule": "Danh từ + をめぐって / Danh từ + をめぐる + Danh từ · thể hiện qua những gì tôi đã làm với những người khác.",
+      "meaning": "xoay quanh vấn đề đang được bàn luận hoặc tranh cãi",
+      "rule": "N + をめぐって; をめぐる + N. Dùng với tranh luận và nhiều quan điểm.",
       "example": "新しい空港の建設をめぐって、住民の意見が二つに分かれている。",
       "translation": "Dân cư bị chia rẽ vì việc xây dựng một sân bay mới.",
       "week": 1,
       "samples": [
         {
           "text": "父の遺産をめぐって、兄弟の間でもめごとが起きた。",
-          "translation": "Một cuộc tranh cãi giữa anh chị em chúng ta vì tài sản thừa kế của cha chúng."
+          "translation": "Một cuộc tranh cãi giữa anh chị em chúng ta vì tài sản thừa kế của cha chúng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "首相の発言をめぐる議論は、今も続いている。",
-          "translation": "Cuộc tranh luận xoay quanh lời nhận xét của Thủ tướng vẫn đang diễn ra."
+          "translation": "Cuộc tranh luận xoay quanh lời nhận xét của Thủ tướng vẫn đang diễn ra.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-tsuujite-o-tooshite",
       "pattern": "〜を通じて / 〜を通して",
-      "meaning": "qua; qua; qua; qua; trong suốt (một giai đoạn)",
-      "rule": "Danh từ + を通じて / Danh từ + を通して · i - i - i - i - i - i - i - i - i - i i i kin m gon nn nà nà nà nà nà i i hi i cnghiệ gim có chqao; i - e i i i - e i e chút i i i--n o hin...",
+      "meaning": "thông qua; trong suốt một giai đoạn",
+      "rule": "N + を通じて/を通して. Chỉ phương tiện, người trung gian hoặc suốt thời kỳ.",
       "example": "共通の友人を通じて、今の妻と知り合った。",
       "translation": "Tôi phải biết vợ tôi thông qua một người bạn chung.",
       "week": 1,
       "samples": [
         {
           "text": "ボランティア活動を通して、地域の人々とのつながりが深まった。",
-          "translation": "Qua công việc tình nguyện, mối quan hệ của tôi với những người trong cộng đồng ngày càng bền chặt hơn."
+          "translation": "Qua công việc tình nguyện, mối quan hệ của tôi với những người trong cộng đồng ngày càng bền chặt hơn.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "この地域は一年を通じて雨が少ない。",
-          "translation": "Vùng này chỉ có ít mưa suốt năm."
+          "translation": "Vùng này chỉ có ít mưa suốt năm.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-nozoite",
       "pattern": "〜を除いて",
-      "meaning": "Ngoại trừ, tách biệt, ngoại trừ",
-      "rule": "Danh từ + を除いて / Danh từ + を除き / Danh từ + を除く + Danh từ · Tạm biệt.",
+      "meaning": "ngoại trừ; trừ ra",
+      "rule": "N + を除いて/を除き/を除く + N. Loại trừ một đối tượng khỏi tập hợp.",
       "example": "年末年始を除いて、図書館は毎日開いている。",
       "translation": "Thư viện mở cửa mỗi ngày ngoại trừ vào ngày lễ năm mới.",
       "week": 1,
       "samples": [
         {
           "text": "一部の地域を除き、明日は全国的に晴れるでしょう。",
-          "translation": "Ngoại trừ một số nơi, ngày mai sẽ có nắng trên toàn quốc."
+          "translation": "Ngoại trừ một số nơi, ngày mai sẽ có nắng trên toàn quốc.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "この件について知っているのは、私を除いて三人しかいない。",
-          "translation": "Ngoài tôi ra, chỉ có ba người biết về chuyện này."
+          "translation": "Ngoài tôi ra, chỉ có ba người biết về chuyện này.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ka-no-you-da",
       "pattern": "〜かのようだ",
-      "meaning": "Như thể, như thể (khi nó không thực sự như vậy)",
-      "rule": "Động từ thể thông thường / i-Adj + かのようだ / na-Adj + である + かのようだ / Danh từ + である + かのようだ · Nhiều vön h meh* h*n****BAR_Và nhé*******************************************************************************************************",
+      "meaning": "như thể là; cứ như là",
+      "rule": "Thể thường + かのようだ; N/na-A + であるかのようだ. So sánh với giả định.",
       "example": "彼はまるで何も知らないかのような顔をしていた。",
       "translation": "Ông mặc một cái nhìn như thể ông không biết gì ở tất cả.",
       "week": 2,
       "samples": [
         {
           "text": "三月なのに、真冬に戻ったかのような寒さだ。",
-          "translation": "Bây giờ là tháng ba, nhưng trời lạnh như thể chúng ta đã trở lại giữa mùa đông vậy."
+          "translation": "Bây giờ là tháng ba, nhưng trời lạnh như thể chúng ta đã trở lại giữa mùa đông vậy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "その記者は、うわさをまるで事実であるかのように報じた。",
-          "translation": "Phóng viên báo cáo tin đồn như thể đó là sự thật."
+          "translation": "Phóng viên báo cáo tin đồn như thể đó là sự thật.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kaneru",
       "pattern": "〜かねる",
-      "meaning": "không thể; không thể (chính phủ từ chối), thấy nó khó",
-      "rule": "Động từ-stem + かねる · Tôi là một trong những người được chọn để làm một người bạn của mình.",
+      "meaning": "khó có thể; không thể (lời từ chối lịch sự)",
+      "rule": "Vます bỏ ます + かねる. Thường dùng khi từ chối một cách trang trọng.",
       "example": "申し訳ございませんが、そのご質問にはお答えしかねます。",
       "translation": "Tôi rất tiếc, nhưng tôi không thể trả lời câu hỏi đó.",
       "week": 2,
       "samples": [
         {
           "text": "個人情報に関するお問い合わせには、お電話では対応いたしかねます。",
-          "translation": "Chúng tôi không thể trả lời câu hỏi về thông tin cá nhân qua điện thoại."
+          "translation": "Chúng tôi không thể trả lời câu hỏi về thông tin cá nhân qua điện thoại.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼のやり方には、どうしても賛成しかねる。",
-          "translation": "Tôi chỉ không thể đồng ý với phương pháp của anh ta."
+          "translation": "Tôi chỉ không thể đồng ý với phương pháp của anh ta.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-zu-ni-wa-irarenai",
       "pattern": "〜ずにはいられない",
-      "meaning": "không thể không làm; không thể cưỡng lại làm",
-      "rule": "Động từ thể ない stem + ずにはいられない · M dài dòng hơn nữa, ehng gi gong tìng ình yện hu biên giới.",
+      "meaning": "không thể không; không kìm được",
+      "rule": "Vない bỏ ない + ずにはいられない; する → せず. Thôi thúc khó cưỡng.",
       "example": "あまりにひどいニュースに、怒りを感じずにはいられなかった。",
       "translation": "Tôi không thể không cảm thấy tức giận với tin xấu như vậy.",
       "week": 2,
       "samples": [
         {
           "text": "彼女の苦労話を聞いて、泣かずにはいられなかった。",
-          "translation": "Nghe về những khó khăn mà cô ấy đã trải qua, tôi không thể không khóc."
+          "translation": "Nghe về những khó khăn mà cô ấy đã trải qua, tôi không thể không khóc.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "このシリーズは、一度読み始めたら最後まで読まずにはいられない。",
-          "translation": "Một khi bắt đầu series này, bạn không thể dừng lại cho đến khi đọc xong."
+          "translation": "Một khi bắt đầu series này, bạn không thể dừng lại cho đến khi đọc xong.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-te-wa-irarenai",
       "pattern": "〜てはいられない",
-      "meaning": "không thể đủ khả năng để (giữ) làm; không thể chỉ",
-      "rule": "Động từ thể て + はいられない · Tìnhhu huzng nàng nkhông cho phép m Shamai i de thau l1i bang A, vì v v i v mêy m địa phận feeti c Kahhy b* eép phành ành íng.",
+      "meaning": "không thể cứ tiếp tục như thế",
+      "rule": "Vて + はいられない. Phải ngừng một việc và hành động.",
       "example": "締め切りが迫っているので、のんびりしてはいられない。",
       "translation": "Thời hạn sắp đến rồi, nên tôi không đủ khả năng dễ dàng.",
       "week": 2,
       "samples": [
         {
           "text": "困っている人を見ると、黙ってはいられない性格だ。",
-          "translation": "Tôi là loại người không thể im lặng khi thấy ai đó gặp rắc rối."
+          "translation": "Tôi là loại người không thể im lặng khi thấy ai đó gặp rắc rối.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "試験まであと一日だから、遊んではいられない。",
-          "translation": "VI · Vì chỉ còn một ngày nữa là thi nên không thể mải chơi."
+          "translation": "VI · Vì chỉ còn một ngày nữa là thi nên không thể mải chơi.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-mono-ka",
       "pattern": "〜ものか",
-      "meaning": "Không có cách nào ( Will I), như thể, tôi sẽ không bao giờ",
-      "rule": "Động từ thể từ điển / i-Adj / na-Adj + な + ものか · T say _BAR_Cuhei _BAR_ _BAR_ _BAR_ _BAR_; _BAR_; _BAR_ _BAR_ _BAR_ _ _BAR_ _BAR_ _ _ _BAR_.",
+      "meaning": "đời nào; nhất quyết không",
+      "rule": "Thể thường + ものか. Phủ định mạnh trong khẩu ngữ.",
       "example": "あんな失礼な店には、二度と行くものか。",
       "translation": "Tôi sẽ không bao giờ đi đến cửa hàng thô lỗ đó một lần nữa.",
       "week": 3,
       "samples": [
         {
           "text": "一度や二度失敗したくらいで、諦めるもんか。",
-          "translation": "Như thể tôi sẽ từ bỏ chỉ vì tôi thất bại một hai lần."
+          "translation": "Như thể tôi sẽ từ bỏ chỉ vì tôi thất bại một hai lần.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "あの人の気持ちなんて、君に分かるものか。",
-          "translation": "Như thể anh có thể hiểu được cảm giác của cô ấy."
+          "translation": "Như thể anh có thể hiểu được cảm giác của cô ấy.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-mono-nara",
       "pattern": "〜ものなら",
-      "meaning": "nếu (có thể), nếu chỉ một người có thể",
-      "rule": "Động từ thể từ điển (potential form) + ものなら · ́G nghĩa là ci loci v Shanen crimei gì deó hokhó khó khóc thkhóc không thhem; cá nhân ivau deh nhon chính cính thính... mic ec i iách thách thc. dhe sayng nhm v Chun N1 (GU) (Nu sâu any deu anzá, mizizit izux, mi i i",
+      "meaning": "nếu có thể; giả như có thể làm được",
+      "rule": "V thể khả năng + ものなら. Điều khó hoặc gần như không thể thực hiện.",
       "example": "できるものなら、学生時代に戻ってもう一度やり直したい。",
       "translation": "Nếu có thể, tôi sẽ quay lại học sinh của mình và làm lại từ đầu.",
       "week": 3,
       "samples": [
         {
           "text": "行けるものなら行きたいが、その日はどうしても仕事を休めない。",
-          "translation": "Tôi sẽ đi nếu có thể, nhưng tôi không thể nghỉ làm hôm đó."
+          "translation": "Tôi sẽ đi nếu có thể, nhưng tôi không thể nghỉ làm hôm đó.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "止められるものなら止めてみろ。",
-          "translation": "Nếu có thể thì hãy ngăn tôi lại."
+          "translation": "Nếu có thể thì hãy ngăn tôi lại.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kurai-nara-gurai-nara",
       "pattern": "〜くらいなら / 〜ぐらいなら",
-      "meaning": "Thay vì, nếu nó đến để (làm điều đó), tôi thà",
-      "rule": "Động từ thể từ điển + くらいなら / Động từ thể từ điển + ぐらいなら · Một người phụ nữ... một người phụ nữ... một người phụ nữ... một người phụ nữ... một người phụ nữ... một người phụ nữ... một người đàn ông.",
+      "meaning": "thà ... còn hơn ...",
+      "rule": "Vる + くらいなら/ぐらいなら. Chọn phương án ít tệ hơn.",
       "example": "あんな人に頭を下げるくらいなら、会社を辞めたほうがましだ。",
       "translation": "Tôi thà nghỉ việc còn hơn cúi đầu trước một người như hắn.",
       "week": 3,
       "samples": [
         {
           "text": "途中で投げ出すぐらいなら、最初から引き受けないほうがいい。",
-          "translation": "Nếu anh muốn bỏ cuộc nửa đường, tốt hơn là đừng để chuyện đó xảy ra ngay từ đầu."
+          "translation": "Nếu anh muốn bỏ cuộc nửa đường, tốt hơn là đừng để chuyện đó xảy ra ngay từ đầu.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "ここであきらめるくらいなら、もう一度挑戦したい。",
-          "translation": "VI · Thà thử thêm lần nữa còn hơn bỏ cuộc ở đây."
+          "translation": "VI · Thà thử thêm lần nữa còn hơn bỏ cuộc ở đây.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-mono-ga-aru",
       "pattern": "〜ものがある",
-      "meaning": "Có một cái gì đó (về nó đó là)...; nó thực sự là",
-      "rule": "Động từ thể từ điển / i-Adj / na-Adj + な + ものがある · Cho th mồng một m govang m thau againi wu, đ goa c goa diễn giín gi yes v Evan m* t nh nh nh nh nh nh nh nh nh ch Ch khởi l Landung l thing m địa phương got dì, đó i đánh giá, khong phei phiti  II tuyên bduhề về wduzề s Shh twan twan twan ngh nghqa.",
+      "meaning": "có nét gì đó rất; mang cảm giác đáng kể",
+      "rule": "Vる/i-A/na-A + な + ものがある. Đánh giá ấn tượng hoặc cảm xúc.",
       "example": "この画家の初期の作品には、見る人の心を強く打つものがある。",
       "translation": "Có cái gì đó trong tác phẩm đầu tiên của họa sĩ này làm cho người xem cảm động sâu sắc.",
       "week": 4,
       "samples": [
         {
           "text": "毎日二時間かけて通勤するのは、正直つらいものがある。",
-          "translation": "Thành thật mà nói, giao tiếp hai tiếng mỗi ngày khá là khó khăn."
+          "translation": "Thành thật mà nói, giao tiếp hai tiếng mỗi ngày khá là khó khăn.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "若い選手たちの成長ぶりには、目を見張るものがある。",
-          "translation": "Sự tiến bộ của những người chơi trẻ thật sự đáng chú ý."
+          "translation": "Sự tiến bộ của những người chơi trẻ thật sự đáng chú ý.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-koto-ka",
       "pattern": "〜ことか",
-      "meaning": "Bao nhiêu...!",
-      "rule": "Question word + … + Động từ thể thông thường / i-Adj / na-Adj + な + ことか · Thông-sơ-a-sơ-a-vat-hut hợ v Sha- Sha, _BAR_Hô-rô- x4i- xhei- phhei* i-ti-su-su-su- ga-đi-ê-đi-a; nó-chuy goi-san các giác cáng- u-a- gii- gii- u- u-a- u- gi- u- gi-a- u- x*************",
+      "meaning": "biết bao; thật là ... biết chừng nào",
+      "rule": "Từ nghi vấn + thể thường + ことか. Nhấn mạnh mức độ cảm thán.",
       "example": "この日が来るのを、どれほど待ち望んだことか。",
       "translation": "Tôi đã chờ ngày này bao lâu rồi!",
       "week": 4,
       "samples": [
         {
           "text": "一人暮らしを始めて、家族のありがたさを何度感じたことか。",
-          "translation": "Kể từ khi tôi bắt đầu sống một mình, tôi không thể đếm bao nhiêu lần tôi cảm thấy biết ơn gia đình mình."
+          "translation": "Kể từ khi tôi bắt đầu sống một mình, tôi không thể đếm bao nhiêu lần tôi cảm thấy biết ơn gia đình mình.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "無事だと聞いて、どんなに安心したことか。",
-          "translation": "Thật nhẹ nhõm biết bao khi nghe tin bạn được an toàn!"
+          "translation": "Thật nhẹ nhõm biết bao khi nghe tin bạn được an toàn!",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-koto-ni-wa",
       "pattern": "〜ことに（は）",
-      "meaning": "(emotion)- nói thẳng ra, điều gì là (sprising, buồn bã, etc.) là",
-      "rule": "Động từ-ta / i-Adj / na-Adj + な + ことに（は） · M bởi vì......còn có thể là......một người đàn ông khác......và một người đàn ông khác......và một người đàn ông khác......và một người đàn ông khác......và một người đàn ông khác.",
+      "meaning": "điều ... là; thật ... là",
+      "rule": "Vた/i-A/na-A + な + ことに(は). Bộc lộ cảm xúc về sự việc.",
       "example": "驚いたことに、彼は会社を辞めてパン屋を開いたそうだ。",
       "translation": "Ngạc nhiên thay, tôi nghe anh bỏ công ty và mở một tiệm bánh.",
       "week": 4,
       "samples": [
         {
           "text": "残念なことに、その美しい建物は来月取り壊されることになった。",
-          "translation": "Đáng buồn thay, tháng sau tòa nhà đẹp đẽ này sẽ bị phá hủy."
+          "translation": "Đáng buồn thay, tháng sau tòa nhà đẹp đẽ này sẽ bị phá hủy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "うれしいことには、応募作品が予想の倍以上も集まった。",
-          "translation": "Thật vui mừng khi chúng tôi nhận được nhiều mục như mong đợi."
+          "translation": "Thật vui mừng khi chúng tôi nhận được nhiều mục như mong đợi.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-koto-dakara",
       "pattern": "〜ことだから",
-      "meaning": "Biết (ai đó), vì nó là (ai đó), chắc chắn rồi.",
-      "rule": "Danh từ + の + ことだから · T says nh wì di meanng di tani gi yes bi theni...... về tính cá nhân.....c m mồc i...... nó dEn.....h.....v.....v.....v.....v.....v...",
+      "meaning": "vì là người có đặc điểm ... nên chắc",
+      "rule": "N chỉ người + のことだから. Suy đoán từ tính cách đã biết.",
       "example": "几帳面な彼のことだから、書類はもう準備してあるだろう。",
       "translation": "Biết hắn tỉ mỉ thế nào, hắn có thể đã chuẩn bị sẵn giấy tờ rồi.",
       "week": 4,
       "samples": [
         {
           "text": "あの子のことだから、きっとどこかで寄り道をしているんだよ。",
-          "translation": "Tôi cá là họ đã dừng lại ở đâu đó trên đường đi."
+          "translation": "Tôi cá là họ đã dừng lại ở đâu đó trên đường đi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "時間に厳しい先生のことだから、遅刻は許さないだろう。",
-          "translation": "VI · Vì thầy rất nghiêm về giờ giấc nên chắc sẽ không tha thứ việc đi muộn."
+          "translation": "VI · Vì thầy rất nghiêm về giờ giấc nên chắc sẽ không tha thứ việc đi muộn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-nai-koto-ni-wa",
       "pattern": "〜ないことには",
-      "meaning": "trừ khi... không (thì nó không thể xảy ra)",
-      "rule": "Động từ thể ない / i-Adj-ku + ない / na-Adj + でない / Danh từ + でない + ことには · Đi đi! Đi đi!",
+      "meaning": "nếu không ... thì không thể ...",
+      "rule": "Vない/N・na-A + でない + ことには. Điều kiện tiên quyết.",
       "example": "実際に会って話してみないことには、どんな人か分からない。",
       "translation": "Bạn không thể nói ai đó như thế nào trừ khi bạn thực sự gặp và nói chuyện với họ.",
       "week": 5,
       "samples": [
         {
           "text": "社長の許可が出ないことには、このプロジェクトは始められない。",
-          "translation": "Chúng ta không thể bắt đầu dự án này trừ khi Tổng thống cho phép."
+          "translation": "Chúng ta không thể bắt đầu dự án này trừ khi Tổng thống cho phép.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "資料を読まないことには、答えを出せない。",
-          "translation": "VI · Nếu không đọc tài liệu thì không thể đưa ra câu trả lời."
+          "translation": "VI · Nếu không đọc tài liệu thì không thể đưa ra câu trả lời.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-koto-wa-ga",
       "pattern": "〜ことは〜が",
-      "meaning": "Đúng là... nhưng tôi...",
-      "rule": "Động từ thể thông thường + ことは + Động từ thể thông thường + が / i-Adj + ことは + i-Adj + が / na-Adj + な + ことは + na-Adj + だ + が · Cùng m địa phương an bài bởi công ty Linux QAW*** Leahc llup lwai*******************************************************Aulam********ùt***** phòng.",
+      "meaning": "đúng là ... nhưng ...",
+      "rule": "Lặp lại V hoặc tính từ với ことは ... が. Công nhận một phần rồi bổ sung hạn chế.",
       "example": "あの映画、見たことは見たけど、途中で寝てしまった。",
       "translation": "Tôi đã xem bộ phim đó, nhưng tôi đã ngủ quên nửa chừng.",
       "week": 5,
       "samples": [
         {
           "text": "この部屋は広いことは広いが、駅からかなり遠い。",
-          "translation": "Căn hộ này rộng rãi, chắc rồi, nhưng nó cách trạm khá xa."
+          "translation": "Căn hộ này rộng rãi, chắc rồi, nhưng nó cách trạm khá xa.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼の説明は、分かることは分かるが、納得はできない。",
-          "translation": "Tôi hiểu lời giải thích của anh ta, nhưng tôi không tin."
+          "translation": "Tôi hiểu lời giải thích của anh ta, nhưng tôi không tin.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-amari-ni",
       "pattern": "〜あまり（に）",
-      "meaning": "quá nhiều rằng, quá nhiều, bởi vì quá nhiều",
-      "rule": "Động từ thể từ điển / Động từ-ta / na-Adj + な / Danh từ + の + あまり（に） · M hết m biên tập của thi thể này, còn tôi thì không.",
+      "meaning": "vì quá ... đến mức ...",
+      "rule": "Vる/Vた/N + の/na-A + な + あまり. Quá mức dẫn đến hệ quả.",
       "example": "彼女は緊張のあまり、スピーチの内容を忘れてしまった。",
       "translation": "Cô ấy quá lo lắng đến nỗi quên mất mình sẽ nói gì trong bài diễn văn.",
       "week": 5,
       "samples": [
         {
           "text": "子どもの将来を心配するあまり、親が口を出しすぎることがある。",
-          "translation": "Vì quá lo lắng cho tương lai của con cái, cha mẹ đôi khi can thiệp quá nhiều."
+          "translation": "Vì quá lo lắng cho tương lai của con cái, cha mẹ đôi khi can thiệp quá nhiều.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "うれしさのあまり、思わず涙が出た。",
-          "translation": "Tôi vui mừng đến nỗi nước mắt tôi tuôn trào."
+          "translation": "Tôi vui mừng đến nỗi nước mắt tôi tuôn trào.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ue-ni",
       "pattern": "〜上（に）",
-      "meaning": "bên cạnh đó, trên đầu của, bên cạnh",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / Danh từ + である + 上（に） · Themm m* i Shaim thoh i Hai cùa cùng lo truyi (t “t“ t ” + t ” (t“ t“ t ”), x “Xu ” + x mồci ”).",
+      "meaning": "không những ... mà còn",
+      "rule": "Thể thường/N + である + 上に. Bổ sung đặc điểm cùng chiều.",
       "example": "あのレストランは料理がおいしい上に、値段も手頃だ。",
       "translation": "Nhà hàng đó có thức ăn ngon, và trên hết, giá cả hợp lý.",
       "week": 6,
       "samples": [
         {
           "text": "道に迷った上に、雨まで降ってきた。",
-          "translation": "Chúng tôi không chỉ bị lạc, trời cũng bắt đầu mưa."
+          "translation": "Chúng tôi không chỉ bị lạc, trời cũng bắt đầu mưa.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼女は仕事が速い上、ミスもほとんどない。",
-          "translation": "Cô ấy làm việc rất nhanh, và cũng không phạm sai lầm gì."
+          "translation": "Cô ấy làm việc rất nhanh, và cũng không phạm sai lầm gì.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ue-de",
       "pattern": "〜上で",
-      "meaning": "sau (làm), khi; trong (làm), khi nó đến",
-      "rule": "Động từ-ta + 上で / Danh từ + の + 上で / Động từ thể từ điển + 上で · Verb-ta + pid: rem a ́eu tiên, sau ió b trên c* e1. đ. v. v. n. d. Giên d mồu + _BAR_BAR_ tá trìnnh c gona / for mụ ních conec a.  vi sâu sắc doanhhhhh thu-- ow----henging nó v.BAR_BAR_BAR_.",
+      "meaning": "sau khi; khi xét hoặc thực hiện ...",
+      "rule": "Vた + 上で là sau khi; Vる/N + の + 上で là khi xét việc.",
       "example": "家族とよく相談した上で、お返事いたします。",
       "translation": "Tôi sẽ trả lời anh sau khi thảo luận cẩn thận với gia đình tôi.",
       "week": 6,
       "samples": [
         {
           "text": "内容を確認した上で、契約書に署名してください。",
-          "translation": "Vui lòng ký vào hợp đồng sau khi kiểm tra nội dung của nó."
+          "translation": "Vui lòng ký vào hợp đồng sau khi kiểm tra nội dung của nó.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "外国語を学ぶ上で大切なのは、間違いを恐れないことだ。",
-          "translation": "Điều quan trọng trong việc học ngoại ngữ là không sợ những sai lầm."
+          "translation": "Điều quan trọng trong việc học ngoại ngữ là không sợ những sai lầm.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ijou-wa",
       "pattern": "〜以上（は）",
-      "meaning": "kể từ đó, bây giờ rằng, miễn là",
-      "rule": "Động từ thể thông thường / na-Adj + である / Danh từ + である + 以上（は） · T say mê m say mê i say mê huzéng for phép, rút ra i ngh lĩnha vụy, giíi ty cháno chánng hohán ián coán cc chc chzn. g gon nhy nhy nhn run c chớ _BAR_, _BAR_ _BAR_Hí ní nínhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+      "meaning": "một khi đã ... thì",
+      "rule": "Thể thường + 以上(は). Đã làm thì có trách nhiệm hoặc hệ quả.",
       "example": "引き受けた以上は、最後まで責任を持ってやり遂げるつもりだ。",
       "translation": "Bây giờ tôi đã nắm bắt được nó, tôi dự định sẽ nhìn thấy nó thông qua có trách nhiệm cho đến cuối cùng.",
       "week": 6,
       "samples": [
         {
           "text": "プロである以上、言い訳は許されない。",
-          "translation": "Miễn là anh là một chuyên gia, thì lời bào chữa không được chấp nhận."
+          "translation": "Miễn là anh là một chuyên gia, thì lời bào chữa không được chấp nhận.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "証拠がない以上、彼を犯人と決めつけることはできない。",
-          "translation": "Vì không có bằng chứng, chúng ta không thể kết luận hắn là hung thủ."
+          "translation": "Vì không có bằng chứng, chúng ta không thể kết luận hắn là hung thủ.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kara-koso",
       "pattern": "〜からこそ",
-      "meaning": "chính xác bởi vì đó là bởi vì...",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + だ / Danh từ + だ + からこそ · Nh mồng một, lý do này, và ong có lý do nào okhác, ath proudc s Jaracz, th yeeng lýýýe ging ongng đwai.",
+      "meaning": "chính vì ... nên",
+      "rule": "Thể thường + からこそ. Nhấn mạnh nguyên nhân.",
       "example": "君のことを思っているからこそ、厳しいことを言うんだ。",
       "translation": "Chính vì tôi quan tâm đến anh nên mới khó khăn với anh.",
       "week": 6,
       "samples": [
         {
           "text": "苦しい時期があったからこそ、今の成功があるのだと思う。",
-          "translation": "Tôi nghĩ chính vì chúng ta đã trải qua những thời kỳ khó khăn mà chúng ta đang thành công."
+          "translation": "Tôi nghĩ chính vì chúng ta đã trải qua những thời kỳ khó khăn mà chúng ta đang thành công.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "小さな会社だからこそできるサービスもある。",
-          "translation": "Có một số dịch vụ chúng tôi có thể cung cấp chính xác bởi vì chúng tôi là một công ty nhỏ."
+          "translation": "Có một số dịch vụ chúng tôi có thể cung cấp chính xác bởi vì chúng tôi là một công ty nhỏ.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kara-shite",
       "pattern": "〜からして",
-      "meaning": "phán xét từ; (bắt đầu) ngay cả với; để bắt đầu với",
-      "rule": "Danh từ + からして · Hai s(S) daby dụng: 'ruyệu nat say X' (basis for m*t đoán), và 'ngay cí X, không nói vói đ Chenn còn còn lwai', n*i*m n* n*m de goi goi Diện foràn b*, theeeememe*******a.",
+      "meaning": "ngay từ ... đã; xét từ ...",
+      "rule": "N + からして. Ví dụ đầu tiên cũng đủ làm căn cứ.",
       "example": "空の様子からして、午後は雨になりそうだ。",
       "translation": "Dựa trên ánh nhìn của bầu trời, có thể trời sẽ mưa vào buổi chiều.",
       "week": 7,
       "samples": [
         {
           "text": "あの店は、店員の態度からして感じが悪い。",
-          "translation": "Cửa hàng đó không dễ chịu, bắt đầu với thái độ của nhân viên."
+          "translation": "Cửa hàng đó không dễ chịu, bắt đầu với thái độ của nhân viên.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼の話は、最初の前提からして間違っている。",
-          "translation": "Lập luận của ông ấy là sai từ tiền đề đầu tiên."
+          "translation": "Lập luận của ông ấy là sai từ tiền đề đầu tiên.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kara-suru-to-kara-sureba",
       "pattern": "〜からすると / 〜からすれば",
-      "meaning": "phán xét từ; theo quan điểm của",
-      "rule": "Danh từ + からすると / Danh từ + からすれば · M hết thảy là b biên giới của nhóm du mục La Mã, còn đây là một nhóm người khác.",
+      "meaning": "xét từ; theo quan điểm của",
+      "rule": "N + からすると/からすれば. Suy đoán hoặc nhìn từ lập trường.",
       "example": "あの話し方からすると、彼は関西の出身だろう。",
       "translation": "Dựa theo cách hắn nói, hắn có thể đến từ vùng Kansai.",
       "week": 7,
       "samples": [
         {
           "text": "親からすれば、子どもはいくつになっても子どもだ。",
-          "translation": "Theo quan điểm của cha mẹ, trẻ em vẫn là trẻ em bất kể chúng bao nhiêu tuổi."
+          "translation": "Theo quan điểm của cha mẹ, trẻ em vẫn là trẻ em bất kể chúng bao nhiêu tuổi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "表情からすると、彼は結果に満足しているようだ。",
-          "translation": "VI · Nhìn biểu cảm thì có vẻ anh ấy hài lòng với kết quả."
+          "translation": "VI · Nhìn biểu cảm thì có vẻ anh ấy hài lòng với kết quả.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kara-miru-to-kara-mireba",
       "pattern": "〜から見ると / 〜から見れば",
-      "meaning": "Từ góc nhìn của, đánh giá từ, nhìn từ",
-      "rule": "Danh từ + から見ると / Danh từ + から見れば · Xem xét m biên tập eutlfi gì í í i**********************************************************************************************************",
+      "meaning": "nhìn từ góc độ; xét theo",
+      "rule": "N + から見ると/から見れば. Đánh giá theo một góc nhìn.",
       "example": "外国人から見ると、日本の習慣には不思議なものが多いらしい。",
       "translation": "Có vẻ như, theo quan điểm của một người ngoại quốc, nhiều phong tục Nhật Bản có vẻ kỳ lạ.",
       "week": 7,
       "samples": [
         {
           "text": "今の成績から見れば、第一志望の合格は十分可能だ。",
-          "translation": "Dựa trên điểm số hiện tại của bạn, vào được trường đầu tiên của bạn là hoàn toàn có thể."
+          "translation": "Dựa trên điểm số hiện tại của bạn, vào được trường đầu tiên của bạn là hoàn toàn có thể.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "学生から見ると、この制度は少し複雑だ。",
-          "translation": "VI · Dưới góc nhìn học sinh, hệ thống này hơi phức tạp."
+          "translation": "VI · Dưới góc nhìn học sinh, hệ thống này hơi phức tạp.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kara-iu-to-kara-itte",
       "pattern": "〜からいうと / 〜からいって",
-      "meaning": "theo quan điểm của; đánh giá bằng",
-      "rule": "Danh từ + からいうと / Danh từ + からいって · Danh t wellm mhet tieiu chu chu dich die dihem (TI_BAR_, _BAR_, _BAR_) không phíi* m* t kit feeti: nói BAR_BAR_khôe phi×i_Gruc. _BAR_C_ Crang _BAR_ Crang - hix",
+      "meaning": "xét về mặt; theo tiêu chí",
+      "rule": "N + からいうと/からいって. Xác định tiêu chí nhận xét.",
       "example": "立地からいうと、駅前のマンションのほうが便利だ。",
       "translation": "Về mặt địa điểm, căn hộ trước trạm thuận tiện hơn.",
       "week": 8,
       "samples": [
         {
           "text": "これまでの経験からいって、この計画はうまくいかないと思う。",
-          "translation": "Dựa trên kinh nghiệm trước đây, tôi không nghĩ kế hoạch này sẽ thành công."
+          "translation": "Dựa trên kinh nghiệm trước đây, tôi không nghĩ kế hoạch này sẽ thành công.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "費用からいうと、電車よりバスのほうが安い。",
-          "translation": "VI · Xét về chi phí, xe buýt rẻ hơn tàu."
+          "translation": "VI · Xét về chi phí, xe buýt rẻ hơn tàu.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-sai-ni",
       "pattern": "〜際（に）",
-      "meaning": "khi, vào thời điểm của, vào dịp của",
-      "rule": "Động từ thể từ điển / Động từ-ta / Danh từ + の + 際（に） · M hết thảy là phin chính cho đến khi xong việc, phổ bi Yến Xích Hà...",
+      "meaning": "khi; vào dịp hoặc trong trường hợp",
+      "rule": "Vる/Vた/N + の + 際(に). Cách diễn đạt trang trọng về thời điểm.",
       "example": "お降りの際は、お忘れ物のないようご注意ください。",
       "translation": "Khi xuống xe, xin hãy đảm bảo là anh không bỏ lại thứ gì.",
       "week": 8,
       "samples": [
         {
           "text": "以前京都を訪れた際に、この寺にも立ち寄った。",
-          "translation": "Khi tôi đến Kyoto trước đó, tôi cũng ghé qua ngôi đền này."
+          "translation": "Khi tôi đến Kyoto trước đó, tôi cũng ghé qua ngôi đền này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "パスポートを申請する際には、写真と本人確認書類が必要です。",
-          "translation": "Khi anh đăng ký hộ chiếu, anh cần một tấm ảnh và bằng chứng về danh tính."
+          "translation": "Khi anh đăng ký hộ chiếu, anh cần một tấm ảnh và bằng chứng về danh tính.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-shidai-da-shidai-de",
       "pattern": "〜次第だ / 〜次第で",
-      "meaning": "phụ thuộc vào; nó phụ thuộc vào",
-      "rule": "Danh từ + 次第だ / Danh từ + 次第で / Danh từ + 次第では · K Yến Xích Hà [Ty tiện danh Hà Lan ] Vị thần hòa thượng, xin chào, xin chào. Xin chào, xin chào, xin chào, xin chào, xin chào.",
+      "meaning": "tùy thuộc vào; phụ thuộc vào",
+      "rule": "N + 次第だ/次第で/次第では. Kết quả thay đổi theo yếu tố trước.",
       "example": "合格できるかどうかは、これからの努力次第だ。",
       "translation": "Kể từ bây giờ, bạn có vượt qua được hay không tùy thuộc vào nỗ lực của bạn.",
       "week": 8,
       "samples": [
         {
           "text": "天気次第で、明日の予定を変えるかもしれない。",
-          "translation": "Dựa vào thời tiết, chúng ta có thể thay đổi kế hoạch ngày mai."
+          "translation": "Dựa vào thời tiết, chúng ta có thể thay đổi kế hoạch ngày mai.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "考え方次第では、失敗も貴重な経験になる。",
-          "translation": "Tùy vào cách bạn nhìn nó, ngay cả thất bại cũng có thể là một kinh nghiệm quý giá."
+          "translation": "Tùy vào cách bạn nhìn nó, ngay cả thất bại cũng có thể là một kinh nghiệm quý giá.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-sue-ni",
       "pattern": "〜末（に）",
-      "meaning": "sau (một tiến trình dài), cuối cùng, cuối cùng",
-      "rule": "Động từ-ta + 末（に） / Danh từ + の + 末（に） · Trung l luận sĩ: K Yến Xích Hà có thứ Shovat ho mồng một, th Leahờng* quyếng chán ngắt* {\\cH00C1E5EC}T.",
+      "meaning": "sau cùng, sau một quá trình lâu dài",
+      "rule": "Vた/N + の + 末(に). Kết quả sau cân nhắc hoặc nỗ lực.",
       "example": "半年にわたる交渉の末、両社はようやく合意に達した。",
       "translation": "Sau sáu tháng thương lượng, cuối cùng hai công ty đã đạt được một thỏa thuận.",
       "week": 8,
       "samples": [
         {
           "text": "散々悩んだ末に、彼は留学をあきらめることにした。",
-          "translation": "Sau nhiều đau khổ, anh quyết định bỏ học ở nước ngoài."
+          "translation": "Sau nhiều đau khổ, anh quyết định bỏ học ở nước ngoài.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "試行錯誤の末に完成したのが、この新しいエンジンだ。",
-          "translation": "Điều cuối cùng chúng tôi hoàn thành sau nhiều thử nghiệm và lỗi là động cơ mới này."
+          "translation": "Điều cuối cùng chúng tôi hoàn thành sau nhiều thử nghiệm và lỗi là động cơ mới này.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ta-tokoro-de",
       "pattern": "〜たところで",
-      "meaning": "Thậm chí nếu (nó sẽ không có tác dụng); không cần biết bao nhiêu",
-      "rule": "Động từ-ta + ところで · Đi đi, đi đi, đi đi.",
+      "meaning": "cho dù có ... thì cũng vô ích",
+      "rule": "Vた + ところで. Giả định nhưng kết quả khó thay đổi.",
       "example": "今から急いだところで、終電には間に合わないだろう。",
       "translation": "Ngay cả khi chúng ta nhanh lên, chúng ta cũng không thể đi chuyến cuối cùng.",
       "week": 9,
       "samples": [
         {
           "text": "いくら説明したところで、あの人は聞く耳を持たない。",
-          "translation": "Cho dù anh giải thích được bao nhiêu, anh ta cũng sẽ không chịu nghe."
+          "translation": "Cho dù anh giải thích được bao nhiêu, anh ta cũng sẽ không chịu nghe.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "失敗したところで、失うものは何もない。",
-          "translation": "Cho dù thất bại, chúng ta cũng không còn gì để mất."
+          "translation": "Cho dù thất bại, chúng ta cũng không còn gì để mất.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ta-tokoro",
       "pattern": "〜たところ",
-      "meaning": "Khi (I) đã làm... (Tôi tìm thấy điều đó), khi làm",
-      "rule": "Động từ-ta + ところ · K Yến Xích Hà* quá* nkh bởi vì họ không còn là một người như vậy nữa.",
+      "meaning": "sau khi thử hoặc làm ... thì phát hiện",
+      "rule": "Vた + ところ. Nêu kết quả mới biết sau một hành động.",
       "example": "駅の窓口で問い合わせたところ、その電車は運休しているとのことだった。",
       "translation": "Khi tôi hỏi ở cửa sổ nhà ga, người ta nói rằng đoàn tàu không chạy.",
       "week": 9,
       "samples": [
         {
           "text": "試しに新しい肥料を使ってみたところ、トマトがよく育った。",
-          "translation": "Khi tôi thử sử dụng phân bón mới, cà chua phát triển rất tốt."
+          "translation": "Khi tôi thử sử dụng phân bón mới, cà chua phát triển rất tốt.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "先生に相談したところ、丁寧に説明してくれた。",
-          "translation": "VI · Khi hỏi ý kiến thầy, thầy đã giải thích cặn kẽ."
+          "translation": "VI · Khi hỏi ý kiến thầy, thầy đã giải thích cặn kẽ.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-bakari-ni",
       "pattern": "〜ばかりに",
-      "meaning": "Đơn giản là vì, chỉ bởi vì (với một kết quả xấu)",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / na-Adj + である / Danh từ + である + ばかりに · ihuhu khon chính* m Bobbiet kếng qukhong mong mu Texasn, th Leahờng* v* BARi BAR************************************************Taloi*************************************Ta",
+      "meaning": "chỉ vì ... mà gây kết quả xấu",
+      "rule": "Thể thường + ばかりに. Nhấn mạnh nguyên nhân đáng tiếc.",
       "example": "確認を一つ怠ったばかりに、大きな損害を出してしまった。",
       "translation": "Đơn giản là vì tôi đã bỏ qua một lần kiểm tra, nên cuối cùng tôi đã gây ra thiệt hại nặng nề.",
       "week": 9,
       "samples": [
         {
           "text": "正直に話したばかりに、かえって彼女を傷つけてしまった。",
-          "translation": "Chỉ vì tôi nói sự thật, cuối cùng tôi lại làm tổn thương cô ấy."
+          "translation": "Chỉ vì tôi nói sự thật, cuối cùng tôi lại làm tổn thương cô ấy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "英語ができないばかりに、せっかくのチャンスを逃した。",
-          "translation": "Chỉ vì tôi không biết nói tiếng Anh, tôi đã bỏ lỡ một cơ hội tuyệt vời."
+          "translation": "Chỉ vì tôi không biết nói tiếng Anh, tôi đã bỏ lỡ một cơ hội tuyệt vời.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-bakari-da",
       "pattern": "〜ばかりだ",
-      "meaning": "Giữ (đã trở nên tệ hơn), chỉ tiếp tục",
-      "rule": "Động từ thể từ điển + ばかりだ · Thay de Timi ti Ti Ti Ti Tikup tụy adom thazuc erh Shahhhhh, h quiu nh luôn luôn* ikung ** x3*n.*I3* t Abraham* t****************************************************s.",
+      "meaning": "cứ tiếp diễn; ngày càng theo một chiều hướng",
+      "rule": "Vる + ばかりだ. Tình trạng tiếp diễn, thường theo chiều xấu.",
       "example": "駅前の商店街は、客が減るばかりだ。",
       "translation": "Con đường mua sắm trước nhà ga cứ mất khách hàng.",
       "week": 10,
       "samples": [
         {
           "text": "薬を飲んでいるのに、症状は悪くなるばかりだ。",
-          "translation": "Mặc dù tôi đang uống thuốc, nhưng triệu chứng của tôi ngày càng tệ hơn."
+          "translation": "Mặc dù tôi đang uống thuốc, nhưng triệu chứng của tôi ngày càng tệ hơn.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "物価は上がるばかりで、生活が大変だ。",
-          "translation": "VI · Giá cả cứ tăng mãi nên cuộc sống rất vất vả."
+          "translation": "VI · Giá cả cứ tăng mãi nên cuộc sống rất vất vả.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-wa-mochiron-wa-motoyori",
       "pattern": "〜はもちろん / 〜はもとより",
-      "meaning": "Không phải để đề cập, tất nhiên... và cũng có thể",
-      "rule": "Danh từ + はもちろん / Danh từ + はもとより · Một người đàn ông tên là iax BAR_ABAR_A* chính thh hEEEh vi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi _ _ _BAR_.",
+      "meaning": "... là đương nhiên; không chỉ ... mà còn",
+      "rule": "N + はもちろん/はもとより. Nêu ví dụ hiển nhiên rồi mở rộng.",
       "example": "この公園は、週末はもちろん平日も家族連れでにぎわう。",
       "translation": "Công viên này bận rộn với gia đình vào những ngày thường, chưa kể đến cuối tuần.",
       "week": 10,
       "samples": [
         {
           "text": "この料理教室では、基本の調理法はもとより、盛り付けのコツまで教えてもらえる。",
-          "translation": "Ở lớp học nấu ăn này, họ không chỉ dạy bạn những kỹ thuật cơ bản mà còn những mẹo về trình bày."
+          "translation": "Ở lớp học nấu ăn này, họ không chỉ dạy bạn những kỹ thuật cơ bản mà còn những mẹo về trình bày.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "地震の後、電気はもちろん、水道もガスも止まってしまった。",
-          "translation": "Sau trận động đất, nước và khí gas bị cắt đi, chưa kể đến điện."
+          "translation": "Sau trận động đất, nước và khí gas bị cắt đi, chưa kể đến điện.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-wa-tomokaku",
       "pattern": "〜はともかく",
-      "meaning": "để riêng ra; không quan trọng; bất cứ điều gì về",
-      "rule": "Danh từ + はともかく / Danh từ + はともかくとして · Ha, ha, ha, ha, ha, ha, ha, ha, ha.. ha.. ha.. ha.. ha.. ha.. ha.. ha.. ha.. ha.. ha.. ha... ha..",
+      "meaning": "tạm gác ... sang một bên",
+      "rule": "N + はともかく(として). Chuyển trọng tâm sang vấn đề khác.",
       "example": "見た目はともかく、味はなかなかいい。",
       "translation": "Nhìn sang một bên, nó có vị khá ngon.",
       "week": 10,
       "samples": [
         {
           "text": "結果はともかくとして、最後まで諦めなかったことは評価したい。",
-          "translation": "Dù kết quả là gì đi nữa, tôi muốn cho anh công trạng không từ bỏ cho đến cuối cùng."
+          "translation": "Dù kết quả là gì đi nữa, tôi muốn cho anh công trạng không từ bỏ cho đến cuối cùng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "値段はともかく、品質はとても良い。",
-          "translation": "VI · Chưa bàn đến giá cả, chất lượng rất tốt."
+          "translation": "VI · Chưa bàn đến giá cả, chất lượng rất tốt.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-wa-sateoki",
       "pattern": "〜はさておき",
-      "meaning": "Bỏ qua một bên; bỏ sang một bên (cho bây giờ)",
-      "rule": "Danh từ + はさておき · Thường đ Leahc dùng đểchuyển hát giiểm Chính, chhe hwang hwan y - li - li - li - ve ho ho nèm - tô - tô - tau, trang ing*h_BAR_BAR_.",
+      "meaning": "tạm để vấn đề ... sang một bên",
+      "rule": "N + はさておき. Chuyển chủ đề để nói việc chính.",
       "example": "冗談はさておき、そろそろ本題に入りましょう。",
       "translation": "Vứt sang một bên, hãy bàn chuyện làm ăn.",
       "week": 10,
       "samples": [
         {
           "text": "費用の問題はさておき、まずは実現可能かどうかを検討すべきだ。",
-          "translation": "Đặt câu hỏi về chi phí sang một bên, trước tiên chúng ta nên xem xét liệu nó có khả thi hay không."
+          "translation": "Đặt câu hỏi về chi phí sang một bên, trước tiên chúng ta nên xem xét liệu nó có khả thi hay không.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "細かい話はさておき、まず結論を確認しましょう。",
-          "translation": "VI · Tạm gác chuyện chi tiết, hãy xác nhận kết luận trước."
+          "translation": "VI · Tạm gác chuyện chi tiết, hãy xác nhận kết luận trước.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-hanmen",
       "pattern": "〜反面 / 〜半面",
-      "meaning": "Mặt khác, trong khi đó (nó là...)",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / na-Adj + である / Danh từ + である + 反面 · Chào Zin twai hai hai mict đ govai diện c gouca cùng m*t giivau. N3AFAH Rexn h* và và c gotan c gon gon gon gon gotheri* phi gii gii giuác nhau.",
+      "meaning": "mặt khác; trái lại",
+      "rule": "Thể thường/N + である + 反面. Hai mặt đối lập của cùng vấn đề.",
       "example": "都会の暮らしは便利な反面、ストレスも多い。",
       "translation": "Cuộc sống thành phố thuận lợi, nhưng mặt khác nó cũng rất căng thẳng.",
       "week": 11,
       "samples": [
         {
           "text": "インターネットは情報を手軽に得られる反面、誤った情報も広まりやすい。",
-          "translation": "Trong khi internet cho phép bạn nhận được thông tin một cách dễ dàng, thông tin sai cũng dễ dàng lây lan."
+          "translation": "Trong khi internet cho phép bạn nhận được thông tin một cách dễ dàng, thông tin sai cũng dễ dàng lây lan.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼は仕事には厳しい反面、部下思いの一面もある。",
-          "translation": "Mặc dù anh ta nghiêm khắc về công việc, nhưng anh ta cũng có một khía cạnh trông chừng nhân viên của mình."
+          "translation": "Mặc dù anh ta nghiêm khắc về công việc, nhưng anh ta cũng có một khía cạnh trông chừng nhân viên của mình.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-nagara-mo",
       "pattern": "〜ながら（も）",
-      "meaning": "Mặc dù, mặc dù; trong khi (trái với mong đợi)",
-      "rule": "Động từ-stem / Động từ thể ない / i-Adj / na-Adj / Danh từ + ながら（も） · Không phíi* c thăng n tắt********************************************************************************************************************",
+      "meaning": "tuy ... nhưng vẫn ...",
+      "rule": "Vます bỏ ます/i-A/N・na-A + ながら(も). Nhượng bộ trái kỳ vọng.",
       "example": "狭いながらも、日当たりのいい快適な部屋だ。",
       "translation": "Mặc dù nó nhỏ, nó là một căn phòng thoải mái, nắng ấm.",
       "week": 11,
       "samples": [
         {
           "text": "悪いと知りながら、つい嘘をついてしまった。",
-          "translation": "Mặc dù tôi biết điều đó là sai, nhưng cuối cùng tôi cũng nói dối."
+          "translation": "Mặc dù tôi biết điều đó là sai, nhưng cuối cùng tôi cũng nói dối.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼女は若いながらも、しっかりした考えを持っている。",
-          "translation": "Dù còn trẻ, cô ấy có quan điểm rất sáng suốt."
+          "translation": "Dù còn trẻ, cô ấy có quan điểm rất sáng suốt.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-tsutsu-tsutsu-mo",
       "pattern": "〜つつ / 〜つつも",
-      "meaning": "trong khi (làm); mặc dù, ngay cả trong khi",
-      "rule": "Động từ-stem + つつ / Động từ-stem + つつも · Ch Kara riêng BAR_BAR_Ià m Bobbiet bhen ghi (hai hành heng cùng m gout lúc). _BAR_Có ngh QAZAZEEDù), th feeteeee* v* i***** i*am diching i sâu ho igh go nygh go.",
+      "meaning": "vừa ... vừa ...; tuy biết ... nhưng",
+      "rule": "Vます bỏ ます + つつ/つつも. Đồng thời hoặc nhượng bộ.",
       "example": "今年の業績を振り返りつつ、来年の目標を考えたい。",
       "translation": "Trong khi nhìn lại kết quả năm nay, tôi muốn nghĩ về mục tiêu năm tới.",
       "week": 11,
       "samples": [
         {
           "text": "体に悪いと分かりつつも、夜更かしがやめられない。",
-          "translation": "Mặc dù tôi biết là không tốt cho tôi, nhưng tôi không thể ngừng thức khuya."
+          "translation": "Mặc dù tôi biết là không tốt cho tôi, nhưng tôi không thể ngừng thức khuya.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "早く返事をしなければと思いつつ、もう一週間もたってしまった。",
-          "translation": "Ngay cả khi tôi cứ nghĩ rằng tôi phải trả lời sớm, cả một tuần đã trôi qua."
+          "translation": "Ngay cả khi tôi cứ nghĩ rằng tôi phải trả lời sớm, cả một tuần đã trôi qua.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ppanashi",
       "pattern": "〜っぱなし",
-      "meaning": "để lại (cái gì đó) như là, giữ (làm) mà không cần nghỉ ngơi",
-      "rule": "Động từ-stem + っぱなし · Hồ Nam Phi: Cá nhân cá nhân, cá nhân cá nhân, cá nhân, cá nhân, cá thể, cá sấu, cá heo, cá hồi, cá hồi, cá thể, cá hồi, cá hồi, cá hồi, cá hồi, cá nhân, cá hồi, cá nhân, và chim sẻ.",
+      "meaning": "cứ để nguyên; tiếp tục không ngừng",
+      "rule": "Vます bỏ ます + っぱなし. Trạng thái không được xử lý hoặc liên tục.",
       "example": "部屋の電気をつけっぱなしにして出かけてしまった。",
       "translation": "Tôi ra ngoài và để đèn sáng trong phòng.",
       "week": 12,
       "samples": [
         {
           "text": "今日は朝から立ちっぱなしで、足が痛い。",
-          "translation": "Tôi đã đứng trên đôi chân của tôi từ sáng nay, và chân tôi bị đau."
+          "translation": "Tôi đã đứng trên đôi chân của tôi từ sáng nay, và chân tôi bị đau.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "窓を開けっぱなしにしないでください。",
-          "translation": "Xin đừng để cửa sổ mở."
+          "translation": "Xin đừng để cửa sổ mở.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-nuku",
       "pattern": "〜抜く",
-      "meaning": "làm cho rất kết thúc, nhìn thông qua, làm hoàn toàn",
-      "rule": "Động từ-stem + 抜く · Cöngth thoseng* Tachut thoúc m* exampleoc việc khón, dù khó khó khnetn, ho_cqam for nó nó i nezy (TI gớm vNÊ - ee - sô).",
+      "meaning": "làm đến cùng; làm trọn vẹn",
+      "rule": "Vます bỏ ます + 抜く. Hoàn thành dù khó khăn.",
       "example": "足を痛めていたが、彼は最後まで走り抜いた。",
       "translation": "Mặc dù bị thương ở chân, nhưng ông đã chạy đến đích.",
       "week": 12,
       "samples": [
         {
           "text": "悩み抜いた末に出した結論なので、後悔はない。",
-          "translation": "Đó là một kết luận tôi đã đi đến sau khi suy nghĩ kỹ lưỡng, vì vậy tôi không có hối tiếc."
+          "translation": "Đó là một kết luận tôi đã đi đến sau khi suy nghĩ kỹ lưỡng, vì vậy tôi không có hối tiếc.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "チームは苦しい試合で一点のリードを守り抜いた。",
-          "translation": "Đội quay đã đi đúng hướng trong một trận đấu khó khăn."
+          "translation": "Đội quay đã đi đúng hướng trong một trận đấu khó khăn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-uru-enai",
       "pattern": "〜得る / 〜得ない",
-      "meaning": "có thể; có thể / không thể; là không thể",
-      "rule": "Động từ-stem + 得る / Động từ-stem + 得ない · Kh um, hợng hợn lý, không phKi n gou Najng de pron (Hoông phí a) hi v v quic b*i). Giá tr* d feet* d assi}* assi* assi}* Lanợc** BAR_BAR___BAR__BAR__BAR_BAR_BAR_BAR_; icìcìn BAR nkhác _BAR_BAR_BAR_*T_BAR_BAR_BAR_*K.",
+      "meaning": "có thể xảy ra; không thể xảy ra",
+      "rule": "Vます bỏ ます + 得る/得ない. Khả năng xảy ra, không phải năng lực cá nhân.",
       "example": "どんなに注意していても、事故は起こり得る。",
       "translation": "Dù bạn có cẩn thận đến đâu, tai nạn cũng có thể xảy ra.",
       "week": 12,
       "samples": [
         {
           "text": "あの真面目な彼が犯人だなんて、あり得ない。",
-          "translation": "Không đời nào một người nghiêm túc như hắn có thể là thủ phạm."
+          "translation": "Không đời nào một người nghiêm túc như hắn có thể là thủ phạm.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "今回の調査で、これまで知り得なかった事実が明らかになった。",
-          "translation": "Cuộc điều tra này đưa đến những sự kiện mà chúng tôi đã không thể học được cho đến nay."
+          "translation": "Cuộc điều tra này đưa đến những sự kiện mà chúng tôi đã không thể học được cho đến nay.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-gatai",
       "pattern": "〜がたい",
-      "meaning": "Rất khó để; hầu như không thể để (cảm xúc)",
-      "rule": "Động từ-stem + がたい · Dùng v Kadi**************************, BAR_, BAR_}**************************************************************************************",
+      "meaning": "khó lòng; rất khó có thể",
+      "rule": "Vます bỏ ます + がたい. Việc khó tin, khó tha thứ hay chấp nhận.",
       "example": "あの誠実な人が不正をしたとは、信じがたい。",
       "translation": "Thật khó để tin rằng một người trung thực như vậy đã gian lận.",
       "week": 12,
       "samples": [
         {
           "text": "彼の失礼な態度は、どうにも許しがたい。",
-          "translation": "Thái độ khiếm nhã của hắn không thể tha thứ được."
+          "translation": "Thái độ khiếm nhã của hắn không thể tha thứ được.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "生まれ育った町は、やはり離れがたいものだ。",
-          "translation": "Thị trấn mà anh lớn lên là, sau tất cả, rất khó để rời khỏi."
+          "translation": "Thị trấn mà anh lớn lên là, sau tất cả, rất khó để rời khỏi.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-you-ga-nai",
       "pattern": "〜ようがない",
-      "meaning": "Không có cách nào; không thể (không có nghĩa là sẵn sàng)",
-      "rule": "Động từ-stem + ようがない / Danh từ + の + しようがない · Không có phfeng pháp nào c yes, kano chi khi m goach enci mu hết.",
+      "meaning": "không có cách nào để ...",
+      "rule": "Vます bỏ ます + ようがない. Thiếu phương pháp hoặc điều kiện.",
       "example": "連絡先が分からないので、知らせようがない。",
       "translation": "Tôi không có thông tin liên lạc của anh ta, nên không có cách nào để cho anh ta biết.",
       "week": 13,
       "samples": [
         {
           "text": "これだけ証拠がそろっていては、言い訳のしようがない。",
-          "translation": "Với nhiều bằng chứng như vậy, không có cách nào để bào chữa."
+          "translation": "Với nhiều bằng chứng như vậy, không có cách nào để bào chữa.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "壊れた部品がもう生産されていないので、直しようがない。",
-          "translation": "Phần gãy không còn được tạo ra nữa, nên không có cách nào sửa chữa nó."
+          "translation": "Phần gãy không còn được tạo ra nữa, nên không có cách nào sửa chữa nó.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-you-de-wa",
       "pattern": "〜ようでは",
-      "meaning": "Nếu (bạn là như thế này / tiếp tục làm điều này), (không tốt)",
-      "rule": "Động từ thể thông thường + ようでは · Ch Kara trích m Bobbiet tr Teng thosei không t_à dàán d*oán m*t t number qut* x khởi tố; đi Phê kao Chính* tiêuu  thau c Thuc (T.A., _BAR_)",
+      "meaning": "nếu cứ ... thì sẽ dẫn đến hậu quả xấu",
+      "rule": "Vる/Vている/i-A/na-A + な + ようでは. Cảnh báo về tình trạng hiện tại.",
       "example": "こんな簡単なミスをするようでは、大きな仕事は任せられない。",
       "translation": "Nếu anh phạm những sai lầm đơn giản như thế này, chúng tôi không thể tin tưởng anh với những công việc lớn.",
       "week": 13,
       "samples": [
         {
           "text": "毎朝遅刻しているようでは、信頼を得られないよ。",
-          "translation": "Nếu anh đến trễ mỗi buổi sáng, anh sẽ không có được sự tin tưởng của bất cứ ai."
+          "translation": "Nếu anh đến trễ mỗi buổi sáng, anh sẽ không có được sự tin tưởng của bất cứ ai.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "毎日遅刻するようでは、信用されない。",
-          "translation": "VI · Nếu cứ đi muộn mỗi ngày thì sẽ không được tin tưởng."
+          "translation": "VI · Nếu cứ đi muộn mỗi ngày thì sẽ không được tin tưởng.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-te-naranai",
       "pattern": "〜てならない",
-      "meaning": "không thể giúp (cảm thấy); cảm thấy khủng khiếp; cực kỳ",
-      "rule": "Động từ thể て + ならない / i-Adj-ku + てならない / na-Adj + でならない · Nhdieng cenm xúc sa syxn kin gon gon gon gon gon louj (TI giao diện) _BAR_NNHNG NG INNG INNG INNG INTUNG  tốc độ giao thức giao thức giao thức giao thức giao thức giao thức giao thức giao thức giao thức giao thức giao thức giao thông, giao thông qua giao thông qua giao thức giao thông, giao thông, giao diện, giao thông, giao thông, giao thông, giao diện, giao thông, giao thông, giao thông, giao thông, và giao",
+      "meaning": "không sao ngăn được cảm xúc; vô cùng ...",
+      "rule": "Vて + ならない. Cảm xúc tự nhiên mãnh liệt, không kiềm chế được.",
       "example": "故郷の母のことが心配でならない。",
       "translation": "Tôi không thể ngừng lo lắng về mẹ tôi ở quê nhà.",
       "week": 13,
       "samples": [
         {
           "text": "あのとき本当のことを言わなかったのが、悔やまれてならない。",
-          "translation": "Tôi vô cùng hối hận vì đã không nói sự thật vào thời đó."
+          "translation": "Tôi vô cùng hối hận vì đã không nói sự thật vào thời đó.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "この計画には何か裏があるような気がしてならない。",
-          "translation": "Tôi không thể quên được cảm giác có gì đó đằng sau kế hoạch này."
+          "translation": "Tôi không thể quên được cảm giác có gì đó đằng sau kế hoạch này.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-te-koso",
       "pattern": "〜てこそ",
-      "meaning": "Chỉ bằng cách (làm); chỉ khi",
-      "rule": "Động từ thể て + こそ · Nh eatenn m Quinh: A phó chủ tịch Kimện thi Yến y Yunu... hio có giá... ♪ Thu Thuá...",
+      "meaning": "chỉ khi ... mới thực sự ...",
+      "rule": "Vて + こそ. Điều kiện cần để đạt ý nghĩa/kết quả.",
       "example": "自分で経験してこそ、本当の意味で理解できるのだ。",
       "translation": "Chỉ bằng cách trải nghiệm nó, chính bạn mới có thể thực sự hiểu được nó.",
       "week": 14,
       "samples": [
         {
           "text": "お互いに協力し合ってこそ、チームは強くなる。",
-          "translation": "Một đội chỉ trở nên mạnh mẽ khi các thành viên làm việc cùng nhau."
+          "translation": "Một đội chỉ trở nên mạnh mẽ khi các thành viên làm việc cùng nhau.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "失敗してこそ、学べることがある。",
-          "translation": "VI · Chính nhờ thất bại mà ta có những điều có thể học được."
+          "translation": "VI · Chính nhờ thất bại mà ta có những điều có thể học được.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-te-kara-de-nai-to",
       "pattern": "〜てからでないと",
-      "meaning": "không cho đến (sau khi làm), chỉ sau",
-      "rule": "Động từ thể て + からでないと / Động từ thể て + からでなければ · Đi đi! Đi đi! Đi đi! Đi đi!",
+      "meaning": "nếu chưa ... thì không thể ...",
+      "rule": "Vて + からでないと/からでなければ. Phải hoàn thành bước trước.",
       "example": "実物を見てからでないと、買うかどうか決められない。",
       "translation": "Tôi không thể quyết định mua nó cho đến khi tôi nhìn thấy thứ thật.",
       "week": 14,
       "samples": [
         {
           "text": "この薬は、医師に相談してからでなければ服用しないでください。",
-          "translation": "Xin đừng uống thuốc này cho đến khi bác sĩ hỏi ý kiến."
+          "translation": "Xin đừng uống thuốc này cho đến khi bác sĩ hỏi ý kiến.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "本人に確認してからでないと、発表できません。",
-          "translation": "VI · Phải xác nhận với đương sự trước thì mới có thể công bố."
+          "translation": "VI · Phải xác nhận với đương sự trước thì mới có thể công bố.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-te-irai",
       "pattern": "〜て以来",
-      "meaning": "kể từ đó",
-      "rule": "Động từ thể て + 以来 / Danh từ + 以来 · Đi đi! Đi đi! Đi đi!",
+      "meaning": "kể từ khi ... đến nay",
+      "rule": "Vて + 以来/N + 以来. Một việc làm mốc khởi đầu kéo dài đến hiện tại.",
       "example": "大学を卒業して以来、彼とは一度も会っていない。",
       "translation": "Tôi chưa từng gặp anh ta kể từ khi chúng tôi tốt nghiệp đại học.",
       "week": 14,
       "samples": [
         {
           "text": "この町に越してきて以来、毎朝川沿いを散歩するのが日課になっている。",
-          "translation": "Kể từ khi tôi chuyển đến thị trấn này, một buổi sáng đi bộ dọc theo dòng sông là một phần trong thói quen của tôi."
+          "translation": "Kể từ khi tôi chuyển đến thị trấn này, một buổi sáng đi bộ dọc theo dòng sông là một phần trong thói quen của tôi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "創業以来、この店は同じ味を守り続けている。",
-          "translation": "Kể từ khi thành lập, cửa hàng này vẫn giữ được hương vị tương tự."
+          "translation": "Kể từ khi thành lập, cửa hàng này vẫn giữ được hương vị tương tự.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-suginai",
       "pattern": "〜に過ぎない",
-      "meaning": "đơn thuần, không có gì hơn; chỉ",
-      "rule": "Động từ thể thông thường / Danh từ + に過ぎない · Làm giím gii m eri i gì deo--ó squas de kông ́ ́ ́ ́ng ll, th yeeng* v v v Lo-lô ho _BAR_.",
+      "meaning": "chỉ là; không hơn gì",
+      "rule": "N/Thể thường + に過ぎない. Hạ thấp mức độ so với kỳ vọng.",
       "example": "それは単なるうわさに過ぎない。",
       "translation": "Đó chỉ là tin đồn thôi.",
       "week": 14,
       "samples": [
         {
           "text": "私は自分の仕事をしたに過ぎません。",
-          "translation": "Tôi chỉ làm việc của mình."
+          "translation": "Tôi chỉ làm việc của mình.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "今回明らかになった問題は、氷山の一角に過ぎない。",
-          "translation": "Vấn đề nảy sinh lần này chỉ là phần nổi của tảng băng."
+          "translation": "Vấn đề nảy sinh lần này chỉ là phần nổi của tảng băng.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-kagiru",
       "pattern": "〜に限る",
-      "meaning": "Không có gì đánh bại; điều tốt nhất là",
-      "rule": "Động từ thể từ điển / Động từ thể ない / Danh từ + に限る · B yesn di Butlern gi yesu thiếc chec* m Bobbiet i giì* s evero*u*  héoa l evera n tiếnxt usedt,* hết,* goo goi.",
+      "meaning": "... là tốt nhất; không gì bằng",
+      "rule": "Vる/Vない/N + に限る. Đề cao lựa chọn.",
       "example": "疲れたときは、早く寝るに限る。",
       "translation": "Khi anh mệt, không có gì tốt hơn là đi ngủ sớm.",
       "week": 15,
       "samples": [
         {
           "text": "夏の暑い日は、冷たいビールに限る。",
-          "translation": "Vào một ngày hè nóng bức, không có gì đánh bại một chai bia lạnh."
+          "translation": "Vào một ngày hè nóng bức, không có gì đánh bại một chai bia lạnh.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "面倒なことには関わらないに限る。",
-          "translation": "Tốt nhất là tránh xa những vấn đề rắc rối."
+          "translation": "Tốt nhất là tránh xa những vấn đề rắc rối.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kagiri",
       "pattern": "〜かぎり",
-      "meaning": "Miễn là; cho đến khi (đến giới hạn của)",
-      "rule": "Động từ thể từ điển / Động từ thể て + いる / i-Adj / na-Adj + である / Danh từ + である + かぎり · \"Khi nào\" m địa phương (tiếng Ý) m địa phương) i Keu kiện kiện còn gi Fileo, ho irc \"nhinah\" gi Tei h*n c golana kiếc la la ekh nổi.",
+      "meaning": "chừng nào còn; trong phạm vi",
+      "rule": "Vる/Vている/N + である + 限り. Giới hạn điều kiện, thời gian hoặc hiểu biết.",
       "example": "私の知るかぎり、彼が約束を破ったことは一度もない。",
       "translation": "Theo như tôi biết, hắn chưa bao giờ thất hứa.",
       "week": 15,
       "samples": [
         {
           "text": "体が動くかぎり、この仕事を続けたい。",
-          "translation": "Chừng nào cơ thể tôi còn hoạt động, tôi muốn tiếp tục công việc này."
+          "translation": "Chừng nào cơ thể tôi còn hoạt động, tôi muốn tiếp tục công việc này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "できるかぎりのことはやったので、結果がどうなっても悔いはない。",
-          "translation": "Tôi đã làm tất cả những gì có thể, nên dù kết quả là gì, tôi cũng không hối tiếc."
+          "translation": "Tôi đã làm tất cả những gì có thể, nên dù kết quả là gì, tôi cũng không hối tiếc.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-nai-kagiri",
       "pattern": "〜ないかぎり",
-      "meaning": "trừ khi; miễn là... không",
-      "rule": "Động từ thể ない + かぎり · B gi left laou như A s dứt khoát x yesy ra.",
+      "meaning": "nếu không ... thì; trừ khi",
+      "rule": "Vない + 限り. Điều kiện phủ định.",
       "example": "よほどのことがないかぎり、明日の会議には出席します。",
       "translation": "Trừ khi có chuyện gì nghiêm trọng xảy ra, tôi sẽ tham dự buổi họp ngày mai.",
       "week": 15,
       "samples": [
         {
           "text": "本人が反省しないかぎり、同じ問題は何度でも起こるだろう。",
-          "translation": "Trừ khi người đó thật sự suy nghĩ về vấn đề này, thì vấn đề tương tự sẽ tiếp tục xảy ra."
+          "translation": "Trừ khi người đó thật sự suy nghĩ về vấn đề này, thì vấn đề tương tự sẽ tiếp tục xảy ra.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "雨が降らないかぎり、予定どおり出発します。",
-          "translation": "VI · Chừng nào trời không mưa, chúng tôi sẽ xuất phát đúng kế hoạch."
+          "translation": "VI · Chừng nào trời không mưa, chúng tôi sẽ xuất phát đúng kế hoạch.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-kakete-wa",
       "pattern": "〜にかけては",
-      "meaning": "(Tiếng cười)",
-      "rule": "Danh từ + にかけては / Danh từ + にかけても · Ca ngợi kh yesng c Gova a i eó i i* i* i* i* I gong v ever  cắt quan hệ với kết nối; th Leahờng đ đ đ i Nhược i i ging i chán i chán i - P-P-P-P-P-P-P-P-P-P-P-N.",
+      "meaning": "về phương diện ... thì vượt trội",
+      "rule": "N + にかけては. Nêu sở trường xuất sắc.",
       "example": "料理の腕にかけては、うちの父は誰にも負けない。",
       "translation": "Khi nói đến nấu ăn, cha tôi đứng thứ hai.",
       "week": 16,
       "samples": [
         {
           "text": "彼女は数字の分析にかけては、社内で右に出る者がいない。",
-          "translation": "Khi phân tích số liệu, không ai trong công ty có thể sánh được với cô ấy."
+          "translation": "Khi phân tích số liệu, không ai trong công ty có thể sánh được với cô ấy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "漢字の知識にかけては、彼女が一番だ。",
-          "translation": "VI · Xét riêng kiến thức Kanji, cô ấy là giỏi nhất."
+          "translation": "VI · Xét riêng kiến thức Kanji, cô ấy là giỏi nhất.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-kotaete",
       "pattern": "〜にこたえて",
-      "meaning": "phản hồi cho; gặp (đợi, yêu cầu)",
-      "rule": "Danh từ + にこたえて / Danh từ + にこたえる + Danh từ · _BAR_, _BAR_, _BAR_, _BAR_, _BAR_, _BAR_, _BAR_, _BAR_ _BAR_, do đó, sánh v Shazii BAR_, có ngh QAAEu**********************************Eu***",
+      "meaning": "đáp lại mong đợi hoặc yêu cầu",
+      "rule": "N + にこたえて/にこたえる + N. Đáp ứng kỳ vọng.",
       "example": "ファンの声援にこたえて、選手たちは手を振った。",
       "translation": "Các cầu thủ vẫy tay chào mừng người hâm mộ.",
       "week": 16,
       "samples": [
         {
           "text": "利用者の要望にこたえて、図書館の開館時間が延長された。",
-          "translation": "Để đáp ứng yêu cầu của người dùng, giờ mở rộng thư viện đã được mở rộng."
+          "translation": "Để đáp ứng yêu cầu của người dùng, giờ mở rộng thư viện đã được mở rộng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼は周囲の期待にこたえる結果を出した。",
-          "translation": "Ông ấy đã tạo ra những kết quả mà mọi người đều mong đợi."
+          "translation": "Ông ấy đã tạo ra những kết quả mà mọi người đều mong đợi.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-shiro-ni-seyo",
       "pattern": "〜にしろ / 〜にせよ",
-      "meaning": "Thậm chí nếu... hoặc... trong bất kỳ trường hợp nào",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + にしろ・にせよ · Cùng nghkua v Tei N3 khuất Chung chính th Ern; _BAR_là ch leaves  mưu sát Thu Địch lt twai tNamequ t. Hình thếc hip A _B cóghA \"FAu có A\"",
+      "meaning": "dù ... đi nữa; dù là ...",
+      "rule": "Thể thường + にしろ/にせよ. Nhượng bộ hoặc nêu hai khả năng.",
       "example": "たとえ冗談にしろ、そんなことを言うべきではない。",
       "translation": "Cho dù đó là một trò đùa, anh cũng không nên nói những điều như vậy.",
       "week": 16,
       "samples": [
         {
           "text": "参加するにせよしないにせよ、今週中に返事をください。",
-          "translation": "Dù bạn có tham gia hay không, xin hãy trả lời vào cuối tuần này."
+          "translation": "Dù bạn có tham gia hay không, xin hãy trả lời vào cuối tuần này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "いずれにせよ、もう一度話し合う必要がある。",
-          "translation": "Dù sao đi nữa, chúng ta cần bàn lại chuyện đó."
+          "translation": "Dù sao đi nữa, chúng ta cần bàn lại chuyện đó.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-sureba-ni-shitara",
       "pattern": "〜にすれば / 〜にしたら",
-      "meaning": "Theo quan điểm của; cho (ai đó), (nó có vẻ)",
-      "rule": "Danh từ + にすれば / Danh từ + にしたら · Hạ sĩ Nhược Tự Thái Lan Nhược Tự, Thái Lan, Thái Lan, Thái Lan, Thái Lan, Thái Lan, Thái Lan, Nga, Nga, Nga, Nga, Nga, Nga, Nga, Nga, Nga, Nga, Thái, Thái Lan.",
+      "meaning": "đối với ... thì; theo lập trường ...",
+      "rule": "N chỉ người + にすれば/にしたら. Quan điểm chủ thể.",
       "example": "子どもにすれば、親の小言はうるさいだけなのだろう。",
       "translation": "Theo quan điểm của một đứa trẻ, cha mẹ hay cằn nhằn có lẽ chỉ là phiền phức.",
       "week": 16,
       "samples": [
         {
           "text": "毎日遅くまで残業させられる社員にしたら、たまったものではない。",
-          "translation": "Đối với nhân viên làm việc muộn mỗi ngày, điều đó thật không thể chịu nổi."
+          "translation": "Đối với nhân viên làm việc muộn mỗi ngày, điều đó thật không thể chịu nổi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "親にすれば、子どもの安全が一番大切だ。",
-          "translation": "VI · Đối với cha mẹ, sự an toàn của con là quan trọng nhất."
+          "translation": "VI · Đối với cha mẹ, sự an toàn của con là quan trọng nhất.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-soui-nai",
       "pattern": "〜に相違ない",
-      "meaning": "Không nghi ngờ gì; phải là; chắc chắn",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + に相違ない · Mert vne bín, t layh wuhamng chính cính chec v Ka3.",
+      "meaning": "chắc chắn; không nghi ngờ gì",
+      "rule": "Thể thường + に相違ない. Suy đoán chắc chắn, văn viết.",
       "example": "この筆跡は、父のものに相違ない。",
       "translation": "Chữ viết này chắc chắn là của cha tôi.",
       "week": 17,
       "samples": [
         {
           "text": "彼の証言が事実なら、事件の背後には別の人物がいるに相違ない。",
-          "translation": "Nếu lời khai của ông ta là thật, thì phải có ai khác đứng đằng sau vụ việc này."
+          "translation": "Nếu lời khai của ông ta là thật, thì phải có ai khác đứng đằng sau vụ việc này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "この声は先生の声に相違ない。",
-          "translation": "VI · Giọng này chắc chắn là giọng của thầy."
+          "translation": "VI · Giọng này chắc chắn là giọng của thầy.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-koshita-koto-wa-nai",
       "pattern": "〜に越したことはない",
-      "meaning": "Nó là tốt nhất để, không có gì là tốt hơn",
-      "rule": "Động từ thể từ điển / Động từ thể ない / i-Adj / na-Adj / Danh từ + に越したことはない · Hoa K* mert  tốc độ tiel phổ bi Burrowsn, th Leahờng đ gi Nhược Nam Tilop ti de de de de de de de de de de de de de de de de de de de de de de de de de de de deu... _BAR_vàm _BAR_và _vàm*t vot vùng**T*t**** thân cây feet*********************Een.*S:*Ee",
+      "meaning": "tốt nhất là; ... thì hơn",
+      "rule": "Vる/Vない/tính từ/N + に越したことはない. Lựa chọn tốt chứ không tuyệt đối.",
       "example": "どんなに健康でも、定期的に検診を受けるに越したことはない。",
       "translation": "Cho dù anh khỏe mạnh thế nào, tốt nhất là nên kiểm tra thường xuyên.",
       "week": 17,
       "samples": [
         {
           "text": "旅行の荷物は、軽いに越したことはない。",
-          "translation": "Khi đi du lịch, càng nhẹ càng tốt."
+          "translation": "Khi đi du lịch, càng nhẹ càng tốt.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "住まいは駅に近いに越したことはないが、その分家賃が高くなる。",
-          "translation": "Tất nhiên là tốt nhất để sống gần trạm, nhưng tiền thuê nhà tăng lên theo quy định."
+          "translation": "Tất nhiên là tốt nhất để sống gần trạm, nhưng tiền thuê nhà tăng lên theo quy định.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-hoka-naranai",
       "pattern": "〜にほかならない",
-      "meaning": "Không có gì khác hơn; không có gì khác; chính xác",
-      "rule": "Danh từ + にほかならない / Động từ thể thông thường + から + にほかならない · Wanh-hong [Honh m gou] thao: già-o-ô-ô-ông cì-khá-c-a-re-a-re-a-va-lợn-arac-nu- xàn Xinh- mét-si.",
+      "meaning": "không gì khác chính là; chính vì",
+      "rule": "N + にほかならない. Nhấn mạnh bản chất hay nguyên nhân.",
       "example": "今回の成功は、社員一人ひとりの努力の結果にほかならない。",
       "translation": "Thành công này không là gì khác ngoài kết quả của nỗ lực của mỗi nhân viên.",
       "week": 17,
       "samples": [
         {
           "text": "彼が厳しく指導するのは、選手の才能を信じているからにほかならない。",
-          "translation": "Ông ấy huấn luyện chính xác bởi vì ông ấy tin tưởng vào tài năng của các vận động viên."
+          "translation": "Ông ấy huấn luyện chính xác bởi vì ông ấy tin tưởng vào tài năng của các vận động viên.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "この賞は、みんなの努力の証にほかならない。",
-          "translation": "VI · Giải thưởng này chính là minh chứng cho nỗ lực của mọi người."
+          "translation": "VI · Giải thưởng này chính là minh chứng cho nỗ lực của mọi người.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-oite-ni-okeru",
       "pattern": "〜において / 〜における",
-      "meaning": "trong; tại; trong lĩnh vực (hình thức)",
-      "rule": "Danh từ + において / Danh từ + における + Danh từ · M dài dòng phiên bín chính thứ “Kekneh ” _BAR_cho nhng nhô-ri, thishi gian, trưeeng h các đồng cỏ an thần tình hungng.",
+      "meaning": "tại; trong lĩnh vực; về mặt",
+      "rule": "N + において/における + N. Văn trang trọng về nơi chốn hoặc lĩnh vực.",
       "example": "卒業式は大講堂において行われます。",
       "translation": "Lễ tốt nghiệp sẽ được tổ chức tại hội trường chính.",
       "week": 18,
       "samples": [
         {
           "text": "現代社会における家族の役割について考えてみたい。",
-          "translation": "Tôi muốn xem xét vai trò của gia đình trong xã hội hiện đại."
+          "translation": "Tôi muốn xem xét vai trò của gia đình trong xã hội hiện đại.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼女はデザインの分野において高く評価されている。",
-          "translation": "Cô ấy được coi trọng trong lĩnh vực thiết kế."
+          "translation": "Cô ấy được coi trọng trong lĩnh vực thiết kế.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-kakawaru",
       "pattern": "〜にかかわる",
-      "meaning": "ảnh hưởng; về (điều gì đó quan trọng); liên quan đến",
-      "rule": "Danh từ + にかかわる · Dùng cho nhvang THive wó h lose**ng******ng, _BAR_, _BAR_, _BAR_, BAR_, BAR_BAR_, BAR_và vi Yến _BAR_.",
+      "meaning": "liên quan hoặc ảnh hưởng đến việc hệ trọng",
+      "rule": "N + にかかわる. Thường nêu sự việc quan trọng.",
       "example": "これは人の命にかかわる問題だから、慎重に判断しなければならない。",
       "translation": "Đây là vấn đề sinh tử, nên chúng ta phải xét đoán cẩn thận.",
       "week": 18,
       "samples": [
         {
           "text": "会社の信用にかかわるようなミスは、絶対に避けたい。",
-          "translation": "Tôi hoàn toàn muốn tránh bất cứ sai lầm nào có thể làm tổn hại đến danh tiếng của công ty."
+          "translation": "Tôi hoàn toàn muốn tránh bất cứ sai lầm nào có thể làm tổn hại đến danh tiếng của công ty.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "個人情報にかかわることは、慎重に扱うべきだ。",
-          "translation": "VI · Những việc liên quan đến thông tin cá nhân cần xử lý thận trọng."
+          "translation": "VI · Những việc liên quan đến thông tin cá nhân cần xử lý thận trọng.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-tsuki",
       "pattern": "〜につき",
-      "meaning": "per; cho mỗi; do (trong thông báo chính thức)",
-      "rule": "Danh từ + につき · Hai cá nhân s giao diện người Pháp Dabong khác tau: 'per' v Shadi s21i l rung, và 'vì' trel' il-ong b gan b won và dkanu hiệu (Guuu). Lý làm s ding r mồng r mồn-leh- rec.",
+      "meaning": "mỗi; do hoặc vì trong thông báo",
+      "rule": "N + につき. Chỉ đơn vị tính hoặc lý do đóng cửa/thông báo.",
       "example": "駐車料金は、一時間につき三百円です。",
       "translation": "Bãi đỗ xe tốn 300 yên một giờ.",
       "week": 18,
       "samples": [
         {
           "text": "本日は定休日につき、お休みさせていただきます。",
-          "translation": "Hôm nay chúng tôi đóng cửa vì đây là ngày lễ bình thường của chúng tôi."
+          "translation": "Hôm nay chúng tôi đóng cửa vì đây là ngày lễ bình thường của chúng tôi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "工事中につき、この先は通行止めです。",
-          "translation": "Do xây dựng, con đường phía trước bị đóng cửa."
+          "translation": "Do xây dựng, con đường phía trước bị đóng cửa.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ni-mukete",
       "pattern": "〜に向けて",
-      "meaning": "hướng về, nhắm mục tiêu; để chuẩn bị cho;",
-      "rule": "Danh từ + に向けて / Danh từ + に向けた + Danh từ · (Tiếng Tây Ban Nha) (Tiếng Tây Ban Nha)",
+      "meaning": "hướng tới; nhằm đạt; chuẩn bị cho",
+      "rule": "N + に向けて/に向けた + N. Mục tiêu hoặc đích đến.",
       "example": "来年の全国大会に向けて、毎日練習に励んでいる。",
       "translation": "Chúng tôi luyện tập chăm chỉ mỗi ngày cho giải đấu quốc gia năm tới.",
       "week": 18,
       "samples": [
         {
           "text": "政府は、温室効果ガス削減に向けた新しい計画を発表した。",
-          "translation": "Chính phủ thông báo một kế hoạch mới nhằm giảm khí nhà kính."
+          "translation": "Chính phủ thông báo một kế hoạch mới nhằm giảm khí nhà kính.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "大統領は国民に向けてメッセージを発表した。",
-          "translation": "Tổng thống đã phát một thông điệp gửi đến đất nước."
+          "translation": "Tổng thống đã phát một thông điệp gửi đến đất nước.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-no-moto-de-no-moto-ni",
       "pattern": "〜のもとで / 〜のもとに",
-      "meaning": "dưới (việc truy tố, ảnh hưởng, quy tắc); với",
-      "rule": "Danh từ + のもとで / Danh từ + のもとに · Dửi phong  nữa _BAR_I thi thi thi thể hoàng thượng.",
+      "meaning": "dưới sự chỉ đạo, ảnh hưởng hoặc điều kiện",
+      "rule": "N + のもとで/のもとに. Nêu hoàn cảnh chi phối.",
       "example": "私は大学院で、有名な教授のもとで研究を続けた。",
       "translation": "Ở trường đại học, tôi tiếp tục nghiên cứu dưới sự hướng dẫn của một giáo sư nổi tiếng.",
       "week": 19,
       "samples": [
         {
           "text": "明るい太陽のもとで、子どもたちが元気に遊んでいる。",
-          "translation": "Trẻ con đang chơi vui vẻ dưới ánh mặt trời sáng chói."
+          "translation": "Trẻ con đang chơi vui vẻ dưới ánh mặt trời sáng chói.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "すべての国民は、法のもとに平等である。",
-          "translation": "Mọi công dân đều bình đẳng dưới luật pháp."
+          "translation": "Mọi công dân đều bình đẳng dưới luật pháp.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-nuki-de-nuki-ni",
       "pattern": "〜抜きで / 〜抜きに",
-      "meaning": "không có; bỏ ra",
-      "rule": "Danh từ + 抜きで / Danh từ + 抜きに / Danh từ + 抜きの + Danh từ · Ta sẽ cho ngươi biết tên của ngươi.",
+      "meaning": "không có; bỏ qua thành phần nào đó",
+      "rule": "N + 抜きで/抜きに/抜きの + N. Bỏ một thứ khỏi việc thực hiện.",
       "example": "今日は仕事の話抜きで、ゆっくり楽しみましょう。",
       "translation": "Hôm nay đừng nói chuyện công việc nữa, cứ thư giãn và tận hưởng đi.",
       "week": 19,
       "samples": [
         {
           "text": "彼の協力抜きには、このプロジェクトは成功しなかっただろう。",
-          "translation": "Nếu không có sự hợp tác của anh ta, dự án này có lẽ sẽ không thành công."
+          "translation": "Nếu không có sự hợp tác của anh ta, dự án này có lẽ sẽ không thành công.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "朝食抜きで出勤する人が増えている。",
-          "translation": "Càng ngày càng nhiều người sẽ làm việc mà không cần ăn sáng."
+          "translation": "Càng ngày càng nhiều người sẽ làm việc mà không cần ăn sáng.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-komete",
       "pattern": "〜をこめて",
-      "meaning": "với (cảm giác), đầy đủ, đặt... vào",
-      "rule": "Danh từ + をこめて · Dùng v Tei xúc hay ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _, _ _ _ _",
+      "meaning": "gửi gắm tình cảm hoặc tâm ý vào",
+      "rule": "N chỉ tình cảm + をこめて. Bày tỏ tình cảm khi thực hiện việc.",
       "example": "母の誕生日に、感謝の気持ちをこめて手紙を書いた。",
       "translation": "Cho sinh nhật mẹ tôi, tôi đã viết cho bà một lá thư đầy lòng biết ơn.",
       "week": 19,
       "samples": [
         {
           "text": "職人が一つ一つ心をこめて作った器です。",
-          "translation": "Những cái bát này được làm từng cái một, với sự cẩn thận tuyệt vời, bởi các thợ thủ công."
+          "translation": "Những cái bát này được làm từng cái một, với sự cẩn thận tuyệt vời, bởi các thợ thủ công.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "応援の気持ちをこめて、メッセージを送った。",
-          "translation": "VI · Tôi gửi tin nhắn với tất cả tấm lòng cổ vũ."
+          "translation": "VI · Tôi gửi tin nhắn với tất cả tấm lòng cổ vũ.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-chuushin-ni",
       "pattern": "〜を中心に",
-      "meaning": "Tập trung vào; tập trung vào; chủ yếu",
-      "rule": "Danh từ + を中心に / Danh từ + を中心として / Danh từ + を中心とした + Danh từ · Một ph bởi ph ablen c chê-ri-a-ti-t- lNamei ho lạc đà-ra-ni-c-ne-na-a-ma-a-t-hu v Thu- Thu- re-ôn, tóm hay ho go go go go go-t- đốc.",
+      "meaning": "lấy ... làm trung tâm",
+      "rule": "N + を中心に/を中心として. Nêu đối tượng trọng tâm.",
       "example": "今回の地震では、沿岸部を中心に大きな被害が出た。",
       "translation": "Trong trận động đất này, thiệt hại nghiêm trọng chủ yếu xảy ra ở vùng ven biển.",
       "week": 20,
       "samples": [
         {
           "text": "この講座では、会話を中心に実践的な日本語を学びます。",
-          "translation": "Trong khóa học này, bạn sẽ học tiếng Nhật thực tiễn với một tập trung vào cuộc trò chuyện."
+          "translation": "Trong khóa học này, bạn sẽ học tiếng Nhật thực tiễn với một tập trung vào cuộc trò chuyện.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "若者を中心とした新しいファッションが広がっている。",
-          "translation": "Thời trang mới chủ yếu phổ biến trong giới trẻ."
+          "translation": "Thời trang mới chủ yếu phổ biến trong giới trẻ.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-moto-ni",
       "pattern": "〜をもとに",
-      "meaning": "Dựa trên; sử dụng... như một cơ sở hoặc nguồn",
-      "rule": "Danh từ + をもとに / Danh từ + をもとにして / Danh từ + をもとにした + Danh từ · AAAAAA i v v exampleệu hou housen gợc ý ý í tí m um í i í í í í i i i i i i  vận may i. _BAR_Khi hoàn toàn o mt quit  quy  quycuricucucucu Thu nh-- mt gime giuchuchzn.",
+      "meaning": "dựa trên; lấy ... làm cơ sở",
+      "rule": "N + をもとに/をもとにして. Dùng thông tin/cơ sở để tạo ra điều mới.",
       "example": "この小説は、作者自身の体験をもとに書かれている。",
       "translation": "Cuốn tiểu thuyết này dựa trên kinh nghiệm của tác giả.",
       "week": 20,
       "samples": [
         {
           "text": "集めたデータをもとにして、グラフを作成した。",
-          "translation": "Tôi đã làm một đồ thị dựa trên dữ liệu tôi đã thu thập."
+          "translation": "Tôi đã làm một đồ thị dựa trên dữ liệu tôi đã thu thập.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "アンケートの結果をもとに、計画を見直した。",
-          "translation": "VI · Chúng tôi xem xét lại kế hoạch dựa trên kết quả khảo sát."
+          "translation": "VI · Chúng tôi xem xét lại kế hoạch dựa trên kết quả khảo sát.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-hajime",
       "pattern": "〜をはじめ",
-      "meaning": "bắt đầu với; kể cả; chẳng hạn (một thí dụ đại diện)",
-      "rule": "Danh từ + をはじめ / Danh từ + をはじめとして / Danh từ + をはじめとする + Danh từ · Tên c sự tương xứng với thàng viên************************************************************************C:*C.",
+      "meaning": "đứng đầu là; tiêu biểu là",
+      "rule": "N + をはじめ/をはじめとして. Đưa đại diện tiêu biểu rồi nêu nhóm rộng.",
       "example": "京都には、金閣寺をはじめ、多くの有名な寺がある。",
       "translation": "Kyoto có rất nhiều ngôi đền nổi tiếng, kể cả Kakkuji.",
       "week": 20,
       "samples": [
         {
           "text": "社長をはじめとして、社員全員がこの計画に賛成した。",
-          "translation": "Mọi người trong công ty, bắt đầu với Tổng thống, đã đồng ý kế hoạch này."
+          "translation": "Mọi người trong công ty, bắt đầu với Tổng thống, đã đồng ý kế hoạch này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "米をはじめとする農産物の価格が上昇している。",
-          "translation": "Giá của sản phẩm nông nghiệp, gạo trong số đó đang tăng lên."
+          "translation": "Giá của sản phẩm nông nghiệp, gạo trong số đó đang tăng lên.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-o-to-shite",
       "pattern": "〜を〜として",
-      "meaning": "Xử lý (A) là (B) với A là B",
-      "rule": "Danh từ + を + Danh từ + として / Danh từ + を + Danh từ + とする · _BAR_, _BAR_A. _BAR_B BAR_B* BAR_B*M* i-Mi-U-A. _BAR_B* i-U-U-U-M-U-U-U-U- i-N-U-U-U-U-U-U-U-U- i-U-A. _ _ _ _ _BAR_B _B BAR_B _ B _ B _ B _ _ _",
+      "meaning": "lấy ... làm ...; với tư cách ...",
+      "rule": "N1 + を + N2 + として. Xác định vai trò hoặc mục đích.",
       "example": "この大会は、地域の活性化を目的として開かれている。",
       "translation": "Sự kiện này được tổ chức với mục đích khôi phục lại khu vực địa phương.",
       "week": 20,
       "samples": [
         {
           "text": "私たちのチームは、営業部の山口さんをリーダーとして新しい企画に取り組んでいる。",
-          "translation": "Đội của chúng tôi đang thực hiện một dự án mới với cô Yamaguchi từ việc bán hàng với tư cách là lãnh đạo."
+          "translation": "Đội của chúng tôi đang thực hiện một dự án mới với cô Yamaguchi từ việc bán hàng với tư cách là lãnh đạo.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "彼をリーダーとして、チームは練習を始めた。",
-          "translation": "VI · Lấy anh ấy làm trưởng nhóm, cả đội bắt đầu luyện tập."
+          "translation": "VI · Lấy anh ấy làm trưởng nhóm, cả đội bắt đầu luyện tập.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ka-to-iu-to",
       "pattern": "〜かというと",
-      "meaning": "Nếu bạn hỏi liệu (thường thì không); lý do tại sao...",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + かというと / Question word + … + かというと · V Tei m biên soạn caou h Hiroi, nó đ*a ra m*t giíi i thích.",
+      "meaning": "nếu hỏi rằng ... thì; lý do tại sao ... là",
+      "rule": "Thể thường + かというと. Dẫn câu hỏi rồi giải thích hoặc phủ nhận.",
       "example": "高い料理ならおいしいかというと、必ずしもそうではない。",
       "translation": "Thức ăn đắt tiền luôn ngon phải không?",
       "week": 21,
       "samples": [
         {
           "text": "なぜこの仕事を選んだかというと、人の役に立ちたかったからです。",
-          "translation": "Lý do tôi chọn công việc này là vì tôi muốn giúp đỡ mọi người."
+          "translation": "Lý do tôi chọn công việc này là vì tôi muốn giúp đỡ mọi người.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "では、彼の意見に全面的に賛成かというと、そういうわけでもない。",
-          "translation": "Nhưng điều đó có nghĩa là tôi hoàn toàn đồng ý với ý kiến của anh ta?"
+          "translation": "Nhưng điều đó có nghĩa là tôi hoàn toàn đồng ý với ý kiến của anh ta?",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ka-to-omottara-ka-to-omou-to",
       "pattern": "〜かと思ったら / 〜かと思うと",
-      "meaning": "chỉ khi, không sớm hơn, thời điểm",
-      "rule": "Động từ-ta + かと思ったら / Động từ-ta + かと思うと · B theo sau a ngay l ngay lqop t thac và b mồngờ. nó mot t nh nh nh nh nh nh um gì di kiện kiện gi yes, vì vì v v ey nó okhô đ đ le hing đ goch v mêch n quênng và ging ging ging ging gihe.",
+      "meaning": "vừa mới ... thì đã ...",
+      "rule": "Vた + かと思ったら/かと思うと. Hai sự việc xảy ra liên tiếp bất ngờ.",
       "example": "空が急に暗くなったかと思ったら、激しい雨が降り出した。",
       "translation": "Ngay khi bầu trời bỗng nhiên tối tăm hơn khi trời bắt đầu đổ.",
       "week": 21,
       "samples": [
         {
           "text": "息子は帰ってきたかと思うと、すぐにまた遊びに出かけた。",
-          "translation": "Con trai tôi về nhà sớm hơn là trở về nhà để chơi đùa."
+          "translation": "Con trai tôi về nhà sớm hơn là trở về nhà để chơi đùa.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "やっと静かになったかと思ったら、また隣の工事が始まった。",
-          "translation": "Ngay khi tôi nghĩ rằng cuối cùng nó đã trở nên yên tĩnh, công trình xây dựng kế bên bắt đầu lại."
+          "translation": "Ngay khi tôi nghĩ rằng cuối cùng nó đã trở nên yên tĩnh, công trình xây dựng kế bên bắt đầu lại.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ka-nai-ka-no-uchi-ni",
       "pattern": "〜か〜ないかのうちに",
-      "meaning": "Ngay sau khi, chỉ vừa đủ... khi",
-      "rule": "Động từ thể từ điển + か + Động từ thể ない + かのうちに / Động từ-ta + か + Động từ thể ない + かのうちに · (Tiếng Tây Ban Nha) (Tiếng Tây Ban Nha)",
+      "meaning": "vừa mới ... đã; ngay trước/sau khi",
+      "rule": "Vる + か + Vない + かのうちに. Khoảng thời gian gần như đồng thời.",
       "example": "ベルが鳴るか鳴らないかのうちに、生徒たちは教室を飛び出した。",
       "translation": "Tiếng chuông hầu như không rung khi các học sinh vội vã ra khỏi lớp học.",
       "week": 21,
       "samples": [
         {
           "text": "彼は布団に入ったか入らないかのうちに、いびきをかき始めた。",
-          "translation": "Anh ta hầu như không lên giường khi anh ta bắt đầu ngáy."
+          "translation": "Anh ta hầu như không lên giường khi anh ta bắt đầu ngáy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "ドアが開くか開かないかのうちに、猫が飛び出した。",
-          "translation": "VI · Cánh cửa vừa hé mở thì con mèo đã lao ra."
+          "translation": "VI · Cánh cửa vừa hé mở thì con mèo đã lao ra.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kiri",
       "pattern": "〜きり",
-      "meaning": "(và không có gì sau đó), chỉ có; công bằng",
-      "rule": "Động từ-ta + きり / Danh từ + きり · Verb-ta + za: m Bobbiet cáy gí****************************************************************************************************************",
+      "meaning": "chỉ có; kể từ khi ... không còn",
+      "rule": "N + きり chỉ số lượng; Vた + きり chỉ từ mốc đó trở đi.",
       "example": "兄は十年前に家を出たきり、一度も連絡をよこさない。",
       "translation": "Anh trai tôi đã rời khỏi nhà 10 năm trước và không liên lạc được một lần kể từ đó.",
       "week": 22,
       "samples": [
         {
           "text": "今度の休みは、久しぶりに二人きりで旅行したい。",
-          "translation": "Cho kỳ nghỉ tiếp theo, tôi muốn chúng ta cùng đi du lịch, chỉ hai chúng ta, lần đầu tiên trong quá khứ."
+          "translation": "Cho kỳ nghỉ tiếp theo, tôi muốn chúng ta cùng đi du lịch, chỉ hai chúng ta, lần đầu tiên trong quá khứ.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "チャンスは一度きりだから、絶対に失敗できない。",
-          "translation": "Chỉ có một cơ hội duy nhất, nên tôi không thể thất bại."
+          "translation": "Chỉ có một cơ hội duy nhất, nên tôi không thể thất bại.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-ge",
       "pattern": "〜げ",
-      "meaning": "dường như; tìm kiếm (như nếu), với một không khí của",
-      "rule": "i-Adj stem + げ / na-Adj + げ / Động từ-stem + たげ · Mô tT ́m ́C giác giác* Lanợc tan th mồng một nhuôn m i nó, chia i i wi goi i gom gou ki-adcive (tiếng i chán chán chán chán chể chết deói)",
+      "meaning": "có vẻ; tỏ vẻ cảm xúc",
+      "rule": "Tính từ-i bỏ い/na-A + げ. Miêu tả dáng vẻ bộc lộ ra ngoài.",
       "example": "彼女は窓の外を寂しげに見つめていた。",
       "translation": "Cô ấy nhìn ra ngoài cửa sổ với một cái nhìn cô đơn.",
       "week": 22,
       "samples": [
         {
           "text": "少年は得意げな顔で、描いた絵を見せてくれた。",
-          "translation": "Cậu bé tự hào cho tôi xem bức ảnh cậu vẽ."
+          "translation": "Cậu bé tự hào cho tôi xem bức ảnh cậu vẽ.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "何か言いたげな様子だったが、彼は黙って帰っていった。",
-          "translation": "Anh ta trông như muốn nói gì đó, nhưng anh ta bỏ đi mà không nói lời nào."
+          "translation": "Anh ta trông như muốn nói gì đó, nhưng anh ta bỏ đi mà không nói lời nào.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-kko-nai",
       "pattern": "〜っこない",
-      "meaning": "Không đời nào, hoàn toàn không có cơ hội.",
-      "rule": "Động từ-stem + っこない · Nói n camng th Leaheeng xiyên, th Leahờng*** v Sha tích**************************************************************TI mồng*, BAR_BAR_).",
+      "meaning": "không đời nào; chắc chắn không thể",
+      "rule": "Vます bỏ ます + っこない. Phủ định mạnh, thường khẩu ngữ.",
       "example": "こんな量の仕事、一日で終わりっこないよ。",
       "translation": "Không đời nào công việc này lại được hoàn thành trong một ngày.",
       "week": 22,
       "samples": [
         {
           "text": "宝くじなんて当たりっこないと思いながら、毎年買っている。",
-          "translation": "Tôi mua vé số mỗi năm, mặc dù tôi nghĩ không có cách nào tôi thắng."
+          "translation": "Tôi mua vé số mỗi năm, mặc dù tôi nghĩ không có cách nào tôi thắng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "そんな難しい問題、すぐには解けっこない。",
-          "translation": "VI · Một câu hỏi khó như thế chắc chắn không thể giải ngay được."
+          "translation": "VI · Một câu hỏi khó như thế chắc chắn không thể giải ngay được.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-dokoro-de-wa-nai",
       "pattern": "〜どころではない",
-      "meaning": "Đây không phải là thời gian cho câu hỏi",
-      "rule": "Động từ thể từ điển / Danh từ + どころではない · Hoàn c yesnh hiện twan******************************************************************************************************************:",
+      "meaning": "không phải lúc; không có điều kiện/tâm trí",
+      "rule": "Vる/N + どころではない. Hoàn cảnh không cho phép.",
       "example": "来週は試験なので、遊びに行くどころではない。",
       "translation": "Tuần tới tôi có bài kiểm tra, nên đây không phải lúc để ra ngoài.",
       "week": 22,
       "samples": [
         {
           "text": "引っ越しの準備に追われて、花見どころではなかった。",
-          "translation": "Tôi đã quá bận rộn để chuẩn bị cho chuyển động mà hoa anh đào nhìn đã được ra khỏi câu hỏi."
+          "translation": "Tôi đã quá bận rộn để chuẩn bị cho chuyển động mà hoa anh đào nhìn đã được ra khỏi câu hỏi.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "熱があるので、旅行どころではない。",
-          "translation": "VI · Vì đang sốt nên chẳng còn tâm trí đâu mà đi du lịch."
+          "translation": "VI · Vì đang sốt nên chẳng còn tâm trí đâu mà đi du lịch.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-to-iu-mono-da",
       "pattern": "〜というものだ",
-      "meaning": "(A) là như thế đấy; nó là như thế nào; đó là thực sự",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + というものだ · M nghĩa là ki Na Hà vo devac v loc lou cu lou giu giì ì ì ì  qua hiì ho ho hozc zai i vidulac  nửa Thuên Trang hio, th feeto tì chí ná giá giá he he a ngmona ng owhác.",
+      "meaning": "đó mới đúng là; chính là như thế",
+      "rule": "Thể thường + というものだ. Nhận định mang tính khái quát.",
       "example": "困っている人がいたら助ける。それが人情というものだ。",
       "translation": "Khi có người gặp rắc rối, anh phải giúp họ.",
       "week": 23,
       "samples": [
         {
           "text": "何の準備もせずに合格しようなんて、虫がよすぎるというものだ。",
-          "translation": "Mong đợi được qua khỏi mà không có sự chuẩn bị nào cả chỉ là mơ ước hão huyền."
+          "translation": "Mong đợi được qua khỏi mà không có sự chuẩn bị nào cả chỉ là mơ ước hão huyền.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "一人で全部やろうとするのは無理というものだ。",
-          "translation": "Cố gắng làm tất cả những điều đó chỉ là không thực tế."
+          "translation": "Cố gắng làm tất cả những điều đó chỉ là không thực tế.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-to-iu-mono-de-wa-nai",
       "pattern": "〜というものではない",
-      "meaning": "nó không phải là (thường) trường hợp mà, nó không theo đó",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + というものではない · T say _BAR_ _ _BAR_N gán cho Kim cương, là _BAR_. _BAR_BAR_BAR_ t-su-su-bi-san-san-am-am-Kim-im- x ho ho- _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _BAR_ _",
+      "meaning": "không hẳn cứ ... là ...",
+      "rule": "Thể thường + というものではない. Bác bỏ kết luận quá đơn giản.",
       "example": "練習は長くやればいいというものではない。",
       "translation": "Thực hành lâu hơn không phải là tự động tốt hơn thực hành.",
       "week": 23,
       "samples": [
         {
           "text": "お金さえあれば幸せになれるというものではない。",
-          "translation": "Không phải chỉ riêng tiền thôi cũng có thể làm em hạnh phúc."
+          "translation": "Không phải chỉ riêng tiền thôi cũng có thể làm em hạnh phúc.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "高ければ良いというものではない。",
-          "translation": "VI · Không phải cứ đắt là tốt."
+          "translation": "VI · Không phải cứ đắt là tốt.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-to-itte-mo",
       "pattern": "〜といっても",
-      "meaning": "Mặc dù tôi nói, mặc dù (nó được gọi là)",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj / Danh từ + といっても · Nhbung s thao hi ho ho ilhh h t byen nh wìng gì ng ye ng kiu cóhể nói t say i can i gi say.",
+      "meaning": "nói là ... nhưng thực ra ...",
+      "rule": "Thể thường + といっても. Điều chỉnh kỳ vọng của người nghe.",
       "example": "料理ができるといっても、簡単なものしか作れません。",
       "translation": "Tôi nói tôi có thể nấu ăn, nhưng tôi chỉ có thể làm những thứ đơn giản.",
       "week": 23,
       "samples": [
         {
           "text": "海外に住んでいたといっても、たった半年のことだ。",
-          "translation": "Tôi đã sống ở nước ngoài, nhưng chỉ trong 6 tháng."
+          "translation": "Tôi đã sống ở nước ngoài, nhưng chỉ trong 6 tháng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "日本に住んでいるといっても、まだ一年目です。",
-          "translation": "VI · Dù nói là sống ở Nhật nhưng tôi mới ở được một năm."
+          "translation": "VI · Dù nói là sống ở Nhật nhưng tôi mới ở được một năm.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-to-ieba-to-iu-to",
       "pattern": "〜といえば / 〜というと",
-      "meaning": "nói về, khi bạn nghĩ đến, nếu bạn đề cập đến",
-      "rule": "Danh từ + といえば / Danh từ + というと · Gi Shai thi thi n giu m phô mai giu giu eó li long ch welln t ch welli v Shai n nghĩa là git ́ n nghĩa là ho_BAR_Au, ho_c chx chx t(*a) a- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- gi- a- gi- a- gi- gi- gi- gi- a.",
+      "meaning": "nói đến ... thì; nhắc đến ... thì",
+      "rule": "N + といえば/というと. Liên tưởng hoặc chuyển chủ đề.",
       "example": "日本の夏の風物詩といえば、やはり花火大会だろう。",
       "translation": "Khi bạn nghĩ về truyền thống mùa hè ở Nhật Bản, những lễ hội pháo hoa được nghĩ đến trước tiên.",
       "week": 24,
       "samples": [
         {
           "text": "北海道というと、広い大地とおいしい海産物を思い浮かべる人が多い。",
-          "translation": "Khi mọi người nghe \"Hakkaido\", nhiều người hình dung vùng đất rộng lớn và hải sản ngon lành."
+          "translation": "Khi mọi người nghe \"Hakkaido\", nhiều người hình dung vùng đất rộng lớn và hải sản ngon lành.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "旅行といえば、来月の出張の件はどうなりましたか。",
-          "translation": "Nói về du lịch, chuyện gì đã xảy ra với chuyến công tác tháng tới?"
+          "translation": "Nói về du lịch, chuyện gì đã xảy ra với chuyến công tác tháng tới?",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-mai",
       "pattern": "〜まい",
-      "meaning": "sẽ không (đã giải quyết), có lẽ sẽ không (điều khiển)",
-      "rule": "Động từ thể từ điển + まい / Động từ-stem (ichidan verbs) + まい · Vi Yến Xích Hà/formal. Ng Leahi leu i i tiên: quy Chent tâm không (Tu Greekch ch gon). Ng Lanời khác: đoán tiêu c Frodoc (TI nghĩa là _BAR_). _NBAR_N_N nổi- loi-- owng _BAR_)",
+      "meaning": "quyết không ...; có lẽ sẽ không ...",
+      "rule": "Vる + まい. Ý chí phủ định hoặc suy đoán phủ định, trang trọng.",
       "example": "あんな恥ずかしい思いは、二度とするまいと心に誓った。",
       "translation": "Tôi đã thề với bản thân rằng tôi sẽ không bao giờ chịu đựng sự xấu hổ như thế nữa.",
       "week": 24,
       "samples": [
         {
           "text": "この大雨では、今日はもう誰も来るまい。",
-          "translation": "Trong cơn mưa này, có lẽ sẽ không có ai khác đến hôm nay."
+          "translation": "Trong cơn mưa này, có lẽ sẽ không có ai khác đến hôm nay.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "同じ失敗を繰り返すまいと決めた。",
-          "translation": "VI · Tôi quyết định sẽ không lặp lại sai lầm ấy."
+          "translation": "VI · Tôi quyết định sẽ không lặp lại sai lầm ấy.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-you-de-wa-nai-ka",
       "pattern": "〜（よ）うではないか",
-      "meaning": "Chúng ta hãy (tiếng kêu để hành động); tại sao chúng ta không",
-      "rule": "Động từ-volitional + ではないか / Động từ-volitional + ではありませんか · M Bobbiet lishi keiu gkai m thauch thau; chínhthth th “Wuxi v Shadi tóm, đi Shahan hình c gona wàng di Lukin và và xà bà bà bà bà bà bà bà bà xleu luzn.",
+      "meaning": "hãy cùng ... đi",
+      "rule": "V ý chí + ではないか. Lời kêu gọi cùng hành động.",
       "example": "この町の未来のために、皆で力を合わせようではないか。",
       "translation": "Vì tương lai của thị trấn này, tất cả chúng ta hãy hợp sức.",
       "week": 24,
       "samples": [
         {
           "text": "失敗を恐れず、新しいことに挑戦してみようではありませんか。",
-          "translation": "Đừng sợ thất bại, và cố gắng làm gì đó mới mẻ, phải không?"
+          "translation": "Đừng sợ thất bại, và cố gắng làm gì đó mới mẻ, phải không?",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "目標に向かって、一緒に努力しようではないか。",
-          "translation": "VI · Chúng ta hãy cùng nỗ lực hướng tới mục tiêu nhé."
+          "translation": "VI · Chúng ta hãy cùng nỗ lực hướng tới mục tiêu nhé.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-mo-kamawazu",
       "pattern": "〜もかまわず",
-      "meaning": "Không quan tâm, không quan tâm, không chú ý đến",
-      "rule": "Danh từ + もかまわず / Động từ thể thông thường + の + もかまわず · Làmm m địa phương [i nổi tiếng] deu]*************************************************************************************************************Ta:*",
+      "meaning": "bất chấp; không quan tâm đến",
+      "rule": "N + もかまわず/ V thường + のもかまわず. Bỏ qua hoàn cảnh.",
       "example": "彼女は人目もかまわず、駅のホームで大声で泣いた。",
       "translation": "Cô kêu lớn tiếng trên bục phát thanh, không quan tâm những người đang xem.",
       "week": 24,
       "samples": [
         {
           "text": "服が汚れるのもかまわず、子どもたちは泥の中で遊び続けた。",
-          "translation": "Bọn trẻ cứ chơi trong bùn mà không quan tâm đến quần áo bẩn thỉu của chúng."
+          "translation": "Bọn trẻ cứ chơi trong bùn mà không quan tâm đến quần áo bẩn thỉu của chúng.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "雨もかまわず、子どもたちは外で遊んでいた。",
-          "translation": "VI · Bất chấp trời mưa, lũ trẻ vẫn chơi bên ngoài."
+          "translation": "VI · Bất chấp trời mưa, lũ trẻ vẫn chơi bên ngoài.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-jou",
       "pattern": "〜上",
-      "meaning": "theo quan điểm của, trong điều kiện của, vì lý do của",
-      "rule": "Danh từ + 上 / Danh từ + 上の + Danh từ · Liên k Yếnt v Tenh danh t sayo- Japans (TI_BAR_, _BAR_, _BAR_, BAR_, _BAR_.",
+      "meaning": "về mặt; xét trên phương diện",
+      "rule": "N + 上/上の + N. Giới hạn phạm vi nhận định.",
       "example": "この映画には、教育上好ましくない場面が多い。",
       "translation": "Bộ phim này có nhiều cảnh không thích hợp với quan điểm giáo dục.",
       "week": 25,
       "samples": [
         {
           "text": "安全上の理由から、この先には立ち入らないでください。",
-          "translation": "Vì lý do an toàn, xin đừng đi xa hơn điểm này."
+          "translation": "Vì lý do an toàn, xin đừng đi xa hơn điểm này.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "法律上は問題がなくても、道徳的に許されないこともある。",
-          "translation": "Ngay cả khi có điều gì đó hợp pháp được phạt, nó vẫn có thể không thể chấp nhận được về mặt đạo đức."
+          "translation": "Ngay cả khi có điều gì đó hợp pháp được phạt, nó vẫn có thể không thể chấp nhận được về mặt đạo đức.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-sei-ka",
       "pattern": "〜せいか",
-      "meaning": "có lẽ là bởi vì, có lẽ là do",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / Danh từ + の + せいか · Diễn gi yesng chkhôngc ch husbandn n guysn ten. ch chê-xuu-su-a-su-su- ảo- ảo- dex- x mồng-bu-a-ru hox- trung lung; vìmonmont dekung*K Chent******************Euợc*",
+      "meaning": "có lẽ do ...; phải chăng vì ...",
+      "rule": "Thể thường + せいか. Suy đoán nguyên nhân, thường theo chiều bất lợi.",
       "example": "年のせいか、最近疲れが取れにくくなった。",
       "translation": "Có thể là tuổi của tôi, nhưng gần đây cần nhiều thời gian hơn để hồi phục sau khi mệt mỏi.",
       "week": 25,
       "samples": [
         {
           "text": "昨夜遅くまで起きていたせいか、今日は頭がぼんやりしている。",
-          "translation": "Có lẽ vì tối qua tôi thức khuya nên hôm nay đầu óc tôi thấy mờ mịt."
+          "translation": "Có lẽ vì tối qua tôi thức khuya nên hôm nay đầu óc tôi thấy mờ mịt.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "気のせいか、彼女は少し元気がないように見えた。",
-          "translation": "Có lẽ đó chỉ là trí tưởng tượng của tôi, nhưng cô ấy có vẻ hơi buồn."
+          "translation": "Có lẽ đó chỉ là trí tưởng tượng của tôi, nhưng cô ấy có vẻ hơi buồn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-dake-atte-dake-ni",
       "pattern": "〜だけあって / 〜だけに",
-      "meaning": "như có thể được mong đợi (từ), chính xác bởi vì, tất cả bởi vì",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / Danh từ + だけあって・だけに · Kohen ngợi m Bobbiet tet qu sayo hibohhhhh whep vhei đwang đwang* i.  th goa goo c keng nó nghqAAAA*n \"nhi Keu h* n*a deu bìa vì\" và de gon n Chenn*****Eu cuhe cuc. (Tiếng Tây Ban Nha)",
+      "meaning": "quả đúng là; vì chính là ... nên",
+      "rule": "Thể thường/N + だけあって/だけに. Kết quả xứng kỳ vọng hoặc nhấn mạnh lý do.",
       "example": "さすが一流ホテルだけあって、サービスが行き届いている。",
       "translation": "Như các bạn mong đợi từ một khách sạn hạng nhất, dịch vụ rất hoàn hảo.",
       "week": 25,
       "samples": [
         {
           "text": "十年も日本に住んでいただけあって、彼の日本語はとても自然だ。",
-          "translation": "Như bạn mong đợi từ một người sống ở Nhật trong mười năm, tiếng Nhật của anh ta rất tự nhiên."
+          "translation": "Như bạn mong đợi từ một người sống ở Nhật trong mười năm, tiếng Nhật của anh ta rất tự nhiên.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "期待していただけに、落選の知らせはショックだった。",
-          "translation": "Bởi vì tôi đã hy vọng rất nhiều, tin tức mà tôi không được chọn đánh tôi mạnh mẽ hơn."
+          "translation": "Bởi vì tôi đã hy vọng rất nhiều, tin tức mà tôi không được chọn đánh tôi mạnh mẽ hơn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-dake-no-koto-wa-aru",
       "pattern": "〜だけのことはある",
-      "meaning": "Không có gì ngạc nhiên, nó sống lên đến, như mong đợi",
-      "rule": "Động từ thể thông thường / i-Adj / na-Adj + な / Danh từ + だけのことはある · K Yunt qu*Ausc mac woodt* Leahc hoàn toàn biện minh qua n startano l17c, giá cá c ho khởi nghĩa là dei dei Techung; th Leahờng* v Lob - li - li - la, i - oung ging và càc cu chếu ancuanán.",
+      "meaning": "quả không uổng công; đúng là có lý do",
+      "rule": "Thể thường + だけのことはある. Kết quả chứng minh nỗ lực hoặc đặc điểm.",
       "example": "この料理は本当においしい。人気店だけのことはある。",
       "translation": "Thức ăn này rất ngon, không ngạc nhiên là nơi này rất phổ biến.",
       "week": 26,
       "samples": [
         {
           "text": "素晴らしい演奏だった。さすが毎日練習しているだけのことはある。",
-          "translation": "Đó là một màn trình diễn tuyệt vời, tất cả những gì thực hành hàng ngày thực sự cho thấy."
+          "translation": "Đó là một màn trình diễn tuyệt vời, tất cả những gì thực hành hàng ngày thực sự cho thấy.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "毎日練習しただけのことはある。発音が自然になった。",
-          "translation": "VI · Quả đáng công luyện tập mỗi ngày; phát âm đã tự nhiên hơn."
+          "translation": "VI · Quả đáng công luyện tập mỗi ngày; phát âm đã tự nhiên hơn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-tatoe-te-mo",
       "pattern": "たとえ〜ても",
-      "meaning": "ngay cả khi; không có vấn đề",
-      "rule": "たとえ + Động từ thể て + も / たとえ + i-Adj-ku + ても / たとえ + na-Adj + でも / たとえ + Danh từ + でも · [Tiếng La Mã] [Tiếng Pháp] [tiếng Tây Ban Nha] [Tiếng Tây Ban Nha]",
+      "meaning": "dù cho ... đi nữa",
+      "rule": "たとえ + Vても/i-A くても/N・na-A でも. Nhượng bộ giả định.",
       "example": "たとえ反対されても、自分の夢を諦めるつもりはない。",
       "translation": "Ngay cả khi người ta chống đối tôi, tôi cũng không có ý định từ bỏ ước mơ của mình.",
       "week": 26,
       "samples": [
         {
           "text": "たとえ小さな会社でも、やりがいのある仕事がしたい。",
-          "translation": "Ngay cả khi đó là một công ty nhỏ, tôi muốn làm công việc bổ sung."
+          "translation": "Ngay cả khi đó là một công ty nhỏ, tôi muốn làm công việc bổ sung.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "たとえ給料が安くても、好きな仕事なら続けられる。",
-          "translation": "Thậm chí nếu lương thấp, tôi vẫn có thể giữ nó nếu tôi yêu công việc."
+          "translation": "Thậm chí nếu lương thấp, tôi vẫn có thể giữ nó nếu tôi yêu công việc.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-yara-yara",
       "pattern": "〜やら〜やら",
-      "meaning": "cái gì với... và... và... và... và... và (trong những điều khác)",
-      "rule": "Danh từ + やら + Danh từ + やら / Động từ thể từ điển + やら + Động từ thể từ điển + やら / i-Adj + やら + i-Adj + やら · Trong s chết tuquNameu, cóm m by goat ví d kề kều, th Leahờng g Adami lên  1974 h tấn lowan ho go go heh xúc ln.",
+      "meaning": "nào là ... nào là ...",
+      "rule": "N/Vる/i-A + やら + N/Vる/i-A + やら. Liệt kê nhiều thứ.",
       "example": "引っ越しの前は、荷造りやら手続きやらで目が回るほど忙しかった。",
       "translation": "Trước khi chuyển đi, với đồ đạc và giấy tờ, tôi đã chạy khỏi chân mình.",
       "week": 26,
       "samples": [
         {
           "text": "財布をなくして、情けないやら腹が立つやらで、泣きたくなった。",
-          "translation": "Tôi bị mất ví, và giữa cảm giác thảm hại và tức giận, tôi muốn khóc."
+          "translation": "Tôi bị mất ví, và giữa cảm giác thảm hại và tức giận, tôi muốn khóc.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "旅行の準備は、荷物をまとめるやら予約を確認するやらで忙しい。",
-          "translation": "VI · Chuẩn bị đi du lịch nào là đóng hành lý, nào là kiểm tra đặt chỗ, rất bận."
+          "translation": "VI · Chuẩn bị đi du lịch nào là đóng hành lý, nào là kiểm tra đặt chỗ, rất bận.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-zu-ni-sumu-naide-sumu",
       "pattern": "〜ずに済む / 〜ないで済む",
-      "meaning": "nhận được mà không có, không cần phải; được tha khỏi",
-      "rule": "Động từ thể ない stem + ずに済む / Động từ thể ない + で済む · Tôi là người duy nhất có thể làm được điều đó.",
+      "meaning": "không cần phải ...; tránh được việc ...",
+      "rule": "Vない bỏ ない + ずに済む / Vない + で済む. Tránh điều bất tiện.",
       "example": "友人が車で送ってくれたので、タクシーを使わずに済んだ。",
       "translation": "Bạn tôi cho tôi đi nhờ xe, nên tôi không phải đi taxi.",
       "week": 26,
       "samples": [
         {
           "text": "早めに治療を始めたおかげで、手術しないで済んだ。",
-          "translation": "Nhờ bắt đầu điều trị sớm, tôi không cần phẫu thuật."
+          "translation": "Nhờ bắt đầu điều trị sớm, tôi không cần phẫu thuật.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "オンラインで手続きできたので、窓口へ行かずに済んだ。",
-          "translation": "VI · Vì làm thủ tục được trực tuyến nên không phải đến quầy giao dịch."
+          "translation": "VI · Vì làm thủ tục được trực tuyến nên không phải đến quầy giao dịch.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     },
     {
       "id": "olj-g-you-ni-yotte-wa",
       "pattern": "〜ようによっては",
-      "meaning": "Phụ thuộc vào cách (một người làm điều đó)",
-      "rule": "Động từ-stem + ようによっては · Ph bởi vì tôi là tiến sĩ tôn giáo của ông ta.",
+      "meaning": "tùy vào cách ... thì",
+      "rule": "Vます bỏ ます + ようによっては. Kết quả phụ thuộc phương pháp hoặc cách nhìn.",
       "example": "考えようによっては、今回の失敗はいい教訓になったとも言える。",
       "translation": "Tùy vào cách nhìn của bạn, bạn có thể nói rằng thất bại này đã dạy chúng tôi một bài học tốt.",
       "week": 27,
       "samples": [
         {
           "text": "古い家具も、使いようによってはおしゃれなインテリアになる。",
-          "translation": "Tùy vào cách bạn sử dụng, ngay cả đồ nội thất cũ cũng có thể trở thành trang trí trang nhã."
+          "translation": "Tùy vào cách bạn sử dụng, ngay cả đồ nội thất cũ cũng có thể trở thành trang trí trang nhã.",
+          "translationStatus": "needs_sentence_review"
         },
         {
           "text": "やりようによっては、もっと時間を短縮できる。",
-          "translation": "VI · Tùy cách làm, chúng ta còn có thể rút ngắn thời gian hơn."
+          "translation": "VI · Tùy cách làm, chúng ta còn có thể rút ngắn thời gian hơn.",
+          "translationStatus": "needs_sentence_review"
         }
-      ]
+      ],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "needs_sentence_review"
     }
   ],
   "kanji": [

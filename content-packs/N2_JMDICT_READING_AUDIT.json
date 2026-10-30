@@ -1,7 +1,7 @@
 {
   "reportVersion": 1,
-  "generatedUTC": "2026-10-30T13:58:48.274023+00:00",
-  "packVersion": 8,
+  "generatedUTC": "2026-10-30T14:02:26.198914+00:00",
+  "packVersion": 9,
   "scope": "All vocabulary in OpenJLPT N2 pack",
   "source": {
     "reference": "JMdict/EDRDG, via jkindrix/japanese-language-data common subset",
@@ -13,7 +13,7 @@
     "writing_and_kana_confirmed": 1742,
     "multiple_possible_dictionary_entries": 7,
     "no_spelling_match_in_common_JMdict": 7,
-    "sourced_vietnamese_candidates": 1388
+    "sourced_vietnamese_candidates": 1378
   },
   "semanticValidation": "NOT PERFORMED. Kana confirmation is not Vietnamese semantic validation.",
   "reviewQueue": [
@@ -11823,7 +11823,7 @@
       "jmdictEntryIDs": [
         "1003590"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -17146,7 +17146,7 @@
       "jmdictEntryIDs": [
         "1004520"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -19141,7 +19141,7 @@
       "jmdictEntryIDs": [
         "1005190"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -19785,7 +19785,7 @@
       "kana": "しいんと",
       "readingEvidence": "no_spelling_match_in_common_JMdict",
       "jmdictEntryIDs": [],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [],
       "note": "Japanese reading check only; compare Vietnamese sense with Mazii/Jdict independently."
     },
@@ -26898,7 +26898,7 @@
       "jmdictEntryIDs": [
         "2008620"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -35538,7 +35538,7 @@
       "jmdictEntryIDs": [
         "1008950"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -36368,7 +36368,7 @@
       "jmdictEntryIDs": [
         "1009210"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -38360,7 +38360,7 @@
         "1461870",
         "1463740"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -45602,7 +45602,7 @@
       "jmdictEntryIDs": [
         "1113060"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [
@@ -48130,7 +48130,7 @@
       "jmdictEntryIDs": [
         "1012110"
       ],
-      "meaningStatus": "dictionary_matched_unverified",
+      "meaningStatus": "source_verified",
       "jmdictEnglishSenses": [
         {
           "en": [

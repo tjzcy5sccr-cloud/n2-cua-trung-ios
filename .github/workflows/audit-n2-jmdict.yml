@@ -1,0 +1,53 @@
+name: Audit N2 reading and senses with independent JMdict
+"on":
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit_n2_readings_jmdict.py'
+      - '.github/workflows/audit-n2-jmdict.yml'
+permissions:
+  contents: write
+jobs:
+  jmdict-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cross-check Japanese written form and kana (JMdict/EDRDG)
+        run: python3 scripts/audit_n2_readings_jmdict.py
+      - name: Sanity check report
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open("content-packs/N2_JMDICT_READING_AUDIT.json"))
+          assert len(d["reviewQueue"]) == 1756, "All N2 entries must be checked"
+          assert sum(v for k,v in d["counts"].items() if k != "sourced_vietnamese_candidates") == 1756
+          assert d["semanticValidation"].startswith("NOT PERFORMED")
+          print("PASS: 1756 JMdict reading checks; semantic status not falsely promoted.")
+          PY
+      - name: Commit reading evidence and human-review queue
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'N2 Trung Dictionary Audit'
+          git config user.email 'n2-reading-audit@users.noreply.github.com'
+          git add content-packs/N2_JMDICT_READING_AUDIT.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m 'audit: JMdict writing/kana evidence for 1756 N2 vocabulary items'
+            git push origin HEAD:main
+          fi
+      - name: Upload report even if publishing fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-JMdict-reading-audit
+          path: content-packs/N2_JMDICT_READING_AUDIT.json
+          if-no-files-found: ignore

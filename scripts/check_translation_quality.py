@@ -86,13 +86,16 @@ print("Grammar extra sample translations still require individual review:",
 app = ROOT / "N2CuaTrung/Sources"
 for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
     code = (app / name).read_text(encoding="utf-8")
-    assert "DragGesture(minimumDistance: 28)" in code, name
-    assert "let horizontal =" in code and "let vertical =" in code, name
-    assert ".simultaneousGesture" in code and ".highPriorityGesture" not in code, name
+    assert "TapGesture()" in code and ".exclusively(before: DragGesture(minimumDistance: 16))" in code, name
+    assert "ScrollView(.vertical)" not in code.split("private func cardSurface(", 1)[1].split("private func flip(", 1)[0], name
+    assert "changeCard(by: dx < 0 ? 1 : -1)" in code, name
+    assert "changeCard(by: dy < 0 ? 1 : -1)" in code, name
+    assert "voice.stop()" in code and "let next = cards[nextIndex]" in code, name
+    assert ".highPriorityGesture" not in code, name
 voice = (app / "StudyStore.swift").read_text(encoding="utf-8")
 assert "pendingSpeechWork?.cancel()" in voice
 assert "generation == self.speechGeneration" in voice
-print("PASS: both card decks accept 4-way swipes and cancel queued stale speech.")
+print("PASS: exclusive tap/swipe gestures keep page fixed, show next card, and cancel queued old speech.")
 
 # Nếu đã dịch tự động, bắt buộc lưu được nội dung + dấu vết nghĩa trọng tâm.
 for v in vocab:

@@ -1,11 +1,11 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 5,
+  "packVersion": 6,
   "coverage": {
     "vocabTotal": 1756,
-    "vocabEditorialRevised": 179,
-    "vocabMachineUnreviewed": 1577,
+    "vocabEditorialRevised": 359,
+    "vocabMachineUnreviewed": 1397,
     "kanjiTotal": 376,
     "kanjiEditorialRevised": 95,
     "kanjiMachineUnreviewed": 281
@@ -60,5 +60,5 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "Đã rà soát một tập con 179 từ và 95 Kanji. Chưa kiểm chứng độc lập từng mục ở hai nguồn. Không tuyên bố toàn bộ kho từ điển đã chính xác."
+  "scopeLimitation": "359 từ vựng đã được biên tập tiếng Việt; vẫn cần kiểm chứng từng trường hợp ở nguồn Nhật–Việt. 1397 mục chưa được đối chiếu trong gói v6; không được tuyên bố chính xác 100%. 95/376 Kanji đã được biên tập."
 }

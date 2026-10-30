@@ -27,6 +27,6 @@ enum GrammarLibrary {
 
     static func examples(for grammar: Grammar) -> [GrammarSample] {
         let main = GrammarSample(text: grammar.example, translation: grammar.translation)
-        return [main] + (stored[grammar.id]?.extra ?? [])
+        return [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
     }
 }

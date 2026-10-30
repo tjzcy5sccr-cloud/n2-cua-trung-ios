@@ -83,48 +83,129 @@ final class StudyStore: ObservableObject {
     }
 }
 
-/// Sử dụng giọng Nhật sẵn có trên iOS; không yêu cầu Internet hay server audio.
-/// AudioSession `.playback` khắc phục việc máy để im lặng khiến bài nghe không phát.
+/// Ưu tiên các giọng tiếng Nhật chất lượng Premium/Enhanced đã được người dùng cài sẵn.
+/// TTS chạy trên thiết bị và hoạt động offline. Không phân phối trái phép audio của đơn vị khác.
 final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     static let shared = JapaneseVoice()
     private let synthesizer = AVSpeechSynthesizer()
+    private let preferenceKey = "N2CuaTrung.japaneseVoice.v1"
+    private var speechGeneration = 0
     @Published private(set) var speaking = false
     @Published private(set) var lastError: String?
+    @Published var voiceIdentifier: String = "" {
+        didSet { UserDefaults.standard.set(voiceIdentifier, forKey: preferenceKey) }
+    }
 
     private override init() {
         super.init()
+        voiceIdentifier = UserDefaults.standard.string(forKey: preferenceKey) ?? ""
         synthesizer.delegate = self
     }
 
-    func speak(_ text: String, rate: Float = 0.46) {
-        let cleaned = text
-            .replacingOccurrences(of: "女：", with: "")
-            .replacingOccurrences(of: "男：", with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !cleaned.isEmpty else {
-            lastError = "Không tìm thấy văn bản tiếng Nhật để phát."
-            return
+    var installedVoices: [AVSpeechSynthesisVoice] {
+        AVSpeechSynthesisVoice.speechVoices()
+            .filter { $0.language.hasPrefix("ja") }
+            .sorted {
+                if $0.quality.rawValue != $1.quality.rawValue {
+                    return $0.quality.rawValue > $1.quality.rawValue
+                }
+                return $0.name < $1.name
+            }
+    }
+
+    func qualityName(_ voice: AVSpeechSynthesisVoice) -> String {
+        switch voice.quality {
+        case .premium: return "Premium"
+        case .enhanced: return "Enhanced"
+        default: return "Tiêu chuẩn"
         }
+    }
+
+    private func japaneseVoice(gender: AVSpeechSynthesisVoiceGender? = nil) -> AVSpeechSynthesisVoice? {
+        let options = installedVoices
+        if let chosen = options.first(where: { $0.identifier == voiceIdentifier }) {
+            if gender == nil || chosen.gender == gender { return chosen }
+        }
+        if let gender = gender, let alternative = options.first(where: { $0.gender == gender }) {
+            return alternative
+        }
+        return options.first ?? AVSpeechSynthesisVoice(language: "ja-JP")
+    }
+
+    private func ready() -> Bool {
         do {
-            let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
-            try session.setActive(true)
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
             lastError = nil
+            return true
         } catch {
-            lastError = "Không kích hoạt được loa: \(error.localizedDescription). Hãy kiểm tra loa, âm lượng và thiết bị Bluetooth."
+            lastError = "Không phát được âm thanh: \(error.localizedDescription). Kiểm tra âm lượng và Bluetooth."
+            return false
+        }
+    }
+
+    func speak(_ text: String, rate: Float = 0.47) {
+        let clean = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !clean.isEmpty else {
+            lastError = "Không có nội dung tiếng Nhật để phát."
             return
         }
-        synthesizer.stopSpeaking(at: .immediate)
-        let utterance = AVSpeechUtterance(string: cleaned)
-        // Nếu chưa cài giọng ja-JP, iOS sẽ dùng giọng Nhật có sẵn khi phù hợp.
-        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-        utterance.rate = min(0.62, max(0.35, rate))
+        guard ready() else { return }
+        let utterance = makeUtterance(clean, rate: rate, gender: nil)
+        speakSequence([utterance])
+    }
+
+    /// Mỗi dòng 男：và 女：được đọc bằng một giọng khác nhau khi thiết bị có sẵn.
+    func speakConversation(_ text: String, rate: Float = 0.47) {
+        let split = text
+            .replacingOccurrences(of: "男：", with: "\n男：")
+            .replacingOccurrences(of: "女：", with: "\n女：")
+            .replacingOccurrences(of: "男:", with: "\n男:")
+            .replacingOccurrences(of: "女:", with: "\n女:")
+        var utterances: [AVSpeechUtterance] = []
+        for line in split.components(separatedBy: .newlines) {
+            var clean = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            if clean.isEmpty { continue }
+            var gender: AVSpeechSynthesisVoiceGender? = nil
+            if clean.hasPrefix("女：") || clean.hasPrefix("女:") {
+                gender = .female
+                clean = String(clean.dropFirst(2))
+            } else if clean.hasPrefix("男：") || clean.hasPrefix("男:") {
+                gender = .male
+                clean = String(clean.dropFirst(2))
+            }
+            if !clean.trimmingCharacters(in: .whitespaces).isEmpty {
+                utterances.append(makeUtterance(clean, rate: rate, gender: gender))
+            }
+        }
+        if utterances.isEmpty { speak(text, rate: rate); return }
+        guard ready() else { return }
+        speakSequence(utterances)
+    }
+
+    private func makeUtterance(_ text: String, rate: Float,
+                               gender: AVSpeechSynthesisVoiceGender?) -> AVSpeechUtterance {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = japaneseVoice(gender: gender)
+        utterance.rate = min(0.59, max(0.36, rate))
         utterance.pitchMultiplier = 1.0
-        // Đưa vào vòng sự kiện kế tiếp, tránh lỗi stop+speak cùng một nhịp.
-        DispatchQueue.main.async { [weak self] in self?.synthesizer.speak(utterance) }
+        utterance.volume = 1.0
+        utterance.postUtteranceDelay = 0.22
+        return utterance
+    }
+
+    private func speakSequence(_ utterances: [AVSpeechUtterance]) {
+        speechGeneration += 1
+        let generation = speechGeneration
+        synthesizer.stopSpeaking(at: .immediate)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self, self.speechGeneration == generation else { return }
+            for utterance in utterances { self.synthesizer.speak(utterance) }
+        }
     }
 
     func stop() {
+        speechGeneration += 1
         synthesizer.stopSpeaking(at: .immediate)
         speaking = false
     }

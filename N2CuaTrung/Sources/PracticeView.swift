@@ -55,6 +55,10 @@ struct PracticeHubView: View {
                     ActionTile(icon: "stopwatch", color: Palette.orange,
                                title: "Thi thử 20 câu", detail: "Có thời gian, chấm điểm, chữa câu sai")
                 }
+                NavigationLink { VoiceSettingsView() } label: {
+                    ActionTile(icon: "waveform", color: Palette.teal,
+                               title: "Chọn giọng đọc tự nhiên", detail: "Giọng Premium/Enhanced và nghe thử offline")
+                }
                 Text("Bài nghe sử dụng giọng Nhật của iOS, không phải audio JLPT chính thức. Cần có giọng ja-JP trên máy để phát offline ổn định.")
                     .font(.caption)
                     .foregroundColor(.secondary)

@@ -93,7 +93,7 @@ struct QuestionSessionView: View {
                             SectionTitle("Nghe tình huống")
                             HStack(spacing: 10) {
                                 MainButton(title: "Phát audio", symbol: "play.fill") {
-                                    voice.speak(text, rate: speed)
+                                    voice.speakConversation(text, rate: speed)
                                 }
                                 MainButton(title: "Dừng", symbol: "stop.fill", color: Palette.navy) {
                                     voice.stop()

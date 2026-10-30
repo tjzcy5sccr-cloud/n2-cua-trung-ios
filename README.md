@@ -91,3 +91,12 @@ Trong Signing & Capabilities chọn tài khoản Apple, kiểm tra Bundle ID `vn
 - **Bảng học rộng Live Activity** (iOS 16.1+) là tùy chọn do người dùng bật thủ công, xuất hiện ở khu vực lớn hơn phía dưới đồng hồ. Live Activity hoạt động tối đa 8 giờ, có thể lưu trên màn hình khóa thêm tối đa 4 giờ; không tự thay đổi ở mỗi lần mở khóa.
 - Không sử dụng máy chủ, push token, Apple App Groups hay quyền đặc biệt. Thông báo và dữ liệu đều ở thiết bị.
 - Tác giả và bản quyền: **© 2026 Trần Phước Trung. Bảo lưu mọi quyền.**
+
+## iOS v1.5 — Giọng đọc tự nhiên và kho N2 mở rộng
+
+- Flashcard tự phát âm Hiragana khi vừa lật sang mặt sau; có nút nghe lại từ và nghe câu ví dụ.
+- Phần Giọng đọc cho phép chọn giọng Nhật offline cài trên iPhone, mặc định ưu tiên Premium/Enhanced; mô phỏng hội thoại nam/nữ bằng giọng tương ứng nếu có.
+- Gói bổ sung `openjlpt-n2-core.json` có 1.756 từ vựng, 93 ngữ pháp, 376 Kanji mới sau khi lọc trùng. Tải qua mục **Tiến độ → Cập nhật kho bài học** sau khi có mạng, rồi sử dụng offline.
+- Tổng kho lý thuyết sau khi cài cả hai gói: 1.974 từ vựng, 176 ngữ pháp, 471 Kanji (chưa kiểm chứng chuyên môn từng mục). Nhiều mục mới có nghĩa tiếng Anh (`EN ·`), đang chờ biên tập Nhật–Việt.
+- Dữ liệu mở N2 phân phối CC BY-SA 4.0 (đọc `content-packs/OPENJLPT_SOURCES_AND_LICENSE.md`) và không phải nội dung chính thức của kỳ thi JLPT.
+- Không tự động lấy audio từ các website thương mại. Không kèm nhạc/âm thanh không rõ giấy phép.

@@ -28,7 +28,14 @@ struct FlashcardDeckView: View {
                         Pill(text: card.topic, color: Palette.teal)
                     }
                     Button {
-                        withAnimation(.easeInOut(duration: 0.18)) { revealed.toggle() }
+                        let revealAnswer = !revealed
+                        withAnimation(.easeInOut(duration: 0.18)) { revealed = revealAnswer }
+                        if revealAnswer {
+                            // Hiragana tránh phát âm sai các từ Kanji đa âm.
+                            voice.speak(card.reading.isEmpty ? card.word : card.reading)
+                        } else {
+                            voice.stop()
+                        }
                     } label: {
                         VStack(spacing: 16) {
                             if !revealed {
@@ -67,7 +74,7 @@ struct FlashcardDeckView: View {
                     .accessibilityLabel(revealed ? "\(card.word), \(card.reading), \(card.meaning)" : "Thẻ Kanji \(card.word). Chạm để xem đáp án")
                     HStack(spacing: 10) {
                         MainButton(title: "Nghe từ", symbol: "speaker.wave.2.fill", color: Palette.blue) {
-                            voice.speak(card.word)
+                            voice.speak(card.reading.isEmpty ? card.word : card.reading)
                         }
                         MainButton(title: "Nghe ví dụ", symbol: "play.fill", color: Palette.teal) {
                             voice.speak(card.example)
@@ -85,7 +92,7 @@ struct FlashcardDeckView: View {
                             mark(true, id: card.id)
                         }
                     }
-                    Text("Sau khi lật thẻ, chọn đã nhớ hoặc chưa nhớ. Thứ tự thẻ được xáo trộn mỗi lần ôn.")
+                    Text("Lật thẻ sẽ tự phát âm bằng giọng Nhật chất lượng cao nhất đã cài trên iPhone. Thẻ được xáo trộn mỗi lượt.")
                         .font(.caption).foregroundColor(.secondary)
                 } else {
                     LessonPanel {

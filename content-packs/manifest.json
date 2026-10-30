@@ -5,6 +5,11 @@
       "id": "n2-expansion-01",
       "version": 1,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/n2-expansion-01.json"
+    },
+    {
+      "id": "openjlpt-n2-core",
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/openjlpt-n2-core.json"
     }
   ]
 }

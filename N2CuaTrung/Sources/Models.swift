@@ -18,6 +18,7 @@ struct Grammar: Decodable, Identifiable {
     let example: String
     let translation: String
     let week: Int
+    let samples: [GrammarSample]?
 }
 
 struct Kanji: Decodable, Identifiable {
@@ -128,20 +129,22 @@ enum QuestionBank {
 
     static func vocabulary(_ data: CourseData, week: Int) -> [ExamQuestion] {
         let eligible = data.vocab.filter { $0.week <= week }
-        return eligible.map { item in
+        let meanings = data.vocab.map(\.meaning)
+        return eligible.shuffled().prefix(100).map { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
                    passage: item.example, correct: item.meaning,
-                   others: data.vocab.map(\.meaning),
+                   others: meanings,
                    explanation: "\(item.word)・\(item.reading): \(item.meaning). Ví dụ: \(item.example)")
         }
     }
 
     static func grammar(_ data: CourseData, week: Int) -> [ExamQuestion] {
         let eligible = data.grammar.filter { $0.week <= week }
-        return eligible.map { item in
+        let meanings = data.grammar.map(\.meaning)
+        return eligible.shuffled().prefix(70).map { item in
             create(category: "Ngữ pháp", prompt: "Ý nghĩa của \(item.pattern) là gì?",
                    passage: item.example, correct: item.meaning,
-                   others: data.grammar.map(\.meaning),
+                   others: meanings,
                    explanation: "\(item.rule) Ví dụ: \(item.translation)")
         }
     }

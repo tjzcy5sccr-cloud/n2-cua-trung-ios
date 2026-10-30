@@ -50,6 +50,16 @@ struct AboutView: View {
                 }
 
                 LessonPanel {
+                    SectionTitle("Dữ liệu mở & ghi công")
+                    Text("Một phần nội dung mở rộng N2 sử dụng OpenJLPT (CC BY-SA 4.0), nguồn JMdict/KANJIDIC2 (EDRDG), Jonathan Waller và Tatoeba. Dữ liệu gốc của ứng dụng và mã SwiftUI thuộc Trần Phước Trung; nguồn dữ liệu mở giữ nguyên giấy phép riêng.")
+                        .font(.subheadline)
+                    Link("Nguồn và giấy phép OpenJLPT", destination: URL(string: "https://github.com/evanclan/OpenJLPT/blob/main/NOTICE.md")!)
+                        .font(.subheadline)
+                    Text("Một số mục mở rộng đang hiển thị nghĩa EN (tiếng Anh) để tránh dịch sai; nội dung Nhật–Việt gốc vẫn được giữ nguyên.")
+                        .font(.caption).foregroundColor(.secondary)
+                }
+
+                LessonPanel {
                     SectionTitle("Về ứng dụng")
                     Text("N2 của Trung hỗ trợ học từ vựng, Kanji, ngữ pháp, đọc hiểu và nghe hiểu theo lộ trình 35 tuần hướng đến JLPT N2 tháng 7/2027.")
                         .font(.subheadline)

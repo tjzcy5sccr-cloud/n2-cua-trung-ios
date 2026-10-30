@@ -14,9 +14,9 @@ struct PracticeHubView: View {
                     ActionTile(icon: "rectangle.on.rectangle", color: Palette.teal,
                                title: "Flashcard ngữ pháp", detail: "Tự nhớ và ôn cách quãng")
                 }
-                NavigationLink { KanjiListView() } label: {
+                NavigationLink { KanjiSwipeDeckView() } label: {
                     ActionTile(icon: "character.square", color: Palette.orange,
-                               title: "Kanji", detail: "\(store.course.kanji.count) chữ • On, Kun, từ ghép")
+                               title: "Kanji", detail: "\(store.course.kanji.count) chữ • Vuốt để học, chạm để lật")
                 }
                 NavigationLink {
                     QuestionSessionView(questions: QuestionBank.vocabulary(store.course, week: store.week).shuffled(),
@@ -196,35 +196,52 @@ struct KanjiDetailView: View {
     let item: Kanji
     @EnvironmentObject private var store: StudyStore
     @StateObject private var voice = JapaneseVoice.shared
+    @State private var reviewFeedback: String?
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 LessonPanel {
                     Text(item.char)
-                        .font(.system(size: 100))
+                        .font(.system(size: 96, weight: .bold))
                         .foregroundColor(Palette.navy)
                         .frame(maxWidth: .infinity)
-                    SectionTitle("Nghĩa", subtitle: item.displayMeaning)
-                    SectionTitle("Âm On", subtitle: item.on)
-                    SectionTitle("Âm Kun", subtitle: item.kun)
-                    SectionTitle("Từ ghép")
-                    FuriganaText(text: item.word)
+                    KanjiVocabularyView(item: item, vocabulary: store.course.vocab)
                     MainButton(title: "Nghe từ ghép", symbol: "speaker.wave.2") {
                         voice.speak(item.word)
-                    }
-                }
-                HStack(spacing: 12) {
-                    MainButton(title: "Chưa nhớ", symbol: "xmark", color: Palette.orange) {
-                        store.review("k:\(item.id)", known: false)
-                    }
-                    MainButton(title: "Đã nhớ", symbol: "checkmark", color: Palette.teal) {
-                        store.review("k:\(item.id)", known: true)
                     }
                 }
             }.padding(16)
         }
         .background(Palette.pale)
         .navigationTitle("Chi tiết Kanji")
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            VStack(spacing: 8) {
+                if let reviewFeedback {
+                    Label(reviewFeedback, systemImage: "checkmark.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                HStack(spacing: 10) {
+                    MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise",
+                               color: Palette.orange) {
+                        save(known: false)
+                    }
+                    MainButton(title: "Đã thuộc", symbol: "checkmark", color: Palette.teal) {
+                        save(known: true)
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(.regularMaterial)
+        }
         .onDisappear { voice.stop() }
+    }
+
+    private func save(known: Bool) {
+        store.review("k:\(item.id)", known: known)
+        reviewFeedback = known ? "Đã lưu: Đã thuộc." : "Đã lưu: Chưa thuộc, sẽ ôn lại."
     }
 }

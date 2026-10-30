@@ -135,64 +135,82 @@ struct FlashcardDeckView: View {
         .buttonStyle(.plain)
     }
 
+    /// Nút quay về mặt trước luôn ở ngoài vùng cuộn ví dụ.
     private func cardSurface(_ card: Vocabulary, height: CGFloat) -> some View {
         ZStack {
             if revealed {
-                ScrollView {
-                    VStack(spacing: 11) {
-                        Text(card.word)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(Palette.navy)
-                        Text(card.reading)
-                            .font(.title3.weight(.medium))
-                            .foregroundColor(Palette.blue)
-                        Text(card.displayMeaning)
-                            .font(.title3.weight(.bold))
-                            .foregroundColor(Palette.teal)
-                            .multilineTextAlignment(.center)
-                        Divider()
-                        FuriganaText(text: card.example, mainWord: card.word,
-                                     mainReading: card.reading, size: 17)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(card.exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung.")
-                            .font(.subheadline)
-                            .foregroundColor(Palette.navy)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Label("Chạm để về mặt Kanji", systemImage: "arrow.uturn.backward")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                VStack(spacing: 0) {
+                    HStack {
+                        Spacer()
+                        Button {
+                            showFront()
+                        } label: {
+                            Label("Mặt trước", systemImage: "arrow.uturn.backward")
+                                .font(.subheadline.weight(.bold))
+                                .foregroundColor(Palette.blue)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 9)
+                                .background(Palette.blue.opacity(0.1),
+                                            in: RoundedRectangle(cornerRadius: 10))
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Trở lại mặt trước Kanji")
                     }
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
+                    .padding(.top, 8)
+                    .padding(.bottom, 3)
+                    ScrollView(.vertical) {
+                        VStack(spacing: 10) {
+                            Text(card.word)
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(Palette.navy)
+                            Text(card.reading)
+                                .font(.title3.weight(.medium))
+                                .foregroundColor(Palette.blue)
+                            Text(card.displayMeaning)
+                                .font(.title3.weight(.bold))
+                                .foregroundColor(Palette.teal)
+                                .multilineTextAlignment(.center)
+                            Divider()
+                            FuriganaText(text: card.example,
+                                         mainWord: card.word, mainReading: card.reading, size: 17)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(card.exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung.")
+                                .font(.subheadline)
+                                .foregroundColor(Palette.navy)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity)
+                    }
                 }
             } else {
-                VStack(spacing: 12) {
-                    Spacer(minLength: 10)
-                    Text(card.word)
-                        .font(.system(size: 50, weight: .bold, design: .rounded))
-                        .foregroundColor(Palette.navy)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                    Spacer(minLength: 10)
-                    Label("Chạm để lật", systemImage: "hand.tap")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                Button {
+                    showBack(card)
+                } label: {
+                    VStack(spacing: 12) {
+                        Spacer(minLength: 10)
+                        Text(card.word)
+                            .font(.system(size: 50, weight: .bold, design: .rounded))
+                            .foregroundColor(Palette.navy)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                        Spacer(minLength: 10)
+                        Label("Chạm để lật", systemImage: "hand.tap")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
                 }
+                .buttonStyle(.plain)
             }
         }
         .frame(maxWidth: .infinity)
         .frame(height: height)
         .padding(.horizontal, 15)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
-        .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
-        .onTapGesture {
-            withAnimation(.easeInOut(duration: 0.16)) { revealed.toggle() }
-            elapsed = 0
-            if revealed { voice.speak(card.reading.isEmpty ? card.word : card.reading) }
-            else { voice.stop() }
-        }
         .highPriorityGesture(
             DragGesture(minimumDistance: 35).onEnded { drag in
                 let dy = drag.translation.height
@@ -202,8 +220,21 @@ struct FlashcardDeckView: View {
             },
             including: revealed ? .none : .all
         )
-        .accessibilityLabel(revealed ? "\(card.word) \(card.reading) \(card.displayMeaning)" : "Kanji \(card.word)")
         .accessibilityAction(named: "Thẻ tiếp theo") { advanceRandom() }
+    }
+
+    private func showBack(_ card: Vocabulary) {
+        guard !revealed else { return }
+        withAnimation(.easeInOut(duration: 0.15)) { revealed = true }
+        elapsed = 0
+        voice.speak(card.reading.isEmpty ? card.word : card.reading)
+    }
+
+    private func showFront() {
+        guard revealed else { return }
+        withAnimation(.easeInOut(duration: 0.15)) { revealed = false }
+        elapsed = 0
+        voice.stop()
     }
 
     private func toggleAuto() {

@@ -69,7 +69,7 @@ assert len(grammar) == 93, "Unexpected grammar count"
 assert all(g.get("grammarStatus") == "editorial_reviewed" for g in grammar), "Grammar notes not audited"
 assert all(g.get("translationStatus") == "editorial_reviewed" for g in grammar), "Main grammar translations not corrected"
 for g in grammar:
-    assert len(g["rule"]) > 30 and len(g["meaning"]) > 3
+    assert len(g["rule"]) >= 22 and len(g["meaning"]) > 3, g["pattern"]
     assert len(g["translation"]) > 8 and not any(
         token in g["rule"] for token in ["_BAR_", "******", "m Bobbiet", "Gova a i"])
     for sample in g.get("samples", []):

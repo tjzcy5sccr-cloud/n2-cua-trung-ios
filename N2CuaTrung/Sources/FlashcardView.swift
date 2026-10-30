@@ -9,6 +9,9 @@ struct FlashcardDeckView: View {
     @State private var autoPlay = false
     @State private var intervalSeconds = 5
     @State private var elapsed = 0
+    @State private var dragOffset: CGSize = .zero
+    @State private var isDraggingCard = false
+    @State private var showFullExample = false
     @ObservedObject private var voice = JapaneseVoice.shared
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -39,6 +42,15 @@ struct FlashcardDeckView: View {
                         }
                     }
                     cardSurface(card, height: min(320, max(205, geometry.size.height * 0.42)))
+                    if revealed {
+                        Button {
+                            showFullExample = true
+                        } label: {
+                            Label("Xem đầy đủ câu ví dụ", systemImage: "text.book.closed")
+                                .font(.caption.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 32)
+                        }
+                    }
                     HStack(spacing: 8) {
                         actionButton(
                             autoPlay ? "Dừng tự chạy" : "Tự chạy",
@@ -100,9 +112,37 @@ struct FlashcardDeckView: View {
         .background(Palette.pale)
         .navigationTitle("Flashcard")
         .onReceive(ticker) { _ in
-            guard autoPlay, !revealed, !cards.isEmpty else { return }
+            guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }
             elapsed += 1
             if elapsed >= intervalSeconds { advanceRandom() }
+        }
+        .sheet(isPresented: $showFullExample) {
+            if let card = current {
+                NavigationStack {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 14) {
+                            Text(card.word).font(.largeTitle.bold()).foregroundColor(Palette.navy)
+                            Text(card.reading).font(.title3).foregroundColor(Palette.blue)
+                            Text(card.displayMeaning).font(.headline).foregroundColor(Palette.teal)
+                            Divider()
+                            FuriganaText(text: card.example,
+                                         mainWord: card.word,
+                                         mainReading: card.reading,
+                                         size: 19)
+                            Text(card.displayExampleTranslation).font(.body)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(20)
+                    }
+                    .navigationTitle("Chi tiết ví dụ")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Đóng") { showFullExample = false }
+                        }
+                    }
+                }
+            }
         }
         .onAppear { if cards.isEmpty { reload() } }
         .onDisappear {
@@ -126,84 +166,103 @@ struct FlashcardDeckView: View {
         .buttonStyle(.plain)
     }
 
-    /// Nút chạm nằm TRONG vùng cuộn: ScrollView chỉ xử lý vuốt, Button xử lý chạm.
-    /// Không gắn TapGesture lên ScrollView cha vì iOS có thể bỏ qua sự kiện.
+    /// Toàn bộ thẻ là một vùng gesture duy nhất, không chứa ScrollView.
+    /// Vuốt trái/lên: tiếp theo; phải/xuống: trước. Chạm: lật thẻ.
     private func cardSurface(_ card: Vocabulary, height: CGFloat) -> some View {
         ZStack {
-            if revealed {
-                ScrollView(.vertical) {
-                    Button {
-                        flip(card)
-                    } label: {
-                        VStack(spacing: 10) {
-                            Text(card.word)
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(Palette.navy)
-                            Text(card.reading)
-                                .font(.title3.weight(.medium))
-                                .foregroundColor(Palette.blue)
-                            Text(card.displayMeaning)
-                                .font(.title3.weight(.bold))
-                                .foregroundColor(Palette.teal)
-                                .multilineTextAlignment(.center)
-                            Divider()
-                            FuriganaText(text: card.example,
-                                         mainWord: card.word, mainReading: card.reading, size: 17)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(card.displayExampleTranslation)
-                                .font(.subheadline)
-                                .foregroundColor(Palette.navy)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: max(1, height - 30))
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Mặt sau. Chạm để quay về mặt trước.")
+            RoundedRectangle(cornerRadius: 20).fill(.white)
+            VStack(spacing: 10) {
+                if revealed {
+                    Text(card.word)
+                        .font(.system(size: 31, weight: .bold))
+                        .foregroundColor(Palette.navy)
+                    Text(card.reading)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.blue)
+                    Text(card.displayMeaning)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.75)
+                    Divider()
+                    Text(card.example)
+                        .font(.subheadline)
+                        .foregroundColor(Palette.navy)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(3)
+                    Text(card.displayExampleTranslation)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(4)
+                    Spacer(minLength: 0)
+                    Text("Chạm để xem mặt trước")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                } else {
+                    Spacer(minLength: 12)
+                    Text(card.word)
+                        .font(.system(size: 50, weight: .bold, design: .rounded))
+                        .foregroundColor(Palette.navy)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.5)
+                    Spacer(minLength: 12)
+                    Label("Chạm để lật • Vuốt 4 hướng để đổi", systemImage: "hand.tap")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
-            } else {
-                Button {
-                    flip(card)
-                } label: {
-                    VStack(spacing: 12) {
-                        Spacer(minLength: 10)
-                        Text(card.word)
-                            .font(.system(size: 50, weight: .bold, design: .rounded))
-                            .foregroundColor(Palette.navy)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.5)
-                        Spacer(minLength: 10)
-                        Label("Chạm để lật", systemImage: "hand.tap")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Mặt trước. Chạm để xem nghĩa.")
-
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(16)
         }
-        .frame(maxWidth: .infinity)
         .frame(height: height)
-        .padding(.horizontal, 15)
-        .background(.white, in: RoundedRectangle(cornerRadius: 20))
+        .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
-        // Một cử chỉ cho cả hai mặt. Không chiếm sự kiện chạm hoặc cuộn.
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 28).onEnded { movement in
-                let dx = movement.translation.width
-                let dy = movement.translation.height
-                let horizontal = abs(dx) >= 58 && abs(dx) > abs(dy) * 1.15
-                let vertical = abs(dy) >= 92 && abs(dy) > abs(dx) * 1.15
-                if horizontal || vertical { advanceRandom() }
-            }
+        .offset(x: dragOffset.width, y: dragOffset.height)
+        .gesture(
+            TapGesture()
+                .exclusively(before: DragGesture(minimumDistance: 16))
+                .onChanged { value in
+                    if case .second(let drag) = value {
+                        if !isDraggingCard {
+                            isDraggingCard = true
+                            voice.stop()
+                        }
+                        dragOffset = CGSize(
+                            width: max(-64, min(64, drag.translation.width * 0.35)),
+                            height: max(-64, min(64, drag.translation.height * 0.35))
+                        )
+                    }
+                }
+                .onEnded { value in
+                    switch value {
+                    case .first:
+                        flip(card)
+                    case .second(let drag):
+                        let dx = drag.translation.width
+                        let dy = drag.translation.height
+                        if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                            changeCard(by: dx < 0 ? 1 : -1)
+                        } else if abs(dy) >= 45 {
+                            changeCard(by: dy < 0 ? 1 : -1)
+                        } else {
+                            withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
+                                dragOffset = .zero
+                            }
+                        }
+                    }
+                    isDraggingCard = false
+                }
         )
-        .accessibilityAction(named: "Thẻ tiếp theo") { advanceRandom() }
+        .animation(.spring(response: 0.23, dampingFraction: 0.84), value: dragOffset)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityLabel(revealed ? "Mặt sau \(card.word), chạm để xem mặt trước." :
+                                    "Mặt trước \(card.word), chạm để xem nghĩa.")
+        .accessibilityAction(named: "Lật thẻ") { flip(card) }
+        .accessibilityAction(named: "Từ tiếp theo") { changeCard(by: 1) }
+        .accessibilityAction(named: "Từ trước") { changeCard(by: -1) }
     }
 
     private func flip(_ card: Vocabulary) {
@@ -247,22 +306,28 @@ struct FlashcardDeckView: View {
         position = 0
         revealed = false
         elapsed = 0
+        dragOffset = .zero
+        isDraggingCard = false
         voice.stop()
     }
 
     private func advanceRandom() {
+        changeCard(by: 1)
+    }
+
+    private func changeCard(by step: Int) {
+        guard !cards.isEmpty else { return }
+        // Chọn từ MỚI trước khi thay đổi @State, không lấy từ closure của thẻ cũ.
+        let nextIndex = (position + step + cards.count) % cards.count
+        let next = cards[nextIndex]
         voice.stop()
-        revealed = false
+        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
+            position = nextIndex
+            revealed = false
+            dragOffset = .zero
+        }
         elapsed = 0
-        if position + 1 < cards.count {
-            position += 1
-        } else {
-            reload()
-        }
-        // Phát âm thẻ MỚI, không dùng card đã bị SwiftUI giữ trong gesture cũ.
-        if let next = current {
-            voice.speak(next.reading.isEmpty ? next.word : next.reading)
-        }
+        voice.speak(next.reading.isEmpty ? next.word : next.reading)
     }
 
     private func mark(_ known: Bool, id: String) {

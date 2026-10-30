@@ -10,6 +10,9 @@ struct KanjiSwipeDeckView: View {
     @State private var autoPlay = false
     @State private var intervalSeconds = 5
     @State private var elapsed = 0
+    @State private var dragOffset: CGSize = .zero
+    @State private var isDraggingCard = false
+    @State private var showFullDetails = false
     @State private var feedback: String?
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -34,6 +37,15 @@ struct KanjiSwipeDeckView: View {
                 }
                 if let card = current {
                     cardSurface(card, height: min(320, max(220, geometry.size.height * 0.42)))
+                    if revealed {
+                        Button {
+                            showFullDetails = true
+                        } label: {
+                            Label("Xem đầy đủ từ ghép và bộ thủ", systemImage: "text.book.closed")
+                                .font(.caption.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 32)
+                        }
+                    }
                     if let feedback {
                         Label(feedback, systemImage: "checkmark.circle.fill")
                             .font(.caption.weight(.semibold))
@@ -94,76 +106,131 @@ struct KanjiSwipeDeckView: View {
         }
         .background(Palette.pale)
         .navigationTitle("Kanji")
+        .sheet(isPresented: $showFullDetails) {
+            if let card = current {
+                NavigationStack {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text(card.char)
+                                .font(.system(size: 66, weight: .bold))
+                                .frame(maxWidth: .infinity)
+                            KanjiVocabularyView(item: card, vocabulary: store.course.vocab)
+                        }
+                        .padding(20)
+                    }
+                    .navigationTitle("Chi tiết Kanji")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Đóng") { showFullDetails = false }
+                        }
+                    }
+                }
+            }
+        }
         .onAppear { if cards.isEmpty { reload() } }
         .onDisappear { autoPlay = false; voice.stop() }
         .onReceive(ticker) { _ in
-            guard autoPlay, !revealed, !cards.isEmpty else { return }
+            guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }
             elapsed += 1
             if elapsed >= intervalSeconds { advance() }
         }
     }
 
-    /// Chạm trực tiếp vào chính mỗi mặt bằng Button; cuộn nội dung mặt sau vẫn hoạt động.
-    /// Không dùng highPriorityGesture vì cử chỉ này chặn Button trên iPhone.
+    /// Không đặt ScrollView bên trong vùng vuốt: vuốt thẻ không thể cuộn nội dung.
+    /// Vuốt trái/lên: Kanji tiếp theo; phải/xuống: Kanji trước; chạm: lật mặt.
     private func cardSurface(_ card: Kanji, height: CGFloat) -> some View {
         ZStack {
-            if revealed {
-                ScrollView(.vertical) {
-                    Button {
-                        flip(card)
-                    } label: {
-                        VStack(spacing: 12) {
-                            Text(card.char)
-                                .font(.system(size: 55, weight: .bold))
-                                .foregroundColor(Palette.navy)
-                            KanjiVocabularyView(item: card, vocabulary: store.course.vocab)
+            RoundedRectangle(cornerRadius: 20).fill(.white)
+            VStack(spacing: 10) {
+                if revealed {
+                    Text(card.char).font(.system(size: 52, weight: .bold))
+                        .foregroundColor(Palette.navy)
+                    Text(card.displayMeaning)
+                        .font(.headline).foregroundColor(Palette.teal)
+                        .multilineTextAlignment(.center).lineLimit(2)
+                    if let info = KangxiReference.info(for: card.char) {
+                        Text("Hán–Việt: \(info.sinoVietnamese)")
+                            .font(.subheadline).foregroundColor(Palette.blue)
+                        if let radical = KangxiReference.radical(forKanji: card.char) {
+                            Text("Bộ #\(radical.id): \(radical.character) • \(radical.sinoVietnamese) — \(radical.meaning)")
+                                .font(.subheadline).foregroundColor(Palette.navy)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
                         }
-                        .padding(.vertical, 10)
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: max(1, height - 28))
-                        .contentShape(Rectangle())
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Mặt sau Kanji. Chạm để quay lại mặt trước.")
-                }
-            } else {
-                Button {
-                    flip(card)
-                } label: {
-                    VStack(spacing: 12) {
-                        Spacer(minLength: 10)
-                        Text(card.char)
-                            .font(.system(size: 106, weight: .bold, design: .rounded))
-                            .foregroundColor(Palette.navy)
-                        Spacer(minLength: 10)
-                        Label("Chạm để xem nghĩa", systemImage: "hand.tap")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                    HStack(spacing: 12) {
+                        Text("On: \(card.on)").lineLimit(2)
+                        Text("Kun: \(card.kun)").lineLimit(2)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(Rectangle())
+                    .font(.caption).foregroundColor(.secondary)
+                    Text(card.word)
+                        .font(.subheadline.weight(.medium))
+                        .foregroundColor(Palette.navy)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.7)
+                    Spacer(minLength: 0)
+                    Text("Chạm để xem mặt trước")
+                        .font(.caption2).foregroundColor(.secondary)
+                } else {
+                    Spacer(minLength: 10)
+                    Text(card.char)
+                        .font(.system(size: 106, weight: .bold, design: .rounded))
+                        .foregroundColor(Palette.navy)
+                    Spacer(minLength: 10)
+                    Label("Chạm để lật • Vuốt 4 hướng để đổi", systemImage: "hand.tap")
+                        .font(.caption).foregroundColor(.secondary)
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Mặt trước Kanji. Chạm để xem nghĩa.")
-
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(15)
         }
-        .frame(maxWidth: .infinity)
         .frame(height: height)
-        .padding(.horizontal, 14)
-        .background(.white, in: RoundedRectangle(cornerRadius: 20))
+        .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
-        // Một cử chỉ cho cả hai mặt. Không chiếm sự kiện chạm hoặc cuộn.
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 28).onEnded { movement in
-                let dx = movement.translation.width
-                let dy = movement.translation.height
-                let horizontal = abs(dx) >= 58 && abs(dx) > abs(dy) * 1.15
-                let vertical = abs(dy) >= 92 && abs(dy) > abs(dx) * 1.15
-                if horizontal || vertical { advance() }
-            }
+        .offset(x: dragOffset.width, y: dragOffset.height)
+        .gesture(
+            TapGesture()
+                .exclusively(before: DragGesture(minimumDistance: 16))
+                .onChanged { value in
+                    if case .second(let drag) = value {
+                        if !isDraggingCard {
+                            isDraggingCard = true
+                            voice.stop()
+                        }
+                        dragOffset = CGSize(
+                            width: max(-64, min(64, drag.translation.width * 0.35)),
+                            height: max(-64, min(64, drag.translation.height * 0.35))
+                        )
+                    }
+                }
+                .onEnded { value in
+                    switch value {
+                    case .first:
+                        flip(card)
+                    case .second(let drag):
+                        let dx = drag.translation.width
+                        let dy = drag.translation.height
+                        if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                            changeCard(by: dx < 0 ? 1 : -1)
+                        } else if abs(dy) >= 45 {
+                            changeCard(by: dy < 0 ? 1 : -1)
+                        } else {
+                            withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
+                                dragOffset = .zero
+                            }
+                        }
+                    }
+                    isDraggingCard = false
+                }
         )
-        .accessibilityAction(named: "Kanji tiếp theo") { advance() }
+        .animation(.spring(response: 0.23, dampingFraction: 0.84), value: dragOffset)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityLabel(revealed ? "Mặt sau Kanji \(card.char), chạm để quay lại." :
+                                    "Mặt trước Kanji \(card.char), chạm để xem nghĩa.")
+        .accessibilityAction(named: "Lật thẻ") { flip(card) }
+        .accessibilityAction(named: "Kanji tiếp theo") { changeCard(by: 1) }
+        .accessibilityAction(named: "Kanji trước") { changeCard(by: -1) }
     }
 
     private func flip(_ card: Kanji) {
@@ -194,16 +261,28 @@ struct KanjiSwipeDeckView: View {
         revealed = false
         feedback = nil
         elapsed = 0
+        dragOffset = .zero
+        isDraggingCard = false
         voice.stop()
     }
 
     private func advance() {
+        changeCard(by: 1)
+    }
+
+    private func changeCard(by step: Int) {
+        guard !cards.isEmpty else { return }
+        // Chốt từ ghép của thẻ mới trước khi đổi position để không phát từ cũ.
+        let nextIndex = (position + step + cards.count) % cards.count
+        let next = cards[nextIndex]
         voice.stop()
-        revealed = false
+        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
+            position = nextIndex
+            revealed = false
+            dragOffset = .zero
+        }
         elapsed = 0
-        if position + 1 < cards.count { position += 1 } else { reload() }
-        // Luôn đọc chữ/từ của thẻ mới, không lặp câu của thẻ trước.
-        if let next = current { voice.speak(next.word) }
+        voice.speak(next.word)
     }
 
     private func mark(_ id: String, known: Bool) {

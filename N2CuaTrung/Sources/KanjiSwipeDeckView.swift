@@ -17,6 +17,17 @@ struct KanjiSwipeDeckView: View {
 
     private var current: Kanji? { cards.indices.contains(position) ? cards[position] : nil }
 
+    private func approvedRelatedWord(_ card: Kanji) -> String? {
+        let approved = Set(store.course.vocab.filter { $0.isApprovedForStudy }.map(\.word))
+        return card.word.components(separatedBy: CharacterSet(charactersIn: "、,，/"))
+            .map {
+                $0.replacingOccurrences(of: "[（(][^）)]*[）)]", with: "",
+                                        options: .regularExpression)
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            .first { approved.contains($0) }
+    }
+
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 10) {
@@ -86,8 +97,10 @@ struct KanjiSwipeDeckView: View {
                     }
                     HStack(spacing: 8) {
                         actionButton("Nghe từ ghép", symbol: "speaker.wave.2.fill", color: Palette.blue) {
-                            voice.speak(card.word)
+                            if let word = approvedRelatedWord(card) { voice.speak(word) }
                         }
+                        .disabled(approvedRelatedWord(card) == nil)
+                        .opacity(approvedRelatedWord(card) == nil ? 0.38 : 1)
                         actionButton("Dừng âm thanh", symbol: "stop.fill", color: Palette.navy) {
                             voice.stop()
                         }
@@ -177,11 +190,13 @@ struct KanjiSwipeDeckView: View {
                         Text("Kun: \(card.kun)").lineLimit(2)
                     }
                     .font(.caption).foregroundColor(.secondary)
-                    Text(card.word)
-                        .font(.subheadline.weight(.medium))
-                        .foregroundColor(Palette.navy)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.7)
+                    if let word = approvedRelatedWord(card) {
+                        Text(word)
+                            .font(.subheadline.weight(.medium))
+                            .foregroundColor(Palette.navy)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.7)
+                    }
                     Spacer(minLength: 0)
                     Text("Chạm để xem mặt trước")
                         .font(.caption2).foregroundColor(.secondary)
@@ -286,7 +301,7 @@ struct KanjiSwipeDeckView: View {
         position = nextIndex
         revealed = false
         elapsed = 0
-        voice.speak(next.word)
+        if let word = approvedRelatedWord(next) { voice.speak(word) }
     }
 
     private func mark(_ id: String, known: Bool) {

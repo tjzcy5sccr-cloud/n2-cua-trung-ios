@@ -13,8 +13,12 @@ struct CoursePack: Decodable, Identifiable {
     let listening: [ListeningLesson]?
 
     var itemCount: Int {
-        (vocab?.count ?? 0) + (grammar?.count ?? 0) + (kanji?.count ?? 0)
-        + (readings?.count ?? 0) + (listening?.count ?? 0)
+        let a = vocab?.count ?? 0
+        let b = grammar?.count ?? 0
+        let c = kanji?.count ?? 0
+        let d = readings?.count ?? 0
+        let e = listening?.count ?? 0
+        return a + b + c + d + e
     }
 }
 

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Thẻ Kanji vuốt dọc giống flashcard, giữ kích thước cố định.
+/// Thẻ Kanji vuốt ngang hoặc dọc; chạm để lật hai mặt.
 struct KanjiSwipeDeckView: View {
     @EnvironmentObject private var store: StudyStore
     @StateObject private var voice = JapaneseVoice.shared
@@ -18,7 +18,7 @@ struct KanjiSwipeDeckView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 10) {
-                SectionTitle("Kanji N2", subtitle: "Vuốt dọc để đổi chữ • Chạm để xem nghĩa")
+                SectionTitle("Kanji N2", subtitle: "Vuốt ngang / dọc để đổi chữ • Chạm để lật")
                 HStack {
                     if !cards.isEmpty {
                         Pill(text: "\(position + 1) / \(cards.count)", color: Palette.blue)
@@ -145,14 +145,7 @@ struct KanjiSwipeDeckView: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("Mặt trước Kanji. Chạm để xem nghĩa.")
-                .simultaneousGesture(
-                    DragGesture(minimumDistance: 35).onEnded { movement in
-                        let dy = movement.translation.height
-                        if abs(dy) > 48 && abs(dy) > abs(movement.translation.width) * 1.25 {
-                            advance()
-                        }
-                    }
-                )
+
             }
         }
         .frame(maxWidth: .infinity)
@@ -160,6 +153,16 @@ struct KanjiSwipeDeckView: View {
         .padding(.horizontal, 14)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
+        // Một cử chỉ cho cả hai mặt. Không chiếm sự kiện chạm hoặc cuộn.
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 28).onEnded { movement in
+                let dx = movement.translation.width
+                let dy = movement.translation.height
+                let horizontal = abs(dx) >= 58 && abs(dx) > abs(dy) * 1.15
+                let vertical = abs(dy) >= 92 && abs(dy) > abs(dx) * 1.15
+                if horizontal || vertical { advance() }
+            }
+        )
         .accessibilityAction(named: "Kanji tiếp theo") { advance() }
     }
 
@@ -199,6 +202,8 @@ struct KanjiSwipeDeckView: View {
         revealed = false
         elapsed = 0
         if position + 1 < cards.count { position += 1 } else { reload() }
+        // Luôn đọc chữ/từ của thẻ mới, không lặp câu của thẻ trước.
+        if let next = current { voice.speak(next.word) }
     }
 
     private func mark(_ id: String, known: Bool) {

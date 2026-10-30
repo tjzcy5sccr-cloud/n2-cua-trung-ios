@@ -15,6 +15,11 @@
       "id": "vn26-original-practice-01",
       "version": 1,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/vn26-original-practice-01.json"
+    },
+    {
+      "id": "n2-reading-listening-02",
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/n2-reading-listening-02.json"
     }
   ]
 }

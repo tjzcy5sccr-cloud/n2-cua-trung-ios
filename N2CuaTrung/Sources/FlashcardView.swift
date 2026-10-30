@@ -283,7 +283,6 @@ struct GrammarFlashcardView: View {
                                 Spacer(minLength: 65)
                             }
                         }
-                            }
                         .frame(maxWidth: .infinity)
                         }
                         .frame(maxWidth: .infinity)

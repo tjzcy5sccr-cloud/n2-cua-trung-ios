@@ -16,6 +16,7 @@ COURSE_FILES = [
     BASE / 'content-packs/n2-expansion-01.json',
     BASE / 'content-packs/openjlpt-n2-core.json',
     BASE / 'content-packs/vn26-original-practice-01.json',
+    BASE / 'content-packs/n2-reading-listening-02.json',
 ]
 GRAMMAR = BASE / 'N2CuaTrung/Resources/grammar-details.json'
 OUT = BASE / 'N2CuaTrung/Resources/furigana-atlas.json'

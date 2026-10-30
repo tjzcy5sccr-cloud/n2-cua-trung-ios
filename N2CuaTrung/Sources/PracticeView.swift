@@ -43,13 +43,13 @@ struct PracticeHubView: View {
                     QuestionSessionView(questions: QuestionBank.reading(store.course).shuffled(), type: "Đọc hiểu")
                 } label: {
                     ActionTile(icon: "doc.text", color: Palette.blue,
-                               title: "Đọc hiểu", detail: "\(store.course.readings.count) đoạn và bài tập")
+                               title: "Đọc hiểu", detail: "\(store.course.readings.count) bài • 12 câu ngẫu nhiên mỗi lượt")
                 }
                 NavigationLink {
                     QuestionSessionView(questions: QuestionBank.listening(store.course).shuffled(), type: "Nghe hiểu")
                 } label: {
                     ActionTile(icon: "headphones", color: Palette.teal,
-                               title: "Nghe hiểu", detail: "\(store.course.listening.count) hội thoại với giọng iOS")
+                               title: "Nghe hiểu", detail: "\(store.course.listening.count) bài • 12 câu ngẫu nhiên mỗi lượt")
                 }
                 NavigationLink { ExamStartView() } label: {
                     ActionTile(icon: "stopwatch", color: Palette.orange,

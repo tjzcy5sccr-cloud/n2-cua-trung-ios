@@ -171,19 +171,39 @@ enum QuestionBank {
         }
     }
 
+    /// Mỗi lượt chỉ lấy 12 câu và tránh các bài ở lượt luyện ngay trước đó.
+    private static func uniqueSession<T: Identifiable>(_ lessons: [T], key: String) -> [T]
+        where T.ID == String {
+        let recent = Set(UserDefaults.standard.stringArray(forKey: key) ?? [])
+        let newOnes = lessons.filter { !recent.contains($0.id) }.shuffled()
+        let remaining = lessons.filter { recent.contains($0.id) }.shuffled()
+        let chosen = Array((newOnes + remaining).prefix(12))
+        UserDefaults.standard.set(chosen.map(\.id), forKey: key)
+        return chosen
+    }
+
+    private static func shuffledChoices(_ choices: [String], answer: Int) -> ([String], Int) {
+        guard choices.indices.contains(answer) else { return (choices, answer) }
+        let correct = choices[answer]
+        let shuffled = choices.shuffled()
+        return (shuffled, shuffled.firstIndex(of: correct) ?? answer)
+    }
+
     static func reading(_ data: CourseData) -> [ExamQuestion] {
-        data.readings.map { item in
-            ExamQuestion(category: "Đọc hiểu", prompt: item.question,
-                         passage: item.text, audioText: nil, choices: item.choices,
-                         answer: item.answer, explanation: item.explanation)
+        uniqueSession(data.readings, key: "N2.recentReadingV2").map { item in
+            let (choices, answer) = shuffledChoices(item.choices, answer: item.answer)
+            return ExamQuestion(category: "Đọc hiểu", prompt: item.question,
+                                passage: item.text, audioText: nil, choices: choices,
+                                answer: answer, explanation: item.explanation)
         }
     }
 
     static func listening(_ data: CourseData) -> [ExamQuestion] {
-        data.listening.map { item in
-            ExamQuestion(category: "Nghe hiểu", prompt: item.question,
-                         passage: nil, audioText: item.script, choices: item.choices,
-                         answer: item.answer, explanation: item.explanation)
+        uniqueSession(data.listening, key: "N2.recentListeningV2").map { item in
+            let (choices, answer) = shuffledChoices(item.choices, answer: item.answer)
+            return ExamQuestion(category: "Nghe hiểu", prompt: item.question,
+                                passage: nil, audioText: item.script, choices: choices,
+                                answer: answer, explanation: item.explanation)
         }
     }
 

@@ -9,22 +9,22 @@ struct FuriganaText: View {
     var size: CGFloat = 18
 
     var body: some View {
-        RubyFlow(spacing: 2, lineSpacing: 12) {
+        RubyFlow(spacing: 1, lineSpacing: 8) {
             ForEach(Array(parts.enumerated()), id: \.offset) { _, part in
-                VStack(spacing: 2) {
-                    Text(part.reading ?? " ")
-                        .font(.system(size: max(12, size * 0.70), weight: .semibold))
-                        .foregroundColor(part.reading == nil ? .clear : (part.highlighted ? .red : Palette.teal))
+                VStack(spacing: 0) {
+                    Text(part.showReading ? (part.reading ?? " ") : " ")
+                        .font(.system(size: max(10, size * 0.54)))
+                        .foregroundColor(!part.showReading ? .clear : (part.highlighted ? .red : Palette.teal))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.78)
+                        .minimumScaleFactor(0.6)
                     Text(part.text)
                         .font(.system(size: size, weight: .medium))
                         .foregroundColor(part.highlighted ? .red : Palette.navy)
                         .lineLimit(1)
                 }
-                .fixedSize(horizontal: true, vertical: true)
+                .fixedSize(horizontal: true, vertical: false)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel(part.reading.map { "\(part.text)、\($0)" } ?? part.text)
+                .accessibilityLabel(part.showReading ? "\(part.text)、\(part.reading ?? "")" : part.text)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,6 +75,8 @@ struct FuriganaText: View {
         }
         var offset = text.startIndex
         for i in segments.indices {
+            segments[i].showReading = segments[i].reading != nil &&
+                segments[i].text.unicodeScalars.contains { N2RubyTargets.kanji.contains($0) }
             guard let end = text.index(offset, offsetBy: segments[i].text.count, limitedBy: text.endIndex) else { break }
             segments[i].highlighted = targets.contains { $0.overlaps(offset..<end) }
             offset = end
@@ -101,6 +103,7 @@ private struct RubyPart {
     var text: String
     var reading: String?
     var highlighted = false
+    var showReading = false
 }
 
 private extension String {
@@ -203,4 +206,9 @@ enum GrammarFocus {
         }
         return terms.sorted { $0.count > $1.count }
     }
+}
+
+/// N2/difficult kanji theo kho OpenJLPT, không phải danh sách JLPT chính thức.
+private enum N2RubyTargets {
+    static let kanji = Set("党協総区領県設府査委軍団各島革村勢再営防補副算述線農州武象域額欧賞辺被低復移個門課脳極含蔵量型針専谷史階管兵接細丸湾録省旧橋岸周材戸央券編捜竹超並療森介根歴将幅般講林装諸劇河航鉄児禁印逆換久短油暴輪占植清倍均億圧芸署伸停爆陸玉波狙帯延羽固則乱普測豊厚齢囲卒略順岩練軽了庁城患層版令角損裏仏績築貨混昇池血温季星永著誌庫刊像香坂底布寺宇巨震希触依籍汚枚複郵仲栄札板骨届巻燃跡包駐弱紹雇替預焼簡章臓贈照薄群秒奥詰双孝刺純翌快片敬悩泉皮漁荒貯硬埋柱祭袋筆訓浴童宝封胸砂塩賢腕兆床毛緑尊祝柔殿濃液衣肩零幼荷泊黄寿甘臣浅掃雲掘捨軟沈凍乳恋紅郊腰炭踊冊勇械菜珍卵湖喫干虫刷湯溶鉱涙匹孫鋭枝塗軒毒叫拝氷乾棒祈拾粉糸綿汗銅湿瓶咲召缶隻脂蒸肌耕鈍泥隅灯辛磨麦姓筒鼻粒詞胃畳机膚濯塔沸灰菓帽枯釜涼舟貝符憎皿肯燥畜瓦挟曇滴爪枕丼斬餅芯伺匂麓稽蹴蓋拭煎嗅塞宛巾捻桁潰箋羨肘遜遡隙".unicodeScalars)
 }

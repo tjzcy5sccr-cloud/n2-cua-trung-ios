@@ -85,10 +85,12 @@ struct QuestionSessionView: View {
         questions.indices.contains(position) ? questions[position] : nil
     }
 
-    /// Đọc hiểu và ngữ pháp: chỉ hiện lời giải khi người học bấm "Kết quả".
+    /// Đọc hiểu, nghe hiểu, Kanji và ngữ pháp: xem lời giải khi bấm "Kết quả".
     /// Đề thi bấm giờ vẫn chỉ chữa bài sau khi nộp.
-    private var reviewAtEnd: Bool { type == "Đọc hiểu" || type == "Ngữ pháp" || timed }
-    private var manualExplanation: Bool { !timed && (type == "Đọc hiểu" || type == "Ngữ pháp") }
+    private var manualExplanation: Bool {
+        !timed && ["Đọc hiểu", "Ngữ pháp", "Nghe hiểu", "Kanji"].contains(type)
+    }
+    private var reviewAtEnd: Bool { manualExplanation || timed }
 
     var body: some View {
         ScrollView {
@@ -237,19 +239,41 @@ struct QuestionSessionView: View {
             if !completed && !questions.isEmpty {
                 VStack(spacing: 6) {
                     if manualExplanation {
-                        HStack(spacing: 10) {
-                            MainButton(
-                                title: position + 1 == questions.count ? "Hoàn thành" :
-                                    (selected == nil && !showCurrentExplanation ? "Bỏ qua / Tiếp" : "Tiếp"),
-                                symbol: "arrow.right",
-                                color: Palette.teal
-                            ) { next() }
-                            MainButton(
-                                title: showCurrentExplanation ? "Ẩn kết quả" : "Kết quả",
-                                symbol: showCurrentExplanation ? "eye.slash.fill" : "list.bullet.clipboard.fill",
-                                color: Palette.blue
-                            ) { toggleCurrentExplanation() }
+                        HStack(spacing: 7) {
+                            Button {
+                                guard selected == nil && !showCurrentExplanation else { return }
+                                next()
+                            } label: {
+                                Label("Bỏ qua", systemImage: "forward.fill")
+                                    .font(.caption.weight(.semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 46)
+                                    .foregroundColor(.white)
+                                    .background(selected == nil && !showCurrentExplanation ? Palette.orange : Color.gray,
+                                                in: RoundedRectangle(cornerRadius: 11))
+                            }
+                            .disabled(selected != nil || showCurrentExplanation)
+                            Button {
+                                next()
+                            } label: {
+                                Label(position + 1 == questions.count ? "Hoàn tất" : "Tiếp",
+                                      systemImage: "arrow.right")
+                                    .font(.caption.weight(.semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 46)
+                                    .foregroundColor(.white)
+                                    .background(Palette.teal, in: RoundedRectangle(cornerRadius: 11))
+                            }
+                            Button {
+                                toggleCurrentExplanation()
+                            } label: {
+                                Label("Kết quả", systemImage: "list.bullet.clipboard.fill")
+                                    .font(.caption.weight(.semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 46)
+                                    .foregroundColor(.white)
+                                    .background(Palette.blue, in: RoundedRectangle(cornerRadius: 11))
+                            }
+                            .disabled(showCurrentExplanation)
                         }
+                        .buttonStyle(.plain)
                     } else {
                         HStack(spacing: 10) {
                             Text("Câu \(position + 1)/\(questions.count)")
@@ -374,7 +398,7 @@ struct QuestionSessionView: View {
         selected = index
         answersByQuestion[position] = index
         if index == question.answer { correct += 1 }
-        // Giữ nguyên câu đọc hiểu và ngữ pháp cho đến khi bấm "Tiếp".
+        // Không tự chuyển Đọc hiểu, Nghe hiểu, Kanji hay Ngữ pháp; chờ bấm Tiếp.
         guard !manualExplanation else { return }
         let answeredID = question.id
         nextQuestionTask?.cancel()
@@ -386,7 +410,7 @@ struct QuestionSessionView: View {
     }
 
     private func toggleCurrentExplanation() {
-        guard manualExplanation, !completed else { return }
+        guard manualExplanation, !completed, !showCurrentExplanation else { return }
         nextQuestionTask?.cancel()
         nextQuestionTask = nil
         withAnimation(.easeInOut(duration: 0.18)) {

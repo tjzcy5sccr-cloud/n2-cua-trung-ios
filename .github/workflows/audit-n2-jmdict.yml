@@ -5,6 +5,7 @@ name: Audit N2 reading and senses with independent JMdict
     branches: [main]
     paths:
       - 'scripts/audit_n2_readings_jmdict.py'
+      - 'content-packs/openjlpt-n2-core.json'
       - '.github/workflows/audit-n2-jmdict.yml'
 permissions:
   contents: write

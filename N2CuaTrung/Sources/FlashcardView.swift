@@ -150,7 +150,7 @@ struct FlashcardDeckView: View {
                             FuriganaText(text: card.example,
                                          mainWord: card.word, mainReading: card.reading, size: 17)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(card.exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung.")
+                            Text(card.displayExampleTranslation)
                                 .font(.subheadline)
                                 .foregroundColor(Palette.navy)
                                 .frame(maxWidth: .infinity, alignment: .leading)

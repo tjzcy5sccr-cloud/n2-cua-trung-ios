@@ -22,6 +22,12 @@ SOURCE = "https://raw.githubusercontent.com/jkindrix/japanese-language-data/main
 def normal(text):
     return unicodedata.normalize("NFC", text or "").strip()
 
+def kana_fold(value):
+    # Kana script is not meaning-bearing: compare Katakana with Hiragana sound-by-sound.
+    text = normal(value)
+    return "".join(chr(ord(c) - 0x60) if 0x30A1 <= ord(c) <= 0x30F6 else c for c in text)
+
+
 def load_reference():
     print("Reading independent JMdict metadata for spelling/kana cross-check...", flush=True)
     req = urllib.request.Request(SOURCE, headers={"User-Agent": "N2-Trung-JMdict-Audit/1.0"})
@@ -45,7 +51,7 @@ def matching_forms(row, word, reading):
     for item in row.get("kana", []):
         text = normal(item["text"])
         applies = item.get("appliesToKanji", ["*"])
-        if text == reading and (
+        if kana_fold(text) == kana_fold(reading) and (
             (word in kanji and ("*" in applies or word in applies)) or
             (word == reading and (not kanji or not applies or "*" in applies))
         ):
@@ -57,9 +63,9 @@ def example_senses(row, word, reading):
     for sense in row.get("sense", []):
         permitted_kanji = sense.get("appliesToKanji", [])
         permitted_kana = sense.get("appliesToKana", [])
-        if permitted_kanji and word not in permitted_kanji: continue
-        if permitted_kana and reading not in permitted_kana: continue
-        english = [g["text"] for g in sense.get("gloss", []) if g.get("lang") == "eng"]
+        if permitted_kanji and "*" not in permitted_kanji and word not in permitted_kanji: continue
+        if permitted_kana and "*" not in permitted_kana and reading not in permitted_kana: continue
+        english = [g["text"] for g in sense.get("gloss", []) if g.get("lang") in ("eng", "en")]
         if english:
             senses.append({"en": english[:4], "pos": sense.get("partOfSpeech", [])[:4]})
     return senses[:7]

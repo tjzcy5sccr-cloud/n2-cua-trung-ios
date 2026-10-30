@@ -8,6 +8,7 @@ struct GrammarIllustration: Decodable {
 struct GrammarSample: Decodable, Identifiable {
     let text: String
     let translation: String
+    var translationStatus: String? = nil
     var id: String { text }
 }
 
@@ -26,10 +27,13 @@ enum GrammarLibrary {
     }
 
     static func examples(for grammar: Grammar) -> [GrammarSample] {
-        let main = GrammarSample(text: grammar.example, translation: grammar.translation)
+        let main = GrammarSample(text: grammar.example, translation: grammar.displayTranslation, translationStatus: grammar.translationStatus)
         let all = [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
         return all.map { part in
-            GrammarSample(text: part.text, translation: part.translation.hasPrefix("EN ·") ? "Bản dịch tiếng Việt đang được bổ sung." : part.translation)
+            let visible = part.translationStatus == "needs_sentence_review" ?
+                "Bản dịch ví dụ này đang được đối chiếu." :
+                (part.translation.hasPrefix("EN ·") ? "Bản dịch tiếng Việt đang được bổ sung." : part.translation)
+            return GrammarSample(text: part.text, translation: visible, translationStatus: part.translationStatus)
         }
     }
 }

@@ -192,7 +192,7 @@ enum KangxiReference {
 隶|đãi|bắt kịp
 隹|chuy|chim đuôi ngắn
 雨|vũ|mưa
-青|thanh|xanh
+靑|thanh|xanh
 非|phi|không phải
 面|diện|mặt
 革|cách|da thuộc, thay đổi
@@ -729,7 +729,7 @@ enum KangxiReference {
         "罒": 122, "⺶": 123, "⺼": 130, "艹": 140,
         "衤": 145, "訁": 149, "辶": 162, "釒": 167,
         "飠": 184, "戸": 63, "麦": 199, "黄": 201,
-        "黒": 203, "竜": 212, "亀": 213, "歯": 211, "斉": 210
+        "黒": 203, "青": 174, "竜": 212, "亀": 213, "歯": 211, "斉": 210
     ]
 
     private static let numberByRadical = Dictionary(uniqueKeysWithValues:

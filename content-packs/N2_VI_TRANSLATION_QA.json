@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 12,
+  "packVersion": 13,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 368,
@@ -60,7 +60,7 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "Gói N2 có 1756 từ vựng, 376 Kanji, 93 ngữ pháp. 93 ví dụ chính ngữ pháp, 50 ví dụ từ vựng được biên tập lại; 1706 ví dụ từ vựng và 186 ví dụ phụ cần soát. Không xem chưa kiểm là đúng 100%.",
+  "scopeLimitation": "1756 từ, 376 Kanji, 93 ngữ pháp; 102/1756 ví dụ từ vựng và 93/93 ví dụ ngữ pháp chính đã được biên tập dịch. 1654 ví dụ từ vựng và 186 ví dụ phụ cần kiểm tra.",
   "candidateSource": {
     "name": "Từ điển Nhật–Việt mở (Bunchaway)",
     "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
@@ -169,10 +169,10 @@
   },
   "sentenceReview": {
     "vocabTotal": 1756,
-    "vocabExamplesEditoriallyTranslated": 50,
-    "vocabExamplesPending": 1706,
+    "vocabExamplesEditoriallyTranslated": 102,
+    "vocabExamplesPending": 1654,
     "grammarMainTranslated": 93,
     "grammarExtraPending": 186,
-    "claim": "Đã sửa nghĩa theo ngữ cảnh bằng biên tập; chưa xác minh độc lập từng câu với hai nguồn. Không thể công bố 100% chính xác."
+    "claim": "Đây là các câu đã biên tập thủ công; còn cần xác minh độc lập với nguồn giảng dạy Nhật–Việt, chưa thể tuyên bố 100% đúng."
   }
 }

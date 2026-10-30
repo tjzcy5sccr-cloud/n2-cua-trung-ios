@@ -1,27 +1,44 @@
 import SwiftUI
 import ActivityKit
+import UIKit
 
-/// Live Activity: thẻ học rộng ở phía dưới Lock Screen, khác với widget nhỏ cạnh đồng hồ.
-/// Chỉ hoạt động khi người dùng chủ động bật, tối đa 8 giờ hoạt động (+ tối đa 4 giờ lưu trên màn hình khóa).
+/// Live Activity hiển thị thẻ học trên màn hình khóa.
 @available(iOS 16.1, *)
 @MainActor
 final class WideStudyController: ObservableObject {
     static let shared = WideStudyController()
-    @Published private(set) var message: String = ""
-    @Published private(set) var active: Bool = false
+
+    @Published private(set) var message = ""
+    @Published private(set) var active = false
+    @Published private(set) var permissionGranted = false
+    @Published private(set) var isBusy = false
     @Published var rotateSeconds: Int {
         didSet { UserDefaults.standard.set(rotateSeconds, forKey: "N2LiveActivityRotation") }
     }
+
     private var lastChange = Date.distantPast
     private var previousWordID: String?
 
     private init() {
         let saved = UserDefaults.standard.integer(forKey: "N2LiveActivityRotation")
         rotateSeconds = [0, 30, 60].contains(saved) ? saved : 60
-        active = !Activity<StudyActivityAttributes>.activities.isEmpty
+        refreshStatus()
     }
 
-    /// Không lặp lại ngay một từ, ưu tiên bộ từ đa dạng.
+    private var runningActivities: [Activity<StudyActivityAttributes>] {
+        Activity<StudyActivityAttributes>.activities.filter {
+            $0.activityState == .active || $0.activityState == .stale
+        }
+    }
+
+    /// Đồng bộ trạng thái từ hệ thống, không tin vào biến active đã lưu lâu.
+    func refreshStatus() {
+        let allowed = ActivityAuthorizationInfo().areActivitiesEnabled
+        let running = !runningActivities.isEmpty
+        if permissionGranted != allowed { permissionGranted = allowed }
+        if active != running { active = running }
+    }
+
     private func newWord(from course: CourseData) -> Vocabulary? {
         let candidates = course.vocab.filter { $0.id != previousWordID }
         guard let word = candidates.randomElement() ?? course.vocab.randomElement() else { return nil }
@@ -31,49 +48,81 @@ final class WideStudyController: ObservableObject {
     }
 
     func tick(course: CourseData) async {
+        guard !isBusy else { return }
+        refreshStatus()
         guard active, rotateSeconds > 0,
               Date().timeIntervalSince(lastChange) >= Double(rotateSeconds) else { return }
         await next(course: course)
     }
 
     func start(course: CourseData) async {
-        guard ActivityAuthorizationInfo().areActivitiesEnabled else {
-            message = "Live Activities đang tắt trong Cài đặt iPhone."
+        guard !isBusy else { return }
+        isBusy = true
+        defer { isBusy = false }
+
+        refreshStatus()
+        guard permissionGranted else {
+            message = "iPhone đang chặn Hoạt động trực tiếp. Hãy mở Cài đặt của N2 của Trung và bật Live Activities."
             return
         }
-        guard let word = newWord(from: course) else { return }
-        // Ngăn bảng học bị trùng nhiều phiên trên màn hình khóa.
-        for old in Activity<StudyActivityAttributes>.activities {
-            await old.end(using: nil, dismissalPolicy: .immediate)
+        guard let word = newWord(from: course) else {
+            message = "Không tìm thấy từ vựng để bắt đầu Live Activity."
+            return
+        }
+
+        // Kể cả khi giao diện báo đang chạy, vẫn cho phép bật lại sau lỗi/phiên cũ.
+        for activity in Activity<StudyActivityAttributes>.activities {
+            await activity.end(using: nil, dismissalPolicy: .immediate)
         }
         do {
-            _ = try Activity<StudyActivityAttributes>.request(
+            let activity = try Activity<StudyActivityAttributes>.request(
                 attributes: StudyActivityAttributes(title: "N2 của Trung"),
-                contentState: .init(word: word.word, reading: word.reading, meaning: word.displayMeaning),
+                contentState: .init(word: word.word, reading: word.reading,
+                                    meaning: word.displayMeaning),
                 pushType: nil
             )
             active = true
-            message = "Đã bật bảng học rộng ở màn hình khóa."
+            message = "Đã tạo Live Activity (\(String(activity.id.prefix(8)))). Khóa iPhone để xem bảng học phía dưới đồng hồ."
         } catch {
-            message = "Không mở được bảng học rộng: \(error.localizedDescription)"
+            refreshStatus()
+            message = "Không thể bật Live Activity: \(error.localizedDescription)"
         }
     }
 
     func next(course: CourseData) async {
-        guard let next = newWord(from: course) else { return }
-        for activity in Activity<StudyActivityAttributes>.activities {
-            await activity.update(using: .init(word: next.word, reading: next.reading, meaning: next.displayMeaning))
+        guard !isBusy else { return }
+        isBusy = true
+        defer { isBusy = false }
+
+        refreshStatus()
+        let running = runningActivities
+        guard !running.isEmpty else {
+            message = "Không có Live Activity đang hoạt động. Nhấn Bật / Khởi động lại."
+            return
         }
-        active = !Activity<StudyActivityAttributes>.activities.isEmpty
-        message = active ? "Đã thay từ cho bảng học rộng." : "Hãy bật bảng học rộng trước."
+        guard let word = newWord(from: course) else {
+            message = "Kho từ vựng đang trống."
+            return
+        }
+        for activity in running {
+            await activity.update(using: .init(word: word.word, reading: word.reading,
+                                                meaning: word.displayMeaning))
+        }
+        refreshStatus()
+        message = active ? "Đã gửi từ mới tới màn hình khóa. iOS có thể cập nhật chậm." :
+                           "Phiên Live Activity đã hết hạn. Hãy khởi động lại."
     }
 
     func stop() async {
+        guard !isBusy else { return }
+        isBusy = true
+        defer { isBusy = false }
         for activity in Activity<StudyActivityAttributes>.activities {
             await activity.end(using: nil, dismissalPolicy: .immediate)
         }
+        refreshStatus()
         active = false
-        message = "Đã tắt bảng học rộng."
+        message = "Đã dừng bảng Live trên màn hình khóa."
     }
 }
 
@@ -81,39 +130,71 @@ final class WideStudyController: ObservableObject {
 struct WideLockScreenActivityPanel: View {
     let course: CourseData
     @StateObject private var controller = WideStudyController.shared
+    @Environment(\.openURL) private var openURL
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         LessonPanel {
-            SectionTitle("Bảng học rộng trên màn hình khóa", subtitle: "Live Activity lớn, có nền xanh và chữ sáng")
-            Text("Widget ở cạnh đồng hồ có kích cỡ cố định. Bảng Live Activity nằm phía dưới màn hình khóa và rộng hơn; bạn cần bật thủ công khi muốn ôn nhanh.")
+            SectionTitle("Live màn hình khóa", subtitle: "Từ vựng lớn, cách đọc và nghĩa tiếng Việt")
+            Text("Bảng Live xuất hiện dưới đồng hồ trên Màn hình khóa sau khi bạn bật. Nếu từng bật nhưng không thấy, dùng nút Khởi động lại.")
                 .font(.subheadline).foregroundStyle(.secondary)
+
+            HStack(spacing: 8) {
+                Image(systemName: controller.permissionGranted ? "checkmark.circle.fill" : "exclamationmark.triangle.fill")
+                    .foregroundStyle(controller.permissionGranted ? Palette.teal : Palette.orange)
+                Text(controller.permissionGranted ?
+                     (controller.active ? "Đang hoạt động trên iOS" : "Đã cho phép • Chưa bật Live") :
+                     "Live Activities chưa được cho phép")
+                    .font(.subheadline.weight(.semibold))
+            }
+
             Picker("Đổi từ tự động", selection: $controller.rotateSeconds) {
                 Text("Tắt").tag(0)
                 Text("30 giây").tag(30)
                 Text("60 giây").tag(60)
             }
             .pickerStyle(.segmented)
-            Text("30/60 giây áp dụng khi ứng dụng đang mở. Sau khi khóa màn hình, iOS có thể tạm dừng app và không bảo đảm làm mới Live Activity theo chu kỳ.")
+
+            Text("Tự đổi từ 30/60 giây chỉ hoạt động ổn định khi app đang mở. iOS không cho phép bảo đảm hẹn giờ làm mới liên tục khi đã khóa màn hình.")
                 .font(.caption).foregroundStyle(.secondary)
+
+            // Nút này luôn khả dụng, kể cả sau khi iOS hủy phiên mà trạng thái cũ chưa đồng bộ.
+            MainButton(title: controller.active ? "Khởi động lại Live Activity" : "Bật Live trên màn hình khóa",
+                       symbol: "rectangle.expand.vertical", color: Palette.teal) {
+                Task { await controller.start(course: course) }
+            }
+            .disabled(controller.isBusy)
+
             if controller.active {
-                MainButton(title: "Đổi ngay sang từ ngẫu nhiên", symbol: "shuffle", color: Palette.teal) {
+                MainButton(title: "Đổi ngay sang từ ngẫu nhiên", symbol: "shuffle", color: Palette.blue) {
                     Task { await controller.next(course: course) }
                 }
-                MainButton(title: "Dừng bảng học rộng", symbol: "xmark.circle", color: Palette.navy) {
+                .disabled(controller.isBusy)
+                MainButton(title: "Dừng bảng học Live", symbol: "xmark.circle", color: Palette.navy) {
                     Task { await controller.stop() }
                 }
-            } else {
-                MainButton(title: "Bật bảng học rộng", symbol: "rectangle.expand.vertical", color: Palette.teal) {
-                    Task { await controller.start(course: course) }
+                .disabled(controller.isBusy)
+            }
+
+            if !controller.permissionGranted {
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+                } label: {
+                    Label("Mở Cài đặt ứng dụng để bật Live Activities", systemImage: "gearshape.fill")
+                        .font(.subheadline.weight(.semibold))
                 }
             }
-            Text("Khi quay lại ứng dụng, thẻ được kiểm tra và làm mới. Không thể tự đổi liên tục mỗi 30 giây khi iPhone đã khóa mà không có cơ chế cập nhật được iOS cho phép.")
-                .font(.caption).foregroundStyle(.secondary)
+
             if !controller.message.isEmpty {
-                Text(controller.message).font(.caption).foregroundStyle(Palette.teal)
+                Text(controller.message)
+                    .font(.caption)
+                    .foregroundStyle(Palette.navy)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+        .onAppear { controller.refreshStatus() }
         .onReceive(ticker) { _ in
             Task { await controller.tick(course: course) }
         }

@@ -369,7 +369,7 @@ struct GrammarFlashcardView: View {
                     Button {
                         if revealed { showFullGrammar = true }
                     } label: {
-                        Label("Xem đủ cách dùng và 3 ví dụ", systemImage: "text.book.closed")
+                        Label("Xem cách dùng và ví dụ", systemImage: "text.book.closed")
                             .font(.caption.weight(.semibold))
                             .frame(maxWidth: .infinity, minHeight: 32)
                     }

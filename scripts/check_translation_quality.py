@@ -94,7 +94,7 @@ for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
     assert ".highPriorityGesture" not in code, name
 voice = (app / "StudyStore.swift").read_text(encoding="utf-8")
 assert "pendingSpeechWork?.cancel()" in voice
-assert "generation == self.speechGeneration" in voice
+assert "self.speechGeneration == generation" in voice, "Missing active-generation guard"
 print("PASS: exclusive tap/swipe gestures keep page fixed, show next card, and cancel queued old speech.")
 
 # Nếu đã dịch tự động, bắt buộc lưu được nội dung + dấu vết nghĩa trọng tâm.

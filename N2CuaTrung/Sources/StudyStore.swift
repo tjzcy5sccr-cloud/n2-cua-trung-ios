@@ -90,6 +90,10 @@ final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelega
     private let synthesizer = AVSpeechSynthesizer()
     private let preferenceKey = "N2CuaTrung.japaneseVoice.v1"
     private var speechGeneration = 0
+    /// Chỉ giữ lệnh phát mới nhất; hủy mọi lần phát/khởi chạy còn chờ.
+    private var pendingSpeech: [AVSpeechUtterance] = []
+    private var pendingSpeechWork: DispatchWorkItem?
+
     @Published private(set) var speaking = false
     @Published private(set) var lastError: String?
     @Published var voiceIdentifier: String = "" {
@@ -194,18 +198,48 @@ final class JapaneseVoice: NSObject, ObservableObject, AVSpeechSynthesizerDelega
         return utterance
     }
 
+    /// Luôn hủy giọng cũ rồi mới phát thẻ mới, không xếp từ mới vào hàng đợi cũ.
     private func speakSequence(_ utterances: [AVSpeechUtterance]) {
         speechGeneration += 1
         let generation = speechGeneration
+        pendingSpeechWork?.cancel()
+        pendingSpeechWork = nil
+        pendingSpeech = utterances
+        speaking = false
         synthesizer.stopSpeaking(at: .immediate)
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self, self.speechGeneration == generation else { return }
-            for utterance in utterances { self.synthesizer.speak(utterance) }
+        scheduleLatestSpeech(generation: generation, attempt: 0)
+    }
+
+    private func scheduleLatestSpeech(generation: Int, attempt: Int) {
+        let task = DispatchWorkItem { [weak self] in
+            guard let self = self, generation == self.speechGeneration else { return }
+            // AVSpeechSynthesizer hủy bất đồng bộ; đừng phát khi câu cũ còn chạy.
+            if self.synthesizer.isSpeaking || self.synthesizer.isPaused {
+                self.synthesizer.stopSpeaking(at: .immediate)
+                if attempt < 16 {
+                    self.scheduleLatestSpeech(generation: generation, attempt: attempt + 1)
+                } else {
+                    self.pendingSpeech.removeAll()
+                    self.lastError = "iOS chưa dừng được câu trước. Bấm nghe lại để thử."
+                }
+                return
+            }
+            let latest = self.pendingSpeech
+            self.pendingSpeech.removeAll()
+            self.pendingSpeechWork = nil
+            guard generation == self.speechGeneration else { return }
+            for utterance in latest { self.synthesizer.speak(utterance) }
         }
+        pendingSpeechWork = task
+        DispatchQueue.main.asyncAfter(deadline: .now() + (attempt == 0 ? 0.10 : 0.13),
+                                      execute: task)
     }
 
     func stop() {
         speechGeneration += 1
+        pendingSpeechWork?.cancel()
+        pendingSpeechWork = nil
+        pendingSpeech.removeAll()
         synthesizer.stopSpeaking(at: .immediate)
         speaking = false
     }

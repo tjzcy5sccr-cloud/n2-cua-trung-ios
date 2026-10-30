@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 9,
+  "packVersion": 10,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 368,
@@ -60,7 +60,7 @@
     "via": "https://github.com/jkindrix/japanese-language-data",
     "license": "CC BY-SA 4.0"
   },
-  "scopeLimitation": "1.756 mục đều có nghĩa tiếng Việt; 10 nghĩa đã đối chiếu và lưu liên kết ít nhất hai nguồn; 368 nghĩa được biên tập nhưng chưa đạt mức xác minh hai nguồn; 1.378 nghĩa từ từ điển mở chưa duyệt ngữ cảnh/cách đọc. Không có cơ sở tuyên bố 100% chính xác.",
+  "scopeLimitation": "Đã viết lại giải thích 93 mẫu ngữ pháp; KHÔNG xem 93 câu ví dụ và 1756 câu ví dụ từ vựng là đã dịch chính xác nếu chưa kiểm từng câu. Dữ liệu từ vựng có 368 nghĩa đã biên tập, còn nghĩa tham khảo cần xác minh.",
   "candidateSource": {
     "name": "Từ điển Nhật–Việt mở (Bunchaway)",
     "url": "https://github.com/bunchaway/tu-dien-nhat-viet",
@@ -160,5 +160,11 @@
     "multiplePossibleEntries": 7,
     "notInCommonSubset": 7,
     "warning": "Kana/writing match does not prove Vietnamese semantic accuracy. The report reflects pack v8; new v9 corrections preserve Japanese written forms except reviewed examples."
+  },
+  "grammarReview": {
+    "total": 93,
+    "explanationsEditoriallyRewritten": 93,
+    "mainExamplesNotYetVerified": 93,
+    "additionalExamplesPending": 186
   }
 }

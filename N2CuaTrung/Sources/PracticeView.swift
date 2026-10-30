@@ -18,6 +18,10 @@ struct PracticeHubView: View {
                     ActionTile(icon: "character.square", color: Palette.orange,
                                title: "Kanji", detail: "\(store.course.kanji.count) chữ • Vuốt để học, chạm để lật")
                 }
+                NavigationLink { KangxiRadicalsView() } label: {
+                    ActionTile(icon: "text.book.closed", color: Palette.blue,
+                               title: "214 bộ thủ Khang Hy", detail: "Âm Hán–Việt, nghĩa và số thứ tự bộ thủ")
+                }
                 NavigationLink {
                     QuestionSessionView(questions: QuestionBank.vocabulary(store.course, week: store.week).shuffled(),
                                         type: "Từ vựng")

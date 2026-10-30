@@ -199,27 +199,20 @@ struct N2WideLiveActivityWidget: Widget {
             .padding(.vertical, 13)
             .activityBackgroundTint(Color(red: 0.02, green: 0.21, blue: 0.12))
             .activitySystemActionForegroundColor(.white)
-        } dynamicIsland: { context in
+        } dynamicIsland: { _ in
+            // Chỉ hiển thị nội dung Live Activity trên màn hình khóa.
+            // Không có giao diện học / từ vựng riêng trong Dynamic Island.
+            // iOS vẫn có thể hiển thị trạng thái Live Activity theo quy tắc hệ thống.
             DynamicIsland {
-                DynamicIslandExpandedRegion(.leading) {
-                    Text("☘ N2 của Trung").font(.caption.bold())
-                }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.word)
-                        .font(.title2.bold())
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    Text("\(context.state.reading) • \(context.state.meaning.hasPrefix("EN ·") ? "Đang bổ sung nghĩa tiếng Việt" : context.state.meaning)")
-                        .font(.caption).lineLimit(2)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    EmptyView()
                 }
             } compactLeading: {
-                Text("☘ N2").font(.caption2)
+                EmptyView()
             } compactTrailing: {
-                Text(context.state.word).font(.caption2).lineLimit(1)
+                EmptyView()
             } minimal: {
-                Image(systemName: "leaf.fill")
+                EmptyView()
             }
         }
     }

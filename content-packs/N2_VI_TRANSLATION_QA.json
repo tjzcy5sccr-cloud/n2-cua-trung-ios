@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "packId": "openjlpt-n2-core",
-  "packVersion": 13,
+  "packVersion": 14,
   "coverage": {
     "vocabTotal": 1756,
     "vocabEditorialRevised": 368,
@@ -170,9 +170,672 @@
   "sentenceReview": {
     "vocabTotal": 1756,
     "vocabExamplesEditoriallyTranslated": 102,
-    "vocabExamplesPending": 1654,
+    "vocabExamplesAutoTranslated": 1654,
+    "vocabExamplesPending": 0,
     "grammarMainTranslated": 93,
-    "grammarExtraPending": 186,
-    "claim": "Đây là các câu đã biên tập thủ công; còn cần xác minh độc lập với nguồn giảng dạy Nhật–Việt, chưa thể tuyên bố 100% đúng."
+    "grammarExtraAutoTranslated": 186,
+    "grammarExtraPending": 0,
+    "claim": "Dịch máy có nghĩa gốc làm mốc rà soát. Không được coi là 100% khớp nghĩa."
+  },
+  "exampleAutoTranslation": {
+    "model": "Helsinki-NLP/opus-mt-ja-vi, Apache-2.0",
+    "method": "whole-sentence Marian JA→VI + core Vietnamese gloss sense-overlap warning",
+    "revisedExamplesPreserved": true,
+    "disclaimer": "Dịch máy là bản tham khảo. Kiểm tra trùng từ nghĩa chính là heuristic, KHÔNG chứng minh câu đúng.",
+    "run": {
+      "machine_translated_unreviewed": 1840,
+      "needs_context_review": 942,
+      "gloss_token_overlap": 875,
+      "cannot_assess": 23
+    },
+    "vocabularyStatuses": {
+      "editorial_reviewed": 102,
+      "machine_translated_unreviewed": 1654
+    },
+    "extraGrammarStatuses": {
+      "machine_translated_unreviewed": 186
+    },
+    "examplesNeedingReview": [
+      {
+        "id": "olj-v-a4847f22e0",
+        "word": "承る",
+        "meaning": "xin nhận, xin nghe",
+        "japanese": "ご用は承っておりますか。",
+        "translation": "Tôi có thể giúp gì cho anh?",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-7b66979a25",
+        "word": "受け持つ",
+        "meaning": "đảm nhận, phụ trách",
+        "japanese": "費用を受け持つ者に決定権がある。",
+        "translation": "Họ có quyền quyết định cho những người có chi phí.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-609f65f056",
+        "word": "薄暗い",
+        "meaning": "hơi tối, lờ mờ",
+        "japanese": "薄暗い光の中で彼の顔を見た。",
+        "translation": "Ông nhìn thấy khuôn mặt của mình trong ánh sáng mờ nhạt.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-30f83846c7",
+        "word": "薄める",
+        "meaning": "pha loãng, làm nhạt",
+        "japanese": "薄めるについて学びました。",
+        "translation": "Tôi đã học được cách làm nó biến mất.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-40a3c95ccf",
+        "word": "打合せ",
+        "meaning": "buổi trao đổi, bàn bạc trước",
+        "japanese": "打ち合わせは来週に延期になった。",
+        "translation": "Thỏa thuận đã được hoãn vào tuần tới.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-4a25e28103",
+        "word": "打ち消す",
+        "meaning": "phủ nhận",
+        "japanese": "打ち消すについて学びました。",
+        "translation": "Tôi đã học được một bài học về việc rút lui.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6cfaa71596",
+        "word": "映す",
+        "meaning": "chiếu lên màn",
+        "japanese": "一本の高い木が水面に長い影を映している。",
+        "translation": "Một cây cao treo một bóng dài trên mặt nước.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-46b2bb8278",
+        "word": "映る",
+        "meaning": "được chiếu",
+        "japanese": "カーテンに女の子の影が映った。",
+        "translation": "Cái bóng của cô gái trên màn hình.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-8d45108aac",
+        "word": "写る",
+        "meaning": "hiện lên trong ảnh",
+        "japanese": "うまく写っているといいですが。",
+        "translation": "Tôi hy vọng là cô đã làm tốt.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-10adbed302",
+        "word": "饂飩",
+        "meaning": "mì udon",
+        "japanese": "そばはそば粉から、うどんやきしめんは普通の小麦粉からできてるの。",
+        "translation": "Bên cạnh đó là bột nhào thông thường.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-01cfbc11d9",
+        "word": "裏口",
+        "meaning": "cửa sau",
+        "japanese": "彼は裏口入学した。",
+        "translation": "Cậu ấy được vào học viện nội trú.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-5ba9e0b071",
+        "word": "占う",
+        "meaning": "bói, dự đoán vận mệnh",
+        "japanese": "私は運勢を占ってもらった。",
+        "translation": "Tôi đã nhận được may mắn.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-598e1dd07c",
+        "word": "恨み",
+        "meaning": "nỗi oán hận",
+        "japanese": "リサはスタンに恨みがある。",
+        "translation": "Lissa có thù hằn với Stanley.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6116be16a9",
+        "word": "恨む",
+        "meaning": "oán hận, trách móc",
+        "japanese": "恨むについて学びました。",
+        "translation": "Tôi đã học được rất nhiều về sự căm thù.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-343bc443c8",
+        "word": "羨む",
+        "meaning": "ghen tị",
+        "japanese": "彼らは私たちの成功をうらやんでいる。",
+        "translation": "Họ đang cố thành công.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-43e8d35afa",
+        "word": "売上",
+        "meaning": "doanh thu",
+        "japanese": "今年の売り上げは倍増と見込んでいます。",
+        "translation": "Và đây là một ví dụ.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-159326fcca",
+        "word": "うろうろ",
+        "meaning": "đi quanh quẩn, lang thang",
+        "japanese": "今日一日当ても無くうろうろした。",
+        "translation": "Hôm nay không lâu nữa đâu.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-b3f892f900",
+        "word": "うんと",
+        "meaning": "rất, nhiều, hết sức",
+        "japanese": "彼は金がうんとあって使えない。",
+        "translation": "Anh ta không thể dùng tiền được.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-5047599345",
+        "word": "ええと",
+        "meaning": "ừm, để xem nào",
+        "japanese": "ええと、私はジョギングはよいと思う。",
+        "translation": "À, tôi nghĩ tôi nên chạy bộ.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-9a206ab4e7",
+        "word": "エチケット",
+        "meaning": "phép lịch sự, quy tắc ứng xử",
+        "japanese": "それはエチケットの問題だ。",
+        "translation": "Đó là vấn đề về vé phạt.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2950903972",
+        "word": "エプロン",
+        "meaning": "tạp dề",
+        "japanese": "エプロンの紐を結んでください。",
+        "translation": "Hãy thắt dây an toàn lại.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6155e8fd84",
+        "word": "偉い",
+        "meaning": "vĩ đại",
+        "japanese": "私はあの人が将来偉くなると見取った。",
+        "translation": "Tôi đã nhận ra hắn sẽ trở thành người hùng trong tương lai.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-f428a460b7",
+        "word": "園芸",
+        "meaning": "nghề làm vườn, trồng cây cảnh",
+        "japanese": "彼女は園芸の入門書を読んでいる。",
+        "translation": "Cô ấy đang đọc sách của một công viên.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-75fef7ef0d",
+        "word": "遠足",
+        "meaning": "chuyến dã ngoại",
+        "japanese": "全体として、遠足は楽しかった。",
+        "translation": "Nói chung, tôi thích chân dài lắm.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-dba326f5ee",
+        "word": "延長",
+        "meaning": "gia hạn",
+        "japanese": "宿泊をもう一晩延長できますか。",
+        "translation": "Tôi có thể kéo dài thêm đêm nữa.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6e96d24d68",
+        "word": "追い越す",
+        "meaning": "vượt qua, vượt lên",
+        "japanese": "うさぎはかめに追い越された。",
+        "translation": "\"Tôi không biết làm thế nào để làm điều đó,\" Alice trả lời.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-f4d4c5dfdf",
+        "word": "応援",
+        "meaning": "cổ vũ, ủng hộ, hỗ trợ",
+        "japanese": "何事が起ころうとも、君を応援するよ。",
+        "translation": "Dù có chuyện gì xảy ra, tôi cũng sẽ giúp anh.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-dcd1a67561",
+        "word": "王女",
+        "meaning": "công chúa",
+        "japanese": "王女があくどい化粧をしていた。",
+        "translation": "Người phụ nữ mặc đồ trang điểm.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-f70dc7b6aa",
+        "word": "応ずる",
+        "meaning": "đáp ứng, ứng phó",
+        "japanese": "応ずるについて学びました。",
+        "translation": "Tôi đã học được vài điều về câu trả lời.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-91061f3fb6",
+        "word": "応接",
+        "meaning": "tiếp khách",
+        "japanese": "応接について学びました。",
+        "translation": "Tôi đã học được một bài học về sự đối xứng.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-675d71d816",
+        "word": "応対",
+        "meaning": "tiếp đón, ứng đối",
+        "japanese": "その女店員が私に応対してくれた。",
+        "translation": "Người phụ nữ đó đã nói với tôi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-a1b5b4da89",
+        "word": "大ざっぱ",
+        "meaning": "đại khái, sơ sài, không chi tiết",
+        "japanese": "あの人って大ざっぱな性格だからね。",
+        "translation": "Đó là bản chất của bà ấy.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-1495560853",
+        "word": "大凡",
+        "meaning": "đại khái",
+        "japanese": "彼女のおおよその年齢しか知らない。",
+        "translation": "Tôi chỉ biết cô ấy khoảng tuổi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-829f937932",
+        "word": "お帰り",
+        "meaning": "mừng bạn đã về",
+        "japanese": "あなたのお帰りを一日千秋の思いでお待ちしています。",
+        "translation": "Tôi đang chờ anh về nhà trong giây phút của mùa thu.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-24727f461e",
+        "word": "おかけください",
+        "meaning": "mời ngồi",
+        "japanese": "いいえ、はじめに９番におかけ下さい。",
+        "translation": "Không, xin hãy đến điểm 9.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-286e536eba",
+        "word": "お菜",
+        "meaning": "món ăn kèm cơm",
+        "japanese": "今晩のおかずはもう決めてあります。",
+        "translation": "Tối nay chúng tôi đã quyết định rồi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-0a5c26a710",
+        "word": "拝む",
+        "meaning": "chắp tay cầu nguyện",
+        "japanese": "その不届きな野郎の顔を、拝ませてもらうか。",
+        "translation": "Tôi sẽ cho anh thấy khuôn mặt khốn kiếp đó.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-f8a8923c36",
+        "word": "お代わり",
+        "meaning": "gọi thêm phần nữa",
+        "japanese": "ライスとキャベツをお代わりお願いします。",
+        "translation": "Cho tôi một ly cải bắp cải.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2fa74b3912",
+        "word": "補う",
+        "meaning": "bổ sung",
+        "japanese": "あなたの食事にはビタミンを補うほうがよい。",
+        "translation": "Ăn uống ngon miệng thì tốt hơn.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-328692d4b2",
+        "word": "送り仮名",
+        "meaning": "phần kana viết kèm Kanji",
+        "japanese": "この漢字、送り仮名が間違ってるよ。",
+        "translation": "Anh ta gửi nhầm tên rồi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-91b50bd069",
+        "word": "おげんきで",
+        "meaning": "chúc mạnh khỏe",
+        "japanese": "彼女が私に近づいてきて「おげんきですか」と言った。",
+        "translation": "Cô ấy nhìn tôi và nói: \"Xin lỗi.\"",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-ca8c4f4dbf",
+        "word": "怠る",
+        "meaning": "lơ là, sao nhãng",
+        "japanese": "あなたは「ありがとう」と言うことを怠った。",
+        "translation": "Anh đã quên nói \"cảm ơn\" rồi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-adc42eab65",
+        "word": "押える",
+        "meaning": "giữ chặt",
+        "japanese": "私は彼が私の悪口を言っているところを押さえた。",
+        "translation": "Anh ta nói xấu tôi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-1be15a39e4",
+        "word": "納める",
+        "meaning": "nộp",
+        "japanese": "資産家は高額の所得税を納めなければならない。",
+        "translation": "Tài sản phải trả thuế thu nhập cao.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-4a0fdf436f",
+        "word": "惜しい",
+        "meaning": "đáng tiếc",
+        "japanese": "これはまだ捨てるには惜しい。",
+        "translation": "Nó vẫn còn đó.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-997f2be694",
+        "word": "伯父さん",
+        "meaning": "bác",
+        "japanese": "あなたの叔父さんと話し合いたい。",
+        "translation": "Tôi muốn nói chuyện với chú của anh.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2b78635457",
+        "word": "お洒落",
+        "meaning": "sành điệu, có gu ăn mặc",
+        "japanese": "彼女はオシャレだ。",
+        "translation": "Cô ấy là một gã dở hơi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-37a019cc4b",
+        "word": "お大事に",
+        "meaning": "chúc mau khỏe",
+        "japanese": "くれぐれもお体をお大事に。",
+        "translation": "Bảo trọng nhé.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6985ce368b",
+        "word": "落着く",
+        "meaning": "bình tĩnh lại",
+        "japanese": "彼は当惑して落ち着きませんでした。",
+        "translation": "Ông không cảm thấy lo lắng.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-07926933b7",
+        "word": "お出掛け",
+        "meaning": "đi ra ngoài, chuyến đi chơi",
+        "japanese": "いつお出かけになりますか。",
+        "translation": "Khi nào tôi đi?",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2797d01152",
+        "word": "お手伝いさん",
+        "meaning": "người giúp việc",
+        "japanese": "お手伝いさんたちは主人の命令を実行しようと努めた。",
+        "translation": "Các nhân viên của tôi đang cố gắng thi hành mệnh lệnh của chủ nhân.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-449d9624b4",
+        "word": "落し物",
+        "meaning": "đồ đánh rơi",
+        "japanese": "落とし物カウンターはどこですか？",
+        "translation": "Bữa ăn thất lạc đâu rồi?",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-69338b8c5a",
+        "word": "大人しい",
+        "meaning": "hiền lành, ngoan ngoãn, trầm tính",
+        "japanese": "牛は大きくて、おとなしく見えました。",
+        "translation": "Con bò to, trông có vẻ to lớn.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2f1d00b80b",
+        "word": "驚かす",
+        "meaning": "làm ai ngạc nhiên, giật mình",
+        "japanese": "その靴の値段の高さには驚かされた。",
+        "translation": "Tôi đã không có gì để nói với cô ấy.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-121e30ca31",
+        "word": "各々",
+        "meaning": "mỗi người, từng người",
+        "japanese": "学生たちは各々その会合に出席しなければならない。",
+        "translation": "Chúng ta có thể làm điều đó.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-078ffcd02a",
+        "word": "お参り",
+        "meaning": "viếng đền, chùa",
+        "japanese": "元旦には近所の神社にお参りする人が多い。",
+        "translation": "Một khi đã đến công ty thần thánh địa phương.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-321ba5716a",
+        "word": "おまちください",
+        "meaning": "xin vui lòng chờ",
+        "japanese": "少々おまちください。",
+        "translation": "Vì vậy, chúng tôi có thể viết nó như thế này.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-616698b578",
+        "word": "おめでたい",
+        "meaning": "đáng chúc mừng",
+        "japanese": "あいつは本当におめでたい人間だ。",
+        "translation": "Anh ta thật sự rất muốn được như vậy.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-23a5f2fc3e",
+        "word": "思い込む",
+        "meaning": "đinh ninh, tin chắc một điều",
+        "japanese": "彼が僕にそう思い込ませたのです。",
+        "translation": "Ông ấy đã làm tôi nghĩ như vậy.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-4799821899",
+        "word": "思いっきり",
+        "meaning": "hết sức, hết mình, thỏa thích",
+        "japanese": "早く外に出て思いっきり遊びたい。",
+        "translation": "Tôi muốn ra khỏi đây sớm và tận hưởng mọi thứ.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2febf6c23b",
+        "word": "思い付く",
+        "meaning": "nảy ra ý tưởng, nghĩ ra",
+        "japanese": "いい考えを思いついた。",
+        "translation": "Tôi có ý này hay hơn.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-4e92bfed96",
+        "word": "お休み",
+        "meaning": "nghỉ ngơi",
+        "japanese": "お休み、いい夢たくさん見てね。",
+        "translation": "Chúc ngủ ngon.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-bf64a8fbb8",
+        "word": "おやつ",
+        "meaning": "bữa ăn nhẹ, quà vặt",
+        "japanese": "おやつにプリンを食べた。",
+        "translation": "Tôi đã ăn một cái bánh kẹp.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-1e77167484",
+        "word": "オルガン",
+        "meaning": "đàn organ, đàn phong cầm",
+        "japanese": "教会には普通オルガンがあります。",
+        "translation": "Có rất nhiều loại ung thư trong nhà thờ.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-bc22fda1e4",
+        "word": "卸す",
+        "meaning": "bán sỉ, bán buôn",
+        "japanese": "そうは問屋がおろさないぞ。",
+        "translation": "Đó không phải là câu hỏi của tôi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-c1c984fbb4",
+        "word": "恩恵",
+        "meaning": "ân huệ",
+        "japanese": "熱帯雨林は地球に多くの恩恵を与える。",
+        "translation": "Rừng mưa nhiệt đới mang lại rất nhiều lợi ích cho trái đất.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-5510e3f22f",
+        "word": "御中",
+        "meaning": "kính gửi",
+        "japanese": "御中について学びました。",
+        "translation": "Tôi đã học được điều này từ ngài.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-c73ccb263c",
+        "word": "カーブ",
+        "meaning": "khúc cua",
+        "japanese": "カーブについて学びました。",
+        "translation": "Tôi đã học được về đường cong.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-623af5309f",
+        "word": "貝",
+        "meaning": "vỏ sò, động vật có vỏ",
+        "japanese": "私が手にしてるのは貝の化石です。",
+        "translation": "Và đây là những gì tôi đã làm.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-22bdd6c98d",
+        "word": "会館",
+        "meaning": "hội quán",
+        "japanese": "その日に限って子供たちは会館に入ることを許される。",
+        "translation": "\"Tôi không biết làm thế nào để làm điều đó, thưa ông.\"",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-b9a3df8259",
+        "word": "改札",
+        "meaning": "soát vé",
+        "japanese": "最近駅の改札あたりで、平気でイチャイチャしてる若い奴等多くなったよなあ。",
+        "translation": "Gần đây, chúng tôi đã có rất nhiều trẻ em bị hư hỏng vì những cái thẻ sửa chữa nhà ga.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-2e4e587537",
+        "word": "回数",
+        "meaning": "số lần",
+        "japanese": "いつもより尿の回数が多いです。",
+        "translation": "Có nhiều tiểu đường hơn bình thường.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-c7d511e624",
+        "word": "回数券",
+        "meaning": "vé tập, tập vé dùng nhiều lần",
+        "japanese": "回数券を下さい。",
+        "translation": "Xin vui lòng cho tôi vé số tùy chọn.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-5b8c65c480",
+        "word": "解説",
+        "meaning": "giải thích, thuyết minh",
+        "japanese": "彼の解説がわかった人はほとんどいなかった。",
+        "translation": "Ông là một người đàn ông tuyệt vời.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-aca1f9b63b",
+        "word": "改造",
+        "meaning": "cải tạo, cải biến, nâng cấp",
+        "japanese": "地下室を仕事場に改造した。",
+        "translation": "Thay đổi tầng hầm thành công.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-c85140bde0",
+        "word": "開通",
+        "meaning": "thông tuyến",
+        "japanese": "橋は開通している。",
+        "translation": "Cầu mở rồi.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-6db2edc7e2",
+        "word": "解答",
+        "meaning": "lời giải, đáp án",
+        "japanese": "あなたの解答には私たちとしてはまったく不満だ。",
+        "translation": "Đó là tất cả những gì tôi có thể làm.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-f764b1251d",
+        "word": "開放",
+        "meaning": "mở cửa, mở cho sử dụng",
+        "japanese": "この庭園は一般に開放されています。",
+        "translation": "Khu vườn này đã được mở ra cho mọi người.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-49cdd6ad6a",
+        "word": "海洋",
+        "meaning": "đại dương",
+        "japanese": "ロブスターは海洋動物の一種に属します。",
+        "translation": "Cá heo là một loài động vật biển.",
+        "problem": "needs_context_review"
+      },
+      {
+        "id": "olj-v-72d8fe6720",
+        "word": "係わる",
+        "meaning": "liên quan, dính líu",
+        "japanese": "これは我が校の名誉にかかわる問題だ。",
+        "translation": "Đây là vấn đề danh dự của trường tôi.",
+        "problem": "needs_context_review"
+      }
+    ]
   }
 }

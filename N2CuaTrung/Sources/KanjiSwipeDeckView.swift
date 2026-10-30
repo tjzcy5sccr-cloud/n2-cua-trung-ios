@@ -225,7 +225,7 @@ struct KanjiSwipeDeckView: View {
                     isDraggingCard = false
                 }
         )
-        .animation(.spring(response: 0.23, dampingFraction: 0.84), value: dragOffset)
+        // Kéo theo tay ngay lập tức; chỉ dùng spring khi nhả thẻ.
         .accessibilityAddTraits(.isButton)
         .accessibilityLabel(revealed ? "Mặt sau Kanji \(card.char), chạm để quay lại." :
                                     "Mặt trước Kanji \(card.char), chạm để xem nghĩa.")

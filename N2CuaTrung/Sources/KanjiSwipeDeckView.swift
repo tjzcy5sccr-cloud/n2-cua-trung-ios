@@ -36,8 +36,7 @@ struct KanjiSwipeDeckView: View {
                     }
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.kanji(store.course).shuffled(),
-                                        type: "Kanji")
+                    FreshPracticeSessionView(type: "Kanji")
                 } label: {
                     Label("Luyện câu hỏi Kanji · Bỏ qua / Tiếp / Kết quả",
                           systemImage: "checklist")

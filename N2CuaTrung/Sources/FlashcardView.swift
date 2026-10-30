@@ -221,6 +221,7 @@ struct FlashcardDeckView: View {
             .padding(16)
         }
         .frame(height: height)
+        .clipped()
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
         // Duy nhất một cử chỉ cho cả chạm lật và vuốt 4 hướng.

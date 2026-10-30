@@ -22,25 +22,29 @@ enum GrammarLibrary {
         return result
     }()
 
+    private static let approvedStatuses: Set<String> = [
+        "editorial_reviewed", "source_verified", "independently_verified"
+    ]
+
     static func structure(for grammar: Grammar) -> String {
-        grammar.meaning.hasPrefix("EN ·") ? "Đang bổ sung cách dùng bằng tiếng Việt." : (stored[grammar.id]?.structure ?? grammar.rule)
+        // Cách dùng đã biên tập theo gói học chính được ưu tiên.
+        // Tư liệu cũ chưa có trạng thái kiểm chứng vẫn giữ trong JSON, không hiện trong app.
+        grammar.isApprovedForStudy ? grammar.displayRule : ""
     }
 
     static func examples(for grammar: Grammar) -> [GrammarSample] {
-        let main = GrammarSample(text: grammar.example, translation: grammar.displayTranslation, translationStatus: grammar.translationStatus)
-        let all = [main] + (stored[grammar.id]?.extra ?? grammar.samples ?? [])
-        return all.map { part in
-            let visible: String
-            if part.translationStatus == "machine_translated_unreviewed" {
-                visible = "Dịch tự động theo nghĩa chính (cần kiểm tra): " + part.translation
-            } else if part.translationStatus == "needs_sentence_review" {
-                visible = "Bản dịch ví dụ này đang được đối chiếu."
-            } else if part.translation.hasPrefix("EN ·") {
-                visible = "Bản dịch tiếng Việt đang được bổ sung."
-            } else {
-                visible = part.translation
-            }
-            return GrammarSample(text: part.text, translation: visible, translationStatus: part.translationStatus)
+        var approved: [GrammarSample] = []
+        if grammar.hasApprovedExample, !grammar.example.isEmpty, !grammar.displayTranslation.isEmpty {
+            approved.append(GrammarSample(text: grammar.example,
+                                          translation: grammar.displayTranslation,
+                                          translationStatus: grammar.translationStatus))
         }
+        let extra = stored[grammar.id]?.extra ?? grammar.samples ?? []
+        approved.append(contentsOf: extra.filter {
+            approvedStatuses.contains($0.translationStatus ?? "") &&
+            !$0.text.isEmpty && !$0.translation.isEmpty &&
+            !$0.translation.hasPrefix("EN ·")
+        })
+        return approved
     }
 }

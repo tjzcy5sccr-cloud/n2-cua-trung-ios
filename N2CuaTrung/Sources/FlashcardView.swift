@@ -126,73 +126,81 @@ struct FlashcardDeckView: View {
         .buttonStyle(.plain)
     }
 
-    /// Chạm bất kỳ điểm nào trên thẻ để lật qua lại không giới hạn.
-    /// Mặt sau vẫn cuộn được để đọc toàn bộ ví dụ; vuốt dọc mặt trước để đổi từ.
+    /// Nút chạm nằm TRONG vùng cuộn: ScrollView chỉ xử lý vuốt, Button xử lý chạm.
+    /// Không gắn TapGesture lên ScrollView cha vì iOS có thể bỏ qua sự kiện.
     private func cardSurface(_ card: Vocabulary, height: CGFloat) -> some View {
         ZStack {
             if revealed {
                 ScrollView(.vertical) {
-                    VStack(spacing: 10) {
-                        Text(card.word)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(Palette.navy)
-                        Text(card.reading)
-                            .font(.title3.weight(.medium))
-                            .foregroundColor(Palette.blue)
-                        Text(card.displayMeaning)
-                            .font(.title3.weight(.bold))
-                            .foregroundColor(Palette.teal)
-                            .multilineTextAlignment(.center)
-                        Divider()
-                        FuriganaText(text: card.example,
-                                     mainWord: card.word, mainReading: card.reading, size: 17)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(card.exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung.")
-                            .font(.subheadline)
-                            .foregroundColor(Palette.navy)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    Button {
+                        flip(card)
+                    } label: {
+                        VStack(spacing: 10) {
+                            Text(card.word)
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(Palette.navy)
+                            Text(card.reading)
+                                .font(.title3.weight(.medium))
+                                .foregroundColor(Palette.blue)
+                            Text(card.displayMeaning)
+                                .font(.title3.weight(.bold))
+                                .foregroundColor(Palette.teal)
+                                .multilineTextAlignment(.center)
+                            Divider()
+                            FuriganaText(text: card.example,
+                                         mainWord: card.word, mainReading: card.reading, size: 17)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(card.exampleVi ?? "Bản dịch tiếng Việt đang được bổ sung.")
+                                .font(.subheadline)
+                                .foregroundColor(Palette.navy)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: max(1, height - 30))
+                        .contentShape(Rectangle())
                     }
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Mặt sau. Chạm để quay về mặt trước.")
                 }
             } else {
-                VStack(spacing: 12) {
-                    Spacer(minLength: 10)
-                    Text(card.word)
-                        .font(.system(size: 50, weight: .bold, design: .rounded))
-                        .foregroundColor(Palette.navy)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                    Spacer(minLength: 10)
-                    Label("Chạm để lật", systemImage: "hand.tap")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                Button {
+                    flip(card)
+                } label: {
+                    VStack(spacing: 12) {
+                        Spacer(minLength: 10)
+                        Text(card.word)
+                            .font(.system(size: 50, weight: .bold, design: .rounded))
+                            .foregroundColor(Palette.navy)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                        Spacer(minLength: 10)
+                        Label("Chạm để lật", systemImage: "hand.tap")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .buttonStyle(.plain)
+                .accessibilityLabel("Mặt trước. Chạm để xem nghĩa.")
+                // Vuốt chỉ trên mặt trước; không can thiệp vào ScrollView mặt sau.
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 35).onEnded { drag in
+                        let dy = drag.translation.height
+                        if abs(dy) > 48 && abs(dy) > abs(drag.translation.width) * 1.25 {
+                            advanceRandom()
+                        }
+                    }
+                )
             }
         }
         .frame(maxWidth: .infinity)
         .frame(height: height)
         .padding(.horizontal, 15)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
-        .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
-        // simultaneousGesture không cướp sự kiện của ScrollView ở mặt sau.
-        .simultaneousGesture(
-            TapGesture().onEnded { flip(card) }
-        )
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 35).onEnded { drag in
-                let dy = drag.translation.height
-                if abs(dy) > 48 && abs(dy) > abs(drag.translation.width) * 1.25 {
-                    advanceRandom()
-                }
-            },
-            including: revealed ? .none : .gesture
-        )
-        .accessibilityAddTraits(.isButton)
-        .accessibilityAction(named: "Lật thẻ") { flip(card) }
         .accessibilityAction(named: "Thẻ tiếp theo") { advanceRandom() }
     }
 
@@ -274,38 +282,44 @@ struct GrammarFlashcardView: View {
                     let g = content[position]
                     Pill(text: "\(position + 1) / \(content.count)", color: Palette.blue)
                     ScrollView {
-                        VStack(spacing: 14) {
-                            Text(g.pattern).font(.title.weight(.bold)).foregroundColor(Palette.navy)
-                            if revealed {
-                                Text(g.displayMeaning).font(.headline).foregroundColor(Palette.teal)
-                                Text("Cách sử dụng: \(GrammarLibrary.structure(for: g))")
-                                    .font(.subheadline).foregroundColor(Palette.navy)
-                                ForEach(Array(GrammarLibrary.examples(for: g).enumerated()), id: \.offset) { i, example in
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        Text("Ví dụ \(i + 1)").font(.caption.bold()).foregroundColor(Palette.blue)
-                                        FuriganaText(text: example.text, highlightTerms: GrammarFocus.terms(from: g.pattern), size: 16)
-                                        Text(example.translation).font(.caption).foregroundColor(.secondary)
+                        Button {
+                            flipGrammar()
+                        } label: {
+                            VStack(spacing: 14) {
+                                Text(g.pattern)
+                                    .font(.title.weight(.bold))
+                                    .foregroundColor(Palette.navy)
+                                if revealed {
+                                    Text(g.displayMeaning).font(.headline).foregroundColor(Palette.teal)
+                                    Text("Cách sử dụng: \(GrammarLibrary.structure(for: g))")
+                                        .font(.subheadline).foregroundColor(Palette.navy)
+                                    ForEach(Array(GrammarLibrary.examples(for: g).enumerated()), id: \.offset) { i, example in
+                                        VStack(alignment: .leading, spacing: 5) {
+                                            Text("Ví dụ \(i + 1)").font(.caption.bold()).foregroundColor(Palette.blue)
+                                            FuriganaText(text: example.text,
+                                                         highlightTerms: GrammarFocus.terms(from: g.pattern), size: 16)
+                                            Text(example.translation).font(.caption).foregroundColor(.secondary)
+                                        }
                                     }
+                                } else {
+                                    Spacer(minLength: 65)
+                                    Label("Chạm để xem cách dùng + 3 ví dụ", systemImage: "hand.tap")
+                                        .font(.subheadline).foregroundColor(.secondary)
+                                    Spacer(minLength: 65)
                                 }
-                            } else {
-                                Spacer(minLength: 65)
-                                Label("Chạm để xem cách dùng + 3 ví dụ", systemImage: "hand.tap")
-                                    .font(.subheadline).foregroundColor(.secondary)
-                                Spacer(minLength: 65)
                             }
+                            .frame(maxWidth: .infinity)
+                            .frame(minHeight: 326)
+                            .padding(12)
+                            .contentShape(Rectangle())
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(12)
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(revealed ? "Mặt sau ngữ pháp. Chạm xem mặt trước." :
+                                                      "Mặt trước ngữ pháp. Chạm xem lời giải.")
                     }
                     .frame(maxWidth: .infinity)
                     .frame(height: 350)
                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
-                    .contentShape(RoundedRectangle(cornerRadius: 20))
-                    .simultaneousGesture(
-                        TapGesture().onEnded { flipGrammar() }
-                    )
-                    .accessibilityAddTraits(.isButton)
-                    .accessibilityAction(named: "Lật thẻ") { flipGrammar() }
                     MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
                         voice.speak(GrammarLibrary.examples(for: g)[0].text)
                     }

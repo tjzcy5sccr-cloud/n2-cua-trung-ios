@@ -9,7 +9,6 @@ struct FlashcardDeckView: View {
     @State private var autoPlay = false
     @State private var intervalSeconds = 5
     @State private var elapsed = 0
-    @State private var dragOffset: CGSize = .zero
     @State private var isDraggingCard = false
     @State private var showFullExample = false
     @ObservedObject private var voice = JapaneseVoice.shared
@@ -20,7 +19,7 @@ struct FlashcardDeckView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             VStack(spacing: 9) {
                 SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt ngang hoặc dọc để đổi từ")
                 Picker("Bộ thẻ", selection: $scope) {
@@ -41,16 +40,18 @@ struct FlashcardDeckView: View {
                             Text(card.topic).font(.caption).foregroundColor(.secondary).lineLimit(1)
                         }
                     }
-                    cardSurface(card, height: min(320, max(205, geometry.size.height * 0.42)))
-                    if revealed {
-                        Button {
-                            showFullExample = true
-                        } label: {
-                            Label("Xem đầy đủ câu ví dụ", systemImage: "text.book.closed")
-                                .font(.caption.weight(.semibold))
-                                .frame(maxWidth: .infinity, minHeight: 32)
-                        }
+                    cardSurface(card, height: 286)
+                    // Giữ một hàng có chiều cao cố định dù đang ở mặt trước hay sau.
+                    Button {
+                        if revealed { showFullExample = true }
+                    } label: {
+                        Label("Xem đầy đủ câu ví dụ", systemImage: "text.book.closed")
+                            .font(.caption.weight(.semibold))
+                            .frame(maxWidth: .infinity, minHeight: 32)
                     }
+                    .opacity(revealed ? 1 : 0)
+                    .disabled(!revealed)
+                    .accessibilityHidden(!revealed)
                     HStack(spacing: 8) {
                         actionButton(
                             autoPlay ? "Dừng tự chạy" : "Tự chạy",
@@ -101,9 +102,11 @@ struct FlashcardDeckView: View {
                         }
                     }
                 }
-                if let error = voice.lastError {
-                    Text(error).font(.caption2).foregroundColor(.red)
-                }
+                Text(voice.lastError ?? " ")
+                    .font(.caption2)
+                    .foregroundColor(.red)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                 Spacer(minLength: 0)
             }
             .padding(12)
@@ -220,7 +223,6 @@ struct FlashcardDeckView: View {
         .frame(height: height)
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.teal.opacity(0.18)))
-        .offset(x: dragOffset.width, y: dragOffset.height)
         // Duy nhất một cử chỉ cho cả chạm lật và vuốt 4 hướng.
         // DragGesture(minimumDistance: 0) không cần TapGesture, tránh xung đột recognizer.
         .gesture(
@@ -233,10 +235,7 @@ struct FlashcardDeckView: View {
                             isDraggingCard = true
                             voice.stop()
                         }
-                        dragOffset = CGSize(
-                            width: max(-64, min(64, dx * 0.35)),
-                            height: max(-64, min(64, dy * 0.35))
-                        )
+                        // Vuốt chỉ nhận hướng, không làm khung di chuyển.
                     }
                 }
                 .onEnded { drag in
@@ -249,10 +248,6 @@ struct FlashcardDeckView: View {
                         changeCard(by: dx < 0 ? 1 : -1)
                     } else if abs(dy) >= 45 {
                         changeCard(by: dy < 0 ? 1 : -1)
-                    } else {
-                        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
-                            dragOffset = .zero
-                        }
                     }
                     isDraggingCard = false
                 }
@@ -276,14 +271,14 @@ struct FlashcardDeckView: View {
 
     private func showBack(_ card: Vocabulary) {
         guard !revealed else { return }
-        withAnimation(.easeInOut(duration: 0.15)) { revealed = true }
+        revealed = true
         elapsed = 0
         voice.speak(card.reading.isEmpty ? card.word : card.reading)
     }
 
     private func showFront() {
         guard revealed else { return }
-        withAnimation(.easeInOut(duration: 0.15)) { revealed = false }
+        revealed = false
         elapsed = 0
         voice.stop()
     }
@@ -307,7 +302,6 @@ struct FlashcardDeckView: View {
         position = 0
         revealed = false
         elapsed = 0
-        dragOffset = .zero
         isDraggingCard = false
         voice.stop()
     }
@@ -322,11 +316,9 @@ struct FlashcardDeckView: View {
         let nextIndex = (position + step + cards.count) % cards.count
         let next = cards[nextIndex]
         voice.stop()
-        withAnimation(.spring(response: 0.23, dampingFraction: 0.84)) {
-            position = nextIndex
-            revealed = false
-            dragOffset = .zero
-        }
+        // Chỉ thay nội dung: khung và các nút giữ nguyên tọa độ.
+        position = nextIndex
+        revealed = false
         elapsed = 0
         voice.speak(next.reading.isEmpty ? next.word : next.reading)
     }

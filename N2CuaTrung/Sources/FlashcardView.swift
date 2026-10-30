@@ -43,15 +43,15 @@ struct FlashcardDeckView: View {
                     cardSurface(card, height: 286)
                     // Giữ một hàng có chiều cao cố định dù đang ở mặt trước hay sau.
                     Button {
-                        if revealed { showFullExample = true }
+                        if revealed && card.hasApprovedExample { showFullExample = true }
                     } label: {
                         Label("Xem đầy đủ câu ví dụ", systemImage: "text.book.closed")
                             .font(.caption.weight(.semibold))
                             .frame(maxWidth: .infinity, minHeight: 32)
                     }
-                    .opacity(revealed ? 1 : 0)
-                    .disabled(!revealed)
-                    .accessibilityHidden(!revealed)
+                    .opacity(revealed && card.hasApprovedExample ? 1 : 0)
+                    .disabled(!revealed || !card.hasApprovedExample)
+                    .accessibilityHidden(!revealed || !card.hasApprovedExample)
                     HStack(spacing: 8) {
                         actionButton(
                             autoPlay ? "Dừng tự chạy" : "Tự chạy",
@@ -77,8 +77,10 @@ struct FlashcardDeckView: View {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
                         }
                         actionButton("Nghe ví dụ", symbol: "waveform", color: Palette.teal) {
-                            voice.speak(card.example)
+                            if let sentence = card.approvedExampleJapanese { voice.speak(sentence) }
                         }
+                        .disabled(!card.hasApprovedExample)
+                        .opacity(card.hasApprovedExample ? 1 : 0.38)
                     }
                     HStack(spacing: 8) {
                         actionButton("Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) {
@@ -128,11 +130,17 @@ struct FlashcardDeckView: View {
                             Text(card.reading).font(.title3).foregroundColor(Palette.blue)
                             Text(card.displayMeaning).font(.headline).foregroundColor(Palette.teal)
                             Divider()
-                            FuriganaText(text: card.example,
-                                         mainWord: card.word,
-                                         mainReading: card.reading,
-                                         size: 19)
-                            Text(card.displayExampleTranslation).font(.body)
+                            if let sentence = card.approvedExampleJapanese {
+                                FuriganaText(
+                                    text: sentence,
+                                    mainWord: card.word,
+                                    mainReading: card.reading,
+                                    highlightTerms: VocabularyExampleFocus.variants(
+                                        word: card.word, reading: card.reading, example: sentence),
+                                    size: 19
+                                )
+                                Text(card.displayExampleTranslation).font(.body)
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(20)
@@ -189,16 +197,25 @@ struct FlashcardDeckView: View {
                         .lineLimit(3)
                         .minimumScaleFactor(0.75)
                     Divider()
-                    Text(card.example)
-                        .font(.subheadline)
-                        .foregroundColor(Palette.navy)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(3)
-                    Text(card.displayExampleTranslation)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(4)
+                    if let sentence = card.approvedExampleJapanese {
+                        // Tô đỏ chính xác từ đang học (kể cả biến thể/chia động từ)
+                        // bằng cùng bộ Furigana với trang ví dụ chi tiết.
+                        FuriganaText(
+                            text: sentence,
+                            mainWord: card.word,
+                            mainReading: card.reading,
+                            highlightTerms: VocabularyExampleFocus.variants(
+                                word: card.word, reading: card.reading, example: sentence),
+                            size: 15
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: 78)
+                        .clipped()
+                        Text(card.displayExampleTranslation)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(3)
+                    }
                     Spacer(minLength: 0)
                     Text("Chạm để xem mặt trước")
                         .font(.caption2)

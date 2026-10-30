@@ -1,7 +1,7 @@
 {
   "reportVersion": 1,
-  "generatedUTC": "2026-10-30T14:38:31.221043+00:00",
-  "packVersion": 10,
+  "generatedUTC": "2026-10-30T14:39:55.138683+00:00",
+  "packVersion": 11,
   "scope": "All vocabulary in OpenJLPT N2 pack",
   "source": {
     "reference": "JMdict/EDRDG, via jkindrix/japanese-language-data common subset",

@@ -21,7 +21,7 @@ assert len({v["id"] for v in vocab}) == len(vocab), "Duplicate vocab IDs"
 assert len({v["id"] for v in kanji}) == len(kanji), "Duplicate Kanji IDs"
 for record in vocab:
     assert record.get("meaningStatus") in ("editorial_reviewed", "source_verified", "machine_unreviewed", "dictionary_matched_unverified"), record["id"]
-    assert record.get("exampleStatus") in ("machine_unreviewed", "editorial_reviewed"), record["id"]
+    assert record.get("exampleStatus") in ("machine_unreviewed", "editorial_reviewed", "machine_translated_unreviewed"), record["id"]
     assert record["word"] and record["reading"], record["id"]
 for record in kanji:
     assert record.get("meaningStatus") in ("editorial_reviewed", "machine_unreviewed"), record["id"]
@@ -73,7 +73,7 @@ for g in grammar:
     assert len(g["translation"]) > 8 and not any(
         token in g["rule"] for token in ["_BAR_", "******", "m Bobbiet", "Gova a i"])
     for sample in g.get("samples", []):
-        assert sample.get("translationStatus") in ("needs_sentence_review", "editorial_reviewed")
+        assert sample.get("translationStatus") in ("needs_sentence_review", "editorial_reviewed", "machine_translated_unreviewed")
 reviewed_examples = sum(v["exampleStatus"] == "editorial_reviewed" for v in vocab)
 assert reviewed_examples >= 50, "Revised vocabulary example translations missing"
 assert all(v.get("exampleVi") for v in vocab if v.get("exampleStatus") == "editorial_reviewed")
@@ -94,4 +94,17 @@ assert "pendingSpeechWork?.cancel()" in voice
 assert "generation == self.speechGeneration" in voice
 print("PASS: both card decks accept 4-way swipes and cancel queued stale speech.")
 
+# Nếu đã dịch tự động, bắt buộc lưu được nội dung + dấu vết nghĩa trọng tâm.
+for v in vocab:
+    if v.get("exampleStatus") == "machine_translated_unreviewed":
+        assert len(v.get("exampleVi", "")) >= 3, v["id"]
+        assert v.get("exampleTranslationGloss"), v["id"]
+        assert v.get("exampleSenseCheck") in (
+            "gloss_token_overlap", "needs_context_review", "cannot_assess"), v["id"]
+for g in grammar:
+    for sample in g.get("samples", []):
+        if sample.get("translationStatus") == "machine_translated_unreviewed":
+            assert len(sample.get("translation", "")) >= 3
+            assert sample.get("translationGloss")
+print("Automated examples must retain their main gloss, machine label, and check status.")
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

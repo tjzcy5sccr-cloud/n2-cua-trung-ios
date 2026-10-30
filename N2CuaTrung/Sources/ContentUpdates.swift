@@ -76,7 +76,7 @@ enum CoursePackManager {
 
     /// Hai gói N2 đi kèm IPA, học offline ngay khi cài mà không cần bấm cập nhật.
     static func bundledPacks() -> [CoursePack] {
-        ["n2-expansion-01", "openjlpt-n2-core"].compactMap { name in
+        ["n2-expansion-01", "openjlpt-n2-core", "vn26-original-practice-01"].compactMap { name in
             guard let url = Bundle.main.url(forResource: name, withExtension: "json"),
                   let data = try? Data(contentsOf: url) else { return nil }
             return try? validate(data)

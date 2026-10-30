@@ -108,3 +108,12 @@ Trong Signing & Capabilities chọn tài khoản Apple, kiểm tra Bundle ID `vn
 - Trắc nghiệm tự chuyển sau 0,85 giây xem đáp án, nút tiếp vẫn hoạt động.
 - Live Activity căn giữa, chữ lớn; tùy chọn 30/60 giây chỉ chạy khi app còn hoạt động ở foreground. iOS không cho phép bảo đảm đổi mỗi 30/60 giây khi thiết bị khóa.
 - Mục giấy phép dữ liệu được tách khỏi giao diện học nhưng luôn có thể truy cập trong Giới thiệu, theo điều kiện nguồn CC BY-SA 4.0.
+
+## Bổ sung học liệu N2 do N2 của Trung biên soạn — v1.7
+
+- Đã có sẵn trong ứng dụng offline: **28 từ vựng mới, 4 mẫu ngữ pháp có 3 ví dụ mỗi mẫu, 6 bài đọc hiểu có câu hỏi và 6 bài nghe hiểu có lời thoại, đáp án và giải thích**.
+- Màn hình Flashcard lật mặt sau: từ, Hiragana, nghĩa tiếng Việt và câu Nhật kèm dịch tiếng Việt.
+- Bài nghe dùng chức năng phát giọng Nhật của iOS (TTS); không bao gồm tệp audio đã thu âm từ website hoặc bản ghi JLPT chính thức.
+- Kho học mới được lưu tại `content-packs/vn26-original-practice-01.json` và được đóng gói trực tiếp vào IPA và widget; có thể dùng offline.
+- Các website Nhật–Việt trong `research/NGUON_HOC_NHAT_VIET_CHO_N2.md` chỉ được tham khảo để xác minh khái niệm và tự biên soạn, không sao chép nguyên bài giảng/sách/audio từ các trang chưa cấp phép.
+- Để cải thiện chất lượng, tiếp tục kiểm tra ngữ pháp và những bản dịch do máy tạo ra trong `content-packs/openjlpt-n2-core.json`.

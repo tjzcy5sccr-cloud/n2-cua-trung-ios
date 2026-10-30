@@ -10,6 +10,11 @@
       "id": "openjlpt-n2-core",
       "version": 4,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/openjlpt-n2-core.json"
+    },
+    {
+      "id": "vn26-original-practice-01",
+      "version": 1,
+      "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/vn26-original-practice-01.json"
     }
   ]
 }

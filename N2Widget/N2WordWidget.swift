@@ -20,7 +20,7 @@ private struct WordProvider: TimelineProvider {
         // Có đủ kho bài học đóng gói, không giới hạn ở content.json 125 từ.
         var all: [Word] = []
         var existing = Set<String>()
-        for filename in ["content", "n2-expansion-01", "openjlpt-n2-core"] {
+        for filename in ["content", "n2-expansion-01", "openjlpt-n2-core", "vn26-original-practice-01"] {
             guard let path = Bundle.main.url(forResource: filename, withExtension: "json"),
                   let bytes = try? Data(contentsOf: path),
                   let list = try? JSONDecoder().decode(WordList.self, from: bytes) else { continue }

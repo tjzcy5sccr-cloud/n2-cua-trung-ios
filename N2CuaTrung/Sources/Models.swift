@@ -188,13 +188,15 @@ enum QuestionBank {
     }
 
     static func grammar(_ data: CourseData, week: Int) -> [ExamQuestion] {
-        let eligible = data.grammar.filter { $0.week <= week && !$0.meaning.hasPrefix("EN ·") }
-        let meanings = data.grammar.filter { !$0.meaning.hasPrefix("EN ·") }.map(\.displayMeaning)
+        let eligible = data.grammar.filter { $0.week <= week && $0.isApprovedForStudy }
+        let meanings = data.grammar.filter { $0.isApprovedForStudy }.map(\.displayMeaning)
         return eligible.shuffled().prefix(70).map { item in
             create(category: "Ngữ pháp", prompt: "Ý nghĩa của \(item.pattern) là gì?",
-                   passage: item.example, correct: item.displayMeaning,
+                   passage: item.hasApprovedExample ? item.example : nil,
+                   correct: item.displayMeaning,
                    others: meanings,
-                   explanation: "\(item.displayRule) Ví dụ: \(item.translation)")
+                   explanation: item.displayRule +
+                     (item.hasApprovedExample ? " Ví dụ: \(item.displayTranslation)" : ""))
         }
     }
 

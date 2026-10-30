@@ -103,9 +103,9 @@ class MarianTranslator:
             with self.torch.inference_mode():
                 output = self.model.generate(
                     **encoded, max_new_tokens=190, num_beams=4,
-                    no_repeat_ngram_size=3, early_stopping=True)
-            translations.extend(self.tokenizer.batch_decode(
-                output, skip_special_tokens=True))
+                    num_return_sequences=3, no_repeat_ngram_size=3, early_stopping=True)
+            candidates = self.tokenizer.batch_decode(output, skip_special_tokens=True)
+            translations.extend([candidates[k:k+3] for k in range(0, len(candidates), 3)])
             print("Translated:", min(i + len(current), len(texts)), "/", len(texts), flush=True)
         return translations
 
@@ -120,7 +120,15 @@ def apply_translation(pack, translator, limit=0):
     problems = []
     for job in jobs:
         entry = job["entry"]
-        vi = trans.get(job["japanese"], "").strip()
+        options = [x.strip() for x in trans.get(job["japanese"], [])
+                   if candidate_ok(job["japanese"], x)]
+        # Chọn trong những câu máy dịch cả câu: ưu tiên câu giữ được nét nghĩa
+        # chính đã ghi cho từ vựng/mẫu câu, không dịch từng chữ rồi ghép.
+        core_tokens = sense_tokens(job["meaning"])
+        def lexical_alignment(candidate):
+            text = normalized(candidate)
+            return sum(1 for token in core_tokens if token in text)
+        vi = max(options, key=lexical_alignment) if options else ""
         if not candidate_ok(job["japanese"], vi):
             stats["failed_or_unusable"] += 1
             problems.append({"id": job["key"], "problem": "translation_empty_or_invalid"})

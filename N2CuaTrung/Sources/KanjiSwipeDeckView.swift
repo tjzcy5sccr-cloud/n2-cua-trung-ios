@@ -103,26 +103,15 @@ struct KanjiSwipeDeckView: View {
         }
     }
 
+    /// Chạm trực tiếp vào chính mỗi mặt bằng Button; cuộn nội dung mặt sau vẫn hoạt động.
+    /// Không dùng highPriorityGesture vì cử chỉ này chặn Button trên iPhone.
     private func cardSurface(_ card: Kanji, height: CGFloat) -> some View {
         ZStack {
             if revealed {
-                VStack(spacing: 0) {
-                    HStack {
-                        Spacer()
-                        Button {
-                            showFront()
-                        } label: {
-                            Label("Mặt trước", systemImage: "arrow.uturn.backward")
-                                .font(.subheadline.weight(.bold))
-                                .foregroundColor(Palette.blue)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 9)
-                                .background(Palette.blue.opacity(0.1),
-                                            in: RoundedRectangle(cornerRadius: 10))
-                        }
-                        .buttonStyle(.plain)
-                    }.padding(.top, 8)
-                    ScrollView(.vertical) {
+                ScrollView(.vertical) {
+                    Button {
+                        flip(card)
+                    } label: {
                         VStack(spacing: 12) {
                             Text(card.char)
                                 .font(.system(size: 55, weight: .bold))
@@ -131,12 +120,15 @@ struct KanjiSwipeDeckView: View {
                         }
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
+                        .frame(minHeight: max(1, height - 28))
+                        .contentShape(Rectangle())
                     }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Mặt sau Kanji. Chạm để quay lại mặt trước.")
                 }
             } else {
                 Button {
-                    withAnimation(.easeInOut(duration: 0.15)) { revealed = true }
-                    elapsed = 0
+                    flip(card)
                 } label: {
                     VStack(spacing: 12) {
                         Spacer(minLength: 10)
@@ -152,6 +144,15 @@ struct KanjiSwipeDeckView: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("Mặt trước Kanji. Chạm để xem nghĩa.")
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 35).onEnded { movement in
+                        let dy = movement.translation.height
+                        if abs(dy) > 48 && abs(dy) > abs(movement.translation.width) * 1.25 {
+                            advance()
+                        }
+                    }
+                )
             }
         }
         .frame(maxWidth: .infinity)
@@ -159,16 +160,14 @@ struct KanjiSwipeDeckView: View {
         .padding(.horizontal, 14)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.orange.opacity(0.24)))
-        .highPriorityGesture(
-            DragGesture(minimumDistance: 35).onEnded { movement in
-                let dy = movement.translation.height
-                if abs(dy) > 48 && abs(dy) > abs(movement.translation.width) * 1.25 {
-                    advance()
-                }
-            },
-            including: revealed ? .none : .all
-        )
         .accessibilityAction(named: "Kanji tiếp theo") { advance() }
+    }
+
+    private func flip(_ card: Kanji) {
+        withAnimation(.easeInOut(duration: 0.15)) { revealed.toggle() }
+        elapsed = 0
+        // Giữ chế độ tự chạy ở trạng thái ngừng khi thẻ đang lật mặt sau.
+        if !revealed { voice.stop() }
     }
 
     private func actionButton(_ title: String, symbol: String, color: Color,
@@ -184,13 +183,6 @@ struct KanjiSwipeDeckView: View {
                 .background(color, in: RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
-    }
-
-    private func showFront() {
-        guard revealed else { return }
-        withAnimation(.easeInOut(duration: 0.15)) { revealed = false }
-        elapsed = 0
-        voice.stop()
     }
 
     private func reload() {

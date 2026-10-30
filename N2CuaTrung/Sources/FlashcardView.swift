@@ -377,8 +377,12 @@ struct GrammarFlashcardView: View {
                     .disabled(!revealed)
                     .accessibilityHidden(!revealed)
                     MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
-                        voice.speak(GrammarLibrary.examples(for: g)[0].text)
+                        if let approved = GrammarLibrary.examples(for: g).first {
+                            voice.speak(approved.text)
+                        }
                     }
+                    .disabled(GrammarLibrary.examples(for: g).isEmpty)
+                    .opacity(GrammarLibrary.examples(for: g).isEmpty ? 0.38 : 1)
                     Text(reviewMessage ?? " ")
                         .font(.subheadline.weight(.semibold))
                         .foregroundColor(Palette.teal)

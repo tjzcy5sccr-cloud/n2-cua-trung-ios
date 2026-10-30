@@ -26,8 +26,12 @@ final class WideStudyController: ObservableObject {
     }
 
     private var runningActivities: [Activity<StudyActivityAttributes>] {
-        Activity<StudyActivityAttributes>.activities.filter {
-            $0.activityState == .active || $0.activityState == .stale
+        Activity<StudyActivityAttributes>.activities.filter { activity in
+            if activity.activityState == .active { return true }
+            if #available(iOS 16.2, *) {
+                return activity.activityState == .stale
+            }
+            return false
         }
     }
 

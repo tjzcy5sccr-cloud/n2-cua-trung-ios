@@ -10,7 +10,7 @@ struct ExamStartView: View {
                     Image(systemName: "graduationcap.fill")
                         .font(.largeTitle).foregroundColor(Palette.blue)
                     SectionTitle("Kiểm tra tổng hợp N2", subtitle: "20 câu • 12 phút")
-                    Text("Gồm từ vựng, ngữ pháp, Kanji, đọc hiểu và nghe hiểu. Có chữa bài sau mỗi câu. Đề là bài luyện tập tự biên soạn, không phải đề JLPT chính thức.")
+                    Text("Gồm từ vựng, ngữ pháp, Kanji, đọc hiểu và nghe hiểu. Chỉ xem đáp án và giải thích sau khi nộp bài. Đề luyện tập tự biên soạn, không phải đề JLPT chính thức.")
                         .font(.subheadline).foregroundColor(.secondary)
                     HStack(spacing: 12) {
                         Pill(text: "Offline", color: Palette.teal)
@@ -52,6 +52,9 @@ struct QuestionSessionView: View {
     @StateObject private var voice = JapaneseVoice.shared
     @State private var position = 0
     @State private var selected: Int? = nil
+    /// Lưu lựa chọn theo số thứ tự; bỏ qua được giữ là chưa trả lời.
+    @State private var answersByQuestion: [Int: Int] = [:]
+    @State private var showAllExplanations = false
     @State private var nextQuestionTask: Task<Void, Never>?
     @State private var correct = 0
     @State private var completed = false
@@ -80,6 +83,10 @@ struct QuestionSessionView: View {
     private var current: ExamQuestion? {
         questions.indices.contains(position) ? questions[position] : nil
     }
+
+    /// Đọc hiểu và đề thi tổng hợp: không tiết lộ đáp án trong khi làm bài.
+    /// Các bài ôn từ vựng / ngữ pháp ngắn vẫn giữ phản hồi nhanh như trước.
+    private var reviewAtEnd: Bool { type == "Đọc hiểu" || timed }
 
     var body: some View {
         ScrollView {
@@ -156,9 +163,9 @@ struct QuestionSessionView: View {
                                     Text(choice).font(.subheadline).multilineTextAlignment(.leading)
                                 }
                                 Spacer(minLength: 0)
-                                if selected != nil && index == question.answer {
+                                if !reviewAtEnd && selected != nil && index == question.answer {
                                     Image(systemName: "checkmark.circle.fill").foregroundColor(Palette.teal)
-                                } else if selected == index {
+                                } else if !reviewAtEnd && selected == index {
                                     Image(systemName: "xmark.circle.fill").foregroundColor(.red)
                                 }
                             }
@@ -171,7 +178,7 @@ struct QuestionSessionView: View {
                         .disabled(selected != nil)
                         .buttonStyle(.plain)
                     }
-                    if let answer = selected {
+                    if let answer = selected, !reviewAtEnd {
                         LessonPanel {
                             HStack {
                                 Image(systemName: answer == question.answer ? "checkmark.seal.fill" : "info.circle.fill")
@@ -200,7 +207,7 @@ struct QuestionSessionView: View {
                         .font(.subheadline.monospacedDigit())
                         .foregroundColor(Palette.navy)
                     MainButton(
-                        title: position + 1 == questions.count ? "Xem kết quả" : (selected == nil ? "Bỏ qua / Tiếp" : "Câu tiếp theo"),
+                        title: position + 1 == questions.count ? (reviewAtEnd ? "Hoàn thành bài" : "Xem kết quả") : (selected == nil ? "Bỏ qua / Tiếp" : "Câu tiếp theo"),
                         symbol: "arrow.right", color: Palette.teal
                     ) { next() }
                 }
@@ -218,30 +225,107 @@ struct QuestionSessionView: View {
     }
 
     private var finishPanel: some View {
-        LessonPanel {
-            Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 52))
-                .foregroundColor(Palette.teal)
-            SectionTitle("Hoàn thành bài luyện")
+        VStack(alignment: .leading, spacing: 16) {
+            LessonPanel {
+                Image(systemName: "checkmark.seal.fill")
+                    .font(.system(size: 52))
+                    .foregroundColor(Palette.teal)
+                SectionTitle("Đã hoàn thành bài luyện")
+                if reviewAtEnd && !showAllExplanations {
+                    Text("Bài làm đã được lưu. Bấm nút bên dưới khi bạn muốn xem điểm, đáp án và phần giải thích toàn bộ câu hỏi.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                } else {
+                    resultSummary
+                }
+            }
+
+            if reviewAtEnd {
+                MainButton(
+                    title: showAllExplanations ? "Ẩn đáp án và giải thích" : "Hiển thị kết quả và giải thích",
+                    symbol: showAllExplanations ? "eye.slash.fill" : "list.bullet.clipboard.fill",
+                    color: Palette.teal
+                ) {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        showAllExplanations.toggle()
+                    }
+                }
+                if showAllExplanations {
+                    SectionTitle("Chữa toàn bộ \(questions.count) câu", subtitle: "Đáp án đã chọn, đáp án đúng và giải thích")
+                    ForEach(Array(questions.enumerated()), id: \.offset) { questionIndex, question in
+                        reviewPanel(question, at: questionIndex)
+                    }
+                }
+            }
+        }
+    }
+
+    private var resultSummary: some View {
+        VStack(alignment: .leading, spacing: 8) {
             Text("\(correct) / \(questions.count)")
                 .font(.system(size: 42, weight: .heavy, design: .rounded))
                 .foregroundColor(Palette.navy)
             Text("Tỉ lệ đúng: \(questions.isEmpty ? 0 : Int(100.0 * Double(correct) / Double(questions.count)))%")
                 .font(.headline).foregroundColor(Palette.blue)
-            Text("Điểm đã lưu trong Tiến độ. Hãy ôn lại những câu chưa chắc trước khi làm đề mới.")
+            Text("Đã lưu điểm vào Tiến độ. Những câu bỏ qua được tính là chưa đúng.")
                 .font(.subheadline).foregroundColor(.secondary)
+        }
+    }
+
+    private func reviewPanel(_ question: ExamQuestion, at index: Int) -> some View {
+        let picked = answersByQuestion[index]
+        let isCorrect = picked == question.answer
+        return LessonPanel {
+            HStack(spacing: 8) {
+                Text("Câu \(index + 1)")
+                    .font(.headline).foregroundColor(Palette.navy)
+                Spacer()
+                Pill(
+                    text: picked == nil ? "Bỏ qua" : (isCorrect ? "Đúng" : "Sai"),
+                    color: picked == nil ? Palette.orange : (isCorrect ? Palette.teal : .red)
+                )
+            }
+            if let passage = question.passage {
+                FuriganaText(text: passage, size: 17)
+            }
+            if let audio = question.audioText {
+                SectionTitle("Hội thoại")
+                FuriganaText(text: audio, size: 16)
+                Button("Nghe lại hội thoại") { voice.speakConversation(audio, rate: speed) }
+                    .font(.subheadline.weight(.medium))
+            }
+            if question.prompt.unicodeScalars.contains(where: { $0.value >= 0x3040 && $0.value <= 0x9FFF }) {
+                FuriganaText(text: question.prompt, size: 18)
+            } else {
+                Text(question.prompt).font(.headline).foregroundColor(Palette.navy)
+            }
+            if let picked, question.choices.indices.contains(picked) {
+                Text("Bạn chọn: \(String(UnicodeScalar(65 + picked)!)). \(question.choices[picked])")
+                    .foregroundColor(isCorrect ? Palette.teal : .red)
+                    .font(.subheadline)
+            } else {
+                Text("Bạn chưa chọn đáp án.").font(.subheadline).foregroundColor(Palette.orange)
+            }
+            if question.choices.indices.contains(question.answer) {
+                Text("Đáp án đúng: \(String(UnicodeScalar(65 + question.answer)!)). \(question.choices[question.answer])")
+                    .font(.subheadline.weight(.semibold)).foregroundColor(Palette.teal)
+            }
+            Divider()
+            Text("Giải thích").font(.subheadline.weight(.bold)).foregroundColor(Palette.navy)
+            Text(question.explanation).font(.subheadline).foregroundColor(.secondary)
         }
     }
 
     private func choose(_ index: Int) {
         guard selected == nil, let question = current else { return }
         selected = index
+        answersByQuestion[position] = index
         if index == question.answer { correct += 1 }
-        // Hiện đáp án ngắn để người học kịp nhận ra đúng/sai.
+        // Chế độ đọc hiểu / thi: lưu đáp án rồi chuyển ngay, không bật mí đúng sai.
         let answeredID = question.id
         nextQuestionTask?.cancel()
         nextQuestionTask = Task { @MainActor in
-            try? await Task.sleep(nanoseconds: 850_000_000)
+            try? await Task.sleep(nanoseconds: reviewAtEnd ? 260_000_000 : 850_000_000)
             guard !Task.isCancelled, !completed, current?.id == answeredID else { return }
             next()
         }
@@ -261,12 +345,14 @@ struct QuestionSessionView: View {
     private func finish() {
         guard !completed else { return }
         completed = true
+        showAllExplanations = false
+        nextQuestionTask?.cancel()
         voice.stop()
         store.recordTest(correct: correct, total: questions.count, type: type)
     }
 
     private func choiceColor(_ index: Int, question: ExamQuestion) -> Color {
-        guard selected != nil else { return .white }
+        guard !reviewAtEnd, selected != nil else { return .white }
         if index == question.answer { return Palette.teal.opacity(0.16) }
         if index == selected { return Color.red.opacity(0.12) }
         return .white

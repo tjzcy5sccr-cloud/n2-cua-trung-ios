@@ -18,6 +18,7 @@ struct FreshPracticeSessionView: View {
             }
         }
         .onAppear { generateNewSession() }
+        .onChange(of: store.contentRevision) { _ in generateNewSession() }
     }
 
     private func generateNewSession() {

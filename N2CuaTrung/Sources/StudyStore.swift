@@ -51,33 +51,52 @@ final class StudyStore: ObservableObject {
         return min(35, max(1, days / 7 + 1))
     }
 
+    /// Mỗi giáo trình có lịch ôn riêng. Giữ nguyên khóa lịch sử từ bản ứng dụng cũ
+    /// trong chế độ Tổng hợp để không mất tiến độ của người học.
+    private func scopedReviewID(_ id: String) -> String {
+        selectedSeries == .all ? id : "series:\(selectedSeries.rawValue):\(id)"
+    }
+
+    private var activeReviews: [ReviewRecord] {
+        if selectedSeries == .all {
+            return saved.reviews.filter { !$0.key.hasPrefix("series:") }.map(\.value)
+        }
+        let prefix = "series:\(selectedSeries.rawValue):"
+        return saved.reviews.filter { $0.key.hasPrefix(prefix) }.map(\.value)
+    }
+
     var dueCount: Int { course.vocab.filter { isDue("v:\($0.id)") && $0.week <= week }.count }
-    var mastered: Int { saved.reviews.values.filter { $0.streak >= 3 }.count }
-    var reviewedCount: Int { saved.reviews.count }
+    var mastered: Int { activeReviews.filter { $0.streak >= 3 }.count }
+    var reviewedCount: Int { activeReviews.count }
     var averageScore: Int {
-        let earned = saved.tests.reduce(0) { $0 + $1.correct }
-        let total = saved.tests.reduce(0) { $0 + $1.total }
+        let filtered = selectedSeries == .all
+            ? saved.tests.filter { !$0.type.hasPrefix("series:") }
+            : saved.tests.filter { $0.type.hasPrefix("series:\(selectedSeries.rawValue):") }
+        let earned = filtered.reduce(0) { $0 + $1.correct }
+        let total = filtered.reduce(0) { $0 + $1.total }
         return total == 0 ? 0 : Int(Double(earned) * 100.0 / Double(total))
     }
 
     func isDue(_ id: String) -> Bool {
-        guard let review = saved.reviews[id] else { return true }
+        guard let review = saved.reviews[scopedReviewID(id)] else { return true }
         return review.nextReview <= Date()
     }
 
     func review(_ id: String, known: Bool) {
-        let previous = saved.reviews[id]
+        let key = scopedReviewID(id)
+        let previous = saved.reviews[key]
         let streak = known ? min((previous?.streak ?? 0) + 1, 20) : 0
         let steps = [1, 3, 7, 14, 30, 60, 90]
         let interval = known ? steps[min(max(0, streak - 1), steps.count - 1)] : 1
         let date = Calendar.current.date(byAdding: .day, value: interval, to: Date()) ?? Date()
-        saved.reviews[id] = ReviewRecord(streak: streak, interval: interval,
+        saved.reviews[key] = ReviewRecord(streak: streak, interval: interval,
                                          nextReview: date, lastReviewed: Date())
         persist()
     }
 
     func recordTest(correct: Int, total: Int, type: String) {
-        saved.tests.insert(TestRecord(correct: correct, total: total, type: type), at: 0)
+        let scopedType = selectedSeries == .all ? type : "series:\(selectedSeries.rawValue):\(type)"
+        saved.tests.insert(TestRecord(correct: correct, total: total, type: scopedType), at: 0)
         if saved.tests.count > 100 { saved.tests = Array(saved.tests.prefix(100)) }
         persist()
     }

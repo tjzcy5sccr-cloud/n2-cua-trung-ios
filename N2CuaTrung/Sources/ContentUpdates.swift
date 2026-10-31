@@ -6,6 +6,8 @@ struct CoursePack: Decodable, Identifiable {
     let id: String
     let version: Int
     let title: String
+    /// nil = gói gốc dùng trong chế độ Tổng hợp. Giá trị khác = bộ học riêng.
+    let seriesId: String?
     let vocab: [Vocabulary]?
     let grammar: [Grammar]?
     let kanji: [Kanji]?
@@ -76,7 +78,8 @@ enum CoursePackManager {
 
     /// Hai gói N2 đi kèm IPA, học offline ngay khi cài mà không cần bấm cập nhật.
     static func bundledPacks() -> [CoursePack] {
-        ["n2-expansion-01", "openjlpt-n2-core", "vn26-original-practice-01", "n2-reading-listening-02"].compactMap { name in
+        (["n2-expansion-01", "openjlpt-n2-core", "vn26-original-practice-01", "n2-reading-listening-02"] +
+         LearningSeries.allCases.compactMap(\.packFilename)).compactMap { name in
             guard let url = Bundle.main.url(forResource: name, withExtension: "json"),
                   let data = try? Data(contentsOf: url) else { return nil }
             return try? validate(data)
@@ -107,6 +110,22 @@ enum CoursePackManager {
         )
     }
 
+    /// Tổng hợp lấy nguyên dữ liệu app cũ và mọi gói; chọn một series chỉ đọc
+    /// dữ liệu mang seriesId đó. Không tự mượn dữ liệu bộ khác khi series rỗng.
+    static func course(for series: LearningSeries, packs: [CoursePack]) -> CourseData {
+        if series == .all { return mergedCourse(packs: packs) }
+        let selected = packs.filter { $0.seriesId == series.rawValue }
+        let weeks = CourseData.load().weeks
+        return CourseData(
+            vocab: merge([], selected.flatMap { $0.vocab ?? [] }),
+            grammar: merge([], selected.flatMap { $0.grammar ?? [] }),
+            kanji: merge([], selected.flatMap { $0.kanji ?? [] }),
+            readings: merge([], selected.flatMap { $0.readings ?? [] }),
+            listening: merge([], selected.flatMap { $0.listening ?? [] }),
+            weeks: weeks
+        )
+    }
+
     private static func merge<T: Identifiable>(_ base: [T], _ additions: [T]) -> [T]
         where T.ID == String {
         var items = base
@@ -130,6 +149,10 @@ enum CoursePackManager {
 
         guard pack.id.range(of: "^[a-zA-Z0-9_-]{1,64}$", options: .regularExpression) != nil else {
             throw CoursePackError.invalidIdentifier
+        }
+        if let seriesID = pack.seriesId,
+           !LearningSeries.allCases.contains(where: { $0 != .all && $0.rawValue == seriesID }) {
+            throw CoursePackError.invalidData("Bộ dữ liệu không có mã series hợp lệ.")
         }
         guard pack.version > 0, !pack.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               pack.itemCount > 0, pack.itemCount <= 15_000 else {
@@ -175,41 +198,63 @@ extension StudyStore {
     private func reloadCoursePacks() {
         let packs = CoursePackManager.allAvailablePacks()
         installedPacks = packs
-        course = CoursePackManager.mergedCourse(packs: packs)
+        course = CoursePackManager.course(for: selectedSeries, packs: packs)
     }
 
-    /// Chỉ kết nối khi người học chủ động bấm cập nhật.
-    /// Dữ liệu sau khi tải được lưu trong Application Support để dùng offline.
+    /// Tải cả gói truyền thống trên main và các gói học riêng của nhánh mới.
+    /// Cập nhật xong mới đổi course một lần để các màn hình cùng hiển thị dữ liệu mới.
     @MainActor
     func downloadCourseUpdates() async throws -> Int {
-        guard let manifestURL = URL(string:
-            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/manifest.json")
-        else { throw CoursePackError.invalidSource }
-        let (manifestBytes, response) = try await URLSession.shared.data(from: manifestURL)
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode),
-              manifestBytes.count < 100_000 else { throw CoursePackError.serverError }
-        let manifest = try JSONDecoder().decode(CourseManifest.self, from: manifestBytes)
-        guard manifest.schemaVersion == 1 else {
-            throw CoursePackError.invalidData("Định dạng danh sách cập nhật chưa được hỗ trợ.")
-        }
-        var installedCount = 0
-        for item in manifest.packs {
-            let oldVersion = installedPacks.first { $0.id == item.id }?.version ?? 0
-            guard item.version > oldVersion else { continue }
-            guard let url = URL(string: item.url), url.scheme == "https",
-                  url.host == "raw.githubusercontent.com",
-                  url.path.hasPrefix("/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/")
-            else { throw CoursePackError.invalidSource }
-            let (bytes, packResponse) = try await URLSession.shared.data(from: url)
-            guard let packHTTP = packResponse as? HTTPURLResponse,
-                  (200...299).contains(packHTTP.statusCode) else { throw CoursePackError.serverError }
-            let pack = try CoursePackManager.validate(bytes)
-            guard pack.id == item.id && pack.version == item.version else {
-                throw CoursePackError.invalidData("Mã gói hoặc phiên bản không khớp danh sách cập nhật.")
+        let allowedPrefixes = [
+            "/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/",
+            "/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/"
+        ]
+        let manifests = [
+            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/manifest.json",
+            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/manifest-series.json"
+        ]
+        var count = 0
+        // Duy trì bản cập nhật chung khi nhánh mới đang trong giai đoạn thử nghiệm.
+        for (index, manifestAddress) in manifests.enumerated() {
+            guard let url = URL(string: manifestAddress) else { throw CoursePackError.invalidSource }
+            do {
+                let (manifestBytes, response) = try await URLSession.shared.data(from: url)
+                guard let result = response as? HTTPURLResponse, (200...299).contains(result.statusCode),
+                      manifestBytes.count < 100_000 else { throw CoursePackError.serverError }
+                let manifest = try JSONDecoder().decode(CourseManifest.self, from: manifestBytes)
+                guard manifest.schemaVersion == 1 else { throw CoursePackError.invalidData("Định dạng manifest không hợp lệ.") }
+                for item in manifest.packs {
+                    let oldVersion = installedPacks.first(where: { $0.id == item.id })?.version ?? 0
+                    guard item.version > oldVersion else { continue }
+                    guard let itemURL = URL(string: item.url),
+                          itemURL.scheme == "https", itemURL.host == "raw.githubusercontent.com",
+                          allowedPrefixes.contains(where: { itemURL.path.hasPrefix($0) })
+                    else { throw CoursePackError.invalidSource }
+
+                    let (bytes, packResponse) = try await URLSession.shared.data(from: itemURL)
+                    guard let http = packResponse as? HTTPURLResponse, (200...299).contains(http.statusCode)
+                    else { throw CoursePackError.serverError }
+                    let pack = try CoursePackManager.validate(bytes)
+                    guard pack.id == item.id && pack.version == item.version
+                    else { throw CoursePackError.invalidData("Mã hoặc phiên bản gói không trùng manifest.") }
+                    // Bảo đảm gói series thực sự thuộc đúng bộ, không lẫn nội dung.
+                    if itemURL.path.hasPrefix(allowedPrefixes[1]) {
+                        guard pack.seriesId != nil && pack.id == "n2-series-" + pack.seriesId! else {
+                            throw CoursePackError.invalidData("Gói học riêng có metadata không nhất quán.")
+                        }
+                    }
+                    _ = try CoursePackManager.install(bytes, alreadyInstalled: installedPacks)
+                    installedPacks = CoursePackManager.allAvailablePacks()
+                    count += 1
+                }
+            } catch {
+                // Gói series không khả dụng: giữ nguyên kho đã cài, nhưng vẫn báo lỗi
+                // để người học biết không thể đồng bộ toàn bộ các bộ dữ liệu.
+                if index == 1 { reloadCoursePacks() }
+                throw error
             }
-            try importContentPack(bytes)
-            installedCount += 1
         }
-        return installedCount
+        reloadCoursePacks()
+        return count
     }
 }

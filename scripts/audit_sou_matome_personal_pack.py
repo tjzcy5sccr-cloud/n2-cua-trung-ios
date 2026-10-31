@@ -23,6 +23,7 @@ STATUS = {"editorial_reviewed", "source_verified", "independently_verified"}
 JP = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
 KANA = re.compile(r"[\u3040-\u30ff]")
 LOCATOR = re.compile(r"^private-book:([a-z-]+):page-(\d+)$")
+SOURCE_ID = re.compile(r"^sm-reviewed-(goi-vi|kanji-vi|bunpou-vi)-(\\d+)-(\\d+)$")
 FIELDS = ("vocab", "grammar", "kanji", "readings", "listening")
 
 
@@ -125,7 +126,26 @@ def inspect_pack(pack, source_directory=None):
                     if not normalize(word) in source_pages[key]:
                         add(group, card_id, "japanese_text_not_found_on_source_page", page)
             elif card_id.startswith("sm-reviewed-"):
-                add(group, card_id, "missing_private_page_pointer")
+                match = SOURCE_ID.match(card_id)
+                if match:
+                    book_id, page_str, _ = match.groups()
+                    page = int(page_str)
+                    if not 1 <= page <= BOOKS[book_id]:
+                        add(group, card_id, "source_page_out_of_range", page)
+                    else:
+                        indexed_pages.add((book_id, page))
+                        if source_directory is not None:
+                            doc = source_documents.get(book_id)
+                            if doc is None:
+                                add(group, card_id, "source_pdf_missing", page)
+                            else:
+                                key = (book_id, page)
+                                if key not in source_pages:
+                                    source_pages[key] = normalize(doc[page-1].get_text("text"))
+                                if normalize(word) not in source_pages[key]:
+                                    add(group, card_id, "japanese_text_not_found_on_source_page", page)
+                else:
+                    add(group, card_id, "missing_private_page_pointer")
 
     for group in ("vocab", "grammar", "kanji"):
         if stats["approved_" + group] and len(pairs[group]) < 4:

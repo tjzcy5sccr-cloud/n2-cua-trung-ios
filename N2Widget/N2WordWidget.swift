@@ -7,11 +7,10 @@ private struct Word: Decodable {
     let reading: String
     let meaning: String
     let meaningStatus: String?
-    // Kiểm duyệt thuộc dữ liệu nguồn; widget chỉ nhận từ đã được duyệt.
-    var isApprovedForStudy: Bool {
-        ["editorial_reviewed", "source_verified", "independently_verified"]
-            .contains(meaningStatus ?? "") && !meaning.hasPrefix("EN ·")
-            && !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    // Trạng thái kiểm chứng vẫn trong gói dữ liệu nhưng không hiển thị lên widget.
+    var isValidForStudy: Bool {
+        !word.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     var displayMeaning: String { meaning }
 }
@@ -31,7 +30,7 @@ private struct WordProvider: TimelineProvider {
             guard let path = Bundle.main.url(forResource: filename, withExtension: "json"),
                   let bytes = try? Data(contentsOf: path),
                   let list = try? JSONDecoder().decode(WordList.self, from: bytes) else { continue }
-            for word in list.vocab where word.isApprovedForStudy && !existing.contains(word.word) {
+            for word in list.vocab where word.isValidForStudy && !existing.contains(word.word) {
                 existing.insert(word.word)
                 all.append(word)
             }

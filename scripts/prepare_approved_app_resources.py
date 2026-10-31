@@ -1,88 +1,44 @@
 #!/usr/bin/env python3
-"""Generate approved-only iOS resources on the GitHub runner.
+"""Validate full iOS study resources without deleting unreviewed course content.
 
-The complete originals remain in GitHub source and translation QA artifacts.
-This modifies runner WORKTREE just before XcodeGen and never commits it.
-Never embed unapproved dictionary candidates or machine-translated examples in IPA.
+Review flags are source metadata, not visible UI labels. This script must never
+strip entries, examples, compound words, or extra grammar notes from the IPA.
 """
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = [
+PACKS = [
     ROOT / "N2CuaTrung/Resources/content.json",
     ROOT / "content-packs/n2-expansion-01.json",
     ROOT / "content-packs/openjlpt-n2-core.json",
     ROOT / "content-packs/vn26-original-practice-01.json",
     ROOT / "content-packs/n2-reading-listening-02.json",
 ]
-APPROVED = {"editorial_reviewed", "source_verified", "independently_verified"}
-
-def clean_pack(pack):
-    result = dict(pack)
-    before = {k: len(pack.get(k, [])) for k in ("vocab", "grammar", "kanji")}
-    vocab = []
-    approved_words = {}
-    for raw in pack.get("vocab", []):
-        if raw.get("meaningStatus") not in APPROVED:
-            continue
-        entry = dict(raw)
-        if entry.get("exampleStatus") not in APPROVED:
-            entry["example"] = ""
-            entry["exampleVi"] = ""
-            for key in list(entry):
-                if key.startswith("exampleTranslation") or key.startswith("exampleSense"):
-                    entry.pop(key, None)
-        # Keep the approval status for runtime protection and widget filtering.
-        vocab.append(entry)
-        approved_words[entry["word"]] = entry
-    result["vocab"] = vocab
-    grammar = []
-    for raw in pack.get("grammar", []):
-        if raw.get("grammarStatus") not in APPROVED:
-            continue
-        entry = dict(raw)
-        if entry.get("translationStatus") not in APPROVED:
-            entry["example"] = ""
-            entry["translation"] = ""
-        entry["samples"] = [
-            sample for sample in entry.get("samples", []) or []
-            if sample.get("translationStatus") in APPROVED
-        ]
-        grammar.append(entry)
-    result["grammar"] = grammar
-    kanji = []
-    for raw in pack.get("kanji", []):
-        if raw.get("meaningStatus") not in APPROVED:
-            continue
-        entry = dict(raw)
-        # A listed compound may itself have no reviewed Vietnamese definition.
-        candidates = [
-            x.split("（", 1)[0].strip()
-            for x in entry.get("word", "").replace("，", "、").replace(",", "、").split("、")
-        ]
-        entry["word"] = "、".join(x for x in candidates if x in approved_words)
-        kanji.append(entry)
-    result["kanji"] = kanji
-    after = {k: len(result.get(k, [])) for k in ("vocab", "grammar", "kanji")}
-    return result, before, after
-
+COUNTS = {"vocab": 0, "grammar": 0, "kanji": 0, "readings": 0, "listening": 0}
 def main():
-    for path in FILES:
-        obj = json.loads(path.read_text(encoding="utf-8"))
-        cleaned, before, after = clean_pack(obj)
-        path.write_text(json.dumps(cleaned, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-        print(path.relative_to(ROOT), "source:", before, "published:", after, flush=True)
-        for v in cleaned["vocab"]:
-            assert v.get("meaningStatus") in APPROVED
-            if v.get("exampleStatus") not in APPROVED:
-                assert not v["example"] and not v.get("exampleVi")
-        assert all(k.get("meaningStatus") in APPROVED for k in cleaned["kanji"])
-        assert all(g.get("grammarStatus") in APPROVED for g in cleaned["grammar"])
-    # Extra grammar text supplied without review status must remain on GitHub only.
-    details = ROOT / "N2CuaTrung/Resources/grammar-details.json"
-    details.write_text("{}\n", encoding="utf-8")
-    print("PASS: all bundled learning resources contain approved-only word, Kanji and grammar meanings.")
+    for path in PACKS:
+        raw = path.read_bytes()
+        pack = json.loads(raw)
+        current = {}
+        for key in COUNTS:
+            array = pack.get(key, [])
+            if not isinstance(array, list):
+                raise ValueError(f"Invalid {key} in {path}")
+            COUNT = len(array)
+            COUNTS[key] += COUNT
+            current[key] = COUNT
+            if key in ("vocab", "grammar", "kanji"):
+                ids = [e["id"] for e in array]
+                assert len(ids) == len(set(ids)), (path, key, "duplicate IDs")
+        assert path.read_bytes() == raw, "Validation must not mutate learning data!"
+        print(path.relative_to(ROOT), "complete source items:", current, flush=True)
+    expected = {"vocab": 2002, "grammar": 180, "kanji": 471, "readings": 74, "listening": 70}
+    assert COUNTS == expected, f"Learning content unexpectedly missing: {COUNTS}, expected: {expected}"
+    notes = ROOT / "N2CuaTrung/Resources/grammar-details.json"
+    details = json.loads(notes.read_text(encoding="utf-8"))
+    assert len(details) >= 50, "Extra grammar explanations were removed!"
+    print("PASS: ALL N2 CONTENT PRESERVED", COUNTS, "grammar-details:", len(details), flush=True)
 
 if __name__ == "__main__":
     main()

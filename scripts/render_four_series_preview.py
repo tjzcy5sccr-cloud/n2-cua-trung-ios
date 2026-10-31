@@ -31,11 +31,13 @@ def text(t,x,y,f,c=dark):
 def width(t,f):
     box=d.textbbox((0,0),t,font=f);return box[2]-box[0]
 def multiline(value,x,y,f,c,limit,spacing=26):
+    # Ưu tiên xuống hàng theo từ để không bẻ gãy chữ tiếng Việt.
     line="";count=0
-    for ch in value:
-        if width(line+ch,f)>limit:
-            text(line,x,y+count*spacing,f,c);count+=1;line=""
-        line+=ch
+    for word in value.split(" "):
+        candidate=(line+" "+word).strip()
+        if line and width(candidate,f)>limit:
+            text(line,x,y+count*spacing,f,c);count+=1;line=word
+        else:line=candidate
     if line:text(line,x,y+count*spacing,f,c);count+=1
     return count
 def box(x1,y1,x2,y2,fill,r=20,stroke=None):

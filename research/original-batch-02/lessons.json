@@ -1,0 +1,832 @@
+{
+  "schemaVersion": 1,
+  "id": "n2-original-batch-02",
+  "authorship": "Original study sentences, exercises, answer explanations and Vietnamese translations authored for N2 của Trung; not copied from named textbooks",
+  "reviewPolicy": "Internal editor-reviewed draft; does not imply publisher or external-dictionary verification",
+  "series": {
+    "mimikara": {
+      "vocab": [
+        [
+          "雰囲気",
+          "ふんいき",
+          "bầu không khí; không khí chung",
+          "教室の雰囲気が明るくなりました。",
+          "Không khí lớp học đã trở nên vui vẻ hơn."
+        ],
+        [
+          "印象",
+          "いんしょう",
+          "ấn tượng",
+          "初めて会った人の印象を覚えています。",
+          "Tôi còn nhớ ấn tượng về người gặp lần đầu."
+        ],
+        [
+          "態度",
+          "たいど",
+          "thái độ",
+          "丁寧な態度で対応してください。",
+          "Vui lòng tiếp đón với thái độ lịch sự."
+        ],
+        [
+          "納得",
+          "なっとく",
+          "hiểu và chấp nhận; thấy thỏa đáng",
+          "説明を聞いて納得しました。",
+          "Sau khi nghe giải thích, tôi đã hiểu và thấy thỏa đáng."
+        ],
+        [
+          "誤解",
+          "ごかい",
+          "hiểu lầm",
+          "言い方が悪くて誤解を招きました。",
+          "Cách nói không khéo đã gây ra hiểu lầm."
+        ],
+        [
+          "遠慮",
+          "えんりょ",
+          "ngại ngần; giữ ý",
+          "遠慮せずに質問してください。",
+          "Xin đừng ngại đặt câu hỏi."
+        ],
+        [
+          "反省",
+          "はんせい",
+          "tự nhìn lại thiếu sót",
+          "今日の失敗を反省しています。",
+          "Tôi đang tự nhìn lại sai sót hôm nay."
+        ],
+        [
+          "感謝",
+          "かんしゃ",
+          "lòng biết ơn; cảm ơn",
+          "手伝ってくれた友人に感謝しています。",
+          "Tôi biết ơn người bạn đã giúp mình."
+        ],
+        [
+          "信頼",
+          "しんらい",
+          "sự tin tưởng",
+          "彼の仕事ぶりを信頼しています。",
+          "Tôi tin tưởng cách anh ấy làm việc."
+        ],
+        [
+          "噂",
+          "うわさ",
+          "tin đồn",
+          "根拠のない噂を広めないでください。",
+          "Đừng lan truyền những tin đồn thiếu căn cứ."
+        ],
+        [
+          "励ます",
+          "はげます",
+          "động viên; khích lệ",
+          "先生が私を励ましてくれました。",
+          "Thầy cô đã động viên tôi."
+        ],
+        [
+          "認める",
+          "みとめる",
+          "công nhận; thừa nhận",
+          "努力を認めてもらえてうれしいです。",
+          "Tôi vui vì nỗ lực của mình được công nhận."
+        ],
+        [
+          "話し合う",
+          "はなしあう",
+          "bàn bạc; thảo luận cùng nhau",
+          "問題について皆で話し合いました。",
+          "Mọi người đã cùng bàn bạc về vấn đề đó."
+        ],
+        [
+          "断る",
+          "ことわる",
+          "từ chối",
+          "都合が悪いので誘いを断りました。",
+          "Vì không tiện nên tôi đã từ chối lời mời."
+        ],
+        [
+          "引き受ける",
+          "ひきうける",
+          "nhận đảm nhiệm",
+          "新しい仕事を引き受けました。",
+          "Tôi đã nhận đảm nhiệm công việc mới."
+        ],
+        [
+          "謝る",
+          "あやまる",
+          "xin lỗi",
+          "間違えたらすぐに謝ることが大切です。",
+          "Điều quan trọng là xin lỗi ngay khi mắc lỗi."
+        ]
+      ],
+      "grammar": [
+        [
+          "〜ことにしている",
+          "duy trì quyết định hoặc thói quen do bản thân đặt ra",
+          "Vる／Vない + ことにしている; biểu thị quyết định đã trở thành quy tắc thường xuyên của người nói.",
+          "毎朝十分間、日本語のニュースを聞くことにしています。",
+          "Tôi đặt ra thói quen nghe tin tức tiếng Nhật mười phút mỗi sáng.",
+          "8"
+        ],
+        [
+          "〜たびに",
+          "mỗi khi; cứ mỗi lần",
+          "Vる／Nの + たびに; mỗi lần sự việc xảy ra thì sự việc khác lại xảy ra.",
+          "この曲を聞くたびに、故郷を思い出します。",
+          "Mỗi khi nghe bài hát này tôi lại nhớ quê hương.",
+          "9"
+        ],
+        [
+          "〜ばいいのに",
+          "giá mà; đáng lẽ nên",
+          "Điều kiện ば + いいのに; thể hiện tiếc nuối hoặc mong muốn trái tình hình thực tế.",
+          "もっと早く相談すればいいのに。",
+          "Giá mà bạn trao đổi sớm hơn thì tốt.",
+          "10"
+        ]
+      ],
+      "kanji": [
+        [
+          "雰",
+          "フン",
+          "",
+          "bầu không khí",
+          "雰囲気"
+        ],
+        [
+          "態",
+          "タイ",
+          "",
+          "trạng thái; thái độ",
+          "態度"
+        ],
+        [
+          "納",
+          "ノウ、ナッ",
+          "おさめる、 おさまる",
+          "nộp; thu nhận; chấp nhận",
+          "納得"
+        ],
+        [
+          "誤",
+          "ゴ",
+          "あやまる",
+          "sai lầm; nhầm lẫn",
+          "誤解"
+        ]
+      ],
+      "readings": [
+        {
+          "title": "Hiểu lầm trong nhóm học",
+          "topic": "Giao tiếp",
+          "text": "留学生のグループで、発表の担当を決めたときのことです。田中さんは説明が短かったため、鈴木さんに仕事を断られたと思いました。しかし、鈴木さんはその日だけ予定があったのです。二人は後で話し合い、誤解を解きました。それ以来、頼みごとをするときは理由や期限を詳しく伝えるようにしています。",
+          "textVi": "Đây là chuyện xảy ra khi một nhóm du học sinh phân công người thuyết trình. Vì lời giải thích quá ngắn, bạn Tanaka tưởng rằng Suzuki từ chối công việc. Thực ra Suzuki chỉ bận vào ngày hôm đó. Sau khi trao đổi, hai người đã giải tỏa hiểu lầm. Từ đó, khi nhờ ai làm việc, họ cố gắng nói rõ lý do và thời hạn.",
+          "question": "グループはその後、何をするようになりましたか。",
+          "choices": [
+            "頼みごとをしなくなった",
+            "理由や期限を詳しく伝える",
+            "発表を全部中止する",
+            "予定を一人で決める"
+          ],
+          "answer": 1,
+          "explanation": "Đoạn cuối nói nhóm bắt đầu nói rõ lý do và thời hạn khi nhờ việc."
+        }
+      ],
+      "listening": [
+        {
+          "title": "Trao đổi về lời mời",
+          "speaker": "二人が週末の予定について話しています。",
+          "script": "女：今週の土曜日、映画を見に行きませんか。\n男：誘ってくれてありがとう。でも、その日は用事があるんです。\n女：そうですか。では、来週はどうですか。\n男：来週なら大丈夫です。",
+          "scriptVi": "Nữ: Thứ Bảy tuần này đi xem phim nhé?\nNam: Cảm ơn vì đã rủ. Nhưng hôm đó tôi có việc.\nNữ: Vậy à. Thế tuần sau thì sao?\nNam: Tuần sau thì được.",
+          "question": "二人はいつ映画を見に行きますか。",
+          "choices": [
+            "今週の土曜日",
+            "今日",
+            "来週",
+            "今週の日曜日"
+          ],
+          "answer": 2,
+          "explanation": "Nam từ chối tuần này vì bận và đồng ý đi tuần sau."
+        }
+      ]
+    },
+    "shin-kanzen": {
+      "vocab": [
+        [
+          "根拠",
+          "こんきょ",
+          "căn cứ; cơ sở",
+          "その結論には十分な根拠があります。",
+          "Kết luận đó có cơ sở đầy đủ."
+        ],
+        [
+          "主張",
+          "しゅちょう",
+          "lập luận; quan điểm được nêu",
+          "筆者の主張を一文でまとめてください。",
+          "Hãy tóm tắt luận điểm của tác giả trong một câu."
+        ],
+        [
+          "指標",
+          "しひょう",
+          "chỉ số; tiêu chí đo lường",
+          "利用者の満足度を指標にします。",
+          "Chúng tôi lấy mức độ hài lòng của người dùng làm chỉ số."
+        ],
+        [
+          "基準",
+          "きじゅん",
+          "tiêu chuẩn; chuẩn mực",
+          "評価の基準を先に決めます。",
+          "Chúng tôi sẽ quyết định tiêu chuẩn đánh giá trước."
+        ],
+        [
+          "課題",
+          "かだい",
+          "vấn đề cần giải quyết; nhiệm vụ",
+          "この計画にはまだ課題が残っています。",
+          "Kế hoạch này vẫn còn những vấn đề cần giải quyết."
+        ],
+        [
+          "検証",
+          "けんしょう",
+          "kiểm chứng",
+          "実験の結果を検証する必要があります。",
+          "Cần kiểm chứng kết quả thí nghiệm."
+        ],
+        [
+          "仮説",
+          "かせつ",
+          "giả thuyết",
+          "集めたデータから仮説を立てました。",
+          "Tôi đã đặt ra giả thuyết từ dữ liệu thu thập được."
+        ],
+        [
+          "客観的",
+          "きゃっかんてき",
+          "khách quan",
+          "客観的な資料を基に判断します。",
+          "Chúng tôi đưa ra nhận định dựa trên tài liệu khách quan."
+        ],
+        [
+          "論理的",
+          "ろんりてき",
+          "có tính logic; hợp lý theo lập luận",
+          "理由を論理的に説明してください。",
+          "Hãy giải thích lý do một cách logic."
+        ],
+        [
+          "資格",
+          "しかく",
+          "tư cách; chứng chỉ; điều kiện đủ",
+          "この試験を受ける資格があります。",
+          "Tôi đủ điều kiện dự kỳ thi này."
+        ],
+        [
+          "審査",
+          "しんさ",
+          "thẩm định; xét duyệt",
+          "申し込みの内容を審査しています。",
+          "Chúng tôi đang xét duyệt nội dung đăng ký."
+        ],
+        [
+          "評価",
+          "ひょうか",
+          "đánh giá",
+          "一度の失敗だけで人を評価しないでください。",
+          "Đừng đánh giá một người chỉ từ một lần thất bại."
+        ],
+        [
+          "批判",
+          "ひはん",
+          "phê bình; chỉ trích",
+          "意見を批判する前に理由を聞きましょう。",
+          "Trước khi phê bình một ý kiến, hãy lắng nghe lý do."
+        ],
+        [
+          "根本的",
+          "こんぽんてき",
+          "mang tính căn bản",
+          "問題を根本的に解決したいです。",
+          "Tôi muốn giải quyết vấn đề từ căn bản."
+        ],
+        [
+          "概要",
+          "がいよう",
+          "khái quát; tóm lược nội dung",
+          "最初に計画の概要を説明します。",
+          "Trước tiên tôi sẽ trình bày khái quát kế hoạch."
+        ],
+        [
+          "前提",
+          "ぜんてい",
+          "tiền đề; điều kiện giả định",
+          "その話は条件が変わらないことを前提としています。",
+          "Lập luận đó dựa trên tiền đề rằng các điều kiện không thay đổi."
+        ]
+      ],
+      "grammar": [
+        [
+          "〜上は",
+          "một khi đã; đã... thì phải",
+          "Vた／Vる + 上は; đã đi đến một quyết định thì cần thực hiện trách nhiệm đi kèm.",
+          "引き受けた上は、最後まで責任を持ちます。",
+          "Một khi đã nhận việc, tôi sẽ chịu trách nhiệm đến cùng.",
+          "12"
+        ],
+        [
+          "〜次第で",
+          "tùy vào; phụ thuộc vào",
+          "N + 次第で; kết quả thay đổi tùy theo điều kiện hoặc lựa chọn.",
+          "結果は準備の仕方次第で変わります。",
+          "Kết quả thay đổi tùy vào cách chuẩn bị.",
+          "13"
+        ],
+        [
+          "〜に即して",
+          "phù hợp với; dựa sát vào",
+          "N + に即して; dựa vào hiện trạng, dữ liệu hoặc nguyên tắc thực tế.",
+          "現場の状況に即して計画を見直します。",
+          "Chúng tôi xem lại kế hoạch dựa sát vào tình hình thực tế.",
+          "14"
+        ]
+      ],
+      "kanji": [
+        [
+          "拠",
+          "キョ、コ",
+          "よる",
+          "căn cứ; chỗ dựa",
+          "根拠"
+        ],
+        [
+          "論",
+          "ロン",
+          "",
+          "bàn luận; lý luận",
+          "論理的"
+        ],
+        [
+          "審",
+          "シン",
+          "",
+          "xem xét; thẩm tra",
+          "審査"
+        ],
+        [
+          "評",
+          "ヒョウ",
+          "",
+          "đánh giá; bình luận",
+          "評価"
+        ]
+      ],
+      "readings": [
+        {
+          "title": "Đánh giá dựa trên tiêu chuẩn",
+          "topic": "Lập luận",
+          "text": "ある学校では、発表の上手さだけで成績を決めていました。しかし、それでは人前で話すのが苦手な学生の努力が十分に評価されません。そこで、資料の正確さや主張の根拠など、複数の基準を使うことになりました。新しい方法にも課題はありますが、学校は結果を検証しながら改善を続ける方針です。",
+          "textVi": "Một trường học trước đây chỉ quyết định điểm số theo khả năng thuyết trình. Tuy nhiên, cách đó chưa đánh giá đầy đủ nỗ lực của những học sinh không giỏi nói trước đám đông. Vì vậy, trường quyết định sử dụng nhiều tiêu chuẩn như độ chính xác của tài liệu và căn cứ của lập luận. Phương pháp mới vẫn còn vấn đề, nhưng nhà trường có chủ trương tiếp tục cải thiện trong khi kiểm chứng kết quả.",
+          "question": "学校が評価方法を変えた主な理由は何ですか。",
+          "choices": [
+            "資料を使わなくするため",
+            "話すのが得意な学生だけを選ぶため",
+            "努力をより公平に評価するため",
+            "発表の時間を長くするため"
+          ],
+          "answer": 2,
+          "explanation": "Mục đích thay đổi là đánh giá nỗ lực công bằng hơn, không chỉ dựa vào khả năng nói."
+        }
+      ],
+      "listening": [
+        {
+          "title": "Lý do trì hoãn quyết định",
+          "speaker": "会社で二人が新しい提案について話しています。",
+          "script": "男：新しいサービスの提案は、今日決まりますか。\n女：いいえ。利用者の調査結果がまだそろっていないんです。\n男：では、何を待っていますか。\n女：来週までにデータを集めて、それから判断します。",
+          "scriptVi": "Nam: Đề xuất dịch vụ mới có được quyết định hôm nay không?\nNữ: Không. Kết quả khảo sát người dùng vẫn chưa đầy đủ.\nNam: Vậy đang chờ gì ạ?\nNữ: Chúng tôi sẽ thu thập dữ liệu trước tuần sau rồi mới quyết định.",
+          "question": "今日、提案が決まらないのはなぜですか。",
+          "choices": [
+            "費用が高すぎるから",
+            "調査の結果がそろっていないから",
+            "担当者が休んでいるから",
+            "提案がなくなったから"
+          ],
+          "answer": 1,
+          "explanation": "Chưa quyết định vì dữ liệu khảo sát chưa đầy đủ."
+        }
+      ]
+    },
+    "sou-matome": {
+      "vocab": [
+        [
+          "復習",
+          "ふくしゅう",
+          "ôn lại bài đã học",
+          "寝る前に今日の単語を復習します。",
+          "Tôi ôn lại từ vựng hôm nay trước khi ngủ."
+        ],
+        [
+          "予習",
+          "よしゅう",
+          "học chuẩn bị trước bài",
+          "授業の前に新しい漢字を予習します。",
+          "Tôi học trước chữ Hán mới trước giờ học."
+        ],
+        [
+          "集中",
+          "しゅうちゅう",
+          "tập trung",
+          "短い時間でも集中して勉強しましょう。",
+          "Dù thời gian ngắn cũng hãy tập trung học."
+        ],
+        [
+          "途中",
+          "とちゅう",
+          "giữa chừng; trên đường",
+          "帰宅する途中で雨が降り始めました。",
+          "Trên đường về nhà, trời bắt đầu mưa."
+        ],
+        [
+          "予定",
+          "よてい",
+          "dự định; lịch trình",
+          "明日の予定を手帳に書きました。",
+          "Tôi đã ghi lịch ngày mai vào sổ tay."
+        ],
+        [
+          "毎回",
+          "まいかい",
+          "mỗi lần",
+          "毎回同じところで間違えています。",
+          "Lần nào tôi cũng sai ở cùng một chỗ."
+        ],
+        [
+          "整える",
+          "ととのえる",
+          "sắp xếp cho chỉnh tề; điều chỉnh",
+          "勉強を始める前に机の上を整えます。",
+          "Trước khi học tôi sắp xếp bàn cho gọn gàng."
+        ],
+        [
+          "積み重ねる",
+          "つみかさねる",
+          "tích lũy từng chút một",
+          "毎日の努力を積み重ねることが大切です。",
+          "Điều quan trọng là tích lũy nỗ lực mỗi ngày."
+        ],
+        [
+          "持続",
+          "じぞく",
+          "duy trì liên tục",
+          "集中力を持続させるために休憩を取ります。",
+          "Tôi nghỉ giải lao để duy trì khả năng tập trung."
+        ],
+        [
+          "順番",
+          "じゅんばん",
+          "thứ tự; lượt",
+          "問題を順番に解いてください。",
+          "Hãy giải các câu hỏi theo thứ tự."
+        ],
+        [
+          "期限切れ",
+          "きげんぎれ",
+          "hết hạn",
+          "このカードは先月で期限切れになりました。",
+          "Thẻ này đã hết hạn từ tháng trước."
+        ],
+        [
+          "寝不足",
+          "ねぶそく",
+          "thiếu ngủ",
+          "寝不足だと授業に集中できません。",
+          "Khi thiếu ngủ, tôi không thể tập trung trong giờ học."
+        ],
+        [
+          "参加費",
+          "さんかひ",
+          "phí tham gia",
+          "参加費は受付で払ってください。",
+          "Vui lòng thanh toán phí tham gia tại quầy tiếp nhận."
+        ],
+        [
+          "持ち物",
+          "もちもの",
+          "đồ cần mang theo; vật dụng mang theo",
+          "必要な持ち物を前日に確認します。",
+          "Tôi kiểm tra đồ cần mang theo từ hôm trước."
+        ],
+        [
+          "週間",
+          "しゅうかん",
+          "khoảng thời gian tính theo tuần",
+          "二週間でこの教材を一通り読みました。",
+          "Tôi đã đọc qua toàn bộ giáo trình này trong hai tuần."
+        ],
+        [
+          "最初",
+          "さいしょ",
+          "lúc đầu; đầu tiên",
+          "最初は難しく感じましたが、少しずつ慣れました。",
+          "Lúc đầu tôi thấy khó, nhưng đã dần quen."
+        ]
+      ],
+      "grammar": [
+        [
+          "〜にかけて",
+          "từ... đến...; trải dài suốt khoảng",
+          "N thời gian/nơi chốn + から + N + にかけて; chỉ phạm vi kéo dài, ranh giới không nhất thiết chính xác tuyệt đối.",
+          "今夜から明日の朝にかけて雨が降るでしょう。",
+          "Trời có thể mưa từ tối nay đến sáng mai.",
+          "15"
+        ],
+        [
+          "〜をきっかけに",
+          "nhân cơ hội; lấy... làm bước ngoặt",
+          "N + をきっかけに; sự kiện trở thành điểm khởi đầu của thay đổi.",
+          "旅行をきっかけに、日本語を勉強し始めました。",
+          "Tôi bắt đầu học tiếng Nhật sau chuyến đi, xem đó là cơ duyên.",
+          "16"
+        ],
+        [
+          "〜のもとで",
+          "dưới sự chỉ dẫn hoặc điều kiện",
+          "N + のもとで; diễn tả hành động dưới sự hướng dẫn, quản lý hoặc hoàn cảnh nhất định.",
+          "経験豊かな先生のもとで学んでいます。",
+          "Tôi đang học dưới sự hướng dẫn của giáo viên giàu kinh nghiệm.",
+          "17"
+        ]
+      ],
+      "kanji": [
+        [
+          "習",
+          "シュウ",
+          "ならう",
+          "học tập; tập luyện",
+          "復習"
+        ],
+        [
+          "集",
+          "シュウ",
+          "あつまる、あつめる、つどう",
+          "tập hợp; gom lại",
+          "集中"
+        ],
+        [
+          "予",
+          "ヨ",
+          "",
+          "trước; dự liệu",
+          "予習"
+        ],
+        [
+          "順",
+          "ジュン",
+          "",
+          "thứ tự; thuận chiều",
+          "順番"
+        ]
+      ],
+      "readings": [
+        {
+          "title": "Kế hoạch ôn tập một tuần",
+          "topic": "Học tập",
+          "text": "試験まで残り一か月になったので、私は学習計画を見直しました。平日は一日三十分ずつ単語と文法を復習し、土曜日には読解の問題を解くことにしました。最初は毎日同じ時間に勉強するのが大変でしたが、少しずつ慣れてきました。日曜日には間違えた問題だけを確認し、休む時間も大切にしています。",
+          "textVi": "Vì chỉ còn một tháng đến kỳ thi nên tôi xem lại kế hoạch học. Trong các ngày thường, tôi quyết định dành mỗi ngày 30 phút ôn từ vựng và ngữ pháp; thứ Bảy giải bài đọc hiểu. Ban đầu học đúng một giờ cố định mỗi ngày khá vất vả, nhưng tôi dần quen. Chủ nhật tôi chỉ kiểm tra các câu đã làm sai và cũng coi trọng thời gian nghỉ ngơi.",
+          "question": "この人は日曜日に主に何をしますか。",
+          "choices": [
+            "新しい単語を百個覚える",
+            "間違えた問題を確認する",
+            "読解の問題だけを解く",
+            "勉強計画を全部やめる"
+          ],
+          "answer": 1,
+          "explanation": "Chủ nhật người này chủ yếu xem lại các câu sai và dành thời gian nghỉ."
+        }
+      ],
+      "listening": [
+        {
+          "title": "Kế hoạch ngày cuối tuần",
+          "speaker": "学生が勉強の予定を相談しています。",
+          "script": "男：土曜日は何を勉強する予定ですか。\n女：午前中に漢字を復習して、午後は読解を練習します。\n男：日曜日はどうしますか。\n女：間違えた問題だけ見直して、あとは休みます。",
+          "scriptVi": "Nam: Thứ Bảy bạn định học gì?\nNữ: Buổi sáng tôi ôn Kanji, buổi chiều luyện đọc hiểu.\nNam: Còn Chủ nhật?\nNữ: Tôi chỉ xem lại những câu sai, thời gian còn lại nghỉ ngơi.",
+          "question": "女の人は土曜日の午後に何をしますか。",
+          "choices": [
+            "漢字を復習する",
+            "読解を練習する",
+            "全部休む",
+            "新しい問題を作る"
+          ],
+          "answer": 1,
+          "explanation": "Buổi chiều thứ Bảy nữ học viên sẽ luyện đọc hiểu."
+        }
+      ]
+    },
+    "speed-master": {
+      "vocab": [
+        [
+          "迅速",
+          "じんそく",
+          "nhanh chóng; kịp thời",
+          "問い合わせに迅速に対応しました。",
+          "Chúng tôi đã phản hồi thắc mắc một cách nhanh chóng."
+        ],
+        [
+          "正確",
+          "せいかく",
+          "chính xác",
+          "数字を正確に読み取ってください。",
+          "Hãy đọc chính xác các con số."
+        ],
+        [
+          "直前",
+          "ちょくぜん",
+          "ngay trước thời điểm",
+          "試験の直前に大切な単語だけ確認しました。",
+          "Ngay trước kỳ thi tôi chỉ xem lại những từ quan trọng."
+        ],
+        [
+          "瞬間",
+          "しゅんかん",
+          "khoảnh khắc",
+          "電車が動き出した瞬間、電話が鳴りました。",
+          "Ngay khoảnh khắc tàu bắt đầu chạy, điện thoại reo."
+        ],
+        [
+          "即座に",
+          "そくざに",
+          "ngay lập tức",
+          "異常を見つけたら即座に知らせてください。",
+          "Nếu phát hiện bất thường, hãy báo ngay lập tức."
+        ],
+        [
+          "反応",
+          "はんのう",
+          "phản ứng",
+          "質問にすぐ反応できませんでした。",
+          "Tôi đã không thể phản ứng ngay với câu hỏi."
+        ],
+        [
+          "速度",
+          "そくど",
+          "tốc độ",
+          "音声の速度を少し上げました。",
+          "Tôi đã tăng tốc độ âm thanh lên một chút."
+        ],
+        [
+          "限界",
+          "げんかい",
+          "giới hạn",
+          "集中できる時間には限界があります。",
+          "Thời gian có thể tập trung cũng có giới hạn."
+        ],
+        [
+          "連続",
+          "れんぞく",
+          "liên tiếp; liên tục",
+          "三日連続で同じ漢字を練習しました。",
+          "Tôi đã luyện cùng một chữ Hán trong ba ngày liên tiếp."
+        ],
+        [
+          "判断力",
+          "はんだんりょく",
+          "khả năng phán đoán",
+          "時間がないときほど判断力が必要です。",
+          "Càng ít thời gian thì càng cần khả năng phán đoán."
+        ],
+        [
+          "集計",
+          "しゅうけい",
+          "tổng hợp số liệu",
+          "テストの点数を集計しました。",
+          "Tôi đã tổng hợp điểm của bài kiểm tra."
+        ],
+        [
+          "計測",
+          "けいそく",
+          "đo lường",
+          "読む速さを毎週計測します。",
+          "Tôi đo tốc độ đọc mỗi tuần."
+        ],
+        [
+          "対処",
+          "たいしょ",
+          "xử lý; ứng phó",
+          "問題が起きても落ち着いて対処します。",
+          "Dù xảy ra vấn đề, tôi vẫn bình tĩnh xử lý."
+        ],
+        [
+          "誤答",
+          "ごとう",
+          "câu trả lời sai",
+          "誤答の理由をノートに書きました。",
+          "Tôi đã ghi lý do trả lời sai vào sổ."
+        ],
+        [
+          "選択肢",
+          "せんたくし",
+          "các phương án lựa chọn",
+          "答えを決める前に選択肢を全部読みます。",
+          "Trước khi chọn đáp án, tôi đọc tất cả các phương án."
+        ],
+        [
+          "時間切れ",
+          "じかんぎれ",
+          "hết giờ",
+          "最後の問題を解く前に時間切れになりました。",
+          "Tôi đã hết giờ trước khi giải câu cuối."
+        ]
+      ],
+      "grammar": [
+        [
+          "〜にしても",
+          "dù là; cho dù",
+          "N／thể thông thường + にしても; thừa nhận giả định nhưng vẫn nêu đánh giá hoặc điều kiện.",
+          "急ぐにしても、安全の確認は必要です。",
+          "Dù có vội, vẫn cần kiểm tra an toàn.",
+          "18"
+        ],
+        [
+          "〜ないものでもない",
+          "không hẳn là không thể",
+          "Vない + ものでもない; phủ định nhẹ khả năng không làm được, tùy trường hợp.",
+          "時間をかければ、理解できないものでもありません。",
+          "Nếu dành thời gian, không phải là không thể hiểu.",
+          "19"
+        ],
+        [
+          "〜を踏まえて",
+          "dựa trên; cân nhắc đến",
+          "N + を踏まえて; cân nhắc dữ liệu hoặc kinh nghiệm làm căn cứ hành động.",
+          "前回の結果を踏まえて、解き方を変えました。",
+          "Dựa trên kết quả lần trước, tôi đã đổi cách giải.",
+          "20"
+        ]
+      ],
+      "kanji": [
+        [
+          "迅",
+          "ジン",
+          "",
+          "nhanh; mau lẹ",
+          "迅速"
+        ],
+        [
+          "瞬",
+          "シュン",
+          "またたく",
+          "khoảnh khắc; chớp mắt",
+          "瞬間"
+        ],
+        [
+          "即",
+          "ソク",
+          "",
+          "ngay lập tức; tức thời",
+          "即座に"
+        ],
+        [
+          "択",
+          "タク",
+          "えらぶ",
+          "lựa chọn",
+          "選択肢"
+        ]
+      ],
+      "readings": [
+        {
+          "title": "Thời gian trong bài kiểm tra",
+          "topic": "Luyện đề",
+          "text": "模擬試験では、難しい問題に時間をかけすぎると、最後まで解けなくなることがあります。そのため、まず解ける問題から進め、判断できない問題には印を付けておく方法が役立ちます。ただし、速さだけを意識すると誤答が増えます。解く速度と正確さの両方を意識し、試験後には間違えた理由を確認することが大切です。",
+          "textVi": "Trong bài thi thử, nếu dành quá nhiều thời gian cho câu khó thì có thể không giải hết. Vì vậy, cách làm từ câu giải được trước và đánh dấu câu chưa thể quyết định là hữu ích. Tuy nhiên, nếu chỉ chú ý tốc độ thì số câu trả lời sai sẽ tăng. Điều quan trọng là chú ý cả tốc độ lẫn độ chính xác và xem lại nguyên nhân sai sau bài thi.",
+          "question": "筆者が最も大切だと考えていることは何ですか。",
+          "choices": [
+            "難しい問題だけを解く",
+            "速さだけを優先する",
+            "速さと正確さを意識して復習する",
+            "最初の問題に時間を全部使う"
+          ],
+          "answer": 2,
+          "explanation": "Tác giả nhấn mạnh cân bằng tốc độ, độ chính xác và xem lại lỗi."
+        }
+      ],
+      "listening": [
+        {
+          "title": "Giải thích về thời gian làm bài",
+          "speaker": "先生が試験の解き方について説明しています。",
+          "script": "先生：試験では、まず解ける問題から答えてください。分からない問題には印を付けて、後で戻りましょう。\n学生：全部の問題を順番に解かなくてもいいですか。\n先生：はい。ただし、最後に答えを確認する時間を残してください。",
+          "scriptVi": "Giáo viên: Trong bài thi, hãy trả lời các câu giải được trước. Với câu chưa hiểu, hãy đánh dấu và quay lại sau.\nHọc viên: Không cần giải tất cả câu theo thứ tự ạ?\nGiáo viên: Đúng vậy. Tuy nhiên, hãy dành lại thời gian kiểm tra đáp án cuối giờ.",
+          "question": "先生が最後に注意したことは何ですか。",
+          "choices": [
+            "最初の問題だけ解くこと",
+            "最後に答えを確認する時間を残すこと",
+            "問題を全部飛ばすこと",
+            "必ず順番に解くこと"
+          ],
+          "answer": 1,
+          "explanation": "Giáo viên dặn phải dành thời gian cuối giờ để kiểm tra đáp án."
+        }
+      ]
+    }
+  }
+}

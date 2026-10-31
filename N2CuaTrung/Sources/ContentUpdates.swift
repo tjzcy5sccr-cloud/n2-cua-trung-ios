@@ -213,11 +213,13 @@ extension StudyStore {
     func downloadCourseUpdates() async throws -> Int {
         let allowedPrefixes = [
             "/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/",
-            "/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/"
+            "/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/",
+            "/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-sou-matome-library-2026/content-packs/"
         ]
         let manifests = [
             "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/main/content-packs/manifest.json",
-            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/manifest-series.json"
+            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/manifest-series.json",
+            "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-sou-matome-library-2026/content-packs/manifest-sou-matome.json"
         ]
         var count = 0
         // Duy trì bản cập nhật chung khi nhánh mới đang trong giai đoạn thử nghiệm.
@@ -244,7 +246,7 @@ extension StudyStore {
                     guard pack.id == item.id && pack.version == item.version
                     else { throw CoursePackError.invalidData("Mã hoặc phiên bản gói không trùng manifest.") }
                     // Bảo đảm gói series thực sự thuộc đúng bộ, không lẫn nội dung.
-                    if itemURL.path.hasPrefix(allowedPrefixes[1]) {
+                    if itemURL.path.hasPrefix(allowedPrefixes[1]) || itemURL.path.hasPrefix(allowedPrefixes[2]) {
                         guard pack.seriesId != nil && pack.id == "n2-series-" + pack.seriesId! else {
                             throw CoursePackError.invalidData("Gói học riêng có metadata không nhất quán.")
                         }
@@ -256,7 +258,7 @@ extension StudyStore {
             } catch {
                 // Gói series không khả dụng: giữ nguyên kho đã cài, nhưng vẫn báo lỗi
                 // để người học biết không thể đồng bộ toàn bộ các bộ dữ liệu.
-                if index == 1 { reloadCoursePacks() }
+                if index > 0 { reloadCoursePacks() }
                 throw error
             }
         }

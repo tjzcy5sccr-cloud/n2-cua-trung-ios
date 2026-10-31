@@ -20,7 +20,11 @@ struct SouMatomeDocument: Identifiable {
         case "bunpou": return [14, 30, 46, 62, 78, 94, 110, 126]
         case "dokkai": return [12, 28, 44, 60, 78, 96]
         case "choukai": return [12, 24, 40, 52, 64]
-        default: return [] // Tài liệu Việt được biên tập khác bản tiếng Nhật.
+        // Mốc tuần ở bản Việt được xác minh trực tiếp từ 556 trang có text layer.
+        case "kanji-vi": return [1, 24, 51, 79, 106, 132, 160, 185]
+        case "goi-vi": return [1, 16, 31, 49, 76, 95, 117, 140]
+        case "bunpou-vi": return [1, 27, 53, 77, 100, 121, 144, 165]
+        default: return []
         }
     }
 

@@ -2,7 +2,7 @@
 """Regression test for 100 independently authored Japanese/Vietnamese batch-03 records.
 
 This verifies data presence, stable identities, translations, Japanese sentence
-containment and correct answer indices. It does NOT establish dictionary-level
+containment and correct answer indices and cleaned blank Kun readings. It does NOT establish dictionary-level
 or expert Japanese-language correctness; those audits remain separate.
 """
 import json
@@ -22,7 +22,8 @@ seen_chars=set()
 jp_exam=set()
 for name in series:
     pack=json.loads((ROOT/f"content-packs/n2-series-{name}.json").read_text(encoding="utf-8"))
-    assert pack["seriesId"]==name and pack["version"]>=5
+    assert pack["seriesId"]==name and pack["version"]>=6
+    assert all(k.get("kun") != "—" for k in pack["kanji"]),("Unnormalized empty Kun",name)
     src=source["series"][name]
     assert (len(src["vocab"]),len(src["grammar"]),len(src["kanji"]),len(src["readings"]),len(src["listening"]))==(16,3,4,1,1)
     for kind in kinds:
@@ -77,6 +78,6 @@ for name in series:
 assert dict(count)=={"vocab":64,"grammar":12,"kanji":16,"readings":4,"listening":4},count
 manifest=json.loads((ROOT/"content-packs/manifest-series.json").read_text(encoding="utf-8"))
 assert {x["id"]:x["version"] for x in manifest["packs"]}=={
-    f"n2-series-{name}":5 for name in series}
-print("PASS batch03: 100 original learning items, stable IDs, Japanese/Vietnamese text, compounds, full-passage translations, answers and manifest v5.")
+    f"n2-series-{name}":6 for name in series}
+print("PASS batch03: 100 original learning items, stable IDs, Japanese/Vietnamese text, compounds, full-passage translations, answers and manifest v6.")
 print("NOTE: internal QA does not substitute for human source-level lexicographic verification.")

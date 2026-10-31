@@ -1,0 +1,76 @@
+{
+  "result": "Reviewed items expanded; source-only items staged for manual checking",
+  "sources": [
+    "core",
+    "expansion",
+    "vn26",
+    "reading-listening"
+  ],
+  "newApprovedCounts": {
+    "mimikara": {
+      "vocab": 94,
+      "grammar": 23,
+      "kanji": 23
+    },
+    "shin-kanzen": {
+      "vocab": 95,
+      "grammar": 23,
+      "kanji": 24
+    },
+    "sou-matome": {
+      "vocab": 95,
+      "grammar": 23,
+      "kanji": 22
+    },
+    "speed-master": {
+      "vocab": 94,
+      "grammar": 24,
+      "kanji": 26
+    }
+  },
+  "stillUnreviewedCounts": {
+    "vocab": {
+      "dictionary_matched_unverified": 1378,
+      "missing_review_status": 121
+    },
+    "kanji": {
+      "machine_unreviewed": 281,
+      "missing_review_status": 30
+    },
+    "grammar": {
+      "missing_review_status": 28
+    }
+  },
+  "totalPerSeries": {
+    "mimikara": {
+      "vocab": 126,
+      "grammar": 38,
+      "kanji": 39,
+      "readings": 2,
+      "listening": 2
+    },
+    "shin-kanzen": {
+      "vocab": 126,
+      "grammar": 38,
+      "kanji": 40,
+      "readings": 2,
+      "listening": 2
+    },
+    "sou-matome": {
+      "vocab": 126,
+      "grammar": 38,
+      "kanji": 39,
+      "readings": 2,
+      "listening": 1
+    },
+    "speed-master": {
+      "vocab": 125,
+      "grammar": 38,
+      "kanji": 42,
+      "readings": 2,
+      "listening": 1
+    }
+  },
+  "notComplete100Percent": true,
+  "notCopiesOfNamedTextbooks": true
+}

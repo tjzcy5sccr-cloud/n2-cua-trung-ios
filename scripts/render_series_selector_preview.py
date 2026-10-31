@@ -20,7 +20,7 @@ descs={"all":"Toàn bộ kho học hiện có","mimikara":"Từ vựng và nghe 
 source=json.loads((ROOT/"N2CuaTrung/Resources/content.json").read_text(encoding="utf-8"))
 total={key:sum(len(v[k]) for k in ("vocab","grammar","kanji","readings","listening")) for key,v in packs.items()}
 colors={"bg":"#EDF3FA","blue":"#3458B8","navy":"#192A4F","teal":"#128E80","border":"#D3E1F2","white":"#FFFFFF","grey":"#66748B"}
-W,H=1550,1130
+W,H=1550,1230
 im=Image.new("RGB",(W,H),colors["bg"]);d=ImageDraw.Draw(im)
 def font(n,bold=False):
     dirs=["/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc" if bold else "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc","/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]
@@ -82,7 +82,7 @@ t("ẢNH MINH HỌA TỪ MÃ NGUỒN • KHÔNG PHẢI ẢNH CHỤP ỨNG DỤNG
 t("Commit: "+os.environ.get("GITHUB_SHA","mã nguồn hiện tại")[:16]+" • Chưa build IPA",87,139,f16,"blue")
 phone(158,"all")
 phone(853,"shin-kanzen")
-box(93,1102,1460,1129,"white",11)
-t("Các tên sách chỉ mô tả hướng học. Mỗi gói là nội dung riêng do N2 của Trung tuyển chọn; không phải dữ liệu chính thức của nhà xuất bản.",102,1107,f14)
+box(93,1173,1460,1210,"white",11)
+t("Tên sách chỉ mô tả hướng học. Mỗi gói là nội dung riêng do N2 của Trung tuyển chọn; không phải dữ liệu chính thức của nhà xuất bản.",102,1180,f14)
 im.save(OUT,optimize=True)
 print("PREVIEW:",OUT)

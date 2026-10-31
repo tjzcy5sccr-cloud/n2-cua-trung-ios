@@ -1,0 +1,55 @@
+name: Compile Sou Matome source on iOS Simulator (no IPA)
+"on":
+  push:
+    branches:
+      - feature/n2-sou-matome-library-2026
+    paths:
+      - 'N2CuaTrung/**'
+      - 'N2Widget/**'
+      - 'project.yml'
+      - '.github/workflows/check-sou-matome-ios-compile.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sou-matome-source-only-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compile:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare approved existing materials (no textbooks published)
+        run: python3 scripts/prepare_approved_app_resources.py
+      - name: Generate local Japanese furigana resources
+        run: |
+          python3 -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python3 scripts/generate_furigana_atlas.py --strict
+      - name: Ensure XcodeGen available
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+      - name: Generate icon and Xcode project
+        run: |
+          swift scripts/generate_clover_icon.swift
+          xcodegen generate --spec project.yml
+      - name: Compile iOS Simulator only, no IPA
+        shell: bash
+        run: |
+          set -o pipefail
+          xcodebuild -project N2CuaTrung.xcodeproj -scheme N2CuaTrung \
+            -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath /tmp/sou-matome-compile \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY='' build 2>&1 | tee simulator-compile.log
+      - name: Upload compile errors for review
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sou-Matome-compile-diagnostics-${{ github.sha }}
+          path: simulator-compile.log
+          if-no-files-found: ignore

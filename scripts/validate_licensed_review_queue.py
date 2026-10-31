@@ -18,7 +18,7 @@ for cat in ("vocab","kanji","grammar"):
     rows=[json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
     expected=summary["selectedCandidateCounts"][cat]
     assert len(rows)==expected and len(rows)>0,(cat,len(rows),expected)
-    assert len(rows)<=summary["target"][{"vocab":"vocabulary","kanji":"kanji","grammar":"grammar"}]
+    assert len(rows)<=summary["target"][{"vocab":"vocabulary","kanji":"kanji","grammar":"grammar"}[cat]]
     ids=[x["id"] for x in rows]
     assert len(ids)==len(set(ids)) and not any(x in used for x in ids),cat
     used.update(ids)

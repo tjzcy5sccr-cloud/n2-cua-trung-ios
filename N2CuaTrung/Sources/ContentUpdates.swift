@@ -199,6 +199,7 @@ extension StudyStore {
         let packs = CoursePackManager.allAvailablePacks()
         installedPacks = packs
         course = CoursePackManager.course(for: selectedSeries, packs: packs)
+        contentRevision = UUID()
     }
 
     /// Tải cả gói truyền thống trên main và các gói học riêng của nhánh mới.

@@ -1,15 +1,5 @@
 name: Build Sou Matome N2 iOS test IPA
 "on":
-  push:
-    branches:
-      - feature/n2-sou-matome-library-2026
-    paths:
-      - 'N2CuaTrung/**'
-      - 'N2Widget/**'
-      - 'content-packs/**'
-      - 'project.yml'
-      - 'scripts/**'
-      - '.github/workflows/build-sou-matome-test.yml'
   workflow_dispatch:
 permissions:
   contents: read

@@ -68,14 +68,14 @@ struct PracticeHubView: View {
                                title: "214 bộ thủ", detail: "Âm Hán–Việt, nghĩa và số thứ tự bộ thủ")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.vocabulary(store.course, week: store.week).shuffled(),
+                    QuestionSessionView(questions: QuestionBank.vocabulary(store.course, week: store.studyWeekLimit).shuffled(),
                                         type: "Từ vựng")
                 } label: {
                     ActionTile(icon: "character.book.closed", color: Palette.blue,
-                               title: "Trắc nghiệm từ vựng", detail: "Từ N3 lên N2 theo tuần")
+                               title: "Trắc nghiệm từ vựng", detail: store.selectedSeries == .souMatome ? "Luyện toàn bộ từ vựng Sou Matome" : "Từ N3 lên N2 theo tuần")
                 }
                 NavigationLink {
-                    QuestionSessionView(questions: QuestionBank.grammar(store.course, week: store.week).shuffled(),
+                    QuestionSessionView(questions: QuestionBank.grammar(store.course, week: store.studyWeekLimit).shuffled(),
                                         type: "Ngữ pháp")
                 } label: {
                     ActionTile(icon: "list.bullet.rectangle", color: Palette.teal,
@@ -135,7 +135,9 @@ struct GrammarListView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(item.pattern).font(.headline).foregroundColor(Palette.navy)
                     Text(item.displayMeaning).font(.subheadline).foregroundColor(.secondary)
-                    Text("Tuần \(item.week)").font(.caption).foregroundColor(Palette.blue)
+                    if store.selectedSeries != .souMatome {
+                        Text("Tuần \(item.week)").font(.caption).foregroundColor(Palette.blue)
+                    }
                 }.padding(.vertical, 5)
             }
         }

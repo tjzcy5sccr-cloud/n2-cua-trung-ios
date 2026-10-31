@@ -45,6 +45,14 @@ targets:
         buildPhase: resources
       - path: content-packs/n2-reading-listening-02.json
         buildPhase: resources
+      - path: content-packs/n2-series-mimikara.json
+        buildPhase: resources
+      - path: content-packs/n2-series-shin-kanzen.json
+        buildPhase: resources
+      - path: content-packs/n2-series-sou-matome.json
+        buildPhase: resources
+      - path: content-packs/n2-series-speed-master.json
+        buildPhase: resources
       - path: N2CuaTrung/Assets.xcassets
     dependencies:
       - target: N2WidgetExtension

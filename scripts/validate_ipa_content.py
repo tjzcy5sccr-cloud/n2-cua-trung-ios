@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Verify that the actual IPA contains all five full source-pack datasets.
+"""Verify the signed-off IPA contains the complete APPROVED bundle, no pending entries.
 
-Counting GitHub source is insufficient; previous IPA lost 75–80% of study data.
-Run this on the newly packaged .ipa and fail release on any missing fields.
+Source-only research content is intentionally NOT shipped. Cross-check all nine
+JSON datasets after the build-time pruning and every new batch-01 item.
 """
 import json
 from pathlib import Path
@@ -11,41 +11,53 @@ from zipfile import ZipFile
 
 ROOT=Path(__file__).resolve().parents[1]
 IPA=ROOT/"N2_cua_Trung_unsigned.ipa"
+BASE=ROOT/"content-packs"
 FILES={
-    "content.json": ROOT/"N2CuaTrung/Resources/content.json",
-    "n2-expansion-01.json": ROOT/"content-packs/n2-expansion-01.json",
-    "openjlpt-n2-core.json": ROOT/"content-packs/openjlpt-n2-core.json",
-    "vn26-original-practice-01.json": ROOT/"content-packs/vn26-original-practice-01.json",
-    "n2-reading-listening-02.json": ROOT/"content-packs/n2-reading-listening-02.json",
-    "grammar-details.json": ROOT/"N2CuaTrung/Resources/grammar-details.json",
+ "content.json":ROOT/"N2CuaTrung/Resources/content.json",
+ **{f"{name}.json":BASE/f"{name}.json" for name in (
+  "n2-expansion-01","openjlpt-n2-core","vn26-original-practice-01",
+  "n2-reading-listening-02","n2-series-mimikara","n2-series-shin-kanzen",
+  "n2-series-sou-matome","n2-series-speed-master")},
+ "grammar-details.json":ROOT/"N2CuaTrung/Resources/grammar-details.json",
 }
-EXPECTED={"vocab":2002,"grammar":180,"kanji":471,"readings":74,"listening":70}
+APPROVED={"editorial_reviewed","source_verified","independently_verified"}
+CATS=("vocab","grammar","kanji","readings","listening")
+
 def main():
-    if not IPA.is_file():raise SystemExit("IPA not found")
-    sums=Counter()
+    assert IPA.is_file(), "unsigned IPA not found"
+    totals=Counter()
+    original_approved=set()
     with ZipFile(IPA) as archive:
-        for filename,source in FILES.items():
-            matches=[n for n in archive.namelist()
-                if n.startswith("Payload/N2CuaTrung.app/")
-                and n.split("/")[-1]==filename
-                and n.count("/")==2]
+        names=archive.namelist()
+        for filename,path in FILES.items():
+            matches=[n for n in names if n.startswith("Payload/N2CuaTrung.app/")
+                     and n.split("/")[-1]==filename and n.count("/")==2]
             assert len(matches)==1,(filename,matches)
-            actual=archive.read(matches[0])
-            raw=source.read_bytes()
-            actual_json=json.loads(actual)
-            source_json=json.loads(raw)
-            # JSON normalization ensures full per-entry data and review metadata retained.
-            assert actual_json==source_json, f"IPA file differs from source: {filename}"
+            ipa_obj=json.loads(archive.read(matches[0]))
+            local_obj=json.loads(path.read_text(encoding="utf-8"))
+            assert ipa_obj==local_obj,(filename,"IPA not equal to approved build resource")
             if filename=="grammar-details.json":
-                assert len(actual_json)>=50
+                assert ipa_obj=={}, "Unreviewed grammar extras leaked into IPA"
                 continue
-            for key in EXPECTED:
-                sums[key]+=len(actual_json.get(key,[]))
-            for key in ("vocab","grammar","kanji"):
-                assert all("id" in x for x in actual_json.get(key,[]))
-            print("Verified IPA:",filename,{k:len(actual_json.get(k,[])) for k in EXPECTED},flush=True)
-    assert dict(sums)==EXPECTED,f"IPA lost learning content: {dict(sums)} expected {EXPECTED}"
-    print("PASS: IPA FULL N2 DATASET",dict(sums),flush=True)
+            for cat in CATS:
+                entries=ipa_obj.get(cat,[])
+                totals[cat]+=len(entries)
+                if cat in ("vocab","grammar","kanji"):
+                    status="grammarStatus" if cat=="grammar" else "meaningStatus"
+                    assert all(x.get(status) in APPROVED for x in entries),(filename,cat)
+                    if cat=="vocab":
+                        assert all(x.get("exampleStatus") in APPROVED or
+                                   (not x.get("example") and not x.get("exampleVi")) for x in entries)
+                    if cat=="grammar":
+                        assert all(x.get("translationStatus") in APPROVED or
+                                   (not x.get("example") and not x.get("translation")) for x in entries)
+                for item in entries:
+                    if item["id"].startswith("trung-original-"):
+                        original_approved.add(item["id"])
+            print("Verified bundle:",filename,{k:len(ipa_obj.get(k,[])) for k in CATS})
+    assert len(original_approved)==74,("new original entries missing",len(original_approved))
+    assert totals["vocab"]>=100 and totals["kanji"]>=30 and totals["grammar"]>=40,totals
+    print("PASS: IPA approved-only data verified, with 74 unique original new lesson items.",dict(totals))
 
 if __name__=="__main__":
     main()

@@ -1,0 +1,36 @@
+name: Preview original N2 four-series curriculum
+"on":
+  push:
+    branches:
+      - feature/n2-four-series-roadmap-2027
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: n2-four-series-preview-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  content-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+      - name: Validate 35-week N2 syllabus and SwiftUI integration
+        run: python3 scripts/validate_four_series_curriculum.py
+      - name: Install Japanese Unicode font and preview renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          python3 -m pip install --disable-pip-version-check 'Pillow>=10,<12'
+      - name: Render the curriculum mockup BEFORE any IPA build
+        run: python3 scripts/render_four_series_preview.py
+      - name: Upload preview and syllabus for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-four-series-35-week-preview-${{ github.sha }}
+          path: |
+            qa-reports/four-series-prebuild-preview.png
+            N2CuaTrung/Resources/n2-four-series-curriculum.json
+          if-no-files-found: error
+          retention-days: 30

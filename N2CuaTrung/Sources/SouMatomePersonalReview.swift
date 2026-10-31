@@ -21,13 +21,26 @@ struct SouMatomePersonalCard: Codable, Identifiable {
     var translationChecked: Bool
     var lastApproved: Date?
 
+    private var hasJapaneseText: Bool {
+        japanese.unicodeScalars.contains {
+            (0x3040...0x30FF).contains(Int($0.value)) ||
+            (0x3400...0x9FFF).contains(Int($0.value))
+        }
+    }
+
+    private var readingHasKana: Bool {
+        reading.unicodeScalars.contains {
+            (0x3040...0x30FF).contains(Int($0.value))
+        }
+    }
+
     var isApproved: Bool {
         sourceChecked && translationChecked && lastApproved != nil &&
-        !japanese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        hasJapaneseText &&
         !vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !vietnamese.hasPrefix("EN ·") &&
-        (kind != "Từ vựng" ||
-          !reading.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        (kind != "Từ vựng" || readingHasKana) &&
+        (kind != "Kanji" || japanese.count == 1)
     }
 
     static func draft(_ entry: SouMatomeSourceEntry) -> SouMatomePersonalCard {
@@ -57,6 +70,27 @@ final class SouMatomePersonalReviewStore: ObservableObject {
            let decoded = try? JSONDecoder().decode(
                 [String: SouMatomePersonalCard].self, from: data) {
             cards = decoded
+        }
+    }
+
+    /// A replacement PDF invalidates the human review tied to its old pages.
+    /// Preserve the draft text, but never silently keep its approved status.
+    func invalidateBook(_ bookID: String) {
+        var revised = cards
+        for (id, var card) in cards where card.bookID == bookID {
+            card.sourceChecked = false
+            card.translationChecked = false
+            card.lastApproved = nil
+            revised[id] = card
+        }
+        do {
+            try FileManager.default.createDirectory(at: folder,
+                                                    withIntermediateDirectories: true)
+            let data = try JSONEncoder().encode(revised)
+            try data.write(to: file, options: .atomic)
+            cards = revised
+        } catch {
+            lastError = error.localizedDescription
         }
     }
 

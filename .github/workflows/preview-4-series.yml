@@ -18,6 +18,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate 35-week N2 syllabus and SwiftUI integration
         run: python3 scripts/validate_four_series_curriculum.py
+      - name: Parse curriculum Swift code without compiling iOS
+        run: |
+          if command -v swiftc >/dev/null 2>&1; then
+            swiftc -frontend -parse N2CuaTrung/Sources/FourSeriesCurriculumView.swift
+          else
+            echo "Swift compiler unavailable on this Linux runner; data validation still applies."
+          fi
       - name: Install Japanese Unicode font and preview renderer
         run: |
           sudo apt-get update -qq

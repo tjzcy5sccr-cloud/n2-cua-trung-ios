@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "scope": "private user-provided Vietnamese supplements only",
+  "method": "local text-layer heuristic audit; not authoritative lesson transcription",
+  "bookCounts": {
+    "vocabulary": {
+      "filePages": 163,
+      "heuristicCandidates": 1602,
+      "notYetVerified": true
+    },
+    "kanji": {
+      "filePages": 208,
+      "heuristicCandidates": 654,
+      "notYetVerified": true
+    },
+    "grammar": {
+      "filePages": 185,
+      "heuristicCandidates": 128,
+      "notYetVerified": true
+    }
+  },
+  "sourcePages": {
+    "total": 1239,
+    "withTextLayer": 556,
+    "scannedForOCR": 683
+  },
+  "notes": [
+    "Counts are detection estimates from the attached PDFs, not validated learning entries.",
+    "Reading/listening scans require OCR and checking individual questions/audio.",
+    "The iPhone parser may yield different counts than this PyMuPDF prototype because PDF text extraction order varies.",
+    "Do not promote heuristic candidates into the reviewed JSON course pack without manual Japanese/Vietnamese source verification.",
+    "The source PDFs and all copyrighted text/audio remain in the user-controlled private library; this public report contains no book passages."
+  ]
+}

@@ -186,11 +186,19 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         entries = []
         loadedBooks = 0
         let candidates = ["goi-vi", "kanji-vi", "bunpou-vi"]
+        let imported = loadImportedCandidates()
+        let importedBooks = Set(imported.map(\.bookId))
         let available: [(String, URL)] = candidates.compactMap { name in
             let pdf = root.appendingPathComponent(name + ".pdf")
             return FileManager.default.fileExists(atPath: pdf.path) ? (name, pdf) : nil
         }
         for (book, pdf) in available {
+            if importedBooks.contains(book) {
+                // Never mix imprecise PDFKit line parsing with the verified-
+                // provenance geometry-extracted candidate IDs for this book.
+                loadedBooks += 1
+                continue
+            }
             let folder = root.appendingPathComponent("PageText", isDirectory: true)
                 .appendingPathComponent(book, isDirectory: true)
             let parsed = await Task.detached(priority: .userInitiated) {
@@ -199,7 +207,6 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             entries.append(contentsOf: parsed)
             loadedBooks += 1
         }
-        let imported = loadImportedCandidates()
         var keyed: [String: SouMatomeSourceEntry] = [:]
         for item in entries { keyed[item.id] = item }
         // Locally extracted geometry-based entries supersede imprecise PDFKit

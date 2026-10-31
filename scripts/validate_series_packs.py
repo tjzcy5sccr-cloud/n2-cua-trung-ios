@@ -58,5 +58,29 @@ assert 'ForEach(LearningSeries.allCases)' in ui
 assert 'Picker("Chọn bộ"' in updates
 assert 'manifest-series.json' in source_code
 assert all(f"content-packs/n2-series-{key}.json" in project for key in names)
+# Verify this branch's reviewed-content gate and new independently authored batch.
+models=(ROOT/"N2CuaTrung/Sources/Models.swift").read_text(encoding="utf-8")
+assert "approvedStatuses.contains(meaningStatus" in models
+assert "approvedStatuses.contains(exampleStatus" in models
+assert 'contains(grammarStatus ?? "")' in models
+assert 'contains(translationStatus ?? "")' in models
+assert "contains(meaningStatus ?? \"\")" in models
+assert source_code.count(".filter { $0.isApprovedForStudy }") >= 6
+batch_ids=set()
+for pack in allpacks:
+    for section in ("vocab","grammar","kanji"):
+        for entry in pack[section]:
+            if entry["id"].startswith("trung-original-"):
+                batch_ids.add(entry["id"])
+                flag="grammarStatus" if section=="grammar" else "meaningStatus"
+                assert entry[flag] == "editorial_reviewed"
+                if section=="vocab":
+                    assert entry["exampleStatus"] == "editorial_reviewed"
+                    assert entry["example"] and entry["exampleVi"] and entry["reading"]
+                if section=="grammar":
+                    assert entry["translationStatus"] == "editorial_reviewed"
+                    assert entry["example"] and entry["translation"] and entry["rule"]
+assert len(batch_ids)==74,("Original batch items missing or duplicated",len(batch_ids))
+print("PASS: 74 newly authored review-tagged examples and strict approved-only app filters.")
 print("PASS: 4 separate packs, original content intact, isolated selection and auto-reload.")
 print("NOTE: study series labels are learning approaches, NOT official book content.")

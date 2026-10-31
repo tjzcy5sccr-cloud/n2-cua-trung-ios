@@ -40,8 +40,14 @@ struct RootView: View {
                 .tabItem { Label("Flashcard", systemImage: "rectangle.on.rectangle.angled") }
             NavigationStack { PracticeHubView() }
                 .tabItem { Label("Luyện tập", systemImage: "book.closed.fill") }
-            NavigationStack { PlanView() }
-                .tabItem { Label("Lộ trình", systemImage: "calendar") }
+            NavigationStack {
+                if store.selectedSeries == .souMatome {
+                    SouMatomeWholeBooksView()
+                } else {
+                    PlanView()
+                }
+            }
+                .tabItem { Label(store.selectedSeries == .souMatome ? "Toàn bộ sách" : "Lộ trình", systemImage: store.selectedSeries == .souMatome ? "books.vertical" : "calendar") }
             NavigationStack { ProgressDashboardView() }
                 .tabItem { Label("Tiến độ", systemImage: "chart.bar.fill") }
         }

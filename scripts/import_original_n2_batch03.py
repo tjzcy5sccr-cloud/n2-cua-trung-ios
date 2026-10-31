@@ -79,7 +79,7 @@ def main():
                     char,on,kun,meaning,related=values
                     assert len(char)==1 and related in seen_words and char in related,(char,related)
                     assert char not in seen_kanji,("Duplicated Kanji",char)
-                    value=dict(id=ident,char=char,on=on,kun=kun,meaning=meaning,
+                    value=dict(id=ident,char=char,on=on,kun="" if kun=="—" else kun,meaning=meaning,
                                word=related,meaningStatus=APPROVED)
                     seen_kanji.add(char)
                 else:

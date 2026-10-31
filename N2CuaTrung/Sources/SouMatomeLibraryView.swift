@@ -12,6 +12,20 @@ struct SouMatomeDocument: Identifiable {
     let pages: Int
     let supplementary: Bool
 
+    // Vị trí đầu mỗi tuần/chương theo mục lục in trong chính các PDF đã kiểm tra.
+    // Trang của tệp PDF lệch +1 so với số trang sách in (tệp có bìa riêng).
+    var sectionPages: [Int] {
+        switch id {
+        case "kanji", "goi": return [12, 28, 44, 60, 76, 92, 108, 124]
+        case "bunpou": return [14, 30, 46, 62, 78, 94, 110, 126]
+        case "dokkai": return [12, 28, 44, 60, 78, 96]
+        case "choukai": return [12, 24, 40, 52, 64]
+        default: return [] // Tài liệu Việt được biên tập khác bản tiếng Nhật.
+        }
+    }
+
+    var sectionLabel: String { id == "choukai" ? "Chương" : "Tuần" }
+
     static let all: [SouMatomeDocument] = [
         .init(id: "kanji", title: "Kanji – 漢字", skill: "Kanji", pages: 177, supplementary: false),
         .init(id: "goi", title: "Từ vựng – 語彙", skill: "Từ vựng", pages: 156, supplementary: false),
@@ -389,6 +403,25 @@ struct SouMatomePDFReader: View {
     var body: some View {
         VStack(spacing: 0) {
             SouMatomePDFKitView(url: url, page: $page)
+            if !book.sectionPages.isEmpty {
+                HStack {
+                    Text("Đi đến bài học")
+                        .font(.caption.weight(.semibold)).foregroundColor(Palette.navy)
+                    Spacer()
+                    Menu {
+                        ForEach(Array(book.sectionPages.enumerated()), id: \.offset) { index, firstPage in
+                            Button("\(book.sectionLabel) \(index + 1) · Trang \(firstPage)") {
+                                page = firstPage
+                            }
+                        }
+                    } label: {
+                        Label("Chọn \(book.sectionLabel.lowercased())", systemImage: "list.bullet")
+                    }
+                }
+                .padding(.horizontal, 13)
+                .padding(.top, 8)
+                .background(Palette.pale)
+            }
             HStack(spacing: 15) {
                 Button { page = max(1, page - 1) } label: {
                     Image(systemName: "chevron.left.circle.fill").font(.title2)

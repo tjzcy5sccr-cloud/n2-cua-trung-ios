@@ -20,14 +20,18 @@ jobs:
         run: |
           python3 scripts/validate_four_series_curriculum.py
           python3 scripts/validate_series_packs.py
-          python3 -m py_compile scripts/import_original_n2_batch02.py scripts/prepare_approved_app_resources.py scripts/validate_ipa_content.py
+          python3 scripts/validate_original_batch03.py
+          python3 -m py_compile scripts/import_original_n2_batch02.py scripts/import_original_n2_batch03.py scripts/prepare_approved_app_resources.py scripts/validate_ipa_content.py
           python3 - <<'PY'
           import json
           from pathlib import Path
           audit=json.loads(Path("qa-reports/n2-original-batch-02.json").read_text(encoding="utf-8"))
           assert audit["added"]=={"vocab":64,"grammar":12,"kanji":16,"readings":4,"listening":4}
           assert all(x["version"]>=4 for x in audit["series"].values())
-          print("PASS: second original batch imported and reviewed-only checks passed")
+          third=json.loads(Path("qa-reports/n2-original-batch-03.json").read_text(encoding="utf-8"))
+          assert third["added"]=={"vocab":64,"grammar":12,"kanji":16,"readings":4,"listening":4}
+          assert all(x["version"]>=5 for x in third["series"].values())
+          print("PASS: original batches 01–03 and 4 version-5 isolated study packs; preview without IPA build")
           PY
       - name: Parse curriculum Swift code without compiling iOS
         run: |

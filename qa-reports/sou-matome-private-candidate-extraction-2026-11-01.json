@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "extractionDate": "2026-11-01",
+  "source": "User-provided personal PDFs; no copyrighted passages stored in repository",
+  "method": "PyMuPDF geometry-aware columns and row grouping for 163 page vocabulary PDF, numbered glyph for Kanji, section heading detection for grammar",
+  "detectedUnverifiedCandidates": {
+    "vocabulary": 2188,
+    "kanji": 654,
+    "grammarLessonHeadings": 56,
+    "total": 2898
+  },
+  "inputPages": {
+    "vocabulary": 163,
+    "kanji": 208,
+    "grammar": 185,
+    "scannedPrimaryPDFsRemaining": 683
+  },
+  "findings": {
+    "vocabulary": {
+      "candidatePages": 163,
+      "missingGlosss": 72,
+      "flags": [
+        "Column wraps can merge words or split one line",
+        "Some short headwords have no written reading",
+        "The original Vietnamese notes contain meanings needing independent checks"
+      ]
+    },
+    "kanji": {
+      "candidatePages": 207,
+      "pagesWithoutNumberedHeading": [
+        208
+      ],
+      "flags": [
+        "Numbered headings are not complete senses",
+        "Related compounds and on/kun readings need separate verification"
+      ]
+    },
+    "grammar": {
+      "pagesWithDetectedLessonHeadings": 56,
+      "flags": [
+        "A lesson heading is not the grammar rule",
+        "Meaning and example pairs remain unreviewed",
+        "Text may have multiple grammar patterns in each lesson"
+      ]
+    }
+  },
+  "gateStatus": "NOT_ELIGIBLE_FOR_100_PERCENT_ACCURACY_CLAIM",
+  "nextValidation": "Review source page, kana, Vietnamese meaning, examples, and question answer choices before export to the verified-only app pack.",
+  "note": "Numbers count machine-generated candidate records, not approved flashcards, unique dictionary entries, or the number of exercises in the entire series."
+}

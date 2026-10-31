@@ -1,0 +1,25 @@
+name: Inspect licensed Japanese-Vietnamese vocabulary source
+"on":
+  push:
+    branches:
+      - feature/n2-four-series-roadmap-2027
+    paths:
+      - 'scripts/probe_vietnamese_lexicon.py'
+      - '.github/workflows/inspect-javi-lexicon.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-javi-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect Japanese Vietnamese CC BY-SA CSV
+        run: python3 scripts/probe_vietnamese_lexicon.py
+      - name: Upload source schema for safe import
+        uses: actions/upload-artifact@v4
+        with:
+          name: javi-licensed-data-schema
+          path: qa-reports/vietnamese-lexicon-source-format.json
+          if-no-files-found: error

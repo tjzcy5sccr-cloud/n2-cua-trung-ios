@@ -65,7 +65,9 @@ final class StudyStore: ObservableObject {
         return saved.reviews.filter { $0.key.hasPrefix(prefix) }.map(\.value)
     }
 
-    var dueCount: Int { course.vocab.filter { isDue("v:\($0.id)") && $0.week <= week }.count }
+    /// Sou Matome uses the complete selected book, independent of weekly pacing.
+    var studyWeekLimit: Int { selectedSeries == .souMatome ? 35 : week }
+    var dueCount: Int { course.vocab.filter { isDue("v:\($0.id)") && $0.week <= studyWeekLimit }.count }
     var mastered: Int { activeReviews.filter { $0.streak >= 3 }.count }
     var reviewedCount: Int { activeReviews.count }
     var averageScore: Int {

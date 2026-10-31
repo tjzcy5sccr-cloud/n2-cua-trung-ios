@@ -73,6 +73,11 @@ struct DashboardView: View {
                                detail: "Mimikara • Shin Kanzen • Sou Matome • Speed Master • 35 tuần")
                 }
                 .buttonStyle(.plain)
+                NavigationLink { LearningSeriesPickerView() } label: {
+                    ActionTile(icon: "square.stack.3d.up.fill", color: Palette.teal,
+                               title: "Chọn bộ dữ liệu: \(store.selectedSeries.name)",
+                               detail: "Tổng hợp • Shin Kanzen • Sou Matome • Mimikara • Speed")
+                }.buttonStyle(.plain)
                 SectionTitle("Bắt đầu học", subtitle: "90 phút/ngày • 6 ngày/tuần")
                 NavigationLink {
                     FlashcardDeckView()

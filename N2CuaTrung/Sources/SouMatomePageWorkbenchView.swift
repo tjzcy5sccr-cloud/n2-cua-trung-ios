@@ -24,14 +24,14 @@ final class SouMatomePageEditor: ObservableObject {
 
     private let root: URL
 
-    init(book: SouMatomeDocument, source: URL) {
+    init(book: SouMatomeDocument, source: URL, initialPage: Int? = nil) {
         self.book = book
         self.source = source
         self.root = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("SouMatomePersonalLibrary/PageText", isDirectory: true)
             .appendingPathComponent(book.id, isDirectory: true)
-        self.page = min(book.pages, max(1,
-            UserDefaults.standard.integer(forKey: "SouMatome.editorPage." + book.id)))
+        let last = UserDefaults.standard.integer(forKey: "SouMatome.editorPage." + book.id)
+        self.page = min(book.pages, max(1, initialPage ?? last))
         load()
     }
 
@@ -231,8 +231,9 @@ final class SouMatomePageEditor: ObservableObject {
 struct SouMatomePageWorkbenchView: View {
     @StateObject private var editor: SouMatomePageEditor
 
-    init(book: SouMatomeDocument, url: URL) {
-        _editor = StateObject(wrappedValue: SouMatomePageEditor(book: book, source: url))
+    init(book: SouMatomeDocument, url: URL, initialPage: Int? = nil) {
+        _editor = StateObject(wrappedValue: SouMatomePageEditor(
+            book: book, source: url, initialPage: initialPage))
     }
 
     var body: some View {

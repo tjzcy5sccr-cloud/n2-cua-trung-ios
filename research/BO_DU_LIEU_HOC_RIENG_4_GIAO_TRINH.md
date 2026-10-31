@@ -8,12 +8,12 @@ Người dùng chọn trong **Trang chủ → Chọn bộ dữ liệu**, **Luy�
 
 | Bộ học | Từ vựng | Ngữ pháp | Kanji | Đọc | Nghe | Tổng |
 |---|---:|---:|---:|---:|---:|---:|
-| Mimikara Oboeru – hướng học nghe/ngữ cảnh | 32 | 15 | 16 | 2 | 2 | 67 |
-| Shin Kanzen Master – hướng phân tích kỹ năng | 31 | 15 | 16 | 2 | 2 | 66 |
-| Nihongo Sou Matome – chia theo ngày/tuần | 31 | 15 | 17 | 2 | 1 | 66 |
-| Speed / Kanji Master – hướng luyện phản xạ | 31 | 14 | 16 | 2 | 1 | 64 |
+| Mimikara Oboeru – hướng học nghe/ngữ cảnh | 126 | 38 | 39 | 2 | 2 | 207 |
+| Shin Kanzen Master – hướng phân tích kỹ năng | 126 | 38 | 40 | 2 | 2 | 208 |
+| Nihongo Sou Matome – chia theo ngày/tuần | 126 | 38 | 39 | 2 | 1 | 206 |
+| Speed / Kanji Master – hướng luyện phản xạ | 125 | 38 | 42 | 2 | 1 | 208 |
 
-**Đây là số mục khởi tạo từ bộ dữ liệu gốc tự biên soạn của app**, không phải kho nội dung đầy đủ hoặc bản số hóa chính thức của các bộ sách. Các bộ học có JSON riêng, không trùng ID; tổng bộ chia lại đúng **125 từ vựng, 59 ngữ pháp, 65 Kanji, 8 bài đọc, 6 bài nghe gốc**, không thêm bớt dữ liệu ở bước phân loại ban đầu. Nội dung khác trong các gói N2 mở rộng vẫn còn khi chọn **Tổng hợp N2**.
+**Đây là số mục đã tăng sau khi nhập thêm các bản ghi có trạng thái duyệt trong kho hiện có của app**, không phải kho nội dung đầy đủ hoặc bản số hóa chính thức của các bộ sách. Các bộ học có JSON riêng, không trùng ID; tổng bộ chia lại đúng **125 từ vựng, 59 ngữ pháp, 65 Kanji, 8 bài đọc, 6 bài nghe gốc**, không thêm bớt dữ liệu ở bước phân loại ban đầu. Nội dung khác trong các gói N2 mở rộng vẫn còn khi chọn **Tổng hợp N2**.
 
 ## Cơ chế hoạt động
 
@@ -73,3 +73,17 @@ Bất kỳ nội dung mới nào cần được kiểm tra chính xác nghĩa Nh
 - `scripts/render_series_selector_preview.py`: xem trước trước khi duyệt build.
 
 © 2026 Trần Phước Trung. Bảo lưu mọi quyền với mã và nội dung tự biên soạn của dự án.
+
+
+## Đối chiếu các trang học tiếng Nhật của Việt Nam (31/10/2026)
+
+- [JLPT180](https://jlpt180.com/jlpt-n2/): công khai danh sách N2 và nhãn nguồn, gồm 1.160 mục Mimikara, 2.279 mục từ Shinkanzen, 204 mẫu ngữ pháp Sou Matome, 173 mẫu Mimikara, 141 mẫu Shinkanzen. Chỉ dùng các trang này làm **mốc so sánh mức độ phủ**, **không** chép nội dung/câu ví dụ vì chưa xác nhận quyền tái phân phối.
+- [VNJP.org](https://vnjp.org/): dùng tra cứu Japanese–Vietnamese và Kanji, không mặc định rằng dữ liệu trên website có quyền được nhập hàng loạt.
+- [Nguphaptiengnhat.net](https://www.nguphaptiengnhat.net/tu-vung-tieng-nhat-n2.html): trang tham khảo 23 phần từ vựng theo hướng Sou Matome/Mimikara; dùng để kiểm tra khái quát, không sao chép sưu tập sách.
+- [Bunchaway](https://github.com/bunchaway/tu-dien-nhat-viet): dữ liệu từ điển Nhật–Việt **CC BY-SA 4.0**, được phép tái sử dụng khi tuân thủ ghi công và chia sẻ tương tự.
+- [OpenJLPT](https://github.com/evanclan/OpenJLPT): danh mục cộng đồng N2–N3 và metadata từ vựng/Kanji/ngữ pháp **CC BY-SA 4.0**; cần ghi công JMdict/KANJIDIC2, Tatoeba và nguồn phân cấp.
+
+**Kết quả xử lý nguồn mở thực tế:** quét 360.083 dòng từ điển Bunchaway; đối chiếu 1.659 từ N3 và 1.778 từ N2 OpenJLPT, có **3.232 mục khớp chữ Nhật với nghĩa Việt**, **205 mục chưa khớp**. Đồng thời tạo hồ sơ 398 chữ Kanji N2, 123 ngữ pháp N2. TẤT CẢ ứng viên này có trạng thái **chưa duyệt**, nằm **chỉ** trong `qa-reports/licensed-n2-vietnamese-candidates.json` và `qa-reports/licensed-n2-missing-vietnamese.json`. Không tự động xuất ứng viên vào IPA.
+
+Kết quả được công bố kèm ghi công theo CC BY-SA 4.0, riêng mã ứng dụng và nội dung nguyên gốc của N2 của Trung giữ bản quyền riêng. Không gắn nhãn "đã duyệt" khi mới chỉ so khớp từ điển.
+

@@ -226,6 +226,8 @@ struct SouMatomeSourceEntriesView: View {
     @StateObject private var reviews = SouMatomePersonalReviewStore()
     @EnvironmentObject private var studyStore: StudyStore
     @State private var installMessage: String?
+    @State private var pickCandidateJSON = false
+    @State private var importMessage: String?
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
 
     private var matching: [SouMatomeSourceEntry] {
@@ -250,6 +252,17 @@ struct SouMatomeSourceEntriesView: View {
                     }.disabled(source.processing)
                     Text("Danh sách này chỉ là ứng viên cần kiểm tra. Các mục OCR sai hoặc nội dung bị xuống dòng sẽ cần hiệu đính trước khi xuất sang flashcard.")
                         .font(.caption).foregroundColor(.secondary)
+                    MainButton(title: "Nhập tệp ứng viên từ PDF cá nhân",
+                               symbol: "doc.badge.plus") {
+                        pickCandidateJSON = true
+                    }
+                    if source.importedCandidateCount > 0 {
+                        Text("Đã nhận \(source.importedCandidateCount) ứng viên từ tệp JSON cá nhân.")
+                            .font(.caption).foregroundColor(Palette.teal)
+                    }
+                    if let importMessage {
+                        Text(importMessage).font(.caption).foregroundColor(Palette.navy)
+                    }
                 }
                 LessonPanel {
                     SectionTitle("Kho flashcard đã kiểm chứng")
@@ -358,5 +371,21 @@ struct SouMatomeSourceEntriesView: View {
         .navigationTitle("Mục học trong sách")
         .navigationBarTitleDisplayMode(.inline)
         .task { await source.indexBooks() }
+        .fileImporter(isPresented: $pickCandidateJSON,
+                      allowedContentTypes: [.json]) { result in
+            switch result {
+            case .success(let url):
+                Task {
+                    do {
+                        let count = try source.importCandidates(from: url)
+                        importMessage = "Đã nhập \(count) ứng viên. Cần đối chiếu trước khi cho vào bài luyện."
+                    } catch {
+                        importMessage = error.localizedDescription
+                    }
+                }
+            case .failure(let error):
+                importMessage = error.localizedDescription
+            }
+        }
     }
 }

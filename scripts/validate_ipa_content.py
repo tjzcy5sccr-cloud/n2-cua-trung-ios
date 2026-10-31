@@ -55,9 +55,11 @@ def main():
                     if item["id"].startswith("trung-original-"):
                         original_approved.add(item["id"])
             print("Verified bundle:",filename,{k:len(ipa_obj.get(k,[])) for k in CATS})
-    assert len(original_approved)==74,("new original entries missing",len(original_approved))
+    assert len(original_approved)==174,("new original batch01 + batch02 entries missing",len(original_approved))
+    assert len([key for key in original_approved if key.startswith("trung-original-b02-")]) == 100
+    print("Verified batch02: 64 words, 12 grammar, 16 Kanji, 4 readings with Vietnamese translations, 4 listening scripts with Vietnamese translations.")
     assert totals["vocab"]>=100 and totals["kanji"]>=30 and totals["grammar"]>=40,totals
-    print("PASS: IPA approved-only data verified, with 74 unique original new lesson items.",dict(totals))
+    print("PASS: IPA approved-only data verified, with 174 original records from batches 01 and 02.",dict(totals))
 
 if __name__=="__main__":
     main()

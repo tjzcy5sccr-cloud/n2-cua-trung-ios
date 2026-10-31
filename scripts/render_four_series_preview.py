@@ -73,16 +73,16 @@ for j,track in enumerate(plan["tracks"]):
     text(track["name"],x1+39,y+10,f15,dark)
 
 # screen 2: week 1
-box(x2+25,297,x2+425,424,blue,20)
+box(x2+25,297,x2+425,450,blue,20)
 text("TUẦN 01 / 35",x2+43,315,f15,white)
-text(week["theme"],x2+43,344,f20,white)
-text(week["dateRange"],x2+43,381,f15,white)
-text("Chỉ tiêu tuần",x2+30,448,f18,dark)
+multiline(week["theme"],x2+43,343,f20,white,344,27)
+text(week["dateRange"],x2+43,418,f15,white)
+text("Chỉ tiêu tuần",x2+30,460,f18,dark)
 for j,(name,value) in enumerate([("Từ",week["targets"]["vocabulary"]),("Kanji",week["targets"]["kanji"]),("Mẫu",week["targets"]["grammar"])]):
     col=x2+25+j*136
-    box(col,482,col+126,543,"#F1F6FE",12)
-    text(f"{value} {name}",col+14,500,f18,blue)
-text("NHIỆM VỤ TRONG TUẦN",x2+27,570,f18,dark)
+    box(col,492,col+126,551,"#F1F6FE",12)
+    text(f"{value} {name}",col+14,508,f18,blue)
+text("NHIỆM VỤ TRONG TUẦN",x2+27,576,f18,dark)
 for j,day in enumerate(week["days"]):
     y=605+j*48
     box(x2+26,y,x2+424,y+43,white,10,"#D6E0EC")

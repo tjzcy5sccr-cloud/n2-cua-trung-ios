@@ -3001,7 +3001,7 @@
       "id": "k14",
       "char": "率",
       "on": "リツ",
-      "kun": "",
+      "kun": "—",
       "meaning": "tỷ lệ",
       "word": "効率"
     },
@@ -3065,7 +3065,7 @@
       "id": "k46",
       "char": "準",
       "on": "ジュン",
-      "kun": "",
+      "kun": "—",
       "meaning": "chuẩn",
       "word": "準備"
     },
@@ -3105,7 +3105,7 @@
       "id": "olj-k-533a",
       "char": "区",
       "on": "ク・オウ・コウ",
-      "kun": "",
+      "kun": "—",
       "meaning": "khu vực, phân chia",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3150,7 +3150,7 @@
       "id": "olj-k-526f",
       "char": "副",
       "on": "フク",
-      "kun": "",
+      "kun": "—",
       "meaning": "phó, phụ",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3186,7 +3186,7 @@
       "id": "olj-k-500b",
       "char": "個",
       "on": "コ・カ",
-      "kun": "",
+      "kun": "—",
       "meaning": "cá thể, từng người",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3213,7 +3213,7 @@
       "id": "olj-k-53f2",
       "char": "史",
       "on": "シ",
-      "kun": "",
+      "kun": "—",
       "meaning": "lịch sử",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3267,7 +3267,7 @@
       "id": "olj-k-7642",
       "char": "療",
       "on": "リョウ",
-      "kun": "",
+      "kun": "—",
       "meaning": "chữa trị",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3276,7 +3276,7 @@
       "id": "olj-k-6b74",
       "char": "歴",
       "on": "レキ・レッキ",
-      "kun": "",
+      "kun": "—",
       "meaning": "quá trình, lịch sử",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3294,7 +3294,7 @@
       "id": "olj-k-5287",
       "char": "劇",
       "on": "ゲキ",
-      "kun": "",
+      "kun": "—",
       "meaning": "kịch, vở diễn",
       "word": "",
       "meaningStatus": "editorial_reviewed"

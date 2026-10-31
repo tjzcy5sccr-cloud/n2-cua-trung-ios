@@ -25,11 +25,18 @@ jobs:
           assert all(0 < p <= b['pages'] for b in books for p in b['sectionStarts'])
           assert sum(cd['mp3Count'] for cd in d['listeningCDs']) == 116
           assert all(cd['trackEnd'] - cd['trackStart'] + 1 == cd['mp3Count'] for cd in d['listeningCDs'])
+          coverage=json.loads(Path('qa-reports/sou-matome-source-coverage.json').read_text(encoding='utf-8'))
+          assert coverage['totalPageCount'] == 1239
+          assert coverage['primaryTextbookPages'] == 683
+          assert coverage['supplementTextPages'] == 556
+          assert sum(d['textLayerPages'] for d in coverage['sourceDocuments']) == 556
+          assert coverage['lessonContentCompleteness'].startswith('NOT COMPLETE')
           print('PASS: metadata catalog: 8 PDFs, 1,239 pages, 116 MP3 tracks')
           PY
       - name: Check Swift source syntax
         run: |
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeLibraryView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePageWorkbenchView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift

@@ -1,16 +1,29 @@
 import SwiftUI
 import PDFKit
+import UniformTypeIdentifiers
 
 /// Candidate entries are generated ONLY from PDFs on the user's own device.
 /// They are not approved app flashcards until their readings, meanings and
 /// examples have been checked against the book and a separate dictionary.
-struct SouMatomeSourceEntry: Identifiable {
+struct SouMatomeSourceEntry: Codable, Identifiable {
     let id: String
     let bookId: String
     let page: Int
     let heading: String
     let detail: String
     let skill: String
+    let reading: String?
+
+    init(id: String, bookId: String, page: Int, heading: String,
+         detail: String, skill: String, reading: String? = nil) {
+        self.id = id
+        self.bookId = bookId
+        self.page = page
+        self.heading = heading
+        self.detail = detail
+        self.skill = skill
+        self.reading = reading
+    }
 }
 
 private enum SouMatomeSourceParser {
@@ -116,9 +129,56 @@ final class SouMatomeSourceEntryStore: ObservableObject {
     @Published var processing = false
     @Published var loadedBooks = 0
     @Published var notes: String?
+    @Published var importedCandidateCount = 0
     private let root = FileManager.default.urls(for: .applicationSupportDirectory,
                                                   in: .userDomainMask)[0]
         .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
+
+    private var importedURL: URL {
+        root.appendingPathComponent("private-draft-candidates.json")
+    }
+
+    private func loadImportedCandidates() -> [SouMatomeSourceEntry] {
+        guard let data = try? Data(contentsOf: importedURL),
+              let decoded = try? JSONDecoder().decode(
+                [SouMatomeSourceEntry].self, from: data) else { return [] }
+        return decoded
+    }
+
+    @discardableResult
+    func importCandidates(from url: URL) throws -> Int {
+        let access = url.startAccessingSecurityScopedResource()
+        defer { if access { url.stopAccessingSecurityScopedResource() } }
+        let bytes = try Data(contentsOf: url)
+        guard bytes.count > 0, bytes.count <= 8 * 1_024 * 1_024 else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        let imported = try JSONDecoder().decode(
+            [SouMatomeSourceEntry].self, from: bytes)
+        guard !imported.isEmpty, imported.count <= 15_000,
+              Set(imported.map(\.id)).count == imported.count else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        let validBooks = Dictionary(uniqueKeysWithValues:
+            SouMatomeDocument.all.map { ($0.id, $0.pages) })
+        for card in imported {
+            guard let maxPage = validBooks[card.bookId],
+                  (1...maxPage).contains(card.page),
+                  ["Từ vựng", "Kanji", "Ngữ pháp"].contains(card.skill),
+                  card.id.hasPrefix(card.bookId + ":" + String(card.page) + ":"),
+                  card.heading.count <= 250, card.detail.count <= 250
+            else { throw SouMatomeReviewError.invalidCandidateFile }
+        }
+        try FileManager.default.createDirectory(
+            at: root, withIntermediateDirectories: true)
+        try bytes.write(to: importedURL, options: .atomic)
+        importedCandidateCount = imported.count
+        var keyed = Dictionary(uniqueKeysWithValues:
+            entries.map { ($0.id, $0) })
+        for card in imported { keyed[card.id] = card }
+        entries = keyed.values.sorted { $0.id < $1.id }
+        return imported.count
+    }
 
     func indexBooks() async {
         guard !processing else { return }
@@ -139,7 +199,19 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             entries.append(contentsOf: parsed)
             loadedBooks += 1
         }
-        notes = "Đã nhận diện \(entries.count) ứng viên từ \(loadedBooks)/3 PDF bổ trợ. Đây là kết quả phân tích máy, KHÔNG phải số mục đã kiểm duyệt hoặc chứng nhận đủ 100%."
+        let imported = loadImportedCandidates()
+        var keyed: [String: SouMatomeSourceEntry] = [:]
+        for item in entries { keyed[item.id] = item }
+        // Locally extracted geometry-based entries supersede imprecise PDFKit
+        // line-based detection, but remain unapproved study candidates.
+        for item in imported { keyed[item.id] = item }
+        entries = keyed.values.sorted {
+            $0.bookId == $1.bookId
+                ? ($0.page == $1.page ? $0.id < $1.id : $0.page < $1.page)
+                : $0.bookId < $1.bookId
+        }
+        importedCandidateCount = imported.count
+        notes = "Đã nhận diện \(entries.count) ứng viên từ PDF, gồm \(imported.count) bản ghi nhập riêng. Chưa được kiểm duyệt."
         processing = false
     }
 }

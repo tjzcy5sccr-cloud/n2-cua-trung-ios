@@ -285,11 +285,11 @@ struct SouMatomeLibraryView: View {
                         .font(.caption).foregroundColor(.secondary)
                 }
                 NavigationLink {
-                    SouMatomeDailyNavigatorView()
+                    SouMatomeWholeBooksView()
                 } label: {
-                    ActionTile(icon: "calendar", color: Palette.teal,
-                               title: "Học theo tuần và ngày",
-                               detail: "8 tuần Kanji, từ vựng và ngữ pháp – mở đúng trang nguồn")
+                    ActionTile(icon: "books.vertical.fill", color: Palette.teal,
+                               title: "Xem toàn bộ nội dung các cuốn",
+                               detail: "5 kỹ năng, tìm theo từ khóa, không chia tuần")
                 }.buttonStyle(.plain)
                 LessonPanel {
                     SectionTitle("Nhập nhanh toàn bộ PDF")

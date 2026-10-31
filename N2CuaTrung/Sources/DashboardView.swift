@@ -3,7 +3,7 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject private var store: StudyStore
     private var thisWeek: WeeklyPlan? {
-        store.course.weeks.first { $0.n == store.week }
+        store.selectedSeries == .souMatome ? nil : store.course.weeks.first { $0.n == store.week }
     }
     var body: some View {
         ScrollView {
@@ -22,7 +22,7 @@ struct DashboardView: View {
                     Text("Mỗi ngày một bước đến N2.")
                         .font(.subheadline).foregroundColor(.white.opacity(0.82))
                     HStack {
-                        Label("Tuần \(store.week)/35", systemImage: "calendar")
+                        Label(store.selectedSeries == .souMatome ? "Toàn bộ Sou Matome N2" : "Tuần \(store.week)/35", systemImage: store.selectedSeries == .souMatome ? "books.vertical" : "calendar")
                         Spacer()
                         Text("Mục tiêu: 07/2027")
                     }
@@ -65,24 +65,26 @@ struct DashboardView: View {
                     Text("Chạm giữ màn hình khóa → Tùy chỉnh → Thêm tiện ích → N2 của Trung. Mở lại app sẽ yêu cầu widget làm mới, nhưng iOS không đảm bảo đổi từ sau từng lần bật/tắt màn hình.")
                         .font(.caption).foregroundColor(.secondary)
                 }
-                NavigationLink {
-                    FourSeriesCurriculumView()
-                } label: {
-                    ActionTile(icon: "books.vertical.fill", color: Palette.blue,
-                               title: "Chương trình N2 – 4 bộ giáo trình",
-                               detail: "Mimikara • Shin Kanzen • Sou Matome • Speed Master • 35 tuần")
+                if store.selectedSeries != .souMatome {
+                    NavigationLink {
+                        FourSeriesCurriculumView()
+                    } label: {
+                        ActionTile(icon: "books.vertical.fill", color: Palette.blue,
+                                   title: "Chương trình N2 – 4 bộ giáo trình",
+                                   detail: "Lộ trình 35 tuần của những giáo trình khác")
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
                 NavigationLink { LearningSeriesPickerView() } label: {
                     ActionTile(icon: "square.stack.3d.up.fill", color: Palette.teal,
                                title: "Chọn bộ dữ liệu: \(store.selectedSeries.name)",
                                detail: "Tổng hợp • Shin Kanzen • Sou Matome • Mimikara • Speed")
                 }.buttonStyle(.plain)
                 if store.selectedSeries == .souMatome {
-                    NavigationLink { SouMatomeLibraryView() } label: {
+                    NavigationLink { SouMatomeWholeBooksView() } label: {
                         ActionTile(icon: "books.vertical.circle.fill", color: Palette.blue,
-                                   title: "Thư viện Sou Matome (PDF và CD)",
-                                   detail: "Mở sách Nhật – Việt và luyện nghe offline")
+                                   title: "Toàn bộ Sou Matome N2",
+                                   detail: "5 cuốn, 8 PDF, 116 MP3, không chia theo tuần")
                     }.buttonStyle(.plain)
                 }
                 SectionTitle("Bắt đầu học", subtitle: "90 phút/ngày • 6 ngày/tuần")

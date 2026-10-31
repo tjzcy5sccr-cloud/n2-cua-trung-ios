@@ -1,0 +1,642 @@
+{
+  "id": "n2-series-sou-matome",
+  "version": 1,
+  "seriesId": "sou-matome",
+  "title": "Sou Matome – Bộ học theo ngày do N2 của Trung tuyển chọn",
+  "vocab": [
+    {
+      "id": "v3",
+      "word": "取り組む",
+      "reading": "とりくむ",
+      "meaning": "nỗ lực giải quyết",
+      "example": "新しい課題に取り組む。",
+      "topic": "Công việc",
+      "week": 1,
+      "exampleVi": "Nỗ lực giải quyết vấn đề mới."
+    },
+    {
+      "id": "v7",
+      "word": "状況",
+      "reading": "じょうきょう",
+      "meaning": "tình hình",
+      "example": "現場の状況を確認する。",
+      "topic": "Công việc",
+      "week": 1,
+      "exampleVi": "Kiểm tra tình hình tại hiện trường."
+    },
+    {
+      "id": "v10",
+      "word": "能力",
+      "reading": "のうりょく",
+      "meaning": "năng lực",
+      "example": "自分の能力を伸ばす。",
+      "topic": "Học tập",
+      "week": 1,
+      "exampleVi": "Phát triển năng lực bản thân."
+    },
+    {
+      "id": "v14",
+      "word": "目標",
+      "reading": "もくひょう",
+      "meaning": "mục tiêu",
+      "example": "今年の目標を立てた。",
+      "topic": "Học tập",
+      "week": 1,
+      "exampleVi": "Tôi đã đặt mục tiêu cho năm nay."
+    },
+    {
+      "id": "v19",
+      "word": "方法",
+      "reading": "ほうほう",
+      "meaning": "phương pháp",
+      "example": "便利な方法を見つけた。",
+      "topic": "Học tập",
+      "week": 2,
+      "exampleVi": "Tôi đã tìm được một phương pháp tiện lợi."
+    },
+    {
+      "id": "v23",
+      "word": "確認",
+      "reading": "かくにん",
+      "meaning": "xác nhận",
+      "example": "時間をもう一度確認する。",
+      "topic": "Sinh hoạt",
+      "week": 2,
+      "exampleVi": "Kiểm tra lại thời gian một lần nữa."
+    },
+    {
+      "id": "v25",
+      "word": "相談",
+      "reading": "そうだん",
+      "meaning": "trao đổi, bàn bạc",
+      "example": "先生に進路を相談した。",
+      "topic": "Học tập",
+      "week": 2,
+      "exampleVi": "Tôi đã trao đổi với thầy giáo về hướng đi tương lai."
+    },
+    {
+      "id": "v31",
+      "word": "調整",
+      "reading": "ちょうせい",
+      "meaning": "điều chỉnh",
+      "example": "全員の予定を調整する。",
+      "topic": "Công việc",
+      "week": 2,
+      "exampleVi": "Điều chỉnh lịch trình của mọi người."
+    },
+    {
+      "id": "v35",
+      "word": "開催",
+      "reading": "かいさい",
+      "meaning": "tổ chức (sự kiện)",
+      "example": "来月、説明会を開催する。",
+      "topic": "Xã hội",
+      "week": 2,
+      "exampleVi": "Tháng sau sẽ tổ chức buổi giới thiệu."
+    },
+    {
+      "id": "v38",
+      "word": "継続",
+      "reading": "けいぞく",
+      "meaning": "tiếp tục, duy trì",
+      "example": "毎日の練習を継続する。",
+      "topic": "Học tập",
+      "week": 3,
+      "exampleVi": "Duy trì việc luyện tập mỗi ngày."
+    },
+    {
+      "id": "v41",
+      "word": "失敗",
+      "reading": "しっぱい",
+      "meaning": "thất bại",
+      "example": "失敗から学ぶことが大切だ。",
+      "topic": "Học tập",
+      "week": 3,
+      "exampleVi": "Điều quan trọng là học hỏi từ thất bại."
+    },
+    {
+      "id": "v47",
+      "word": "睡眠",
+      "reading": "すいみん",
+      "meaning": "giấc ngủ",
+      "example": "十分な睡眠を取る。",
+      "topic": "Sinh hoạt",
+      "week": 3,
+      "exampleVi": "Ngủ đủ giấc."
+    },
+    {
+      "id": "v51",
+      "word": "予防",
+      "reading": "よぼう",
+      "meaning": "phòng ngừa",
+      "example": "病気を予防する。",
+      "topic": "Sinh hoạt",
+      "week": 3,
+      "exampleVi": "Phòng ngừa bệnh tật."
+    },
+    {
+      "id": "v55",
+      "word": "地域",
+      "reading": "ちいき",
+      "meaning": "khu vực, địa phương",
+      "example": "地域の行事に参加する。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Tham gia sự kiện của địa phương."
+    },
+    {
+      "id": "v59",
+      "word": "物価",
+      "reading": "ぶっか",
+      "meaning": "giá cả hàng hóa",
+      "example": "最近、物価が上がっている。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Gần đây giá cả đang tăng."
+    },
+    {
+      "id": "v63",
+      "word": "予算",
+      "reading": "よさん",
+      "meaning": "ngân sách",
+      "example": "予算の範囲で買い物をする。",
+      "topic": "Sinh hoạt",
+      "week": 4,
+      "exampleVi": "Mua sắm trong phạm vi ngân sách."
+    },
+    {
+      "id": "v67",
+      "word": "自然",
+      "reading": "しぜん",
+      "meaning": "thiên nhiên",
+      "example": "自然を守る活動に参加した。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Tôi đã tham gia hoạt động bảo vệ thiên nhiên."
+    },
+    {
+      "id": "v71",
+      "word": "地震",
+      "reading": "じしん",
+      "meaning": "động đất",
+      "example": "今朝、小さな地震があった。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Sáng nay đã xảy ra một trận động đất nhỏ."
+    },
+    {
+      "id": "v75",
+      "word": "危険",
+      "reading": "きけん",
+      "meaning": "nguy hiểm",
+      "example": "この道は夜になると危険だ。",
+      "topic": "Sinh hoạt",
+      "week": 5,
+      "exampleVi": "Con đường này nguy hiểm vào ban đêm."
+    },
+    {
+      "id": "v79",
+      "word": "到着",
+      "reading": "とうちゃく",
+      "meaning": "đến nơi",
+      "example": "電車は十時に到着する。",
+      "topic": "Sinh hoạt",
+      "week": 5,
+      "exampleVi": "Tàu sẽ đến lúc mười giờ."
+    },
+    {
+      "id": "v83",
+      "word": "設備",
+      "reading": "せつび",
+      "meaning": "thiết bị, cơ sở vật chất",
+      "example": "新しい設備が完成した。",
+      "topic": "Công việc",
+      "week": 5,
+      "exampleVi": "Trang thiết bị mới đã hoàn thành."
+    },
+    {
+      "id": "v87",
+      "word": "更新",
+      "reading": "こうしん",
+      "meaning": "cập nhật",
+      "example": "情報を毎週更新する。",
+      "topic": "Công nghệ",
+      "week": 5,
+      "exampleVi": "Cập nhật thông tin mỗi tuần."
+    },
+    {
+      "id": "v91",
+      "word": "情報",
+      "reading": "じょうほう",
+      "meaning": "thông tin",
+      "example": "正しい情報を集める。",
+      "topic": "Công nghệ",
+      "week": 6,
+      "exampleVi": "Thu thập thông tin chính xác."
+    },
+    {
+      "id": "v93",
+      "word": "内容",
+      "reading": "ないよう",
+      "meaning": "nội dung",
+      "example": "文章の内容を確認する。",
+      "topic": "Học tập",
+      "week": 6,
+      "exampleVi": "Kiểm tra nội dung bài viết."
+    },
+    {
+      "id": "v99",
+      "word": "比較",
+      "reading": "ひかく",
+      "meaning": "so sánh",
+      "example": "二つの商品を比較する。",
+      "topic": "Học tập",
+      "week": 6,
+      "exampleVi": "So sánh hai sản phẩm."
+    },
+    {
+      "id": "v103",
+      "word": "平均",
+      "reading": "へいきん",
+      "meaning": "trung bình",
+      "example": "平均気温が上がった。",
+      "topic": "Xã hội",
+      "week": 6,
+      "exampleVi": "Nhiệt độ trung bình đã tăng."
+    },
+    {
+      "id": "v106",
+      "word": "具体的",
+      "reading": "ぐたいてき",
+      "meaning": "cụ thể",
+      "example": "具体的な例を挙げる。",
+      "topic": "Học tập",
+      "week": 6,
+      "exampleVi": "Đưa ra ví dụ cụ thể."
+    },
+    {
+      "id": "v109",
+      "word": "重要",
+      "reading": "じゅうよう",
+      "meaning": "quan trọng",
+      "example": "この情報はとても重要だ。",
+      "topic": "Học tập",
+      "week": 7,
+      "exampleVi": "Thông tin này rất quan trọng."
+    },
+    {
+      "id": "v115",
+      "word": "確実",
+      "reading": "かくじつ",
+      "meaning": "chắc chắn",
+      "example": "確実な方法を選ぶ。",
+      "topic": "Công việc",
+      "week": 7,
+      "exampleVi": "Chọn một phương pháp chắc chắn."
+    },
+    {
+      "id": "v119",
+      "word": "徐々に",
+      "reading": "じょじょに",
+      "meaning": "dần dần",
+      "example": "日本語が徐々に上達した。",
+      "topic": "Học tập",
+      "week": 7,
+      "exampleVi": "Tiếng Nhật của tôi tiến bộ dần dần."
+    },
+    {
+      "id": "v123",
+      "word": "必ずしも",
+      "reading": "かならずしも",
+      "meaning": "không hẳn lúc nào cũng",
+      "example": "高い物が必ずしも良いとは限らない。",
+      "topic": "Học tập",
+      "week": 7,
+      "exampleVi": "Đồ đắt tiền chưa chắc đã tốt."
+    }
+  ],
+  "grammar": [
+    {
+      "id": "g3",
+      "pattern": "〜にもかかわらず",
+      "meaning": "mặc dù, bất chấp",
+      "rule": "Diễn tả kết quả trái kỳ vọng; sắc thái trang trọng.",
+      "example": "雨にもかかわらず、試合は行われた。",
+      "translation": "Dù trời mưa trận đấu vẫn diễn ra.",
+      "week": 1
+    },
+    {
+      "id": "g7",
+      "pattern": "〜ために",
+      "meaning": "để / vì",
+      "rule": "Mục đích có chủ ý hoặc nguyên nhân.",
+      "example": "合格するために勉強している。",
+      "translation": "Tôi học để thi đỗ.",
+      "week": 3
+    },
+    {
+      "id": "g11",
+      "pattern": "〜ばかり",
+      "meaning": "toàn / chỉ (lặp đi lặp lại)",
+      "rule": "Nhấn mạnh một hành động hoặc trạng thái quá nhiều.",
+      "example": "彼はゲームばかりしている。",
+      "translation": "Cậu ấy suốt ngày chơi trò chơi.",
+      "week": 4
+    },
+    {
+      "id": "g13",
+      "pattern": "〜たばかり",
+      "meaning": "vừa mới",
+      "rule": "Người nói cảm thấy hành động mới xảy ra.",
+      "example": "日本に来たばかりです。",
+      "translation": "Tôi vừa đến Nhật.",
+      "week": 4
+    },
+    {
+      "id": "g19",
+      "pattern": "〜に伴って",
+      "meaning": "đi kèm với / cùng với",
+      "rule": "Biến đổi kéo theo một biến đổi khác, trang trọng.",
+      "example": "人口増加に伴って交通量も増えた。",
+      "translation": "Dân số tăng kéo theo lưu lượng giao thông tăng.",
+      "week": 6
+    },
+    {
+      "id": "g23",
+      "pattern": "〜のみならず",
+      "meaning": "không chỉ... mà còn",
+      "rule": "Tương tự だけでなく nhưng trang trọng hơn.",
+      "example": "国内のみならず海外でも人気だ。",
+      "translation": "Nổi tiếng không chỉ trong nước mà còn ở nước ngoài.",
+      "week": 8
+    },
+    {
+      "id": "g27",
+      "pattern": "〜わけがない",
+      "meaning": "không thể nào",
+      "rule": "Phủ định suy luận mạnh mẽ dựa trên lý do.",
+      "example": "彼が知らないわけがない。",
+      "translation": "Không thể nào anh ấy không biết.",
+      "week": 10
+    },
+    {
+      "id": "g31",
+      "pattern": "〜に違いない",
+      "meaning": "chắc chắn là",
+      "rule": "Nhận định rất chắc theo suy đoán của người nói.",
+      "example": "彼は道に迷ったに違いない。",
+      "translation": "Chắc chắn anh ấy bị lạc đường.",
+      "week": 11
+    },
+    {
+      "id": "g35",
+      "pattern": "〜ということだ",
+      "meaning": "nghe nói / nghĩa là",
+      "rule": "Tường thuật thông tin hoặc tóm lại ý nghĩa.",
+      "example": "会議は中止ということだ。",
+      "translation": "Nghe nói cuộc họp bị hủy.",
+      "week": 13
+    },
+    {
+      "id": "g39",
+      "pattern": "〜に応じて",
+      "meaning": "tùy theo, tương ứng với",
+      "rule": "Thay đổi thích ứng với nhu cầu hoặc tình huống.",
+      "example": "状況に応じて対応する。",
+      "translation": "Xử lý tùy theo tình huống.",
+      "week": 15
+    },
+    {
+      "id": "g43",
+      "pattern": "〜たとたん",
+      "meaning": "ngay khi vừa",
+      "rule": "Một việc bất ngờ xảy ra đúng lúc việc khác hoàn tất.",
+      "example": "家を出たとたん雨が降った。",
+      "translation": "Vừa ra khỏi nhà thì trời mưa.",
+      "week": 17
+    },
+    {
+      "id": "g47",
+      "pattern": "〜ざるを得ない",
+      "meaning": "đành phải / không còn cách nào",
+      "rule": "Bị hoàn cảnh buộc làm điều không muốn.",
+      "example": "予定を変更せざるを得ない。",
+      "translation": "Đành phải đổi kế hoạch.",
+      "week": 20
+    },
+    {
+      "id": "g51",
+      "pattern": "〜を通じて",
+      "meaning": "thông qua / suốt",
+      "rule": "Chỉ kênh trung gian hoặc toàn bộ khoảng thời gian.",
+      "example": "仕事を通じて学んだ。",
+      "translation": "Tôi đã học qua công việc.",
+      "week": 24
+    },
+    {
+      "id": "g55",
+      "pattern": "〜くせに",
+      "meaning": "ấy thế mà / dù...",
+      "rule": "Trách móc, phê phán, không hợp giao tiếp trang trọng.",
+      "example": "知っているくせに教えてくれない。",
+      "translation": "Biết mà không chịu chỉ.",
+      "week": 25
+    },
+    {
+      "id": "g59",
+      "pattern": "〜ほかない",
+      "meaning": "không còn lựa chọn nào khác",
+      "rule": "Tương tự しかない, trang trọng hơn.",
+      "example": "結果を待つほかない。",
+      "translation": "Đành phải chờ kết quả.",
+      "week": 20
+    }
+  ],
+  "kanji": [
+    {
+      "id": "k7",
+      "char": "傾",
+      "on": "ケイ",
+      "kun": "かたむ.く",
+      "meaning": "nghiêng",
+      "word": "傾向"
+    },
+    {
+      "id": "k9",
+      "char": "状",
+      "on": "ジョウ",
+      "kun": "—",
+      "meaning": "trạng thái",
+      "word": "状況"
+    },
+    {
+      "id": "k10",
+      "char": "況",
+      "on": "キョウ",
+      "kun": "—",
+      "meaning": "tình hình",
+      "word": "状況"
+    },
+    {
+      "id": "k15",
+      "char": "能",
+      "on": "ノウ",
+      "kun": "—",
+      "meaning": "năng lực",
+      "word": "能力"
+    },
+    {
+      "id": "k20",
+      "char": "目",
+      "on": "モク",
+      "kun": "め",
+      "meaning": "mắt, mục",
+      "word": "目標"
+    },
+    {
+      "id": "k21",
+      "char": "標",
+      "on": "ヒョウ",
+      "kun": "しるべ",
+      "meaning": "dấu mốc",
+      "word": "目標"
+    },
+    {
+      "id": "k28",
+      "char": "導",
+      "on": "ドウ",
+      "kun": "みちび.く",
+      "meaning": "dẫn đường",
+      "word": "導入"
+    },
+    {
+      "id": "k30",
+      "char": "確",
+      "on": "カク",
+      "kun": "たし.か",
+      "meaning": "chắc chắn",
+      "word": "確認"
+    },
+    {
+      "id": "k31",
+      "char": "認",
+      "on": "ニン",
+      "kun": "みと.める",
+      "meaning": "công nhận",
+      "word": "確認"
+    },
+    {
+      "id": "k42",
+      "char": "調",
+      "on": "チョウ",
+      "kun": "しら.べる",
+      "meaning": "điều chỉnh",
+      "word": "調整"
+    },
+    {
+      "id": "k43",
+      "char": "整",
+      "on": "セイ",
+      "kun": "ととの.える",
+      "meaning": "sắp xếp",
+      "word": "調整"
+    },
+    {
+      "id": "k50",
+      "char": "継",
+      "on": "ケイ",
+      "kun": "つ.ぐ",
+      "meaning": "tiếp tục",
+      "word": "継続"
+    },
+    {
+      "id": "k51",
+      "char": "続",
+      "on": "ゾク",
+      "kun": "つづ.く",
+      "meaning": "tiếp diễn",
+      "word": "継続"
+    },
+    {
+      "id": "k56",
+      "char": "慮",
+      "on": "リョ",
+      "kun": "おもんぱか.る",
+      "meaning": "cân nhắc",
+      "word": "配慮"
+    },
+    {
+      "id": "k57",
+      "char": "険",
+      "on": "ケン",
+      "kun": "けわ.しい",
+      "meaning": "hiểm nguy",
+      "word": "危険"
+    },
+    {
+      "id": "k63",
+      "char": "議",
+      "on": "ギ",
+      "kun": "—",
+      "meaning": "thảo luận",
+      "word": "会議"
+    },
+    {
+      "id": "k64",
+      "char": "比",
+      "on": "ヒ",
+      "kun": "くら.べる",
+      "meaning": "so sánh",
+      "word": "比較"
+    }
+  ],
+  "readings": [
+    {
+      "title": "Thói quen học tiếng Nhật",
+      "topic": "Học tập",
+      "text": "日本語を勉強するとき、難しい言葉を一度にたくさん覚えようとすると、すぐに忘れてしまうことがある。毎日少しずつ復習するほうが、長く覚えていられるという人も多い。ただし、自分に合った方法は人によって異なる。",
+      "question": "筆者が伝えたいことは何ですか。",
+      "choices": [
+        "一日に百語覚えるべきだ",
+        "復習は必要ない",
+        "勉強方法には個人差がある",
+        "難しい言葉を勉強しない"
+      ],
+      "answer": 2,
+      "explanation": "Cuối đoạn nói 自分に合った方法は人によって異なる: phương pháp phù hợp tùy người.",
+      "id": "r3"
+    },
+    {
+      "title": "Trước chuyến du lịch",
+      "topic": "Du lịch",
+      "text": "旅行に出発する前に、宿泊先の住所だけでなく、交通手段や天気も確認しておくと安心だ。特に山の近くでは急に天候が変わることもある。予定に余裕を持ち、安全を第一に行動したい。",
+      "question": "筆者は旅行前に何をするべきだと述べていますか。",
+      "choices": [
+        "宿泊先だけ確認する",
+        "予定を全く立てない",
+        "交通や天気も確認する",
+        "必ず山へ行く"
+      ],
+      "answer": 2,
+      "explanation": "Không chỉ địa chỉ lưu trú mà còn kiểm tra phương tiện và thời tiết.",
+      "id": "r7"
+    }
+  ],
+  "listening": [
+    {
+      "title": "Mua quà",
+      "speaker": "友達がプレゼントについて相談しています。",
+      "script": "女：田中さんへのプレゼント、何がいいかな。\n男：コーヒーが好きだから、カップはどう？\n女：でも、去年もカップをあげたよ。じゃ、お菓子にしよう。",
+      "question": "二人は何をあげることにしましたか。",
+      "choices": [
+        "本",
+        "カップ",
+        "お菓子",
+        "花"
+      ],
+      "answer": 2,
+      "explanation": "Cuối cùng họ quyết định tặng bánh kẹo (お菓子).",
+      "id": "l3"
+    }
+  ]
+}

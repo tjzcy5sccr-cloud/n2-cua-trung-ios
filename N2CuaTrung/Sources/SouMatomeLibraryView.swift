@@ -95,6 +95,12 @@ final class SouMatomeLibraryStore: ObservableObject {
         return SouMatomeDocument.all.first { $0.id == id }
     }
 
+    func reviewedPageCount(for book: SouMatomeDocument) -> Int {
+        (1...book.pages).filter { page in
+            UserDefaults.standard.bool(forKey: "SouMatome.verified." + book.id + "." + String(page))
+        }.count
+    }
+
     func fileURL(for book: SouMatomeDocument) -> URL? {
         let url = root.appendingPathComponent(book.id + ".pdf")
         return FileManager.default.fileExists(atPath: url.path) ? url : nil
@@ -367,6 +373,7 @@ struct SouMatomeLibraryView: View {
         }
         .background(Palette.pale)
         .navigationTitle("Sou Matome N2")
+        .onAppear { library.refresh() }
         .fileImporter(isPresented: $pickAllPDF, allowedContentTypes: [.pdf],
                       allowsMultipleSelection: true) { result in
             switch result {
@@ -437,6 +444,10 @@ struct SouMatomeLibraryView: View {
                     Text(book.title).font(.subheadline.weight(.bold)).foregroundColor(Palette.navy)
                     Text("\(book.pages) trang · \(book.skill)")
                         .font(.caption).foregroundColor(.secondary)
+                    if library.pagesImported[book.id] != nil {
+                        Text("Đã đối chiếu: \(library.reviewedPageCount(for: book))/\(book.pages) trang")
+                            .font(.caption).foregroundColor(Palette.blue)
+                    }
                 }
                 Spacer()
                 if library.pagesImported[book.id] != nil {

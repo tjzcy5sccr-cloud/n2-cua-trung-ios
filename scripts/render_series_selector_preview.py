@@ -18,7 +18,13 @@ for key in keys:
 labels={"all":"Tổng hợp N2","mimikara":"Mimikara Oboeru","shin-kanzen":"Shin Kanzen Master","sou-matome":"Nihongo Sou Matome","speed-master":"Speed / Kanji Master"}
 descs={"all":"Toàn bộ kho học hiện có","mimikara":"Từ vựng và nghe trong ngữ cảnh","shin-kanzen":"Phân tích ngữ pháp và Kanji","sou-matome":"Học theo ngày và tuần","speed-master":"Kanji và phản xạ nhanh"}
 source=json.loads((ROOT/"N2CuaTrung/Resources/content.json").read_text(encoding="utf-8"))
-total={key:sum(len(v[k]) for k in ("vocab","grammar","kanji","readings","listening")) for key,v in packs.items()}
+REVIEWED={"editorial_reviewed","source_verified","independently_verified"}
+def visible_count(pack):
+    return (sum(1 for x in pack["vocab"] if x.get("meaningStatus") in REVIEWED)
+          + sum(1 for x in pack["grammar"] if x.get("grammarStatus") in REVIEWED)
+          + sum(1 for x in pack["kanji"] if x.get("meaningStatus") in REVIEWED)
+          + len(pack["readings"])+len(pack["listening"]))
+total={key:visible_count(pack) for key,pack in packs.items()}
 colors={"bg":"#EDF3FA","blue":"#3458B8","navy":"#192A4F","teal":"#128E80","border":"#D3E1F2","white":"#FFFFFF","grey":"#66748B"}
 W,H=1550,1230
 im=Image.new("RGB",(W,H),colors["bg"]);d=ImageDraw.Draw(im)
@@ -73,7 +79,7 @@ def phone(x,selected):
     if selected!="all":
         pack=packs[selected]
         t("Dữ liệu khi chọn "+labels[selected]+":",tx,y+883,f16,"navy")
-        t(f"{len(pack['vocab'])} từ  •  {len(pack['grammar'])} ngữ pháp  •  {len(pack['kanji'])} Kanji  •  {len(pack['readings'])} đọc  •  {len(pack['listening'])} nghe",tx,y+916,f19,"blue")
+        t(f"{sum(x.get('meaningStatus') in REVIEWED for x in pack['vocab'])} từ  •  {sum(x.get('grammarStatus') in REVIEWED for x in pack['grammar'])} ngữ pháp  •  {sum(x.get('meaningStatus') in REVIEWED for x in pack['kanji'])} Kanji  •  {len(pack['readings'])} đọc  •  {len(pack['listening'])} nghe",tx,y+916,f19,"blue")
     else:
         t("Tổng hợp: giữ nguyên mọi gói học cũ",tx,y+883,f16,"navy")
         t("Không xóa từ, Kanji, ví dụ hay tiến độ",tx,y+916,f19,"blue")

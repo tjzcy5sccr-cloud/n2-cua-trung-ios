@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "measuredOn": "2026-11-01",
+  "sources": "Three user-provided Vietnamese supplement PDFs (personal copies, not uploaded to repository)",
+  "method": "PyMuPDF geometry-aware text blocks and explicit item-marker/POS rules",
+  "results": {
+    "vocabulary": {
+      "totalPages": 163,
+      "autoParsedCandidateRows": 1238,
+      "pagesWithMatchedEntries": 128,
+      "unmatchedPages": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ],
+      "issue": "POS tag absent on many rows, especially later pages; parser only finds a subset; no automatic approval"
+    },
+    "kanji": {
+      "totalPages": 208,
+      "numberedCandidateEntries": 654,
+      "pagesWithMatchedEntries": 207,
+      "unmatchedPages": [
+        208
+      ],
+      "issue": "Headings provide Han-Viet readings, not guaranteed precise Vietnamese meanings"
+    },
+    "grammar": {
+      "totalPages": 185,
+      "detectedLessonHeadingCount": 56,
+      "pagesWithMatchedEntries": 56,
+      "issue": "Lesson heading count is not individual grammar-pattern count; many patterns sit inside a lesson"
+    }
+  },
+  "accuracyDefinition": "A candidate is only a source position; accurate Japanese headword, reading, sense, usage, and any answer must be independently checked. These 1948 detected positions are not a verified deck.",
+  "unresolvedPrimaryTextbookImagePages": 683,
+  "noAudioTranscriptsVerified": 116,
+  "status": "NOT_FULLY_REVIEWED"
+}

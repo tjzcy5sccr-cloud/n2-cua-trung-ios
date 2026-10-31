@@ -317,8 +317,8 @@ struct FlashcardDeckView: View {
     private func reload() {
         let all = store.course.vocab
         switch scope {
-        case 0: cards = all.filter { $0.week <= store.week && store.isDue("v:\($0.id)") }.shuffled()
-        case 1: cards = all.filter { $0.week <= store.week }.shuffled()
+        case 0: cards = all.filter { $0.week <= store.studyWeekLimit && store.isDue("v:\($0.id)") }.shuffled()
+        case 1: cards = all.filter { $0.week <= store.studyWeekLimit }.shuffled()
         default: cards = all.shuffled()
         }
         position = 0
@@ -526,7 +526,7 @@ struct GrammarFlashcardView: View {
     }
 
     private func reload() {
-        content = store.course.grammar.filter { $0.week <= store.week }.shuffled()
+        content = store.course.grammar.filter { $0.week <= store.studyWeekLimit }.shuffled()
         position = 0
         revealed = false
         reviewMessage = nil

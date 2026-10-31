@@ -30,7 +30,8 @@ struct KanjiSwipeDeckView: View {
 
     var body: some View {
         GeometryReader { _ in
-            VStack(spacing: 10) {
+            ScrollView(.vertical) {
+                VStack(spacing: 10) {
                 SectionTitle("Kanji N2", subtitle: "Vuốt ngang / dọc để đổi chữ • Chạm để lật")
                 HStack {
                     if !cards.isEmpty {
@@ -127,8 +128,10 @@ struct KanjiSwipeDeckView: View {
                     .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                 Spacer(minLength: 0)
             }
-            .padding(12)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .padding(12)
+                .frame(maxWidth: .infinity, alignment: .top)
+            }
+            .scrollIndicators(.hidden)
         }
         .background(Palette.pale)
         .navigationTitle("Kanji")

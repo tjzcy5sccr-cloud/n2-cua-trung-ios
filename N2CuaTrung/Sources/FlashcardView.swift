@@ -20,7 +20,8 @@ struct FlashcardDeckView: View {
 
     var body: some View {
         GeometryReader { _ in
-            VStack(spacing: 9) {
+            ScrollView(.vertical) {
+                VStack(spacing: 9) {
                 SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt ngang hoặc dọc để đổi từ")
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
@@ -110,9 +111,11 @@ struct FlashcardDeckView: View {
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                 Spacer(minLength: 0)
+                }
+                .padding(12)
+                .frame(maxWidth: .infinity, alignment: .top)
             }
-            .padding(12)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .scrollIndicators(.hidden)
         }
         .background(Palette.pale)
         .navigationTitle("Flashcard")
@@ -198,23 +201,26 @@ struct FlashcardDeckView: View {
                         .minimumScaleFactor(0.75)
                     Divider()
                     if let sentence = card.approvedExampleJapanese {
-                        // Tô đỏ chính xác từ đang học (kể cả biến thể/chia động từ)
-                        // bằng cùng bộ Furigana với trang ví dụ chi tiết.
-                        FuriganaText(
-                            text: sentence,
-                            mainWord: card.word,
-                            mainReading: card.reading,
-                            highlightTerms: VocabularyExampleFocus.variants(
-                                word: card.word, reading: card.reading, example: sentence),
-                            size: 15
-                        )
-                        .frame(maxWidth: .infinity, maxHeight: 78)
-                        .clipped()
-                        Text(card.displayExampleTranslation)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(3)
+                        // Hai dòng thuộc cùng một ví dụ: không chia khoảng trống độc lập.
+                        VStack(alignment: .center, spacing: 8) {
+                            FuriganaText(
+                                text: sentence,
+                                mainWord: card.word,
+                                mainReading: card.reading,
+                                highlightTerms: VocabularyExampleFocus.variants(
+                                    word: card.word, reading: card.reading, example: sentence),
+                                size: 15
+                            )
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            Text(card.displayExampleTranslation)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .frame(maxWidth: .infinity)
                     }
                     Spacer(minLength: 0)
                     Text("Chạm để xem mặt trước")

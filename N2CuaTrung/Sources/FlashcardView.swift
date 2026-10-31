@@ -35,7 +35,7 @@ struct FlashcardDeckView: View {
                         Pill(text: "\(position + 1) / \(cards.count)", color: Palette.blue)
                         Spacer(minLength: 4)
                         if autoPlay {
-                            Pill(text: revealed ? "Tạm dừng" : "Tự chạy Kanji", color: Palette.teal)
+                            Pill(text: revealed ? "Tạm dừng" : "Tự chạy từ", color: Palette.teal)
                         } else {
                             Text(card.topic).font(.caption).foregroundColor(.secondary).lineLimit(1)
                         }
@@ -63,7 +63,7 @@ struct FlashcardDeckView: View {
                         }
                     }
                     HStack(spacing: 8) {
-                        Text("Đổi Kanji mỗi").font(.caption).foregroundColor(.secondary)
+                        Text("Đổi từ mỗi").font(.caption).foregroundColor(.secondary)
                         Picker("Thời gian chuyển tự động", selection: $intervalSeconds) {
                             Text("3 giây").tag(3)
                             Text("5 giây").tag(5)
@@ -90,7 +90,7 @@ struct FlashcardDeckView: View {
                             mark(true, id: card.id)
                         }
                     }
-                    Text("Tự chạy đổi Kanji; chạm thẻ để lật qua lại và tạm dừng khi xem nghĩa.")
+                    Text("Tự chạy đổi từ; chạm thẻ để lật qua lại và tạm dừng khi xem nghĩa.")
                         .font(.caption2)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -198,23 +198,26 @@ struct FlashcardDeckView: View {
                         .minimumScaleFactor(0.75)
                     Divider()
                     if let sentence = card.approvedExampleJapanese {
-                        // Tô đỏ chính xác từ đang học (kể cả biến thể/chia động từ)
-                        // bằng cùng bộ Furigana với trang ví dụ chi tiết.
-                        FuriganaText(
-                            text: sentence,
-                            mainWord: card.word,
-                            mainReading: card.reading,
-                            highlightTerms: VocabularyExampleFocus.variants(
-                                word: card.word, reading: card.reading, example: sentence),
-                            size: 15
-                        )
-                        .frame(maxWidth: .infinity, maxHeight: 78)
-                        .clipped()
-                        Text(card.displayExampleTranslation)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(3)
+                        // Câu Nhật và bản dịch có chung mép trái, không bị lệch hàng.
+                        VStack(alignment: .leading, spacing: 8) {
+                            FuriganaText(
+                                text: sentence,
+                                mainWord: card.word,
+                                mainReading: card.reading,
+                                highlightTerms: VocabularyExampleFocus.variants(
+                                    word: card.word, reading: card.reading, example: sentence),
+                                size: 15
+                            )
+                            .frame(maxWidth: .infinity, maxHeight: 78, alignment: .leading)
+                            .clipped()
+                            Text(card.displayExampleTranslation)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(3)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     Spacer(minLength: 0)
                     Text("Chạm để xem mặt trước")

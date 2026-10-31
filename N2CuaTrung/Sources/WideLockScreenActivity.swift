@@ -21,7 +21,7 @@ final class WideStudyController: ObservableObject {
 
     private init() {
         let saved = UserDefaults.standard.integer(forKey: "N2LiveActivityRotation")
-        rotateSeconds = [0, 30, 60].contains(saved) ? saved : 60
+        rotateSeconds = [0, 3, 30, 60].contains(saved) ? saved : 60
         refreshStatus()
     }
 
@@ -152,14 +152,18 @@ struct WideLockScreenActivityPanel: View {
                     .font(.subheadline.weight(.semibold))
             }
 
-            Picker("Đổi từ tự động", selection: $controller.rotateSeconds) {
-                Text("Tắt").tag(0)
-                Text("30 giây").tag(30)
-                Text("60 giây").tag(60)
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Tự động đổi từ (Live Activity)")
+                    .font(.subheadline.weight(.semibold))
+                Picker("Đổi từ tự động", selection: $controller.rotateSeconds) {
+                    Text("Tắt").tag(0)
+                    Text("3 giây").tag(3)
+                    Text("30 giây").tag(30)
+                    Text("60 giây").tag(60)
+                }
+                .pickerStyle(.segmented)
             }
-            .pickerStyle(.segmented)
-
-            Text("Tự đổi từ 30/60 giây chỉ hoạt động ổn định khi app đang mở. iOS không cho phép bảo đảm hẹn giờ làm mới liên tục khi đã khóa màn hình.")
+            Text("Thử đổi mỗi 3 giây khi app đang mở. Khi khóa màn hình hoặc chạy nền, iOS giới hạn tốc độ cập nhật Live Activity; không thể bảo đảm mỗi 3 giây.")
                 .font(.caption).foregroundStyle(.secondary)
 
             // Nút này luôn khả dụng, kể cả sau khi iOS hủy phiên mà trạng thái cũ chưa đồng bộ.

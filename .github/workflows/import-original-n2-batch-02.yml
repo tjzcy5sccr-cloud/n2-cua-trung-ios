@@ -1,0 +1,47 @@
+name: Import original N2 batch 02 into four independent series
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - research/original-batch-02/lessons.json
+      - scripts/import_original_n2_batch02.py
+      - .github/workflows/import-original-n2-batch-02.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: n2-original-batch02-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  import-batch02:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout feature branch only
+        uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+          persist-credentials: true
+      - name: Import 100 original N2 entries with full passage translations
+        run: python3 scripts/import_original_n2_batch02.py
+      - name: Validate original source preserved and four series isolated
+        run: |
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py
+          python3 -m py_compile scripts/import_original_n2_batch02.py
+      - name: Save data and QA report to feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content-packs/n2-series-*.json content-packs/manifest-series.json qa-reports/n2-original-batch-02.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Import 100 original JLPT N2 learning entries across four independent study datasets"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Upload factual import report
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-original-batch02-import-audit
+          path: qa-reports/n2-original-batch-02.json
+          if-no-files-found: error
+          retention-days: 30

@@ -17,6 +17,10 @@ final class SouMatomePageEditor: ObservableObject {
     @Published var verifiedPageCount = 0
     @Published var query = ""
     @Published var matchingPages: [Int] = []
+    @Published var batchRunning = false
+    @Published var batchScannedPages = 0
+    @Published var batchTotalPages = 0
+    private var cancelBatchRequested = false
 
     private let root: URL
 
@@ -137,6 +141,40 @@ final class SouMatomePageEditor: ObservableObject {
         status = "Tìm thấy trên \(hits.count) trang (chỉ các trang có văn bản)."
     }
 
+    /// Resumable, locally stored OCR of the entire imported book, one page at
+    /// a time. Already-transcribed pages are skipped. No pages go to a server.
+    func recognizeEntireBook() async {
+        guard !batchRunning && !isWorking else { return }
+        batchRunning = true
+        cancelBatchRequested = false
+        batchScannedPages = 0
+        batchTotalPages = book.pages
+        defer { batchRunning = false }
+        for index in 1...book.pages {
+            if cancelBatchRequested || Task.isCancelled {
+                status = "Đã dừng tại trang \(index). Các trang đã lưu vẫn được giữ."
+                break
+            }
+            if FileManager.default.fileExists(atPath: textFile(index).path) {
+                batchScannedPages = index
+                continue
+            }
+            move(to: index)
+            await recognizeCurrentPage()
+            if !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                saveEdits()
+            }
+            batchScannedPages = index
+        }
+        if !cancelBatchRequested && batchScannedPages == book.pages {
+            status = "Đã xử lý toàn bộ \(book.pages) trang vào bộ nhớ cục bộ. Mọi trang vẫn cần đối chiếu thủ công."
+        }
+    }
+
+    func stopBatchRecognition() {
+        cancelBatchRequested = true
+    }
+
     /// Do not claim OCR equals correct transcription. Japanese layout, furigana,
     /// vertical writing, tables and choice numbers always need manual checking.
     func recognizeCurrentPage() async {
@@ -242,6 +280,21 @@ struct SouMatomePageWorkbenchView: View {
                         .background(Color.white, in: RoundedRectangle(cornerRadius: 10))
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(Palette.blue.opacity(0.18), lineWidth: 1))
+                    if editor.batchRunning {
+                        ProgressView(value: Double(editor.batchScannedPages),
+                                     total: Double(max(1, editor.batchTotalPages)))
+                        Text("Đang xử lý: \(editor.batchScannedPages)/\(editor.batchTotalPages) trang")
+                            .font(.caption).foregroundColor(.secondary)
+                        MainButton(title: "Dừng nhận dạng hàng loạt",
+                                   symbol: "stop.circle.fill", color: Palette.navy) {
+                            editor.stopBatchRecognition()
+                        }
+                    } else {
+                        MainButton(title: "Nhận dạng toàn bộ sách, lưu từng trang",
+                                   symbol: "doc.text.magnifyingglass", color: Palette.blue) {
+                            Task { await editor.recognizeEntireBook() }
+                        }
+                    }
                     MainButton(title: editor.isWorking ? "Đang nhận dạng…" : "Nhận dạng chữ Nhật trên trang",
                                symbol: "text.viewfinder") {
                         Task { await editor.recognizeCurrentPage() }

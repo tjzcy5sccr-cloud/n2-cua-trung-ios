@@ -1,0 +1,105 @@
+name: Build N2 full data IPA (preview e733fa8)
+"on":
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-full-data-e733fa8.yml'
+permissions:
+  contents: read
+concurrency:
+  group: n2-approved-full-data-e733fa8
+  cancel-in-progress: false
+jobs:
+  build-ios:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - name: Checkout source exactly matching shown preview
+        uses: actions/checkout@v4
+        with:
+          ref: 'e733fa804619ae761cb30d1c9667f3a9b3292d0e'
+      - name: Verify previewed commit SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 'e733fa804619ae761cb30d1c9667f3a9b3292d0e'
+          echo "USER-REQUESTED FULL DATA BUILD: e733fa804619ae761cb30d1c9667f3a9b3292d0e"
+      - name: Set up Python for offline Japanese Furigana
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit all course packages, grammar and example translations
+        run: python3 scripts/audit_all_course_content.py
+      - name: Upload full Japanese-Vietnamese review inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-translation-audit-report
+          path: |
+            qa-reports/n2-content-audit.json
+            qa-reports/n2-untranslated-audit.json
+          if-no-files-found: error
+      - name: Validate Vietnamese glossary and 214 radical table
+        run: python3 scripts/check_translation_quality.py
+      - name: Validate all original and unchecked content is preserved
+        run: python3 scripts/prepare_approved_app_resources.py
+      - name: Build full Japanese Furigana atlas (dictionary-based)
+        run: |
+          python -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python scripts/generate_furigana_atlas.py --strict
+      - name: Install XcodeGen
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+      - name: Draw the clover app icon
+        run: swift scripts/generate_clover_icon.swift
+      - name: Generate Xcode Project
+        run: xcodegen generate --spec project.yml
+      - name: Compile iPhone app (without code signing)
+        shell: bash
+        run: |
+          set -euo pipefail
+          xcodebuild -project N2CuaTrung.xcodeproj \
+            -scheme N2CuaTrung -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY='' build | tee xcodebuild.log
+      - name: Validate Live Activities in IPA payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release-iphoneos/N2CuaTrung.app"
+          test -f "$APP/Info.plist"
+          echo "Live Activities Info.plist:"
+          LIVE_VALUE=$(/usr/libexec/PlistBuddy -c 'Print :NSSupportsLiveActivities' "$APP/Info.plist")
+          echo "$LIVE_VALUE"
+          test "$LIVE_VALUE" = "true"
+          WIDGET=$(find "$APP/PlugIns" -maxdepth 1 -type d -name '*.appex' -print -quit)
+          test -n "$WIDGET"
+          WIDGET_TYPE=$(/usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionPointIdentifier' "$WIDGET/Info.plist")
+          echo "Widget extension type: $WIDGET_TYPE"
+          test "$WIDGET_TYPE" = 'com.apple.widgetkit-extension'
+          echo "PASS: Live Activities enabled and Widget Extension packaged."
+      - name: Package unsigned IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Payload
+          test -d build/Build/Products/Release-iphoneos/N2CuaTrung.app
+          cp -R build/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
+          zip -qry N2_cua_Trung_unsigned.ipa Payload
+          unzip -l N2_cua_Trung_unsigned.ipa | head -25
+      - name: Verify all original N2 lessons inside finished IPA
+        run: python3 scripts/validate_ipa_content.py
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-iOS-unsigned-IPA
+          path: N2_cua_Trung_unsigned.ipa
+          if-no-files-found: error
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-build-log
+          path: xcodebuild.log
+          if-no-files-found: ignore

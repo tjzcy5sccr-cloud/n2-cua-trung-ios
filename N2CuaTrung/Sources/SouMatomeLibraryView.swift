@@ -157,6 +157,7 @@ final class SouMatomeLibraryStore: ObservableObject {
         // An old corrected transcription cannot be certified for a replaced PDF.
         if replaced {
             SouMatomePersonalReviewStore().invalidateBook(book.id)
+            SouMatomeSourceEntryStore().invalidateImportedCandidates(for: book.id)
             let directory = root.appendingPathComponent("PageText", isDirectory: true)
                 .appendingPathComponent(book.id, isDirectory: true)
             try? FileManager.default.removeItem(at: directory)

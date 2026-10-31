@@ -1,0 +1,44 @@
+name: Add original N2 learning batch to the four isolated series
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - scripts/enrich_original_n2_batch.py
+      - .github/workflows/import-original-n2-batch.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: n2-original-batch-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  write-original-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+          persist-credentials: true
+      - name: Run original content generator
+        run: python3 scripts/enrich_original_n2_batch.py
+      - name: Validate new independent series and 35-week curriculum
+        run: |
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py
+      - name: Commit approved lesson batch without changing main or building IPA
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content-packs/n2-series-*.json content-packs/manifest-series.json qa-reports/original-n2-batch-01.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Add 74 original Vietnamese-reviewed N2 lesson components across four study packs"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Publish original-content QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-four-series-original-batch-01-report
+          path: qa-reports/original-n2-batch-01.json
+          retention-days: 30

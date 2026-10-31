@@ -17,6 +17,7 @@ struct SouMatomeWholeBooksView: View {
     @State private var results: [SouMatomeSourceSearchHit] = []
     @State private var searching = false
     @State private var searched = false
+    @State private var displayLimit = 150
 
     private var importedBooks: [SouMatomeDocument] {
         SouMatomeDocument.all.filter { library.fileURL(for: $0) != nil }
@@ -82,7 +83,7 @@ struct SouMatomeWholeBooksView: View {
                         Text("Các PDF ảnh quét chỉ tìm được sau khi nhận dạng chữ; một trang chưa tìm thấy không có nghĩa là sách bị thiếu nội dung.")
                             .font(.caption).foregroundColor(.secondary)
                     }
-                    ForEach(results.prefix(150)) { match in
+                    ForEach(results.prefix(displayLimit)) { match in
                         if let book = SouMatomeDocument.all.first(where: { $0.id == match.bookID }),
                            let url = library.fileURL(for: book) {
                             NavigationLink {
@@ -103,9 +104,10 @@ struct SouMatomeWholeBooksView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    if results.count > 150 {
-                        Text("Đang hiển thị 150 trang đầu có kết quả; thu hẹp từ khóa để xem những trang khác.")
-                            .font(.caption).foregroundColor(.secondary)
+                    if results.count > displayLimit {
+                        Button("Xem thêm trang (\(min(displayLimit, results.count))/\(results.count))") {
+                            displayLimit += 150
+                        }.buttonStyle(.bordered)
                     }
                 }
             }
@@ -171,6 +173,7 @@ struct SouMatomeWholeBooksView: View {
         searching = true
         searched = false
         results = []
+        displayLimit = 150
         Task {
             let matches = await Task.detached(priority: .userInitiated) {
                 () -> [SouMatomeSourceSearchHit] in

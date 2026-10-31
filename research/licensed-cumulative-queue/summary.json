@@ -34,8 +34,8 @@
       "N1": 62
     },
     "grammar": {
-      "N5": 81,
-      "N4": 69
+      "N2": 123,
+      "N3": 27
     }
   },
   "candidateByTrack": {
@@ -52,10 +52,10 @@
       "speed-master": 259
     },
     "grammar": {
-      "shin-kanzen": 40,
-      "speed-master": 33,
-      "sou-matome": 37,
-      "mimikara": 40
+      "sou-matome": 30,
+      "mimikara": 35,
+      "speed-master": 45,
+      "shin-kanzen": 40
     }
   },
   "VietnameseDictionarySingleHeadwordCandidates": {

@@ -1,0 +1,73 @@
+name: Build Sou Matome N2 iOS test IPA
+"on":
+  push:
+    branches:
+      - feature/n2-sou-matome-library-2026
+    paths:
+      - 'N2CuaTrung/**'
+      - 'N2Widget/**'
+      - 'content-packs/**'
+      - 'project.yml'
+      - 'scripts/**'
+      - '.github/workflows/build-sou-matome-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sou-matome-ios-test-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build-ios:
+    runs-on: macos-15
+    timeout-minutes: 55
+    steps:
+      - name: Check out current branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate independent packs and original source preservation
+        run: |
+          python3 scripts/validate_four_series_curriculum.py
+          python3 scripts/validate_series_packs.py
+          python3 scripts/prepare_approved_app_resources.py
+      - name: Generate offline furigana
+        run: |
+          python3 -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python3 scripts/generate_furigana_atlas.py --strict
+      - name: Install XcodeGen
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+      - name: Generate application icon
+        run: swift scripts/generate_clover_icon.swift
+      - name: Generate Xcode project
+        run: xcodegen generate --spec project.yml
+      - name: Compile iOS application
+        shell: bash
+        run: |
+          set -o pipefail
+          xcodebuild -project N2CuaTrung.xcodeproj -scheme N2CuaTrung \
+            -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' build 2>&1 | tee xcodebuild.log
+      - name: Export test IPA without signing
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
+          zip -qry N2_cua_Trung_unsigned.ipa Payload
+          python3 scripts/validate_ipa_content.py
+      - name: Upload IPA test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-Sou-Matome-iOS-unsigned-${{ github.sha }}
+          path: N2_cua_Trung_unsigned.ipa
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sou-Matome-build-log-${{ github.sha }}
+          path: xcodebuild.log
+          if-no-files-found: ignore

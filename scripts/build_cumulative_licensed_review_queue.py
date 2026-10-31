@@ -138,7 +138,11 @@ for cat in ("vocab","kanji","grammar"):
         }
     arr=list(unique.values())
     # Core N5–N2 before any N1-extension item, deterministic by source order.
-    arr.sort(key=lambda x:(LEVELS.index(x["sourceLevel"].lower()),x["id"]))
+    # N2 grammar is the actual study target (110–170 structures). Include
+    # a small N3 transition segment only if the N2 list is below 150; never
+    # fill its quota with basic N5 grammar just because it sorts first.
+    priority={"n2":0,"n3":1,"n4":2,"n5":3,"n1":4} if cat=="grammar" else {lvl:i for i,lvl in enumerate(LEVELS)}
+    arr.sort(key=lambda x:(priority[x["sourceLevel"].lower()],x["id"]))
     all_unique[cat]=arr
     target=MAX[cat]
     chosen[cat]=arr[:target] if len(arr)>=target else arr

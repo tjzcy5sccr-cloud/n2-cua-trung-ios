@@ -1,0 +1,39 @@
+name: Verify Sou Matome private library
+"on":
+  push:
+    branches:
+      - feature/n2-sou-matome-library-2026
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check 5 books, 3 supporting PDFs and CD track coverage
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('research/sou-matome/source-catalog.json').read_text(encoding='utf-8'))
+          books = d['documents']
+          assert len(books) == 8
+          assert len([b for b in books if b['sectionType'] != 'supplement']) == 5
+          assert len([b for b in books if b['sectionType'] == 'supplement']) == 3
+          assert sum(b['pages'] for b in books) == 1239
+          assert all(0 < p <= b['pages'] for b in books for p in b['sectionStarts'])
+          assert sum(cd['mp3Count'] for cd in d['listeningCDs']) == 116
+          assert all(cd['trackEnd'] - cd['trackStart'] + 1 == cd['mp3Count'] for cd in d['listeningCDs'])
+          print('PASS: metadata catalog: 8 PDFs, 1,239 pages, 116 MP3 tracks')
+          PY
+      - name: Check Swift source syntax
+        run: |
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeLibraryView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift
+      - name: Validate independent study packs
+        run: |
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py

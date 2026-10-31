@@ -8,3 +8,13 @@ Payload/
 xcuserdata/
 *.xcresult
 N2CuaTrung.xcodeproj/
+
+# User-owned Sou Matome sources and local transcription output must NEVER be
+# committed to a public repository. Only schemas, tools and QA counts belong here.
+sou-matome-private/
+SouMatomePersonalLibrary/
+private-draft-candidates.json
+verified-study-cards.json
+sou-matome-personal-reviewed.json
+*_user_owned_textbook.pdf
+*_soumatome_user_CD/

@@ -13,20 +13,26 @@ struct Vocabulary: Decodable, Identifiable {
     let meaningStatus: String?
     let meaningSource: String?
     let exampleStatus: String?
+    /// Nội dung chưa được hiệu đính chỉ lưu ở GitHub, không làm thẻ học.
+    private var approvedStatuses: Set<String> {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+    }
     var isApprovedForStudy: Bool {
+        approvedStatuses.contains(meaningStatus ?? "") &&
         !word.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !meaning.hasPrefix("EN ·")
     }
-    var isMeaningVerified: Bool {
-        ["editorial_reviewed", "source_verified", "independently_verified"].contains(meaningStatus ?? "")
-    }
+    var isMeaningVerified: Bool { isApprovedForStudy }
     var hasApprovedExample: Bool {
+        approvedStatuses.contains(exampleStatus ?? "") &&
         !example.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !(exampleVi ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !(exampleVi ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !(exampleVi ?? "").hasPrefix("EN ·")
     }
-    var displayMeaning: String { meaning }
-    var displayExampleTranslation: String { exampleVi ?? "" }
-    var approvedExampleJapanese: String? { example.isEmpty ? nil : example }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
+    var displayExampleTranslation: String { hasApprovedExample ? (exampleVi ?? "") : "" }
+    var approvedExampleJapanese: String? { hasApprovedExample ? example : nil }
 
 }
 
@@ -42,13 +48,19 @@ struct Grammar: Decodable, Identifiable {
     let grammarStatus: String?
     let translationStatus: String?
     var isApprovedForStudy: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(grammarStatus ?? "") &&
         !pattern.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !meaning.hasPrefix("EN ·")
     }
-    var hasApprovedExample: Bool { !example.isEmpty && !translation.isEmpty }
-    var displayMeaning: String { meaning }
-    var displayRule: String { rule }
-    var displayTranslation: String { translation }
+    var hasApprovedExample: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(translationStatus ?? "") && !example.isEmpty && !translation.isEmpty
+    }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
+    var displayRule: String { isApprovedForStudy ? rule : "" }
+    var displayTranslation: String { hasApprovedExample ? translation : "" }
 
 }
 
@@ -61,13 +73,14 @@ struct Kanji: Decodable, Identifiable {
     let word: String
     let meaningStatus: String?
     var isApprovedForStudy: Bool {
+        ["editorial_reviewed", "source_verified", "independently_verified"]
+            .contains(meaningStatus ?? "") &&
         !char.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !meaning.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !meaning.hasPrefix("EN ·")
     }
-    var isMeaningVerified: Bool {
-        ["editorial_reviewed", "source_verified", "independently_verified"].contains(meaningStatus ?? "")
-    }
-    var displayMeaning: String { meaning }
+    var isMeaningVerified: Bool { isApprovedForStudy }
+    var displayMeaning: String { isApprovedForStudy ? meaning : "" }
 
 }
 

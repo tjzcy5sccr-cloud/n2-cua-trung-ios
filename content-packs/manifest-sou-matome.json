@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "packs": [
+    {
+      "id": "n2-series-sou-matome",
+      "version": 7,
+      "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-sou-matome-library-2026/content-packs/n2-series-sou-matome.json"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_ONLY_UNREVIEWED",
+  "not100PercentComplete": true,
+  "notOfficialJLPTList": true,
+  "target": {
+    "vocabulary": 6000,
+    "kanji": 1100,
+    "grammar": 150
+  },
+  "fullSourceUnique": {
+    "vocab": 7811,
+    "kanji": 2383,
+    "grammar": 526
+  },
+  "selectedCandidateCounts": {
+    "vocab": 6000,
+    "kanji": 1100,
+    "grammar": 150
+  },
+  "candidateByLevel": {
+    "vocab": {
+      "N5": 674,
+      "N4": 630,
+      "N3": 1659,
+      "N2": 1778,
+      "N1": 1259
+    },
+    "kanji": {
+      "N5": 84,
+      "N4": 169,
+      "N3": 387,
+      "N2": 398,
+      "N1": 62
+    },
+    "grammar": {
+      "N5": 81,
+      "N4": 69
+    }
+  },
+  "candidateByTrack": {
+    "vocab": {
+      "mimikara": 1501,
+      "shin-kanzen": 1502,
+      "sou-matome": 1563,
+      "speed-master": 1434
+    },
+    "kanji": {
+      "mimikara": 283,
+      "shin-kanzen": 296,
+      "sou-matome": 262,
+      "speed-master": 259
+    },
+    "grammar": {
+      "shin-kanzen": 40,
+      "speed-master": 33,
+      "sou-matome": 37,
+      "mimikara": 40
+    }
+  },
+  "VietnameseDictionarySingleHeadwordCandidates": {
+    "vocab": 5626,
+    "kanji": 925,
+    "grammar": 0
+  },
+  "matchedWithNoReadingVerification": true,
+  "externalExpertVerifiedCount": 0,
+  "license": "CC BY-SA 4.0",
+  "sources": [
+    {
+      "repository": "evanclan/OpenJLPT",
+      "commit": "0d1d3410bec90bd4098a7c72de820543cb4f707c",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "repository": "bunchaway/tu-dien-nhat-viet",
+      "commit": "6b1e9248c5382949115ccf1f5e8846d0fc85d6ad",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "reminder": "N5-N2 constitutes the cumulative foundation; any N1 entries fill only optional stretch goals and are explicitly labeled. Publication requires individual review, no textbook copies.",
+  "upstreamCounts": {
+    "vocab_n5": 674,
+    "vocab_n4": 630,
+    "vocab_n3": 1659,
+    "vocab_n2": 1778,
+    "vocab_n1": 3070,
+    "kanji_n5": 84,
+    "kanji_n4": 169,
+    "kanji_n3": 387,
+    "kanji_n2": 398,
+    "kanji_n1": 1345,
+    "grammar_n5": 81,
+    "grammar_n4": 98,
+    "grammar_n3": 101,
+    "grammar_n2": 123,
+    "grammar_n1": 123
+  },
+  "dictionaryRows": 360083,
+  "output": "Research queue only: intentionally not referenced in project.yml or copied into IPA."
+}

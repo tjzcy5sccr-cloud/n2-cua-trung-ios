@@ -1,0 +1,1863 @@
+{
+  "schemaVersion": 1,
+  "id": "n2-four-series-35w",
+  "title": "N2 của Trung – Chương trình 4 hướng học",
+  "audience": "Ôn từ N3 lên N2, mục tiêu JLPT tháng 7/2027",
+  "hoursPerDay": 90,
+  "daysPerWeek": 6,
+  "totalWeeks": 35,
+  "targets": {
+    "vocabulary": 6000,
+    "kanji": 1100,
+    "grammar": 150,
+    "readingSessions": 70,
+    "listeningSessions": 70
+  },
+  "targetsNote": "Chỉ tiêu nghiên cứu dài hạn, không phải khối lượng dữ liệu hiện có trong app hay danh sách từ chính thức của JLPT.",
+  "tracks": [
+    {
+      "id": "mimikara",
+      "name": "Mimikara Oboeru",
+      "focus": "Học từ theo ngữ cảnh, đọc to, ghi nhớ qua nghe và đối thoại.",
+      "skills": [
+        "Từ vựng",
+        "Ngữ pháp",
+        "Nghe hiểu"
+      ],
+      "appAction": "Flashcard",
+      "copyright": "Chỉ tham khảo phương pháp học; bài tập/giải thích tự soạn, không nhập nội dung sách hoặc audio thương mại."
+    },
+    {
+      "id": "shin-kanzen",
+      "name": "Shin Kanzen Master",
+      "focus": "Phân tích cấu trúc, đọc chính xác, nghe chọn thông tin và chữa lỗi theo kỹ năng.",
+      "skills": [
+        "Ngữ pháp",
+        "Đọc hiểu",
+        "Nghe hiểu",
+        "Kanji",
+        "Từ vựng"
+      ],
+      "appAction": "Luyện tập",
+      "copyright": "Không sao chép đề, bài đọc, câu ví dụ hoặc đáp án từ sách."
+    },
+    {
+      "id": "so-matome",
+      "name": "Nihongo Sou Matome",
+      "focus": "Chia nhỏ mục tiêu, học sáu ngày và dành chủ nhật để rà soát.",
+      "skills": [
+        "Từ vựng",
+        "Kanji",
+        "Ngữ pháp",
+        "Đọc hiểu",
+        "Nghe hiểu"
+      ],
+      "appAction": "Lộ trình",
+      "copyright": "Mô phỏng nhịp học theo tuần bằng kế hoạch tự xây dựng, không chép nội dung gốc."
+    },
+    {
+      "id": "speed-master",
+      "name": "Speed Master / Kanji Master",
+      "focus": "Bấm giờ, phân loại lỗi, nhận diện nhanh chữ Hán và ngữ cảnh.",
+      "skills": [
+        "Kanji",
+        "Từ vựng",
+        "Luyện đề"
+      ],
+      "appAction": "Luyện đề",
+      "copyright": "Câu hỏi luyện tập độc lập, không sử dụng ảnh chụp trang sách hoặc đề bản quyền."
+    }
+  ],
+  "weeks": [
+    {
+      "number": 1,
+      "dateRange": "02/11/2026 – 08/11/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Giới thiệu bản thân và môi trường làm việc",
+      "grammarFocus": "cách giải thích, nhấn mạnh và phủ định một phần",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w01-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w01-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w01-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w01-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w01-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w01-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: giới thiệu bản thân và môi trường làm việc. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 2,
+      "dateRange": "09/11/2026 – 15/11/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Giao tiếp nơi công sở và lịch hẹn",
+      "grammarFocus": "thời điểm, điều kiện và hành động song song",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w02-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w02-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w02-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w02-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w02-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w02-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: giao tiếp nơi công sở và lịch hẹn. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 3,
+      "dateRange": "16/11/2026 – 22/11/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Sinh hoạt, nhà cửa và chuyển nhà",
+      "grammarFocus": "mức độ, phạm vi và giới hạn",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w03-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w03-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w03-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w03-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w03-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w03-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: sinh hoạt, nhà cửa và chuyển nhà. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 4,
+      "dateRange": "23/11/2026 – 29/11/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Mua sắm, tiền bạc và dịch vụ",
+      "grammarFocus": "thói quen, thay đổi và khả năng",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w04-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w04-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w04-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w04-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w04-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w04-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: mua sắm, tiền bạc và dịch vụ. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 5,
+      "dateRange": "30/11/2026 – 06/12/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Di chuyển, giao thông và an toàn",
+      "grammarFocus": "nguyên nhân, mục đích và lý do",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w05-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w05-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w05-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w05-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w05-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w05-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: di chuyển, giao thông và an toàn. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 6,
+      "dateRange": "07/12/2026 – 13/12/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Sức khỏe, thói quen và cuộc sống",
+      "grammarFocus": "kết quả ngoài ý muốn và đánh giá",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w06-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w06-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w06-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w06-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w06-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w06-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: sức khỏe, thói quen và cuộc sống. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 7,
+      "dateRange": "14/12/2026 – 20/12/2026",
+      "phase": "Nền tảng N3 → N2",
+      "theme": "Tổng ôn nền tảng N3 → N2",
+      "grammarFocus": "so sánh các cách diễn đạt gần nghĩa",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w07-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w07-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w07-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w07-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w07-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w07-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: tổng ôn nền tảng n3 → n2. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 8,
+      "dateRange": "21/12/2026 – 27/12/2026",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Trường học, học tập và nghiên cứu",
+      "grammarFocus": "quan hệ nhượng bộ và ngoại lệ",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w08-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w08-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w08-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w08-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w08-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w08-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: trường học, học tập và nghiên cứu. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 9,
+      "dateRange": "28/12/2026 – 03/01/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Việc làm, tuyển dụng và phỏng vấn",
+      "grammarFocus": "đề xuất, nguyện vọng và thỏa thuận",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w09-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w09-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w09-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w09-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w09-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w09-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: việc làm, tuyển dụng và phỏng vấn. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 10,
+      "dateRange": "04/01/2027 – 10/01/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Công nghệ và cuộc sống số",
+      "grammarFocus": "diễn đạt tình huống giả định",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w10-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w10-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w10-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w10-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w10-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w10-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: công nghệ và cuộc sống số. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 11,
+      "dateRange": "11/01/2027 – 17/01/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Gia đình và quan hệ xã hội",
+      "grammarFocus": "trình tự và mối liên hệ hai hành động",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w11-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w11-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w11-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w11-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w11-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w11-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: gia đình và quan hệ xã hội. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 12,
+      "dateRange": "18/01/2027 – 24/01/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Du lịch, địa danh và văn hóa",
+      "grammarFocus": "quyết định và sự thay đổi trạng thái",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w12-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w12-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w12-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w12-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w12-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w12-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: du lịch, địa danh và văn hóa. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 13,
+      "dateRange": "25/01/2027 – 31/01/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Môi trường, thời tiết và thiên nhiên",
+      "grammarFocus": "điều kiện, giới hạn và ngoại lệ",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w13-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w13-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w13-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w13-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w13-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w13-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: môi trường, thời tiết và thiên nhiên. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 14,
+      "dateRange": "01/02/2027 – 07/02/2027",
+      "phase": "Kiến thức theo chủ đề",
+      "theme": "Tổng ôn chủ đề – phản xạ",
+      "grammarFocus": "phân biệt sắc thái câu thường gặp",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w14-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w14-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w14-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w14-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w14-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w14-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: tổng ôn chủ đề – phản xạ. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 15,
+      "dateRange": "08/02/2027 – 14/02/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Tường thuật sự việc và kinh nghiệm",
+      "grammarFocus": "diễn đạt tương phản, đồng thời",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w15-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w15-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w15-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w15-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w15-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w15-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: tường thuật sự việc và kinh nghiệm. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 16,
+      "dateRange": "15/02/2027 – 21/02/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Nêu nguyên nhân, kết quả và trách nhiệm",
+      "grammarFocus": "truy nguyên nguyên nhân – kết quả",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w16-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w16-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w16-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w16-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w16-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w16-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: nêu nguyên nhân, kết quả và trách nhiệm. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 17,
+      "dateRange": "22/02/2027 – 28/02/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "So sánh, đánh giá và lựa chọn",
+      "grammarFocus": "đánh giá khách quan và chủ quan",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w17-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w17-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w17-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w17-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w17-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w17-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: so sánh, đánh giá và lựa chọn. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 18,
+      "dateRange": "01/03/2027 – 07/03/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Suy luận, khả năng và dự đoán",
+      "grammarFocus": "suy đoán có căn cứ",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w18-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w18-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w18-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w18-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w18-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w18-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: suy luận, khả năng và dự đoán. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 19,
+      "dateRange": "08/03/2027 – 14/03/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Ý kiến, lập luận và phản biện",
+      "grammarFocus": "lập luận, khẳng định và phản bác",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w19-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w19-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w19-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w19-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w19-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w19-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: ý kiến, lập luận và phản biện. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 20,
+      "dateRange": "15/03/2027 – 21/03/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Quy trình, quy định và thông báo",
+      "grammarFocus": "trách nhiệm, nghĩa vụ và quy định",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w20-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w20-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w20-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w20-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w20-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w20-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: quy trình, quy định và thông báo. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 21,
+      "dateRange": "22/03/2027 – 28/03/2027",
+      "phase": "Ngữ pháp và cách dùng",
+      "theme": "Tổng ôn ngữ pháp theo chức năng",
+      "grammarFocus": "hệ thống hóa ngữ pháp theo chức năng",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w21-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w21-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w21-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w21-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w21-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w21-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: tổng ôn ngữ pháp theo chức năng. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 22,
+      "dateRange": "29/03/2027 – 04/04/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Đọc thông báo, thư và email",
+      "grammarFocus": "ngữ pháp trong văn bản thông báo",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w22-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w22-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w22-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w22-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w22-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w22-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: đọc thông báo, thư và email. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 23,
+      "dateRange": "05/04/2027 – 11/04/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Đọc báo, bài giải thích và dữ liệu",
+      "grammarFocus": "liên kết câu và ý chính",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w23-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w23-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w23-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w23-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w23-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w23-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: đọc báo, bài giải thích và dữ liệu. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 24,
+      "dateRange": "12/04/2027 – 18/04/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Đọc đoạn quan điểm và lập luận",
+      "grammarFocus": "quan hệ lập luận và kết luận",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w24-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w24-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w24-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w24-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w24-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w24-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: đọc đoạn quan điểm và lập luận. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 25,
+      "dateRange": "19/04/2027 – 25/04/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Nghe hướng dẫn, thông báo và hội thoại",
+      "grammarFocus": "từ nối khi nghe thông báo",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w25-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w25-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w25-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w25-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w25-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w25-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: nghe hướng dẫn, thông báo và hội thoại. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 26,
+      "dateRange": "26/04/2027 – 02/05/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Nghe thảo luận, chọn giải pháp",
+      "grammarFocus": "sắc thái câu trong hội thoại",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w26-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w26-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w26-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w26-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w26-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w26-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: nghe thảo luận, chọn giải pháp. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 27,
+      "dateRange": "03/05/2027 – 09/05/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Xử lý câu hỏi tổng hợp nhiều kỹ năng",
+      "grammarFocus": "nhận diện bẫy ngữ pháp trong đề",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w27-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w27-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w27-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w27-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w27-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w27-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: xử lý câu hỏi tổng hợp nhiều kỹ năng. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 28,
+      "dateRange": "10/05/2027 – 16/05/2027",
+      "phase": "Đọc/nghe chuyên sâu",
+      "theme": "Đề thử và phân tích lỗi",
+      "grammarFocus": "chữa lỗi cấu trúc thường sai",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w28-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w28-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w28-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w28-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w28-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w28-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: đề thử và phân tích lỗi. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 29,
+      "dateRange": "17/05/2027 – 23/05/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Luyện đề chữ Hán và từ vựng",
+      "grammarFocus": "từ đồng nghĩa và cách dùng",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w29-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w29-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w29-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w29-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w29-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w29-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: luyện đề chữ hán và từ vựng. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 30,
+      "dateRange": "24/05/2027 – 30/05/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Luyện đề ngữ pháp – đọc ngắn",
+      "grammarFocus": "cấu trúc gần nghĩa và dễ nhầm",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w30-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w30-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w30-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w30-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w30-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w30-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: luyện đề ngữ pháp – đọc ngắn. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 31,
+      "dateRange": "31/05/2027 – 06/06/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Luyện đề đọc dài và thông tin",
+      "grammarFocus": "liên kết ý trong đoạn dài",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w31-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w31-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w31-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w31-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w31-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w31-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: luyện đề đọc dài và thông tin. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 32,
+      "dateRange": "07/06/2027 – 13/06/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Luyện đề nghe phản xạ nhanh",
+      "grammarFocus": "nhận biết ý chính khi nghe",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w32-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w32-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w32-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w32-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w32-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w32-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: luyện đề nghe phản xạ nhanh. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 33,
+      "dateRange": "14/06/2027 – 20/06/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Luyện đề tổng hợp bấm giờ",
+      "grammarFocus": "điểm ngữ pháp trong đề trọn bộ",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w33-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w33-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w33-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w33-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w33-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w33-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: luyện đề tổng hợp bấm giờ. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 34,
+      "dateRange": "21/06/2027 – 27/06/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Tổng ôn nhóm sai nhiều nhất",
+      "grammarFocus": "điểm yếu cá nhân",
+      "targets": {
+        "vocabulary": 171,
+        "kanji": 31,
+        "grammar": 4
+      },
+      "days": [
+        {
+          "id": "w34-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w34-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w34-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w34-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w34-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w34-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: tổng ôn nhóm sai nhiều nhất. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    },
+    {
+      "number": 35,
+      "dateRange": "28/06/2027 – 04/07/2027",
+      "phase": "Luyện đề và củng cố",
+      "theme": "Rà soát kiến thức và giữ sức trước kỳ thi",
+      "grammarFocus": "ôn ngữ pháp theo danh sách lỗi",
+      "targets": {
+        "vocabulary": 172,
+        "kanji": 32,
+        "grammar": 5
+      },
+      "days": [
+        {
+          "id": "w35-d1",
+          "day": "Thứ hai",
+          "primarySkill": "Từ vựng",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút từ vựng chủ điểm; 20 phút Kanji; 25 phút ngữ pháp; 15 phút đọc ngắn; 10 phút ôn sai."
+        },
+        {
+          "id": "w35-d2",
+          "day": "Thứ ba",
+          "primarySkill": "Kanji",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút từ đồng nghĩa/trái nghĩa; 20 phút chữ Hán và từ ghép; 25 phút ngữ pháp; 15 phút nghe tình huống; 10 phút ôn sai."
+        },
+        {
+          "id": "w35-d3",
+          "day": "Thứ tư",
+          "primarySkill": "Ngữ pháp",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút từ vựng qua ví dụ tự biên soạn; 20 phút Kanji; 25 phút cấu trúc/cách dùng; 15 phút đọc ý chính; 10 phút nhắc lại."
+        },
+        {
+          "id": "w35-d4",
+          "day": "Thứ năm",
+          "primarySkill": "Đọc hiểu",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút ôn từ yếu; 20 phút đọc âm Hán/On/Kun; 25 phút so sánh ngữ pháp; 15 phút đọc nhanh; 10 phút ghi lỗi."
+        },
+        {
+          "id": "w35-d5",
+          "day": "Thứ sáu",
+          "primarySkill": "Nghe hiểu",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút từ theo ngữ cảnh; 20 phút Kanji từ ghép; 25 phút ứng dụng ngữ pháp; 15 phút nghe lấy thông tin; 10 phút tổng kết."
+        },
+        {
+          "id": "w35-d6",
+          "day": "Thứ bảy",
+          "primarySkill": "Luyện đề",
+          "task": "Chủ đề: rà soát kiến thức và giữ sức trước kỳ thi. 20 phút ôn flashcard; 20 phút kiểm tra chữ; 25 phút bài trắc nghiệm; 15 phút đọc/nghe; 10 phút phân tích câu sai."
+        }
+      ],
+      "review": "Chủ nhật: ôn lại các lỗi, nghỉ ngơi; xem lại kết quả trước khi sang tuần mới."
+    }
+  ],
+  "attribution": "© 2026 Trần Phước Trung. Bảo lưu mọi quyền. Tên các bộ sách là tài liệu tham khảo của các chủ sở hữu tương ứng.",
+  "sourceNotes": [
+    "https://www.3anet.co.jp/np/en/books/3632/",
+    "https://www.3anet.co.jp/np/en/books/3622/"
+  ]
+}

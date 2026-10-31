@@ -31,6 +31,8 @@ targets:
       - path: N2CuaTrung/Sources
       - path: N2CuaTrung/Resources/content.json
         buildPhase: resources
+      - path: N2CuaTrung/Resources/n2-four-series-curriculum.json
+        buildPhase: resources
       - path: N2CuaTrung/Resources/grammar-details.json
         buildPhase: resources
       - path: N2CuaTrung/Resources/furigana-atlas.json

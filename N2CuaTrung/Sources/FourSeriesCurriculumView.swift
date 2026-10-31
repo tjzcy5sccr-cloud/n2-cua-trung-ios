@@ -105,6 +105,14 @@ struct FourSeriesCurriculumView: View {
                             }
                             Text("Đây là chỉ tiêu tuần, không phải số bài đã được kiểm duyệt hoặc có sẵn trong kho.")
                                 .font(.caption2).foregroundColor(.secondary)
+                            if store.week == week.number {
+                                Label("Đang áp dụng tuần (week.number)", systemImage: "checkmark.circle.fill")
+                                    .font(.subheadline.weight(.semibold)).foregroundColor(Palette.teal)
+                            } else {
+                                MainButton(title: "Học theo tuần (week.number)", symbol: "calendar.badge.clock", color: Palette.blue) {
+                                    store.selectWeek(week.number)
+                                }
+                            }
                         }
                     }
                     if let week {

@@ -100,7 +100,12 @@ def main():
             pack["version"]+=1
             write(path,pack)
             changed=True
-        by_series[name]={"added":added,"version":pack["version"],
+        # A re-run must never rewrite the historic batch-size report to zero.
+        # "added" is cumulative batch coverage, not newly-written this run.
+        present={kind:sum(x["id"].startswith("trung-original-b03-") for x in pack[kind])
+                 for kind in KINDS}
+        by_series[name]={"added":present,"newlyImportedThisRun":added,
+                         "version":pack["version"],
                          "total":{k:len(pack[k]) for k in KINDS}}
         record=next(x for x in manifest["packs"] if x["id"]==pack["id"])
         record["version"]=pack["version"]
@@ -114,7 +119,10 @@ def main():
         "textbookCopy":False,
         "review":"Internal editorial review only, external dictionary verification pending",
         "notComplete100Percent":True,
-        "added":totals,"series":by_series
+        "added":{kind:sum(info["added"][kind] for info in by_series.values())
+                 for kind in KINDS},
+        "newlyImportedThisRun":totals,
+        "series":by_series
     }
     output=ROOT/"qa-reports/n2-original-batch-03.json"
     output.parent.mkdir(exist_ok=True)

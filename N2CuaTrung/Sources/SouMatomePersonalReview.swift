@@ -45,8 +45,8 @@ struct SouMatomePersonalCard: Codable, Identifiable {
 
     static func draft(_ entry: SouMatomeSourceEntry) -> SouMatomePersonalCard {
         .init(id: entry.id, bookID: entry.bookId, page: entry.page,
-              kind: entry.skill, japanese: entry.heading, reading: "",
-              vietnamese: entry.detail, explanation: "",
+              kind: entry.skill, japanese: entry.heading,
+              reading: entry.reading ?? "", vietnamese: entry.detail, explanation: "",
               exampleJapanese: "", exampleVietnamese: "",
               onReading: "", kunReading: "", relatedWord: "",
               sourceChecked: false, translationChecked: false,
@@ -194,10 +194,13 @@ final class SouMatomePersonalReviewStore: ObservableObject {
 
 enum SouMatomeReviewError: LocalizedError {
     case noApprovedCards
+    case invalidCandidateFile
     var errorDescription: String? {
         switch self {
         case .noApprovedCards:
             return "Chưa có mục nào đã được đối chiếu cả chữ Nhật và nghĩa Việt."
+        case .invalidCandidateFile:
+            return "Tệp ứng viên không hợp lệ, bị trùng ID, quá lớn hoặc thiếu liên kết đến trang sách."
         }
     }
 }

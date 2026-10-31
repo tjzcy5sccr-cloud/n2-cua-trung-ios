@@ -1,6 +1,6 @@
 {
   "id": "n2-series-speed-master",
-  "version": 2,
+  "version": 3,
   "seriesId": "speed-master",
   "title": "Speed/Kanji Master – Bộ phản xạ Kanji do N2 của Trung tuyển chọn",
   "vocab": [
@@ -1839,6 +1839,162 @@
       "exampleTranslationModel": "Helsinki-NLP/opus-mt-ja-vi, Apache-2.0",
       "exampleTranslationGloss": "đùa giỡn quá trớn, nghịch ngợm",
       "exampleSenseCheck": "gloss_token_overlap"
+    },
+    {
+      "id": "trung-original-v-speed-master-001",
+      "word": "通知",
+      "reading": "つうち",
+      "meaning": "thông báo",
+      "example": "試験の日程がメールで通知されました。",
+      "exampleVi": "Lịch thi đã được thông báo qua email.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-002",
+      "word": "改善策",
+      "reading": "かいぜんさく",
+      "meaning": "biện pháp cải thiện",
+      "example": "失敗の原因を調べて改善策を考えます。",
+      "exampleVi": "Tôi sẽ tìm nguyên nhân thất bại và nghĩ ra biện pháp cải thiện.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-003",
+      "word": "要約",
+      "reading": "ようやく",
+      "meaning": "sự tóm tắt",
+      "example": "文章の内容を三行で要約してください。",
+      "exampleVi": "Hãy tóm tắt nội dung đoạn văn trong ba dòng.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-004",
+      "word": "周知",
+      "reading": "しゅうち",
+      "meaning": "sự phổ biến; thông báo rộng rãi",
+      "example": "変更点を全員に周知します。",
+      "exampleVi": "Chúng tôi sẽ thông báo những điểm thay đổi cho tất cả mọi người.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-005",
+      "word": "予測",
+      "reading": "よそく",
+      "meaning": "dự đoán",
+      "example": "来月の売上を予測しています。",
+      "exampleVi": "Chúng tôi đang dự đoán doanh thu tháng sau.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-006",
+      "word": "手配",
+      "reading": "てはい",
+      "meaning": "sắp xếp; chuẩn bị",
+      "example": "出張のためにホテルを手配しました。",
+      "exampleVi": "Tôi đã đặt khách sạn cho chuyến công tác.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-007",
+      "word": "人員",
+      "reading": "じんいん",
+      "meaning": "nhân sự; số người",
+      "example": "新しい仕事には人員が足りません。",
+      "exampleVi": "Công việc mới đang thiếu nhân sự.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-008",
+      "word": "議事録",
+      "reading": "ぎじろく",
+      "meaning": "biên bản cuộc họp",
+      "example": "会議が終わったら議事録を共有します。",
+      "exampleVi": "Sau khi họp xong, tôi sẽ chia sẻ biên bản cuộc họp.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-009",
+      "word": "緊急",
+      "reading": "きんきゅう",
+      "meaning": "khẩn cấp",
+      "example": "緊急の場合はこの番号に連絡してください。",
+      "exampleVi": "Trong trường hợp khẩn cấp hãy liên hệ số này.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-010",
+      "word": "公平",
+      "reading": "こうへい",
+      "meaning": "công bằng",
+      "example": "全員を公平に評価することが大切です。",
+      "exampleVi": "Việc đánh giá mọi người công bằng là rất quan trọng.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-011",
+      "word": "収集",
+      "reading": "しゅうしゅう",
+      "meaning": "thu thập",
+      "example": "必要な情報を収集しています。",
+      "exampleVi": "Chúng tôi đang thu thập thông tin cần thiết.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-speed-master-012",
+      "word": "分析",
+      "reading": "ぶんせき",
+      "meaning": "phân tích",
+      "example": "調査の結果を分析します。",
+      "exampleVi": "Tôi sẽ phân tích kết quả khảo sát.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2255,6 +2411,30 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-speed-master-001",
+      "pattern": "〜というより",
+      "meaning": "đúng hơn là; thay vì nói",
+      "rule": "Cụm từ hoặc mệnh đề + というより; điều chỉnh lại cách diễn đạt cho chính xác hơn.",
+      "example": "この作業は難しいというより、時間がかかります。",
+      "translation": "Công việc này không hẳn khó mà đúng hơn là tốn thời gian.",
+      "week": 15,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-speed-master-002",
+      "pattern": "〜かと思うと",
+      "meaning": "vừa mới... thì đã...",
+      "rule": "Động từ thể た + かと思うと; hai sự việc nối tiếp nhanh, thường là hiện tượng quan sát được.",
+      "example": "電車が到着したかと思うと、すぐに乗客が降りてきました。",
+      "translation": "Tàu vừa đến thì hành khách đã xuống ngay.",
+      "week": 16,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2618,6 +2798,42 @@
       "kun": "か.える・-か.える・か.わる",
       "meaning": "thay đổi, hoán đổi",
       "word": "",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-speed-master-001",
+      "char": "析",
+      "on": "セキ",
+      "kun": "",
+      "meaning": "tích; phân tích, tách ra",
+      "word": "分析",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-speed-master-002",
+      "char": "測",
+      "on": "ソク",
+      "kun": "はかる",
+      "meaning": "trắc; đo lường, dự đoán",
+      "word": "予測",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-speed-master-003",
+      "char": "収",
+      "on": "シュウ",
+      "kun": "おさめる、おさまる",
+      "meaning": "thu; thu nhận, thu gom",
+      "word": "収集",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-speed-master-004",
+      "char": "緊",
+      "on": "キン",
+      "kun": "",
+      "meaning": "khẩn; gấp, chặt",
+      "word": "緊急",
       "meaningStatus": "editorial_reviewed"
     }
   ],

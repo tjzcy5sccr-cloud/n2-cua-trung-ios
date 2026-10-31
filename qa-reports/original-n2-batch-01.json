@@ -1,0 +1,33 @@
+{
+  "result": "Original lessons expanded into four distinct packs",
+  "perSeries": {
+    "mimikara": {
+      "vocab": 12,
+      "grammar": 2,
+      "kanji": 4
+    },
+    "shin-kanzen": {
+      "vocab": 12,
+      "grammar": 3,
+      "kanji": 4
+    },
+    "sou-matome": {
+      "vocab": 12,
+      "grammar": 3,
+      "kanji": 4
+    },
+    "speed-master": {
+      "vocab": 12,
+      "grammar": 2,
+      "kanji": 4
+    }
+  },
+  "newOriginalEntries": {
+    "vocab": 48,
+    "grammar": 10,
+    "kanji": 16
+  },
+  "license": "Original sentences and translations authored for N2 Cua Trung; no text copied from textbooks",
+  "reviewScope": "Internal language edit only; not textbook/publisher verified",
+  "not100PercentComplete": true
+}

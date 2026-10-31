@@ -1,6 +1,6 @@
 {
   "id": "n2-series-shin-kanzen",
-  "version": 2,
+  "version": 3,
   "seriesId": "shin-kanzen",
   "title": "Shin Kanzen – Bộ phân tích ngữ pháp, Kanji do N2 của Trung tuyển chọn",
   "vocab": [
@@ -1877,6 +1877,162 @@
       "exampleTranslationModel": "Helsinki-NLP/opus-mt-ja-vi, Apache-2.0",
       "exampleTranslationGloss": "mềm xốp, bồng bềnh, nhẹ như bông",
       "exampleSenseCheck": "needs_context_review"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-001",
+      "word": "不具合",
+      "reading": "ふぐあい",
+      "meaning": "sự cố; trục trặc",
+      "example": "アプリに不具合が見つかりました。",
+      "exampleVi": "Đã phát hiện lỗi trong ứng dụng.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-002",
+      "word": "手続き",
+      "reading": "てつづき",
+      "meaning": "thủ tục",
+      "example": "住所を変更する手続きが必要です。",
+      "exampleVi": "Cần làm thủ tục đổi địa chỉ.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-003",
+      "word": "優先順位",
+      "reading": "ゆうせんじゅんい",
+      "meaning": "thứ tự ưu tiên",
+      "example": "仕事の優先順位を決めましょう。",
+      "exampleVi": "Hãy xác định thứ tự ưu tiên công việc.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-004",
+      "word": "注意事項",
+      "reading": "ちゅういじこう",
+      "meaning": "những điều cần lưu ý",
+      "example": "申し込む前に注意事項を読んでください。",
+      "exampleVi": "Vui lòng đọc những điều cần lưu ý trước khi đăng ký.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-005",
+      "word": "合意",
+      "reading": "ごうい",
+      "meaning": "sự đồng thuận; thỏa thuận",
+      "example": "両社は新しい条件で合意しました。",
+      "exampleVi": "Hai công ty đã đạt được thỏa thuận về điều kiện mới.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-006",
+      "word": "対象",
+      "reading": "たいしょう",
+      "meaning": "đối tượng áp dụng",
+      "example": "この割引は学生が対象です。",
+      "exampleVi": "Chương trình giảm giá này áp dụng cho sinh viên.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-007",
+      "word": "実施",
+      "reading": "じっし",
+      "meaning": "thực hiện; triển khai",
+      "example": "来月から新しい制度を実施します。",
+      "exampleVi": "Từ tháng sau chúng tôi sẽ triển khai chế độ mới.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-008",
+      "word": "検討",
+      "reading": "けんとう",
+      "meaning": "xem xét; cân nhắc",
+      "example": "その提案について検討します。",
+      "exampleVi": "Chúng tôi sẽ xem xét đề xuất đó.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-009",
+      "word": "方針",
+      "reading": "ほうしん",
+      "meaning": "phương hướng; chính sách",
+      "example": "今後の方針を会議で決めます。",
+      "exampleVi": "Chúng tôi sẽ quyết định phương hướng sắp tới trong cuộc họp.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-010",
+      "word": "規則",
+      "reading": "きそく",
+      "meaning": "quy tắc; quy định",
+      "example": "学校の規則を守りましょう。",
+      "exampleVi": "Hãy tuân thủ nội quy nhà trường.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-011",
+      "word": "契約",
+      "reading": "けいやく",
+      "meaning": "hợp đồng; ký kết",
+      "example": "契約の内容をよく確認してください。",
+      "exampleVi": "Vui lòng kiểm tra kỹ nội dung hợp đồng.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-shin-kanzen-012",
+      "word": "責任",
+      "reading": "せきにん",
+      "meaning": "trách nhiệm",
+      "example": "担当者には結果を説明する責任があります。",
+      "exampleVi": "Người phụ trách có trách nhiệm giải thích kết quả.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2290,6 +2446,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-shin-kanzen-001",
+      "pattern": "〜に先立って",
+      "meaning": "trước khi tiến hành",
+      "rule": "Danh từ hoặc động từ thể từ điển + に先立って; thực hiện việc chuẩn bị trước sự kiện chính.",
+      "example": "面接に先立って、必要な書類を提出してください。",
+      "translation": "Trước buổi phỏng vấn, vui lòng nộp các giấy tờ cần thiết.",
+      "week": 7,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-shin-kanzen-002",
+      "pattern": "〜に反して",
+      "meaning": "trái với; ngược lại",
+      "rule": "Danh từ + に反して; kết quả trái với dự đoán, mong đợi hay quy định.",
+      "example": "予想に反して、参加者が増えました。",
+      "translation": "Trái với dự đoán, số người tham gia đã tăng.",
+      "week": 9,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-shin-kanzen-003",
+      "pattern": "〜において",
+      "meaning": "tại; trong; ở phạm vi",
+      "rule": "Danh từ + において; cách diễn đạt trang trọng về địa điểm, thời gian hoặc phạm vi.",
+      "example": "今回の会議において、新しい方針が決まりました。",
+      "translation": "Trong cuộc họp lần này, phương hướng mới đã được quyết định.",
+      "week": 10,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2635,6 +2827,42 @@
       "kun": "ひさ.しい",
       "meaning": "lâu, lâu dài",
       "word": "",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-shin-kanzen-001",
+      "char": "責",
+      "on": "セキ",
+      "kun": "せめる",
+      "meaning": "trách; trách nhiệm, khiển trách",
+      "word": "責任",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-shin-kanzen-002",
+      "char": "契",
+      "on": "ケイ",
+      "kun": "ちぎる",
+      "meaning": "khế; giao kèo, cam kết",
+      "word": "契約",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-shin-kanzen-003",
+      "char": "則",
+      "on": "ソク",
+      "kun": "のっとる",
+      "meaning": "tắc; quy tắc, noi theo",
+      "word": "規則",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-shin-kanzen-004",
+      "char": "優",
+      "on": "ユウ",
+      "kun": "やさしい、すぐれる",
+      "meaning": "ưu; xuất sắc, dịu dàng",
+      "word": "優先順位",
       "meaningStatus": "editorial_reviewed"
     }
   ],

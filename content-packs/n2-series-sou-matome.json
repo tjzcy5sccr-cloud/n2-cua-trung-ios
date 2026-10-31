@@ -1,6 +1,6 @@
 {
   "id": "n2-series-sou-matome",
-  "version": 2,
+  "version": 3,
   "seriesId": "sou-matome",
   "title": "Sou Matome – Bộ học theo ngày do N2 của Trung tuyển chọn",
   "vocab": [
@@ -1868,6 +1868,162 @@
         "https://github.com/bunchaway/tu-dien-nhat-viet"
       ],
       "meaningReviewDate": "2026-10-30"
+    },
+    {
+      "id": "trung-original-v-sou-matome-001",
+      "word": "提出期限",
+      "reading": "ていしゅつきげん",
+      "meaning": "hạn nộp",
+      "example": "レポートの提出期限は月曜日です。",
+      "exampleVi": "Hạn nộp báo cáo là thứ Hai.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-002",
+      "word": "振り返る",
+      "reading": "ふりかえる",
+      "meaning": "nhìn lại; ôn lại",
+      "example": "一週間の学習を振り返ります。",
+      "exampleVi": "Tôi nhìn lại việc học trong một tuần.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-003",
+      "word": "調査",
+      "reading": "ちょうさ",
+      "meaning": "khảo sát; điều tra",
+      "example": "利用者の意見を調査しています。",
+      "exampleVi": "Chúng tôi đang khảo sát ý kiến của người dùng.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-004",
+      "word": "経費",
+      "reading": "けいひ",
+      "meaning": "chi phí hoạt động",
+      "example": "出張にかかった経費をまとめました。",
+      "exampleVi": "Tôi đã tổng hợp chi phí phát sinh trong chuyến công tác.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-005",
+      "word": "記録",
+      "reading": "きろく",
+      "meaning": "ghi chép; bản ghi",
+      "example": "毎日の勉強時間を記録します。",
+      "exampleVi": "Tôi ghi lại thời gian học mỗi ngày.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-006",
+      "word": "進捗",
+      "reading": "しんちょく",
+      "meaning": "tiến độ",
+      "example": "作業の進捗を報告してください。",
+      "exampleVi": "Vui lòng báo cáo tiến độ công việc.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-007",
+      "word": "依頼",
+      "reading": "いらい",
+      "meaning": "yêu cầu; lời nhờ",
+      "example": "翻訳の依頼を受けました。",
+      "exampleVi": "Tôi đã nhận được yêu cầu dịch thuật.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-008",
+      "word": "項目",
+      "reading": "こうもく",
+      "meaning": "hạng mục; mục",
+      "example": "必要な項目に印を付けてください。",
+      "exampleVi": "Hãy đánh dấu vào những mục cần thiết.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-009",
+      "word": "手順",
+      "reading": "てじゅん",
+      "meaning": "trình tự; các bước thao tác",
+      "example": "安全のため、手順どおりに作業してください。",
+      "exampleVi": "Để bảo đảm an toàn, hãy làm việc theo đúng các bước.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-010",
+      "word": "作成",
+      "reading": "さくせい",
+      "meaning": "tạo; soạn thảo",
+      "example": "新しい資料を作成しました。",
+      "exampleVi": "Tôi đã soạn tài liệu mới.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-011",
+      "word": "期限",
+      "reading": "きげん",
+      "meaning": "thời hạn",
+      "example": "期限までに返事をください。",
+      "exampleVi": "Vui lòng trả lời trước hoặc đúng hạn.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-sou-matome-012",
+      "word": "整理",
+      "reading": "せいり",
+      "meaning": "sắp xếp; hệ thống hóa",
+      "example": "覚えた単語をテーマ別に整理します。",
+      "exampleVi": "Tôi sắp xếp các từ đã học theo chủ đề.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2281,6 +2437,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-sou-matome-001",
+      "pattern": "〜ことから",
+      "meaning": "do; căn cứ vào việc",
+      "rule": "Mệnh đề thường + ことから; giải thích nguyên nhân hoặc căn cứ suy luận.",
+      "example": "道路がぬれていることから、昨夜雨が降ったと考えられます。",
+      "translation": "Dựa vào việc đường còn ướt, có thể cho rằng đêm qua đã mưa.",
+      "week": 10,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-sou-matome-002",
+      "pattern": "〜ことなく",
+      "meaning": "mà không; không hề",
+      "rule": "Động từ thể từ điển + ことなく; biểu thị không làm việc A trong khi làm B.",
+      "example": "彼女は一度も休むことなく、最後まで走りました。",
+      "translation": "Cô ấy chạy đến cuối mà không nghỉ lần nào.",
+      "week": 11,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-sou-matome-003",
+      "pattern": "〜を問わず",
+      "meaning": "bất kể; không phân biệt",
+      "rule": "Danh từ + を問わず; điều kiện được nêu không ảnh hưởng đến phạm vi áp dụng.",
+      "example": "経験の有無を問わず、応募できます。",
+      "translation": "Có thể ứng tuyển bất kể có kinh nghiệm hay không.",
+      "week": 12,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2616,6 +2808,42 @@
       "kun": "さか・さか.さ・さか.らう",
       "meaning": "ngược lại",
       "word": "",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-sou-matome-001",
+      "char": "項",
+      "on": "コウ",
+      "kun": "",
+      "meaning": "hạng; hạng mục",
+      "word": "項目",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-sou-matome-002",
+      "char": "期",
+      "on": "キ、ゴ",
+      "kun": "",
+      "meaning": "kỳ; kỳ hạn, thời kỳ",
+      "word": "期限",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-sou-matome-003",
+      "char": "査",
+      "on": "サ",
+      "kun": "",
+      "meaning": "tra; kiểm tra, điều tra",
+      "word": "調査",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-sou-matome-004",
+      "char": "経",
+      "on": "ケイ、キョウ",
+      "kun": "へる",
+      "meaning": "kinh; trải qua, quản lý",
+      "word": "経費",
       "meaningStatus": "editorial_reviewed"
     }
   ],

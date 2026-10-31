@@ -1,6 +1,6 @@
 {
   "id": "n2-series-mimikara",
-  "version": 2,
+  "version": 3,
   "seriesId": "mimikara",
   "title": "Mimikara – Bộ học ngữ cảnh do N2 của Trung tuyển chọn",
   "vocab": [
@@ -1861,6 +1861,162 @@
       "exampleTranslationModel": "Helsinki-NLP/opus-mt-ja-vi, Apache-2.0",
       "exampleTranslationGloss": "một cách quá mức",
       "exampleSenseCheck": "needs_context_review"
+    },
+    {
+      "id": "trung-original-v-mimikara-001",
+      "word": "締め切り",
+      "reading": "しめきり",
+      "meaning": "hạn cuối",
+      "example": "申し込みの締め切りは来週です。",
+      "exampleVi": "Hạn cuối đăng ký là tuần sau.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-002",
+      "word": "負担",
+      "reading": "ふたん",
+      "meaning": "gánh nặng; sự chịu đựng",
+      "example": "この仕事は一人では負担が大きすぎます。",
+      "exampleVi": "Công việc này quá nặng nếu chỉ một người đảm nhiệm.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 7,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-003",
+      "word": "不足",
+      "reading": "ふそく",
+      "meaning": "sự thiếu hụt",
+      "example": "説明が不足しているため、もう一度確認します。",
+      "exampleVi": "Vì phần giải thích chưa đầy đủ nên tôi sẽ kiểm tra lại.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-004",
+      "word": "指摘",
+      "reading": "してき",
+      "meaning": "sự chỉ ra; góp ý về vấn đề",
+      "example": "先生から発音の間違いを指摘されました。",
+      "exampleVi": "Giáo viên đã chỉ ra lỗi phát âm của tôi.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 8,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-005",
+      "word": "事前",
+      "reading": "じぜん",
+      "meaning": "trước đó; trước khi diễn ra",
+      "example": "事前に必要な情報を調べておきます。",
+      "exampleVi": "Tôi sẽ tìm hiểu trước những thông tin cần thiết.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-006",
+      "word": "役割",
+      "reading": "やくわり",
+      "meaning": "vai trò",
+      "example": "会議でそれぞれの役割を決めました。",
+      "exampleVi": "Trong cuộc họp, chúng tôi đã phân chia vai trò cho từng người.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 9,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-007",
+      "word": "詳細",
+      "reading": "しょうさい",
+      "meaning": "thông tin chi tiết",
+      "example": "予定の詳細はメールで送ります。",
+      "exampleVi": "Tôi sẽ gửi chi tiết lịch trình qua email.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-008",
+      "word": "条件",
+      "reading": "じょうけん",
+      "meaning": "điều kiện",
+      "example": "参加する条件を確認してください。",
+      "exampleVi": "Vui lòng kiểm tra điều kiện tham gia.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-009",
+      "word": "表現",
+      "reading": "ひょうげん",
+      "meaning": "cách diễn đạt; biểu đạt",
+      "example": "この表現は会話でよく使われます。",
+      "exampleVi": "Cách diễn đạt này thường được dùng trong hội thoại.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-010",
+      "word": "解決",
+      "reading": "かいけつ",
+      "meaning": "giải quyết",
+      "example": "問題を解決する方法を考えましょう。",
+      "exampleVi": "Hãy nghĩ cách giải quyết vấn đề.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-011",
+      "word": "見直す",
+      "reading": "みなおす",
+      "meaning": "xem lại; đánh giá lại",
+      "example": "試験の前に間違えた問題を見直します。",
+      "exampleVi": "Trước kỳ thi tôi sẽ xem lại những câu đã làm sai.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-v-mimikara-012",
+      "word": "窓口",
+      "reading": "まどぐち",
+      "meaning": "quầy tiếp nhận; đầu mối liên hệ",
+      "example": "質問があれば受付窓口に相談してください。",
+      "exampleVi": "Nếu có thắc mắc, vui lòng hỏi tại quầy tiếp nhận.",
+      "topic": "Từ vựng ứng dụng – tự biên soạn",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2274,6 +2430,30 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-mimikara-001",
+      "pattern": "〜に限らず",
+      "meaning": "không chỉ; không giới hạn ở",
+      "rule": "Danh từ + に限らず; nói phạm vi không dừng ở đối tượng được nêu.",
+      "example": "平日に限らず、週末も相談を受け付けています。",
+      "translation": "Chúng tôi nhận tư vấn cả cuối tuần, không chỉ các ngày trong tuần.",
+      "week": 6,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-g-mimikara-002",
+      "pattern": "〜に加えて",
+      "meaning": "ngoài ra; thêm vào đó",
+      "rule": "Danh từ + に加えて; bổ sung thành phần hoặc điều kiện khác.",
+      "example": "基本料金に加えて、送料がかかります。",
+      "translation": "Ngoài phí cơ bản còn phải trả phí vận chuyển.",
+      "week": 8,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2610,6 +2790,42 @@
       "kun": "—",
       "meaning": "cấm",
       "word": "",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-mimikara-001",
+      "char": "窓",
+      "on": "ソウ",
+      "kun": "まど",
+      "meaning": "song; cửa sổ",
+      "word": "窓口",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-mimikara-002",
+      "char": "負",
+      "on": "フ",
+      "kun": "まける、まかす、おう",
+      "meaning": "phụ; gánh, chịu, thua",
+      "word": "負担",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-mimikara-003",
+      "char": "詳",
+      "on": "ショウ",
+      "kun": "くわしい",
+      "meaning": "tường; chi tiết, rõ ràng",
+      "word": "詳細",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-k-mimikara-004",
+      "char": "条",
+      "on": "ジョウ",
+      "kun": "えだ",
+      "meaning": "điều; điều khoản, nhánh",
+      "word": "条件",
       "meaningStatus": "editorial_reviewed"
     }
   ],

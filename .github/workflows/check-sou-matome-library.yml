@@ -64,7 +64,7 @@ jobs:
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift
       - name: Test reviewed-only Japanese-Vietnamese content audit
         run: |
-          python3 -m py_compile scripts/audit_sou_matome_personal_pack.py
+          python3 -m py_compile scripts/audit_sou_matome_personal_pack.py scripts/extract_sou_matome_private_candidates.py
           python3 -m unittest discover -s scripts -p 'test_sou_matome_audit.py' -v
       - name: Validate independent study packs
         run: |

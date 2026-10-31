@@ -10,9 +10,26 @@ struct ContentUpdatesView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                SectionTitle("Thư viện bài học", subtitle: "Bài mới được lưu trên iPhone để học offline")
+                SectionTitle("Thư viện bài học", subtitle: "Mỗi bộ được lưu và hiển thị độc lập")
                 LessonPanel {
-                    SectionTitle("Tổng dữ liệu hiện tại")
+                    SectionTitle("Bộ đang học")
+                    Picker("Chọn bộ", selection: Binding(
+                        get: { store.selectedSeries },
+                        set: { store.selectSeries($0) }
+                    )) {
+                        ForEach(LearningSeries.allCases) { series in
+                            Text(series.name).tag(series)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .tint(Palette.blue)
+                    Text(store.selectedSeries.subtitle)
+                        .font(.caption).foregroundColor(.secondary)
+                    Text("Đổi bộ sẽ thay nội dung trên tất cả các màn học ngay, không xóa tiến độ đã lưu.")
+                        .font(.caption).foregroundColor(.secondary)
+                }
+                LessonPanel {
+                    SectionTitle("Dữ liệu đang hiển thị — \(store.selectedSeries.name)")
                     itemRow("Từ vựng", store.course.vocab.count)
                     itemRow("Ngữ pháp", store.course.grammar.count)
                     itemRow("Kanji", store.course.kanji.count)
@@ -30,7 +47,7 @@ struct ContentUpdatesView: View {
                         Task {
                             do {
                                 let count = try await store.downloadCourseUpdates()
-                                status = count == 0 ? "Đã là phiên bản dữ liệu mới nhất." : "Đã cài \(count) gói bài học mới, dùng được offline."
+                                status = count == 0 ? "Đã tải bản mới nhất. Đang hiển thị bộ \(store.selectedSeries.name)." : "Đã cập nhật \(count) gói; nội dung \(store.selectedSeries.name) đã làm mới trên toàn ứng dụng."
                             } catch { status = "Cập nhật thất bại: \(error.localizedDescription)" }
                             downloading = false
                         }
@@ -53,7 +70,11 @@ struct ContentUpdatesView: View {
                         ForEach(store.installedPacks) { pack in
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(pack.id == "openjlpt-n2-core" ? "Bộ N2 mở rộng" : "Bộ bài học nâng cao").font(.subheadline.weight(.semibold))
+                                    Text(pack.title).font(.subheadline.weight(.semibold))
+                                    if let seriesID = pack.seriesId,
+                                       let series = LearningSeries(rawValue: seriesID) {
+                                        Text(series.name).font(.caption2).foregroundColor(Palette.blue)
+                                    }
                                     Text("Phiên bản \(pack.version) · \(pack.itemCount) mục")
                                         .font(.caption).foregroundColor(.secondary)
                                 }
@@ -76,7 +97,7 @@ struct ContentUpdatesView: View {
                 defer { if access { url.stopAccessingSecurityScopedResource() } }
                 do {
                     try store.importContentPack(Data(contentsOf: url))
-                    status = "Đã cài gói dữ liệu mới và lưu offline trên iPhone."
+                    status = "Đã cài gói mới, toàn bộ màn hình đã nạp lại theo bộ đang chọn."
                 } catch { status = "Không thể nhập: \(error.localizedDescription)" }
             case .failure(let error):
                 status = "Không thể mở tệp: \(error.localizedDescription)"

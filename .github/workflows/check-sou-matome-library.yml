@@ -33,21 +33,23 @@ jobs:
           assert coverage['lessonContentCompleteness'].startswith('NOT COMPLETE')
           print('PASS: metadata catalog: 8 PDFs, 1,239 pages, 116 MP3 tracks')
           PY
-      - name: Verify supplement week/day mapping integrity
+      - name: Verify whole-book page catalog and no active weekly partitions
         run: |
           python3 - <<'PY'
           import json
+          from collections import Counter
           from pathlib import Path
-          d=json.loads(Path('N2CuaTrung/Resources/sou-matome-day-index.json').read_text(encoding='utf-8'))
-          source=d['sources']
-          assert set(source)=={'kanji-vi','goi-vi','bunpou-vi'}
-          for key,info in source.items():
-              assert len(info['weeks'])==8
-              assert all(len(week)==info['daysPerWeek'] for week in info['weeks'])
-              pages={'kanji-vi':208,'goi-vi':163,'bunpou-vi':185}[key]
-              assert all(1<=n<=pages for week in info['weeks'] for n in week if n is not None)
-          assert source['goi-vi']['weeks'][4][4] is None, 'Missing heading must not be guessed'
-          print('PASS: three books mapped to 8 weeks each, with one unresolved source heading clearly marked')
+          d=json.loads(Path('content-packs/sou-matome-full-book-page-index.json').read_text(encoding='utf-8'))
+          assert d['weeklyPartitioning'] is False
+          assert d['displayMode']=='whole_books'
+          assert len(d['pages'])==1239
+          assert len({x['id'] for x in d['pages']})==1239
+          counts=Counter(x['bookId'] for x in d['pages'])
+          assert counts=={b['id']:b['pages'] for b in d['books']}
+          assert not any('week' in page for page in d['pages'])
+          assert len([p for p in d['pages'] if p['sourceText']=='searchable_pdf'])==556
+          assert len([p for p in d['pages'] if p['sourceText']=='scanned_image'])==683
+          print('PASS: full 1239-page catalog, five skill library, no weekly partitioning')
           PY
       - name: Check Swift source syntax
         run: |
@@ -55,6 +57,7 @@ jobs:
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePageWorkbenchView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeDailyNavigatorView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeWholeBooksView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeSourceEntriesView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift

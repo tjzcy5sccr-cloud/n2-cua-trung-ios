@@ -278,6 +278,13 @@ struct SouMatomeLibraryView: View {
                     Text("Phần PDF và CD được lưu riêng trên iPhone sau khi bạn nhập từ Tệp. Không tải hoặc đăng sách lên GitHub. Dữ liệu tương tác vẫn là gói JSON được kiểm duyệt riêng, không phải bản chép đầy đủ sách.")
                         .font(.caption).foregroundColor(.secondary)
                 }
+                NavigationLink {
+                    SouMatomeDailyNavigatorView()
+                } label: {
+                    ActionTile(icon: "calendar", color: Palette.teal,
+                               title: "Học theo tuần và ngày",
+                               detail: "8 tuần Kanji, từ vựng và ngữ pháp – mở đúng trang nguồn")
+                }.buttonStyle(.plain)
                 LessonPanel {
                     SectionTitle("Nhập nhanh toàn bộ PDF")
                     Text("Chọn cả 8 PDF đã giải nén trong Tệp. Ứng dụng tự nhận diện theo tên và kiểm tra số trang của từng cuốn.")

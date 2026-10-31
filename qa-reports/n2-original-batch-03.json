@@ -5,20 +5,20 @@
   "review": "Internal editorial review only, external dictionary verification pending",
   "notComplete100Percent": true,
   "added": {
-    "vocab": 64,
-    "grammar": 12,
-    "kanji": 16,
-    "readings": 4,
-    "listening": 4
+    "vocab": 0,
+    "grammar": 0,
+    "kanji": 0,
+    "readings": 0,
+    "listening": 0
   },
   "series": {
     "mimikara": {
       "added": {
-        "vocab": 16,
-        "grammar": 3,
-        "kanji": 4,
-        "readings": 1,
-        "listening": 1
+        "vocab": 0,
+        "grammar": 0,
+        "kanji": 0,
+        "readings": 0,
+        "listening": 0
       },
       "version": 5,
       "total": {
@@ -31,11 +31,11 @@
     },
     "shin-kanzen": {
       "added": {
-        "vocab": 16,
-        "grammar": 3,
-        "kanji": 4,
-        "readings": 1,
-        "listening": 1
+        "vocab": 0,
+        "grammar": 0,
+        "kanji": 0,
+        "readings": 0,
+        "listening": 0
       },
       "version": 5,
       "total": {
@@ -48,11 +48,11 @@
     },
     "sou-matome": {
       "added": {
-        "vocab": 16,
-        "grammar": 3,
-        "kanji": 4,
-        "readings": 1,
-        "listening": 1
+        "vocab": 0,
+        "grammar": 0,
+        "kanji": 0,
+        "readings": 0,
+        "listening": 0
       },
       "version": 5,
       "total": {
@@ -65,11 +65,11 @@
     },
     "speed-master": {
       "added": {
-        "vocab": 16,
-        "grammar": 3,
-        "kanji": 4,
-        "readings": 1,
-        "listening": 1
+        "vocab": 0,
+        "grammar": 0,
+        "kanji": 0,
+        "readings": 0,
+        "listening": 0
       },
       "version": 5,
       "total": {

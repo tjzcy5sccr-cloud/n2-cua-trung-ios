@@ -29,8 +29,10 @@ struct KanjiSwipeDeckView: View {
     }
 
     var body: some View {
-        GeometryReader { _ in
-            VStack(spacing: 10) {
+        GeometryReader { proxy in
+            // Cuộn trang ngoài để nút cuối không bị TabBar che; vùng thẻ vẫn bắt vuốt riêng.
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 10) {
                 SectionTitle("Kanji N2", subtitle: "Vuốt ngang / dọc để đổi chữ • Chạm để lật")
                 HStack {
                     if !cards.isEmpty {
@@ -85,8 +87,10 @@ struct KanjiSwipeDeckView: View {
                         actionButton("Chữ tiếp theo", symbol: "forward.end.fill",
                                      color: Palette.blue) { advance() }
                     }
-                    HStack(spacing: 8) {
-                        Text("Đổi Kanji mỗi").font(.caption).foregroundColor(.secondary)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Đổi Kanji mỗi")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                         Picker("Chu kỳ tự chạy", selection: $intervalSeconds) {
                             Text("3 giây").tag(3)
                             Text("5 giây").tag(5)
@@ -95,6 +99,7 @@ struct KanjiSwipeDeckView: View {
                         .pickerStyle(.segmented)
                         .onChange(of: intervalSeconds) { _ in elapsed = 0 }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     HStack(spacing: 8) {
                         actionButton("Nghe từ ghép", symbol: "speaker.wave.2.fill", color: Palette.blue) {
                             if let word = approvedRelatedWord(card) { voice.speak(word) }
@@ -125,10 +130,12 @@ struct KanjiSwipeDeckView: View {
                     .foregroundColor(.red)
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
-                Spacer(minLength: 0)
             }
-            .padding(12)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .padding(.horizontal, 12)
+                .padding(.top, 12)
+                .padding(.bottom, max(24, proxy.safeAreaInsets.bottom) + 92)
+                .frame(maxWidth: .infinity, alignment: .top)
+            }
         }
         .background(Palette.pale)
         .navigationTitle("Kanji")

@@ -4,6 +4,7 @@ name: Expand verified source entries into four independent N2 series
     branches: [feature/n2-four-series-roadmap-2027]
     paths:
       - 'scripts/expand_reviewed_series.py'
+      - 'scripts/validate_series_packs.py'
       - '.github/workflows/expand-reviewed-series.yml'
   workflow_dispatch:
 permissions:

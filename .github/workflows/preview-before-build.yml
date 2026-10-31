@@ -21,7 +21,9 @@ jobs:
           sudo apt-get install -y -qq fonts-noto-cjk
       - name: Install lightweight illustration dependencies
         run: python3 -m pip install --disable-pip-version-check 'Pillow>=10,<12'
-      - name: Draw vocabulary front/back, Kanji and grammar previews
+      - name: Verify content and safe layout fixes before preview
+        run: python3 scripts/check_translation_quality.py
+      - name: Draw vocabulary front/back, Kanji, grammar and widget previews
         run: python3 scripts/render_prebuild_preview.py
       - name: Upload images and commit metadata for user approval
         uses: actions/upload-artifact@v4

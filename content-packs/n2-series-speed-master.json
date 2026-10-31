@@ -1,6 +1,6 @@
 {
   "id": "n2-series-speed-master",
-  "version": 4,
+  "version": 5,
   "seriesId": "speed-master",
   "title": "Speed/Kanji Master – Bộ phản xạ Kanji do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2203,6 +2203,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-001",
+      "word": "制限時間",
+      "reading": "せいげんじかん",
+      "meaning": "thời gian giới hạn",
+      "example": "制限時間を確認してから解き始めます。",
+      "exampleVi": "Tôi kiểm tra thời gian giới hạn rồi bắt đầu giải.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-002",
+      "word": "余裕",
+      "reading": "よゆう",
+      "meaning": "dư thời gian, sự thoải mái",
+      "example": "最後に見直す余裕を残しましょう。",
+      "exampleVi": "Hãy dành dư thời gian để kiểm tra lại cuối giờ.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-003",
+      "word": "慎重",
+      "reading": "しんちょう",
+      "meaning": "thận trọng",
+      "example": "似た選択肢は慎重に読みます。",
+      "exampleVi": "Tôi đọc cẩn thận các phương án gần giống nhau.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-004",
+      "word": "焦る",
+      "reading": "あせる",
+      "meaning": "cuống, nóng vội",
+      "example": "時間が少なくても焦らないでください。",
+      "exampleVi": "Dù còn ít thời gian cũng đừng cuống.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-005",
+      "word": "迷う",
+      "reading": "まよう",
+      "meaning": "phân vân, lưỡng lự",
+      "example": "二つの答えの間で迷いました。",
+      "exampleVi": "Tôi đã phân vân giữa hai đáp án.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-006",
+      "word": "見抜く",
+      "reading": "みぬく",
+      "meaning": "nhận ra bản chất, nhìn thấu",
+      "example": "文章の要点を見抜く力が必要です。",
+      "exampleVi": "Cần có khả năng nhận ra ý chính của đoạn văn.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-007",
+      "word": "見分ける",
+      "reading": "みわける",
+      "meaning": "phân biệt",
+      "example": "似た漢字を正しく見分けます。",
+      "exampleVi": "Tôi phân biệt chính xác những chữ Hán giống nhau.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-008",
+      "word": "判別",
+      "reading": "はんべつ",
+      "meaning": "phân biệt, xác định khác biệt",
+      "example": "正しい読み方を判別してください。",
+      "exampleVi": "Hãy xác định cách đọc đúng.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-009",
+      "word": "制限",
+      "reading": "せいげん",
+      "meaning": "sự hạn chế, giới hạn",
+      "example": "解答時間には制限があります。",
+      "exampleVi": "Thời gian trả lời có giới hạn.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-010",
+      "word": "記号",
+      "reading": "きごう",
+      "meaning": "ký hiệu",
+      "example": "答えの記号を一つ選んでください。",
+      "exampleVi": "Hãy chọn một ký hiệu đáp án.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-011",
+      "word": "正解率",
+      "reading": "せいかいりつ",
+      "meaning": "tỷ lệ trả lời đúng",
+      "example": "練習を続けると正解率が上がりました。",
+      "exampleVi": "Luyện tập tiếp giúp tỷ lệ trả lời đúng của tôi tăng.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-012",
+      "word": "順位",
+      "reading": "じゅんい",
+      "meaning": "thứ hạng",
+      "example": "得点だけで順位を決めるとは限りません。",
+      "exampleVi": "Không phải lúc nào thứ hạng cũng chỉ được quyết định bởi điểm số.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-013",
+      "word": "採点",
+      "reading": "さいてん",
+      "meaning": "chấm điểm",
+      "example": "先生が小テストを採点しました。",
+      "exampleVi": "Giáo viên đã chấm bài kiểm tra ngắn.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-014",
+      "word": "得点",
+      "reading": "とくてん",
+      "meaning": "điểm đạt được",
+      "example": "前回より高い得点を取りました。",
+      "exampleVi": "Tôi đạt điểm cao hơn lần trước.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-015",
+      "word": "合格点",
+      "reading": "ごうかくてん",
+      "meaning": "điểm đạt yêu cầu",
+      "example": "合格点に届くように練習します。",
+      "exampleVi": "Tôi luyện tập để đạt đến điểm đỗ.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-speed-master-016",
+      "word": "発揮",
+      "reading": "はっき",
+      "meaning": "phát huy",
+      "example": "試験でも普段の力を発揮したいです。",
+      "exampleVi": "Tôi muốn phát huy năng lực thường ngày cả trong kỳ thi.",
+      "topic": "Học liệu N2 tự biên soạn · speed-master",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2679,6 +2887,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-speed-master-001",
+      "pattern": "〜ないわけではない",
+      "meaning": "không phải là không",
+      "rule": "Vない + わけではない; phủ định nhẹ một nhận định phủ định.",
+      "example": "この問題は解けないわけではありませんが、時間がかかります。",
+      "translation": "Không phải tôi không giải được câu này, nhưng sẽ mất thời gian.",
+      "week": 18,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-speed-master-002",
+      "pattern": "〜に限って",
+      "meaning": "riêng đúng vào lúc, chính lúc... lại",
+      "rule": "Danh từ chỉ thời điểm/đối tượng + に限って; nhấn mạnh trường hợp bất ngờ trái mong muốn.",
+      "example": "忙しい日に限って、急な仕事が入ります。",
+      "translation": "Cứ đúng ngày bận thì lại có việc đột xuất.",
+      "week": 19,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-speed-master-003",
+      "pattern": "〜については",
+      "meaning": "còn về; đối với chủ đề",
+      "rule": "Danh từ + については; giới hạn nội dung đang được nói đến.",
+      "example": "採点方法については、後で説明します。",
+      "translation": "Còn về cách chấm điểm, tôi sẽ giải thích sau.",
+      "week": 20,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -3115,6 +3359,42 @@
       "meaning": "lựa chọn",
       "word": "選択肢",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-speed-master-001",
+      "char": "余",
+      "on": "ヨ",
+      "kun": "あまる、あます",
+      "meaning": "dư, còn lại",
+      "word": "余裕",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-speed-master-002",
+      "char": "慎",
+      "on": "シン",
+      "kun": "つつしむ",
+      "meaning": "thận, cẩn trọng",
+      "word": "慎重",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-speed-master-003",
+      "char": "焦",
+      "on": "ショウ",
+      "kun": "こげる、こがす、こがれる、あせる",
+      "meaning": "tiêu, nóng ruột",
+      "word": "焦る",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-speed-master-004",
+      "char": "抜",
+      "on": "バツ",
+      "kun": "ぬく、ぬける、ぬかす、ぬかる",
+      "meaning": "bạt, nhổ, rút ra",
+      "word": "見抜く",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -3163,6 +3443,22 @@
       "answer": 2,
       "explanation": "Tác giả nhấn mạnh cân bằng tốc độ, độ chính xác và xem lại lỗi.",
       "id": "trung-original-b02-r-speed-master-001"
+    },
+    {
+      "title": "Cân bằng tốc độ và độ chính xác",
+      "topic": "Chiến lược luyện đề",
+      "text": "模擬試験の結果を見直したところ、時間切れになった問題が多いことに気づきました。そこで、次の練習では一つの問題にかける時間を制限しました。その結果、最後まで解けるようになりましたが、焦って選んだ誤答もありました。今後は速く解くことだけでなく、判断の根拠を確認する時間も残すつもりです。",
+      "textVi": "Khi xem lại kết quả thi thử, tôi nhận ra có nhiều câu chưa làm được vì hết giờ. Vì thế, ở lần luyện sau, tôi giới hạn thời gian cho mỗi câu. Kết quả là tôi đã giải được đến cuối, nhưng cũng có câu trả lời sai vì chọn quá vội. Từ nay tôi dự định không chỉ giải nhanh mà còn dành thời gian kiểm tra căn cứ chọn đáp án.",
+      "question": "筆者は今後、何を重視しますか。",
+      "choices": [
+        "速く解くだけで確認しない",
+        "難しい問題を全部飛ばす",
+        "速さと判断の根拠の両方を大切にする",
+        "解答時間を気にしない"
+      ],
+      "answer": 2,
+      "explanation": "Người viết muốn cân bằng tốc độ với việc kiểm tra căn cứ lựa chọn đáp án.",
+      "id": "trung-original-b03-r-speed-master-001"
     }
   ],
   "listening": [
@@ -3196,6 +3492,22 @@
       "answer": 1,
       "explanation": "Giáo viên dặn phải dành thời gian cuối giờ để kiểm tra đáp án.",
       "id": "trung-original-b02-l-speed-master-001"
+    },
+    {
+      "title": "Quy định của bài thi thử",
+      "speaker": "先生が模擬試験について説明しています。",
+      "script": "先生：今日の模擬試験は四十分です。最後の五分は答えを確認する時間にしてください。\n学生：終わらなかった問題はどうしますか。\n先生：時間内に解ける問題を先に進めて、難しい問題には後で戻りましょう。",
+      "scriptVi": "Giáo viên: Bài thi thử hôm nay kéo dài 40 phút. Hãy dành năm phút cuối để kiểm tra đáp án.\nHọc viên: Nếu có câu chưa làm xong thì sao ạ?\nGiáo viên: Hãy làm trước những câu có thể giải trong thời gian cho phép, rồi quay lại câu khó sau.",
+      "question": "先生は最後の五分を何に使うように言いましたか。",
+      "choices": [
+        "休憩",
+        "新しい問題を読む",
+        "答えを確認する",
+        "教室を片付ける"
+      ],
+      "answer": 2,
+      "explanation": "Giáo viên dặn dành năm phút cuối để kiểm tra lại câu trả lời.",
+      "id": "trung-original-b03-l-speed-master-001"
     }
   ]
 }

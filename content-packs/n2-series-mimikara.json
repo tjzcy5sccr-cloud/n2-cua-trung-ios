@@ -1,6 +1,6 @@
 {
   "id": "n2-series-mimikara",
-  "version": 4,
+  "version": 5,
   "seriesId": "mimikara",
   "title": "Mimikara – Bộ học ngữ cảnh do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2225,6 +2225,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-001",
+      "word": "心配",
+      "reading": "しんぱい",
+      "meaning": "lo lắng",
+      "example": "明日の面接が少し心配です。",
+      "exampleVi": "Tôi hơi lo về buổi phỏng vấn ngày mai.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-002",
+      "word": "気遣い",
+      "reading": "きづかい",
+      "meaning": "sự quan tâm, để ý đến người khác",
+      "example": "彼女の細やかな気遣いに感謝しています。",
+      "exampleVi": "Tôi biết ơn sự quan tâm chu đáo của cô ấy.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-003",
+      "word": "迷惑",
+      "reading": "めいわく",
+      "meaning": "sự phiền toái, làm phiền",
+      "example": "夜遅くに電話すると迷惑になるかもしれません。",
+      "exampleVi": "Gọi điện khuya có thể gây phiền cho người khác.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-004",
+      "word": "共感",
+      "reading": "きょうかん",
+      "meaning": "sự đồng cảm",
+      "example": "友人の意見に共感しました。",
+      "exampleVi": "Tôi đồng cảm với ý kiến của người bạn.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-005",
+      "word": "理解",
+      "reading": "りかい",
+      "meaning": "sự thấu hiểu, hiểu",
+      "example": "説明を聞いて内容を理解しました。",
+      "exampleVi": "Sau khi nghe giải thích, tôi đã hiểu nội dung.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-006",
+      "word": "尊敬",
+      "reading": "そんけい",
+      "meaning": "sự kính trọng",
+      "example": "私は努力を続ける先生を尊敬しています。",
+      "exampleVi": "Tôi kính trọng thầy cô luôn kiên trì nỗ lực.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-007",
+      "word": "親しい",
+      "reading": "したしい",
+      "meaning": "thân thiết",
+      "example": "親しい友人にも礼儀は必要です。",
+      "exampleVi": "Ngay cả với bạn thân cũng cần giữ lễ phép.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-008",
+      "word": "仲間",
+      "reading": "なかま",
+      "meaning": "bạn đồng hành, người cùng nhóm",
+      "example": "仲間と協力して課題を終えました。",
+      "exampleVi": "Tôi đã hợp tác với các bạn trong nhóm để hoàn thành nhiệm vụ.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-009",
+      "word": "約束",
+      "reading": "やくそく",
+      "meaning": "lời hứa, cuộc hẹn",
+      "example": "友人との約束を忘れないようにします。",
+      "exampleVi": "Tôi cố gắng không quên cuộc hẹn với bạn.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-010",
+      "word": "誘う",
+      "reading": "さそう",
+      "meaning": "rủ, mời",
+      "example": "週末の勉強会に友達を誘いました。",
+      "exampleVi": "Tôi đã rủ bạn đến buổi học nhóm cuối tuần.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-011",
+      "word": "助け合う",
+      "reading": "たすけあう",
+      "meaning": "giúp đỡ lẫn nhau",
+      "example": "困ったときはお互いに助け合いましょう。",
+      "exampleVi": "Khi gặp khó khăn, chúng ta hãy giúp đỡ lẫn nhau.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-012",
+      "word": "仲直り",
+      "reading": "なかなおり",
+      "meaning": "làm hòa",
+      "example": "二人は話し合って仲直りしました。",
+      "exampleVi": "Hai người đã nói chuyện và làm hòa.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-013",
+      "word": "思いやり",
+      "reading": "おもいやり",
+      "meaning": "sự quan tâm, biết nghĩ cho người khác",
+      "example": "相手への思いやりを忘れたくありません。",
+      "exampleVi": "Tôi không muốn quên sự quan tâm đến người khác.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-014",
+      "word": "付き合い",
+      "reading": "つきあい",
+      "meaning": "mối quan hệ giao tiếp, qua lại",
+      "example": "近所の人との付き合いを大切にしています。",
+      "exampleVi": "Tôi coi trọng quan hệ với hàng xóm.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-015",
+      "word": "誠実",
+      "reading": "せいじつ",
+      "meaning": "chân thành, trung thực",
+      "example": "質問には誠実に答えるつもりです。",
+      "exampleVi": "Tôi dự định trả lời các câu hỏi một cách chân thành.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-mimikara-016",
+      "word": "不安",
+      "reading": "ふあん",
+      "meaning": "cảm giác bất an, lo âu",
+      "example": "結果を待つ間は不安でした。",
+      "exampleVi": "Tôi cảm thấy bất an trong lúc chờ kết quả.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2698,6 +2906,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-mimikara-001",
+      "pattern": "〜を通して",
+      "meaning": "thông qua, qua một quá trình",
+      "rule": "Danh từ + を通して; quá trình hoặc phương tiện làm nảy sinh kinh nghiệm.",
+      "example": "共同作業を通して、お互いをよく理解できました。",
+      "translation": "Thông qua làm việc chung, chúng tôi đã hiểu nhau hơn.",
+      "week": 11,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-mimikara-002",
+      "pattern": "〜ものだから",
+      "meaning": "bởi vì, do... (giải thích nguyên nhân cá nhân)",
+      "rule": "Thể thông thường + ものだから; thường giải thích hoặc phân trần hoàn cảnh.",
+      "example": "急に予定が変わったものだから、連絡が遅れました。",
+      "translation": "Vì lịch bất ngờ thay đổi nên tôi đã báo muộn.",
+      "week": 12,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-mimikara-003",
+      "pattern": "〜こともあって",
+      "meaning": "một phần cũng vì",
+      "rule": "Mệnh đề thông thường + こともあって; nêu một trong các nguyên nhân.",
+      "example": "雨が強かったこともあって、参加者は少なかったです。",
+      "translation": "Một phần cũng vì trời mưa to nên số người tham gia ít.",
+      "week": 13,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -3107,6 +3351,42 @@
       "meaning": "sai lầm; nhầm lẫn",
       "word": "誤解",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-mimikara-001",
+      "char": "誠",
+      "on": "セイ",
+      "kun": "まこと",
+      "meaning": "thành, chân thành",
+      "word": "誠実",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-mimikara-002",
+      "char": "迷",
+      "on": "メイ",
+      "kun": "まよう",
+      "meaning": "mê, lạc, do dự",
+      "word": "迷惑",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-mimikara-003",
+      "char": "尊",
+      "on": "ソン",
+      "kun": "たっとい、とうとい、たっとぶ、とうとぶ",
+      "meaning": "tôn, kính trọng",
+      "word": "尊敬",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-mimikara-004",
+      "char": "感",
+      "on": "カン",
+      "kun": "—",
+      "meaning": "cảm, cảm nhận",
+      "word": "共感",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -3155,6 +3435,22 @@
       "answer": 1,
       "explanation": "Đoạn cuối nói nhóm bắt đầu nói rõ lý do và thời hạn khi nhờ việc.",
       "id": "trung-original-b02-r-mimikara-001"
+    },
+    {
+      "title": "Thấu hiểu trong nhóm làm việc",
+      "topic": "Quan hệ xã hội",
+      "text": "新しい職場では、最初は周りの人に話しかけるのが不安でした。しかし、同僚が仕事のやり方を丁寧に教えてくれたので、少しずつ安心できるようになりました。私も困っている仲間を見かけたら声をかけることにしています。小さな気遣いを重ねることで、お互いの信頼が生まれるのだと感じました。",
+      "textVi": "Ở nơi làm việc mới, lúc đầu tôi lo lắng khi bắt chuyện với mọi người xung quanh. Tuy nhiên, đồng nghiệp đã tận tình chỉ cách làm việc nên tôi dần cảm thấy yên tâm. Tôi cũng đặt ra thói quen hỏi han khi thấy người cùng nhóm gặp khó khăn. Tôi nhận ra rằng những sự quan tâm nhỏ tích lũy dần sẽ tạo nên lòng tin giữa mọi người.",
+      "question": "筆者は何によって信頼が生まれると考えていますか。",
+      "choices": [
+        "失敗を隠すこと",
+        "小さな気遣いを重ねること",
+        "会話を避けること",
+        "仕事を一人ですること"
+      ],
+      "answer": 1,
+      "explanation": "Tác giả cho rằng việc tích lũy những sự quan tâm nhỏ sẽ hình thành lòng tin.",
+      "id": "trung-original-b03-r-mimikara-001"
     }
   ],
   "listening": [
@@ -3203,6 +3499,22 @@
       "answer": 2,
       "explanation": "Nam từ chối tuần này vì bận và đồng ý đi tuần sau.",
       "id": "trung-original-b02-l-mimikara-001"
+    },
+    {
+      "title": "Lời mời tham gia học nhóm",
+      "speaker": "友人同士が来週の予定を話しています。",
+      "script": "女：来週の土曜日、みんなで勉強会をするんだけど、一緒にどう？\n男：誘ってくれてありがとう。午前中なら参加できるよ。\n女：じゃあ、十時から始めようか。\n男：うん、それなら大丈夫。",
+      "scriptVi": "Nữ: Thứ Bảy tuần sau mọi người định học nhóm, bạn tham gia cùng nhé?\nNam: Cảm ơn bạn đã rủ. Nếu là buổi sáng thì mình tham gia được.\nNữ: Vậy bắt đầu từ mười giờ nhé?\nNam: Ừ, như vậy thì được.",
+      "question": "勉強会は何時から始まりますか。",
+      "choices": [
+        "九時",
+        "十時",
+        "十一時",
+        "午後一時"
+      ],
+      "answer": 1,
+      "explanation": "Hai người thống nhất bắt đầu lúc mười giờ.",
+      "id": "trung-original-b03-l-mimikara-001"
     }
   ]
 }

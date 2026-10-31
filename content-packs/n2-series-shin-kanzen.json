@@ -1,6 +1,6 @@
 {
   "id": "n2-series-shin-kanzen",
-  "version": 4,
+  "version": 5,
   "seriesId": "shin-kanzen",
   "title": "Shin Kanzen – Bộ phân tích ngữ pháp, Kanji do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2241,6 +2241,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-001",
+      "word": "背景",
+      "reading": "はいけい",
+      "meaning": "bối cảnh, hoàn cảnh phía sau",
+      "example": "問題の背景を調べる必要があります。",
+      "exampleVi": "Cần tìm hiểu bối cảnh của vấn đề.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-002",
+      "word": "要因",
+      "reading": "よういん",
+      "meaning": "yếu tố nguyên nhân",
+      "example": "事故の要因を一つずつ分析します。",
+      "exampleVi": "Chúng tôi phân tích từng yếu tố gây ra sự cố.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-003",
+      "word": "資料",
+      "reading": "しりょう",
+      "meaning": "tài liệu",
+      "example": "研究に必要な資料を集めています。",
+      "exampleVi": "Tôi đang thu thập tài liệu cần cho nghiên cứu.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-004",
+      "word": "証拠",
+      "reading": "しょうこ",
+      "meaning": "bằng chứng",
+      "example": "その主張を裏付ける証拠がありません。",
+      "exampleVi": "Không có bằng chứng chứng minh luận điểm đó.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-005",
+      "word": "相違",
+      "reading": "そうい",
+      "meaning": "sự khác biệt",
+      "example": "二つの説明には相違があります。",
+      "exampleVi": "Hai lời giải thích có sự khác biệt.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-006",
+      "word": "共通",
+      "reading": "きょうつう",
+      "meaning": "chung, tương đồng",
+      "example": "二つの意見には共通する点があります。",
+      "exampleVi": "Hai ý kiến có những điểm chung.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-007",
+      "word": "解釈",
+      "reading": "かいしゃく",
+      "meaning": "cách giải thích, diễn giải",
+      "example": "この文の解釈には二つの可能性があります。",
+      "exampleVi": "Có hai cách diễn giải câu này.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-008",
+      "word": "構成",
+      "reading": "こうせい",
+      "meaning": "cấu trúc, bố cục",
+      "example": "文章の構成を確認してから読みます。",
+      "exampleVi": "Tôi xem bố cục trước khi đọc bài.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-009",
+      "word": "観点",
+      "reading": "かんてん",
+      "meaning": "quan điểm, góc nhìn",
+      "example": "別の観点から問題を考えましょう。",
+      "exampleVi": "Hãy xem xét vấn đề từ một góc nhìn khác.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-010",
+      "word": "分析的",
+      "reading": "ぶんせきてき",
+      "meaning": "mang tính phân tích",
+      "example": "分析的な読み方を練習しています。",
+      "exampleVi": "Tôi đang luyện cách đọc có tính phân tích.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-011",
+      "word": "客観性",
+      "reading": "きゃっかんせい",
+      "meaning": "tính khách quan",
+      "example": "報告書には客観性が求められます。",
+      "exampleVi": "Bản báo cáo đòi hỏi tính khách quan.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-012",
+      "word": "妥当",
+      "reading": "だとう",
+      "meaning": "thỏa đáng, hợp lý",
+      "example": "その判断は妥当だと思います。",
+      "exampleVi": "Tôi nghĩ nhận định đó hợp lý.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-013",
+      "word": "論拠",
+      "reading": "ろんきょ",
+      "meaning": "căn cứ lập luận",
+      "example": "筆者の論拠が十分か確認しましょう。",
+      "exampleVi": "Hãy kiểm tra căn cứ lập luận của tác giả có đầy đủ không.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-014",
+      "word": "反論",
+      "reading": "はんろん",
+      "meaning": "ý kiến phản bác, phản biện",
+      "example": "相手の反論にも耳を傾けます。",
+      "exampleVi": "Tôi cũng lắng nghe ý kiến phản biện của đối phương.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-015",
+      "word": "裏付け",
+      "reading": "うらづけ",
+      "meaning": "cơ sở chứng minh",
+      "example": "数字による裏付けが必要です。",
+      "exampleVi": "Cần có cơ sở chứng minh bằng số liệu.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-v-shin-kanzen-016",
+      "word": "推測",
+      "reading": "すいそく",
+      "meaning": "suy đoán",
+      "example": "少ない情報だけで推測するのは危険です。",
+      "exampleVi": "Suy đoán chỉ dựa vào ít thông tin là điều nguy hiểm.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2726,6 +2934,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-shin-kanzen-001",
+      "pattern": "〜を皮切りに",
+      "meaning": "bắt đầu từ, mở đầu bằng",
+      "rule": "Danh từ + を皮切りに; khởi đầu chuỗi hoạt động nối tiếp.",
+      "example": "東京での発表を皮切りに、各地で説明会を開きました。",
+      "translation": "Bắt đầu từ buổi giới thiệu ở Tokyo, chúng tôi tổ chức các buổi giải thích tại nhiều nơi.",
+      "week": 15,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-shin-kanzen-002",
+      "pattern": "〜に代わって",
+      "meaning": "thay cho, đại diện cho",
+      "rule": "Danh từ + に代わって; một người hoặc sự vật thực hiện vai trò thay đối tượng khác.",
+      "example": "欠席した担当者に代わって、私が説明します。",
+      "translation": "Tôi sẽ giải thích thay cho người phụ trách vắng mặt.",
+      "week": 16,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-g-shin-kanzen-003",
+      "pattern": "〜に従って",
+      "meaning": "theo, tuân theo",
+      "rule": "Danh từ + に従って; làm theo quy tắc, chỉ dẫn hoặc diễn biến.",
+      "example": "説明書の手順に従って、機械を設定してください。",
+      "translation": "Hãy cài đặt máy theo trình tự trong sách hướng dẫn.",
+      "week": 17,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -3144,6 +3388,42 @@
       "meaning": "đánh giá; bình luận",
       "word": "評価",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-shin-kanzen-001",
+      "char": "証",
+      "on": "ショウ",
+      "kun": "あかし",
+      "meaning": "chứng, bằng chứng",
+      "word": "証拠",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-shin-kanzen-002",
+      "char": "構",
+      "on": "コウ",
+      "kun": "かまえる、かまう",
+      "meaning": "cấu, cấu trúc",
+      "word": "構成",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-shin-kanzen-003",
+      "char": "釈",
+      "on": "シャク",
+      "kun": "—",
+      "meaning": "thích, giải thích",
+      "word": "解釈",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b03-k-shin-kanzen-004",
+      "char": "妥",
+      "on": "ダ",
+      "kun": "—",
+      "meaning": "thỏa đáng, phù hợp",
+      "word": "妥当",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -3192,6 +3472,22 @@
       "answer": 2,
       "explanation": "Mục đích thay đổi là đánh giá nỗ lực công bằng hơn, không chỉ dựa vào khả năng nói.",
       "id": "trung-original-b02-r-shin-kanzen-001"
+    },
+    {
+      "title": "Đọc kết quả khảo sát một cách khách quan",
+      "topic": "Lập luận và nghiên cứu",
+      "text": "ある調査では、回答した人の多くが新しいサービスに満足していました。ただし、回答者の数が少なく、調査の対象も一つの地域に限られていました。したがって、この結果だけを根拠に、すべての利用者が満足していると判断するのは妥当ではありません。結果の背景を確認し、別の地域でも調査することが必要です。",
+      "textVi": "Trong một cuộc khảo sát, nhiều người trả lời hài lòng với dịch vụ mới. Tuy nhiên, số người trả lời ít và đối tượng khảo sát chỉ giới hạn ở một khu vực. Vì vậy, không hợp lý nếu chỉ dựa vào kết quả này để kết luận rằng tất cả người dùng đều hài lòng. Cần xem xét bối cảnh của kết quả và khảo sát cả những khu vực khác.",
+      "question": "筆者が問題だと考えている点は何ですか。",
+      "choices": [
+        "回答者が多すぎること",
+        "調査の地域と人数が限られていること",
+        "サービスを使う人がいないこと",
+        "資料が日本語ではないこと"
+      ],
+      "answer": 1,
+      "explanation": "Vấn đề là số lượng người tham gia ít và khu vực khảo sát bị giới hạn.",
+      "id": "trung-original-b03-r-shin-kanzen-001"
     }
   ],
   "listening": [
@@ -3240,6 +3536,22 @@
       "answer": 1,
       "explanation": "Chưa quyết định vì dữ liệu khảo sát chưa đầy đủ.",
       "id": "trung-original-b02-l-shin-kanzen-001"
+    },
+    {
+      "title": "Đánh giá tài liệu báo cáo",
+      "speaker": "上司と社員が報告書について話しています。",
+      "script": "男：この報告書はもう提出できますか。\n女：数字は正確ですが、結論の根拠が少し弱いですね。\n男：では、何を追加すればいいですか。\n女：別の地域の調査結果も入れてください。",
+      "scriptVi": "Nam: Bản báo cáo này đã có thể nộp chưa ạ?\nNữ: Số liệu chính xác, nhưng căn cứ cho kết luận còn hơi yếu.\nNam: Vậy cần bổ sung gì ạ?\nNữ: Hãy thêm kết quả khảo sát ở một khu vực khác.",
+      "question": "男の人は報告書に何を加える必要がありますか。",
+      "choices": [
+        "写真だけ",
+        "ほかの地域の調査結果",
+        "新しい表紙",
+        "自分の予定"
+      ],
+      "answer": 1,
+      "explanation": "Người nữ yêu cầu bổ sung kết quả khảo sát của khu vực khác.",
+      "id": "trung-original-b03-l-shin-kanzen-001"
     }
   ]
 }

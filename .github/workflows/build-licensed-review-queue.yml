@@ -30,6 +30,8 @@ jobs:
       - name: Validate queued vocabulary Kanji grammar and prevent publication of unreviewed fields
         run: |
           python3 scripts/validate_licensed_review_queue.py
+          python3 -m py_compile scripts/build_cumulative_licensed_review_queue.py scripts/build_214_kangxi_review_index.py scripts/promote_reviewed_cumulative_candidates.py
+          python3 scripts/promote_reviewed_cumulative_candidates.py
           python3 scripts/validate_series_packs.py
           python3 scripts/validate_four_series_curriculum.py
       - name: Commit research-only catalog and transparent progress report

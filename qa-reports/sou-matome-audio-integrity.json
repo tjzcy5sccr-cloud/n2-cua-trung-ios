@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "source": "User-uploaded Soumatome N2 Choukai (có CD).rar",
+  "method": "MP3 header/metadata validation and SHA-256 comparison on all extracted tracks",
+  "files": 116,
+  "readableMP3Files": 116,
+  "totalHoursApprox": 2.087,
+  "CD1": {
+    "files": 64,
+    "totalMinutesApprox": 64.44
+  },
+  "CD2": {
+    "files": 52,
+    "totalMinutesApprox": 60.76
+  },
+  "byteIdenticalDuplicateTracks": 0,
+  "unreadableTracks": 0,
+  "pendingVerification": "Match each individual track to textbook exercise and validate Japanese transcription; source-index integrity alone does not verify learning content."
+}

@@ -35,6 +35,8 @@ targets:
         buildPhase: resources
       - path: N2CuaTrung/Resources/grammar-details.json
         buildPhase: resources
+      - path: N2CuaTrung/Resources/sou-matome-day-index.json
+        buildPhase: resources
       - path: N2CuaTrung/Resources/furigana-atlas.json
         buildPhase: resources
       - path: content-packs/n2-expansion-01.json

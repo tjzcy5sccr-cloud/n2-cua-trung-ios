@@ -187,7 +187,10 @@ enum QuestionBank {
 
     static func vocabulary(_ data: CourseData, week: Int) -> [ExamQuestion] {
         let eligible = data.vocab.filter { $0.week <= week && $0.isApprovedForStudy }
-        let meanings = data.vocab.filter { $0.isApprovedForStudy }.map(\.displayMeaning)
+        let meanings = data.vocab.filter { $0.isApprovedForStudy }
+            .map(\.displayMeaning).filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        // A multiple-choice question must have three distinct wrong meanings.
+        guard Set(meanings).count >= 4 else { return [] }
         return eligible.shuffled().prefix(100).map { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
                    passage: item.approvedExampleJapanese, correct: item.displayMeaning,
@@ -199,7 +202,9 @@ enum QuestionBank {
 
     static func grammar(_ data: CourseData, week: Int) -> [ExamQuestion] {
         let eligible = data.grammar.filter { $0.week <= week && $0.isApprovedForStudy }
-        let meanings = data.grammar.filter { $0.isApprovedForStudy }.map(\.displayMeaning)
+        let meanings = data.grammar.filter { $0.isApprovedForStudy }
+            .map(\.displayMeaning).filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        guard Set(meanings).count >= 4 else { return [] }
         return eligible.shuffled().prefix(70).map { item in
             create(category: "Ngữ pháp", prompt: "Ý nghĩa của \(item.pattern) là gì?",
                    passage: item.hasApprovedExample ? item.example : nil,
@@ -211,7 +216,9 @@ enum QuestionBank {
     }
 
     static func kanji(_ data: CourseData) -> [ExamQuestion] {
-        data.kanji.filter { $0.isApprovedForStudy }.map { item in
+        guard Set(data.kanji.filter { $0.isApprovedForStudy }
+            .map(\.displayMeaning)).count >= 4 else { return [] }
+        return data.kanji.filter { $0.isApprovedForStudy }.map { item in
             create(category: "Kanji", prompt: "Chữ 「\(item.char)」 có nghĩa gì?",
                    passage: nil, correct: item.displayMeaning,
                    others: data.kanji.filter { $0.isApprovedForStudy }.map(\.displayMeaning),

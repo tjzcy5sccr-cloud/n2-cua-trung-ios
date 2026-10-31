@@ -3,22 +3,22 @@
   "packs": [
     {
       "id": "n2-series-mimikara",
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/n2-series-mimikara.json"
     },
     {
       "id": "n2-series-shin-kanzen",
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/n2-series-shin-kanzen.json"
     },
     {
       "id": "n2-series-sou-matome",
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/n2-series-sou-matome.json"
     },
     {
       "id": "n2-series-speed-master",
-      "version": 5,
+      "version": 6,
       "url": "https://raw.githubusercontent.com/tjzcy5sccr-cloud/n2-cua-trung-ios/feature/n2-four-series-roadmap-2027/content-packs/n2-series-speed-master.json"
     }
   ]

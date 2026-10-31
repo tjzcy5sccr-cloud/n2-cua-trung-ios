@@ -7,26 +7,10 @@
     "reading-listening"
   ],
   "newApprovedCounts": {
-    "mimikara": {
-      "vocab": 94,
-      "grammar": 23,
-      "kanji": 23
-    },
-    "shin-kanzen": {
-      "vocab": 95,
-      "grammar": 23,
-      "kanji": 24
-    },
-    "sou-matome": {
-      "vocab": 95,
-      "grammar": 23,
-      "kanji": 22
-    },
-    "speed-master": {
-      "vocab": 94,
-      "grammar": 24,
-      "kanji": 26
-    }
+    "mimikara": {},
+    "shin-kanzen": {},
+    "sou-matome": {},
+    "speed-master": {}
   },
   "stillUnreviewedCounts": {
     "vocab": {
@@ -43,30 +27,30 @@
   },
   "totalPerSeries": {
     "mimikara": {
-      "vocab": 126,
-      "grammar": 38,
-      "kanji": 39,
+      "vocab": 138,
+      "grammar": 40,
+      "kanji": 43,
       "readings": 2,
       "listening": 2
     },
     "shin-kanzen": {
-      "vocab": 126,
-      "grammar": 38,
-      "kanji": 40,
+      "vocab": 138,
+      "grammar": 41,
+      "kanji": 44,
       "readings": 2,
       "listening": 2
     },
     "sou-matome": {
-      "vocab": 126,
-      "grammar": 38,
-      "kanji": 39,
+      "vocab": 138,
+      "grammar": 41,
+      "kanji": 43,
       "readings": 2,
       "listening": 1
     },
     "speed-master": {
-      "vocab": 125,
-      "grammar": 38,
-      "kanji": 42,
+      "vocab": 137,
+      "grammar": 40,
+      "kanji": 46,
       "readings": 2,
       "listening": 1
     }

@@ -27,10 +27,16 @@ for key in names:
 for kind in groups:
     base={v["id"]:v for v in source[kind]}
     combined=[v for pack in allpacks for v in pack[kind]]
-    assert len(combined)==len(base),(kind,len(combined),len(base))
-    assert {v["id"] for v in combined}==set(base),(kind,"missing original data")
-    assert all(base[v["id"]]==v for v in combined),(kind,"source data mutated")
-    print(kind+":",len(base),"source items, each assigned to exactly one series")
+    by_id={v["id"]:v for v in combined}
+    assert len(combined)==len(by_id),(kind,"duplicate IDs across series")
+    assert set(base).issubset(by_id),(kind,"missing original data")
+    assert all(base[key]==by_id[key] for key in base),(kind,"seed data mutated")
+    new_items=[v for v in combined if v["id"] not in base]
+    if kind in ("vocab","grammar","kanji"):
+        flag={"vocab":"meaningStatus","grammar":"grammarStatus","kanji":"meaningStatus"}[kind]
+        assert all(v.get(flag) in {"editorial_reviewed","source_verified","independently_verified"}
+                   for v in new_items),(kind,"unreviewed new item leaked into app")
+    print(kind+":",len(base),"source items retained +",len(new_items),"approved additions")
 
 manifest=json.loads((ROOT/"content-packs/manifest-series.json").read_text(encoding="utf-8"))
 assert manifest["schemaVersion"]==1

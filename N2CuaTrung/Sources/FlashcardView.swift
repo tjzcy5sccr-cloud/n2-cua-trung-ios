@@ -156,6 +156,7 @@ struct FlashcardDeckView: View {
             }
         }
         .onAppear { if cards.isEmpty { reload() } }
+        .onChange(of: store.contentRevision) { _ in reload() }
         .onDisappear {
             autoPlay = false
             voice.stop()
@@ -448,6 +449,7 @@ struct GrammarFlashcardView: View {
             }
         }
         .onAppear { if content.isEmpty { reload() } }
+        .onChange(of: store.contentRevision) { _ in reload() }
         .onDisappear { voice.stop() }
     }
 

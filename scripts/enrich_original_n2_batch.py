@@ -145,7 +145,9 @@ def main():
         for ix,(word,reading,meaning,example,translation) in enumerate(parse_rows(VOCAB[name],5),1):
             ident=f"trung-original-v-{name}-{ix:03d}"
             if ident in existing["vocab"]:continue
-            if word not in example: raise ValueError(f"Need word in example: {word}")
+            # Inflected verbs (見直す→見直します, 振り返る→振り返ります) retain their written stem.
+            if word not in example and (len(word) < 2 or word[:-1] not in example):
+                raise ValueError(f"Need word or inflected stem in example: {word}")
             if not all((word,reading,meaning,example,translation)): raise ValueError("empty vocabulary data")
             pack["vocab"].append({
                 "id":ident,"word":word,"reading":reading,"meaning":meaning,

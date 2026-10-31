@@ -1,0 +1,48 @@
+name: Build fully attributed licensed N2 cumulative review queue
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - scripts/build_cumulative_licensed_review_queue.py
+      - scripts/validate_licensed_review_queue.py
+      - .github/workflows/build-licensed-review-queue.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: n2-research-licensed-queue-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build-reviewed-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout feature branch without touching main
+        uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+          persist-credentials: true
+      - name: Retrieve immutable-commit CC BY-SA source lists and Japanese–Vietnamese candidates
+        run: python3 scripts/build_cumulative_licensed_review_queue.py
+      - name: Validate queued vocabulary Kanji grammar and prevent publication of unreviewed fields
+        run: |
+          python3 scripts/validate_licensed_review_queue.py
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py
+      - name: Commit research-only catalog and transparent progress report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/licensed-cumulative-queue/
+          if ! git diff --cached --quiet; then
+            git commit -m "Index licensed cumulative N2 source-only review queue with Japanese reading, draft Vietnamese glosses and 35-week review lanes"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Upload research coverage metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-cumulative-source-only-coverage
+          path: |
+            research/licensed-cumulative-queue/summary.json
+            research/licensed-cumulative-queue/35-week-review-index.json
+          retention-days: 30

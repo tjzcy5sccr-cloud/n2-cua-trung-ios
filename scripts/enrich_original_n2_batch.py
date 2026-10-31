@@ -117,7 +117,7 @@ KANJI={
 """,
 "speed-master":"""
 析|セキ|—|tích; phân tích, tách ra|分析
-修|シュウ、シュ|おさめる、おさまる|tu; sửa chữa, trau dồi|修正
+測|ソク|はかる|trắc; đo lường, dự đoán|予測
 収|シュウ|おさめる、おさまる|thu; thu nhận, thu gom|収集
 緊|キン|—|khẩn; gấp, chặt|緊急
 """

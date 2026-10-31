@@ -6,7 +6,7 @@ final class StudyStore: ObservableObject {
     @Published var course: CourseData
     @Published var installedPacks: [CoursePack]
     @Published private(set) var selectedSeries: LearningSeries
-    @Published private(set) var contentRevision = UUID()
+    @Published var contentRevision = UUID()
     @Published private(set) var saved: SavedProgress
     private let key = "N2CuaTrung.progress.v1"
     private let seriesPreferenceKey = "N2CuaTrung.activeStudySeries.v1"

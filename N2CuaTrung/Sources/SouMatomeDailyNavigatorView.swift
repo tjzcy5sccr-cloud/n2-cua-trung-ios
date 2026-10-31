@@ -100,15 +100,66 @@ struct SouMatomeDailyNavigatorView: View {
                 }
 
                 LessonPanel {
-                    SectionTitle("Đọc hiểu và nghe hiểu")
-                    Text("Hai sách chính này có bố cục riêng, chưa có lớp văn bản. Mở thư viện để đọc PDF, sử dụng CD nghe và hiệu đính từng trang.")
-                        .font(.subheadline).foregroundColor(.secondary)
+                    SectionTitle("Đọc hiểu – 6 tuần",
+                                 subtitle: "Theo mục lục của PDF sách chính")
+                    if let doc = SouMatomeDocument.all.first(where: { $0.id == "dokkai" }),
+                       let url = library.fileURL(for: doc) {
+                        let starts = [12, 28, 44, 60, 78, 96]
+                        ForEach(0..<starts.count, id: \.self) { index in
+                            NavigationLink {
+                                SouMatomePDFReader(book: doc, url: url,
+                                                  initialPage: starts[index])
+                            } label: {
+                                HStack {
+                                    Text("Tuần \(index + 1)")
+                                    Spacer()
+                                    Text("Trang \(starts[index])")
+                                    Image(systemName: "chevron.right")
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(Palette.navy)
+                                .padding(.vertical, 5)
+                            }
+                        }
+                    } else {
+                        Text("Nhập PDF đọc hiểu trước khi chọn tuần.")
+                            .font(.caption).foregroundColor(.secondary)
+                    }
+                }
+                LessonPanel {
+                    SectionTitle("Nghe hiểu – 5 chương",
+                                 subtitle: "Theo mục lục của PDF nghe hiểu")
+                    if let doc = SouMatomeDocument.all.first(where: { $0.id == "choukai" }),
+                       let url = library.fileURL(for: doc) {
+                        let starts = [12, 24, 40, 52, 64]
+                        ForEach(0..<starts.count, id: \.self) { index in
+                            NavigationLink {
+                                SouMatomePDFReader(book: doc, url: url,
+                                                  initialPage: starts[index])
+                            } label: {
+                                HStack {
+                                    Text("Chương \(index + 1)")
+                                    Spacer()
+                                    Text("Trang \(starts[index])")
+                                    Image(systemName: "chevron.right")
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(Palette.navy)
+                                .padding(.vertical, 5)
+                            }
+                        }
+                    } else {
+                        Text("Nhập PDF nghe hiểu trước khi chọn chương.")
+                            .font(.caption).foregroundColor(.secondary)
+                    }
                     NavigationLink {
                         SouMatomeLibraryView()
                     } label: {
-                        ActionTile(icon: "books.vertical", color: Palette.blue,
-                                   title: "Thư viện PDF và CD", detail: "Đọc hiểu • Nghe hiểu • 116 MP3")
+                        ActionTile(icon: "waveform", color: Palette.blue,
+                                   title: "Nghe các CD", detail: "64 track CD1 • 52 track CD2")
                     }.buttonStyle(.plain)
+                    Text("Chưa tự gán track MP3 vào bài đọc/nghe khi chưa xác minh được từ nguồn.")
+                        .font(.caption).foregroundColor(.secondary)
                 }
             }
             .padding(16)

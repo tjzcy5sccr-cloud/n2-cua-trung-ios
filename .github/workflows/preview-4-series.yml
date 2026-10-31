@@ -31,7 +31,8 @@ jobs:
           third=json.loads(Path("qa-reports/n2-original-batch-03.json").read_text(encoding="utf-8"))
           assert third["added"]=={"vocab":64,"grammar":12,"kanji":16,"readings":4,"listening":4}
           assert all(x["version"]>=5 for x in third["series"].values())
-          print("PASS: original batches 01–03 and 4 version-5 isolated study packs; preview without IPA build")
+          assert third["newlyImportedThisRun"]=={"vocab":0,"grammar":0,"kanji":0,"readings":0,"listening":0}
+          print("PASS: all 274 original entries across batches 01–03, four v6 datasets, stable historical audit and no IPA build")
           PY
       - name: Parse curriculum Swift code without compiling iOS
         run: |

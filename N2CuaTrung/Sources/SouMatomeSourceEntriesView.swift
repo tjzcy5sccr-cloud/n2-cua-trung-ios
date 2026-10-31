@@ -249,5 +249,6 @@ struct SouMatomeSourceEntriesView: View {
         .background(Palette.pale)
         .navigationTitle("Mục học trong sách")
         .navigationBarTitleDisplayMode(.inline)
+        .task { await source.indexBooks() }
     }
 }

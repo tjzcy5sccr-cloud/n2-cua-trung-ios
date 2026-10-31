@@ -22,29 +22,19 @@ enum GrammarLibrary {
         return result
     }()
 
-    private static let approvedStatuses: Set<String> = [
-        "editorial_reviewed", "source_verified", "independently_verified"
-    ]
-
     static func structure(for grammar: Grammar) -> String {
-        // Cách dùng đã biên tập theo gói học chính được ưu tiên.
-        // Tư liệu cũ chưa có trạng thái kiểm chứng vẫn giữ trong JSON, không hiện trong app.
-        grammar.isApprovedForStudy ? grammar.displayRule : ""
+        // Khôi phục cách dùng và ghi chú gốc; trạng thái kiểm tra chỉ ở JSON.
+        stored[grammar.id]?.structure ?? grammar.rule
     }
 
     static func examples(for grammar: Grammar) -> [GrammarSample] {
-        var approved: [GrammarSample] = []
-        if grammar.hasApprovedExample, !grammar.example.isEmpty, !grammar.displayTranslation.isEmpty {
-            approved.append(GrammarSample(text: grammar.example,
-                                          translation: grammar.displayTranslation,
-                                          translationStatus: grammar.translationStatus))
-        }
+        let main = GrammarSample(text: grammar.example,
+                                 translation: grammar.displayTranslation,
+                                 translationStatus: grammar.translationStatus)
         let extra = stored[grammar.id]?.extra ?? grammar.samples ?? []
-        approved.append(contentsOf: extra.filter {
-            approvedStatuses.contains($0.translationStatus ?? "") &&
-            !$0.text.isEmpty && !$0.translation.isEmpty &&
-            !$0.translation.hasPrefix("EN ·")
-        })
-        return approved
+        // Trả lại toàn bộ ví dụ đã được lưu, kể cả chưa kiểm duyệt.
+        // Không hiển thị nhãn "tham khảo/chưa duyệt" ở UI.
+        return ([main] + extra).filter { !$0.text.isEmpty }
     }
+
 }

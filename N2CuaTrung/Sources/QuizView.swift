@@ -209,6 +209,24 @@ struct QuestionSessionView: View {
                             Text(question.explanation)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
+                            if question.category == "Đọc hiểu",
+                               let lesson = store.course.readings.first(where: { $0.text == question.passage }),
+                               let translation = lesson.textVi, !translation.isEmpty {
+                                Divider()
+                                Text("Dịch toàn bài đọc")
+                                    .font(.subheadline.weight(.bold)).foregroundColor(Palette.navy)
+                                Text(translation)
+                                    .font(.subheadline).foregroundColor(.secondary)
+                            }
+                            if question.category == "Nghe hiểu",
+                               let lesson = store.course.listening.first(where: { $0.script == question.audioText }),
+                               let translation = lesson.scriptVi, !translation.isEmpty {
+                                Divider()
+                                Text("Dịch toàn hội thoại")
+                                    .font(.subheadline.weight(.bold)).foregroundColor(Palette.navy)
+                                Text(translation)
+                                    .font(.subheadline).foregroundColor(.secondary)
+                            }
                             Text("Câu hỏi sẽ giữ nguyên đến khi bạn nhấn Tiếp.")
                                 .font(.caption)
                                 .foregroundColor(Palette.blue)

@@ -44,6 +44,11 @@ struct PracticeHubView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 13) {
+                NavigationLink { LearningSeriesPickerView() } label: {
+                    ActionTile(icon: "square.stack.3d.up.fill", color: Palette.blue,
+                               title: "Đang học: \(store.selectedSeries.name)",
+                               detail: "Chạm để đổi bộ dữ liệu cho mọi kỹ năng")
+                }.buttonStyle(.plain)
                 SectionTitle("Luyện JLPT N2", subtitle: "Chọn kỹ năng muốn luyện – hoạt động offline")
                 NavigationLink { GrammarListView() } label: {
                     ActionTile(icon: "textformat.abc", color: Palette.blue,

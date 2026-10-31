@@ -18,6 +18,12 @@ struct ContentUpdatesView: View {
                     itemRow("Kanji", store.course.kanji.count)
                     itemRow("Đọc hiểu", store.course.readings.count)
                     itemRow("Nghe hiểu", store.course.listening.count)
+                    Divider()
+                    SectionTitle("Thống kê Flashcard")
+                    itemRow("Từ vựng gốc", CourseData.load().vocab.count)
+                    itemRow("Từ vựng đã duyệt", store.course.vocab.count)
+                    itemRow("Từ đã mở theo tuần", store.course.vocab.filter { $0.week <= store.week }.count)
+                    itemRow("Từ cần ôn", store.dueCount)
                 }
                 LessonPanel {
                     SectionTitle("Cập nhật dữ liệu")
@@ -53,7 +59,7 @@ struct ContentUpdatesView: View {
                         ForEach(store.installedPacks) { pack in
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(pack.id == "openjlpt-n2-core" ? "Bộ N2 mở rộng" : "Bộ bài học nâng cao").font(.subheadline.weight(.semibold))
+                                    Text(pack.title).font(.subheadline.weight(.semibold))
                                     Text("Phiên bản \(pack.version) · \(pack.itemCount) mục")
                                         .font(.caption).foregroundColor(.secondary)
                                 }

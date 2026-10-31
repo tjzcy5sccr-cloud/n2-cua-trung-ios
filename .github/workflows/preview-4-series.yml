@@ -16,12 +16,19 @@ jobs:
     steps:
       - name: Checkout feature branch
         uses: actions/checkout@v4
-      - name: Validate 35-week N2 syllabus and SwiftUI integration
-        run: python3 scripts/validate_four_series_curriculum.py
+      - name: Validate 35-week syllabus and all 4 independent content packs
+        run: |
+          python3 scripts/validate_four_series_curriculum.py
+          python3 scripts/validate_series_packs.py
       - name: Parse curriculum Swift code without compiling iOS
         run: |
           if command -v swiftc >/dev/null 2>&1; then
             swiftc -frontend -parse N2CuaTrung/Sources/FourSeriesCurriculumView.swift
+            swiftc -frontend -parse N2CuaTrung/Sources/LearningSeries.swift
+            swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
+            swiftc -frontend -parse N2CuaTrung/Sources/StudyStore.swift
+            swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift
+            swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdatesView.swift
           else
             echo "Swift compiler unavailable on this Linux runner; data validation still applies."
           fi
@@ -30,14 +37,17 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq fonts-noto-cjk
           python3 -m pip install --disable-pip-version-check 'Pillow>=10,<12'
-      - name: Render the curriculum mockup BEFORE any IPA build
-        run: python3 scripts/render_four_series_preview.py
+      - name: Render both curriculum and data-series selector mockups
+        run: |
+          python3 scripts/render_four_series_preview.py
+          python3 scripts/render_series_selector_preview.py
       - name: Upload preview and syllabus for review
         uses: actions/upload-artifact@v4
         with:
           name: N2-four-series-35-week-preview-${{ github.sha }}
           path: |
             qa-reports/four-series-prebuild-preview.png
+            qa-reports/series-selector-preview.png
             N2CuaTrung/Resources/n2-four-series-curriculum.json
           if-no-files-found: error
           retention-days: 30

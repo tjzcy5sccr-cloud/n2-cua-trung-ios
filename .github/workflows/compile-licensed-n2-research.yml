@@ -1,0 +1,52 @@
+name: Compile licensed Japanese-Vietnamese N2 research candidates
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - 'scripts/compile_licensed_n2_vietnamese_candidates.py'
+      - '.github/workflows/compile-licensed-n2-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-only-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+      - name: Match open N2/N3 vocabulary with Vietnamese CC BY-SA dictionary
+        run: python3 scripts/compile_licensed_n2_vietnamese_candidates.py
+      - name: Verify candidates are not part of bundled iPhone resources
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          root = Path('.')
+          for f in ('qa-reports/licensed-n2-vietnamese-candidates.json',
+                    'qa-reports/licensed-n2-missing-vietnamese.json'):
+              d = json.loads((root/f).read_text(encoding='utf-8'))
+              for group in ('vocab', 'kanji', 'grammar'):
+                  assert all(item.get('canPublishInIPA') is False for item in d.get(group, []))
+          project = (root/'project.yml').read_text(encoding='utf-8')
+          assert 'licensed-n2-vietnamese-candidates.json' not in project
+          print('PASS: new source-only candidates not embedded in IPA')
+          PY
+      - name: Commit review data under QA only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add qa-reports/licensed-n2-vietnamese-candidates.json qa-reports/licensed-n2-missing-vietnamese.json qa-reports/licensed-n2-vietnamese-summary.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Research licensed Vietnamese glosses for N2/N3 and stage pending human review only"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Upload research summaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-open-vietnamese-source-review
+          path: |
+            qa-reports/licensed-n2-vietnamese-summary.json
+            qa-reports/licensed-n2-missing-vietnamese.json
+          if-no-files-found: error

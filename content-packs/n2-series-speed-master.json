@@ -2946,7 +2946,7 @@
       "id": "k11",
       "char": "判",
       "on": "ハン",
-      "kun": "",
+      "kun": "—",
       "meaning": "phán định",
       "word": "判断"
     },
@@ -2970,7 +2970,7 @@
       "id": "k19",
       "char": "験",
       "on": "ケン",
-      "kun": "",
+      "kun": "—",
       "meaning": "thử nghiệm",
       "word": "経験"
     },
@@ -3018,7 +3018,7 @@
       "id": "k44",
       "char": "対",
       "on": "タイ",
-      "kun": "",
+      "kun": "—",
       "meaning": "đối với",
       "word": "対応"
     },
@@ -3026,7 +3026,7 @@
       "id": "k52",
       "char": "達",
       "on": "タツ",
-      "kun": "",
+      "kun": "—",
       "meaning": "đạt được",
       "word": "達成"
     },
@@ -3067,7 +3067,7 @@
       "id": "olj-k-5354",
       "char": "協",
       "on": "キョウ",
-      "kun": "",
+      "kun": "—",
       "meaning": "hợp tác, phối hợp",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3085,7 +3085,7 @@
       "id": "olj-k-5e9c",
       "char": "府",
       "on": "フ",
-      "kun": "",
+      "kun": "—",
       "meaning": "phủ; cơ quan hành chính",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3139,7 +3139,7 @@
       "id": "olj-k-57df",
       "char": "域",
       "on": "イキ",
-      "kun": "",
+      "kun": "—",
       "meaning": "khu vực, phạm vi",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3256,7 +3256,7 @@
       "id": "olj-k-8b1b",
       "char": "講",
       "on": "コウ",
-      "kun": "",
+      "kun": "—",
       "meaning": "giảng bài, thuyết trình",
       "word": "",
       "meaningStatus": "editorial_reviewed"

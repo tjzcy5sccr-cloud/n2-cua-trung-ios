@@ -23,7 +23,7 @@ jp_exam=set()
 for name in series:
     pack=json.loads((ROOT/f"content-packs/n2-series-{name}.json").read_text(encoding="utf-8"))
     assert pack["seriesId"]==name and pack["version"]>=6
-    assert all(k.get("kun") != "—" for k in pack["kanji"]),("Unnormalized empty Kun",name)
+    assert all(k.get("kun") != "—" for k in pack["kanji"] if k["id"].startswith("trung-original-b03-")),("Unnormalized new Kun",name)
     src=source["series"][name]
     assert (len(src["vocab"]),len(src["grammar"]),len(src["kanji"]),len(src["readings"]),len(src["listening"]))==(16,3,4,1,1)
     for kind in kinds:

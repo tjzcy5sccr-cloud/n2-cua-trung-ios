@@ -58,9 +58,14 @@ jobs:
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeDailyNavigatorView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeWholeBooksView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeSourceEntriesView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePersonalReview.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift
+      - name: Test reviewed-only Japanese-Vietnamese content audit
+        run: |
+          python3 -m py_compile scripts/audit_sou_matome_personal_pack.py
+          python3 -m unittest discover -s scripts -p 'test_sou_matome_audit.py' -v
       - name: Validate independent study packs
         run: |
           python3 scripts/validate_series_packs.py

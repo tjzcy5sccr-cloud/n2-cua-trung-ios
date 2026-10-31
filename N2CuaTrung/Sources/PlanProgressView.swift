@@ -19,6 +19,14 @@ struct PlanView: View {
                             .font(.subheadline)
                     }
                 }
+                NavigationLink {
+                    FourSeriesCurriculumView()
+                } label: {
+                    ActionTile(icon: "books.vertical", color: Palette.blue,
+                               title: "Kế hoạch N2 theo 4 hướng học",
+                               detail: "35 tuần, nhiệm vụ từng ngày, luyện theo kỹ năng")
+                }
+                .buttonStyle(.plain)
                 ForEach(store.course.weeks) { item in
                     LessonPanel {
                         HStack(alignment: .top) {

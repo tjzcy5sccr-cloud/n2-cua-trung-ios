@@ -65,6 +65,14 @@ struct DashboardView: View {
                     Text("Chạm giữ màn hình khóa → Tùy chỉnh → Thêm tiện ích → N2 của Trung. Mở lại app sẽ yêu cầu widget làm mới, nhưng iOS không đảm bảo đổi từ sau từng lần bật/tắt màn hình.")
                         .font(.caption).foregroundColor(.secondary)
                 }
+                NavigationLink {
+                    FourSeriesCurriculumView()
+                } label: {
+                    ActionTile(icon: "books.vertical.fill", color: Palette.blue,
+                               title: "Chương trình N2 – 4 bộ giáo trình",
+                               detail: "Mimikara • Shin Kanzen • Sou Matome • Speed Master • 35 tuần")
+                }
+                .buttonStyle(.plain)
                 SectionTitle("Bắt đầu học", subtitle: "90 phút/ngày • 6 ngày/tuần")
                 NavigationLink {
                     FlashcardDeckView()

@@ -28,6 +28,13 @@ struct ContentUpdatesView: View {
                     Text("Đổi bộ sẽ thay nội dung trên tất cả các màn học ngay, không xóa tiến độ đã lưu.")
                         .font(.caption).foregroundColor(.secondary)
                 }
+                if store.selectedSeries == .souMatome {
+                    NavigationLink { SouMatomeLibraryView() } label: {
+                        ActionTile(icon: "books.vertical.circle.fill", color: Palette.blue,
+                                   title: "Mở thư viện Sou Matome",
+                                   detail: "5 sách, 3 PDF bổ trợ, nghe MP3 offline và chọn tuần/chương")
+                    }.buttonStyle(.plain)
+                }
                 LessonPanel {
                     SectionTitle("Dữ liệu đang hiển thị — \(store.selectedSeries.name)")
                     itemRow("Từ vựng", store.course.vocab.count)

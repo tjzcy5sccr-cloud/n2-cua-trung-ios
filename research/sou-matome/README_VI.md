@@ -8,13 +8,13 @@
 - CD1 có 64 tệp MP3, CD2 có 52 tệp MP3, đều đánh số liên tục từ 01.
 - Tổng PDF: **1.239 trang**. Đây là tổng số trang tệp, không phải số bài học đã chuyển thành dữ liệu.
 - Mục lục tuần/chương của 5 sách chính đã đối chiếu, có nút nhảy trang; tài liệu tiếng Việt có bố cục khác nên không tự ghép trang chưa xác minh.
-- Gói JSON "n2-series-sou-matome.json" riêng đã có sẵn từ nhánh cũ, phiên bản 6: **170 từ, 47 ngữ pháp, 51 Kanji, 4 đọc, 3 nghe = 275 mục**. Không khẳng định đây là toàn bộ bài học của sách.
+- Gói riêng Sou Matome **phiên bản 7** có 346 bản ghi nguồn: 203 từ vựng, 62 ngữ pháp, 74 Kanji, 4 đọc, 3 nghe. Sau lọc nội dung đã duyệt, IPA đóng gói **172 từ vựng, 47 ngữ pháp, 57 Kanji, 4 đọc, 3 nghe = 283 mục học**. Không khẳng định đây là bản số hóa đầy đủ sách.
 
 ## Thao tác trên app iOS mới
 
 1. Vào **Hôm nay → Chọn bộ dữ liệu → Nihongo Sou Matome**. Các màn flashcard/luyện tập sẽ thay kho JSON theo bộ đã chọn; tiến độ được giữ.
 2. Bấm **Sou Matome – Sách và CD của bạn**; cũng có phím tắt từ Trang chủ khi đang chọn Sou Matome.
-3. Trong **Thư viện cá nhân**, nhập từng PDF bằng nút **Nhập PDF** tương ứng, rồi **Đọc sách**. Có nút chọn tuần/chương, chuyển trang, ghi nhớ trang đang đọc.
+3. Trong **Thư viện cá nhân**, bấm **Chọn nhiều PDF cùng lúc** để nhập cả 8 cuốn theo tên/số trang, hoặc nhập từng cuốn bằng nút **Nhập PDF**, rồi **Đọc sách**. Có nút chọn tuần/chương, chuyển trang, ghi nhớ trang đang đọc.
 4. Chọn **Nhập thư mục audio CD** để nhập folder CD1, CD2 hoặc thư mục mẹ có cả hai (cần giải nén RAR trước). Nghe trực tiếp offline, dừng/tạm dừng và tua thanh thời gian.
 5. Các sách và CD nhập vào được **sao chép riêng vào Application Support** của app trên thiết bị; không được upload lên GitHub. Phải có đủ dung lượng trống trên iPhone.
 
@@ -30,4 +30,4 @@ Nguồn dữ liệu JSON đã có từ nhánh gốc và có thể tiếp tục m
 
 ### Về IPA
 
-Nhánh riêng tạo từ `feature/n2-four-series-roadmap-2027` và không sửa `main`. Workflow `check-sou-matome-library.yml` chỉ kiểm tra cấu trúc và cú pháp, **không build IPA**. Cần chạy kiểm thử build iOS trên macOS runner; IPA unsigned phải được ký trước khi cài lên iPhone thông thường.
+Nhánh riêng tạo từ `feature/n2-four-series-roadmap-2027` và không sửa `main`. Có kiểm thử mã/dữ liệu `check-sou-matome-library.yml`, và workflow macOS `build-sou-matome-test.yml` biên dịch IPA thử nghiệm **1.9.2 (build 12)**. File IPA này **chưa ký số**; phải được ký hợp lệ trước khi cài lên iPhone thông thường. Chỉ sách và MP3 mà người dùng nhập từ Tệp mới nằm trong thư viện riêng, không nằm trong IPA tải trên GitHub.

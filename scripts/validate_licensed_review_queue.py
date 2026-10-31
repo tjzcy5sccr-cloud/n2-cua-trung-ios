@@ -45,6 +45,14 @@ for cat in ("vocab","kanji","grammar"):
     all_week_ids=[name for week in weeks for name in week["ids"][cat]]
     count=summary["selectedCandidateCounts"][cat]
     assert len(all_week_ids)==count and len(set(all_week_ids))==count
+radicals=json.loads((Q/"214-radicals-source-only.json").read_text(encoding="utf-8"))
+assert radicals["count"] == 214 and len(radicals["entries"]) == 214
+assert [x["number"] for x in radicals["entries"]] == list(range(1,215))
+assert len({x["baseIdeograph"] for x in radicals["entries"]}) == 214
+assert all(x["canPublishInIPA"] is False and x["vietnameseMeaning"] is None
+           and x["reviewStatus"] == "pending_manual_han_viet_review"
+           for x in radicals["entries"])
 assert not any("research/licensed-cumulative-queue" in line
                 for line in (ROOT/"project.yml").read_text(encoding="utf-8").splitlines())
+print("PASS: 214 Unicode radicals, untranslated draft only; no IPA leakage.")
 print("PASS 35-week research index; no candidate connected to iOS project.")

@@ -89,6 +89,8 @@ struct ReadingLesson: Decodable, Identifiable {
     let title: String
     let topic: String
     let text: String
+    /// Bản dịch toàn đoạn từ học liệu gốc do dự án biên soạn (tùy chọn).
+    let textVi: String?
     let question: String
     let choices: [String]
     let answer: Int
@@ -100,6 +102,8 @@ struct ListeningLesson: Decodable, Identifiable {
     let title: String
     let speaker: String
     let script: String
+    /// Bản dịch toàn hội thoại để xem sau khi người học yêu cầu kết quả.
+    let scriptVi: String?
     let question: String
     let choices: [String]
     let answer: Int

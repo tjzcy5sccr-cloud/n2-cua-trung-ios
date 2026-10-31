@@ -1,0 +1,649 @@
+{
+  "id": "n2-series-shin-kanzen",
+  "version": 1,
+  "seriesId": "shin-kanzen",
+  "title": "Shin Kanzen – Bộ phân tích ngữ pháp, Kanji do N2 của Trung tuyển chọn",
+  "vocab": [
+    {
+      "id": "v1",
+      "word": "改善",
+      "reading": "かいぜん",
+      "meaning": "cải thiện",
+      "example": "働き方を改善する。",
+      "topic": "Công việc",
+      "week": 1,
+      "exampleVi": "Cải thiện cách làm việc."
+    },
+    {
+      "id": "v6",
+      "word": "傾向",
+      "reading": "けいこう",
+      "meaning": "xu hướng",
+      "example": "最近の傾向を調べる。",
+      "topic": "Xã hội",
+      "week": 1,
+      "exampleVi": "Tìm hiểu xu hướng gần đây."
+    },
+    {
+      "id": "v9",
+      "word": "効率",
+      "reading": "こうりつ",
+      "meaning": "hiệu suất",
+      "example": "仕事の効率を上げたい。",
+      "topic": "Công việc",
+      "week": 1,
+      "exampleVi": "Tôi muốn nâng cao hiệu suất công việc."
+    },
+    {
+      "id": "v15",
+      "word": "計画",
+      "reading": "けいかく",
+      "meaning": "kế hoạch",
+      "example": "来週の計画を考える。",
+      "topic": "Học tập",
+      "week": 1,
+      "exampleVi": "Lên kế hoạch cho tuần sau."
+    },
+    {
+      "id": "v17",
+      "word": "原因",
+      "reading": "げんいん",
+      "meaning": "nguyên nhân",
+      "example": "失敗の原因を調べる。",
+      "topic": "Công việc",
+      "week": 1,
+      "exampleVi": "Tìm nguyên nhân thất bại."
+    },
+    {
+      "id": "v21",
+      "word": "導入",
+      "reading": "どうにゅう",
+      "meaning": "đưa vào áp dụng",
+      "example": "会社が新しい機械を導入した。",
+      "topic": "Công việc",
+      "week": 2,
+      "exampleVi": "Công ty đã đưa vào sử dụng một máy móc mới."
+    },
+    {
+      "id": "v26",
+      "word": "報告",
+      "reading": "ほうこく",
+      "meaning": "báo cáo",
+      "example": "上司に結果を報告する。",
+      "topic": "Công việc",
+      "week": 2,
+      "exampleVi": "Báo cáo kết quả với cấp trên."
+    },
+    {
+      "id": "v29",
+      "word": "承認",
+      "reading": "しょうにん",
+      "meaning": "chấp thuận",
+      "example": "申請が承認された。",
+      "topic": "Công việc",
+      "week": 2,
+      "exampleVi": "Đơn đăng ký đã được phê duyệt."
+    },
+    {
+      "id": "v33",
+      "word": "準備",
+      "reading": "じゅんび",
+      "meaning": "chuẩn bị",
+      "example": "会議の資料を準備した。",
+      "topic": "Công việc",
+      "week": 2,
+      "exampleVi": "Tôi đã chuẩn bị tài liệu cho cuộc họp."
+    },
+    {
+      "id": "v39",
+      "word": "達成",
+      "reading": "たっせい",
+      "meaning": "đạt được",
+      "example": "目標を達成した。",
+      "topic": "Học tập",
+      "week": 3,
+      "exampleVi": "Tôi đã đạt được mục tiêu."
+    },
+    {
+      "id": "v42",
+      "word": "工夫",
+      "reading": "くふう",
+      "meaning": "sáng kiến, tìm cách",
+      "example": "時間を節約する工夫をする。",
+      "topic": "Công việc",
+      "week": 3,
+      "exampleVi": "Tìm cách tiết kiệm thời gian một cách sáng tạo."
+    },
+    {
+      "id": "v46",
+      "word": "健康",
+      "reading": "けんこう",
+      "meaning": "sức khỏe",
+      "example": "健康のために歩く。",
+      "topic": "Sinh hoạt",
+      "week": 3,
+      "exampleVi": "Đi bộ để giữ sức khỏe."
+    },
+    {
+      "id": "v50",
+      "word": "栄養",
+      "reading": "えいよう",
+      "meaning": "dinh dưỡng",
+      "example": "栄養のバランスを考える。",
+      "topic": "Sinh hoạt",
+      "week": 3,
+      "exampleVi": "Chú ý cân bằng dinh dưỡng."
+    },
+    {
+      "id": "v54",
+      "word": "回復",
+      "reading": "かいふく",
+      "meaning": "phục hồi",
+      "example": "体調が回復した。",
+      "topic": "Sinh hoạt",
+      "week": 3,
+      "exampleVi": "Tình trạng sức khỏe đã hồi phục."
+    },
+    {
+      "id": "v58",
+      "word": "景気",
+      "reading": "けいき",
+      "meaning": "tình hình kinh tế",
+      "example": "景気が少し良くなった。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Tình hình kinh tế đã khá lên một chút."
+    },
+    {
+      "id": "v62",
+      "word": "費用",
+      "reading": "ひよう",
+      "meaning": "chi phí",
+      "example": "旅行にかかる費用を調べる。",
+      "topic": "Sinh hoạt",
+      "week": 4,
+      "exampleVi": "Tìm hiểu chi phí cần thiết cho chuyến du lịch."
+    },
+    {
+      "id": "v66",
+      "word": "資源",
+      "reading": "しげん",
+      "meaning": "tài nguyên",
+      "example": "限りある資源を大切にする。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Trân trọng các nguồn tài nguyên hữu hạn."
+    },
+    {
+      "id": "v70",
+      "word": "災害",
+      "reading": "さいがい",
+      "meaning": "thiên tai",
+      "example": "災害に備えて水を用意する。",
+      "topic": "Xã hội",
+      "week": 4,
+      "exampleVi": "Chuẩn bị nước để phòng khi có thiên tai."
+    },
+    {
+      "id": "v74",
+      "word": "安全",
+      "reading": "あんぜん",
+      "meaning": "an toàn",
+      "example": "安全を第一に考える。",
+      "topic": "Sinh hoạt",
+      "week": 5,
+      "exampleVi": "Đặt sự an toàn lên hàng đầu."
+    },
+    {
+      "id": "v78",
+      "word": "遅刻",
+      "reading": "ちこく",
+      "meaning": "đến muộn",
+      "example": "電車が遅れて遅刻した。",
+      "topic": "Sinh hoạt",
+      "week": 5,
+      "exampleVi": "Tôi đến muộn vì tàu điện bị trễ."
+    },
+    {
+      "id": "v82",
+      "word": "利用",
+      "reading": "りよう",
+      "meaning": "sử dụng",
+      "example": "図書館をよく利用する。",
+      "topic": "Sinh hoạt",
+      "week": 5,
+      "exampleVi": "Tôi thường xuyên sử dụng thư viện."
+    },
+    {
+      "id": "v86",
+      "word": "設定",
+      "reading": "せってい",
+      "meaning": "cài đặt",
+      "example": "画面の明るさを設定する。",
+      "topic": "Công nghệ",
+      "week": 5,
+      "exampleVi": "Cài đặt độ sáng màn hình."
+    },
+    {
+      "id": "v90",
+      "word": "検索",
+      "reading": "けんさく",
+      "meaning": "tìm kiếm",
+      "example": "辞書で言葉を検索する。",
+      "topic": "Công nghệ",
+      "week": 5,
+      "exampleVi": "Tra từ bằng từ điển."
+    },
+    {
+      "id": "v94",
+      "word": "要点",
+      "reading": "ようてん",
+      "meaning": "điểm chính",
+      "example": "説明の要点をまとめる。",
+      "topic": "Học tập",
+      "week": 6,
+      "exampleVi": "Tóm tắt những điểm chính của lời giải thích."
+    },
+    {
+      "id": "v98",
+      "word": "反対",
+      "reading": "はんたい",
+      "meaning": "phản đối",
+      "example": "多くの人が計画に反対した。",
+      "topic": "Xã hội",
+      "week": 6,
+      "exampleVi": "Nhiều người phản đối kế hoạch."
+    },
+    {
+      "id": "v102",
+      "word": "割合",
+      "reading": "わりあい",
+      "meaning": "tỷ lệ",
+      "example": "高齢者の割合が増えている。",
+      "topic": "Xã hội",
+      "week": 6,
+      "exampleVi": "Tỷ lệ người cao tuổi đang tăng."
+    },
+    {
+      "id": "v105",
+      "word": "一部",
+      "reading": "いちぶ",
+      "meaning": "một phần",
+      "example": "資料の一部を修正した。",
+      "topic": "Công việc",
+      "week": 6,
+      "exampleVi": "Tôi đã chỉnh sửa một phần tài liệu."
+    },
+    {
+      "id": "v111",
+      "word": "可能",
+      "reading": "かのう",
+      "meaning": "có thể, khả thi",
+      "example": "明日なら参加可能です。",
+      "topic": "Công việc",
+      "week": 7,
+      "exampleVi": "Nếu là ngày mai thì tôi có thể tham gia."
+    },
+    {
+      "id": "v113",
+      "word": "複雑",
+      "reading": "ふくざつ",
+      "meaning": "phức tạp",
+      "example": "手続きが複雑で時間がかかる。",
+      "topic": "Công việc",
+      "week": 7,
+      "exampleVi": "Thủ tục phức tạp nên tốn thời gian."
+    },
+    {
+      "id": "v118",
+      "word": "急激",
+      "reading": "きゅうげき",
+      "meaning": "đột ngột, nhanh chóng",
+      "example": "気温が急激に下がった。",
+      "topic": "Xã hội",
+      "week": 7,
+      "exampleVi": "Nhiệt độ giảm đột ngột."
+    },
+    {
+      "id": "v122",
+      "word": "なるべく",
+      "reading": "なるべく",
+      "meaning": "cố gắng hết mức có thể",
+      "example": "なるべく早く返事をする。",
+      "topic": "Sinh hoạt",
+      "week": 7,
+      "exampleVi": "Trả lời nhanh nhất có thể."
+    }
+  ],
+  "grammar": [
+    {
+      "id": "g2",
+      "pattern": "〜一方で",
+      "meaning": "mặt khác, trong khi",
+      "rule": "Nêu hai mặt đối lập hoặc song song của cùng vấn đề.",
+      "example": "便利な一方で、費用がかかる。",
+      "translation": "Tiện lợi nhưng mặt khác cũng tốn chi phí.",
+      "week": 1
+    },
+    {
+      "id": "g6",
+      "pattern": "〜ことにする",
+      "meaning": "quyết định làm",
+      "rule": "Quyết định do người nói chủ động lựa chọn.",
+      "example": "来月から早起きすることにした。",
+      "translation": "Tôi đã quyết định dậy sớm từ tháng sau.",
+      "week": 2
+    },
+    {
+      "id": "g10",
+      "pattern": "〜せいで",
+      "meaning": "tại, do (kết quả xấu)",
+      "rule": "Đổ nguyên nhân cho một kết quả không mong muốn.",
+      "example": "雨のせいで遅れた。",
+      "translation": "Vì mưa nên tôi đã đến muộn.",
+      "week": 3
+    },
+    {
+      "id": "g14",
+      "pattern": "〜に対して",
+      "meaning": "đối với / trái với",
+      "rule": "Chỉ đối tượng hoặc đối chiếu hai bên.",
+      "example": "質問に対して答える。",
+      "translation": "Trả lời câu hỏi.",
+      "week": 5
+    },
+    {
+      "id": "g17",
+      "pattern": "〜につれて",
+      "meaning": "càng... thì càng...",
+      "rule": "Hai biến đổi diễn ra đồng thời theo tự nhiên.",
+      "example": "年を取るにつれて、体力が落ちる。",
+      "translation": "Càng có tuổi thể lực càng giảm.",
+      "week": 6
+    },
+    {
+      "id": "g22",
+      "pattern": "〜だけでなく",
+      "meaning": "không chỉ... mà còn",
+      "rule": "Bổ sung thêm đặc điểm thứ hai.",
+      "example": "彼は英語だけでなく日本語も話す。",
+      "translation": "Anh ấy không chỉ nói tiếng Anh mà còn nói tiếng Nhật.",
+      "week": 8
+    },
+    {
+      "id": "g26",
+      "pattern": "〜ながらも",
+      "meaning": "tuy... nhưng vẫn",
+      "rule": "Diễn tả trái ngược trong cùng chủ thể.",
+      "example": "不安を感じながらも挑戦した。",
+      "translation": "Dù lo lắng vẫn thử sức.",
+      "week": 9
+    },
+    {
+      "id": "g30",
+      "pattern": "〜はずだ",
+      "meaning": "chắc hẳn, theo lẽ",
+      "rule": "Dự đoán có căn cứ hoặc kỳ vọng hợp lý.",
+      "example": "もう着いているはずだ。",
+      "translation": "Theo lẽ giờ đã đến nơi rồi.",
+      "week": 11
+    },
+    {
+      "id": "g34",
+      "pattern": "〜おそれがある",
+      "meaning": "có nguy cơ / e rằng",
+      "rule": "Cảnh báo rủi ro theo lối trang trọng.",
+      "example": "明日は大雨のおそれがある。",
+      "translation": "Ngày mai có nguy cơ mưa lớn.",
+      "week": 12
+    },
+    {
+      "id": "g37",
+      "pattern": "〜に基づいて",
+      "meaning": "dựa trên",
+      "rule": "Căn cứ vào dữ kiện hoặc quy định.",
+      "example": "資料に基づいて判断する。",
+      "translation": "Đánh giá dựa trên tài liệu.",
+      "week": 14
+    },
+    {
+      "id": "g42",
+      "pattern": "〜次第",
+      "meaning": "ngay sau khi",
+      "rule": "Ngay sau khi hoàn thành việc trước; lối trang trọng.",
+      "example": "準備ができ次第、出発する。",
+      "translation": "Chuẩn bị xong sẽ khởi hành ngay.",
+      "week": 17
+    },
+    {
+      "id": "g45",
+      "pattern": "〜最中に",
+      "meaning": "đúng giữa lúc",
+      "rule": "Một hành động khác xen vào giữa hành động đang diễn ra.",
+      "example": "会議の最中に電話が鳴った。",
+      "translation": "Điện thoại reo giữa lúc họp.",
+      "week": 18
+    },
+    {
+      "id": "g49",
+      "pattern": "〜にすぎない",
+      "meaning": "chỉ là / chẳng qua",
+      "rule": "Hạ thấp mức độ, nhấn mạnh giới hạn.",
+      "example": "これは一つの例にすぎない。",
+      "translation": "Đây chỉ là một ví dụ.",
+      "week": 22
+    },
+    {
+      "id": "g53",
+      "pattern": "〜わりに",
+      "meaning": "so với kỳ vọng thì",
+      "rule": "Kết quả không như dự tính với một đặc điểm.",
+      "example": "この店は安いわりにおいしい。",
+      "translation": "Quán này rẻ mà ngon hơn mong đợi.",
+      "week": 25
+    },
+    {
+      "id": "g58",
+      "pattern": "〜しかない",
+      "meaning": "chỉ còn cách",
+      "rule": "Không có lựa chọn khác.",
+      "example": "今日は歩いて帰るしかない。",
+      "translation": "Hôm nay chỉ còn cách đi bộ về.",
+      "week": 20
+    }
+  ],
+  "kanji": [
+    {
+      "id": "k1",
+      "char": "改",
+      "on": "カイ",
+      "kun": "あらた.める",
+      "meaning": "sửa đổi",
+      "word": "改善"
+    },
+    {
+      "id": "k2",
+      "char": "善",
+      "on": "ゼン",
+      "kun": "よ.い",
+      "meaning": "tốt",
+      "word": "改善"
+    },
+    {
+      "id": "k8",
+      "char": "向",
+      "on": "コウ",
+      "kun": "む.く",
+      "meaning": "hướng tới",
+      "word": "傾向"
+    },
+    {
+      "id": "k14",
+      "char": "率",
+      "on": "リツ",
+      "kun": "—",
+      "meaning": "tỷ lệ",
+      "word": "効率"
+    },
+    {
+      "id": "k22",
+      "char": "計",
+      "on": "ケイ",
+      "kun": "はか.る",
+      "meaning": "đo lường",
+      "word": "計画"
+    },
+    {
+      "id": "k23",
+      "char": "画",
+      "on": "ガ",
+      "kun": "えが.く",
+      "meaning": "kế hoạch, tranh",
+      "word": "計画"
+    },
+    {
+      "id": "k26",
+      "char": "原",
+      "on": "ゲン",
+      "kun": "はら",
+      "meaning": "nguồn gốc",
+      "word": "原因"
+    },
+    {
+      "id": "k27",
+      "char": "因",
+      "on": "イン",
+      "kun": "よ.る",
+      "meaning": "nguyên nhân",
+      "word": "原因"
+    },
+    {
+      "id": "k34",
+      "char": "報",
+      "on": "ホウ",
+      "kun": "むく.いる",
+      "meaning": "báo cáo",
+      "word": "報告"
+    },
+    {
+      "id": "k40",
+      "char": "承",
+      "on": "ショウ",
+      "kun": "うけたまわ.る",
+      "meaning": "tiếp nhận",
+      "word": "承認"
+    },
+    {
+      "id": "k45",
+      "char": "応",
+      "on": "オウ",
+      "kun": "こた.える",
+      "meaning": "đáp ứng",
+      "word": "対応"
+    },
+    {
+      "id": "k46",
+      "char": "準",
+      "on": "ジュン",
+      "kun": "—",
+      "meaning": "chuẩn",
+      "word": "準備"
+    },
+    {
+      "id": "k47",
+      "char": "備",
+      "on": "ビ",
+      "kun": "そな.える",
+      "meaning": "chuẩn bị",
+      "word": "準備"
+    },
+    {
+      "id": "k53",
+      "char": "成",
+      "on": "セイ",
+      "kun": "な.る",
+      "meaning": "trở thành",
+      "word": "達成"
+    },
+    {
+      "id": "k58",
+      "char": "災",
+      "on": "サイ",
+      "kun": "わざわ.い",
+      "meaning": "tai họa",
+      "word": "災害"
+    },
+    {
+      "id": "k62",
+      "char": "源",
+      "on": "ゲン",
+      "kun": "みなもと",
+      "meaning": "nguồn",
+      "word": "資源"
+    }
+  ],
+  "readings": [
+    {
+      "title": "Thông báo thư viện",
+      "topic": "Thông báo",
+      "text": "市立図書館からのお知らせです。来週の月曜日から水曜日まで、設備の点検のため休館します。予約した本の受け取りは木曜日から可能です。返却期限が休館日に当たる場合は、期限を三日間延長します。",
+      "question": "休館日に返却期限が来る本はどうなりますか。",
+      "choices": [
+        "必ず月曜日に返す",
+        "木曜日に買う",
+        "返却期限が三日延びる",
+        "予約が自動的に消える"
+      ],
+      "answer": 2,
+      "explanation": "Tài liệu ghi 返却期限...三日間延長 = hạn trả được gia hạn ba ngày.",
+      "id": "r2"
+    },
+    {
+      "title": "Tiết kiệm điện",
+      "topic": "Xã hội",
+      "text": "夏は電力の消費が増える傾向がある。市では、無理のない範囲で節電に取り組むよう呼びかけている。しかし、暑い日に冷房を使わないことは健康に影響するおそれがあるため、室温に応じて適切に利用することが大切だ。",
+      "question": "市が勧めていることは何ですか。",
+      "choices": [
+        "暑くても冷房を使わない",
+        "無理をせず適切に節電する",
+        "毎日新しい冷房を買う",
+        "夏の外出を禁止する"
+      ],
+      "answer": 1,
+      "explanation": "Khuyến nghị tiết kiệm điện hợp lý, không ảnh hưởng sức khỏe.",
+      "id": "r6"
+    }
+  ],
+  "listening": [
+    {
+      "title": "Mượn sách",
+      "speaker": "図書館で二人が話しています。",
+      "script": "男：この本はいつまで借りられますか。\n女：二週間です。ただし、予約がなければ一度だけ延長できます。\n男：では、まず二週間借ります。",
+      "question": "最初に何週間借りますか。",
+      "choices": [
+        "一週間",
+        "二週間",
+        "三週間",
+        "四週間"
+      ],
+      "answer": 1,
+      "explanation": "Hai tuần là thời gian mượn ban đầu.",
+      "id": "l2"
+    },
+    {
+      "title": "Thay đổi kế hoạch cuối tuần",
+      "speaker": "二人が週末の予定を話しています。",
+      "script": "女：土曜日は公園へ行く予定だったけど、雨みたいだね。\n男：じゃ、日曜日にしようか。\n女：日曜日は仕事なの。土曜日は映画を見に行こう。",
+      "question": "土曜日に何をすることになりましたか。",
+      "choices": [
+        "公園に行く",
+        "映画を見る",
+        "仕事をする",
+        "買い物をする"
+      ],
+      "answer": 1,
+      "explanation": "Kế hoạch cuối cùng: thứ Bảy đi xem phim.",
+      "id": "l6"
+    }
+  ]
+}

@@ -75,6 +75,8 @@ private struct WordWidgetBody: View {
         Group {
             if family == .accessoryRectangular {
                 lockScreenContent
+            } else if family == .systemMedium {
+                wideHomeContent
             } else {
                 homeScreenContent
             }
@@ -102,6 +104,63 @@ private struct WordWidgetBody: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 2)
         .accessibilityElement(children: .combine)
+    }
+
+    /// Widget ngang Medium: bố cục riêng, chữ Nhật và nghĩa Việt ở hai cột rõ ràng.
+    /// WidgetKit quyết định kích thước và lịch đổi từ, không hỗ trợ cập nhật 3 giây.
+    private var wideHomeContent: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            HStack(spacing: 7) {
+                Image(systemName: "leaf.fill")
+                    .font(.system(size: 12, weight: .bold))
+                Text("N2 CỦA TRUNG")
+                    .font(.system(size: 11, weight: .heavy, design: .rounded))
+                    .tracking(0.8)
+                Spacer(minLength: 2)
+                Text("☘").font(.subheadline)
+            }
+            .foregroundStyle(.white.opacity(0.9))
+
+            HStack(alignment: .center, spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(entry.word.word)
+                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.58)
+                    Text(entry.word.reading)
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(Color(red: 0.74, green: 1, blue: 0.78))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Rectangle()
+                    .fill(.white.opacity(0.27))
+                    .frame(width: 1)
+                    .padding(.vertical, 5)
+                Text(entry.word.displayMeaning)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .lineLimit(4)
+                    .minimumScaleFactor(0.7)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+
+            HStack(spacing: 4) {
+                Text("HỌC TỪ MỚI MỖI NGÀY")
+                    .font(.system(size: 9, weight: .medium))
+                    .lineLimit(1)
+                Spacer()
+                Image(systemName: "arrow.up.right")
+            }
+            .foregroundStyle(.white.opacity(0.75))
+        }
+        .padding(13)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .background(deepGreen)
+        .modifier(BackgroundCompatibility(color: deepGreen))
     }
 
     private var homeScreenContent: some View {
@@ -168,8 +227,8 @@ struct N2WordWidget: Widget {
             WordWidgetBody(entry: entry)
         }
         .configurationDisplayName("N2 của Trung • Từ vựng")
-        .description("Widget ngang và lớn trên Màn hình chính, widget nhỏ trên Màn hình khóa. Đổi từ theo lịch iOS.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular])
+        .description("Widget ngang Medium, Large và màn hình khóa. Lịch đổi từ do iOS quản lý, không hỗ trợ 3 giây.")
+        .supportedFamilies([.systemMedium, .systemLarge, .accessoryRectangular])
     }
 }
 

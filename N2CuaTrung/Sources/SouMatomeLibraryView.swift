@@ -124,7 +124,7 @@ final class SouMatomeLibraryStore: ObservableObject {
         let root = self.root
         let id = book.id
         let expected = book.pages
-        try await Task.detached(priority: .userInitiated) {
+        let replaced = try await Task.detached(priority: .userInitiated) { () throws -> Bool in
             let scoped = source.startAccessingSecurityScopedResource()
             defer { if scoped { source.stopAccessingSecurityScopedResource() } }
             guard source.pathExtension.lowercased() == "pdf" else {
@@ -140,12 +140,24 @@ final class SouMatomeLibraryStore: ObservableObject {
             try FileManager.default.copyItem(at: source, to: temp)
             let actual = PDFDocument(url: temp)?.pageCount ?? 0
             guard actual == expected else { throw SouMatomeImportError.invalidPDF(expected, actual) }
-            if FileManager.default.fileExists(atPath: target.path) {
+            let previouslyInstalled = FileManager.default.fileExists(atPath: target.path)
+            if previouslyInstalled {
                 _ = try FileManager.default.replaceItemAt(target, withItemAt: temp)
             } else {
                 try FileManager.default.moveItem(at: temp, to: target)
             }
+            return previouslyInstalled
         }.value
+        // An old corrected transcription cannot be certified for a replaced PDF.
+        if replaced {
+            let directory = root.appendingPathComponent("PageText", isDirectory: true)
+                .appendingPathComponent(book.id, isDirectory: true)
+            try? FileManager.default.removeItem(at: directory)
+            for page in 1...book.pages {
+                UserDefaults.standard.removeObject(
+                    forKey: "SouMatome.verified." + book.id + "." + String(page))
+            }
+        }
         refresh()
     }
 
@@ -460,10 +472,11 @@ struct SouMatomePDFReader: View {
     let url: URL
     @State private var page: Int
 
-    init(book: SouMatomeDocument, url: URL) {
+    init(book: SouMatomeDocument, url: URL, initialPage: Int? = nil) {
         self.book = book
         self.url = url
-        _page = State(initialValue: max(1, UserDefaults.standard.integer(forKey: "SouMatome.lastPage." + book.id)))
+        let stored = UserDefaults.standard.integer(forKey: "SouMatome.lastPage." + book.id)
+        _page = State(initialValue: max(1, min(book.pages, initialPage ?? stored)))
     }
 
     var body: some View {

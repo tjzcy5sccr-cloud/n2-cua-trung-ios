@@ -99,11 +99,13 @@ enum CoursePackManager {
     static func mergedCourse(packs: [CoursePack]) -> CourseData {
         let original = CourseData.load()
         return CourseData(
-            // Gộp đầy đủ nguồn chính và các gói cập nhật; không xóa mục chưa duyệt.
-            // Trạng thái đối chiếu nằm trong JSON/QA, không gắn nhãn lên bài học.
-            vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] }),
-            grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] }),
-            kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] }),
+            // Dữ liệu gốc vẫn ở GitHub; chỉ nội dung được duyệt đi vào màn học.
+            vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] })
+                .filter { $0.isApprovedForStudy },
+            grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] })
+                .filter { $0.isApprovedForStudy },
+            kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] })
+                .filter { $0.isApprovedForStudy },
             readings: merge(original.readings, packs.flatMap { $0.readings ?? [] }),
             listening: merge(original.listening, packs.flatMap { $0.listening ?? [] }),
             weeks: original.weeks
@@ -117,9 +119,12 @@ enum CoursePackManager {
         let selected = packs.filter { $0.seriesId == series.rawValue }
         let weeks = CourseData.load().weeks
         return CourseData(
-            vocab: merge([], selected.flatMap { $0.vocab ?? [] }),
-            grammar: merge([], selected.flatMap { $0.grammar ?? [] }),
-            kanji: merge([], selected.flatMap { $0.kanji ?? [] }),
+            vocab: merge([], selected.flatMap { $0.vocab ?? [] })
+                .filter { $0.isApprovedForStudy },
+            grammar: merge([], selected.flatMap { $0.grammar ?? [] })
+                .filter { $0.isApprovedForStudy },
+            kanji: merge([], selected.flatMap { $0.kanji ?? [] })
+                .filter { $0.isApprovedForStudy },
             readings: merge([], selected.flatMap { $0.readings ?? [] }),
             listening: merge([], selected.flatMap { $0.listening ?? [] }),
             weeks: weeks

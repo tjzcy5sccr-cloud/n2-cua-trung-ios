@@ -33,10 +33,27 @@ jobs:
           assert coverage['lessonContentCompleteness'].startswith('NOT COMPLETE')
           print('PASS: metadata catalog: 8 PDFs, 1,239 pages, 116 MP3 tracks')
           PY
+      - name: Verify supplement week/day mapping integrity
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('N2CuaTrung/Resources/sou-matome-day-index.json').read_text(encoding='utf-8'))
+          source=d['sources']
+          assert set(source)=={'kanji-vi','goi-vi','bunpou-vi'}
+          for key,info in source.items():
+              assert len(info['weeks'])==8
+              assert all(len(week)==info['daysPerWeek'] for week in info['weeks'])
+              pages={'kanji-vi':208,'goi-vi':163,'bunpou-vi':185}[key]
+              assert all(1<=n<=pages for week in info['weeks'] for n in week if n is not None)
+          assert source['goi-vi']['weeks'][4][4] is None, 'Missing heading must not be guessed'
+          print('PASS: three books mapped to 8 weeks each, with one unresolved source heading clearly marked')
+          PY
       - name: Check Swift source syntax
         run: |
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeLibraryView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePageWorkbenchView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeDailyNavigatorView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift

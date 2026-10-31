@@ -22,7 +22,7 @@ RED = "#D92C3E"
 GRAY = "#66728A"
 WHITE = "#FFFFFF"
 BG = "#E8EFF9"
-WIDTH, HEIGHT = 1748, 1060
+WIDTH, HEIGHT = 1748, 1325
 
 def font(size, bold=False):
     fonts = [
@@ -102,7 +102,7 @@ for idx,(caption,typ) in enumerate(cards):
     d.text((x+28,y+64),caption,font=F19,fill=NAVY)
     d.text((x+28,y+96),"Chạm để lật  •  Vuốt 4 hướng",font=F14,fill=GRAY)
     if typ.startswith("vocab"):
-        pill(d,(x+24,y+135,x+106,y+167),"1 / 378",BLUE,"#E4EBFE")
+        pill(d,(x+24,y+135,x+106,y+167),"1 / N2",BLUE,"#E4EBFE")
         if typ=="vocab-front":
             d.rounded_rectangle((x+20,y+196,x+w-20,y+482),radius=22,fill=WHITE,outline="#DBE9F0",width=2)
             center(d,word,y+270,F36,NAVY,x+25,w-50)
@@ -113,17 +113,18 @@ for idx,(caption,typ) in enumerate(cards):
             center(d,reading,y+250,F17,BLUE,x+25,w-50)
             lines(d,meaning,x+35,y+288,F17,TEAL,w-70,23,2,True)
             d.line((x+40,y+346,x+w-40,y+346),fill="#DEE4EF",width=2)
-            # Show explicitly the red word within sentence
-            if example and word in example:
-                before,after=example.split(word,1)
-                fullw=tw(d,example,F17);startx=x+max(25,(w-fullw)//2)
-                yy=y+366
-                d.text((startx,yy),before,font=F17,fill=NAVY)
-                d.text((startx+tw(d,before,F17),yy),word,font=F17,fill=RED,stroke_width=0)
-                d.text((startx+tw(d,before+word,F17),yy),after,font=F17,fill=NAVY)
-            else:
-                lines(d,example,x+40,y+359,F17,NAVY,w-80,24,2,True)
-            lines(d,example_vi,x+40,y+415,F14,GRAY,w-80,19,2,True)
+            # Mặt sau: câu Nhật và nghĩa Việt cùng một mép trái; từ đang học màu đỏ.
+            cursor=x+40; yy=y+359
+            highlight_pos=example.find(word) if word else -1
+            for n,ch in enumerate(example):
+                cw=tw(d,ch,F17)
+                if cursor+cw > x+w-40:
+                    cursor=x+40; yy+=25
+                if yy > y+402: break
+                ink=RED if highlight_pos>=0 and highlight_pos<=n<highlight_pos+len(word) else NAVY
+                d.text((cursor,yy),ch,font=F17,fill=ink)
+                cursor+=cw
+            lines(d,example_vi,x+40,y+420,F14,GRAY,w-80,19,2,False)
         button(d,x+22,y+536,170,"Tự chạy",TEAL);button(d,x+208,y+536,170,"Từ tiếp theo",BLUE)
         button(d,x+22,y+597,170,"Nghe từ",BLUE);button(d,x+208,y+597,170,"Nghe ví dụ",TEAL)
         button(d,x+22,y+658,170,"Chưa thuộc",ORANGE);button(d,x+208,y+658,170,"Đã thuộc",TEAL)
@@ -144,10 +145,28 @@ for idx,(caption,typ) in enumerate(cards):
         button(d,x+22,y+566,356,"Nghe ví dụ",BLUE)
         button(d,x+22,y+636,170,"Chưa thuộc",ORANGE);button(d,x+208,y+636,170,"Đã thuộc",TEAL)
     center(d,caption,y+h+22,F16B,NAVY,x,w)
-d.rounded_rectangle((56,1000,WIDTH-56,1042),radius=15,fill="#FFFFFF")
-center(d,"BẢN XEM TRƯỚC THIẾT KẾ  •  CẦN DUYỆT TRƯỚC KHI CHẠY WORKFLOW BUILD IPA",1009,F16B,BLUE,56,WIDTH-112)
+# Dải xem trước cho widget Medium dài ngang và Live Activity trên màn hình khóa.
+d.text((64,1010),"WIDGET NGANG MEDIUM  •  LIVE ACTIVITY 3 GIÂY (KHI MỞ APP)",font=F22,fill=NAVY)
+x1,y1,x2,y2=64,1055,800,1240
+d.rounded_rectangle((x1,y1,x2,y2),radius=25,fill="#093B23")
+d.text((x1+22,y1+15),"☘ N2 CỦA TRUNG",font=F17,fill=WHITE)
+d.text((x1+22,y1+61),word,font=F36,fill=WHITE)
+d.text((x1+22,y1+116),reading,font=F19,fill="#B2F7BC")
+d.line((x1+365,y1+55,x1+365,y2-25),fill="#689A7F",width=2)
+lines(d,meaning,x1+394,y1+71,F22,WHITE,315,32,3,False)
+d.text((x1+22,y2-29),"WidgetKit: iOS quy định chu kỳ cập nhật • không phải 3 giây",font=F14,fill="#B2F7BC")
+x1,y1,x2,y2=845,1055,1685,1240
+d.rounded_rectangle((x1,y1,x2,y2),radius=26,fill=WHITE,outline="#D0DCEA",width=2)
+d.text((x1+25,y1+15),"LIVE ACTIVITY MÀN HÌNH KHÓA",font=F17,fill=NAVY)
+d.text((x1+25,y1+51),"Tự động đổi từ",font=F19,fill=NAVY)
+for idx,(label,fill) in enumerate([("Tắt","#DFE5EF"),("3 giây",TEAL),("30 giây","#DFE5EF"),("60 giây","#DFE5EF")]):
+    px=x1+24+idx*195
+    pill(d,(px,y1+89,px+178,y1+128),label,WHITE if idx==1 else NAVY,fill,F17)
+d.text((x1+25,y2-30),"3 giây chỉ là thử nghiệm khi app mở; iOS có thể giới hạn khi khóa màn hình.",font=F14,fill=GRAY)
+d.rounded_rectangle((56,1270,WIDTH-56,1313),radius=15,fill="#FFFFFF")
+center(d,"HÌNH MÔ PHỎNG TỪ MÃ NGUỒN • DUYỆT TRƯỚC KHI BUILD IPA",1279,F16B,BLUE,56,WIDTH-112)
 image.save(OUT,optimize=True)
 META.write_text(json.dumps({"commit":sha,"kind":"source_based_layout_mockup",
-    "notSimulatorScreenshot":True,"screens":["vocabulary-front","vocabulary-back","kanji","grammar"],
+    "notSimulatorScreenshot":True,"screens":["vocabulary-front","vocabulary-back","kanji","grammar","medium-widget","live-activity"],
     "previewImage":"qa-reports/prebuild-preview.png"},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("PREVIEW CREATED:",OUT,WIDTH,"x",HEIGHT)

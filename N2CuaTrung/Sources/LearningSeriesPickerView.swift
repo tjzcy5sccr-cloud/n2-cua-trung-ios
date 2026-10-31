@@ -62,6 +62,11 @@ struct LearningSeriesPickerView: View {
                     .buttonStyle(.plain)
                     .accessibilityLabel("\(series.name), \(store.itemCount(for: series)) mục, \(selected ? "đang chọn" : "chưa chọn")")
                 }
+                NavigationLink { SouMatomeLibraryView() } label: {
+                    ActionTile(icon: "books.vertical.circle.fill", color: Palette.blue,
+                               title: "Sou Matome – Sách và CD của bạn",
+                               detail: "Nhập 5 PDF sách chính, 3 bản bổ trợ và 116 bài MP3; mở offline")
+                }.buttonStyle(.plain)
                 LessonPanel {
                     SectionTitle("Dữ liệu theo bộ, không trộn lẫn")
                     Text("Shin Kanzen, Sou Matome, Mimikara và Speed/Kanji Master có các tệp JSON riêng. Các tệp này là bài do dự án N2 của Trung tuyển chọn và sắp xếp theo hướng học, không phải bản số hóa hay nội dung chính thức từ nhà xuất bản.")

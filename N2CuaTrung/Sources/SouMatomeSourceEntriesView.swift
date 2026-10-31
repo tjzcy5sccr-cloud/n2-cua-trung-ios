@@ -150,6 +150,7 @@ struct SouMatomeSourceEntriesView: View {
     @State private var query = ""
     @State private var skill = "Tất cả"
     @State private var displayLimit = 200
+    @State private var revealedIDs: Set<String> = []
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
 
     private var matching: [SouMatomeSourceEntry] {
@@ -192,9 +193,27 @@ struct SouMatomeSourceEntriesView: View {
                                     Text(entry.heading)
                                         .font(.headline).foregroundColor(Palette.navy)
                                     if !entry.detail.isEmpty {
-                                        Text(entry.detail).font(.subheadline)
-                                            .foregroundColor(.secondary)
+                                        if revealedIDs.contains(entry.id) {
+                                            Text(entry.detail)
+                                                .font(.subheadline).foregroundColor(.secondary)
+                                        }
+                                        Button(revealedIDs.contains(entry.id) ? "Ẩn nghĩa" : "Hiện nghĩa") {
+                                            if revealedIDs.contains(entry.id) {
+                                                revealedIDs.remove(entry.id)
+                                            } else {
+                                                revealedIDs.insert(entry.id)
+                                            }
+                                        }
+                                        .font(.caption)
+                                        .buttonStyle(.borderless)
                                     }
+                                    Button {
+                                        JapaneseVoice.shared.speak(entry.heading)
+                                    } label: {
+                                        Label("Nghe tiếng Nhật", systemImage: "speaker.wave.2")
+                                    }
+                                    .buttonStyle(.borderless)
+                                    .font(.caption)
                                     Text("\(entry.skill) · Trang \(entry.page) · Chưa kiểm tra")
                                         .font(.caption).foregroundColor(.secondary)
                                 }

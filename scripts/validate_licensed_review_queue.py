@@ -34,6 +34,11 @@ for cat in ("vocab","kanji","grammar"):
             assert "N1_extension_not_required_for_N2" in x["qualityFlags"]
     assert all(x["id"].startswith("research-") for x in rows)
     print("PASS",cat,expected,"unapproved research candidates only")
+# N2-specific goal must NEVER be filled using beginner N5/N4 grammar.
+grammar_levels=summary["candidateByLevel"]["grammar"]
+assert grammar_levels.get("N2",0)>=110,grammar_levels
+assert grammar_levels.get("N5",0)==0 and grammar_levels.get("N4",0)==0
+assert sum(grammar_levels.values())==summary["selectedCandidateCounts"]["grammar"]
 weeks=json.loads((Q/"35-week-review-index.json").read_text(encoding="utf-8"))["weeks"]
 assert len(weeks)==35 and [x["week"] for x in weeks]==list(range(1,36))
 for cat in ("vocab","kanji","grammar"):

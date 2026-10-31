@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "seriesId": "sou-matome",
+  "sourceScope": "user-uploaded files only",
+  "generatedDate": "2026-11-01",
+  "primaryTextbookPages": 683,
+  "supplementTextPages": 556,
+  "totalPageCount": 1239,
+  "lessonContentCompleteness": "NOT COMPLETE - source metadata and personal OCR workflow only",
+  "sourceDocuments": [
+    {
+      "id": "kanji",
+      "pages": 177,
+      "textLayerPages": 0,
+      "verification": "OCR required"
+    },
+    {
+      "id": "goi",
+      "pages": 156,
+      "textLayerPages": 0,
+      "verification": "OCR required"
+    },
+    {
+      "id": "bunpou",
+      "pages": 156,
+      "textLayerPages": 0,
+      "verification": "OCR required"
+    },
+    {
+      "id": "dokkai",
+      "pages": 121,
+      "textLayerPages": 0,
+      "verification": "OCR required"
+    },
+    {
+      "id": "choukai",
+      "pages": 73,
+      "textLayerPages": 0,
+      "verification": "OCR required"
+    },
+    {
+      "id": "kanji-vi",
+      "pages": 208,
+      "textLayerPages": 208,
+      "observedWeeks": 8,
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "verification": "manual translation/source comparison required"
+    },
+    {
+      "id": "goi-vi",
+      "pages": 163,
+      "textLayerPages": 163,
+      "observedWeeks": 8,
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "verification": "manual translation/source comparison required"
+    },
+    {
+      "id": "bunpou-vi",
+      "pages": 185,
+      "textLayerPages": 185,
+      "observedWeeks": 8,
+      "observedDayRange": [
+        1,
+        7
+      ],
+      "verification": "manual translation/source comparison required"
+    }
+  ],
+  "audio": {
+    "CD1": {
+      "tracks": 64,
+      "first": "01.mp3",
+      "last": "64.mp3"
+    },
+    "CD2": {
+      "tracks": 52,
+      "first": "01.mp3",
+      "last": "52.mp3"
+    },
+    "total": 116,
+    "transcriptionStatus": "not verified",
+    "pageMappingStatus": "not verified"
+  },
+  "sourcePagesIndexed": 1239,
+  "appTextReviewWorkflow": "SouMatomePageWorkbenchView.swift",
+  "copyrightHandling": "No user-uploaded book text, scans or MP3 are published to the public code repository",
+  "qualityGates": [
+    "Every one of 8 expected documents identified",
+    "All 1239 pages included in page ledger",
+    "116 CD audio tracks accounted for without duplicates",
+    "Text extraction is not equivalent to human verification",
+    "Never claim 100% interactive question coverage before audit"
+  ]
+}

@@ -434,6 +434,11 @@ struct SouMatomeLibraryView: View {
                     } label: {
                         Label("Đọc sách", systemImage: "book.pages")
                     }.buttonStyle(.borderedProminent)
+                    NavigationLink {
+                        SouMatomePageWorkbenchView(book: book, url: fileURL)
+                    } label: {
+                        Label("Kiểm tra chữ", systemImage: "text.viewfinder")
+                    }.buttonStyle(.bordered)
                 }
             }
             Divider()

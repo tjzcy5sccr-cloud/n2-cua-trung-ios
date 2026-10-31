@@ -151,6 +151,9 @@ struct SouMatomeSourceEntriesView: View {
     @State private var skill = "Tất cả"
     @State private var displayLimit = 200
     @State private var revealedIDs: Set<String> = []
+    @StateObject private var reviews = SouMatomePersonalReviewStore()
+    @EnvironmentObject private var studyStore: StudyStore
+    @State private var installMessage: String?
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
 
     private var matching: [SouMatomeSourceEntry] {
@@ -175,6 +178,27 @@ struct SouMatomeSourceEntriesView: View {
                     }.disabled(source.processing)
                     Text("Danh sách này chỉ là ứng viên cần kiểm tra. Các mục OCR sai hoặc nội dung bị xuống dòng sẽ cần hiệu đính trước khi xuất sang flashcard.")
                         .font(.caption).foregroundColor(.secondary)
+                }
+                LessonPanel {
+                    SectionTitle("Kho flashcard đã kiểm chứng")
+                    Text("\(reviews.approvedCount) thẻ đã xác minh · \(reviews.draftCount) bản nháp")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.navy)
+                    Text("Các ứng viên tách từ PDF chỉ chuyển thành thẻ học khi đã kiểm tra riêng chữ Nhật, cách đọc và nghĩa Việt. Không tự duyệt hàng loạt.")
+                        .font(.caption).foregroundColor(.secondary)
+                    MainButton(title: "Cập nhật flashcard và câu hỏi đã kiểm chứng",
+                               symbol: "checkmark.seal.fill") {
+                        do {
+                            let count = try reviews.installApprovedIntoStudy(studyStore)
+                            installMessage = "Đã cập nhật \(count) mục đã kiểm chứng vào bộ Sou Matome. Các bài luyện mới dùng dữ liệu này."
+                        } catch {
+                            installMessage = error.localizedDescription
+                        }
+                    }.disabled(reviews.approvedCount == 0)
+                    if let installMessage {
+                        Text(installMessage).font(.footnote)
+                            .foregroundColor(Palette.navy)
+                    }
                 }
                 LessonPanel {
                     Picker("Kỹ năng", selection: $skill) {
@@ -214,8 +238,20 @@ struct SouMatomeSourceEntriesView: View {
                                     }
                                     .buttonStyle(.borderless)
                                     .font(.caption)
-                                    Text("\(entry.skill) · Trang \(entry.page) · Chưa kiểm tra")
-                                        .font(.caption).foregroundColor(.secondary)
+                                    Text("\(entry.skill) · Trang \(entry.page) · "
+                                         + (reviews.cards[entry.id]?.isApproved == true
+                                            ? "Đã kiểm chứng" : "Chưa kiểm chứng"))
+                                        .font(.caption)
+                                        .foregroundColor(reviews.cards[entry.id]?.isApproved == true
+                                                         ? Palette.teal : .secondary)
+                                    NavigationLink {
+                                        SouMatomePersonalCardEditor(candidate: entry,
+                                                                     reviews: reviews)
+                                    } label: {
+                                        Label("Sửa và kiểm tra nghĩa", systemImage: "checkmark.seal")
+                                    }
+                                    .font(.caption)
+                                    .buttonStyle(.bordered)
                                 }
                                 Spacer()
                                 if let book = SouMatomeDocument.all.first(where: { $0.id == entry.bookId }),

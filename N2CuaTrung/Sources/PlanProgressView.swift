@@ -112,6 +112,11 @@ struct ProgressDashboardView: View {
                                title: "Nhắc học và Widget", detail: "Giờ ngẫu nhiên, widget xanh rõ chữ, bảng học rộng")
                 }
                 .buttonStyle(.plain)
+                NavigationLink { LearningSeriesPickerView() } label: {
+                    ActionTile(icon: "square.stack.3d.up.fill", color: Palette.blue,
+                               title: "Chọn bộ dữ liệu N2",
+                               detail: "Đang học: \(store.selectedSeries.name)")
+                }.buttonStyle(.plain)
                 NavigationLink {
                     ContentUpdatesView()
                 } label: {

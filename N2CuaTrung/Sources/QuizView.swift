@@ -19,7 +19,7 @@ struct ExamStartView: View {
                     }
                 }
                 MainButton(title: "Tạo đề mới", symbol: "arrow.triangle.2.circlepath") {
-                    questions = QuestionBank.make(store.course, week: store.week)
+                    questions = QuestionBank.make(store.course, week: store.studyWeekLimit)
                 }
                 if !questions.isEmpty {
                     NavigationLink {
@@ -39,7 +39,7 @@ struct ExamStartView: View {
         }
         .background(Palette.pale)
         .navigationTitle("Thi thử")
-        .onAppear { if questions.isEmpty { questions = QuestionBank.make(store.course, week: store.week) } }
+        .onAppear { if questions.isEmpty { questions = QuestionBank.make(store.course, week: store.studyWeekLimit) } }
     }
 }
 

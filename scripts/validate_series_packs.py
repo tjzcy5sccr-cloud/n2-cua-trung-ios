@@ -81,12 +81,13 @@ for pack in allpacks:
                 if section=="grammar":
                     assert entry["translationStatus"] == "editorial_reviewed"
                     assert entry["example"] and entry["translation"] and entry["rule"]
-                if section=="readings" and entry["id"].startswith("trung-original-b02-"):
+                if section=="readings" and entry["id"].startswith(("trung-original-b02-","trung-original-b03-")):
                     assert entry.get("textVi") and len(entry.get("text", ""))>=75
-                if section=="listening" and entry["id"].startswith("trung-original-b02-"):
+                if section=="listening" and entry["id"].startswith(("trung-original-b02-","trung-original-b03-")):
                     assert entry.get("scriptVi") and len(entry.get("script", ""))>=75
-assert len(batch_ids)==174,("Batch01 + batch02 original items missing or duplicated",len(batch_ids))
+assert len(batch_ids)==274,("Batch01 + batch02 + batch03 original items missing or duplicated",len(batch_ids))
 assert len([x for x in batch_ids if x.startswith("trung-original-b02-")]) == 100
-print("PASS: 74 batch01 + 100 batch02 original reviewed records, Japanese/Vietnamese full-passage translations and strict approved-only app filters.")
+assert len([x for x in batch_ids if x.startswith("trung-original-b03-")]) == 100
+print("PASS: 74 batch01 + 100 batch02 + 100 batch03 original reviewed records, full Japanese/Vietnamese reading/listening translations and approved-only app filters.")
 print("PASS: 4 separate packs, original content intact, isolated selection and auto-reload.")
 print("NOTE: study series labels are learning approaches, NOT official book content.")

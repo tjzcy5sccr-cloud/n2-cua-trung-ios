@@ -1,0 +1,44 @@
+name: Expand verified source entries into four independent N2 series
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - 'scripts/expand_reviewed_series.py'
+      - '.github/workflows/expand-reviewed-series.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  expand-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout feature source
+        uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+          persist-credentials: true
+      - name: Build reviewed-only additions and stage all unreviewed source metadata
+        run: python3 scripts/expand_reviewed_series.py
+      - name: Check series packs and all retained source items
+        run: |
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py
+      - name: Commit expanded pack versions and source-only QA inventory
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content-packs/n2-series-*.json content-packs/manifest-series.json qa-reports/series-expansion-summary.json qa-reports/series-pending-source-review.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Expand four N2 study series from reviewed existing content and stage unverified data for review"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-reviewed-series-expansion-audit
+          path: |
+            qa-reports/series-expansion-summary.json
+            qa-reports/series-pending-source-review.json
+          if-no-files-found: error

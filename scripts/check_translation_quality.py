@@ -134,7 +134,8 @@ for name in ["FlashcardView.swift", "KanjiSwipeDeckView.swift"]:
     assert ".frame(height: height)" in surface, name
     assert ".clipped()" in surface, name
     assert ".offset(" not in surface and "dragOffset" not in source, name
-    assert ".opacity(revealed ? 1 : 0)" in source, name
+    assert (".opacity(revealed ? 1 : 0)" in source or
+            ".opacity(revealed && card.hasApprovedExample ? 1 : 0)" in source), name
     assert "withAnimation(.spring" not in source, name
 grammar = (app / "FlashcardView.swift").read_text(encoding="utf-8").split("struct GrammarFlashcardView", 1)[1]
 grammar_card = grammar.split("private func grammarCard(", 1)[1].split("private func changeGrammarCard(", 1)[0]
@@ -174,5 +175,23 @@ assert "if let sentence = card.approvedExampleJapanese" in cards
 assert "enum VocabularyExampleFocus" in ruby
 assert 'foregroundColor(part.highlighted ? .red : Palette.navy)' in ruby
 print("PASS: full course data retained, no review badges, and red vocabulary highlight on both views.")
+
+# Kiểm tra hồi quy năm yêu cầu giao diện trước khi tạo preview (chưa build IPA).
+kanji_deck = (app / "KanjiSwipeDeckView.swift").read_text(encoding="utf-8")
+flashcard = (app / "FlashcardView.swift").read_text(encoding="utf-8")
+wide_live = (app / "WideLockScreenActivity.swift").read_text(encoding="utf-8")
+widget = (ROOT / "N2Widget/N2WordWidget.swift").read_text(encoding="utf-8")
+assert 'VStack(alignment: .leading, spacing: 8)' in flashcard
+assert '.multilineTextAlignment(.leading)' in flashcard
+assert 'ScrollView(.vertical, showsIndicators: false)' in kanji_deck
+assert '.padding(.bottom, max(24, proxy.safeAreaInsets.bottom) + 92)' in kanji_deck
+assert 'VStack(alignment: .leading, spacing: 6)' in kanji_deck
+assert 'rotateSeconds = [0, 3, 30, 60]' in wide_live
+assert 'Text("3 giây").tag(3)' in wide_live
+assert 'iOS giới hạn tốc độ cập nhật Live Activity' in wide_live
+assert 'private var wideHomeContent: some View' in widget
+assert '.supportedFamilies([.systemMedium, .systemLarge, .accessoryRectangular])' in widget
+assert 'TimeInterval(offset) * 900' in widget  # Không hứa WidgetKit đổi 3 giây.
+print("PASS: aligned examples, safe-area Kanji, 3s foreground Live, wide widget and truthful refresh interval.")
 
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

@@ -53,6 +53,14 @@ struct SouMatomeWholeBooksView: View {
                         .font(.caption).foregroundColor(.secondary)
                 }
 
+                NavigationLink {
+                    SouMatomeSourceEntriesView()
+                } label: {
+                    ActionTile(icon: "text.book.closed.fill", color: Palette.teal,
+                               title: "Tìm từng mục từ sách gốc",
+                               detail: "Đọc toàn bộ trang có chữ, tách từ vựng – Kanji – ngữ pháp để đối chiếu")
+                }.buttonStyle(.plain)
+
                 bookGroup(title: "Từ vựng · 語彙", ids: ["goi", "goi-vi"])
                 bookGroup(title: "Kanji · 漢字", ids: ["kanji", "kanji-vi"])
                 bookGroup(title: "Ngữ pháp · 文法", ids: ["bunpou", "bunpou-vi"])

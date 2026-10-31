@@ -147,30 +147,32 @@ print("PASS: 3 static 286pt cards; no drag offset, nested card scroll, spring or
 print("PASS: independent quiz controls, session reshuffle, 214 radicals, isolated speech sessions.")
 
 
-# Không để nghĩa "tham khảo/chưa duyệt" xuất hiện ở bất kỳ thẻ hoặc widget nào.
+# Hồi quy quan trọng: nội dung CHƯA duyệt phải có trong IPA, nhãn kiểm tra chỉ trong mã.
 models = (app / "Models.swift").read_text(encoding="utf-8")
 merge = (app / "ContentUpdates.swift").read_text(encoding="utf-8")
 widget = (ROOT / "N2Widget/N2WordWidget.swift").read_text(encoding="utf-8")
 ruby = (app / "JapaneseRuby.swift").read_text(encoding="utf-8")
 cards = (app / "FlashcardView.swift").read_text(encoding="utf-8")
 grammar_lib = (app / "GrammarExamples.swift").read_text(encoding="utf-8")
-kanji_detail = (app / "KanjiVocabularyView.swift").read_text(encoding="utf-8")
+release_prep = (ROOT / "scripts/prepare_approved_app_resources.py").read_text(encoding="utf-8")
 assert models.count("var isApprovedForStudy: Bool") == 3
 assert "Tham khảo (chưa duyệt)" not in models
 assert "Dịch tự động theo nghĩa chính (chưa kiểm chứng)" not in models
-assert merge.count(".filter { $0.isApprovedForStudy }") == 3
-assert "word.isApprovedForStudy" in widget
+assert "vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] })," in merge
+assert "grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] })," in merge
+assert "kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] })," in merge
+assert "word.isValidForStudy" in widget
 assert 'Tham khảo: ' not in widget
-assert "approvedStatuses.contains($0.translationStatus" in grammar_lib
-assert "needs_sentence_review" not in grammar_lib
-assert "Nghĩa chữ của mục này từng được dịch máy" not in kanji_detail
-# Mặt sau và trang chi tiết đều dùng cùng bộ tô đỏ từ mục học.
-assert "VocabularyExampleFocus.variants(" in cards
+assert "return ([main] + extra).filter" in grammar_lib
+assert "approvedStatuses" not in grammar_lib
+assert "ALL N2 CONTENT PRESERVED" in release_prep
+assert "entry[\"example\"] = \"\"" not in release_prep
+# Tô đỏ ví dụ gốc và biến thể ở mặt thẻ và chi tiết, không ẩn câu chưa duyệt.
 assert cards.count("VocabularyExampleFocus.variants(") >= 2
 assert "FuriganaText(" in cards
 assert "if let sentence = card.approvedExampleJapanese" in cards
 assert "enum VocabularyExampleFocus" in ruby
 assert 'foregroundColor(part.highlighted ? .red : Palette.navy)' in ruby
-print("PASS: approved-only user content and red-highlighted vocabulary examples on both card and detail.")
+print("PASS: full course data retained, no review badges, and red vocabulary highlight on both views.")
 
 print("Note: These checks cannot replace manual per-entry dictionary validation.")

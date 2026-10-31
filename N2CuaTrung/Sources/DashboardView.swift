@@ -78,6 +78,13 @@ struct DashboardView: View {
                                title: "Chọn bộ dữ liệu: \(store.selectedSeries.name)",
                                detail: "Tổng hợp • Shin Kanzen • Sou Matome • Mimikara • Speed")
                 }.buttonStyle(.plain)
+                if store.selectedSeries == .souMatome {
+                    NavigationLink { SouMatomeLibraryView() } label: {
+                        ActionTile(icon: "books.vertical.circle.fill", color: Palette.blue,
+                                   title: "Thư viện Sou Matome (PDF và CD)",
+                                   detail: "Mở sách Nhật – Việt và luyện nghe offline")
+                    }.buttonStyle(.plain)
+                }
                 SectionTitle("Bắt đầu học", subtitle: "90 phút/ngày • 6 ngày/tuần")
                 NavigationLink {
                     FlashcardDeckView()

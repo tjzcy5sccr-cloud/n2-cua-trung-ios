@@ -138,6 +138,27 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         root.appendingPathComponent("private-draft-candidates.json")
     }
 
+    /// On source replacement, remove only candidates derived from that book.
+    /// Stale text may still be shown as a human-edited draft in the review
+    /// store, but its approval is revoked separately.
+    func invalidateImportedCandidates(for bookID: String) {
+        let remaining = loadImportedCandidates().filter { $0.bookId != bookID }
+        do {
+            if remaining.isEmpty {
+                if FileManager.default.fileExists(atPath: importedURL.path) {
+                    try FileManager.default.removeItem(at: importedURL)
+                }
+            } else {
+                let data = try JSONEncoder().encode(remaining)
+                try data.write(to: importedURL, options: .atomic)
+            }
+            entries.removeAll { $0.bookId == bookID }
+            importedCandidateCount = remaining.count
+        } catch {
+            notes = "Không thể làm mới dữ liệu nguồn đã nhập: " + error.localizedDescription
+        }
+    }
+
     private func loadImportedCandidates() -> [SouMatomeSourceEntry] {
         guard let data = try? Data(contentsOf: importedURL),
               let decoded = try? JSONDecoder().decode(

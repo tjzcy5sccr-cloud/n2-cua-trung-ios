@@ -73,6 +73,24 @@ final class SouMatomeLibraryStore: ObservableObject {
 
     init() { refresh() }
 
+    /// Nhận diện cả 8 tệp theo tên, tránh nhầm hai sách cùng có 156 trang.
+    static func identifyBook(named filename: String) -> SouMatomeDocument? {
+        let name = filename.folding(options: [.caseInsensitive, .diacriticInsensitive],
+                                    locale: Locale(identifier: "vi_VN")).lowercased()
+        let isSupplement = name.contains("ban tieng viet") ||
+                           name.contains("tieng viet") ||
+                           name.contains("file tu vung")
+        let skill: String
+        if name.contains("kanji") { skill = "kanji" }
+        else if name.contains("bunpou") { skill = "bunpou" }
+        else if name.contains("dokkai") { skill = "dokkai" }
+        else if name.contains("choukai") { skill = "choukai" }
+        else if name.contains("goi") { skill = "goi" }
+        else { return nil }
+        let id = isSupplement ? skill + "-vi" : skill
+        return SouMatomeDocument.all.first { $0.id == id }
+    }
+
     func fileURL(for book: SouMatomeDocument) -> URL? {
         let url = root.appendingPathComponent(book.id + ".pdf")
         return FileManager.default.fileExists(atPath: url.path) ? url : nil
@@ -222,6 +240,7 @@ struct SouMatomeLibraryView: View {
     @StateObject private var audio = SouMatomeAudioPlayer()
     @State private var selectedBook: SouMatomeDocument?
     @State private var pickPDF = false
+    @State private var pickAllPDF = false
     @State private var pickAudio = false
     @State private var working = false
     @State private var message: String?
@@ -242,6 +261,15 @@ struct SouMatomeLibraryView: View {
                     }
                     Text("Phần PDF và CD được lưu riêng trên iPhone sau khi bạn nhập từ Tệp. Không tải hoặc đăng sách lên GitHub. Dữ liệu tương tác vẫn là gói JSON được kiểm duyệt riêng, không phải bản chép đầy đủ sách.")
                         .font(.caption).foregroundColor(.secondary)
+                }
+                LessonPanel {
+                    SectionTitle("Nhập nhanh toàn bộ PDF")
+                    Text("Chọn cả 8 PDF đã giải nén trong Tệp. Ứng dụng tự nhận diện theo tên và kiểm tra số trang của từng cuốn.")
+                        .font(.caption).foregroundColor(.secondary)
+                    MainButton(title: working ? "Đang xác minh và nhập…" : "Chọn nhiều PDF cùng lúc",
+                               symbol: "square.and.arrow.down.on.square") {
+                        pickAllPDF = true
+                    }.disabled(working)
                 }
                 LessonPanel {
                     SectionTitle("5 sách chính",
@@ -316,6 +344,33 @@ struct SouMatomeLibraryView: View {
         }
         .background(Palette.pale)
         .navigationTitle("Sou Matome N2")
+        .fileImporter(isPresented: $pickAllPDF, allowedContentTypes: [.pdf],
+                      allowsMultipleSelection: true) { result in
+            switch result {
+            case .success(let urls):
+                working = true
+                Task {
+                    var count = 0
+                    var errors: [String] = []
+                    for url in urls {
+                        guard let book = SouMatomeLibraryStore.identifyBook(named: url.lastPathComponent) else {
+                            errors.append(url.lastPathComponent + ": không nhận diện được tên")
+                            continue
+                        }
+                        do {
+                            try await library.importPDF(from: url, for: book)
+                            count += 1
+                        } catch {
+                            errors.append(url.lastPathComponent + ": " + error.localizedDescription)
+                        }
+                    }
+                    message = "Đã nhập đúng \(count)/\(urls.count) PDF."
+                        + (errors.isEmpty ? "" : " Chưa nhập: " + errors.joined(separator: " | "))
+                    working = false
+                }
+            case .failure(let error): message = error.localizedDescription
+            }
+        }
         .fileImporter(isPresented: $pickPDF, allowedContentTypes: [.pdf]) { result in
             guard let book = selectedBook else { return }
             switch result {

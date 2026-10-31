@@ -6,6 +6,7 @@ final class StudyStore: ObservableObject {
     @Published var course: CourseData
     @Published var installedPacks: [CoursePack]
     @Published private(set) var selectedSeries: LearningSeries
+    @Published private(set) var contentRevision = UUID()
     @Published private(set) var saved: SavedProgress
     private let key = "N2CuaTrung.progress.v1"
     private let seriesPreferenceKey = "N2CuaTrung.activeStudySeries.v1"
@@ -33,6 +34,7 @@ final class StudyStore: ObservableObject {
         selectedSeries = series
         UserDefaults.standard.set(series.rawValue, forKey: seriesPreferenceKey)
         course = CoursePackManager.course(for: series, packs: installedPacks)
+        contentRevision = UUID()
     }
 
     func itemCount(for series: LearningSeries) -> Int {

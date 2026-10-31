@@ -258,7 +258,7 @@ struct SouMatomePageWorkbenchView: View {
                         }.disabled(editor.page >= editor.book.pages)
                     }.font(.title2)
                     NavigationLink {
-                        SouMatomePDFReader(book: editor.book, url: editor.source)
+                        SouMatomePDFReader(book: editor.book, url: editor.source, initialPage: editor.page)
                     } label: {
                         Label("Mở sách gốc để đối chiếu", systemImage: "book.pages")
                     }

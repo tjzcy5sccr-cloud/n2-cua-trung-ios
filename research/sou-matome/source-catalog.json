@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "libraryId": "sou-matome-personal",
+  "contentMode": "local-user-import-only",
+  "sourceChecked": "2026-10-31",
+  "documents": [
+    {
+      "id": "kanji",
+      "skill": "kanji",
+      "originalFilename": "Soumatome N2 Kanji (ebook).pdf",
+      "pages": 177,
+      "sectionType": "week",
+      "sectionStarts": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124
+      ]
+    },
+    {
+      "id": "goi",
+      "skill": "vocab",
+      "originalFilename": "Soumatome N2 Goi (ebook).pdf",
+      "pages": 156,
+      "sectionType": "week",
+      "sectionStarts": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124
+      ]
+    },
+    {
+      "id": "bunpou",
+      "skill": "grammar",
+      "originalFilename": "Soumatome N2 Bunpou.pdf",
+      "pages": 156,
+      "sectionType": "week",
+      "sectionStarts": [
+        14,
+        30,
+        46,
+        62,
+        78,
+        94,
+        110,
+        126
+      ]
+    },
+    {
+      "id": "dokkai",
+      "skill": "reading",
+      "originalFilename": "Soumatome N2 Dokkai.pdf",
+      "pages": 121,
+      "sectionType": "week",
+      "sectionStarts": [
+        12,
+        28,
+        44,
+        60,
+        78,
+        96
+      ]
+    },
+    {
+      "id": "choukai",
+      "skill": "listening",
+      "originalFilename": "Soumatome N2 Choukai.pdf",
+      "pages": 73,
+      "sectionType": "chapter",
+      "sectionStarts": [
+        12,
+        24,
+        40,
+        52,
+        64
+      ]
+    },
+    {
+      "id": "kanji-vi",
+      "skill": "kanji",
+      "originalFilename": "Soumatome N2 Kanji (bản tiếng Việt).pdf",
+      "pages": 208,
+      "sectionType": "supplement",
+      "sectionStarts": []
+    },
+    {
+      "id": "goi-vi",
+      "skill": "vocab",
+      "originalFilename": "Soumatome N2 Goi (file từ vựng).pdf",
+      "pages": 163,
+      "sectionType": "supplement",
+      "sectionStarts": []
+    },
+    {
+      "id": "bunpou-vi",
+      "skill": "grammar",
+      "originalFilename": "Soumatome N2 Bunpou (bản tiếng Việt).pdf",
+      "pages": 185,
+      "sectionType": "supplement",
+      "sectionStarts": []
+    }
+  ],
+  "listeningCDs": [
+    {
+      "id": "CD1",
+      "mp3Count": 64,
+      "trackStart": 1,
+      "trackEnd": 64
+    },
+    {
+      "id": "CD2",
+      "mp3Count": 52,
+      "trackStart": 1,
+      "trackEnd": 52
+    }
+  ],
+  "notes": [
+    "Catalog indexes only the attached PDF/RAR files verified in the current workspace.",
+    "No commercial page image/text/audio is committed to the public app repository.",
+    "Selected JSON learning series is independent; this catalog enables local book reading and audio playback, not automatic exercise extraction.",
+    "Printed book page numbers use an offset of +1 in the supplied primary scanned PDFs.",
+    "Supplemental Vietnamese PDFs have independent page layouts; no unverified section navigation is assumed."
+  ]
+}

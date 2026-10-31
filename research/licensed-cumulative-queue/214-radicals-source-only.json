@@ -1,0 +1,2148 @@
+{
+  "count": 214,
+  "source": "Unicode Kangxi Radicals U+2F00–U+2FD5, NFKC mapping",
+  "description": "Complete numbered Unicode source index, NOT a verified 214 Vietnamese Hán–Việt meaning list",
+  "notReviewed": true,
+  "entries": [
+    {
+      "number": 1,
+      "kangxiRadicalSymbol": "⼀",
+      "baseIdeograph": "一",
+      "unicodeName": "KANGXI RADICAL ONE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 2,
+      "kangxiRadicalSymbol": "⼁",
+      "baseIdeograph": "丨",
+      "unicodeName": "KANGXI RADICAL LINE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 3,
+      "kangxiRadicalSymbol": "⼂",
+      "baseIdeograph": "丶",
+      "unicodeName": "KANGXI RADICAL DOT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 4,
+      "kangxiRadicalSymbol": "⼃",
+      "baseIdeograph": "丿",
+      "unicodeName": "KANGXI RADICAL SLASH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 5,
+      "kangxiRadicalSymbol": "⼄",
+      "baseIdeograph": "乙",
+      "unicodeName": "KANGXI RADICAL SECOND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 6,
+      "kangxiRadicalSymbol": "⼅",
+      "baseIdeograph": "亅",
+      "unicodeName": "KANGXI RADICAL HOOK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 7,
+      "kangxiRadicalSymbol": "⼆",
+      "baseIdeograph": "二",
+      "unicodeName": "KANGXI RADICAL TWO",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 8,
+      "kangxiRadicalSymbol": "⼇",
+      "baseIdeograph": "亠",
+      "unicodeName": "KANGXI RADICAL LID",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 9,
+      "kangxiRadicalSymbol": "⼈",
+      "baseIdeograph": "人",
+      "unicodeName": "KANGXI RADICAL MAN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 10,
+      "kangxiRadicalSymbol": "⼉",
+      "baseIdeograph": "儿",
+      "unicodeName": "KANGXI RADICAL LEGS",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 11,
+      "kangxiRadicalSymbol": "⼊",
+      "baseIdeograph": "入",
+      "unicodeName": "KANGXI RADICAL ENTER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 12,
+      "kangxiRadicalSymbol": "⼋",
+      "baseIdeograph": "八",
+      "unicodeName": "KANGXI RADICAL EIGHT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 13,
+      "kangxiRadicalSymbol": "⼌",
+      "baseIdeograph": "冂",
+      "unicodeName": "KANGXI RADICAL DOWN BOX",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 14,
+      "kangxiRadicalSymbol": "⼍",
+      "baseIdeograph": "冖",
+      "unicodeName": "KANGXI RADICAL COVER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 15,
+      "kangxiRadicalSymbol": "⼎",
+      "baseIdeograph": "冫",
+      "unicodeName": "KANGXI RADICAL ICE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 16,
+      "kangxiRadicalSymbol": "⼏",
+      "baseIdeograph": "几",
+      "unicodeName": "KANGXI RADICAL TABLE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 17,
+      "kangxiRadicalSymbol": "⼐",
+      "baseIdeograph": "凵",
+      "unicodeName": "KANGXI RADICAL OPEN BOX",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 18,
+      "kangxiRadicalSymbol": "⼑",
+      "baseIdeograph": "刀",
+      "unicodeName": "KANGXI RADICAL KNIFE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 19,
+      "kangxiRadicalSymbol": "⼒",
+      "baseIdeograph": "力",
+      "unicodeName": "KANGXI RADICAL POWER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 20,
+      "kangxiRadicalSymbol": "⼓",
+      "baseIdeograph": "勹",
+      "unicodeName": "KANGXI RADICAL WRAP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 21,
+      "kangxiRadicalSymbol": "⼔",
+      "baseIdeograph": "匕",
+      "unicodeName": "KANGXI RADICAL SPOON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 22,
+      "kangxiRadicalSymbol": "⼕",
+      "baseIdeograph": "匚",
+      "unicodeName": "KANGXI RADICAL RIGHT OPEN BOX",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 23,
+      "kangxiRadicalSymbol": "⼖",
+      "baseIdeograph": "匸",
+      "unicodeName": "KANGXI RADICAL HIDING ENCLOSURE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 24,
+      "kangxiRadicalSymbol": "⼗",
+      "baseIdeograph": "十",
+      "unicodeName": "KANGXI RADICAL TEN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 25,
+      "kangxiRadicalSymbol": "⼘",
+      "baseIdeograph": "卜",
+      "unicodeName": "KANGXI RADICAL DIVINATION",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 26,
+      "kangxiRadicalSymbol": "⼙",
+      "baseIdeograph": "卩",
+      "unicodeName": "KANGXI RADICAL SEAL",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 27,
+      "kangxiRadicalSymbol": "⼚",
+      "baseIdeograph": "厂",
+      "unicodeName": "KANGXI RADICAL CLIFF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 28,
+      "kangxiRadicalSymbol": "⼛",
+      "baseIdeograph": "厶",
+      "unicodeName": "KANGXI RADICAL PRIVATE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 29,
+      "kangxiRadicalSymbol": "⼜",
+      "baseIdeograph": "又",
+      "unicodeName": "KANGXI RADICAL AGAIN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 30,
+      "kangxiRadicalSymbol": "⼝",
+      "baseIdeograph": "口",
+      "unicodeName": "KANGXI RADICAL MOUTH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 31,
+      "kangxiRadicalSymbol": "⼞",
+      "baseIdeograph": "囗",
+      "unicodeName": "KANGXI RADICAL ENCLOSURE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 32,
+      "kangxiRadicalSymbol": "⼟",
+      "baseIdeograph": "土",
+      "unicodeName": "KANGXI RADICAL EARTH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 33,
+      "kangxiRadicalSymbol": "⼠",
+      "baseIdeograph": "士",
+      "unicodeName": "KANGXI RADICAL SCHOLAR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 34,
+      "kangxiRadicalSymbol": "⼡",
+      "baseIdeograph": "夂",
+      "unicodeName": "KANGXI RADICAL GO",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 35,
+      "kangxiRadicalSymbol": "⼢",
+      "baseIdeograph": "夊",
+      "unicodeName": "KANGXI RADICAL GO SLOWLY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 36,
+      "kangxiRadicalSymbol": "⼣",
+      "baseIdeograph": "夕",
+      "unicodeName": "KANGXI RADICAL EVENING",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 37,
+      "kangxiRadicalSymbol": "⼤",
+      "baseIdeograph": "大",
+      "unicodeName": "KANGXI RADICAL BIG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 38,
+      "kangxiRadicalSymbol": "⼥",
+      "baseIdeograph": "女",
+      "unicodeName": "KANGXI RADICAL WOMAN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 39,
+      "kangxiRadicalSymbol": "⼦",
+      "baseIdeograph": "子",
+      "unicodeName": "KANGXI RADICAL CHILD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 40,
+      "kangxiRadicalSymbol": "⼧",
+      "baseIdeograph": "宀",
+      "unicodeName": "KANGXI RADICAL ROOF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 41,
+      "kangxiRadicalSymbol": "⼨",
+      "baseIdeograph": "寸",
+      "unicodeName": "KANGXI RADICAL INCH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 42,
+      "kangxiRadicalSymbol": "⼩",
+      "baseIdeograph": "小",
+      "unicodeName": "KANGXI RADICAL SMALL",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 43,
+      "kangxiRadicalSymbol": "⼪",
+      "baseIdeograph": "尢",
+      "unicodeName": "KANGXI RADICAL LAME",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 44,
+      "kangxiRadicalSymbol": "⼫",
+      "baseIdeograph": "尸",
+      "unicodeName": "KANGXI RADICAL CORPSE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 45,
+      "kangxiRadicalSymbol": "⼬",
+      "baseIdeograph": "屮",
+      "unicodeName": "KANGXI RADICAL SPROUT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 46,
+      "kangxiRadicalSymbol": "⼭",
+      "baseIdeograph": "山",
+      "unicodeName": "KANGXI RADICAL MOUNTAIN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 47,
+      "kangxiRadicalSymbol": "⼮",
+      "baseIdeograph": "巛",
+      "unicodeName": "KANGXI RADICAL RIVER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 48,
+      "kangxiRadicalSymbol": "⼯",
+      "baseIdeograph": "工",
+      "unicodeName": "KANGXI RADICAL WORK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 49,
+      "kangxiRadicalSymbol": "⼰",
+      "baseIdeograph": "己",
+      "unicodeName": "KANGXI RADICAL ONESELF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 50,
+      "kangxiRadicalSymbol": "⼱",
+      "baseIdeograph": "巾",
+      "unicodeName": "KANGXI RADICAL TURBAN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 51,
+      "kangxiRadicalSymbol": "⼲",
+      "baseIdeograph": "干",
+      "unicodeName": "KANGXI RADICAL DRY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 52,
+      "kangxiRadicalSymbol": "⼳",
+      "baseIdeograph": "幺",
+      "unicodeName": "KANGXI RADICAL SHORT THREAD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 53,
+      "kangxiRadicalSymbol": "⼴",
+      "baseIdeograph": "广",
+      "unicodeName": "KANGXI RADICAL DOTTED CLIFF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 54,
+      "kangxiRadicalSymbol": "⼵",
+      "baseIdeograph": "廴",
+      "unicodeName": "KANGXI RADICAL LONG STRIDE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 55,
+      "kangxiRadicalSymbol": "⼶",
+      "baseIdeograph": "廾",
+      "unicodeName": "KANGXI RADICAL TWO HANDS",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 56,
+      "kangxiRadicalSymbol": "⼷",
+      "baseIdeograph": "弋",
+      "unicodeName": "KANGXI RADICAL SHOOT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 57,
+      "kangxiRadicalSymbol": "⼸",
+      "baseIdeograph": "弓",
+      "unicodeName": "KANGXI RADICAL BOW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 58,
+      "kangxiRadicalSymbol": "⼹",
+      "baseIdeograph": "彐",
+      "unicodeName": "KANGXI RADICAL SNOUT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 59,
+      "kangxiRadicalSymbol": "⼺",
+      "baseIdeograph": "彡",
+      "unicodeName": "KANGXI RADICAL BRISTLE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 60,
+      "kangxiRadicalSymbol": "⼻",
+      "baseIdeograph": "彳",
+      "unicodeName": "KANGXI RADICAL STEP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 61,
+      "kangxiRadicalSymbol": "⼼",
+      "baseIdeograph": "心",
+      "unicodeName": "KANGXI RADICAL HEART",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 62,
+      "kangxiRadicalSymbol": "⼽",
+      "baseIdeograph": "戈",
+      "unicodeName": "KANGXI RADICAL HALBERD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 63,
+      "kangxiRadicalSymbol": "⼾",
+      "baseIdeograph": "戶",
+      "unicodeName": "KANGXI RADICAL DOOR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 64,
+      "kangxiRadicalSymbol": "⼿",
+      "baseIdeograph": "手",
+      "unicodeName": "KANGXI RADICAL HAND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 65,
+      "kangxiRadicalSymbol": "⽀",
+      "baseIdeograph": "支",
+      "unicodeName": "KANGXI RADICAL BRANCH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 66,
+      "kangxiRadicalSymbol": "⽁",
+      "baseIdeograph": "攴",
+      "unicodeName": "KANGXI RADICAL RAP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 67,
+      "kangxiRadicalSymbol": "⽂",
+      "baseIdeograph": "文",
+      "unicodeName": "KANGXI RADICAL SCRIPT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 68,
+      "kangxiRadicalSymbol": "⽃",
+      "baseIdeograph": "斗",
+      "unicodeName": "KANGXI RADICAL DIPPER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 69,
+      "kangxiRadicalSymbol": "⽄",
+      "baseIdeograph": "斤",
+      "unicodeName": "KANGXI RADICAL AXE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 70,
+      "kangxiRadicalSymbol": "⽅",
+      "baseIdeograph": "方",
+      "unicodeName": "KANGXI RADICAL SQUARE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 71,
+      "kangxiRadicalSymbol": "⽆",
+      "baseIdeograph": "无",
+      "unicodeName": "KANGXI RADICAL NOT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 72,
+      "kangxiRadicalSymbol": "⽇",
+      "baseIdeograph": "日",
+      "unicodeName": "KANGXI RADICAL SUN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 73,
+      "kangxiRadicalSymbol": "⽈",
+      "baseIdeograph": "曰",
+      "unicodeName": "KANGXI RADICAL SAY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 74,
+      "kangxiRadicalSymbol": "⽉",
+      "baseIdeograph": "月",
+      "unicodeName": "KANGXI RADICAL MOON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 75,
+      "kangxiRadicalSymbol": "⽊",
+      "baseIdeograph": "木",
+      "unicodeName": "KANGXI RADICAL TREE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 76,
+      "kangxiRadicalSymbol": "⽋",
+      "baseIdeograph": "欠",
+      "unicodeName": "KANGXI RADICAL LACK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 77,
+      "kangxiRadicalSymbol": "⽌",
+      "baseIdeograph": "止",
+      "unicodeName": "KANGXI RADICAL STOP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 78,
+      "kangxiRadicalSymbol": "⽍",
+      "baseIdeograph": "歹",
+      "unicodeName": "KANGXI RADICAL DEATH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 79,
+      "kangxiRadicalSymbol": "⽎",
+      "baseIdeograph": "殳",
+      "unicodeName": "KANGXI RADICAL WEAPON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 80,
+      "kangxiRadicalSymbol": "⽏",
+      "baseIdeograph": "毋",
+      "unicodeName": "KANGXI RADICAL DO NOT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 81,
+      "kangxiRadicalSymbol": "⽐",
+      "baseIdeograph": "比",
+      "unicodeName": "KANGXI RADICAL COMPARE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 82,
+      "kangxiRadicalSymbol": "⽑",
+      "baseIdeograph": "毛",
+      "unicodeName": "KANGXI RADICAL FUR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 83,
+      "kangxiRadicalSymbol": "⽒",
+      "baseIdeograph": "氏",
+      "unicodeName": "KANGXI RADICAL CLAN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 84,
+      "kangxiRadicalSymbol": "⽓",
+      "baseIdeograph": "气",
+      "unicodeName": "KANGXI RADICAL STEAM",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 85,
+      "kangxiRadicalSymbol": "⽔",
+      "baseIdeograph": "水",
+      "unicodeName": "KANGXI RADICAL WATER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 86,
+      "kangxiRadicalSymbol": "⽕",
+      "baseIdeograph": "火",
+      "unicodeName": "KANGXI RADICAL FIRE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 87,
+      "kangxiRadicalSymbol": "⽖",
+      "baseIdeograph": "爪",
+      "unicodeName": "KANGXI RADICAL CLAW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 88,
+      "kangxiRadicalSymbol": "⽗",
+      "baseIdeograph": "父",
+      "unicodeName": "KANGXI RADICAL FATHER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 89,
+      "kangxiRadicalSymbol": "⽘",
+      "baseIdeograph": "爻",
+      "unicodeName": "KANGXI RADICAL DOUBLE X",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 90,
+      "kangxiRadicalSymbol": "⽙",
+      "baseIdeograph": "爿",
+      "unicodeName": "KANGXI RADICAL HALF TREE TRUNK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 91,
+      "kangxiRadicalSymbol": "⽚",
+      "baseIdeograph": "片",
+      "unicodeName": "KANGXI RADICAL SLICE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 92,
+      "kangxiRadicalSymbol": "⽛",
+      "baseIdeograph": "牙",
+      "unicodeName": "KANGXI RADICAL FANG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 93,
+      "kangxiRadicalSymbol": "⽜",
+      "baseIdeograph": "牛",
+      "unicodeName": "KANGXI RADICAL COW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 94,
+      "kangxiRadicalSymbol": "⽝",
+      "baseIdeograph": "犬",
+      "unicodeName": "KANGXI RADICAL DOG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 95,
+      "kangxiRadicalSymbol": "⽞",
+      "baseIdeograph": "玄",
+      "unicodeName": "KANGXI RADICAL PROFOUND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 96,
+      "kangxiRadicalSymbol": "⽟",
+      "baseIdeograph": "玉",
+      "unicodeName": "KANGXI RADICAL JADE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 97,
+      "kangxiRadicalSymbol": "⽠",
+      "baseIdeograph": "瓜",
+      "unicodeName": "KANGXI RADICAL MELON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 98,
+      "kangxiRadicalSymbol": "⽡",
+      "baseIdeograph": "瓦",
+      "unicodeName": "KANGXI RADICAL TILE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 99,
+      "kangxiRadicalSymbol": "⽢",
+      "baseIdeograph": "甘",
+      "unicodeName": "KANGXI RADICAL SWEET",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 100,
+      "kangxiRadicalSymbol": "⽣",
+      "baseIdeograph": "生",
+      "unicodeName": "KANGXI RADICAL LIFE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 101,
+      "kangxiRadicalSymbol": "⽤",
+      "baseIdeograph": "用",
+      "unicodeName": "KANGXI RADICAL USE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 102,
+      "kangxiRadicalSymbol": "⽥",
+      "baseIdeograph": "田",
+      "unicodeName": "KANGXI RADICAL FIELD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 103,
+      "kangxiRadicalSymbol": "⽦",
+      "baseIdeograph": "疋",
+      "unicodeName": "KANGXI RADICAL BOLT OF CLOTH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 104,
+      "kangxiRadicalSymbol": "⽧",
+      "baseIdeograph": "疒",
+      "unicodeName": "KANGXI RADICAL SICKNESS",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 105,
+      "kangxiRadicalSymbol": "⽨",
+      "baseIdeograph": "癶",
+      "unicodeName": "KANGXI RADICAL DOTTED TENT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 106,
+      "kangxiRadicalSymbol": "⽩",
+      "baseIdeograph": "白",
+      "unicodeName": "KANGXI RADICAL WHITE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 107,
+      "kangxiRadicalSymbol": "⽪",
+      "baseIdeograph": "皮",
+      "unicodeName": "KANGXI RADICAL SKIN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 108,
+      "kangxiRadicalSymbol": "⽫",
+      "baseIdeograph": "皿",
+      "unicodeName": "KANGXI RADICAL DISH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 109,
+      "kangxiRadicalSymbol": "⽬",
+      "baseIdeograph": "目",
+      "unicodeName": "KANGXI RADICAL EYE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 110,
+      "kangxiRadicalSymbol": "⽭",
+      "baseIdeograph": "矛",
+      "unicodeName": "KANGXI RADICAL SPEAR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 111,
+      "kangxiRadicalSymbol": "⽮",
+      "baseIdeograph": "矢",
+      "unicodeName": "KANGXI RADICAL ARROW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 112,
+      "kangxiRadicalSymbol": "⽯",
+      "baseIdeograph": "石",
+      "unicodeName": "KANGXI RADICAL STONE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 113,
+      "kangxiRadicalSymbol": "⽰",
+      "baseIdeograph": "示",
+      "unicodeName": "KANGXI RADICAL SPIRIT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 114,
+      "kangxiRadicalSymbol": "⽱",
+      "baseIdeograph": "禸",
+      "unicodeName": "KANGXI RADICAL TRACK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 115,
+      "kangxiRadicalSymbol": "⽲",
+      "baseIdeograph": "禾",
+      "unicodeName": "KANGXI RADICAL GRAIN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 116,
+      "kangxiRadicalSymbol": "⽳",
+      "baseIdeograph": "穴",
+      "unicodeName": "KANGXI RADICAL CAVE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 117,
+      "kangxiRadicalSymbol": "⽴",
+      "baseIdeograph": "立",
+      "unicodeName": "KANGXI RADICAL STAND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 118,
+      "kangxiRadicalSymbol": "⽵",
+      "baseIdeograph": "竹",
+      "unicodeName": "KANGXI RADICAL BAMBOO",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 119,
+      "kangxiRadicalSymbol": "⽶",
+      "baseIdeograph": "米",
+      "unicodeName": "KANGXI RADICAL RICE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 120,
+      "kangxiRadicalSymbol": "⽷",
+      "baseIdeograph": "糸",
+      "unicodeName": "KANGXI RADICAL SILK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 121,
+      "kangxiRadicalSymbol": "⽸",
+      "baseIdeograph": "缶",
+      "unicodeName": "KANGXI RADICAL JAR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 122,
+      "kangxiRadicalSymbol": "⽹",
+      "baseIdeograph": "网",
+      "unicodeName": "KANGXI RADICAL NET",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 123,
+      "kangxiRadicalSymbol": "⽺",
+      "baseIdeograph": "羊",
+      "unicodeName": "KANGXI RADICAL SHEEP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 124,
+      "kangxiRadicalSymbol": "⽻",
+      "baseIdeograph": "羽",
+      "unicodeName": "KANGXI RADICAL FEATHER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 125,
+      "kangxiRadicalSymbol": "⽼",
+      "baseIdeograph": "老",
+      "unicodeName": "KANGXI RADICAL OLD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 126,
+      "kangxiRadicalSymbol": "⽽",
+      "baseIdeograph": "而",
+      "unicodeName": "KANGXI RADICAL AND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 127,
+      "kangxiRadicalSymbol": "⽾",
+      "baseIdeograph": "耒",
+      "unicodeName": "KANGXI RADICAL PLOW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 128,
+      "kangxiRadicalSymbol": "⽿",
+      "baseIdeograph": "耳",
+      "unicodeName": "KANGXI RADICAL EAR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 129,
+      "kangxiRadicalSymbol": "⾀",
+      "baseIdeograph": "聿",
+      "unicodeName": "KANGXI RADICAL BRUSH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 130,
+      "kangxiRadicalSymbol": "⾁",
+      "baseIdeograph": "肉",
+      "unicodeName": "KANGXI RADICAL MEAT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 131,
+      "kangxiRadicalSymbol": "⾂",
+      "baseIdeograph": "臣",
+      "unicodeName": "KANGXI RADICAL MINISTER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 132,
+      "kangxiRadicalSymbol": "⾃",
+      "baseIdeograph": "自",
+      "unicodeName": "KANGXI RADICAL SELF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 133,
+      "kangxiRadicalSymbol": "⾄",
+      "baseIdeograph": "至",
+      "unicodeName": "KANGXI RADICAL ARRIVE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 134,
+      "kangxiRadicalSymbol": "⾅",
+      "baseIdeograph": "臼",
+      "unicodeName": "KANGXI RADICAL MORTAR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 135,
+      "kangxiRadicalSymbol": "⾆",
+      "baseIdeograph": "舌",
+      "unicodeName": "KANGXI RADICAL TONGUE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 136,
+      "kangxiRadicalSymbol": "⾇",
+      "baseIdeograph": "舛",
+      "unicodeName": "KANGXI RADICAL OPPOSE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 137,
+      "kangxiRadicalSymbol": "⾈",
+      "baseIdeograph": "舟",
+      "unicodeName": "KANGXI RADICAL BOAT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 138,
+      "kangxiRadicalSymbol": "⾉",
+      "baseIdeograph": "艮",
+      "unicodeName": "KANGXI RADICAL STOPPING",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 139,
+      "kangxiRadicalSymbol": "⾊",
+      "baseIdeograph": "色",
+      "unicodeName": "KANGXI RADICAL COLOR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 140,
+      "kangxiRadicalSymbol": "⾋",
+      "baseIdeograph": "艸",
+      "unicodeName": "KANGXI RADICAL GRASS",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 141,
+      "kangxiRadicalSymbol": "⾌",
+      "baseIdeograph": "虍",
+      "unicodeName": "KANGXI RADICAL TIGER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 142,
+      "kangxiRadicalSymbol": "⾍",
+      "baseIdeograph": "虫",
+      "unicodeName": "KANGXI RADICAL INSECT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 143,
+      "kangxiRadicalSymbol": "⾎",
+      "baseIdeograph": "血",
+      "unicodeName": "KANGXI RADICAL BLOOD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 144,
+      "kangxiRadicalSymbol": "⾏",
+      "baseIdeograph": "行",
+      "unicodeName": "KANGXI RADICAL WALK ENCLOSURE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 145,
+      "kangxiRadicalSymbol": "⾐",
+      "baseIdeograph": "衣",
+      "unicodeName": "KANGXI RADICAL CLOTHES",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 146,
+      "kangxiRadicalSymbol": "⾑",
+      "baseIdeograph": "襾",
+      "unicodeName": "KANGXI RADICAL WEST",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 147,
+      "kangxiRadicalSymbol": "⾒",
+      "baseIdeograph": "見",
+      "unicodeName": "KANGXI RADICAL SEE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 148,
+      "kangxiRadicalSymbol": "⾓",
+      "baseIdeograph": "角",
+      "unicodeName": "KANGXI RADICAL HORN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 149,
+      "kangxiRadicalSymbol": "⾔",
+      "baseIdeograph": "言",
+      "unicodeName": "KANGXI RADICAL SPEECH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 150,
+      "kangxiRadicalSymbol": "⾕",
+      "baseIdeograph": "谷",
+      "unicodeName": "KANGXI RADICAL VALLEY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 151,
+      "kangxiRadicalSymbol": "⾖",
+      "baseIdeograph": "豆",
+      "unicodeName": "KANGXI RADICAL BEAN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 152,
+      "kangxiRadicalSymbol": "⾗",
+      "baseIdeograph": "豕",
+      "unicodeName": "KANGXI RADICAL PIG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 153,
+      "kangxiRadicalSymbol": "⾘",
+      "baseIdeograph": "豸",
+      "unicodeName": "KANGXI RADICAL BADGER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 154,
+      "kangxiRadicalSymbol": "⾙",
+      "baseIdeograph": "貝",
+      "unicodeName": "KANGXI RADICAL SHELL",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 155,
+      "kangxiRadicalSymbol": "⾚",
+      "baseIdeograph": "赤",
+      "unicodeName": "KANGXI RADICAL RED",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 156,
+      "kangxiRadicalSymbol": "⾛",
+      "baseIdeograph": "走",
+      "unicodeName": "KANGXI RADICAL RUN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 157,
+      "kangxiRadicalSymbol": "⾜",
+      "baseIdeograph": "足",
+      "unicodeName": "KANGXI RADICAL FOOT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 158,
+      "kangxiRadicalSymbol": "⾝",
+      "baseIdeograph": "身",
+      "unicodeName": "KANGXI RADICAL BODY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 159,
+      "kangxiRadicalSymbol": "⾞",
+      "baseIdeograph": "車",
+      "unicodeName": "KANGXI RADICAL CART",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 160,
+      "kangxiRadicalSymbol": "⾟",
+      "baseIdeograph": "辛",
+      "unicodeName": "KANGXI RADICAL BITTER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 161,
+      "kangxiRadicalSymbol": "⾠",
+      "baseIdeograph": "辰",
+      "unicodeName": "KANGXI RADICAL MORNING",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 162,
+      "kangxiRadicalSymbol": "⾡",
+      "baseIdeograph": "辵",
+      "unicodeName": "KANGXI RADICAL WALK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 163,
+      "kangxiRadicalSymbol": "⾢",
+      "baseIdeograph": "邑",
+      "unicodeName": "KANGXI RADICAL CITY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 164,
+      "kangxiRadicalSymbol": "⾣",
+      "baseIdeograph": "酉",
+      "unicodeName": "KANGXI RADICAL WINE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 165,
+      "kangxiRadicalSymbol": "⾤",
+      "baseIdeograph": "釆",
+      "unicodeName": "KANGXI RADICAL DISTINGUISH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 166,
+      "kangxiRadicalSymbol": "⾥",
+      "baseIdeograph": "里",
+      "unicodeName": "KANGXI RADICAL VILLAGE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 167,
+      "kangxiRadicalSymbol": "⾦",
+      "baseIdeograph": "金",
+      "unicodeName": "KANGXI RADICAL GOLD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 168,
+      "kangxiRadicalSymbol": "⾧",
+      "baseIdeograph": "長",
+      "unicodeName": "KANGXI RADICAL LONG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 169,
+      "kangxiRadicalSymbol": "⾨",
+      "baseIdeograph": "門",
+      "unicodeName": "KANGXI RADICAL GATE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 170,
+      "kangxiRadicalSymbol": "⾩",
+      "baseIdeograph": "阜",
+      "unicodeName": "KANGXI RADICAL MOUND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 171,
+      "kangxiRadicalSymbol": "⾪",
+      "baseIdeograph": "隶",
+      "unicodeName": "KANGXI RADICAL SLAVE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 172,
+      "kangxiRadicalSymbol": "⾫",
+      "baseIdeograph": "隹",
+      "unicodeName": "KANGXI RADICAL SHORT TAILED BIRD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 173,
+      "kangxiRadicalSymbol": "⾬",
+      "baseIdeograph": "雨",
+      "unicodeName": "KANGXI RADICAL RAIN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 174,
+      "kangxiRadicalSymbol": "⾭",
+      "baseIdeograph": "靑",
+      "unicodeName": "KANGXI RADICAL BLUE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 175,
+      "kangxiRadicalSymbol": "⾮",
+      "baseIdeograph": "非",
+      "unicodeName": "KANGXI RADICAL WRONG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 176,
+      "kangxiRadicalSymbol": "⾯",
+      "baseIdeograph": "面",
+      "unicodeName": "KANGXI RADICAL FACE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 177,
+      "kangxiRadicalSymbol": "⾰",
+      "baseIdeograph": "革",
+      "unicodeName": "KANGXI RADICAL LEATHER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 178,
+      "kangxiRadicalSymbol": "⾱",
+      "baseIdeograph": "韋",
+      "unicodeName": "KANGXI RADICAL TANNED LEATHER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 179,
+      "kangxiRadicalSymbol": "⾲",
+      "baseIdeograph": "韭",
+      "unicodeName": "KANGXI RADICAL LEEK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 180,
+      "kangxiRadicalSymbol": "⾳",
+      "baseIdeograph": "音",
+      "unicodeName": "KANGXI RADICAL SOUND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 181,
+      "kangxiRadicalSymbol": "⾴",
+      "baseIdeograph": "頁",
+      "unicodeName": "KANGXI RADICAL LEAF",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 182,
+      "kangxiRadicalSymbol": "⾵",
+      "baseIdeograph": "風",
+      "unicodeName": "KANGXI RADICAL WIND",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 183,
+      "kangxiRadicalSymbol": "⾶",
+      "baseIdeograph": "飛",
+      "unicodeName": "KANGXI RADICAL FLY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 184,
+      "kangxiRadicalSymbol": "⾷",
+      "baseIdeograph": "食",
+      "unicodeName": "KANGXI RADICAL EAT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 185,
+      "kangxiRadicalSymbol": "⾸",
+      "baseIdeograph": "首",
+      "unicodeName": "KANGXI RADICAL HEAD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 186,
+      "kangxiRadicalSymbol": "⾹",
+      "baseIdeograph": "香",
+      "unicodeName": "KANGXI RADICAL FRAGRANT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 187,
+      "kangxiRadicalSymbol": "⾺",
+      "baseIdeograph": "馬",
+      "unicodeName": "KANGXI RADICAL HORSE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 188,
+      "kangxiRadicalSymbol": "⾻",
+      "baseIdeograph": "骨",
+      "unicodeName": "KANGXI RADICAL BONE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 189,
+      "kangxiRadicalSymbol": "⾼",
+      "baseIdeograph": "高",
+      "unicodeName": "KANGXI RADICAL TALL",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 190,
+      "kangxiRadicalSymbol": "⾽",
+      "baseIdeograph": "髟",
+      "unicodeName": "KANGXI RADICAL HAIR",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 191,
+      "kangxiRadicalSymbol": "⾾",
+      "baseIdeograph": "鬥",
+      "unicodeName": "KANGXI RADICAL FIGHT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 192,
+      "kangxiRadicalSymbol": "⾿",
+      "baseIdeograph": "鬯",
+      "unicodeName": "KANGXI RADICAL SACRIFICIAL WINE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 193,
+      "kangxiRadicalSymbol": "⿀",
+      "baseIdeograph": "鬲",
+      "unicodeName": "KANGXI RADICAL CAULDRON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 194,
+      "kangxiRadicalSymbol": "⿁",
+      "baseIdeograph": "鬼",
+      "unicodeName": "KANGXI RADICAL GHOST",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 195,
+      "kangxiRadicalSymbol": "⿂",
+      "baseIdeograph": "魚",
+      "unicodeName": "KANGXI RADICAL FISH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 196,
+      "kangxiRadicalSymbol": "⿃",
+      "baseIdeograph": "鳥",
+      "unicodeName": "KANGXI RADICAL BIRD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 197,
+      "kangxiRadicalSymbol": "⿄",
+      "baseIdeograph": "鹵",
+      "unicodeName": "KANGXI RADICAL SALT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 198,
+      "kangxiRadicalSymbol": "⿅",
+      "baseIdeograph": "鹿",
+      "unicodeName": "KANGXI RADICAL DEER",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 199,
+      "kangxiRadicalSymbol": "⿆",
+      "baseIdeograph": "麥",
+      "unicodeName": "KANGXI RADICAL WHEAT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 200,
+      "kangxiRadicalSymbol": "⿇",
+      "baseIdeograph": "麻",
+      "unicodeName": "KANGXI RADICAL HEMP",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 201,
+      "kangxiRadicalSymbol": "⿈",
+      "baseIdeograph": "黃",
+      "unicodeName": "KANGXI RADICAL YELLOW",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 202,
+      "kangxiRadicalSymbol": "⿉",
+      "baseIdeograph": "黍",
+      "unicodeName": "KANGXI RADICAL MILLET",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 203,
+      "kangxiRadicalSymbol": "⿊",
+      "baseIdeograph": "黑",
+      "unicodeName": "KANGXI RADICAL BLACK",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 204,
+      "kangxiRadicalSymbol": "⿋",
+      "baseIdeograph": "黹",
+      "unicodeName": "KANGXI RADICAL EMBROIDERY",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 205,
+      "kangxiRadicalSymbol": "⿌",
+      "baseIdeograph": "黽",
+      "unicodeName": "KANGXI RADICAL FROG",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 206,
+      "kangxiRadicalSymbol": "⿍",
+      "baseIdeograph": "鼎",
+      "unicodeName": "KANGXI RADICAL TRIPOD",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 207,
+      "kangxiRadicalSymbol": "⿎",
+      "baseIdeograph": "鼓",
+      "unicodeName": "KANGXI RADICAL DRUM",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 208,
+      "kangxiRadicalSymbol": "⿏",
+      "baseIdeograph": "鼠",
+      "unicodeName": "KANGXI RADICAL RAT",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 209,
+      "kangxiRadicalSymbol": "⿐",
+      "baseIdeograph": "鼻",
+      "unicodeName": "KANGXI RADICAL NOSE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 210,
+      "kangxiRadicalSymbol": "⿑",
+      "baseIdeograph": "齊",
+      "unicodeName": "KANGXI RADICAL EVEN",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 211,
+      "kangxiRadicalSymbol": "⿒",
+      "baseIdeograph": "齒",
+      "unicodeName": "KANGXI RADICAL TOOTH",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 212,
+      "kangxiRadicalSymbol": "⿓",
+      "baseIdeograph": "龍",
+      "unicodeName": "KANGXI RADICAL DRAGON",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 213,
+      "kangxiRadicalSymbol": "⿔",
+      "baseIdeograph": "龜",
+      "unicodeName": "KANGXI RADICAL TURTLE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    },
+    {
+      "number": 214,
+      "kangxiRadicalSymbol": "⿕",
+      "baseIdeograph": "龠",
+      "unicodeName": "KANGXI RADICAL FLUTE",
+      "hanVietMeaning": null,
+      "vietnameseMeaning": null,
+      "reviewStatus": "pending_manual_han_viet_review",
+      "canPublishInIPA": false
+    }
+  ]
+}

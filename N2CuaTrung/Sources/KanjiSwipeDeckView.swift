@@ -162,6 +162,7 @@ struct KanjiSwipeDeckView: View {
             }
         }
         .onAppear { if cards.isEmpty { reload() } }
+        .onChange(of: store.contentRevision) { _ in reload() }
         .onDisappear { autoPlay = false; voice.stop() }
         .onReceive(ticker) { _ in
             guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }

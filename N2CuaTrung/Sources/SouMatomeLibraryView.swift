@@ -109,7 +109,7 @@ final class SouMatomeLibraryStore: ObservableObject {
                 throw SouMatomeImportError.invalidSource
             }
             try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-            let temp = root.appendingPathComponent(id + ".importing")
+            let temp = root.appendingPathComponent(id + ".importing.pdf")
             let target = root.appendingPathComponent(id + ".pdf")
             if FileManager.default.fileExists(atPath: temp.path) {
                 try FileManager.default.removeItem(at: temp)
@@ -135,7 +135,9 @@ final class SouMatomeLibraryStore: ObservableObject {
             let scoped = source.startAccessingSecurityScopedResource()
             defer { if scoped { source.stopAccessingSecurityScopedResource() } }
             var count = 0
-            guard source.hasDirectoryPath,
+            var isDirectory: ObjCBool = false
+            guard FileManager.default.fileExists(atPath: source.path, isDirectory: &isDirectory),
+                  isDirectory.boolValue,
                   let walker = FileManager.default.enumerator(at: source,
                          includingPropertiesForKeys: [.isRegularFileKey],
                          options: [.skipsHiddenFiles]) else {

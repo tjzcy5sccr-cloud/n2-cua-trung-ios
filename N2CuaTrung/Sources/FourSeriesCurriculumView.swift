@@ -77,6 +77,12 @@ struct FourSeriesCurriculumView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 17) {
                 heading
+                NavigationLink { LearningSeriesPickerView() } label: {
+                    ActionTile(icon: "square.stack.3d.up.fill", color: Palette.teal,
+                               title: "Bộ đang học: \(store.selectedSeries.name)",
+                               detail: "Chọn riêng Shin Kanzen, Sou Matome, Mimikara hoặc Tổng hợp")
+                }
+                .buttonStyle(.plain)
                 if let plan {
                     targetPanel(plan)
                     trackPanel(plan)

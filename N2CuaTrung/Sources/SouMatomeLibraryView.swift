@@ -500,25 +500,17 @@ struct SouMatomePDFReader: View {
     var body: some View {
         VStack(spacing: 0) {
             SouMatomePDFKitView(url: url, page: $page)
-            if !book.sectionPages.isEmpty {
-                HStack {
-                    Text("Đi đến bài học")
-                        .font(.caption.weight(.semibold)).foregroundColor(Palette.navy)
-                    Spacer()
-                    Menu {
-                        ForEach(Array(book.sectionPages.enumerated()), id: \.offset) { index, firstPage in
-                            Button("\(book.sectionLabel) \(index + 1) · Trang \(firstPage)") {
-                                page = firstPage
-                            }
-                        }
-                    } label: {
-                        Label("Chọn \(book.sectionLabel.lowercased())", systemImage: "list.bullet")
-                    }
-                }
-                .padding(.horizontal, 13)
-                .padding(.top, 8)
-                .background(Palette.pale)
+            HStack(spacing: 12) {
+                Text("Đi đến trang")
+                    .font(.caption.weight(.semibold)).foregroundColor(Palette.navy)
+                Slider(value: Binding(
+                    get: { Double(page) },
+                    set: { page = max(1, min(book.pages, Int($0.rounded()))) }
+                ), in: 1...Double(book.pages), step: 1)
             }
+            .padding(.horizontal, 13)
+            .padding(.top, 8)
+            .background(Palette.pale)
             HStack(spacing: 15) {
                 Button { page = max(1, page - 1) } label: {
                     Image(systemName: "chevron.left.circle.fill").font(.title2)

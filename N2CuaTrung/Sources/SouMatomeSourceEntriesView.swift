@@ -149,6 +149,7 @@ struct SouMatomeSourceEntriesView: View {
     @StateObject private var library = SouMatomeLibraryStore()
     @State private var query = ""
     @State private var skill = "Tất cả"
+    @State private var displayLimit = 200
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
 
     private var matching: [SouMatomeSourceEntry] {
@@ -184,7 +185,7 @@ struct SouMatomeSourceEntriesView: View {
                         .font(.caption.weight(.semibold)).foregroundColor(Palette.blue)
                 }
                 LazyVStack(spacing: 9) {
-                    ForEach(matching.prefix(350)) { entry in
+                    ForEach(matching.prefix(displayLimit)) { entry in
                         LessonPanel {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
@@ -212,9 +213,10 @@ struct SouMatomeSourceEntriesView: View {
                         }
                     }
                 }
-                if matching.count > 350 {
-                    Text("Hiển thị 350 ứng viên đầu tiên. Sử dụng tìm kiếm để xem các mục khác trong toàn bộ nguồn.")
-                        .font(.caption).foregroundColor(.secondary)
+                if matching.count > displayLimit {
+                    Button("Xem thêm mục (\(min(displayLimit, matching.count))/\(matching.count))") {
+                        displayLimit += 200
+                    }.buttonStyle(.bordered)
                 }
                 NavigationLink {
                     SouMatomeWholeBooksView()

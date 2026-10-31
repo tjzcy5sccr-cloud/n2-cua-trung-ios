@@ -5,19 +5,40 @@ import AVFoundation
 final class StudyStore: ObservableObject {
     @Published var course: CourseData
     @Published var installedPacks: [CoursePack]
+    @Published private(set) var selectedSeries: LearningSeries
     @Published private(set) var saved: SavedProgress
     private let key = "N2CuaTrung.progress.v1"
+    private let seriesPreferenceKey = "N2CuaTrung.activeStudySeries.v1"
 
     init() {
         let packs = CoursePackManager.allAvailablePacks()
+        let storedSeries = UserDefaults.standard.string(forKey: "N2CuaTrung.activeStudySeries.v1") ?? "all"
+        let series = LearningSeries(rawValue: storedSeries) ?? .all
         self.installedPacks = packs
-        self.course = CoursePackManager.mergedCourse(packs: packs)
+        self.selectedSeries = series
+        self.course = CoursePackManager.course(for: series, packs: packs)
         if let bytes = UserDefaults.standard.data(forKey: key),
            let model = try? JSONDecoder().decode(SavedProgress.self, from: bytes) {
             self.saved = model
         } else {
             self.saved = SavedProgress()
         }
+    }
+
+    /// Mọi tab đều quan sát StudyStore.course nên cập nhật cùng lúc khi đổi bộ.
+    /// Lịch sử ôn vẫn ở UserDefaults và giữ nguyên các ID gốc.
+    func selectSeries(_ series: LearningSeries) {
+        guard series != selectedSeries else { return }
+        JapaneseVoice.shared.stop()
+        selectedSeries = series
+        UserDefaults.standard.set(series.rawValue, forKey: seriesPreferenceKey)
+        course = CoursePackManager.course(for: series, packs: installedPacks)
+    }
+
+    func itemCount(for series: LearningSeries) -> Int {
+        let data = CoursePackManager.course(for: series, packs: installedPacks)
+        return data.vocab.count + data.grammar.count + data.kanji.count
+            + data.readings.count + data.listening.count
     }
 
     var week: Int {

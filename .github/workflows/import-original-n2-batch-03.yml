@@ -1,0 +1,48 @@
+name: Import original N2 batch 03 across four study tracks
+"on":
+  push:
+    branches: [feature/n2-four-series-roadmap-2027]
+    paths:
+      - research/original-batch-03/lessons.json
+      - scripts/import_original_n2_batch03.py
+      - .github/workflows/import-original-n2-batch-03.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: n2-original-batch03-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  import-batch03:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout feature branch only
+        uses: actions/checkout@v4
+        with:
+          ref: feature/n2-four-series-roadmap-2027
+          persist-credentials: true
+      - name: Import 100 original Japanese-Vietnamese JLPT N2 records
+        run: |
+          python3 -m py_compile scripts/import_original_n2_batch03.py
+          python3 scripts/import_original_n2_batch03.py
+      - name: Check all series source IDs grammar and Japanese-Vietnamese exercises
+        run: |
+          python3 scripts/validate_series_packs.py
+          python3 scripts/validate_four_series_curriculum.py
+      - name: Save new per-series learning datasets and QA
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content-packs/n2-series-*.json content-packs/manifest-series.json qa-reports/n2-original-batch-03.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Import original third N2 learning batch across four separately selectable study series"
+            git push origin HEAD:feature/n2-four-series-roadmap-2027
+          fi
+      - name: Publish batch-03 coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: n2-original-batch03-audit
+          path: qa-reports/n2-original-batch-03.json
+          if-no-files-found: error
+          retention-days: 30

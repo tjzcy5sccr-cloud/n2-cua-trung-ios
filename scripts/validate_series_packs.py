@@ -68,19 +68,25 @@ assert "contains(meaningStatus ?? \"\")" in models
 assert source_code.count(".filter { $0.isApprovedForStudy }") >= 6
 batch_ids=set()
 for pack in allpacks:
-    for section in ("vocab","grammar","kanji"):
+    for section in ("vocab","grammar","kanji","readings","listening"):
         for entry in pack[section]:
             if entry["id"].startswith("trung-original-"):
                 batch_ids.add(entry["id"])
-                flag="grammarStatus" if section=="grammar" else "meaningStatus"
-                assert entry[flag] == "editorial_reviewed"
+                if section in ("vocab","grammar","kanji"):
+                    flag="grammarStatus" if section=="grammar" else "meaningStatus"
+                    assert entry[flag] == "editorial_reviewed"
                 if section=="vocab":
                     assert entry["exampleStatus"] == "editorial_reviewed"
                     assert entry["example"] and entry["exampleVi"] and entry["reading"]
                 if section=="grammar":
                     assert entry["translationStatus"] == "editorial_reviewed"
                     assert entry["example"] and entry["translation"] and entry["rule"]
-assert len(batch_ids)==74,("Original batch items missing or duplicated",len(batch_ids))
-print("PASS: 74 newly authored review-tagged examples and strict approved-only app filters.")
+                if section=="readings" and entry["id"].startswith("trung-original-b02-"):
+                    assert entry.get("textVi") and len(entry.get("text", ""))>=75
+                if section=="listening" and entry["id"].startswith("trung-original-b02-"):
+                    assert entry.get("scriptVi") and len(entry.get("script", ""))>=75
+assert len(batch_ids)==174,("Batch01 + batch02 original items missing or duplicated",len(batch_ids))
+assert len([x for x in batch_ids if x.startswith("trung-original-b02-")]) == 100
+print("PASS: 74 batch01 + 100 batch02 original reviewed records, Japanese/Vietnamese full-passage translations and strict approved-only app filters.")
 print("PASS: 4 separate packs, original content intact, isolated selection and auto-reload.")
 print("NOTE: study series labels are learning approaches, NOT official book content.")

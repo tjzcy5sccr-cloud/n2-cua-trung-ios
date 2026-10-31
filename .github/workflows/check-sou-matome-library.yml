@@ -54,6 +54,7 @@ jobs:
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeLibraryView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePageWorkbenchView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeDailyNavigatorView.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeWholeBooksView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/ContentUpdates.swift

@@ -1,0 +1,84 @@
+{
+  "batch": "n2-original-batch-02",
+  "copyright": "Original example sentences, Vietnamese translations, reading passages and listening dialogues",
+  "textbookCopy": false,
+  "review": "Internal editorial review only, external dictionary verification pending",
+  "notComplete100Percent": true,
+  "added": {
+    "vocab": 64,
+    "grammar": 12,
+    "kanji": 16,
+    "readings": 4,
+    "listening": 4
+  },
+  "series": {
+    "mimikara": {
+      "added": {
+        "vocab": 16,
+        "grammar": 3,
+        "kanji": 4,
+        "readings": 1,
+        "listening": 1
+      },
+      "version": 4,
+      "total": {
+        "vocab": 154,
+        "grammar": 43,
+        "kanji": 47,
+        "readings": 3,
+        "listening": 3
+      }
+    },
+    "shin-kanzen": {
+      "added": {
+        "vocab": 16,
+        "grammar": 3,
+        "kanji": 4,
+        "readings": 1,
+        "listening": 1
+      },
+      "version": 4,
+      "total": {
+        "vocab": 154,
+        "grammar": 44,
+        "kanji": 48,
+        "readings": 3,
+        "listening": 3
+      }
+    },
+    "sou-matome": {
+      "added": {
+        "vocab": 16,
+        "grammar": 3,
+        "kanji": 4,
+        "readings": 1,
+        "listening": 1
+      },
+      "version": 4,
+      "total": {
+        "vocab": 154,
+        "grammar": 44,
+        "kanji": 47,
+        "readings": 3,
+        "listening": 2
+      }
+    },
+    "speed-master": {
+      "added": {
+        "vocab": 16,
+        "grammar": 3,
+        "kanji": 4,
+        "readings": 1,
+        "listening": 1
+      },
+      "version": 4,
+      "total": {
+        "vocab": 153,
+        "grammar": 43,
+        "kanji": 50,
+        "readings": 3,
+        "listening": 2
+      }
+    }
+  }
+}

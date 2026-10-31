@@ -1,6 +1,6 @@
 {
   "id": "n2-series-sou-matome",
-  "version": 3,
+  "version": 4,
   "seriesId": "sou-matome",
   "title": "Sou Matome – Bộ học theo ngày do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2024,6 +2024,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-001",
+      "word": "復習",
+      "reading": "ふくしゅう",
+      "meaning": "ôn lại bài đã học",
+      "example": "寝る前に今日の単語を復習します。",
+      "exampleVi": "Tôi ôn lại từ vựng hôm nay trước khi ngủ.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-002",
+      "word": "予習",
+      "reading": "よしゅう",
+      "meaning": "học chuẩn bị trước bài",
+      "example": "授業の前に新しい漢字を予習します。",
+      "exampleVi": "Tôi học trước chữ Hán mới trước giờ học.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-003",
+      "word": "集中",
+      "reading": "しゅうちゅう",
+      "meaning": "tập trung",
+      "example": "短い時間でも集中して勉強しましょう。",
+      "exampleVi": "Dù thời gian ngắn cũng hãy tập trung học.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-004",
+      "word": "途中",
+      "reading": "とちゅう",
+      "meaning": "giữa chừng; trên đường",
+      "example": "帰宅する途中で雨が降り始めました。",
+      "exampleVi": "Trên đường về nhà, trời bắt đầu mưa.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-005",
+      "word": "予定",
+      "reading": "よてい",
+      "meaning": "dự định; lịch trình",
+      "example": "明日の予定を手帳に書きました。",
+      "exampleVi": "Tôi đã ghi lịch ngày mai vào sổ tay.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-006",
+      "word": "毎回",
+      "reading": "まいかい",
+      "meaning": "mỗi lần",
+      "example": "毎回同じところで間違えています。",
+      "exampleVi": "Lần nào tôi cũng sai ở cùng một chỗ.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-007",
+      "word": "整える",
+      "reading": "ととのえる",
+      "meaning": "sắp xếp cho chỉnh tề; điều chỉnh",
+      "example": "勉強を始める前に机の上を整えます。",
+      "exampleVi": "Trước khi học tôi sắp xếp bàn cho gọn gàng.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-008",
+      "word": "積み重ねる",
+      "reading": "つみかさねる",
+      "meaning": "tích lũy từng chút một",
+      "example": "毎日の努力を積み重ねることが大切です。",
+      "exampleVi": "Điều quan trọng là tích lũy nỗ lực mỗi ngày.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-009",
+      "word": "持続",
+      "reading": "じぞく",
+      "meaning": "duy trì liên tục",
+      "example": "集中力を持続させるために休憩を取ります。",
+      "exampleVi": "Tôi nghỉ giải lao để duy trì khả năng tập trung.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-010",
+      "word": "順番",
+      "reading": "じゅんばん",
+      "meaning": "thứ tự; lượt",
+      "example": "問題を順番に解いてください。",
+      "exampleVi": "Hãy giải các câu hỏi theo thứ tự.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-011",
+      "word": "期限切れ",
+      "reading": "きげんぎれ",
+      "meaning": "hết hạn",
+      "example": "このカードは先月で期限切れになりました。",
+      "exampleVi": "Thẻ này đã hết hạn từ tháng trước.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-012",
+      "word": "寝不足",
+      "reading": "ねぶそく",
+      "meaning": "thiếu ngủ",
+      "example": "寝不足だと授業に集中できません。",
+      "exampleVi": "Khi thiếu ngủ, tôi không thể tập trung trong giờ học.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-013",
+      "word": "参加費",
+      "reading": "さんかひ",
+      "meaning": "phí tham gia",
+      "example": "参加費は受付で払ってください。",
+      "exampleVi": "Vui lòng thanh toán phí tham gia tại quầy tiếp nhận.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-014",
+      "word": "持ち物",
+      "reading": "もちもの",
+      "meaning": "đồ cần mang theo; vật dụng mang theo",
+      "example": "必要な持ち物を前日に確認します。",
+      "exampleVi": "Tôi kiểm tra đồ cần mang theo từ hôm trước.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-015",
+      "word": "週間",
+      "reading": "しゅうかん",
+      "meaning": "khoảng thời gian tính theo tuần",
+      "example": "二週間でこの教材を一通り読みました。",
+      "exampleVi": "Tôi đã đọc qua toàn bộ giáo trình này trong hai tuần.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-sou-matome-016",
+      "word": "最初",
+      "reading": "さいしょ",
+      "meaning": "lúc đầu; đầu tiên",
+      "example": "最初は難しく感じましたが、少しずつ慣れました。",
+      "exampleVi": "Lúc đầu tôi thấy khó, nhưng đã dần quen.",
+      "topic": "Học liệu N2 tự biên soạn · sou-matome",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2473,6 +2681,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-sou-matome-001",
+      "pattern": "〜にかけて",
+      "meaning": "từ... đến...; trải dài suốt khoảng",
+      "rule": "N thời gian/nơi chốn + から + N + にかけて; chỉ phạm vi kéo dài, ranh giới không nhất thiết chính xác tuyệt đối.",
+      "example": "今夜から明日の朝にかけて雨が降るでしょう。",
+      "translation": "Trời có thể mưa từ tối nay đến sáng mai.",
+      "week": 15,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-sou-matome-002",
+      "pattern": "〜をきっかけに",
+      "meaning": "nhân cơ hội; lấy... làm bước ngoặt",
+      "rule": "N + をきっかけに; sự kiện trở thành điểm khởi đầu của thay đổi.",
+      "example": "旅行をきっかけに、日本語を勉強し始めました。",
+      "translation": "Tôi bắt đầu học tiếng Nhật sau chuyến đi, xem đó là cơ duyên.",
+      "week": 16,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-sou-matome-003",
+      "pattern": "〜のもとで",
+      "meaning": "dưới sự chỉ dẫn hoặc điều kiện",
+      "rule": "N + のもとで; diễn tả hành động dưới sự hướng dẫn, quản lý hoặc hoàn cảnh nhất định.",
+      "example": "経験豊かな先生のもとで学んでいます。",
+      "translation": "Tôi đang học dưới sự hướng dẫn của giáo viên giàu kinh nghiệm.",
+      "week": 17,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2845,6 +3089,42 @@
       "meaning": "kinh; trải qua, quản lý",
       "word": "経費",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-sou-matome-001",
+      "char": "習",
+      "on": "シュウ",
+      "kun": "ならう",
+      "meaning": "học tập; tập luyện",
+      "word": "復習",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-sou-matome-002",
+      "char": "集",
+      "on": "シュウ",
+      "kun": "あつまる、あつめる、つどう",
+      "meaning": "tập hợp; gom lại",
+      "word": "集中",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-sou-matome-003",
+      "char": "予",
+      "on": "ヨ",
+      "kun": "",
+      "meaning": "trước; dự liệu",
+      "word": "予習",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-sou-matome-004",
+      "char": "順",
+      "on": "ジュン",
+      "kun": "",
+      "meaning": "thứ tự; thuận chiều",
+      "word": "順番",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -2877,6 +3157,22 @@
       "answer": 2,
       "explanation": "Không chỉ địa chỉ lưu trú mà còn kiểm tra phương tiện và thời tiết.",
       "id": "r7"
+    },
+    {
+      "title": "Kế hoạch ôn tập một tuần",
+      "topic": "Học tập",
+      "text": "試験まで残り一か月になったので、私は学習計画を見直しました。平日は一日三十分ずつ単語と文法を復習し、土曜日には読解の問題を解くことにしました。最初は毎日同じ時間に勉強するのが大変でしたが、少しずつ慣れてきました。日曜日には間違えた問題だけを確認し、休む時間も大切にしています。",
+      "textVi": "Vì chỉ còn một tháng đến kỳ thi nên tôi xem lại kế hoạch học. Trong các ngày thường, tôi quyết định dành mỗi ngày 30 phút ôn từ vựng và ngữ pháp; thứ Bảy giải bài đọc hiểu. Ban đầu học đúng một giờ cố định mỗi ngày khá vất vả, nhưng tôi dần quen. Chủ nhật tôi chỉ kiểm tra các câu đã làm sai và cũng coi trọng thời gian nghỉ ngơi.",
+      "question": "この人は日曜日に主に何をしますか。",
+      "choices": [
+        "新しい単語を百個覚える",
+        "間違えた問題を確認する",
+        "読解の問題だけを解く",
+        "勉強計画を全部やめる"
+      ],
+      "answer": 1,
+      "explanation": "Chủ nhật người này chủ yếu xem lại các câu sai và dành thời gian nghỉ.",
+      "id": "trung-original-b02-r-sou-matome-001"
     }
   ],
   "listening": [
@@ -2894,6 +3190,22 @@
       "answer": 2,
       "explanation": "Cuối cùng họ quyết định tặng bánh kẹo (お菓子).",
       "id": "l3"
+    },
+    {
+      "title": "Kế hoạch ngày cuối tuần",
+      "speaker": "学生が勉強の予定を相談しています。",
+      "script": "男：土曜日は何を勉強する予定ですか。\n女：午前中に漢字を復習して、午後は読解を練習します。\n男：日曜日はどうしますか。\n女：間違えた問題だけ見直して、あとは休みます。",
+      "scriptVi": "Nam: Thứ Bảy bạn định học gì?\nNữ: Buổi sáng tôi ôn Kanji, buổi chiều luyện đọc hiểu.\nNam: Còn Chủ nhật?\nNữ: Tôi chỉ xem lại những câu sai, thời gian còn lại nghỉ ngơi.",
+      "question": "女の人は土曜日の午後に何をしますか。",
+      "choices": [
+        "漢字を復習する",
+        "読解を練習する",
+        "全部休む",
+        "新しい問題を作る"
+      ],
+      "answer": 1,
+      "explanation": "Buổi chiều thứ Bảy nữ học viên sẽ luyện đọc hiểu.",
+      "id": "trung-original-b02-l-sou-matome-001"
     }
   ]
 }

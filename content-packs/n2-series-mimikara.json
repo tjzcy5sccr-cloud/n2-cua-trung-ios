@@ -1,6 +1,6 @@
 {
   "id": "n2-series-mimikara",
-  "version": 3,
+  "version": 4,
   "seriesId": "mimikara",
   "title": "Mimikara – Bộ học ngữ cảnh do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2017,6 +2017,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-001",
+      "word": "雰囲気",
+      "reading": "ふんいき",
+      "meaning": "bầu không khí; không khí chung",
+      "example": "教室の雰囲気が明るくなりました。",
+      "exampleVi": "Không khí lớp học đã trở nên vui vẻ hơn.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-002",
+      "word": "印象",
+      "reading": "いんしょう",
+      "meaning": "ấn tượng",
+      "example": "初めて会った人の印象を覚えています。",
+      "exampleVi": "Tôi còn nhớ ấn tượng về người gặp lần đầu.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-003",
+      "word": "態度",
+      "reading": "たいど",
+      "meaning": "thái độ",
+      "example": "丁寧な態度で対応してください。",
+      "exampleVi": "Vui lòng tiếp đón với thái độ lịch sự.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-004",
+      "word": "納得",
+      "reading": "なっとく",
+      "meaning": "hiểu và chấp nhận; thấy thỏa đáng",
+      "example": "説明を聞いて納得しました。",
+      "exampleVi": "Sau khi nghe giải thích, tôi đã hiểu và thấy thỏa đáng.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-005",
+      "word": "誤解",
+      "reading": "ごかい",
+      "meaning": "hiểu lầm",
+      "example": "言い方が悪くて誤解を招きました。",
+      "exampleVi": "Cách nói không khéo đã gây ra hiểu lầm.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-006",
+      "word": "遠慮",
+      "reading": "えんりょ",
+      "meaning": "ngại ngần; giữ ý",
+      "example": "遠慮せずに質問してください。",
+      "exampleVi": "Xin đừng ngại đặt câu hỏi.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-007",
+      "word": "反省",
+      "reading": "はんせい",
+      "meaning": "tự nhìn lại thiếu sót",
+      "example": "今日の失敗を反省しています。",
+      "exampleVi": "Tôi đang tự nhìn lại sai sót hôm nay.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-008",
+      "word": "感謝",
+      "reading": "かんしゃ",
+      "meaning": "lòng biết ơn; cảm ơn",
+      "example": "手伝ってくれた友人に感謝しています。",
+      "exampleVi": "Tôi biết ơn người bạn đã giúp mình.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-009",
+      "word": "信頼",
+      "reading": "しんらい",
+      "meaning": "sự tin tưởng",
+      "example": "彼の仕事ぶりを信頼しています。",
+      "exampleVi": "Tôi tin tưởng cách anh ấy làm việc.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-010",
+      "word": "噂",
+      "reading": "うわさ",
+      "meaning": "tin đồn",
+      "example": "根拠のない噂を広めないでください。",
+      "exampleVi": "Đừng lan truyền những tin đồn thiếu căn cứ.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-011",
+      "word": "励ます",
+      "reading": "はげます",
+      "meaning": "động viên; khích lệ",
+      "example": "先生が私を励ましてくれました。",
+      "exampleVi": "Thầy cô đã động viên tôi.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-012",
+      "word": "認める",
+      "reading": "みとめる",
+      "meaning": "công nhận; thừa nhận",
+      "example": "努力を認めてもらえてうれしいです。",
+      "exampleVi": "Tôi vui vì nỗ lực của mình được công nhận.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-013",
+      "word": "話し合う",
+      "reading": "はなしあう",
+      "meaning": "bàn bạc; thảo luận cùng nhau",
+      "example": "問題について皆で話し合いました。",
+      "exampleVi": "Mọi người đã cùng bàn bạc về vấn đề đó.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-014",
+      "word": "断る",
+      "reading": "ことわる",
+      "meaning": "từ chối",
+      "example": "都合が悪いので誘いを断りました。",
+      "exampleVi": "Vì không tiện nên tôi đã từ chối lời mời.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-015",
+      "word": "引き受ける",
+      "reading": "ひきうける",
+      "meaning": "nhận đảm nhiệm",
+      "example": "新しい仕事を引き受けました。",
+      "exampleVi": "Tôi đã nhận đảm nhiệm công việc mới.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-mimikara-016",
+      "word": "謝る",
+      "reading": "あやまる",
+      "meaning": "xin lỗi",
+      "example": "間違えたらすぐに謝ることが大切です。",
+      "exampleVi": "Điều quan trọng là xin lỗi ngay khi mắc lỗi.",
+      "topic": "Học liệu N2 tự biên soạn · mimikara",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2454,6 +2662,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-mimikara-001",
+      "pattern": "〜ことにしている",
+      "meaning": "duy trì quyết định hoặc thói quen do bản thân đặt ra",
+      "rule": "Vる／Vない + ことにしている; biểu thị quyết định đã trở thành quy tắc thường xuyên của người nói.",
+      "example": "毎朝十分間、日本語のニュースを聞くことにしています。",
+      "translation": "Tôi đặt ra thói quen nghe tin tức tiếng Nhật mười phút mỗi sáng.",
+      "week": 8,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-mimikara-002",
+      "pattern": "〜たびに",
+      "meaning": "mỗi khi; cứ mỗi lần",
+      "rule": "Vる／Nの + たびに; mỗi lần sự việc xảy ra thì sự việc khác lại xảy ra.",
+      "example": "この曲を聞くたびに、故郷を思い出します。",
+      "translation": "Mỗi khi nghe bài hát này tôi lại nhớ quê hương.",
+      "week": 9,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-mimikara-003",
+      "pattern": "〜ばいいのに",
+      "meaning": "giá mà; đáng lẽ nên",
+      "rule": "Điều kiện ば + いいのに; thể hiện tiếc nuối hoặc mong muốn trái tình hình thực tế.",
+      "example": "もっと早く相談すればいいのに。",
+      "translation": "Giá mà bạn trao đổi sớm hơn thì tốt.",
+      "week": 10,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2827,6 +3071,42 @@
       "meaning": "điều; điều khoản, nhánh",
       "word": "条件",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-mimikara-001",
+      "char": "雰",
+      "on": "フン",
+      "kun": "",
+      "meaning": "bầu không khí",
+      "word": "雰囲気",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-mimikara-002",
+      "char": "態",
+      "on": "タイ",
+      "kun": "",
+      "meaning": "trạng thái; thái độ",
+      "word": "態度",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-mimikara-003",
+      "char": "納",
+      "on": "ノウ、ナッ",
+      "kun": "おさめる、 おさまる",
+      "meaning": "nộp; thu nhận; chấp nhận",
+      "word": "納得",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-mimikara-004",
+      "char": "誤",
+      "on": "ゴ",
+      "kun": "あやまる",
+      "meaning": "sai lầm; nhầm lẫn",
+      "word": "誤解",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -2859,6 +3139,22 @@
       "answer": 1,
       "explanation": "Mục tiêu là xử lý khó khăn trong việc trao đổi với đồng nghiệp.",
       "id": "r5"
+    },
+    {
+      "title": "Hiểu lầm trong nhóm học",
+      "topic": "Giao tiếp",
+      "text": "留学生のグループで、発表の担当を決めたときのことです。田中さんは説明が短かったため、鈴木さんに仕事を断られたと思いました。しかし、鈴木さんはその日だけ予定があったのです。二人は後で話し合い、誤解を解きました。それ以来、頼みごとをするときは理由や期限を詳しく伝えるようにしています。",
+      "textVi": "Đây là chuyện xảy ra khi một nhóm du học sinh phân công người thuyết trình. Vì lời giải thích quá ngắn, bạn Tanaka tưởng rằng Suzuki từ chối công việc. Thực ra Suzuki chỉ bận vào ngày hôm đó. Sau khi trao đổi, hai người đã giải tỏa hiểu lầm. Từ đó, khi nhờ ai làm việc, họ cố gắng nói rõ lý do và thời hạn.",
+      "question": "グループはその後、何をするようになりましたか。",
+      "choices": [
+        "頼みごとをしなくなった",
+        "理由や期限を詳しく伝える",
+        "発表を全部中止する",
+        "予定を一人で決める"
+      ],
+      "answer": 1,
+      "explanation": "Đoạn cuối nói nhóm bắt đầu nói rõ lý do và thời hạn khi nhờ việc.",
+      "id": "trung-original-b02-r-mimikara-001"
     }
   ],
   "listening": [
@@ -2891,6 +3187,22 @@
       "answer": 1,
       "explanation": "数字を確認しているところです = đang kiểm tra số liệu.",
       "id": "l5"
+    },
+    {
+      "title": "Trao đổi về lời mời",
+      "speaker": "二人が週末の予定について話しています。",
+      "script": "女：今週の土曜日、映画を見に行きませんか。\n男：誘ってくれてありがとう。でも、その日は用事があるんです。\n女：そうですか。では、来週はどうですか。\n男：来週なら大丈夫です。",
+      "scriptVi": "Nữ: Thứ Bảy tuần này đi xem phim nhé?\nNam: Cảm ơn vì đã rủ. Nhưng hôm đó tôi có việc.\nNữ: Vậy à. Thế tuần sau thì sao?\nNam: Tuần sau thì được.",
+      "question": "二人はいつ映画を見に行きますか。",
+      "choices": [
+        "今週の土曜日",
+        "今日",
+        "来週",
+        "今週の日曜日"
+      ],
+      "answer": 2,
+      "explanation": "Nam từ chối tuần này vì bận và đồng ý đi tuần sau.",
+      "id": "trung-original-b02-l-mimikara-001"
     }
   ]
 }

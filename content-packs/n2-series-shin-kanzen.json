@@ -1,6 +1,6 @@
 {
   "id": "n2-series-shin-kanzen",
-  "version": 3,
+  "version": 4,
   "seriesId": "shin-kanzen",
   "title": "Shin Kanzen – Bộ phân tích ngữ pháp, Kanji do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2033,6 +2033,214 @@
       "meaningStatus": "editorial_reviewed",
       "meaningSource": "Bài tập tiếng Nhật–Việt do dự án N2 của Trung biên soạn; đã rà nghĩa theo câu, chưa được thẩm định bởi nhà xuất bản",
       "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-001",
+      "word": "根拠",
+      "reading": "こんきょ",
+      "meaning": "căn cứ; cơ sở",
+      "example": "その結論には十分な根拠があります。",
+      "exampleVi": "Kết luận đó có cơ sở đầy đủ.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-002",
+      "word": "主張",
+      "reading": "しゅちょう",
+      "meaning": "lập luận; quan điểm được nêu",
+      "example": "筆者の主張を一文でまとめてください。",
+      "exampleVi": "Hãy tóm tắt luận điểm của tác giả trong một câu.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 10,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-003",
+      "word": "指標",
+      "reading": "しひょう",
+      "meaning": "chỉ số; tiêu chí đo lường",
+      "example": "利用者の満足度を指標にします。",
+      "exampleVi": "Chúng tôi lấy mức độ hài lòng của người dùng làm chỉ số.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-004",
+      "word": "基準",
+      "reading": "きじゅん",
+      "meaning": "tiêu chuẩn; chuẩn mực",
+      "example": "評価の基準を先に決めます。",
+      "exampleVi": "Chúng tôi sẽ quyết định tiêu chuẩn đánh giá trước.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 11,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-005",
+      "word": "課題",
+      "reading": "かだい",
+      "meaning": "vấn đề cần giải quyết; nhiệm vụ",
+      "example": "この計画にはまだ課題が残っています。",
+      "exampleVi": "Kế hoạch này vẫn còn những vấn đề cần giải quyết.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-006",
+      "word": "検証",
+      "reading": "けんしょう",
+      "meaning": "kiểm chứng",
+      "example": "実験の結果を検証する必要があります。",
+      "exampleVi": "Cần kiểm chứng kết quả thí nghiệm.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 12,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-007",
+      "word": "仮説",
+      "reading": "かせつ",
+      "meaning": "giả thuyết",
+      "example": "集めたデータから仮説を立てました。",
+      "exampleVi": "Tôi đã đặt ra giả thuyết từ dữ liệu thu thập được.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-008",
+      "word": "客観的",
+      "reading": "きゃっかんてき",
+      "meaning": "khách quan",
+      "example": "客観的な資料を基に判断します。",
+      "exampleVi": "Chúng tôi đưa ra nhận định dựa trên tài liệu khách quan.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 13,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-009",
+      "word": "論理的",
+      "reading": "ろんりてき",
+      "meaning": "có tính logic; hợp lý theo lập luận",
+      "example": "理由を論理的に説明してください。",
+      "exampleVi": "Hãy giải thích lý do một cách logic.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-010",
+      "word": "資格",
+      "reading": "しかく",
+      "meaning": "tư cách; chứng chỉ; điều kiện đủ",
+      "example": "この試験を受ける資格があります。",
+      "exampleVi": "Tôi đủ điều kiện dự kỳ thi này.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 14,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-011",
+      "word": "審査",
+      "reading": "しんさ",
+      "meaning": "thẩm định; xét duyệt",
+      "example": "申し込みの内容を審査しています。",
+      "exampleVi": "Chúng tôi đang xét duyệt nội dung đăng ký.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-012",
+      "word": "評価",
+      "reading": "ひょうか",
+      "meaning": "đánh giá",
+      "example": "一度の失敗だけで人を評価しないでください。",
+      "exampleVi": "Đừng đánh giá một người chỉ từ một lần thất bại.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 15,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-013",
+      "word": "批判",
+      "reading": "ひはん",
+      "meaning": "phê bình; chỉ trích",
+      "example": "意見を批判する前に理由を聞きましょう。",
+      "exampleVi": "Trước khi phê bình một ý kiến, hãy lắng nghe lý do.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-014",
+      "word": "根本的",
+      "reading": "こんぽんてき",
+      "meaning": "mang tính căn bản",
+      "example": "問題を根本的に解決したいです。",
+      "exampleVi": "Tôi muốn giải quyết vấn đề từ căn bản.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 16,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-015",
+      "word": "概要",
+      "reading": "がいよう",
+      "meaning": "khái quát; tóm lược nội dung",
+      "example": "最初に計画の概要を説明します。",
+      "exampleVi": "Trước tiên tôi sẽ trình bày khái quát kế hoạch.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-v-shin-kanzen-016",
+      "word": "前提",
+      "reading": "ぜんてい",
+      "meaning": "tiền đề; điều kiện giả định",
+      "example": "その話は条件が変わらないことを前提としています。",
+      "exampleVi": "Lập luận đó dựa trên tiền đề rằng các điều kiện không thay đổi.",
+      "topic": "Học liệu N2 tự biên soạn · shin-kanzen",
+      "week": 17,
+      "meaningStatus": "editorial_reviewed",
+      "meaningSource": "Biên tập Nhật–Việt nội bộ; không phải dữ liệu sách",
+      "exampleStatus": "editorial_reviewed"
     }
   ],
   "grammar": [
@@ -2482,6 +2690,42 @@
       "samples": [],
       "grammarStatus": "editorial_reviewed",
       "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-shin-kanzen-001",
+      "pattern": "〜上は",
+      "meaning": "một khi đã; đã... thì phải",
+      "rule": "Vた／Vる + 上は; đã đi đến một quyết định thì cần thực hiện trách nhiệm đi kèm.",
+      "example": "引き受けた上は、最後まで責任を持ちます。",
+      "translation": "Một khi đã nhận việc, tôi sẽ chịu trách nhiệm đến cùng.",
+      "week": 12,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-shin-kanzen-002",
+      "pattern": "〜次第で",
+      "meaning": "tùy vào; phụ thuộc vào",
+      "rule": "N + 次第で; kết quả thay đổi tùy theo điều kiện hoặc lựa chọn.",
+      "example": "結果は準備の仕方次第で変わります。",
+      "translation": "Kết quả thay đổi tùy vào cách chuẩn bị.",
+      "week": 13,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-g-shin-kanzen-003",
+      "pattern": "〜に即して",
+      "meaning": "phù hợp với; dựa sát vào",
+      "rule": "N + に即して; dựa vào hiện trạng, dữ liệu hoặc nguyên tắc thực tế.",
+      "example": "現場の状況に即して計画を見直します。",
+      "translation": "Chúng tôi xem lại kế hoạch dựa sát vào tình hình thực tế.",
+      "week": 14,
+      "samples": [],
+      "grammarStatus": "editorial_reviewed",
+      "translationStatus": "editorial_reviewed"
     }
   ],
   "kanji": [
@@ -2864,6 +3108,42 @@
       "meaning": "ưu; xuất sắc, dịu dàng",
       "word": "優先順位",
       "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-shin-kanzen-001",
+      "char": "拠",
+      "on": "キョ、コ",
+      "kun": "よる",
+      "meaning": "căn cứ; chỗ dựa",
+      "word": "根拠",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-shin-kanzen-002",
+      "char": "論",
+      "on": "ロン",
+      "kun": "",
+      "meaning": "bàn luận; lý luận",
+      "word": "論理的",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-shin-kanzen-003",
+      "char": "審",
+      "on": "シン",
+      "kun": "",
+      "meaning": "xem xét; thẩm tra",
+      "word": "審査",
+      "meaningStatus": "editorial_reviewed"
+    },
+    {
+      "id": "trung-original-b02-k-shin-kanzen-004",
+      "char": "評",
+      "on": "ヒョウ",
+      "kun": "",
+      "meaning": "đánh giá; bình luận",
+      "word": "評価",
+      "meaningStatus": "editorial_reviewed"
     }
   ],
   "readings": [
@@ -2896,6 +3176,22 @@
       "answer": 1,
       "explanation": "Khuyến nghị tiết kiệm điện hợp lý, không ảnh hưởng sức khỏe.",
       "id": "r6"
+    },
+    {
+      "title": "Đánh giá dựa trên tiêu chuẩn",
+      "topic": "Lập luận",
+      "text": "ある学校では、発表の上手さだけで成績を決めていました。しかし、それでは人前で話すのが苦手な学生の努力が十分に評価されません。そこで、資料の正確さや主張の根拠など、複数の基準を使うことになりました。新しい方法にも課題はありますが、学校は結果を検証しながら改善を続ける方針です。",
+      "textVi": "Một trường học trước đây chỉ quyết định điểm số theo khả năng thuyết trình. Tuy nhiên, cách đó chưa đánh giá đầy đủ nỗ lực của những học sinh không giỏi nói trước đám đông. Vì vậy, trường quyết định sử dụng nhiều tiêu chuẩn như độ chính xác của tài liệu và căn cứ của lập luận. Phương pháp mới vẫn còn vấn đề, nhưng nhà trường có chủ trương tiếp tục cải thiện trong khi kiểm chứng kết quả.",
+      "question": "学校が評価方法を変えた主な理由は何ですか。",
+      "choices": [
+        "資料を使わなくするため",
+        "話すのが得意な学生だけを選ぶため",
+        "努力をより公平に評価するため",
+        "発表の時間を長くするため"
+      ],
+      "answer": 2,
+      "explanation": "Mục đích thay đổi là đánh giá nỗ lực công bằng hơn, không chỉ dựa vào khả năng nói.",
+      "id": "trung-original-b02-r-shin-kanzen-001"
     }
   ],
   "listening": [
@@ -2928,6 +3224,22 @@
       "answer": 1,
       "explanation": "Kế hoạch cuối cùng: thứ Bảy đi xem phim.",
       "id": "l6"
+    },
+    {
+      "title": "Lý do trì hoãn quyết định",
+      "speaker": "会社で二人が新しい提案について話しています。",
+      "script": "男：新しいサービスの提案は、今日決まりますか。\n女：いいえ。利用者の調査結果がまだそろっていないんです。\n男：では、何を待っていますか。\n女：来週までにデータを集めて、それから判断します。",
+      "scriptVi": "Nam: Đề xuất dịch vụ mới có được quyết định hôm nay không?\nNữ: Không. Kết quả khảo sát người dùng vẫn chưa đầy đủ.\nNam: Vậy đang chờ gì ạ?\nNữ: Chúng tôi sẽ thu thập dữ liệu trước tuần sau rồi mới quyết định.",
+      "question": "今日、提案が決まらないのはなぜですか。",
+      "choices": [
+        "費用が高すぎるから",
+        "調査の結果がそろっていないから",
+        "担当者が休んでいるから",
+        "提案がなくなったから"
+      ],
+      "answer": 1,
+      "explanation": "Chưa quyết định vì dữ liệu khảo sát chưa đầy đủ.",
+      "id": "trung-original-b02-l-shin-kanzen-001"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "n2-series-sou-matome",
-  "version": 5,
+  "version": 6,
   "seriesId": "sou-matome",
   "title": "Sou Matome – Bộ học theo ngày do N2 của Trung tuyển chọn",
   "vocab": [
@@ -2976,7 +2976,7 @@
       "id": "k9",
       "char": "状",
       "on": "ジョウ",
-      "kun": "—",
+      "kun": "",
       "meaning": "trạng thái",
       "word": "状況"
     },
@@ -2984,7 +2984,7 @@
       "id": "k10",
       "char": "況",
       "on": "キョウ",
-      "kun": "—",
+      "kun": "",
       "meaning": "tình hình",
       "word": "状況"
     },
@@ -2992,7 +2992,7 @@
       "id": "k15",
       "char": "能",
       "on": "ノウ",
-      "kun": "—",
+      "kun": "",
       "meaning": "năng lực",
       "word": "能力"
     },
@@ -3088,7 +3088,7 @@
       "id": "k63",
       "char": "議",
       "on": "ギ",
-      "kun": "—",
+      "kun": "",
       "meaning": "thảo luận",
       "word": "会議"
     },
@@ -3230,7 +3230,7 @@
       "id": "olj-k-6750",
       "char": "材",
       "on": "ザイ",
-      "kun": "—",
+      "kun": "",
       "meaning": "vật liệu, gỗ",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3239,7 +3239,7 @@
       "id": "olj-k-592e",
       "char": "央",
       "on": "オウ",
-      "kun": "—",
+      "kun": "",
       "meaning": "ở giữa, trung tâm",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3257,7 +3257,7 @@
       "id": "olj-k-4ecb",
       "char": "介",
       "on": "カイ",
-      "kun": "—",
+      "kun": "",
       "meaning": "giới thiệu; can thiệp",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3266,7 +3266,7 @@
       "id": "olj-k-822c",
       "char": "般",
       "on": "ハン",
-      "kun": "—",
+      "kun": "",
       "meaning": "loại, dạng",
       "word": "",
       "meaningStatus": "editorial_reviewed"
@@ -3374,7 +3374,7 @@
       "id": "trung-original-b03-k-sou-matome-001",
       "char": "憶",
       "on": "オク",
-      "kun": "—",
+      "kun": "",
       "meaning": "ức, ghi nhớ",
       "word": "記憶",
       "meaningStatus": "editorial_reviewed"

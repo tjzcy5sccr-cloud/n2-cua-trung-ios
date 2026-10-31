@@ -37,10 +37,8 @@ try {
     }
 
     # Sao chép cả bản tiếng Nhật và các file bổ trợ Nhật–Việt: 8 PDF.
-    $pdfs = @(
-        (Get-ChildItem -LiteralPath $inputPath -File -Filter "*.pdf") +
-        (Get-ChildItem -LiteralPath $temp -File -Filter "*.pdf" -Recurse)
-    )
+    $pdfs = @(Get-ChildItem -LiteralPath $inputPath -File -Filter "*.pdf") +
+            @(Get-ChildItem -LiteralPath $temp -File -Filter "*.pdf" -Recurse)
     foreach ($file in $pdfs) {
         Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $books $file.Name) -Force
     }

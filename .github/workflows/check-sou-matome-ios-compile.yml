@@ -36,6 +36,10 @@ jobs:
         run: |
           swift scripts/generate_clover_icon.swift
           xcodegen generate --spec project.yml
+      - name: Validate offline CD inventory and changed-audio fingerprints (Swift)
+        run: |
+          swiftc N2CuaTrung/Sources/SouMatomeAudioCatalog.swift scripts/test_sou_matome_audio_catalog.swift -o /tmp/sou-matome-audio-tests
+          /tmp/sou-matome-audio-tests
       - name: Compile iOS Simulator only, no IPA
         shell: bash
         run: |

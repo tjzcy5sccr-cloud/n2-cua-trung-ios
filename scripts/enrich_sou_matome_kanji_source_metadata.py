@@ -40,8 +40,8 @@ def parse_source(page, number):
                 han.append(value)
             elif KANA.search(value):
                 offset = KANA.search(value).start()
-                reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，\s]",
-                                 "", value[offset:]).strip()
+                reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，/\s]",
+                                 "", value[offset:]).strip().replace("/", "／")
                 if reading:
                     reads.append(reading)
             elif han or reads:
@@ -57,13 +57,34 @@ def parse_source(page, number):
                     if han_viet_label(left):
                         han.append(left)
                     if not reads:
-                        reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，\s]",
-                                         "", value[match.start():]).strip()
+                        reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，/\s]",
+                                         "", value[match.start():]).strip().replace("/", "／")
                         if reading:
                             reads.append(reading)
                     break
 
+        # A PDF often puts a long on/kun list on two consecutive lines.
+        # Combine only kana-only continuations; never guess missing characters.
+        reassembled = False
+        if reads and reads[0].endswith(("／", "・")):
+            for at_line, value in enumerate(context):
+                if not KANA.search(value):
+                    continue
+                if value in context[:at_line] and at_line == 0:
+                    continue
+                # The first kana line is the reading itself, so continue after it.
+                for suffix in context[at_line + 1:]:
+                    suffix = suffix.strip()
+                    if not re.fullmatch(r"[\u3040-\u30ffー／・]+", suffix):
+                        break
+                    reads[0] += suffix
+                    reassembled = True
+                    if not reads[0].endswith(("／", "・")):
+                        break
+                break
+
         found.append({
+            "_reading_reassembled": reassembled,
             "id": f"kanji-vi:{number}:{ordinal}",
             "bookId": "kanji-vi",
             "page": number,
@@ -80,7 +101,17 @@ def parse_source(page, number):
 def extract(pdf):
     all_rows = []
     for page_index, page in enumerate(pdf, 1):
-        all_rows.extend(parse_source(page, page_index))
+        rows = parse_source(page, page_index)
+        # The last character's reading can continue after next-page header.
+        if rows and page_index < len(pdf) and rows[-1]["sourceOnKun"].endswith(("／", "・")):
+            next_lines = [x.strip() for x in pdf[page_index].get_text("text").splitlines()
+                          if x.strip()]
+            for line in next_lines[:8]:
+                if re.fullmatch(r"[\u3040-\u30ffー／・]+", line):
+                    rows[-1]["sourceOnKun"] += line
+                    rows[-1]["_reading_reassembled"] = True
+                    break
+        all_rows.extend(rows)
     return all_rows
 
 
@@ -103,6 +134,8 @@ def main():
             flags.append("MISSING_SOURCE_ON_KUN")
         if row["sourceOnKun"].endswith(("／", "・")):
             flags.append("SOURCE_READING_SPLIT_ACROSS_PAGE")
+        if row.pop("_reading_reassembled", False):
+            flags.append("SOURCE_READING_REASSEMBLED_NEEDS_CONFIRMATION")
         row["qaFlags"] = flags
         problems.update(flags)
     args.output.parent.mkdir(parents=True, exist_ok=True)

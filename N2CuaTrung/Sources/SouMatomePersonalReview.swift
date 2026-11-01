@@ -3,7 +3,7 @@ import Foundation
 
 // All user-supplied content and review decisions stay on the owner's iPhone.
 // Machine-extracted candidates NEVER enter the study/quiz pool automatically.
-struct SouMatomePersonalCard: Codable, Identifiable {
+struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
     let id: String
     let bookID: String
     let page: Int
@@ -41,6 +41,13 @@ struct SouMatomePersonalCard: Codable, Identifiable {
             .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
             .appendingPathComponent(bookID + ".pdf")
         return FileManager.default.fileExists(atPath: source.path)
+    }
+
+    var isAppropriateForReview: Bool {
+        hasJapaneseText &&
+        !vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        (kind != "Từ vựng" || readingHasKana) &&
+        (kind != "Kanji" || japanese.count == 1)
     }
 
     var isApproved: Bool {
@@ -246,7 +253,8 @@ enum SouMatomeReviewError: LocalizedError {
 struct SouMatomePersonalCardEditor: View {
     @EnvironmentObject private var study: StudyStore
     @ObservedObject var reviews: SouMatomePersonalReviewStore
-    let candidate: SouMatomeSourceEntry
+    @State private var candidate: SouMatomeSourceEntry
+    let reviewQueue: [SouMatomeSourceEntry]
 
     @State private var card: SouMatomePersonalCard
     @State private var message: String?
@@ -254,17 +262,46 @@ struct SouMatomePersonalCardEditor: View {
     @State private var translationConfirmed = false
 
     init(candidate: SouMatomeSourceEntry,
-         reviews: SouMatomePersonalReviewStore) {
-        self.candidate = candidate
+         reviews: SouMatomePersonalReviewStore,
+         reviewQueue: [SouMatomeSourceEntry] = []) {
         self.reviews = reviews
+        self.reviewQueue = reviewQueue.isEmpty ? [candidate] : reviewQueue
+        _candidate = State(initialValue: candidate)
         _card = State(initialValue: reviews.card(for: candidate))
+    }
+
+    private var nextUncheckedCandidate: SouMatomeSourceEntry? {
+        guard let index = reviewQueue.firstIndex(where: { $0.id == candidate.id })
+        else { return nil }
+        return reviewQueue.dropFirst(index + 1).first {
+            $0.skill == candidate.skill &&
+            reviews.cards[$0.id]?.isApproved != true
+        }
+    }
+
+    private var reviewPosition: Int {
+        reviewQueue.filter { $0.skill == candidate.skill }
+            .firstIndex(where: { $0.id == candidate.id })
+            .map { $0 + 1 } ?? 1
+    }
+    private var reviewTotal: Int {
+        reviewQueue.filter { $0.skill == candidate.skill }.count
+    }
+
+    private func moveToNextUnchecked() {
+        guard let next = nextUncheckedCandidate else { return }
+        candidate = next
+        card = reviews.card(for: next)
+        sourceConfirmed = card.sourceChecked
+        translationConfirmed = card.translationChecked
+        message = nil
     }
 
     var body: some View {
         Form {
             Section("Nguồn cần kiểm tra") {
                 Text("Sách: \(candidate.bookId) · Trang \(candidate.page)")
-                Text("Loại: \(candidate.skill)")
+                Text("Loại: \(candidate.skill) · Mục \(reviewPosition)/\(reviewTotal)")
                 Text("Đối chiếu trực tiếp với PDF gốc, không tin tuyệt đối vào văn bản tách tự động.")
                     .font(.caption).foregroundColor(.secondary)
                 if let book = SouMatomeDocument.all.first(where: { $0.id == candidate.bookId }),
@@ -326,9 +363,26 @@ struct SouMatomePersonalCardEditor: View {
                     .font(.caption).foregroundColor(.secondary)
             }
             Section {
-                Button("Lưu bản nháp") { save(approve: false) }
+                Button("Lưu bản nháp") { _ = save(approve: false) }
                 Button("Xác nhận đã kiểm tra và lưu") {
-                    save(approve: true)
+                    _ = save(approve: true)
+                }
+                if nextUncheckedCandidate != nil {
+                    Button("Lưu nháp và sang mục chưa duyệt tiếp theo") {
+                        if save(approve: false) { moveToNextUnchecked() }
+                    }
+                    Button("Xác nhận và sang mục chưa duyệt tiếp theo") {
+                        if save(approve: true) { moveToNextUnchecked() }
+                    }
+                    .disabled(!card.sourcePDFIsAvailable || !sourceConfirmed ||
+                        !translationConfirmed || !card.isAppropriateForReview)
+                    Button("Sang mục chưa duyệt (không thay đổi thẻ đã lưu)") {
+                        guard card == reviews.card(for: candidate) else {
+                            message = "Bạn có thay đổi chưa lưu. Hãy lưu nháp trước khi chuyển."
+                            return
+                        }
+                        moveToNextUnchecked()
+                    }
                 }
                 .disabled(!card.sourcePDFIsAvailable ||
                     !sourceConfirmed || !translationConfirmed ||
@@ -378,22 +432,31 @@ struct SouMatomePersonalCardEditor: View {
         }
     }
 
-    private func save(approve: Bool) {
+    @discardableResult
+    private func save(approve: Bool) -> Bool {
+        guard !approve || (sourceConfirmed && translationConfirmed &&
+                           card.sourcePDFIsAvailable &&
+                           card.isAppropriateForReview) else {
+            message = "Chưa đủ điều kiện xác minh nguồn, chữ Nhật hoặc nghĩa Việt."
+            return false
+        }
         card.sourceChecked = approve && sourceConfirmed
         card.translationChecked = approve && translationConfirmed
         card.lastApproved = approve ? Date() : nil
         guard reviews.save(card) else {
             message = "Không lưu được bản hiệu đính."
-            return
+            return false
         }
         do {
             let installed = try reviews.synchronizeApprovedCards(with: study)
             message = approve
                 ? "Đã lưu và cập nhật \(installed) mục được kiểm chứng vào bài học."
                 : "Đã lưu bản nháp; đã thu hồi bản học cũ nếu mục này không còn được duyệt."
+            return true
         } catch {
             message = "Đã lưu bản nháp, nhưng cập nhật gói học thất bại: "
                 + error.localizedDescription
+            return false
         }
     }
 }

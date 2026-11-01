@@ -17,6 +17,8 @@ struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
     var onReading: String
     var kunReading: String
     var relatedWord: String
+    /// Short source label, not a substitute for contextual Vietnamese meaning.
+    var hanViet: String?
     var sourceChecked: Bool
     var translationChecked: Bool
     var lastApproved: Date?
@@ -47,7 +49,10 @@ struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
         hasJapaneseText &&
         !vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         (kind != "Từ vựng" || readingHasKana) &&
-        (kind != "Kanji" || japanese.count == 1)
+        (kind != "Kanji" || (japanese.count == 1 &&
+            (onReading + kunReading).unicodeScalars.contains {
+                (0x3040...0x30FF).contains(Int($0.value))
+            }))
     }
 
     var isApproved: Bool {
@@ -56,7 +61,10 @@ struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
         !vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !vietnamese.hasPrefix("EN ·") &&
         (kind != "Từ vựng" || readingHasKana) &&
-        (kind != "Kanji" || japanese.count == 1)
+        (kind != "Kanji" || (japanese.count == 1 &&
+            (onReading + kunReading).unicodeScalars.contains {
+                (0x3040...0x30FF).contains(Int($0.value))
+            }))
     }
 
     static func draft(_ entry: SouMatomeSourceEntry) -> SouMatomePersonalCard {
@@ -65,6 +73,7 @@ struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
               reading: entry.reading ?? "", vietnamese: entry.detail, explanation: "",
               exampleJapanese: "", exampleVietnamese: "",
               onReading: "", kunReading: "", relatedWord: "",
+              hanViet: entry.dictionaryHanViet ?? entry.sourceHanViet,
               sourceChecked: false, translationChecked: false,
               lastApproved: nil)
     }
@@ -212,6 +221,7 @@ final class SouMatomePersonalReviewStore: ObservableObject {
                     "id": id, "char": card.japanese,
                     "on": card.onReading, "kun": card.kunReading,
                     "meaning": card.vietnamese, "word": card.relatedWord,
+                    "hanViet": card.hanViet ?? "",
                     "meaningStatus": "editorial_reviewed"
                 ])
             default: break
@@ -322,6 +332,23 @@ struct SouMatomePersonalCardEditor: View {
                     Text("Mục này cần rà soát thêm: " + flags.joined(separator: ", "))
                         .font(.caption).foregroundColor(Palette.orange)
                 }
+                if candidate.skill == "Kanji" {
+                    if let han = candidate.sourceHanViet, !han.isEmpty {
+                        Text("Hán–Việt ghi trong PDF: " + han)
+                            .font(.caption).foregroundColor(Palette.blue)
+                    }
+                    if let reads = candidate.sourceOnKun, !reads.isEmpty {
+                        Text("Dòng cách đọc trong PDF: " + reads)
+                            .font(.caption).foregroundColor(Palette.blue)
+                    }
+                    if let corrected = candidate.dictionaryHanViet,
+                       !corrected.isEmpty {
+                        Text("Từ điển độc lập gợi ý Hán–Việt: " + corrected)
+                            .font(.caption).foregroundColor(Palette.orange)
+                    }
+                    Text("Hán–Việt là âm đọc. Hãy kiểm tra nghĩa tiếng Việt theo ngữ cảnh và phân loại cách đọc On/Kun trước khi xác nhận.")
+                        .font(.caption).foregroundColor(.secondary)
+                }
             }
             Section("Chữ Nhật và nghĩa tiếng Việt") {
                 TextField("Từ / mẫu câu / chữ Kanji", text: $card.japanese,
@@ -339,6 +366,10 @@ struct SouMatomePersonalCardEditor: View {
             }
             if card.kind == "Kanji" {
                 Section("Cách đọc Kanji") {
+                    TextField("Âm Hán–Việt", text: Binding(
+                        get: { card.hanViet ?? "" },
+                        set: { card.hanViet = $0 }
+                    ))
                     TextField("Âm On", text: $card.onReading)
                     TextField("Âm Kun", text: $card.kunReading)
                     TextField("Từ ghép đã kiểm tra", text: $card.relatedWord)
@@ -417,6 +448,9 @@ struct SouMatomePersonalCardEditor: View {
         }
         .onChange(of: card.exampleVietnamese) { _ in
             translationConfirmed = false
+        }
+        .onChange(of: card.hanViet) { _ in
+            sourceConfirmed = false
         }
         .onChange(of: card.onReading) { _ in
             sourceConfirmed = false

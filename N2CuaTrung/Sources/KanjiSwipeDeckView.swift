@@ -183,9 +183,24 @@ struct KanjiSwipeDeckView: View {
                     Text(card.displayMeaning)
                         .font(.headline).foregroundColor(Palette.teal)
                         .multilineTextAlignment(.center).lineLimit(2)
-                    if let info = KangxiReference.info(for: card.char) {
-                        Text("Hán–Việt: \(info.sinoVietnamese)")
+                    if let label = card.hanViet, !label.isEmpty {
+                        Text("Hán–Việt đã đối chiếu: " + label)
                             .font(.subheadline).foregroundColor(Palette.blue)
+                    }
+                    if let info = KangxiReference.info(for: card.char) {
+                        if card.hanViet?.isEmpty != false {
+                            Text("Hán–Việt tham khảo: \(info.sinoVietnamese)")
+                                .font(.subheadline).foregroundColor(Palette.blue)
+                        } else if let label = card.hanViet,
+                                  label.folding(options: [.diacriticInsensitive,
+                                                         .caseInsensitive],
+                                                locale: Locale(identifier: "vi_VN")) !=
+                                  info.sinoVietnamese.folding(
+                                      options: [.diacriticInsensitive, .caseInsensitive],
+                                      locale: Locale(identifier: "vi_VN")) {
+                            Text("Đối chiếu từ điển: " + info.sinoVietnamese)
+                                .font(.caption).foregroundColor(Palette.orange)
+                        }
                         if let radical = KangxiReference.radical(forKanji: card.char) {
                             Text("Bộ #\(radical.id): \(radical.character) • \(radical.sinoVietnamese) — \(radical.meaning)")
                                 .font(.subheadline).foregroundColor(Palette.navy)

@@ -47,12 +47,13 @@ enum SouMatomeAudioCatalogTests {
         let two = directory.appendingPathComponent("two.mp3")
         try Data(repeating: 33, count: 4096).write(to: one)
         try Data(repeating: 33, count: 4096).write(to: two)
-        check(try SouMatomeAudioCatalog.fingerprint(one) ==
-                  SouMatomeAudioCatalog.fingerprint(two),
+        let originalHash = try SouMatomeAudioCatalog.fingerprint(one)
+        let unchangedHash = try SouMatomeAudioCatalog.fingerprint(two)
+        check(originalHash == unchangedHash,
               "Identical audio must keep its review approval")
         try Data(repeating: 42, count: 4096).write(to: two)
-        check(try SouMatomeAudioCatalog.fingerprint(one) !=
-                  SouMatomeAudioCatalog.fingerprint(two),
+        let changedHash = try SouMatomeAudioCatalog.fingerprint(two)
+        check(originalHash != changedHash,
               "Changed audio must invalidate the linked listening question")
         print("PASS: 116-track inventory, strict CD classification and SHA256 replacement detection")
     }

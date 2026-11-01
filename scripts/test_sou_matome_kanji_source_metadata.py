@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Synthetic source metadata fixtures, no copyright-protected excerpts."""
 import unittest
-from enrich_sou_matome_kanji_source_metadata import parse_source
+from enrich_sou_matome_kanji_source_metadata import parse_source, extract
 
 
 class FakePage:
@@ -38,6 +38,23 @@ class PrivateKanjiSourceTests(unittest.TestCase):
         got = parse_source(page, 30)
         self.assertEqual(got[0]["sourceHanViet"], "HOÀNH, HOÀNG")
         self.assertEqual(got[0]["sourceOnKun"], "おう／よこ")
+
+    def test_multiline_and_cross_page_kana_are_reassembled(self):
+        first = FakePage(["① 険", "HIỂM", "けん／けわ・"])
+        next_page = FakePage([
+            "Kanji Somatome N2", "Page 2", "しい", "危険"
+        ])
+        rows = extract([first, next_page])
+        self.assertEqual(rows[0]["sourceOnKun"], "けん／けわ・しい")
+        self.assertTrue(rows[0]["_reading_reassembled"])
+
+        same_page = FakePage([
+            "① 覚", "GIÁC", "かく／おぼ・える／さ・ます／さ・",
+            "める", "覚える"
+        ])
+        parsed = parse_source(same_page, 11)
+        self.assertEqual(parsed[0]["sourceOnKun"],
+                         "かく／おぼ・える／さ・ます／さ・める")
 
 
 if __name__ == "__main__":

@@ -126,7 +126,8 @@ final class SouMatomeLibraryStore: ObservableObject {
         tracks = all
     }
 
-    func importPDF(from source: URL, for book: SouMatomeDocument) async throws {
+    func importPDF(from source: URL, for book: SouMatomeDocument,
+                   study: StudyStore) async throws {
         let root = self.root
         let id = book.id
         let expected = book.pages
@@ -156,7 +157,11 @@ final class SouMatomeLibraryStore: ObservableObject {
         }.value
         // An old corrected transcription cannot be certified for a replaced PDF.
         if replaced {
-            SouMatomePersonalReviewStore().invalidateBook(book.id)
+            let reviews = SouMatomePersonalReviewStore()
+            try reviews.invalidateBook(book.id)
+            // An already-installed course pack would otherwise keep showing
+            // stale Japanese/Vietnamese meanings after the PDF was replaced.
+            _ = try reviews.synchronizeApprovedCards(with: study)
             SouMatomeSourceEntryStore().invalidateImportedCandidates(for: book.id)
             let directory = root.appendingPathComponent("PageText", isDirectory: true)
                 .appendingPathComponent(book.id, isDirectory: true)
@@ -390,7 +395,7 @@ struct SouMatomeLibraryView: View {
                             continue
                         }
                         do {
-                            try await library.importPDF(from: url, for: book)
+                            try await library.importPDF(from: url, for: book, study: store)
                             count += 1
                         } catch {
                             errors.append(url.lastPathComponent + ": " + error.localizedDescription)
@@ -410,7 +415,7 @@ struct SouMatomeLibraryView: View {
                 working = true
                 Task {
                     do {
-                        try await library.importPDF(from: url, for: book)
+                        try await library.importPDF(from: url, for: book, study: store)
                         message = "Đã nhập \(book.title), đủ \(book.pages) trang."
                     } catch {
                         message = "Lỗi nhập sách: \(error.localizedDescription)"

@@ -134,12 +134,23 @@ final class SouMatomeSourceEntryStore: ObservableObject {
     @Published var loadedBooks = 0
     @Published var notes: String?
     @Published var importedCandidateCount = 0
+    @Published private(set) var diagnostics = SouMatomeReviewDiagnostics.analyze([])
     private let root = FileManager.default.urls(for: .applicationSupportDirectory,
                                                   in: .userDomainMask)[0]
         .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
 
     private var importedURL: URL {
         root.appendingPathComponent("private-draft-candidates.json")
+    }
+
+    private func recalculateQuality() {
+        diagnostics = SouMatomeReviewDiagnostics.analyze(entries.map { item in
+            SouMatomeReviewCandidate(
+                id: item.id, bookID: item.bookId,
+                skill: item.skill, heading: item.heading,
+                reading: item.reading ?? "", vietnamese: item.detail,
+                inheritedFlags: item.qaFlags ?? [])
+        })
     }
 
     /// On source replacement, remove only candidates derived from that book.
@@ -157,6 +168,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                 try data.write(to: importedURL, options: .atomic)
             }
             entries.removeAll { $0.bookId == bookID }
+            recalculateQuality()
             importedCandidateCount = remaining.count
         } catch {
             notes = "Không thể làm mới dữ liệu nguồn đã nhập: " + error.localizedDescription
@@ -232,6 +244,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         importedCandidateCount = merged.count
         let unaffected = entries.filter { !incomingBooks.contains($0.bookId) }
         entries = (unaffected + incoming).sorted { $0.id < $1.id }
+        recalculateQuality()
         return (incoming.count, changedIDs)
     }
 
@@ -273,6 +286,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                 : $0.bookId < $1.bookId
         }
         importedCandidateCount = imported.count
+        recalculateQuality()
         notes = "Đã nhận diện \(entries.count) ứng viên từ PDF, gồm \(imported.count) bản ghi nhập riêng. Chưa được kiểm duyệt."
         processing = false
     }
@@ -292,19 +306,42 @@ struct SouMatomeSourceEntriesView: View {
     @State private var pickCandidateJSON = false
     @State private var importMessage: String?
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
-    private let qualityFilters = ["Tất cả", "Cần rà soát", "Đã kiểm chứng", "Chưa kiểm chứng"]
+    private let qualityFilters = ["Tất cả", "Cần rà soát", "Trùng chữ Nhật", "Thiếu nghĩa Việt", "Thiếu cách đọc", "Đã kiểm chứng", "Chưa kiểm chứng"]
 
     private var matching: [SouMatomeSourceEntry] {
         source.entries.filter { item in
             (skill == "Tất cả" || skill == item.skill) &&
             (qualityFilter == "Tất cả" ||
-             (qualityFilter == "Cần rà soát" && !(item.qaFlags ?? []).isEmpty) ||
+             (qualityFilter == "Cần rà soát" &&
+              !source.diagnostics.flags(for: item.id).isEmpty) ||
+             (qualityFilter == "Trùng chữ Nhật" &&
+              source.diagnostics.flags(for: item.id).contains("DUPLICATE_JAPANESE_HEADWORD")) ||
+             (qualityFilter == "Thiếu nghĩa Việt" &&
+              source.diagnostics.flags(for: item.id).contains("MISSING_VIETNAMESE_GLOSS")) ||
+             (qualityFilter == "Thiếu cách đọc" &&
+              source.diagnostics.flags(for: item.id).contains("MISSING_KANA_READING")) ||
              (qualityFilter == "Đã kiểm chứng" &&
               reviews.cards[item.id]?.isApproved == true) ||
              (qualityFilter == "Chưa kiểm chứng" &&
               reviews.cards[item.id]?.isApproved != true)) &&
             (query.isEmpty || (item.heading + " " + item.detail)
                 .localizedCaseInsensitiveContains(query))
+        }
+    }
+
+    private func reviewFlagLabel(_ code: String) -> String {
+        switch code {
+        case "MISSING_VIETNAMESE_GLOSS", "MISSING_ADJACENT_VIETNAMESE_MEANING",
+             "MISSING_VIETNAMESE_SENSE_AND_READINGS":
+            return "Thiếu nghĩa Việt"
+        case "MISSING_KANA_READING": return "Thiếu cách đọc"
+        case "DUPLICATE_JAPANESE_HEADWORD": return "Chữ Nhật trùng"
+        case "POSSIBLY_FRAGMENTED_FURIGANA": return "Tách dòng/furigana"
+        case "HEADING_NOT_CONTIGUOUS_ON_SOURCE_PAGE": return "Chữ Nhật cần đối chiếu"
+        case "READING_NOT_CONTIGUOUS_ON_SOURCE_PAGE": return "Cách đọc cần đối chiếu"
+        case "JAPANESE_PRESENT_IN_VIETNAMESE_GLOSS": return "Nghĩa có chữ Nhật"
+        case "NO_JAPANESE_HEADWORD": return "Thiếu chữ Nhật"
+        default: return "Kiểm tra nguồn"
         }
     }
 
@@ -327,6 +364,8 @@ struct SouMatomeSourceEntriesView: View {
                         pickCandidateJSON = true
                     }
                     if source.importedCandidateCount > 0 {
+                        Text("Cần rà soát: \(source.diagnostics.requiringAttentionCount) ứng viên · \(source.diagnostics.repeatedHeadwordGroups) nhóm trùng chữ Nhật (\(source.diagnostics.repeatedHeadwordRows) dòng). Không tự xóa các từ nhiều nghĩa.")
+                            .font(.caption).foregroundColor(Palette.orange)
                         Text("Đã nhận \(source.importedCandidateCount) ứng viên từ tệp JSON cá nhân.")
                             .font(.caption).foregroundColor(Palette.teal)
                     }
@@ -396,8 +435,11 @@ struct SouMatomeSourceEntriesView: View {
                                     }
                                     .buttonStyle(.borderless)
                                     .font(.caption)
-                                    if let flags = entry.qaFlags, !flags.isEmpty {
-                                        Label("Cần rà soát nguồn: \(flags.count) dấu hiệu chưa chắc chắn",
+                                    if !source.diagnostics.flags(for: entry.id).isEmpty {
+                                        Label("Cần rà soát: " +
+                                              source.diagnostics.flags(for: entry.id)
+                                                .map(reviewFlagLabel).joined(separator: " · "),
+                                              
                                               systemImage: "exclamationmark.triangle")
                                             .font(.caption)
                                             .foregroundColor(Palette.orange)

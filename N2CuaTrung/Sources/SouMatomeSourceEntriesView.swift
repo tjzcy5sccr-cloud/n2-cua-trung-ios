@@ -336,6 +336,25 @@ struct SouMatomeSourceEntriesView: View {
         }
     }
 
+    private func progressRow(for skillName: String) -> some View {
+        let items = source.entries.filter { $0.skill == skillName }
+        let approved = items.filter {
+            reviews.cards[$0.id]?.isApproved == true
+        }.count
+        return VStack(alignment: .leading, spacing: 5) {
+            HStack {
+                Text(skillName).font(.subheadline)
+                Spacer()
+                Text("\(approved)/\(items.count)")
+                    .font(.caption.monospacedDigit())
+                    .foregroundColor(Palette.navy)
+            }
+            ProgressView(value: Double(approved),
+                         total: Double(max(1, items.count)))
+                .tint(Palette.teal)
+        }
+    }
+
     private func reviewFlagLabel(_ code: String) -> String {
         switch code {
         case "MISSING_VIETNAMESE_GLOSS", "MISSING_ADJACENT_VIETNAMESE_MEANING",
@@ -382,9 +401,14 @@ struct SouMatomeSourceEntriesView: View {
                 }
                 LessonPanel {
                     SectionTitle("Kho flashcard đã kiểm chứng")
-                    Text("\(reviews.approvedCount) thẻ đã xác minh · \(reviews.draftCount) bản nháp")
+                    Text("\(reviews.approvedCount) mục đã xác minh trong \(source.entries.count) ứng viên · \(reviews.draftCount) bản nháp từng lưu")
                         .font(.subheadline.weight(.semibold))
                         .foregroundColor(Palette.navy)
+                    progressRow(for: "Từ vựng")
+                    progressRow(for: "Kanji")
+                    progressRow(for: "Ngữ pháp")
+                    Text("Chỉ mục được kiểm chứng và có PDF gốc mới tính vào tiến độ hoàn thiện nội dung.")
+                        .font(.caption).foregroundColor(.secondary)
                     Text("Các ứng viên tách từ PDF chỉ chuyển thành thẻ học khi đã kiểm tra riêng chữ Nhật, cách đọc và nghĩa Việt. Không tự duyệt hàng loạt.")
                         .font(.caption).foregroundColor(.secondary)
                     MainButton(title: "Cập nhật flashcard và câu hỏi đã kiểm chứng",

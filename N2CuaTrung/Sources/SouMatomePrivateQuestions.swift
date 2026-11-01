@@ -343,7 +343,11 @@ struct SouMatomePrivateQuestionEditor: View {
             answerOK = item.answerChecked
         }
         .onChange(of: item.page) { _ in sourceOK = false }
-        .onChange(of: item.audioCD) { _ in sourceOK = false }
+        .onChange(of: item.audioCD) { _ in
+            sourceOK = false
+            item.audioTrack = min(item.audioTrack,
+                                  item.audioCD == "CD1" ? 64 : 52)
+        }
         .onChange(of: item.audioTrack) { _ in sourceOK = false }
         .onChange(of: item.japaneseText) { _ in sourceOK = false }
         .onChange(of: item.vietnameseText) { _ in translationOK = false }

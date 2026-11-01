@@ -289,6 +289,20 @@ struct SouMatomePersonalCardEditor: View {
         }
     }
 
+    /// A sliced page-top fragment or a grammatical example is not a
+    /// complete headword/rule even if someone fills in a Vietnamese gloss.
+    /// Require manual reconstruction before enabling editorial approval.
+    private var headingStillNeedsReconstruction: Bool {
+        let incompleteFlags: Set<String> = [
+            "PAGE_CONTINUATION_FRAGMENT_NEEDS_RECONSTRUCTION",
+            "HEADING_IS_EXAMPLE_NOT_GRAMMAR_RULE",
+            "POSSIBLY_FRAGMENTED_FURIGANA",
+            "CHECK_FURIGANA_AND_LINE_BREAKS"
+        ]
+        let flagged = !(Set(candidate.qaFlags ?? []).isDisjoint(with: incompleteFlags))
+        return flagged && card.japanese == candidate.heading
+    }
+
     private var reviewPosition: Int {
         reviewQueue.filter { $0.skill == candidate.skill }
             .firstIndex(where: { $0.id == candidate.id })
@@ -349,6 +363,11 @@ struct SouMatomePersonalCardEditor: View {
                 }
                 if let flags = candidate.qaFlags, !flags.isEmpty {
                     Text("Mục này cần rà soát thêm: " + flags.joined(separator: ", "))
+                        .font(.caption).foregroundColor(Palette.orange)
+                }
+                if headingStillNeedsReconstruction {
+                    Label("Chưa được duyệt: đây là dòng bị cắt hoặc ví dụ chưa chuyển thành mẫu ngữ pháp chuẩn. Hãy sửa chữ Nhật thành mục hoàn chỉnh theo PDF trước.",
+                          systemImage: "exclamationmark.triangle.fill")
                         .font(.caption).foregroundColor(Palette.orange)
                 }
                 if candidate.skill == "Kanji" {
@@ -417,7 +436,8 @@ struct SouMatomePersonalCardEditor: View {
                 Button("Xác nhận đã kiểm tra và lưu") {
                     _ = save(approve: true)
                 }
-                .disabled(!card.sourcePDFIsAvailable ||
+                .disabled(headingStillNeedsReconstruction ||
+                    !card.sourcePDFIsAvailable ||
                     !sourceConfirmed || !translationConfirmed ||
                     !card.isAppropriateForReview)
                 if nextUncheckedCandidate != nil {
@@ -427,7 +447,8 @@ struct SouMatomePersonalCardEditor: View {
                     Button("Xác nhận và sang mục chưa duyệt tiếp theo") {
                         if save(approve: true) { moveToNextUnchecked() }
                     }
-                    .disabled(!card.sourcePDFIsAvailable || !sourceConfirmed ||
+                    .disabled(headingStillNeedsReconstruction ||
+                        !card.sourcePDFIsAvailable || !sourceConfirmed ||
                         !translationConfirmed || !card.isAppropriateForReview)
                     Button("Sang mục chưa duyệt (không thay đổi thẻ đã lưu)") {
                         guard card == reviews.card(for: candidate) else {
@@ -486,6 +507,7 @@ struct SouMatomePersonalCardEditor: View {
     private func save(approve: Bool) -> Bool {
         guard !approve || (sourceConfirmed && translationConfirmed &&
                            card.sourcePDFIsAvailable &&
+                           !headingStillNeedsReconstruction &&
                            card.isAppropriateForReview) else {
             message = "Chưa đủ điều kiện xác minh nguồn, chữ Nhật hoặc nghĩa Việt."
             return false

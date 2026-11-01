@@ -13,12 +13,20 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
     let detail: String
     let skill: String
     let reading: String?
+    /// Hán-Việt and readings from the owner's personal PDF, not confirmed
+    /// contextual meanings. The dictionary suggestion is independent.
+    let sourceHanViet: String?
+    let sourceOnKun: String?
+    let dictionaryHanViet: String?
+    let dictionaryReference: String?
     /// Private-source automated warnings. Never interpreted as approval.
     let qaFlags: [String]?
 
     init(id: String, bookId: String, page: Int, heading: String,
          detail: String, skill: String, reading: String? = nil,
-         qaFlags: [String]? = nil) {
+         qaFlags: [String]? = nil, sourceHanViet: String? = nil,
+         sourceOnKun: String? = nil, dictionaryHanViet: String? = nil,
+         dictionaryReference: String? = nil) {
         self.id = id
         self.bookId = bookId
         self.page = page
@@ -26,6 +34,10 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
         self.detail = detail
         self.skill = skill
         self.reading = reading
+        self.sourceHanViet = sourceHanViet
+        self.sourceOnKun = sourceOnKun
+        self.dictionaryHanViet = dictionaryHanViet
+        self.dictionaryReference = dictionaryReference
         self.qaFlags = qaFlags
     }
 }
@@ -207,7 +219,11 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                   ["Từ vựng", "Kanji", "Ngữ pháp"].contains(card.skill),
                   card.id.hasPrefix(card.bookId + ":" + String(card.page) + ":"),
                   card.heading.count <= 250, card.detail.count <= 250,
-                  (card.reading?.count ?? 0) <= 150
+                  (card.reading?.count ?? 0) <= 150,
+                  (card.sourceHanViet?.count ?? 0) <= 70,
+                  (card.sourceOnKun?.count ?? 0) <= 150,
+                  (card.dictionaryHanViet?.count ?? 0) <= 70,
+                  (card.dictionaryReference?.count ?? 0) <= 250
             else { throw SouMatomeReviewError.invalidCandidateFile }
         }
 
@@ -230,7 +246,10 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             let changed = previous.heading != updated.heading ||
                           previous.detail != updated.detail ||
                           previous.reading != updated.reading ||
-                          previous.skill != updated.skill
+                          previous.skill != updated.skill ||
+                          previous.sourceHanViet != updated.sourceHanViet ||
+                          previous.sourceOnKun != updated.sourceOnKun ||
+                          previous.dictionaryHanViet != updated.dictionaryHanViet
             return changed ? previous.id : nil
         })
         let merged = old.filter { !incomingBooks.contains($0.bookId) } + incoming
@@ -444,6 +463,21 @@ struct SouMatomeSourceEntriesView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(entry.heading)
                                         .font(.headline).foregroundColor(Palette.navy)
+                                    if entry.skill == "Kanji" {
+                                        if let label = entry.sourceHanViet, !label.isEmpty {
+                                            Text("Hán–Việt theo PDF: " + label)
+                                                .font(.caption).foregroundColor(Palette.blue)
+                                        }
+                                        if let reads = entry.sourceOnKun, !reads.isEmpty {
+                                            Text("Đọc theo PDF: " + reads)
+                                                .font(.caption).foregroundColor(.secondary)
+                                        }
+                                        if let suggestion = entry.dictionaryHanViet,
+                                           !suggestion.isEmpty {
+                                            Text("Từ điển đối chiếu: " + suggestion)
+                                                .font(.caption).foregroundColor(Palette.orange)
+                                        }
+                                    }
                                     if !entry.detail.isEmpty {
                                         if revealedIDs.contains(entry.id) {
                                             Text(entry.detail)

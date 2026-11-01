@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "computedOn": "2026-11-01",
+  "source": "3 personal user-provided Sou Matome N2 Vietnamese supplements, no source passages committed",
+  "method": "PyMuPDF per-page source-text spans, mixed POS/unstyled vocabulary row reconstruction, original PDF page numbers",
+  "corpus": {
+    "textLayerPages": 556,
+    "vocabularySupplementPages": 163,
+    "kanjiSupplementPages": 208,
+    "grammarSupplementPages": 185,
+    "primaryScannedPDFPagesNotYetDigitized": 683
+  },
+  "sourceCandidateRows": {
+    "vocabulary": 2136,
+    "kanji": 654,
+    "grammarPatternHeadings": 173,
+    "total": 2963
+  },
+  "sourceReviewFindings": {
+    "vocabularyPagesWithNoCandidates": 0,
+    "kanjiPagesWithoutNumberedKanji": 1,
+    "grammarPagesWithoutPatternHeader": 88,
+    "unpairedVocabularyMeanings": 12,
+    "kanjiWithoutCompleteVietnameseSenseAndOnKun": 654,
+    "grammarFragmentsByFurigana": 43,
+    "grammarMissingAdjacentVietnameseDefinition": 21
+  },
+  "visualReview": {
+    "kanjiPage208": "Blank final template page, not an omitted Kanji lesson",
+    "grammarPage85": "Short continuation/exercise-answers page, not a missing grammar unit",
+    "grammarPage185": "Short exercise-choice page, not a missing grammar unit"
+  },
+  "reviewedAndApproved": 0,
+  "status": "NOT_FULLY_REVIEWED",
+  "privacy": "Whole source-derived JSON distributed only as private conversation file for owner; no textbook words, sentences or MP3 uploaded to public GitHub",
+  "note": "Candidate count is not unique JLPT vocabulary, source completeness or verified translation accuracy. Actual flashcard/quiz approval requires per-item source Japanese and Vietnamese checks."
+}

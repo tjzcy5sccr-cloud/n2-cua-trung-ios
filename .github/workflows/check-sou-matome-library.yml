@@ -72,6 +72,8 @@ jobs:
         run: |
           python3 -m pip install --disable-pip-version-check 'PyMuPDF>=1.23,<2'
           python3 -m unittest discover -s scripts -p 'test_sou_matome_extractor.py' -v
+          python3 -m py_compile scripts/enrich_sou_matome_kanji_source_metadata.py
+          python3 -m unittest discover -s scripts -p 'test_sou_matome_kanji_source_metadata.py' -v
       - name: Execute native Swift multiple-choice regression
         run: |
           swiftc N2CuaTrung/Sources/Models.swift N2CuaTrung/Sources/GrammarExamples.swift scripts/test_sou_matome_question_bank.swift -o /tmp/sou-matome-quiz-tests

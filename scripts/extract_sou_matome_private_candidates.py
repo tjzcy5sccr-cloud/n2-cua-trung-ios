@@ -16,6 +16,7 @@ import fitz
 JAPANESE = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
 NUMBERED = re.compile(r"^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳]\s*([\u3400-\u9fff])")
 GRAMMAR_DAY = re.compile(r"\bBài\s*\d+\s*[:：]", re.I)
+GRAMMAR_PATTERN = re.compile(r"^\s*([A-H])\s*[:：.;；]\s*(.*)", re.I)
 POS = re.compile(r"^(?:(?:n|v|s|adj|adv|adi|adn|aux|phr|int)\b[,.]?\s*)+", re.I)
 
 
@@ -61,15 +62,39 @@ def kanji_candidates(page, page_number):
 
 
 def grammar_candidates(page, page_number):
-    # A lesson heading is NOT a verified grammar pattern. Leave blank rather
-    # than mislabel an example as an N2 grammar rule.
-    lessons = sum(len(GRAMMAR_DAY.findall(" ".join(b[4].split())))
-                  for b in page.get_text("blocks"))
-    return [{
-        "id": f"bunpou-vi:{page_number}:{i}",
-        "bookId": "bunpou-vi", "page": page_number,
-        "skill": "Ngữ pháp", "heading": "", "reading": "", "detail": ""
-    } for i in range(lessons)]
+    """Find individual A:/B:/C: grammatical forms without claiming correctness.
+
+    Furigana and columns can break a single Japanese pattern across lines.
+    Such candidates are flagged; users must compare with their personal PDF.
+    """
+    lines = page.get_text("text").splitlines()
+    found = []
+    for index, line in enumerate(lines):
+        match = GRAMMAR_PATTERN.match(line.strip())
+        if not match:
+            continue
+        heading = match.group(2).strip()
+        if not JAPANESE.search(heading):
+            continue
+        meaning = ""
+        for following in lines[index + 1:index + 9]:
+            compact = following.strip()
+            if GRAMMAR_PATTERN.match(compact) or GRAMMAR_DAY.search(compact):
+                break
+            if re.search(r"Ý\s*nghĩa\s*[:：]", compact, re.I):
+                meaning = re.split(
+                    r"Ý\s*nghĩa\s*[:：]", compact, maxsplit=1, flags=re.I
+                )[-1].strip()
+                break
+        needs_manual = len(heading.strip(" 。.、")) < 3 or not bool(meaning)
+        found.append({
+            "id": f"bunpou-vi:{page_number}:{len(found)}",
+            "bookId": "bunpou-vi", "page": page_number,
+            "skill": "Ngữ pháp", "heading": heading,
+            "reading": "", "detail": meaning,
+            "qaFlags": ["CHECK_FURIGANA_AND_LINE_BREAKS"] if needs_manual else []
+        })
+    return found
 
 
 def extract(sources):

@@ -166,39 +166,64 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         return decoded
     }
 
+    /// Merge one or more book-specific candidate files, preserving other
+    /// books. Report IDs whose source text changed so their approval can be
+    /// revoked, rather than assuming unchanged numbered rows are identical.
     @discardableResult
-    func importCandidates(from url: URL) throws -> Int {
+    func importCandidates(from url: URL) throws -> (count: Int, changedIDs: Set<String>) {
         let access = url.startAccessingSecurityScopedResource()
         defer { if access { url.stopAccessingSecurityScopedResource() } }
         let bytes = try Data(contentsOf: url)
         guard bytes.count > 0, bytes.count <= 8 * 1_024 * 1_024 else {
             throw SouMatomeReviewError.invalidCandidateFile
         }
-        let imported = try JSONDecoder().decode(
+        let incoming = try JSONDecoder().decode(
             [SouMatomeSourceEntry].self, from: bytes)
-        guard !imported.isEmpty, imported.count <= 15_000,
-              Set(imported.map(\.id)).count == imported.count else {
+        guard !incoming.isEmpty, incoming.count <= 15_000,
+              Set(incoming.map(\.id)).count == incoming.count else {
             throw SouMatomeReviewError.invalidCandidateFile
         }
         let validBooks = Dictionary(uniqueKeysWithValues:
             SouMatomeDocument.all.map { ($0.id, $0.pages) })
-        for card in imported {
+        for card in incoming {
             guard let maxPage = validBooks[card.bookId],
                   (1...maxPage).contains(card.page),
                   ["Từ vựng", "Kanji", "Ngữ pháp"].contains(card.skill),
                   card.id.hasPrefix(card.bookId + ":" + String(card.page) + ":"),
-                  card.heading.count <= 250, card.detail.count <= 250
+                  card.heading.count <= 250, card.detail.count <= 250,
+                  (card.reading?.count ?? 0) <= 150
             else { throw SouMatomeReviewError.invalidCandidateFile }
+        }
+
+        let old = loadImportedCandidates()
+        let incomingBooks = Set(incoming.map(\.bookId))
+        let oldAffected = old.filter { incomingBooks.contains($0.bookId) }
+        let oldByID = Dictionary(uniqueKeysWithValues:
+            oldAffected.map { ($0.id, $0) })
+        let incomingByID = Dictionary(uniqueKeysWithValues:
+            incoming.map { ($0.id, $0) })
+        let changedIDs = Set(oldAffected.compactMap { previous -> String? in
+            guard let updated = incomingByID[previous.id] else {
+                return previous.id
+            }
+            let changed = previous.heading != updated.heading ||
+                          previous.detail != updated.detail ||
+                          previous.reading != updated.reading ||
+                          previous.skill != updated.skill
+            return changed ? previous.id : nil
+        })
+        let merged = old.filter { !incomingBooks.contains($0.bookId) } + incoming
+        let mergedBytes = try JSONEncoder().encode(merged)
+        guard mergedBytes.count <= 8 * 1_024 * 1_024 else {
+            throw SouMatomeReviewError.invalidCandidateFile
         }
         try FileManager.default.createDirectory(
             at: root, withIntermediateDirectories: true)
-        try bytes.write(to: importedURL, options: .atomic)
-        importedCandidateCount = imported.count
-        var keyed = Dictionary(uniqueKeysWithValues:
-            entries.map { ($0.id, $0) })
-        for card in imported { keyed[card.id] = card }
-        entries = keyed.values.sorted { $0.id < $1.id }
-        return imported.count
+        try mergedBytes.write(to: importedURL, options: .atomic)
+        importedCandidateCount = merged.count
+        let unaffected = entries.filter { !incomingBooks.contains($0.bookId) }
+        entries = (unaffected + incoming).sorted { $0.id < $1.id }
+        return (incoming.count, changedIDs)
     }
 
     func indexBooks() async {
@@ -405,8 +430,12 @@ struct SouMatomeSourceEntriesView: View {
             case .success(let url):
                 Task {
                     do {
-                        let count = try source.importCandidates(from: url)
-                        importMessage = "Đã nhập \(count) ứng viên. Cần đối chiếu trước khi cho vào bài luyện."
+                        let imported = try source.importCandidates(from: url)
+                        try reviews.invalidateCandidateIDs(imported.changedIDs)
+                        _ = try reviews.synchronizeApprovedCards(with: studyStore)
+                        importMessage = "Đã nhập \(imported.count) ứng viên; "
+                            + "đã hủy xác nhận cho \(imported.changedIDs.count) mục đổi nguồn. "
+                            + "Cần đối chiếu trước khi đưa mục mới vào luyện tập."
                     } catch {
                         importMessage = error.localizedDescription
                     }

@@ -5,13 +5,21 @@ struct FreshPracticeSessionView: View {
     let type: String
     @EnvironmentObject private var store: StudyStore
     @State private var questions: [ExamQuestion] = []
+    @State private var didGenerate = false
     @State private var sessionIdentity = UUID()
 
     var body: some View {
         Group {
             if questions.isEmpty {
-                ProgressView("Đang xáo trộn bài luyện…")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                LessonPanel {
+                    Text(didGenerate ? "Chưa có câu hỏi hợp lệ cho kỹ năng này."
+                                     : "Đang tạo bài luyện…")
+                        .font(.subheadline).foregroundColor(Palette.navy)
+                    if didGenerate {
+                        Text("Nhập và kiểm tra câu hỏi từ đúng PDF nguồn trước khi luyện. Ứng dụng không tự tạo đáp án khi chưa có dữ liệu đáng tin cậy.")
+                            .font(.caption).foregroundColor(.secondary)
+                    }
+                }.padding(16)
             } else {
                 QuestionSessionView(questions: questions, type: type)
                     .id(sessionIdentity)
@@ -34,6 +42,7 @@ struct FreshPracticeSessionView: View {
             next = []
         }
         questions = next.shuffled()
+        didGenerate = true
         sessionIdentity = UUID()
     }
 }

@@ -75,7 +75,7 @@ final class SouMatomePersonalReviewStore: ObservableObject {
 
     /// A replacement PDF invalidates the human review tied to its old pages.
     /// Preserve the draft text, but never silently keep its approved status.
-    func invalidateBook(_ bookID: String) {
+    func invalidateBook(_ bookID: String) throws {
         var revised = cards
         for (id, var card) in cards where card.bookID == bookID {
             card.sourceChecked = false
@@ -83,15 +83,23 @@ final class SouMatomePersonalReviewStore: ObservableObject {
             card.lastApproved = nil
             revised[id] = card
         }
-        do {
-            try FileManager.default.createDirectory(at: folder,
-                                                    withIntermediateDirectories: true)
-            let data = try JSONEncoder().encode(revised)
-            try data.write(to: file, options: .atomic)
-            cards = revised
-        } catch {
-            lastError = error.localizedDescription
+        try FileManager.default.createDirectory(at: folder,
+                                                withIntermediateDirectories: true)
+        let data = try JSONEncoder().encode(revised)
+        try data.write(to: file, options: .atomic)
+        cards = revised
+        lastError = nil
+    }
+
+    /// Rebuilds the active study pack from the current checked content. If all
+    /// approvals were revoked, removes ONLY this personal pack immediately.
+    /// Editing a translation must not leave an older meaning in the quiz bank.
+    func synchronizeApprovedCards(with study: StudyStore) throws -> Int {
+        if approvedCount == 0 {
+            try study.revokePersonalReviewedPack()
+            return 0
         }
+        return try installApprovedIntoStudy(study)
     }
 
     func card(for candidate: SouMatomeSourceEntry) -> SouMatomePersonalCard {
@@ -298,9 +306,18 @@ struct SouMatomePersonalCardEditor: View {
         card.sourceChecked = approve && sourceConfirmed
         card.translationChecked = approve && translationConfirmed
         card.lastApproved = approve ? Date() : nil
-        message = reviews.save(card)
-            ? (approve ? "Đã lưu vào kho riêng, đủ điều kiện đưa vào luyện tập."
-                       : "Đã lưu bản nháp, chưa đưa vào bài luyện.")
-            : "Lỗi khi lưu dữ liệu."
+        guard reviews.save(card) else {
+            message = "Không lưu được bản hiệu đính."
+            return
+        }
+        do {
+            let installed = try reviews.synchronizeApprovedCards(with: study)
+            message = approve
+                ? "Đã lưu và cập nhật \(installed) mục được kiểm chứng vào bài học."
+                : "Đã lưu bản nháp; đã thu hồi bản học cũ nếu mục này không còn được duyệt."
+        } catch {
+            message = "Đã lưu bản nháp, nhưng cập nhật gói học thất bại: "
+                + error.localizedDescription
+        }
     }
 }

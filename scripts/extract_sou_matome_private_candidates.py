@@ -21,31 +21,102 @@ POS = re.compile(r"^(?:(?:n|v|s|adj|adv|adi|adn|aux|phr|int)\b[,.]?\s*)+", re.I)
 
 
 def vocabulary_candidates(page, page_number):
-    blocks = sorted((b for b in page.get_text("blocks")
-                     if 70 < b[1] < 715), key=lambda b: b[1])
-    starts = []
-    for block in blocks:
-        if block[0] < 115 and JAPANESE.search(block[4]):
-            if not starts or block[1] - starts[-1] > 25:
-                starts.append(block[1])
-    words = page.get_text("words")
-    result = []
-    for idx, top in enumerate(starts):
-        bottom = starts[idx + 1] if idx + 1 < len(starts) else 720
-        row = [w for w in words if top - 6 <= (w[1] + w[3]) / 2 < bottom - 6]
-        reading_part = "".join(w[4] for w in row if w[0] < 190)
-        head_part = "".join(w[4] for w in row if 190 <= w[0] < 362)
-        text_part = " ".join(w[4] for w in row if w[0] >= 376).strip()
-        head = head_part if JAPANESE.search(head_part) else reading_part
+    """Read every Japanese-left-column row, including pages with no POS tags.
+
+    Imported content is a private UNVERIFIED source candidate, not a completed
+    flashcard. Splitting wrapped kana, kanji and Vietnamese sense lines is
+    inherently imperfect and must be checked on the original PDF.
+    """
+    spans = [
+        (float(s["bbox"][0]), float(s["bbox"][1]), s["text"].strip())
+        for block in page.get_text("dict")["blocks"] if "lines" in block
+        for line in block["lines"] for s in line["spans"] if s["text"].strip()
+    ]
+    left = sorted((y, x, t) for x, y, t in spans
+                  if 68 <= x < 180 and 68 <= y < 720 and JAPANESE.search(t))
+    groups = []
+    for y, x, value in left:
+        if not groups or y - groups[-1][-1][0] >= 27:
+            groups.append([(y, x, value)])
+        else:
+            groups[-1].append((y, x, value))
+
+    pos_anchors = []
+    for x, y, value in sorted(spans, key=lambda s: s[1]):
+        if 300 <= x < 445 and 68 <= y < 720 and POS.match(value):
+            if not pos_anchors or y - pos_anchors[-1] > 9:
+                pos_anchors.append(y)
+
+    available = set(range(len(pos_anchors)))
+    assignments = []
+    for group in groups:
+        y = group[0][0]
+        near = [i for i in available if abs(pos_anchors[i] - y) <= 33]
+        if near:
+            index = min(near, key=lambda i: abs(pos_anchors[i] - y))
+            available.remove(index)
+            assignments.append(index)
+        else:
+            assignments.append(None)
+
+    def join_parts(parts):
+        return "".join(v for _, _, v in sorted(parts)).strip()
+
+    results = []
+    for i, group in enumerate(groups):
+        reading_start = group[0][0]
+        next_start = groups[i + 1][0][0] if i + 1 < len(groups) else 725
+        reading = join_parts([
+            (y, x, t) for x, y, t in spans
+            if reading_start - 6 <= y < next_start - 12
+            and 68 <= x < 180 and JAPANESE.search(t)
+        ])
+        index = assignments[i]
+        if index is not None:
+            anchor = pos_anchors[index]
+            first = ((pos_anchors[index - 1] + anchor) / 2 if index > 0
+                     else max(65, reading_start - 25))
+            last = ((anchor + pos_anchors[index + 1]) / 2
+                    if index + 1 < len(pos_anchors) else next_start - 12)
+            last = min(last, next_start - 8)
+        else:
+            first, last = reading_start - 20, next_start - 12
+
+        row = [(x, y, t) for x, y, t in spans if first <= y < last]
+        written = join_parts([
+            (y, x, t) for x, y, t in row
+            if 180 <= x < 380 and JAPANESE.search(t)
+        ])
+        fragments = []
+        for x, y, value in row:
+            if x < 300 or JAPANESE.search(value):
+                continue
+            meaning = POS.sub("", value).strip()
+            if meaning and not re.search(
+                r"(?i)Somatome|Page\s*\d+|Cà Fe Muối", meaning
+            ):
+                fragments.append((y, x, meaning))
+        meaning = " ".join(text for _, _, text in sorted(fragments)).strip()
+        head = written if JAPANESE.search(written) else reading
         if not JAPANESE.search(head):
             continue
-        result.append({
-            "id": f"goi-vi:{page_number}:{len(result)}",
+
+        issues = []
+        if not re.search(r"[\u3040-\u30ff]", reading):
+            issues.append("MISSING_KANA_READING")
+        if not meaning:
+            issues.append("MISSING_VIETNAMESE_GLOSS")
+        if JAPANESE.search(meaning):
+            issues.append("POSSIBLY_JAPANESE_IN_GLOSS")
+        if len(head) > 120 or len(reading) > 140 or len(meaning) > 225:
+            issues.append("POSSIBLY_MERGED_ROWS")
+        results.append({
+            "id": f"goi-vi:{page_number}:{len(results)}",
             "bookId": "goi-vi", "page": page_number, "skill": "Từ vựng",
-            "heading": head, "reading": reading_part if head_part else "",
-            "detail": POS.sub("", text_part).strip()
+            "heading": head[:200], "reading": reading[:150],
+            "detail": meaning[:250], "qaFlags": issues
         })
-    return result
+    return results
 
 
 def kanji_candidates(page, page_number):

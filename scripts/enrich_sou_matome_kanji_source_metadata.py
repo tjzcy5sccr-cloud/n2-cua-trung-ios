@@ -39,7 +39,9 @@ def parse_source(page, number):
             if han_viet_label(value):
                 han.append(value)
             elif KANA.search(value):
-                reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，\s]", "", value).strip()
+                offset = KANA.search(value).start()
+                reading = re.sub(r"[^\u3040-\u30ffー／・（）(),，\s]",
+                                 "", value[offset:]).strip()
                 if reading:
                     reads.append(reading)
             elif han or reads:

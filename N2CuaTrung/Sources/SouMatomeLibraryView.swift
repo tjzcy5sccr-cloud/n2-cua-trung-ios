@@ -162,6 +162,9 @@ final class SouMatomeLibraryStore: ObservableObject {
             // An already-installed course pack would otherwise keep showing
             // stale Japanese/Vietnamese meanings after the PDF was replaced.
             _ = try reviews.synchronizeApprovedCards(with: study)
+            let privateQuestions = SouMatomePrivateQuestionStore()
+            try privateQuestions.invalidateBook(book.id)
+            _ = try privateQuestions.synchronize(with: study)
             SouMatomeSourceEntryStore().invalidateImportedCandidates(for: book.id)
             let directory = root.appendingPathComponent("PageText", isDirectory: true)
                 .appendingPathComponent(book.id, isDirectory: true)

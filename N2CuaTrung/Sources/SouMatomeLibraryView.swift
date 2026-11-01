@@ -408,6 +408,14 @@ struct SouMatomeLibraryView: View {
                     }.disabled(working)
                     Text("Đã nhập: \(library.tracks.count)/116 tệp MP3")
                         .font(.subheadline.weight(.semibold)).foregroundColor(Palette.blue)
+                    if !library.missingAudioTracks.isEmpty {
+                        Text("Còn thiếu \(library.missingAudioTracks.count) track. Ví dụ: "
+                             + library.missingAudioTracks.prefix(6).joined(separator: ", "))
+                            .font(.caption).foregroundColor(Palette.orange)
+                    } else {
+                        Text("Đã có đủ 116 tên track theo CD1/CD2; vẫn cần đối chiếu bài nghe và nội dung.")
+                            .font(.caption).foregroundColor(Palette.teal)
+                    }
                     if audio.currentTrack != nil {
                         VStack(spacing: 8) {
                             HStack {

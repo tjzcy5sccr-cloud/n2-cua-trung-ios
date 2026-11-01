@@ -36,3 +36,15 @@ Mọi file PDF, MP3, kết quả OCR, thẻ riêng và bản dịch ở thư vi�
 - Kiểm định toàn bộ nguồn và dữ liệu được app thực sự dùng; chỉ phát hành khi không còn mục chờ duyệt.
 
 **Hiện tại chưa đạt các điều kiện trên.** Dùng từ “đầy đủ” cho danh sách trang sách không có nghĩa đã hoàn thành kho câu hỏi tương tác.
+
+
+## Cập nhật đọc/nghe và đồng bộ đáp án — 01/11/2026
+
+- Khi sửa hoặc hủy phê duyệt một thẻ Nhật–Việt, dữ liệu đang dùng trong bài luyện được đồng bộ lại. Khi thay PDF nguồn, các phê duyệt thuộc PDF đó bị thu hồi.
+- Tách riêng `sou-matome-personal-reviewed` (từ vựng/Kanji/ngữ pháp) và `sou-matome-personal-exercises` (đọc hiểu/nghe hiểu) để không ghi đè giữa các kỹ năng.
+- `SouMatomePrivateQuestions.swift` cho phép soạn câu hỏi cá nhân từ PDF đã nhập, yêu cầu văn bản tiếng Nhật, nghĩa tiếng Việt, bốn đáp án khác nhau, lời giải, trang nguồn và xác nhận người hiệu đính riêng trước khi vào bài luyện.
+- Bài nghe đã kiểm duyệt có thể gắn CD1/01–64 hoặc CD2/01–52. Nếu đã nhập MP3 tương ứng, màn thi phát tệp CD gốc trong thư viện cá nhân; nếu chưa có, app có bản thoại đọc bằng giọng Nhật iOS. MP3 không có trong GitHub.
+- Dừng track khi chuyển câu/kết thúc đề/thoát màn thi; thay nguồn âm thanh phải duyệt lại.
+- Màn toàn bộ sách hiển thị số mục học được ứng dụng sử dụng thực tế và số PDF/MP3 đã nhập. Không lấy số trang làm bằng chứng về độ đầy đủ flashcard.
+
+**Chưa hoàn thành 100% nội dung nguyên bản:** đây là hệ thống biên soạn và kiểm tra dữ liệu riêng tư, không có nghĩa 683 trang quét, toàn bộ Nhật–Việt và 116 bài nghe đã được hiệu đính. Chưa build IPA.

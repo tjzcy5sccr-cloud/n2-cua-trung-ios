@@ -367,6 +367,9 @@ struct SouMatomePersonalCardEditor: View {
                 Button("Xác nhận đã kiểm tra và lưu") {
                     _ = save(approve: true)
                 }
+                .disabled(!card.sourcePDFIsAvailable ||
+                    !sourceConfirmed || !translationConfirmed ||
+                    !card.isAppropriateForReview)
                 if nextUncheckedCandidate != nil {
                     Button("Lưu nháp và sang mục chưa duyệt tiếp theo") {
                         if save(approve: false) { moveToNextUnchecked() }
@@ -384,12 +387,6 @@ struct SouMatomePersonalCardEditor: View {
                         moveToNextUnchecked()
                     }
                 }
-                .disabled(!card.sourcePDFIsAvailable ||
-                    !sourceConfirmed || !translationConfirmed ||
-                    card.japanese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
-                    card.vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
-                    (card.kind == "Từ vựng" && card.reading.trimmingCharacters(
-                        in: .whitespacesAndNewlines).isEmpty))
                 if let message { Text(message).font(.footnote) }
                 if let error = reviews.lastError {
                     Text(error).font(.footnote).foregroundColor(.red)

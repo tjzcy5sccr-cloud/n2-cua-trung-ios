@@ -34,9 +34,18 @@ struct SouMatomePersonalCard: Codable, Identifiable {
         }
     }
 
+    var sourcePDFIsAvailable: Bool {
+        // Only a personal, locally imported PDF may certify this card.
+        let source = FileManager.default.urls(
+            for: .applicationSupportDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
+            .appendingPathComponent(bookID + ".pdf")
+        return FileManager.default.fileExists(atPath: source.path)
+    }
+
     var isApproved: Bool {
         sourceChecked && translationChecked && lastApproved != nil &&
-        hasJapaneseText &&
+        sourcePDFIsAvailable && hasJapaneseText &&
         !vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         !vietnamese.hasPrefix("EN ·") &&
         (kind != "Từ vựng" || readingHasKana) &&
@@ -267,6 +276,15 @@ struct SouMatomePersonalCardEditor: View {
                               systemImage: "book.closed.fill")
                     }
                 }
+                if !card.sourcePDFIsAvailable {
+                    Label("Chưa có PDF gốc trên iPhone. Chỉ được lưu nháp, không thể chứng nhận nghĩa Nhật–Việt.",
+                          systemImage: "exclamationmark.triangle")
+                        .font(.caption).foregroundColor(Palette.orange)
+                }
+                if let flags = candidate.qaFlags, !flags.isEmpty {
+                    Text("Mục này cần rà soát thêm: " + flags.joined(separator: ", "))
+                        .font(.caption).foregroundColor(Palette.orange)
+                }
             }
             Section("Chữ Nhật và nghĩa tiếng Việt") {
                 TextField("Từ / mẫu câu / chữ Kanji", text: $card.japanese,
@@ -312,7 +330,8 @@ struct SouMatomePersonalCardEditor: View {
                 Button("Xác nhận đã kiểm tra và lưu") {
                     save(approve: true)
                 }
-                .disabled(!sourceConfirmed || !translationConfirmed ||
+                .disabled(!card.sourcePDFIsAvailable ||
+                    !sourceConfirmed || !translationConfirmed ||
                     card.japanese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
                     card.vietnamese.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
                     (card.kind == "Từ vựng" && card.reading.trimmingCharacters(

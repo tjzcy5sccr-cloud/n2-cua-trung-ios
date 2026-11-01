@@ -237,6 +237,15 @@ struct SouMatomePersonalCardEditor: View {
                 Text("Loại: \(candidate.skill)")
                 Text("Đối chiếu trực tiếp với PDF gốc, không tin tuyệt đối vào văn bản tách tự động.")
                     .font(.caption).foregroundColor(.secondary)
+                if let book = SouMatomeDocument.all.first(where: { $0.id == candidate.bookId }),
+                   let url = SouMatomeLibraryStore().fileURL(for: book) {
+                    NavigationLink {
+                        SouMatomePDFReader(book: book, url: url, initialPage: candidate.page)
+                    } label: {
+                        Label("Mở trang \(candidate.page) trong PDF gốc",
+                              systemImage: "book.closed.fill")
+                    }
+                }
             }
             Section("Chữ Nhật và nghĩa tiếng Việt") {
                 TextField("Từ / mẫu câu / chữ Kanji", text: $card.japanese,
@@ -299,6 +308,33 @@ struct SouMatomePersonalCardEditor: View {
             card = reviews.card(for: candidate)
             sourceConfirmed = card.sourceChecked
             translationConfirmed = card.translationChecked
+        }
+        .onChange(of: card.japanese) { _ in
+            sourceConfirmed = false
+        }
+        .onChange(of: card.reading) { _ in
+            sourceConfirmed = false
+        }
+        .onChange(of: card.vietnamese) { _ in
+            translationConfirmed = false
+        }
+        .onChange(of: card.explanation) { _ in
+            translationConfirmed = false
+        }
+        .onChange(of: card.exampleJapanese) { _ in
+            sourceConfirmed = false
+        }
+        .onChange(of: card.exampleVietnamese) { _ in
+            translationConfirmed = false
+        }
+        .onChange(of: card.onReading) { _ in
+            sourceConfirmed = false
+        }
+        .onChange(of: card.kunReading) { _ in
+            sourceConfirmed = false
+        }
+        .onChange(of: card.relatedWord) { _ in
+            sourceConfirmed = false
         }
     }
 

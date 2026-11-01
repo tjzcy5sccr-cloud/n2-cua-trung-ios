@@ -145,6 +145,7 @@ private struct SouMatomeCandidateCorrectionFile: Decodable {
     struct Change: Decodable {
         let id: String
         let expectedHeading: String
+        let newHeading: String?
         let newDetail: String?
         let addFlags: [String]?
     }
@@ -310,6 +311,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             let existing = candidates[at]
             guard existing.heading == update.expectedHeading,
                   (update.newDetail?.count ?? 0) <= 250,
+                  (update.newHeading?.count ?? 0) <= 250,
                   (update.addFlags ?? []).count <= 12,
                   (update.addFlags ?? []).allSatisfy({
                       !$0.isEmpty && $0.count <= 72 &&
@@ -320,6 +322,11 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 throw SouMatomeReviewError.invalidCandidateFile
             }
+            let heading = update.newHeading ?? existing.heading
+            guard heading.range(of: "[\\p{Han}\\p{Hiragana}\\p{Katakana}]",
+                                   options: .regularExpression) != nil else {
+                throw SouMatomeReviewError.invalidCandidateFile
+            }
             let detail = update.newDetail ?? existing.detail
             var flags = existing.qaFlags ?? []
             if update.newDetail != nil && !detail.isEmpty {
@@ -328,14 +335,15 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             flags = Array(Set(flags + (update.addFlags ?? []))).sorted()
             let next = SouMatomeSourceEntry(
                 id: existing.id, bookId: existing.bookId,
-                page: existing.page, heading: existing.heading,
+                page: existing.page, heading: heading,
                 detail: detail, skill: existing.skill,
                 reading: existing.reading, qaFlags: flags,
                 sourceHanViet: existing.sourceHanViet,
                 sourceOnKun: existing.sourceOnKun,
                 dictionaryHanViet: existing.dictionaryHanViet,
                 dictionaryReference: existing.dictionaryReference)
-            if detail != existing.detail || flags != (existing.qaFlags ?? []) {
+            if heading != existing.heading ||
+               detail != existing.detail || flags != (existing.qaFlags ?? []) {
                 candidates[at] = next
                 changedIDs.insert(existing.id)
             }

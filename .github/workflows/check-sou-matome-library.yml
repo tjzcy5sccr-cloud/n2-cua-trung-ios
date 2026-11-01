@@ -72,5 +72,6 @@ jobs:
           python3 -m unittest discover -s scripts -p 'test_sou_matome_extractor.py' -v
       - name: Validate independent study packs
         run: |
+          python3 scripts/validate_sou_matome_quiz_quality.py
           python3 scripts/validate_series_packs.py
           python3 scripts/validate_four_series_curriculum.py

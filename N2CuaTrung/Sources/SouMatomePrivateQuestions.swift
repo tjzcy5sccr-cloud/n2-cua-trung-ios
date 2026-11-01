@@ -41,6 +41,30 @@ struct SouMatomePrivateQuestion: Identifiable, Codable {
             .replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
     }
 
+    /// A source PDF and, for listening, the exact imported MP3 must exist
+    /// before the item can be described as verified against the source.
+    private var libraryRoot: URL {
+        FileManager.default.urls(for: .applicationSupportDirectory,
+                                 in: .userDomainMask)[0]
+            .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
+    }
+
+    var sourceFilesAvailable: Bool {
+        let pdf = libraryRoot.appendingPathComponent(bookID + ".pdf")
+        guard FileManager.default.fileExists(atPath: pdf.path) else {
+            return false
+        }
+        if kind == "Nghe hiểu" {
+            guard let maxNumber = SouMatomeAudioCatalog.expectedCounts[audioCD],
+                  (1...maxNumber).contains(audioTrack) else { return false }
+            let name = String(format: "%02d.mp3", audioTrack)
+            let audio = libraryRoot.appendingPathComponent(
+                "Audio/" + audioCD + "/" + name)
+            return FileManager.default.fileExists(atPath: audio.path)
+        }
+        return true
+    }
+
     var readyForReview: Bool {
         guard (kind == "Đọc hiểu" && bookID == "dokkai") ||
               (kind == "Nghe hiểu" && bookID == "choukai") else { return false }
@@ -50,7 +74,8 @@ struct SouMatomePrivateQuestion: Identifiable, Codable {
                   (1...(audioCD == "CD1" ? 64 : 52)).contains(audioTrack)
             else { return false }
         }
-        guard (1...maxPage).contains(page), !title.isEmpty, !question.isEmpty,
+        guard sourceFilesAvailable,
+              (1...maxPage).contains(page), !title.isEmpty, !question.isEmpty,
               !japaneseText.isEmpty, !vietnameseText.isEmpty,
               !explanation.isEmpty, choices.count == 4,
               choices.indices.contains(answer) else { return false }
@@ -289,7 +314,7 @@ struct SouMatomePrivateQuestionEditor: View {
                         Text("Đã tìm thấy \(track.name).mp3 trong thư viện riêng.")
                             .font(.caption).foregroundColor(.secondary)
                     } else {
-                        Text("Chưa nhập đúng track CD này. Có thể ghi nội dung nhưng chưa phát audio gốc trong đề.")
+                        Text("Chưa có track CD tương ứng. Có thể lưu nháp, nhưng chưa được xác nhận bài nghe đã kiểm chứng.")
                             .font(.caption).foregroundColor(.secondary)
                     }
                 }
@@ -335,8 +360,8 @@ struct SouMatomePrivateQuestionEditor: View {
                 Toggle("Đã xác minh đáp án và ba phương án sai",
                        isOn: $answerOK)
                 Text(item.readyForReview
-                     ? "Bài hợp lệ về cấu trúc; vẫn cần người kiểm chứng."
-                     : "Thiếu nội dung Nhật–Việt, lời giải hoặc bốn đáp án phân biệt.")
+                     ? "Bài hợp lệ về cấu trúc và có tệp nguồn; vẫn cần kiểm chứng."
+                     : "Chưa đủ: PDF nguồn, track CD (nếu là bài nghe), nội dung Nhật–Việt, lời giải hoặc bốn đáp án phân biệt.")
                     .font(.caption).foregroundColor(.secondary)
             }
             Section {

@@ -9,6 +9,7 @@ import argparse
 import collections
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 import fitz
@@ -179,6 +180,24 @@ def extract(sources):
                 "kanji-vi": kanji_candidates,
                 "bunpou-vi": grammar_candidates
             }[book](page, page_no)
+            source_text = "".join(
+                char for char in unicodedata.normalize(
+                    "NFKC", page.get_text("text")) if not char.isspace()
+            )
+            for candidate in records:
+                title = "".join(
+                    char for char in unicodedata.normalize(
+                        "NFKC", candidate["heading"]) if not char.isspace()
+                )
+                reading = "".join(
+                    char for char in unicodedata.normalize(
+                        "NFKC", candidate.get("reading", "")) if not char.isspace()
+                )
+                flags = candidate.setdefault("qaFlags", [])
+                if title and title not in source_text:
+                    flags.append("HEADING_NOT_CONTIGUOUS_ON_SOURCE_PAGE")
+                if book == "goi-vi" and reading and reading not in source_text:
+                    flags.append("READING_NOT_CONTIGUOUS_ON_SOURCE_PAGE")
             if not records:
                 unseen.append(page_no)
             all_cards.extend(records)

@@ -138,7 +138,7 @@ struct QuestionSessionView: View {
                                 }
                             }
                             HStack(spacing: 10) {
-                                MainButton(title: question.privateAudioURL == nil ? "Phát giọng Nhật iOS" : "Phát bản thoại bằng iOS", symbol: "play.fill") {
+                                MainButton(title: "Giọng Nhật iOS", symbol: "play.fill") {
                                     sourceAudio.stop()
                                     voice.speakConversation(text, rate: speed)
                                 }

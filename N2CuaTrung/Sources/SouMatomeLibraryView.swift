@@ -53,6 +53,8 @@ enum SouMatomeImportError: LocalizedError {
     case invalidPDF(Int, Int)
     case invalidSource
     case noAudio
+    case invalidAudioTrack(String)
+    case duplicateAudioTrack(String)
 
     var errorDescription: String? {
         switch self {
@@ -62,6 +64,10 @@ enum SouMatomeImportError: LocalizedError {
             return "Tệp không đúng định dạng PDF hoặc thư mục CD."
         case .noAudio:
             return "Không tìm thấy MP3 trong thư mục đã chọn. Hãy giải nén RAR trước."
+        case .invalidAudioTrack(let name):
+            return "Tệp MP3 không đúng CD hoặc số track: \(name). Không tự gán nhầm sang CD1."
+        case .duplicateAudioTrack(let key):
+            return "Thư mục nhập chứa hai tệp trùng cùng track: \(key). Hãy xử lý trùng trước khi nhập."
         }
     }
 }
@@ -70,6 +76,7 @@ enum SouMatomeImportError: LocalizedError {
 final class SouMatomeLibraryStore: ObservableObject {
     @Published private(set) var pagesImported: [String: Int] = [:]
     @Published private(set) var tracks: [SouMatomeTrack] = []
+    @Published private(set) var missingAudioTracks: [String] = []
 
     private let root = FileManager.default.urls(for: .applicationSupportDirectory,
                                                   in: .userDomainMask)[0]
@@ -115,15 +122,25 @@ final class SouMatomeLibraryStore: ObservableObject {
         }
         pagesImported = found
         var all: [SouMatomeTrack] = []
+        var keys: Set<String> = []
         for cd in ["CD1", "CD2"] {
             let folder = root.appendingPathComponent("Audio/" + cd, isDirectory: true)
-            let urls = (try? FileManager.default.contentsOfDirectory(at: folder,
-                             includingPropertiesForKeys: nil)) ?? []
-            all += urls.filter { $0.pathExtension.lowercased() == "mp3" }
-                .sorted { $0.lastPathComponent.localizedStandardCompare($1.lastPathComponent) == .orderedAscending }
-                .map { SouMatomeTrack(url: $0, cd: cd) }
+            let urls = (try? FileManager.default.contentsOfDirectory(
+                at: folder, includingPropertiesForKeys: nil)) ?? []
+            for url in urls.sorted(by: {
+                $0.lastPathComponent.localizedStandardCompare(
+                    $1.lastPathComponent) == .orderedAscending
+            }) {
+                guard let track = SouMatomeAudioCatalog.locate(
+                    components: [cd], filename: url.lastPathComponent) else { continue }
+                let canonical = folder.appendingPathComponent(track.filename)
+                guard FileManager.default.fileExists(atPath: canonical.path),
+                      keys.insert(track.key).inserted else { continue }
+                all.append(SouMatomeTrack(url: canonical, cd: cd))
+            }
         }
         tracks = all
+        missingAudioTracks = SouMatomeAudioCatalog.missingTracks(from: keys)
     }
 
     func importPDF(from source: URL, for book: SouMatomeDocument,
@@ -177,42 +194,99 @@ final class SouMatomeLibraryStore: ObservableObject {
         refresh()
     }
 
-    /// Chọn một thư mục CD1/CD2 hoặc thư mục mẹ chứa cả hai CD.
-    /// Giữ tách biệt tên file 01.mp3 ... vì hai CD dùng lại cùng tên.
-    func importAudioFolder(from source: URL) async throws -> Int {
+    /// Import all tracks privately, validating every MP3 before replacing
+    /// anything already installed. Never assume an unidentified file is CD1.
+    func importAudioFolder(from source: URL, study: StudyStore) async throws -> Int {
         let root = self.root
-        let imported = try await Task.detached(priority: .userInitiated) { () -> Int in
+        let imported = try await Task.detached(priority: .userInitiated) {
+            () throws -> (Int, Set<String>) in
             let scoped = source.startAccessingSecurityScopedResource()
             defer { if scoped { source.stopAccessingSecurityScopedResource() } }
-            var count = 0
-            var isDirectory: ObjCBool = false
-            guard FileManager.default.fileExists(atPath: source.path, isDirectory: &isDirectory),
-                  isDirectory.boolValue,
-                  let walker = FileManager.default.enumerator(at: source,
-                         includingPropertiesForKeys: [.isRegularFileKey],
-                         options: [.skipsHiddenFiles]) else {
+            var directory: ObjCBool = false
+            guard FileManager.default.fileExists(atPath: source.path,
+                                                   isDirectory: &directory),
+                  directory.boolValue,
+                  let walker = FileManager.default.enumerator(
+                    at: source,
+                    includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey],
+                    options: [.skipsHiddenFiles]) else {
                 throw SouMatomeImportError.invalidSource
             }
-            let rootAudio = root.appendingPathComponent("Audio", isDirectory: true)
-            for case let url as URL in walker {
-                guard url.pathExtension.lowercased() == "mp3" else { continue }
-                let relative = url.path.replacingOccurrences(of: source.path, with: "")
-                let label = (source.lastPathComponent + "/" + relative).uppercased()
-                let cd = label.contains("CD2") || label.contains("ＣＤ2") ? "CD2" : "CD1"
-                let folder = rootAudio.appendingPathComponent(cd, isDirectory: true)
-                try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-                let dest = folder.appendingPathComponent(url.lastPathComponent)
-                if FileManager.default.fileExists(atPath: dest.path) {
-                    try FileManager.default.removeItem(at: dest)
+            var incoming: [(SouMatomeAudioCatalog.LocatedTrack, URL)] = []
+            var seen: Set<String> = []
+            for case let file as URL in walker {
+                guard file.pathExtension.lowercased() == "mp3" else { continue }
+                guard let key = SouMatomeAudioCatalog.locate(
+                    components: file.deletingLastPathComponent().pathComponents,
+                    filename: file.lastPathComponent) else {
+                    throw SouMatomeImportError.invalidAudioTrack(
+                        file.lastPathComponent)
                 }
-                try FileManager.default.copyItem(at: url, to: dest)
-                count += 1
+                guard seen.insert(key.key).inserted else {
+                    throw SouMatomeImportError.duplicateAudioTrack(key.key)
+                }
+                let info = try file.resourceValues(forKeys: [.isRegularFileKey,
+                                                            .fileSizeKey])
+                guard info.isRegularFile == true,
+                      (info.fileSize ?? 0) > 1024 else {
+                    throw SouMatomeImportError.invalidAudioTrack(
+                        file.lastPathComponent)
+                }
+                incoming.append((key, file))
             }
-            guard count > 0 else { throw SouMatomeImportError.noAudio }
-            return count
+            guard !incoming.isEmpty else { throw SouMatomeImportError.noAudio }
+
+            let audioRoot = root.appendingPathComponent("Audio", isDirectory: true)
+            try FileManager.default.createDirectory(
+                at: audioRoot, withIntermediateDirectories: true)
+            let staging = audioRoot.appendingPathComponent(
+                ".import-" + UUID().uuidString, isDirectory: true)
+            try FileManager.default.createDirectory(
+                at: staging, withIntermediateDirectories: true)
+            defer { try? FileManager.default.removeItem(at: staging) }
+            var changed: Set<String> = []
+            // Stage first so a corrupt/unreadable MP3 cannot destroy a valid
+            // existing track before all source files are checked.
+            for (track, file) in incoming {
+                let folder = staging.appendingPathComponent(
+                    track.disc, isDirectory: true)
+                try FileManager.default.createDirectory(
+                    at: folder, withIntermediateDirectories: true)
+                let dest = folder.appendingPathComponent(track.filename)
+                try FileManager.default.copyItem(at: file, to: dest)
+                let installed = audioRoot.appendingPathComponent(
+                    track.key)
+                if FileManager.default.fileExists(atPath: installed.path),
+                   try SouMatomeAudioCatalog.fingerprint(installed) !=
+                       SouMatomeAudioCatalog.fingerprint(dest) {
+                    changed.insert(track.key)
+                }
+            }
+
+            for (track, _) in incoming {
+                let staged = staging.appendingPathComponent(track.key)
+                let finalFolder = audioRoot.appendingPathComponent(
+                    track.disc, isDirectory: true)
+                try FileManager.default.createDirectory(
+                    at: finalFolder, withIntermediateDirectories: true)
+                let target = finalFolder.appendingPathComponent(track.filename)
+                if FileManager.default.fileExists(atPath: target.path) {
+                    _ = try FileManager.default.replaceItemAt(
+                        target, withItemAt: staged)
+                } else {
+                    try FileManager.default.moveItem(at: staged, to: target)
+                }
+            }
+            return (incoming.count, changed)
         }.value
+
+        if !imported.1.isEmpty {
+            let questions = SouMatomePrivateQuestionStore()
+            try questions.invalidateAudioTracks(imported.1)
+            _ = try questions.synchronize(with: study)
+        }
         refresh()
-        return imported
+        return imported.0
     }
 }
 
@@ -434,7 +508,7 @@ struct SouMatomeLibraryView: View {
                 working = true
                 Task {
                     do {
-                        let count = try await library.importAudioFolder(from: url)
+                        let count = try await library.importAudioFolder(from: url, study: store)
                         message = "Đã nhập \(count) tệp âm thanh vào thư viện riêng."
                     } catch {
                         message = "Lỗi nhập audio: \(error.localizedDescription)"

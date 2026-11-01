@@ -12,6 +12,7 @@ struct SouMatomeSourceSearchHit: Identifiable {
 }
 
 struct SouMatomeWholeBooksView: View {
+    @EnvironmentObject private var study: StudyStore
     @StateObject private var library = SouMatomeLibraryStore()
     @State private var searchText = ""
     @State private var results: [SouMatomeSourceSearchHit] = []
@@ -52,6 +53,25 @@ struct SouMatomeWholeBooksView: View {
                     }.buttonStyle(.plain)
                     Text("Số trang đã nhập là số trang nguồn, không phải số mục flashcard đã hiệu đính. Các file sách và CD chỉ lưu trên iPhone của bạn.")
                         .font(.caption).foregroundColor(.secondary)
+                }
+
+                LessonPanel {
+                    SectionTitle("Tình trạng kho học liệu đã dùng được",
+                                 subtitle: "Đếm bài học thực trong ứng dụng, không đếm trang sách là flashcard")
+                    if study.selectedSeries == .souMatome {
+                        Text("Từ vựng: \(study.course.vocab.count) · Kanji: \(study.course.kanji.count) · Ngữ pháp: \(study.course.grammar.count)")
+                            .font(.subheadline).foregroundColor(Palette.navy)
+                        Text("Đọc hiểu: \(study.course.readings.count) câu · Nghe hiểu: \(study.course.listening.count) câu")
+                            .font(.subheadline).foregroundColor(Palette.navy)
+                    } else {
+                        Text("Chọn bộ Sou Matome để xem số lượng bài tương tác của bộ này.")
+                            .font(.subheadline).foregroundColor(.secondary)
+                    }
+                    Text("PDF đã nhập: \(importedBooks.count)/8 · MP3 đã nhập: \(library.tracks.count)/116. Chỉ số nhập tệp không bảo đảm bản dịch và đáp án đã đối chiếu.")
+                        .font(.caption).foregroundColor(.secondary)
+                    Text("Chưa có xác nhận hoàn thiện 100% từng mục của toàn bộ sách.")
+                        .font(.caption.weight(.medium))
+                        .foregroundColor(Palette.orange)
                 }
 
                 NavigationLink {

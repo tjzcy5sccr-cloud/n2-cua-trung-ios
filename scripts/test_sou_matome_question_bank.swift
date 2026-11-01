@@ -46,6 +46,27 @@ enum SourceQuestionBankTests {
         let duplicates = try course([values[0], values[1], values[2], values[4]])
         precondition(QuestionBank.vocabulary(duplicates, week: 35).isEmpty,
                      "Visually duplicate meanings must not become a 4-choice quiz")
-        print("PASS: 4 unique meanings needed; all answers unambiguous")
+        // CD paths are strictly CD1 / CD2 plus a bounded numeric track.
+        // Invalid metadata must never load an arbitrary local/remote file.
+        let badAudio: [String: Any] = [
+            "id": "synthetic-audio-1", "title": "Tình huống tự soạn",
+            "speaker": "người nói", "script": "今日はどこへ行きますか。",
+            "scriptVi": "Hôm nay đi đâu?", "question": "Người nói hỏi gì?",
+            "choices": ["Hôm nay đi đâu?", "Hôm qua thế nào?",
+                        "Ngày mai ăn gì?", "Đây là gì?"],
+            "answer": 0, "explanation": "Lời thoại dùng どこへ.",
+            "audioCD": "../private", "audioTrack": 1
+        ]
+        let pack: [String: Any] = [
+            "vocab": [[String: Any]](), "grammar": [[String: Any]](),
+            "kanji": [[String: Any]](), "readings": [[String: Any]](),
+            "listening": [badAudio], "weeks": [[String: Any]]()
+        ]
+        let encoded = try JSONSerialization.data(withJSONObject: pack)
+        let listeningData = try JSONDecoder().decode(CourseData.self, from: encoded)
+        let unsafeQuestion = QuestionBank.listening(listeningData)
+        precondition(unsafeQuestion.count == 1 && unsafeQuestion[0].privateAudioURL == nil,
+                     "Invalid CD selector must never form an audio file path")
+        print("PASS: 4 distinct meanings and local CD audio path validation")
     }
 }

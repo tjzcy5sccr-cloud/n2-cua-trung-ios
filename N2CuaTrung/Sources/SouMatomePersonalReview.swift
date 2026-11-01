@@ -102,6 +102,27 @@ final class SouMatomePersonalReviewStore: ObservableObject {
         return try installApprovedIntoStudy(study)
     }
 
+    /// When new parser output changes an existing source candidate, its old
+    /// approval must not silently attach to a different Japanese headword.
+    /// Preserve the user's corrected content as a draft for comparison.
+    func invalidateCandidateIDs(_ ids: Set<String>) throws {
+        guard !ids.isEmpty else { return }
+        var revised = cards
+        for id in ids {
+            guard var card = revised[id] else { continue }
+            card.sourceChecked = false
+            card.translationChecked = false
+            card.lastApproved = nil
+            revised[id] = card
+        }
+        try FileManager.default.createDirectory(at: folder,
+                                                withIntermediateDirectories: true)
+        let data = try JSONEncoder().encode(revised)
+        try data.write(to: file, options: .atomic)
+        cards = revised
+        lastError = nil
+    }
+
     func card(for candidate: SouMatomeSourceEntry) -> SouMatomePersonalCard {
         cards[candidate.id] ?? .draft(candidate)
     }

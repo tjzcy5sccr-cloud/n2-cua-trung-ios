@@ -59,6 +59,7 @@ jobs:
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeWholeBooksView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeSourceEntriesView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePersonalReview.swift
+          swiftc -frontend -parse N2CuaTrung/Sources/SouMatomeCandidateAudit.swift
           swiftc -frontend -parse N2CuaTrung/Sources/SouMatomePrivateQuestions.swift
           swiftc -frontend -parse N2CuaTrung/Sources/LearningSeriesPickerView.swift
           swiftc -frontend -parse N2CuaTrung/Sources/DashboardView.swift
@@ -75,6 +76,10 @@ jobs:
         run: |
           swiftc N2CuaTrung/Sources/Models.swift N2CuaTrung/Sources/GrammarExamples.swift scripts/test_sou_matome_question_bank.swift -o /tmp/sou-matome-quiz-tests
           /tmp/sou-matome-quiz-tests
+      - name: Test local N2 source candidate quality queue
+        run: |
+          swiftc N2CuaTrung/Sources/SouMatomeCandidateAudit.swift scripts/test_sou_matome_candidate_audit.swift -o /tmp/sou-matome-audit-qa
+          /tmp/sou-matome-audit-qa
       - name: Validate independent study packs
         run: |
           python3 scripts/validate_sou_matome_quiz_quality.py

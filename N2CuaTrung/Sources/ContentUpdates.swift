@@ -191,6 +191,13 @@ enum CoursePackManager {
         }
     }
 
+    static func uninstallPersonalExercisePack() throws {
+        let file = folder.appendingPathComponent("sou-matome-personal-exercises.json")
+        if FileManager.default.fileExists(atPath: file.path) {
+            try FileManager.default.removeItem(at: file)
+        }
+    }
+
     @discardableResult
     static func install(_ bytes: Data, alreadyInstalled: [CoursePack]) throws -> CoursePack {
         let pack = try validate(bytes)
@@ -211,6 +218,11 @@ extension StudyStore {
 
     func revokePersonalReviewedPack() throws {
         try CoursePackManager.uninstallPersonalReviewedPack()
+        reloadCoursePacks()
+    }
+
+    func revokePersonalExercisePack() throws {
+        try CoursePackManager.uninstallPersonalExercisePack()
         reloadCoursePacks()
     }
 

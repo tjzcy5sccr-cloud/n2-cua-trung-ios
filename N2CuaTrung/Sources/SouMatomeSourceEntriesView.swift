@@ -317,9 +317,16 @@ struct SouMatomeSourceEntriesView: View {
              (qualityFilter == "Trùng chữ Nhật" &&
               source.diagnostics.flags(for: item.id).contains("DUPLICATE_JAPANESE_HEADWORD")) ||
              (qualityFilter == "Thiếu nghĩa Việt" &&
-              source.diagnostics.flags(for: item.id).contains("MISSING_VIETNAMESE_GLOSS")) ||
+              source.diagnostics.flags(for: item.id).contains(where: {
+                  ["MISSING_VIETNAMESE_GLOSS",
+                   "MISSING_ADJACENT_VIETNAMESE_MEANING",
+                   "MISSING_VIETNAMESE_SENSE_AND_READINGS"].contains($0)
+              })) ||
              (qualityFilter == "Thiếu cách đọc" &&
-              source.diagnostics.flags(for: item.id).contains("MISSING_KANA_READING")) ||
+              source.diagnostics.flags(for: item.id).contains(where: {
+                  ["MISSING_KANA_READING",
+                   "MISSING_VIETNAMESE_SENSE_AND_READINGS"].contains($0)
+              })) ||
              (qualityFilter == "Đã kiểm chứng" &&
               reviews.cards[item.id]?.isApproved == true) ||
              (qualityFilter == "Chưa kiểm chứng" &&

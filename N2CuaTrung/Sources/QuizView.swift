@@ -50,6 +50,7 @@ struct QuestionSessionView: View {
 
     @EnvironmentObject private var store: StudyStore
     @StateObject private var voice = JapaneseVoice.shared
+    @StateObject private var sourceAudio = SouMatomeAudioPlayer()
     @State private var position = 0
     @State private var selected: Int? = nil
     /// Lưu lựa chọn theo số thứ tự; bỏ qua được giữ là chưa trả lời.
@@ -121,12 +122,29 @@ struct QuestionSessionView: View {
                         }
                         if let text = question.audioText {
                             SectionTitle("Nghe tình huống")
+                            if let localURL = question.privateAudioURL {
+                                MainButton(title: "Phát track CD đã đối chiếu",
+                                           symbol: "play.circle.fill",
+                                           color: Palette.teal) {
+                                    voice.stop()
+                                    sourceAudio.play(SouMatomeTrack(
+                                        url: localURL, cd: localURL.deletingLastPathComponent().lastPathComponent))
+                                }
+                                if sourceAudio.playing {
+                                    MainButton(title: "Dừng CD", symbol: "stop.fill",
+                                               color: Palette.navy) {
+                                        sourceAudio.stop()
+                                    }
+                                }
+                            }
                             HStack(spacing: 10) {
                                 MainButton(title: "Phát audio", symbol: "play.fill") {
+                                    sourceAudio.stop()
                                     voice.speakConversation(text, rate: speed)
                                 }
                                 MainButton(title: "Dừng", symbol: "stop.fill", color: Palette.navy) {
                                     voice.stop()
+                                    sourceAudio.stop()
                                 }
                             }
                             HStack {
@@ -311,7 +329,7 @@ struct QuestionSessionView: View {
                 .background(.regularMaterial)
             }
         }
-        .onDisappear { voice.stop(); nextQuestionTask?.cancel() }
+        .onDisappear { voice.stop(); sourceAudio.stop(); nextQuestionTask?.cancel() }
         .onReceive(ticker) { _ in
             guard timed && !completed && !questions.isEmpty else { return }
             if remainingSeconds > 0 { remainingSeconds -= 1 }
@@ -440,6 +458,7 @@ struct QuestionSessionView: View {
         nextQuestionTask?.cancel()
         nextQuestionTask = nil
         voice.stop()
+        sourceAudio.stop()
         if position + 1 < questions.count {
             position += 1
             selected = nil
@@ -454,6 +473,7 @@ struct QuestionSessionView: View {
         showAllExplanations = false
         nextQuestionTask?.cancel()
         voice.stop()
+        sourceAudio.stop()
         store.recordTest(correct: correct, total: questions.count, type: type)
     }
 

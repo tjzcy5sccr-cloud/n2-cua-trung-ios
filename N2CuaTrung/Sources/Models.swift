@@ -102,6 +102,10 @@ struct ListeningLesson: Decodable, Identifiable {
     let title: String
     let speaker: String
     let script: String
+    /// Đường dẫn CD/track là metadata của bộ audio riêng trên iPhone;
+    /// không tải hoặc công bố các MP3 lên GitHub.
+    let audioCD: String?
+    let audioTrack: Int?
     /// Bản dịch toàn hội thoại để xem sau khi người học yêu cầu kết quả.
     let scriptVi: String?
     let question: String
@@ -164,6 +168,8 @@ struct ExamQuestion: Identifiable {
     let prompt: String
     let passage: String?
     let audioText: String?
+    /// Chỉ có giá trị nếu người học đã nhập MP3 tương ứng vào thư viện.
+    var privateAudioURL: URL? = nil
     let choices: [String]
     let answer: Int
     let explanation: String
@@ -278,9 +284,24 @@ enum QuestionBank {
     static func listening(_ data: CourseData) -> [ExamQuestion] {
         uniqueSession(data.listening, key: "N2.recentListeningV2").map { item in
             let (choices, answer) = shuffledChoices(item.choices, answer: item.answer)
-            return ExamQuestion(category: "Nghe hiểu", prompt: item.question,
-                                passage: nil, audioText: item.script, choices: choices,
-                                answer: answer, explanation: item.explanation)
+            var question = ExamQuestion(category: "Nghe hiểu", prompt: item.question,
+                                        passage: nil, audioText: item.script, choices: choices,
+                                        answer: answer, explanation: item.explanation)
+            // No remote audio fetches; no unsafe user-supplied URL/path segments.
+            if let cd = item.audioCD, ["CD1", "CD2"].contains(cd),
+               let track = item.audioTrack,
+               (1...(cd == "CD1" ? 64 : 52)).contains(track) {
+                let path = FileManager.default.urls(
+                    for: .applicationSupportDirectory,
+                    in: .userDomainMask)[0]
+                    .appendingPathComponent("SouMatomePersonalLibrary/Audio/" + cd,
+                                            isDirectory: true)
+                    .appendingPathComponent(String(format: "%02d.mp3", track))
+                if FileManager.default.fileExists(atPath: path.path) {
+                    question.privateAudioURL = path
+                }
+            }
+            return question
         }
     }
 

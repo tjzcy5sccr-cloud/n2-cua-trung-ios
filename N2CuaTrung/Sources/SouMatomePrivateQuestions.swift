@@ -15,6 +15,8 @@ struct SouMatomePrivateQuestion: Identifiable, Codable {
     var choices: [String]
     var answer: Int
     var explanation: String
+    var audioCD: String
+    var audioTrack: Int
     var sourceChecked: Bool
     var translationChecked: Bool
     var answerChecked: Bool
@@ -26,6 +28,7 @@ struct SouMatomePrivateQuestion: Identifiable, Codable {
               title: "", japaneseText: "", vietnameseText: "",
               question: "", choices: Array(repeating: "", count: 4),
               answer: 0, explanation: "",
+              audioCD: "CD1", audioTrack: 1,
               sourceChecked: false, translationChecked: false,
               answerChecked: false, approvedAt: nil)
     }
@@ -42,6 +45,11 @@ struct SouMatomePrivateQuestion: Identifiable, Codable {
         guard (kind == "Đọc hiểu" && bookID == "dokkai") ||
               (kind == "Nghe hiểu" && bookID == "choukai") else { return false }
         let maxPage = kind == "Đọc hiểu" ? 121 : 73
+        if kind == "Nghe hiểu" {
+            guard ["CD1", "CD2"].contains(audioCD),
+                  (1...(audioCD == "CD1" ? 64 : 52)).contains(audioTrack)
+            else { return false }
+        }
         guard (1...maxPage).contains(page), !title.isEmpty, !question.isEmpty,
               !japaneseText.isEmpty, !vietnameseText.isEmpty,
               !explanation.isEmpty, choices.count == 4,
@@ -153,6 +161,7 @@ final class SouMatomePrivateQuestionStore: ObservableObject {
                     // The quiz uses the verified Japanese script as iOS TTS;
                     // original CD files remain in the separate private library.
                     "script": item.japaneseText, "scriptVi": item.vietnameseText,
+                    "audioCD": item.audioCD, "audioTrack": item.audioTrack,
                     "question": item.question, "choices": item.choices,
                     "answer": item.answer, "explanation": item.explanation
                 ])
@@ -250,6 +259,25 @@ struct SouMatomePrivateQuestionEditor: View {
                 Text(item.kind)
                 Stepper("Trang \(item.page)", value: $item.page,
                         in: 1...(item.kind == "Đọc hiểu" ? 121 : 73))
+                if item.kind == "Nghe hiểu" {
+                    Picker("CD nguồn", selection: $item.audioCD) {
+                        Text("CD1").tag("CD1")
+                        Text("CD2").tag("CD2")
+                    }
+                    Stepper("Track \(item.audioTrack)",
+                            value: $item.audioTrack,
+                            in: 1...(item.audioCD == "CD1" ? 64 : 52))
+                    if let track = SouMatomeLibraryStore().tracks.first(where: {
+                        $0.cd == item.audioCD &&
+                        Int($0.name.filter(\.isNumber)) == item.audioTrack
+                    }) {
+                        Text("Đã tìm thấy \(track.name).mp3 trong thư viện riêng.")
+                            .font(.caption).foregroundColor(.secondary)
+                    } else {
+                        Text("Chưa nhập đúng track CD này. Có thể ghi nội dung nhưng chưa phát audio gốc trong đề.")
+                            .font(.caption).foregroundColor(.secondary)
+                    }
+                }
                 if let book = SouMatomeDocument.all.first(where: {
                     $0.id == item.bookID
                 }), let url = SouMatomeLibraryStore().fileURL(for: book) {
@@ -283,7 +311,9 @@ struct SouMatomePrivateQuestionEditor: View {
                           text: $item.explanation, axis: .vertical)
             }
             Section("Kiểm chứng nguồn và đáp án") {
-                Toggle("Đã đối chiếu nguyên văn tiếng Nhật với PDF",
+                Toggle(item.kind == "Nghe hiểu"
+                       ? "Đã đối chiếu văn bản Nhật với PDF và track CD"
+                       : "Đã đối chiếu nguyên văn tiếng Nhật với PDF",
                        isOn: $sourceOK)
                 Toggle("Đã đối chiếu dịch nghĩa tiếng Việt",
                        isOn: $translationOK)
@@ -313,6 +343,8 @@ struct SouMatomePrivateQuestionEditor: View {
             answerOK = item.answerChecked
         }
         .onChange(of: item.page) { _ in sourceOK = false }
+        .onChange(of: item.audioCD) { _ in sourceOK = false }
+        .onChange(of: item.audioTrack) { _ in sourceOK = false }
         .onChange(of: item.japaneseText) { _ in sourceOK = false }
         .onChange(of: item.vietnameseText) { _ in translationOK = false }
         .onChange(of: item.title) { _ in sourceOK = false }

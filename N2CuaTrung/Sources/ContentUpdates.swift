@@ -182,6 +182,15 @@ enum CoursePackManager {
         return pack
     }
 
+    /// Revoke the local reviewed-only pack when a source PDF or approved meaning
+    /// changes. Never remove other series or the user's spaced-repetition history.
+    static func uninstallPersonalReviewedPack() throws {
+        let file = folder.appendingPathComponent("sou-matome-personal-reviewed.json")
+        if FileManager.default.fileExists(atPath: file.path) {
+            try FileManager.default.removeItem(at: file)
+        }
+    }
+
     @discardableResult
     static func install(_ bytes: Data, alreadyInstalled: [CoursePack]) throws -> CoursePack {
         let pack = try validate(bytes)
@@ -197,6 +206,11 @@ extension StudyStore {
     /// Cho phép nhập gói JSON từ Files trên iPhone, không cần Internet.
     func importContentPack(_ bytes: Data) throws {
         _ = try CoursePackManager.install(bytes, alreadyInstalled: installedPacks)
+        reloadCoursePacks()
+    }
+
+    func revokePersonalReviewedPack() throws {
+        try CoursePackManager.uninstallPersonalReviewedPack()
         reloadCoursePacks()
     }
 

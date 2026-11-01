@@ -198,11 +198,16 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         let old = loadImportedCandidates()
         let incomingBooks = Set(incoming.map(\.bookId))
         let oldAffected = old.filter { incomingBooks.contains($0.bookId) }
-        let oldByID = Dictionary(uniqueKeysWithValues:
-            oldAffected.map { ($0.id, $0) })
+        // Also catch approvals made against the older PDFKit-derived rows
+        // before the more reliable private geometry file was imported.
+        var oldByID: [String: SouMatomeSourceEntry] = [:]
+        for item in entries where incomingBooks.contains(item.bookId) {
+            oldByID[item.id] = item
+        }
+        for item in oldAffected { oldByID[item.id] = item }
         let incomingByID = Dictionary(uniqueKeysWithValues:
             incoming.map { ($0.id, $0) })
-        let changedIDs = Set(oldAffected.compactMap { previous -> String? in
+        let changedIDs = Set(oldByID.values.compactMap { previous -> String? in
             guard let updated = incomingByID[previous.id] else {
                 return previous.id
             }

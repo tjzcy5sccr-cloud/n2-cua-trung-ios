@@ -485,6 +485,17 @@ struct SouMatomeSourceEntriesView: View {
         case "READING_NOT_CONTIGUOUS_ON_SOURCE_PAGE": return "Cách đọc cần đối chiếu"
         case "JAPANESE_PRESENT_IN_VIETNAMESE_GLOSS": return "Nghĩa có chữ Nhật"
         case "NO_JAPANESE_HEADWORD": return "Thiếu chữ Nhật"
+        case "MISSING_HAN_VIET_LABEL": return "PDF thiếu âm Hán–Việt"
+        case "HAN_VIET_CONFLICT_WITH_DICTIONARY": return "Hán–Việt khác từ điển"
+        case "SOURCE_READING_SPLIT_ACROSS_PAGE": return "Cách đọc bị cắt trang"
+        case "NEEDS_CONTEXTUAL_VIETNAMESE_MEANING": return "Cần dịch nghĩa Kanji"
+        case "PAGE_CONTINUATION_FRAGMENT_NEEDS_RECONSTRUCTION":
+            return "Dòng bị cắt ở đầu trang"
+        case "CONTEXT_DEPENDENT_SUFFIX_NEEDS_REVIEW": return "Hậu tố cần ngữ cảnh"
+        case "HEADING_RECONSTRUCTED_FROM_PDF": return "Đã ghép lại tiêu đề"
+        case "SOURCE_TYPO_CORRECTED": return "Đã sửa lỗi nguồn"
+        case "HEADING_IS_EXAMPLE_NOT_GRAMMAR_RULE": return "Ví dụ, chưa phải quy tắc"
+        case "INDEPENDENT_DICTIONARY_CROSSCHECKED": return "Có đối chiếu từ điển"
         default: return "Kiểm tra nguồn"
         }
     }

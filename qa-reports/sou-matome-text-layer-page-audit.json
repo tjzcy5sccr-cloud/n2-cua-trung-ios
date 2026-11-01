@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "method": "PyMuPDF page-by-page extraction of three user-provided Vietnamese supplementary PDFs, without storing their textbook text",
+  "sourcePrivate": true,
+  "books": [
+    {
+      "id": "goi-vi",
+      "expectedPages": 163,
+      "nonEmptyTextPages": 163,
+      "minimumTextCharacters": 442,
+      "medianTextCharacters": 584,
+      "maximumTextCharacters": 773,
+      "pagesWithNoRecognizedJapanese": [],
+      "pagesUnder100TextCharacters": []
+    },
+    {
+      "id": "kanji-vi",
+      "expectedPages": 208,
+      "nonEmptyTextPages": 208,
+      "minimumTextCharacters": 47,
+      "medianTextCharacters": 455,
+      "maximumTextCharacters": 561,
+      "pagesWithNoRecognizedJapanese": [
+        208
+      ],
+      "pagesUnder100TextCharacters": [
+        208
+      ]
+    },
+    {
+      "id": "bunpou-vi",
+      "expectedPages": 185,
+      "nonEmptyTextPages": 185,
+      "minimumTextCharacters": 74,
+      "medianTextCharacters": 719,
+      "maximumTextCharacters": 1229,
+      "pagesWithNoRecognizedJapanese": [],
+      "pagesUnder100TextCharacters": [
+        85,
+        185
+      ]
+    }
+  ],
+  "totals": {
+    "pdfPages": 556,
+    "nonEmptyTextPages": 556,
+    "pagesWithNoJapanese": 1,
+    "pagesUnder100TextCharacters": 3,
+    "otherScannedPrimaryPagesRequiringOCR": 683
+  },
+  "notes": [
+    "All 556 pages have a nonempty selectable text layer; this does not mean every Japanese character, furigana, translation or grammar choice was extracted correctly.",
+    "Page 208 of the Kanji supplement contains no detectable Japanese codepoints in its text layer; it may be an index/end matter page and should be visually inspected.",
+    "Pages 85 and 185 of the grammar supplement and 208 of Kanji have fewer than 100 selectable text characters. Short pages are flagged for review, not automatically labeled missing lessons.",
+    "No copyrighted book passages or audio were uploaded to the public repository.",
+    "Full source coverage and 100% Japanese-Vietnamese accuracy remain unverified."
+  ]
+}

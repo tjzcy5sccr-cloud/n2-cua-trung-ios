@@ -13,9 +13,12 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
     let detail: String
     let skill: String
     let reading: String?
+    /// Private-source automated warnings. Never interpreted as approval.
+    let qaFlags: [String]?
 
     init(id: String, bookId: String, page: Int, heading: String,
-         detail: String, skill: String, reading: String? = nil) {
+         detail: String, skill: String, reading: String? = nil,
+         qaFlags: [String]? = nil) {
         self.id = id
         self.bookId = bookId
         self.page = page
@@ -23,6 +26,7 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
         self.detail = detail
         self.skill = skill
         self.reading = reading
+        self.qaFlags = qaFlags
     }
 }
 
@@ -279,6 +283,7 @@ struct SouMatomeSourceEntriesView: View {
     @StateObject private var library = SouMatomeLibraryStore()
     @State private var query = ""
     @State private var skill = "Tất cả"
+    @State private var qualityFilter = "Tất cả"
     @State private var displayLimit = 200
     @State private var revealedIDs: Set<String> = []
     @StateObject private var reviews = SouMatomePersonalReviewStore()
@@ -287,10 +292,17 @@ struct SouMatomeSourceEntriesView: View {
     @State private var pickCandidateJSON = false
     @State private var importMessage: String?
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
+    private let qualityFilters = ["Tất cả", "Cần rà soát", "Đã kiểm chứng", "Chưa kiểm chứng"]
 
     private var matching: [SouMatomeSourceEntry] {
         source.entries.filter { item in
             (skill == "Tất cả" || skill == item.skill) &&
+            (qualityFilter == "Tất cả" ||
+             (qualityFilter == "Cần rà soát" && !(item.qaFlags ?? []).isEmpty) ||
+             (qualityFilter == "Đã kiểm chứng" &&
+              reviews.cards[item.id]?.isApproved == true) ||
+             (qualityFilter == "Chưa kiểm chứng" &&
+              reviews.cards[item.id]?.isApproved != true)) &&
             (query.isEmpty || (item.heading + " " + item.detail)
                 .localizedCaseInsensitiveContains(query))
         }
@@ -347,6 +359,9 @@ struct SouMatomeSourceEntriesView: View {
                     Picker("Kỹ năng", selection: $skill) {
                         ForEach(skills, id: \.self) { Text($0).tag($0) }
                     }.pickerStyle(.menu)
+                    Picker("Tình trạng", selection: $qualityFilter) {
+                        ForEach(qualityFilters, id: \.self) { Text($0).tag($0) }
+                    }.pickerStyle(.menu)
                     TextField("Tìm chữ Nhật hoặc nghĩa Việt", text: $query)
                         .textFieldStyle(.roundedBorder)
                     Text("\(matching.count) ứng viên phù hợp")
@@ -381,6 +396,12 @@ struct SouMatomeSourceEntriesView: View {
                                     }
                                     .buttonStyle(.borderless)
                                     .font(.caption)
+                                    if let flags = entry.qaFlags, !flags.isEmpty {
+                                        Label("Cần rà soát nguồn: \(flags.count) dấu hiệu chưa chắc chắn",
+                                              systemImage: "exclamationmark.triangle")
+                                            .font(.caption)
+                                            .foregroundColor(Palette.orange)
+                                    }
                                     Text("\(entry.skill) · Trang \(entry.page) · "
                                          + (reviews.cards[entry.id]?.isApproved == true
                                             ? "Đã kiểm chứng" : "Chưa kiểm chứng"))

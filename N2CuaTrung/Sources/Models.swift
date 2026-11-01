@@ -67,6 +67,9 @@ struct Grammar: Decodable, Identifiable {
 struct Kanji: Decodable, Identifiable {
     let id: String
     let char: String
+    /// Corrected Hán-Việt reading for manually checked personal Kanji only.
+    /// Existing packs may omit this optional field.
+    let hanViet: String?
     let on: String
     let kun: String
     let meaning: String

@@ -118,6 +118,21 @@ final class SouMatomePrivateQuestionStore: ObservableObject {
         try write(revised)
     }
 
+    /// A changed CD track invalidates only exercises linked to that file.
+    /// Unchanged listening questions and reading questions keep their reviews.
+    func invalidateAudioTracks(_ keys: Set<String>) throws {
+        guard !keys.isEmpty else { return }
+        var revised = items
+        for index in revised.indices where revised[index].kind == "Nghe hiểu" {
+            let item = revised[index]
+            let filename = String(format: "%02d.mp3", item.audioTrack)
+            if keys.contains(item.audioCD + "/" + filename) {
+                revised[index].revokeApproval()
+            }
+        }
+        try write(revised)
+    }
+
     private func write(_ updated: [SouMatomePrivateQuestion]) throws {
         guard updated.count <= 2000,
               Set(updated.map(\.id)).count == updated.count else {

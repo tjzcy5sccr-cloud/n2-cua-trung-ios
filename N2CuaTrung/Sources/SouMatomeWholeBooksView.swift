@@ -62,6 +62,14 @@ struct SouMatomeWholeBooksView: View {
                                detail: "Đọc toàn bộ trang có chữ, tách từ vựng – Kanji – ngữ pháp để đối chiếu")
                 }.buttonStyle(.plain)
 
+                NavigationLink {
+                    SouMatomePrivateQuestionListView()
+                } label: {
+                    ActionTile(icon: "checklist", color: Palette.blue,
+                               title: "Hiệu đính câu hỏi đọc và nghe",
+                               detail: "Bốn đáp án, lời giải Nhật–Việt, đối chiếu đúng trang nguồn")
+                }.buttonStyle(.plain)
+
                 bookGroup(title: "Từ vựng · 語彙", ids: ["goi", "goi-vi"])
                 bookGroup(title: "Kanji · 漢字", ids: ["kanji", "kanji-vi"])
                 bookGroup(title: "Ngữ pháp · 文法", ids: ["bunpou", "bunpou-vi"])

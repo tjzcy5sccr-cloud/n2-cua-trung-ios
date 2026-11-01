@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "source": "User-provided Sou Matome N2 Bunpou Vietnamese supplement PDF (185 pages)",
+  "method": "All-pages PyMuPDF line-marker scan of A-H subheadings and the nearest explicit 'Ý nghĩa' label",
+  "observationDate": "2026-11-01",
+  "result": {
+    "candidateGrammarPatternHeadings": 173,
+    "withImmediateVietnameseDefinition": 152,
+    "headingsFragmentedByRubyOrLayout": 43,
+    "withoutImmediateVietnameseDefinition": 21
+  },
+  "interpretation": "The 173 records are unverified source positions. A textbook lesson heading is not a grammar point, and Japanese ruby/furigana may be split across lines. 43 need manual reconstruction and 21 lack an adjacent parsed meaning. Some groups overlap. No records are automatically approved.",
+  "bookUploadedToGitHub": false,
+  "qaStatus": "NOT_FULLY_VERIFIED",
+  "documentedExtractor": "scripts/extract_sou_matome_private_candidates.py"
+}

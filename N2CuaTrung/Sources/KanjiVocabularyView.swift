@@ -36,8 +36,18 @@ struct KanjiVocabularyView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Âm Hán–Việt")
                             .font(.caption.weight(.semibold)).foregroundColor(.secondary)
-                        Text(info.sinoVietnamese)
+                        Text(item.hanViet.flatMap { $0.isEmpty ? nil : $0 } ??
+                             info.sinoVietnamese)
                             .font(.headline).foregroundColor(Palette.blue)
+                        if let label = item.hanViet, !label.isEmpty,
+                           label.folding(options: [.caseInsensitive, .diacriticInsensitive],
+                                         locale: Locale(identifier: "vi_VN")) !=
+                           info.sinoVietnamese.folding(
+                               options: [.caseInsensitive, .diacriticInsensitive],
+                               locale: Locale(identifier: "vi_VN")) {
+                            Text("Đối chiếu từ điển: " + info.sinoVietnamese)
+                                .font(.caption).foregroundColor(Palette.orange)
+                        }
                     }
                     Spacer()
                     if let radical = KangxiReference.radical(forKanji: item.char) {

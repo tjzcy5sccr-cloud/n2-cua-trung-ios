@@ -452,7 +452,8 @@ struct SouMatomeSourceEntriesView: View {
                                                          ? Palette.teal : .secondary)
                                     NavigationLink {
                                         SouMatomePersonalCardEditor(candidate: entry,
-                                                                     reviews: reviews)
+                                                                     reviews: reviews,
+                                                                     reviewQueue: source.entries)
                                     } label: {
                                         Label("Sửa và kiểm tra nghĩa", systemImage: "checkmark.seal")
                                     }

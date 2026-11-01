@@ -170,14 +170,36 @@ struct ExamQuestion: Identifiable {
 }
 
 enum QuestionBank {
+    /// Compare choices after normalizing Japanese/Vietnamese spacing, width
+    /// and case, so two visually identical meanings can never be two answers.
+    private static func answerKey(_ value: String) -> String {
+        value.trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.caseInsensitive, .diacriticInsensitive,
+                               .widthInsensitive],
+                     locale: Locale(identifier: "vi_VN"))
+            .replacingOccurrences(of: "\\s+", with: " ",
+                                  options: .regularExpression)
+    }
+
+    private static func hasFourDistinctMeanings(_ meanings: [String]) -> Bool {
+        Set(meanings.map(answerKey).filter { !$0.isEmpty }).count >= 4
+    }
+
     private static func create(category: String, prompt: String, passage: String? = nil,
                                audio: String? = nil, correct: String, others: [String],
-                               explanation: String) -> ExamQuestion {
-        var alternatives = [String]()
-        for candidate in others.shuffled() where candidate != correct && !alternatives.contains(candidate) {
+                               explanation: String) -> ExamQuestion? {
+        let normalizedCorrect = answerKey(correct)
+        guard !normalizedCorrect.isEmpty else { return nil }
+        var used: Set<String> = [normalizedCorrect]
+        var alternatives: [String] = []
+        for candidate in others.shuffled() {
+            let key = answerKey(candidate)
+            guard !key.isEmpty, used.insert(key).inserted else { continue }
             alternatives.append(candidate)
             if alternatives.count == 3 { break }
         }
+        // Never show a fabricated, shortened or duplicate-answer test.
+        guard alternatives.count == 3 else { return nil }
         let options = ([correct] + alternatives).shuffled()
         return ExamQuestion(category: category, prompt: prompt, passage: passage,
                             audioText: audio, choices: options,
@@ -190,8 +212,8 @@ enum QuestionBank {
         let meanings = data.vocab.filter { $0.isApprovedForStudy }
             .map(\.displayMeaning).filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
         // A multiple-choice question must have three distinct wrong meanings.
-        guard Set(meanings).count >= 4 else { return [] }
-        return eligible.shuffled().prefix(100).map { item in
+        guard hasFourDistinctMeanings(meanings) else { return [] }
+        return eligible.shuffled().prefix(100).compactMap { item in
             create(category: "Từ vựng", prompt: "「\(item.word)」（\(item.reading)）nghĩa là gì?",
                    passage: item.approvedExampleJapanese, correct: item.displayMeaning,
                    others: meanings,
@@ -205,7 +227,7 @@ enum QuestionBank {
         let meanings = data.grammar.filter { $0.isApprovedForStudy }
             .map(\.displayMeaning).filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
         guard Set(meanings).count >= 4 else { return [] }
-        return eligible.shuffled().prefix(70).map { item in
+        return eligible.shuffled().prefix(70).compactMap { item in
             create(category: "Ngữ pháp", prompt: "Ý nghĩa của \(item.pattern) là gì?",
                    passage: item.hasApprovedExample ? item.example : nil,
                    correct: item.displayMeaning,
@@ -216,9 +238,9 @@ enum QuestionBank {
     }
 
     static func kanji(_ data: CourseData) -> [ExamQuestion] {
-        guard Set(data.kanji.filter { $0.isApprovedForStudy }
-            .map(\.displayMeaning)).count >= 4 else { return [] }
-        return data.kanji.filter { $0.isApprovedForStudy }.map { item in
+        guard hasFourDistinctMeanings(data.kanji.filter { $0.isApprovedForStudy }
+            .map(\.displayMeaning)) else { return [] }
+        return data.kanji.filter { $0.isApprovedForStudy }.compactMap { item in
             create(category: "Kanji", prompt: "Chữ 「\(item.char)」 có nghĩa gì?",
                    passage: nil, correct: item.displayMeaning,
                    others: data.kanji.filter { $0.isApprovedForStudy }.map(\.displayMeaning),

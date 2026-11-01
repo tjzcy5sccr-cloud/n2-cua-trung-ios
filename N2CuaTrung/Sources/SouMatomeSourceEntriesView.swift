@@ -139,6 +139,19 @@ private enum SouMatomeSourceParser {
     }
 }
 
+/// Corrections update private candidate metadata only and never bypass
+/// separate Japanese/PDF and Vietnamese validation for a study card.
+private struct SouMatomeCandidateCorrectionFile: Decodable {
+    struct Change: Decodable {
+        let id: String
+        let expectedHeading: String
+        let newDetail: String?
+        let addFlags: [String]?
+    }
+    let schemaVersion: Int
+    let corrections: [Change]
+}
+
 @MainActor
 final class SouMatomeSourceEntryStore: ObservableObject {
     @Published var entries: [SouMatomeSourceEntry] = []
@@ -267,6 +280,82 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         return (incoming.count, changedIDs)
     }
 
+    /// Apply a small reviewed-source correction patch without replacing the
+    /// entire 2,963-entry library or silently approving unverified meanings.
+    func applyPrivateCorrections(from url: URL) throws -> (Int, Set<String>) {
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        let bytes = try Data(contentsOf: url)
+        guard !bytes.isEmpty, bytes.count <= 1024 * 1024 else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        let patch = try JSONDecoder().decode(
+            SouMatomeCandidateCorrectionFile.self, from: bytes)
+        guard patch.schemaVersion == 1, !patch.corrections.isEmpty,
+              patch.corrections.count <= 300,
+              Set(patch.corrections.map(\.id)).count == patch.corrections.count else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        var candidates = loadImportedCandidates()
+        guard !candidates.isEmpty else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        let indices = Dictionary(uniqueKeysWithValues:
+            candidates.enumerated().map { ($0.element.id, $0.offset) })
+        var changedIDs: Set<String> = []
+        for update in patch.corrections {
+            guard let at = indices[update.id] else {
+                throw SouMatomeReviewError.invalidCandidateFile
+            }
+            let existing = candidates[at]
+            guard existing.heading == update.expectedHeading,
+                  (update.newDetail?.count ?? 0) <= 250,
+                  (update.addFlags ?? []).count <= 12,
+                  (update.addFlags ?? []).allSatisfy({
+                      !$0.isEmpty && $0.count <= 72 &&
+                      $0.range(of: "^[A-Z0-9_]+$", options: .regularExpression) != nil
+                  })
+            else { throw SouMatomeReviewError.invalidCandidateFile }
+            if let text = update.newDetail,
+               text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                throw SouMatomeReviewError.invalidCandidateFile
+            }
+            let detail = update.newDetail ?? existing.detail
+            var flags = existing.qaFlags ?? []
+            if update.newDetail != nil && !detail.isEmpty {
+                flags.removeAll { $0 == "MISSING_VIETNAMESE_GLOSS" }
+            }
+            flags = Array(Set(flags + (update.addFlags ?? []))).sorted()
+            let next = SouMatomeSourceEntry(
+                id: existing.id, bookId: existing.bookId,
+                page: existing.page, heading: existing.heading,
+                detail: detail, skill: existing.skill,
+                reading: existing.reading, qaFlags: flags,
+                sourceHanViet: existing.sourceHanViet,
+                sourceOnKun: existing.sourceOnKun,
+                dictionaryHanViet: existing.dictionaryHanViet,
+                dictionaryReference: existing.dictionaryReference)
+            if detail != existing.detail || flags != (existing.qaFlags ?? []) {
+                candidates[at] = next
+                changedIDs.insert(existing.id)
+            }
+        }
+        let out = try JSONEncoder().encode(candidates)
+        guard out.count <= 8 * 1024 * 1024 else {
+            throw SouMatomeReviewError.invalidCandidateFile
+        }
+        try FileManager.default.createDirectory(
+            at: root, withIntermediateDirectories: true)
+        try out.write(to: importedURL, options: .atomic)
+        var keyed = Dictionary(uniqueKeysWithValues:
+            entries.map { ($0.id, $0) })
+        for card in candidates { keyed[card.id] = card }
+        entries = keyed.values.sorted { $0.id < $1.id }
+        importedCandidateCount = candidates.count
+        recalculateQuality()
+        return (changedIDs.count, changedIDs)
+    }
+
     func indexBooks() async {
         guard !processing else { return }
         processing = true
@@ -323,6 +412,8 @@ struct SouMatomeSourceEntriesView: View {
     @EnvironmentObject private var studyStore: StudyStore
     @State private var installMessage: String?
     @State private var pickCandidateJSON = false
+    @State private var pickCorrectionJSON = false
+    @State private var correctionMessage: String?
     @State private var importMessage: String?
     private let skills = ["Tất cả", "Từ vựng", "Kanji", "Ngữ pháp"]
     private let qualityFilters = ["Tất cả", "Cần rà soát", "Trùng chữ Nhật", "Thiếu nghĩa Việt", "Thiếu cách đọc", "Đã kiểm chứng", "Chưa kiểm chứng"]
@@ -408,6 +499,16 @@ struct SouMatomeSourceEntriesView: View {
                                symbol: "doc.badge.plus") {
                         pickCandidateJSON = true
                     }
+                    MainButton(title: "Áp dụng bản vá nghĩa Nhật–Việt đã đối chiếu",
+                               symbol: "checkmark.shield") {
+                        pickCorrectionJSON = true
+                    }
+                    if let correctionMessage {
+                        Text(correctionMessage).font(.caption)
+                            .foregroundColor(Palette.navy)
+                    }
+                    Text("Bản vá chỉ sửa ứng viên và cảnh báo nguồn. Mọi mục vẫn cần xác nhận trước khi xuất flashcard.")
+                        .font(.caption).foregroundColor(.secondary)
                     if source.importedCandidateCount > 0 {
                         Text("Cần rà soát: \(source.diagnostics.requiringAttentionCount) ứng viên · \(source.diagnostics.repeatedHeadwordGroups) nhóm trùng chữ Nhật (\(source.diagnostics.repeatedHeadwordRows) dòng). Không tự xóa các từ nhiều nghĩa.")
                             .font(.caption).foregroundColor(Palette.orange)
@@ -558,6 +659,22 @@ struct SouMatomeSourceEntriesView: View {
         .navigationTitle("Mục học trong sách")
         .navigationBarTitleDisplayMode(.inline)
         .task { await source.indexBooks() }
+        .fileImporter(isPresented: $pickCorrectionJSON,
+                      allowedContentTypes: [.json]) { result in
+            switch result {
+            case .success(let url):
+                do {
+                    let applied = try source.applyPrivateCorrections(from: url)
+                    try reviews.invalidateCandidateIDs(applied.1)
+                    _ = try reviews.synchronizeApprovedCards(with: studyStore)
+                    correctionMessage = "Đã cập nhật \(applied.0) ứng viên; thẻ có nguồn thay đổi sẽ phải duyệt lại."
+                } catch {
+                    correctionMessage = error.localizedDescription
+                }
+            case .failure(let error):
+                correctionMessage = error.localizedDescription
+            }
+        }
         .fileImporter(isPresented: $pickCandidateJSON,
                       allowedContentTypes: [.json]) { result in
             switch result {

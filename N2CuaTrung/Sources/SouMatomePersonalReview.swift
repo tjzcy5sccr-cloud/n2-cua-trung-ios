@@ -312,6 +312,25 @@ struct SouMatomePersonalCardEditor: View {
             Section("Nguồn cần kiểm tra") {
                 Text("Sách: \(candidate.bookId) · Trang \(candidate.page)")
                 Text("Loại: \(candidate.skill) · Mục \(reviewPosition)/\(reviewTotal)")
+                if card.japanese != candidate.heading {
+                    Label("Chữ Nhật trong bản trích hiện tại: " + candidate.heading,
+                          systemImage: "arrow.triangle.2.circlepath")
+                        .font(.caption).foregroundColor(Palette.orange)
+                    Button("Dùng chữ Nhật từ bản trích hiện tại") {
+                        card.japanese = candidate.heading
+                        sourceConfirmed = false
+                        translationConfirmed = false
+                    }
+                }
+                if !candidate.detail.isEmpty,
+                   card.vietnamese != candidate.detail {
+                    Text("Nghĩa ứng viên trong bản trích hiện tại: " + candidate.detail)
+                        .font(.caption).foregroundColor(Palette.orange)
+                    Button("Đưa nghĩa nguồn vào bản nháp để đối chiếu") {
+                        card.vietnamese = candidate.detail
+                        translationConfirmed = false
+                    }
+                }
                 Text("Đối chiếu trực tiếp với PDF gốc, không tin tuyệt đối vào văn bản tách tự động.")
                     .font(.caption).foregroundColor(.secondary)
                 if let book = SouMatomeDocument.all.first(where: { $0.id == candidate.bookId }),

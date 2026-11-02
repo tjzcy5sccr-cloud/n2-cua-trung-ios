@@ -59,17 +59,23 @@ struct SouMatomeWholeBooksView: View {
                     SectionTitle("Tình trạng kho học liệu đã dùng được",
                                  subtitle: "Đếm bài học thực trong ứng dụng, không đếm trang sách là flashcard")
                     if study.selectedSeries == .souMatome {
-                        Text("Từ vựng: \(study.course.vocab.count) · Kanji: \(study.course.kanji.count) · Ngữ pháp: \(study.course.grammar.count)")
+                        Toggle("Hiện thêm bài luyện N2 độc lập", isOn: Binding(
+                            get: { study.includeIndependentSouMatomePractice },
+                            set: { study.setIndependentSouMatomePractice($0) }
+                        )).tint(Palette.teal)
+                        Text("Đang hiển thị — Từ vựng: \(study.course.vocab.count) · Kanji: \(study.course.kanji.count) · Ngữ pháp: \(study.course.grammar.count)")
                             .font(.subheadline).foregroundColor(Palette.navy)
                         Text("Đọc hiểu: \(study.course.readings.count) câu · Nghe hiểu: \(study.course.listening.count) câu")
                             .font(.subheadline).foregroundColor(Palette.navy)
+                        Text("Trong đó \(study.souMatomeVerifiedBookItemCount) mục đã được kiểm tra trực tiếp từ PDF cá nhân.")
+                            .font(.caption.weight(.semibold)).foregroundColor(Palette.teal)
                     } else {
                         Text("Chọn bộ Sou Matome để xem số lượng bài tương tác của bộ này.")
                             .font(.subheadline).foregroundColor(.secondary)
                     }
                     Text("PDF đã nhập: \(importedBooks.count)/8 · MP3 đã nhập: \(library.tracks.count)/116. Chỉ số nhập tệp không bảo đảm bản dịch và đáp án đã đối chiếu.")
                         .font(.caption).foregroundColor(.secondary)
-                    Text("Chỉ sử dụng học liệu lấy từ PDF/CD Sou Matome do bạn nhập. Gói luyện N2 cũ chưa gắn trang sách được giữ nguyên trong dự án nhưng không tính là bài Sou Matome đã hiệu đính.")
+                    Text("Học liệu lấy từ PDF/CD Sou Matome do bạn nhập được quản lý riêng. Gói luyện N2 cũ chưa gắn trang sách là bài tự luyện độc lập, không tính là bài Sou Matome đã hiệu đính, dù đang bật hiển thị.")
                         .font(.caption).foregroundColor(Palette.navy)
                     Text("Chưa có xác nhận hoàn thiện 100% từng mục của toàn bộ sách.")
                         .font(.caption.weight(.medium))

@@ -89,6 +89,9 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: vn.trung.n2master2027.widget
+        # The extension must not inherit the host app's AppIcon requirement;
+        # both targets still compile identical BrandLogo.imagesets.
+        ASSETCATALOG_COMPILER_APPICON_NAME: ''
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         APPLICATION_EXTENSION_API_ONLY: YES

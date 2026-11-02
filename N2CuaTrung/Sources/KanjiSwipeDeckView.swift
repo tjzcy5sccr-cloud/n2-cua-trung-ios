@@ -59,7 +59,7 @@ struct KanjiSwipeDeckView: View {
                 }
                 .buttonStyle(.plain)
                 if let card = current {
-                    cardSurface(card, height: 286)
+                    cardSurface(card, height: 330)
                     // Giữ cố định chiều cao của hàng chi tiết ở cả hai mặt Kanji.
                     Button {
                         if revealed { showFullDetails = true }
@@ -133,7 +133,9 @@ struct KanjiSwipeDeckView: View {
             }
                 .padding(.horizontal, 12)
                 .padding(.top, 12)
-                .padding(.bottom, max(24, proxy.safeAreaInsets.bottom) + 92)
+                // Native NavigationStack/TabView manages safe areas. Avoid the
+                // former extra +92pt bottom space that pushed controls away.
+                .padding(.bottom, max(20, proxy.safeAreaInsets.bottom))
                 .frame(maxWidth: .infinity, alignment: .top)
             }
         }
@@ -298,10 +300,11 @@ struct KanjiSwipeDeckView: View {
                               action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
-                .font(.subheadline.weight(.semibold))
-                .lineLimit(1)
-                .minimumScaleFactor(0.75)
-                .frame(maxWidth: .infinity, minHeight: 48)
+                .font(.footnote.weight(.semibold))
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity, minHeight: 52)
                 .padding(.horizontal, 7)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 12))

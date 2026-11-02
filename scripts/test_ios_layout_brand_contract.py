@@ -36,11 +36,13 @@ assert "cardSurface(card, height: cardHeight, compact: compact || cardHeight < 2
 assert "FuriganaText(" in before_grammar and "centered: true" in before_grammar
 assert "FuriganaText(" in after_grammar and "centered: true" in after_grammar
 # Vertical swipes CHANGE the displayed card, they never move the page.
-assert "changeCard(by: dy < 0 ? 1 : -1)" in vocab_main
-assert "changeGrammarCard(by: dy < 0 ? 1 : -1)" in grammar_main
-assert "changeCard(by: dy < 0 ? 1 : -1)" in kanji_main
-assert "abs(dy) >= 45" in vocab_main and "abs(dy) >= 45" in grammar_main
-assert "abs(dy) >= 45" in kanji_main
+# The gesture code follows the sheet declaration in these SwiftUI views,
+# so check each complete view rather than the pre-sheet layout excerpt.
+assert "changeCard(by: dy < 0 ? 1 : -1)" in before_grammar
+assert "changeGrammarCard(by: dy < 0 ? 1 : -1)" in after_grammar
+assert "changeCard(by: dy < 0 ? 1 : -1)" in kanji
+assert "abs(dy) >= 45" in before_grammar and "abs(dy) >= 45" in after_grammar
+assert "abs(dy) >= 45" in kanji
 assert ".padding(.bottom, max(24, proxy.safeAreaInsets.bottom) + 92)" not in kanji
 assert ".lineLimit(2)" in style and ".minimumScaleFactor(0.83)" in style
 assert 'var centered: Bool = false' in ruby

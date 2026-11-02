@@ -22,6 +22,21 @@ struct BrandMark: View {
     }
 }
 
+/// Single visual language for all four publisher-oriented learning series.
+struct SeriesBookMark: View {
+    var active: Bool = false
+
+    var body: some View {
+        Image(systemName: "books.vertical.fill")
+            .font(.system(size: 22, weight: .semibold))
+            .foregroundColor(active ? .white : Palette.blue)
+            .frame(width: 46, height: 46)
+            .background(active ? Palette.teal : Palette.blue.opacity(0.1),
+                        in: RoundedRectangle(cornerRadius: 12))
+            .accessibilityHidden(true)
+    }
+}
+
 struct Pill: View {
     let text: String
     let color: Color

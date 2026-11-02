@@ -6,18 +6,25 @@ final class StudyStore: ObservableObject {
     @Published var course: CourseData
     @Published var installedPacks: [CoursePack]
     @Published private(set) var selectedSeries: LearningSeries
+    @Published private(set) var includeIndependentSouMatomePractice: Bool
     @Published var contentRevision = UUID()
     @Published private(set) var saved: SavedProgress
     private let key = "N2CuaTrung.progress.v1"
     private let seriesPreferenceKey = "N2CuaTrung.activeStudySeries.v1"
+    private let independentPracticeKey = "N2CuaTrung.souMatomeIndependentPractice.v1"
 
     init() {
         let packs = CoursePackManager.allAvailablePacks()
         let storedSeries = UserDefaults.standard.string(forKey: "N2CuaTrung.activeStudySeries.v1") ?? "all"
         let series = LearningSeries(rawValue: storedSeries) ?? .all
+        let includePractice = UserDefaults.standard.object(
+            forKey: "N2CuaTrung.souMatomeIndependentPractice.v1") as? Bool ?? true
         self.installedPacks = packs
         self.selectedSeries = series
-        self.course = CoursePackManager.course(for: series, packs: packs)
+        self.includeIndependentSouMatomePractice = includePractice
+        self.course = CoursePackManager.course(
+            for: series, packs: packs,
+            includeIndependentSouMatomePractice: includePractice)
         if let bytes = UserDefaults.standard.data(forKey: key),
            let model = try? JSONDecoder().decode(SavedProgress.self, from: bytes) {
             self.saved = model
@@ -33,12 +40,36 @@ final class StudyStore: ObservableObject {
         JapaneseVoice.shared.stop()
         selectedSeries = series
         UserDefaults.standard.set(series.rawValue, forKey: seriesPreferenceKey)
-        course = CoursePackManager.course(for: series, packs: installedPacks)
+        course = CoursePackManager.course(
+            for: series, packs: installedPacks,
+            includeIndependentSouMatomePractice: includeIndependentSouMatomePractice)
         contentRevision = UUID()
     }
 
+    /// Tuỳ chọn tách bài luyện do dự án tự biên soạn khỏi bài được đối chiếu
+    /// từ PDF cá nhân. Dù bật/tắt, lịch sử thuộc bài và điểm không bị xóa.
+    func setIndependentSouMatomePractice(_ enabled: Bool) {
+        guard enabled != includeIndependentSouMatomePractice else { return }
+        JapaneseVoice.shared.stop()
+        includeIndependentSouMatomePractice = enabled
+        UserDefaults.standard.set(enabled, forKey: independentPracticeKey)
+        course = CoursePackManager.course(
+            for: selectedSeries, packs: installedPacks,
+            includeIndependentSouMatomePractice: enabled)
+        contentRevision = UUID()
+    }
+
+    var souMatomeVerifiedBookItemCount: Int {
+        let bookOnly = CoursePackManager.course(for: .souMatome, packs: installedPacks,
+                                                includeIndependentSouMatomePractice: false)
+        return bookOnly.vocab.count + bookOnly.kanji.count + bookOnly.grammar.count
+            + bookOnly.readings.count + bookOnly.listening.count
+    }
+
     func itemCount(for series: LearningSeries) -> Int {
-        let data = CoursePackManager.course(for: series, packs: installedPacks)
+        let data = CoursePackManager.course(
+            for: series, packs: installedPacks,
+            includeIndependentSouMatomePractice: includeIndependentSouMatomePractice)
         return data.vocab.count + data.grammar.count + data.kanji.count
             + data.readings.count + data.listening.count
     }

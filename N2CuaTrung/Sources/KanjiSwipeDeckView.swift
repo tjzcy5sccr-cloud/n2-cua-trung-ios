@@ -8,7 +8,7 @@ struct KanjiSwipeDeckView: View {
     @State private var position = 0
     @State private var revealed = false
     @State private var autoPlay = false
-    @State private var intervalSeconds = 5
+    private let autoAdvanceSeconds = 3
     @State private var elapsed = 0
     @State private var isDraggingCard = false
     @State private var showFullDetails = false
@@ -81,31 +81,16 @@ struct KanjiSwipeDeckView: View {
                                      color: Palette.teal, height: actionHeight) { voice.stop() }
                     }
                     HStack(spacing: 7) {
-                        actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy",
+                        actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy (3 giây)",
                                      symbol: autoPlay ? "pause.fill" : "play.fill",
                                      color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             autoPlay.toggle()
                             elapsed = 0
                             if autoPlay { revealed = false; voice.stop() }
                         }
-                        actionButton("Chữ kế", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
+                        actionButton("Chữ tiếp theo", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
                             advance()
                         }
-                        Menu {
-                            Picker("Đổi chữ sau", selection: $intervalSeconds) {
-                                Text("3 giây").tag(3)
-                                Text("5 giây").tag(5)
-                                Text("8 giây").tag(8)
-                            }
-                        } label: {
-                            Label("\(intervalSeconds)s", systemImage: "timer")
-                                .font(.caption.weight(.semibold))
-                                .frame(maxWidth: .infinity)
-                                .frame(height: actionHeight)
-                                .foregroundColor(Palette.navy)
-                                .background(.white, in: RoundedRectangle(cornerRadius: 11))
-                        }
-                        .onChange(of: intervalSeconds) { _ in elapsed = 0 }
                     }
                     HStack(spacing: 7) {
                         actionButton("Chưa thuộc", symbol: "arrow.counterclockwise",
@@ -175,7 +160,7 @@ struct KanjiSwipeDeckView: View {
         .onReceive(ticker) { _ in
             guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }
             elapsed += 1
-            if elapsed >= intervalSeconds { advance() }
+            if elapsed >= autoAdvanceSeconds { advance() }
         }
     }
 

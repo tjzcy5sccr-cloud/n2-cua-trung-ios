@@ -112,18 +112,18 @@ enum CoursePackManager {
     }
 
     static func mergedCourse(packs: [CoursePack]) -> CourseData {
-        let packs = bookOnlyEligiblePacks(packs)
+        let bookVerifiedPacks = bookOnlyEligiblePacks(packs)
         let original = CourseData.load()
         return CourseData(
             // Dữ liệu gốc vẫn ở GitHub; chỉ nội dung được duyệt đi vào màn học.
-            vocab: merge(original.vocab, packs.flatMap { $0.vocab ?? [] })
+            vocab: merge(original.vocab, bookVerifiedPacks.flatMap { $0.vocab ?? [] })
                 .filter { $0.isApprovedForStudy },
-            grammar: merge(original.grammar, packs.flatMap { $0.grammar ?? [] })
+            grammar: merge(original.grammar, bookVerifiedPacks.flatMap { $0.grammar ?? [] })
                 .filter { $0.isApprovedForStudy },
-            kanji: merge(original.kanji, packs.flatMap { $0.kanji ?? [] })
+            kanji: merge(original.kanji, bookVerifiedPacks.flatMap { $0.kanji ?? [] })
                 .filter { $0.isApprovedForStudy },
-            readings: merge(original.readings, packs.flatMap { $0.readings ?? [] }),
-            listening: merge(original.listening, packs.flatMap { $0.listening ?? [] }),
+            readings: merge(original.readings, bookVerifiedPacks.flatMap { $0.readings ?? [] }),
+            listening: merge(original.listening, bookVerifiedPacks.flatMap { $0.listening ?? [] }),
             weeks: original.weeks
         )
     }

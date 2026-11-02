@@ -7,13 +7,16 @@ struct FuriganaText: View {
     var mainReading: String = ""
     var highlightTerms: [String] = []
     var size: CGFloat = 18
+    /// True for the single fixed flashcard: center each wrapped Japanese line
+    /// together with its furigana, instead of centering only the outer box.
+    var centered: Bool = false
 
     var body: some View {
-        RubyFlow(spacing: 1, lineSpacing: 8) {
+        RubyFlow(spacing: 1, lineSpacing: 5, centerRows: centered) {
             ForEach(Array(parts.enumerated()), id: \.offset) { _, part in
                 VStack(spacing: 0) {
                     Text(part.showReading ? (part.reading ?? " ") : " ")
-                        .font(.system(size: max(10, size * 0.54)))
+                        .font(.system(size: max(8.5, size * 0.52)))
                         .foregroundColor(!part.showReading ? .clear : (part.highlighted ? .red : Palette.teal))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
@@ -27,7 +30,7 @@ struct FuriganaText: View {
                 .accessibilityLabel(part.showReading ? "\(part.text)、\(part.reading ?? "")" : part.text)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: centered ? .center : .leading)
     }
 
     private var parts: [RubyPart] {
@@ -177,6 +180,7 @@ private extension String {
 struct RubyFlow: Layout {
     var spacing: CGFloat = 1
     var lineSpacing: CGFloat = 8
+    var centerRows: Bool = false
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         layout(proposal: proposal, subviews: subviews).size
@@ -195,20 +199,34 @@ struct RubyFlow: Layout {
         var y: CGFloat = 0
         var rowHeight: CGFloat = 0
         var locations: [CGPoint] = []
+        var rowStart = 0
+        var rows: [(start: Int, end: Int, used: CGFloat)] = []
         var maxX: CGFloat = 0
         for subview in subviews {
-            let s = subview.sizeThatFits(.unspecified)
-            if x > 0 && x + s.width > width {
+            let item = subview.sizeThatFits(.unspecified)
+            if x > 0 && x + item.width > width {
+                rows.append((rowStart, locations.count, max(0, x - spacing)))
+                rowStart = locations.count
                 x = 0
                 y += rowHeight + lineSpacing
                 rowHeight = 0
             }
             locations.append(CGPoint(x: x, y: y))
-            x += s.width + spacing
+            x += item.width + spacing
             maxX = max(maxX, x)
-            rowHeight = max(rowHeight, s.height)
+            rowHeight = max(rowHeight, item.height)
         }
-        return (CGSize(width: min(width, maxX), height: y + rowHeight), locations)
+        rows.append((rowStart, locations.count, max(0, x - spacing)))
+        if centerRows {
+            for row in rows {
+                let adjustment = max(0, width - row.used) * 0.5
+                for index in row.start..<row.end {
+                    locations[index].x += adjustment
+                }
+            }
+        }
+        let frameWidth = centerRows ? width : min(width, maxX)
+        return (CGSize(width: frameWidth, height: y + rowHeight), locations)
     }
 }
 

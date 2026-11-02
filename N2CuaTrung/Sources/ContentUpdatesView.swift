@@ -46,6 +46,11 @@ struct ContentUpdatesView: View {
                                    title: "Mở sách và kho nguồn Sou Matome",
                                    detail: "Nhập PDF, 116 MP3 và mục trích xuất để đối chiếu riêng")
                     }.buttonStyle(.plain)
+                    NavigationLink { SouMatomeSourceEntriesView() } label: {
+                        ActionTile(icon: "doc.badge.plus", color: Palette.orange,
+                                   title: "Nhập 2.963 mục đã trích xuất",
+                                   detail: "Chọn JSON cá nhân đã tạo; kiểm tra từng mục trước khi dùng làm flashcard")
+                    }.buttonStyle(.plain)
                 }
                 LessonPanel {
                     SectionTitle("Dữ liệu đang hiển thị — \(store.selectedSeries.name)")

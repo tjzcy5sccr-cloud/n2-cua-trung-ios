@@ -210,10 +210,19 @@ final class SouMatomeSourceEntryStore: ObservableObject {
     }
 
     private func loadImportedCandidates() -> [SouMatomeSourceEntry] {
-        guard let data = try? Data(contentsOf: importedURL),
-              let decoded = try? JSONDecoder().decode(
-                [SouMatomeSourceEntry].self, from: data) else { return [] }
-        return decoded.map(\.bookOnly)
+        // A personal IPA may contain the owner's privately supplied extracted
+        // candidate JSON. This file is added AFTER CI packaging, never pushed
+        // into the public GitHub repository. Local edits take precedence.
+        let bundled = Bundle.main.url(
+            forResource: "sou-matome-private-candidates", withExtension: "json")
+        let personal = (try? Data(contentsOf: importedURL))
+            .flatMap { try? JSONDecoder().decode([SouMatomeSourceEntry].self, from: $0) } ?? []
+        let original = bundled.flatMap { try? Data(contentsOf: $0) }
+            .flatMap { try? JSONDecoder().decode([SouMatomeSourceEntry].self, from: $0) } ?? []
+        var combined: [String: SouMatomeSourceEntry] = [:]
+        for entry in original { combined[entry.id] = entry.bookOnly }
+        for entry in personal { combined[entry.id] = entry.bookOnly }
+        return combined.values.sorted { $0.id < $1.id }
     }
 
     /// Merge one or more book-specific candidate files, preserving other
@@ -538,6 +547,15 @@ struct SouMatomeSourceEntriesView: View {
                     if let importMessage {
                         Text(importMessage).font(.caption).foregroundColor(Palette.navy)
                     }
+                }
+                if !source.entries.isEmpty {
+                    NavigationLink {
+                        SouMatomeExtractedPracticeView(entries: source.entries)
+                    } label: {
+                        ActionTile(icon: "rectangle.on.rectangle.angled", color: Palette.blue,
+                                   title: "Xem thẻ của toàn bộ kho đã trích xuất",
+                                   detail: "\(source.entries.count) mục từ PDF cá nhân · thẻ xem trước, chưa xác nhận nghĩa")
+                    }.buttonStyle(.plain)
                 }
                 LessonPanel {
                     SectionTitle("Kho flashcard đã kiểm chứng")

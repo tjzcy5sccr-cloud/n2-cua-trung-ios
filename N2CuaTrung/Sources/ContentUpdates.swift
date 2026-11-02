@@ -128,12 +128,19 @@ enum CoursePackManager {
         )
     }
 
-    /// Tổng hợp lấy nguyên dữ liệu app cũ và mọi gói; chọn một series chỉ đọc
-    /// dữ liệu mang seriesId đó. Không tự mượn dữ liệu bộ khác khi series rỗng.
-    static func course(for series: LearningSeries, packs: [CoursePack]) -> CourseData {
+    /// Mục lấy từ sách cá nhân phải được duyệt từng thẻ. Gói luyện N2 tự
+    /// biên soạn chỉ xuất hiện khi người học bật lựa chọn riêng, không được
+    /// coi là bản số hóa hay thẻ đã đối chiếu với trang Sou Matome.
+    /// Mọi thẻ vẫn đi qua isApprovedForStudy; không tự mở khóa bản nháp.
+    static func course(for series: LearningSeries, packs: [CoursePack],
+                       includeIndependentSouMatomePractice: Bool = true) -> CourseData {
         if series == .all { return mergedCourse(packs: packs) }
+        let independent = series == .souMatome && includeIndependentSouMatomePractice
+            ? packs.filter { $0.id == "n2-series-sou-matome" &&
+                             $0.seriesId == LearningSeries.souMatome.rawValue }
+            : []
         let selected = bookOnlyEligiblePacks(packs)
-            .filter { $0.seriesId == series.rawValue }
+            .filter { $0.seriesId == series.rawValue } + independent
         let weeks = CourseData.load().weeks
         return CourseData(
             vocab: merge([], selected.flatMap { $0.vocab ?? [] })

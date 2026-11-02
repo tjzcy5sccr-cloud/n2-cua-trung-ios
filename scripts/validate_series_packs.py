@@ -56,7 +56,8 @@ assert '"sou-matome-personal-reviewed"' in source_code
 assert '"sou-matome-personal-exercises"' in source_code
 assert 'if series == .all { return mergedCourse(packs: packs) }' in source_code
 assert 'LearningSeries.allCases.compactMap(\\.packFilename)' in source_code
-assert 'self.course = CoursePackManager.course(for: series, packs: packs)' in study
+assert 'self.course = CoursePackManager.course(' in study
+assert 'includeIndependentSouMatomePractice: includePractice' in study
 assert 'contentRevision = UUID()' in study and 'contentRevision = UUID()' in source_code
 assert 'UserDefaults.standard.set(series.rawValue' in study
 assert 'ForEach(LearningSeries.allCases)' in ui

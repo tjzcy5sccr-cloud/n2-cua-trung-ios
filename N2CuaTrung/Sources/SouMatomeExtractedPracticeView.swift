@@ -3,6 +3,30 @@ import SwiftUI
 /// Personal source-derived preview. These rows have NOT been reviewed and are
 /// intentionally separate from approved flashcards and scored JLPT questions.
 /// They stay on the device; never publish commercial textbook excerpts in Git.
+/// Provisional Hán–Việt readings from source records imported on this iPhone.
+/// They are never automatically marked as approved translations.
+enum SouMatomePrivateHanViet {
+    static func localReadings() -> [String: String] {
+        let root = FileManager.default.urls(for: .applicationSupportDirectory,
+                                              in: .userDomainMask)[0]
+            .appendingPathComponent("SouMatomePersonalLibrary", isDirectory: true)
+        let local = root.appendingPathComponent("private-draft-candidates.json")
+        guard let bytes = try? Data(contentsOf: local),
+              let entries = try? JSONDecoder().decode([SouMatomeSourceEntry].self,
+                                                       from: bytes) else { return [:] }
+        var result: [String: String] = [:]
+        for entry in entries where entry.skill == "Kanji" && entry.heading.count == 1 {
+            guard let sound = entry.sourceHanViet?
+                    .trimmingCharacters(in: .whitespacesAndNewlines),
+                  !sound.isEmpty,
+                  !sound.contains(","), !sound.contains("、"),
+                  !sound.contains("/") else { continue }
+            result[entry.heading] = sound.lowercased()
+        }
+        return result
+    }
+}
+
 struct SouMatomeExtractedPracticeView: View {
     let entries: [SouMatomeSourceEntry]
     @State private var skill = "Tất cả"

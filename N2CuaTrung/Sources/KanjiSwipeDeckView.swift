@@ -34,7 +34,7 @@ struct KanjiSwipeDeckView: View {
             let compact = proxy.size.height < 690
             let shortScreen = proxy.size.height < 520
             let gap: CGFloat = shortScreen ? 3 : (compact ? 5 : 7)
-            let actionHeight: CGFloat = shortScreen ? 34 : (compact ? 38 : 42)
+            let actionHeight: CGFloat = 44
             let statusHeight: CGFloat = 30
             let verticalPadding: CGFloat = shortScreen ? 4 : 8
             let hasFeedback = !(feedback ?? voice.lastError ?? "").isEmpty
@@ -62,7 +62,7 @@ struct KanjiSwipeDeckView: View {
                 .font(.caption.weight(.semibold))
                 .frame(height: statusHeight)
                 if let card = current {
-                    cardSurface(card, height: cardHeight, compact: compact)
+                    cardSurface(card, height: cardHeight, compact: compact || cardHeight < 265)
                     HStack(spacing: 7) {
                         actionButton("Chi tiết", symbol: "text.book.closed",
                                      color: Palette.navy, height: actionHeight) {
@@ -224,7 +224,7 @@ struct KanjiSwipeDeckView: View {
                     }
                 }
                 Spacer(minLength: 0)
-                Text(revealed ? "Chạm xem mặt trước" : "Chạm lật · Vuốt ngang đổi chữ")
+                Text(revealed ? "Chạm xem mặt trước" : "Chạm lật · Vuốt 4 hướng đổi chữ")
                     .font(.caption2).foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -255,8 +255,10 @@ struct KanjiSwipeDeckView: View {
                     let distance = max(abs(dx), abs(dy))
                     if distance <= 12 {
                         flip(card)
-                    } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                    } else if abs(dx) >= abs(dy) && abs(dx) >= 45 {
                         changeCard(by: dx < 0 ? 1 : -1)
+                    } else if abs(dy) >= 45 {
+                        changeCard(by: dy < 0 ? 1 : -1)
                     }
                     isDraggingCard = false
                 }

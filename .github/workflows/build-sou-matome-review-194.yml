@@ -1,0 +1,98 @@
+name: N2 Trung v1.9.4 - iPhone UI and logo review IPA (unsigned)
+"on":
+  push:
+    branches:
+      - feature/n2-sou-matome-library-2026
+    paths:
+      - '.github/workflows/build-sou-matome-review-194.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-review:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact review build revision
+        uses: actions/checkout@v4
+      - name: Install Python for Japanese offline build tools
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check source-only course policy, responsive layout and single brand identity
+        run: |
+          set -euo pipefail
+          python3 scripts/test_ios_layout_brand_contract.py
+          python3 scripts/test_sou_matome_book_source_contract.py
+          python3 scripts/validate_four_series_curriculum.py
+          python3 scripts/validate_series_packs.py
+          python3 scripts/prepare_approved_app_resources.py
+      - name: Generate on-device Japanese furigana atlas
+        run: |
+          python3 -m pip install --disable-pip-version-check 'fugashi[unidic-lite]'
+          python3 scripts/generate_furigana_atlas.py --strict
+      - name: Install XcodeGen
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then
+            brew install xcodegen
+          fi
+      - name: Generate single clover logo and verify byte-identical assets
+        run: |
+          set -euo pipefail
+          swift scripts/generate_clover_icon.swift
+          cmp N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png N2CuaTrung/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
+          cmp N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png N2Widget/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
+          sips -g pixelWidth -g pixelHeight N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png
+      - name: Build unsigned native iOS app for preview (widget AppIcon isolated)
+        shell: bash
+        run: |
+          set -euo pipefail
+          xcodegen generate --spec project.yml
+          set -o pipefail
+          xcodebuild -project N2CuaTrung.xcodeproj -scheme N2CuaTrung \
+            -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build-review CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' build \
+            2>&1 | tee xcodebuild-review.log
+      - name: Verify new version, logo assets and extension in compiled app
+        run: |
+          set -euo pipefail
+          APP=build-review/Build/Products/Release-iphoneos/N2CuaTrung.app
+          test -f "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Info.plist" | grep -Fx '1.9.4'
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP/Info.plist" | grep -Fx '14'
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist" | grep -Fx 'vn.trung.n2master2027'
+          test -d "$APP/PlugIns/N2WidgetExtension.appex" || find "$APP/PlugIns" -type d -name '*.appex' | grep -q .
+          test -f "$APP/Assets.car"
+      - name: Create reviewed unsigned IPA and verify packaged content
+        run: |
+          set -euo pipefail
+          mkdir -p Payload
+          cp -R build-review/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
+          zip -qry N2_cua_Trung_unsigned.ipa Payload
+          python3 scripts/validate_ipa_content.py
+          cp N2_cua_Trung_unsigned.ipa N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
+          shasum -a 256 N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa > sha256.txt
+      - name: Upload iPhone test build - unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-v1.9.4-UI-Logo-unsigned-IPA
+          path: |
+            N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
+            sha256.txt
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload generated canonical logo for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-v1.9.4-clover-logo
+          path: N2CuaTrung/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload compile logs if the build fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N2-cua-Trung-v1.9.4-build-diagnostics
+          path: xcodebuild-review.log
+          if-no-files-found: ignore

@@ -68,7 +68,7 @@ struct FlashcardDeckView: View {
                         .opacity(card.hasApprovedExample ? 1 : 0.4)
                     }
                     HStack(spacing: 7) {
-                        smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy (3 giây)",
+                        smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                     symbol: autoPlay ? "pause.fill" : "play.fill",
                                     color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             toggleAuto()

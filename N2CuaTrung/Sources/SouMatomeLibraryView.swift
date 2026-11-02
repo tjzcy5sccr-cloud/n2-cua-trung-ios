@@ -46,7 +46,11 @@ struct SouMatomeTrack: Identifiable {
     let url: URL
     let cd: String
     var id: String { url.path }
-    var name: String { url.deletingPathExtension().lastPathComponent }
+    var name: String {
+        let stem = url.deletingPathExtension().lastPathComponent
+        let discPrefix = cd + "_"
+        return stem.hasPrefix(discPrefix) ? String(stem.dropFirst(discPrefix.count)) : stem
+    }
 }
 
 enum SouMatomeImportError: LocalizedError {

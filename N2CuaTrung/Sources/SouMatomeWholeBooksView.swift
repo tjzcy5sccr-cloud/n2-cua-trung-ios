@@ -69,6 +69,8 @@ struct SouMatomeWholeBooksView: View {
                     }
                     Text("PDF đã nhập: \(importedBooks.count)/8 · MP3 đã nhập: \(library.tracks.count)/116. Chỉ số nhập tệp không bảo đảm bản dịch và đáp án đã đối chiếu.")
                         .font(.caption).foregroundColor(.secondary)
+                    Text("Chỉ sử dụng học liệu lấy từ PDF/CD Sou Matome do bạn nhập. Gói luyện N2 cũ chưa gắn trang sách được giữ nguyên trong dự án nhưng không tính là bài Sou Matome đã hiệu đính.")
+                        .font(.caption).foregroundColor(Palette.navy)
                     Text("Chưa có xác nhận hoàn thiện 100% từng mục của toàn bộ sách.")
                         .font(.caption.weight(.medium))
                         .foregroundColor(Palette.orange)

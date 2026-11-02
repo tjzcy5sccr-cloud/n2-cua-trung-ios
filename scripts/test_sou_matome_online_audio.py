@@ -23,5 +23,5 @@ assert "private-draft-candidates.json" in preview
 assert "SouMatomeExtractedPracticeView(entries: source.entries)" in source
 assert "SouMatomePrivateHanViet.localReadings()" in flash
 assert "readings.append(\"—\")" in flash
-assert "return result.isEmpty ? nil : result.joined" in preview
+assert "return parts.isEmpty ? nil : parts.joined" in preview
 print("PASS: GitHub HTTPS audio manifest only; source-only private deck and honest Hán–Việt gaps")

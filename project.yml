@@ -69,6 +69,7 @@ targets:
     platform: iOS
     deploymentTarget: '16.2'
     sources:
+      - path: N2Widget/Assets.xcassets
       - path: N2Widget/N2WordWidget.swift
       - path: N2CuaTrung/Sources/StudyActivityAttributes.swift
       - path: N2CuaTrung/Resources/content.json

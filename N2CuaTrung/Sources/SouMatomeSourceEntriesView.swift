@@ -20,6 +20,19 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
     /// Private-source automated warnings. Never interpreted as approval.
     let qaFlags: [String]?
 
+    /// Ignore old outside-dictionary annotations in previously exported
+    /// personal JSON. They are never used as textbook evidence.
+    var bookOnly: SouMatomeSourceEntry {
+        let sourceWarnings = (qaFlags ?? []).filter {
+            !$0.contains("DICTIONARY") && !$0.contains("INDEPENDENT")
+        }
+        return SouMatomeSourceEntry(
+            id: id, bookId: bookId, page: page,
+            heading: heading, detail: detail, skill: skill, reading: reading,
+            qaFlags: sourceWarnings, sourceHanViet: sourceHanViet,
+            sourceOnKun: sourceOnKun)
+    }
+
     init(id: String, bookId: String, page: Int, heading: String,
          detail: String, skill: String, reading: String? = nil,
          qaFlags: [String]? = nil, sourceHanViet: String? = nil,
@@ -200,7 +213,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
         guard let data = try? Data(contentsOf: importedURL),
               let decoded = try? JSONDecoder().decode(
                 [SouMatomeSourceEntry].self, from: data) else { return [] }
-        return decoded
+        return decoded.map(\.bookOnly)
     }
 
     /// Merge one or more book-specific candidate files, preserving other
@@ -215,7 +228,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
             throw SouMatomeReviewError.invalidCandidateFile
         }
         let incoming = try JSONDecoder().decode(
-            [SouMatomeSourceEntry].self, from: bytes)
+            [SouMatomeSourceEntry].self, from: bytes).map(\.bookOnly)
         guard !incoming.isEmpty, incoming.count <= 15_000,
               Set(incoming.map(\.id)).count == incoming.count else {
             throw SouMatomeReviewError.invalidCandidateFile
@@ -476,7 +489,6 @@ struct SouMatomeSourceEntriesView: View {
         case "JAPANESE_PRESENT_IN_VIETNAMESE_GLOSS": return "Nghĩa có chữ Nhật"
         case "NO_JAPANESE_HEADWORD": return "Thiếu chữ Nhật"
         case "MISSING_HAN_VIET_LABEL": return "PDF thiếu âm Hán–Việt"
-        case "HAN_VIET_CONFLICT_WITH_DICTIONARY": return "Hán–Việt khác từ điển"
         case "SOURCE_READING_SPLIT_ACROSS_PAGE": return "Cách đọc bị cắt trang"
         case "NEEDS_CONTEXTUAL_VIETNAMESE_MEANING": return "Cần dịch nghĩa Kanji"
         case "PAGE_CONTINUATION_FRAGMENT_NEEDS_RECONSTRUCTION":
@@ -485,7 +497,6 @@ struct SouMatomeSourceEntriesView: View {
         case "HEADING_RECONSTRUCTED_FROM_PDF": return "Đã ghép lại tiêu đề"
         case "SOURCE_TYPO_CORRECTED": return "Đã sửa lỗi nguồn"
         case "HEADING_IS_EXAMPLE_NOT_GRAMMAR_RULE": return "Ví dụ, chưa phải quy tắc"
-        case "INDEPENDENT_DICTIONARY_CROSSCHECKED": return "Có đối chiếu từ điển"
         default: return "Kiểm tra nguồn"
         }
     }
@@ -666,7 +677,20 @@ struct SouMatomeSourceEntriesView: View {
         .background(Palette.pale)
         .navigationTitle("Mục học trong sách")
         .navigationBarTitleDisplayMode(.inline)
-        .task { await source.indexBooks() }
+        .task {
+            await source.indexBooks()
+            do {
+                let mismatches = try reviews.invalidateNonBookHanVietApprovals(
+                    source.entries)
+                if mismatches > 0 {
+                    _ = try reviews.synchronizeApprovedCards(with: studyStore)
+                    importMessage = "Đã đưa \(mismatches) thẻ Hán–Việt khác sách về trạng thái cần kiểm tra lại."
+                }
+            } catch {
+                importMessage = "Không đồng bộ được xác nhận nguồn sách: "
+                    + error.localizedDescription
+            }
+        }
         .fileImporter(isPresented: $pickCorrectionJSON,
                       allowedContentTypes: [.json]) { result in
             switch result {
@@ -691,8 +715,11 @@ struct SouMatomeSourceEntriesView: View {
                     do {
                         let imported = try source.importCandidates(from: url)
                         try reviews.invalidateCandidateIDs(imported.changedIDs)
+                        let mismatches = try reviews.invalidateNonBookHanVietApprovals(
+                            source.entries)
                         _ = try reviews.synchronizeApprovedCards(with: studyStore)
                         importMessage = "Đã nhập \(imported.count) ứng viên; "
+                            + "đã thu hồi \(mismatches) mục Hán–Việt cũ khác sách. "
                             + "đã hủy xác nhận cho \(imported.changedIDs.count) mục đổi nguồn. "
                             + "Cần đối chiếu trước khi đưa mục mới vào luyện tập."
                     } catch {

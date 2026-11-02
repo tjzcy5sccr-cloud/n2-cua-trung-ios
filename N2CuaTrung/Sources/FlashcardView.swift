@@ -268,11 +268,11 @@ struct FlashcardDeckView: View {
                                     highlightTerms: VocabularyExampleFocus.variants(
                                         word: card.word, reading: card.reading,
                                         example: sentence),
-                                    size: compact ? 12 : 14,
+                                    size: compact ? 16 : 18,
                                     centered: true
                                 )
                                 Text(card.displayExampleTranslation)
-                                    .font(.system(size: compact ? 11 : 13))
+                                    .font(.system(size: compact ? 14 : 16))
                                     .foregroundColor(.secondary)
                                     .multilineTextAlignment(.center)
                                     .lineLimit(compact ? 2 : 3)

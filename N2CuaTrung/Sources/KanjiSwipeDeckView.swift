@@ -184,10 +184,19 @@ struct KanjiSwipeDeckView: View {
                         .font(.headline).foregroundColor(Palette.teal)
                         .multilineTextAlignment(.center).lineLimit(2)
                     if let label = card.hanViet, !label.isEmpty {
-                        Text("Hán–Việt đã đối chiếu: " + label)
+                        Text(store.selectedSeries == .souMatome ||
+                             card.id.hasPrefix("sm-reviewed-")
+                             ? "Hán–Việt theo sách: " + label
+                             : "Hán–Việt đã đối chiếu: " + label)
                             .font(.subheadline).foregroundColor(Palette.blue)
+                    } else if store.selectedSeries == .souMatome ||
+                              card.id.hasPrefix("sm-reviewed-") {
+                        Text("Sách chưa có âm Hán–Việt được xác nhận")
+                            .font(.caption).foregroundColor(.secondary)
                     }
-                    if let info = KangxiReference.info(for: card.char) {
+                    if store.selectedSeries != .souMatome &&
+                       !card.id.hasPrefix("sm-reviewed-"),
+                       let info = KangxiReference.info(for: card.char) {
                         if card.hanViet?.isEmpty != false {
                             Text("Hán–Việt tham khảo: \(info.sinoVietnamese)")
                                 .font(.subheadline).foregroundColor(Palette.blue)

@@ -27,7 +27,7 @@ struct FlashcardDeckView: View {
             let compact = proxy.size.height < 690
             let shortScreen = proxy.size.height < 520
             let gap: CGFloat = shortScreen ? 3 : (compact ? 5 : 7)
-            let actionHeight: CGFloat = shortScreen ? 34 : (compact ? 38 : 42)
+            let actionHeight: CGFloat = 44
             let pickerHeight: CGFloat = shortScreen ? 29 : 32
             let statusHeight: CGFloat = 28
             let verticalPadding: CGFloat = shortScreen ? 4 : 7
@@ -50,12 +50,12 @@ struct FlashcardDeckView: View {
                     HStack(spacing: 8) {
                         Pill(text: "\(position + 1)/\(cards.count)", color: Palette.blue)
                         Spacer(minLength: 4)
-                        Text("Chạm lật · Vuốt ngang đổi từ")
+                        Text("Chạm lật · Vuốt 4 hướng đổi từ")
                             .font(.caption2).foregroundColor(.secondary)
                             .lineLimit(1).minimumScaleFactor(0.78)
                     }
                     .frame(height: statusHeight)
-                    cardSurface(card, height: cardHeight, compact: compact)
+                    cardSurface(card, height: cardHeight, compact: compact || cardHeight < 270)
                     HStack(spacing: 7) {
                         smallAction("Nghe từ", symbol: "speaker.wave.2", color: Palette.blue, height: actionHeight) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
@@ -199,7 +199,7 @@ struct FlashcardDeckView: View {
     }
 
     /// Toàn bộ thẻ là một vùng gesture duy nhất, không chứa ScrollView.
-    /// Vuốt trái: tiếp theo; phải: trước. Chạm: lật thẻ.
+    /// Vuốt trái/lên: tiếp theo; phải/xuống: trước. Chạm: lật thẻ.
     private func cardSurface(_ card: Vocabulary, height: CGFloat,
                              compact: Bool) -> some View {
         ZStack {
@@ -223,7 +223,7 @@ struct FlashcardDeckView: View {
                         .minimumScaleFactor(0.75)
                     if let sentence = card.approvedExampleJapanese {
                         Divider()
-                        if sentence.count <= (compact ? 54 : 95) {
+                        if height >= 270 && sentence.count <= (compact ? 54 : 95) {
                             VStack(alignment: .center, spacing: compact ? 5 : 8) {
                                 FuriganaText(
                                     text: sentence,
@@ -290,8 +290,10 @@ struct FlashcardDeckView: View {
                     let distance = max(abs(dx), abs(dy))
                     if distance <= 12 {
                         flip(card)
-                    } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                    } else if abs(dx) >= abs(dy) && abs(dx) >= 45 {
                         changeCard(by: dx < 0 ? 1 : -1)
+                    } else if abs(dy) >= 45 {
+                        changeCard(by: dy < 0 ? 1 : -1)
                     }
                     isDraggingCard = false
                 }
@@ -388,7 +390,7 @@ struct GrammarFlashcardView: View {
             let compact = proxy.size.height < 690
             let shortScreen = proxy.size.height < 520
             let gap: CGFloat = shortScreen ? 4 : (compact ? 6 : 8)
-            let actionHeight: CGFloat = shortScreen ? 35 : (compact ? 39 : 43)
+            let actionHeight: CGFloat = 44
             let statusHeight: CGFloat = 28
             let verticalPadding: CGFloat = shortScreen ? 4 : 8
             let hasMessage = !(reviewMessage ?? voice.lastError ?? "").isEmpty
@@ -403,12 +405,12 @@ struct GrammarFlashcardView: View {
                     HStack {
                         Pill(text: "\(position + 1)/\(content.count)", color: Palette.blue)
                         Spacer()
-                        Text("Chạm lật · Vuốt ngang đổi mẫu")
+                        Text("Chạm lật · Vuốt 4 hướng đổi mẫu")
                             .font(.caption2).foregroundColor(.secondary)
                             .lineLimit(1).minimumScaleFactor(0.78)
                     }
                     .frame(height: statusHeight)
-                    grammarCard(item, height: cardHeight, compact: compact)
+                    grammarCard(item, height: cardHeight, compact: compact || cardHeight < 260)
                     HStack(spacing: 7) {
                         grammarAction("Xem đủ", symbol: "text.book.closed",
                                       color: Palette.navy, height: actionHeight) {
@@ -549,7 +551,7 @@ struct GrammarFlashcardView: View {
                         .multilineTextAlignment(.center)
                     if let example = GrammarLibrary.examples(for: g).first {
                         Divider()
-                        if example.text.count <= (compact ? 58 : 100) {
+                        if height >= 260 && example.text.count <= (compact ? 58 : 100) {
                             FuriganaText(
                                 text: example.text,
                                 highlightTerms: GrammarFocus.terms(from: g.pattern),
@@ -593,8 +595,10 @@ struct GrammarFlashcardView: View {
                     let dy = drag.translation.height
                     if max(abs(dx), abs(dy)) <= 12 {
                         flipGrammar()
-                    } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
+                    } else if abs(dx) >= abs(dy) && abs(dx) >= 45 {
                         changeGrammarCard(by: dx < 0 ? 1 : -1)
+                    } else if abs(dy) >= 45 {
+                        changeGrammarCard(by: dy < 0 ? 1 : -1)
                     }
                 }
         )

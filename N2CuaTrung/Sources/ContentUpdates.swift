@@ -86,6 +86,21 @@ enum CoursePackManager {
         }
     }
 
+    /// The legacy Sou Matome pack has no page-level provenance to the
+    /// user's books. Keep its JSON intact for possible future source review,
+    /// but never present it as an approved lesson of the book-only series.
+    /// The two private reviewed packs have source-linked PDFs and quizzes.
+    private static func bookOnlyEligiblePacks(_ packs: [CoursePack]) -> [CoursePack] {
+        let approvedBookPackIDs: Set<String> = [
+            "sou-matome-personal-reviewed",
+            "sou-matome-personal-exercises"
+        ]
+        return packs.filter { pack in
+            pack.seriesId != LearningSeries.souMatome.rawValue ||
+            approvedBookPackIDs.contains(pack.id)
+        }
+    }
+
     /// Bản mới hơn được ưu tiên. Không mất lịch ôn vì thẻ dùng ID ổn định.
     static func allAvailablePacks() -> [CoursePack] {
         var byID: [String: CoursePack] = [:]
@@ -97,6 +112,7 @@ enum CoursePackManager {
     }
 
     static func mergedCourse(packs: [CoursePack]) -> CourseData {
+        let packs = bookOnlyEligiblePacks(packs)
         let original = CourseData.load()
         return CourseData(
             // Dữ liệu gốc vẫn ở GitHub; chỉ nội dung được duyệt đi vào màn học.
@@ -116,7 +132,8 @@ enum CoursePackManager {
     /// dữ liệu mang seriesId đó. Không tự mượn dữ liệu bộ khác khi series rỗng.
     static func course(for series: LearningSeries, packs: [CoursePack]) -> CourseData {
         if series == .all { return mergedCourse(packs: packs) }
-        let selected = packs.filter { $0.seriesId == series.rawValue }
+        let selected = bookOnlyEligiblePacks(packs)
+            .filter { $0.seriesId == series.rawValue }
         let weeks = CourseData.load().weeks
         return CourseData(
             vocab: merge([], selected.flatMap { $0.vocab ?? [] })

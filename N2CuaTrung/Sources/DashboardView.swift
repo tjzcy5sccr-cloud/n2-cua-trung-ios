@@ -12,12 +12,12 @@ struct DashboardView: View {
                     HStack {
                         Pill(text: "JLPT N2 • 2027", color: .white)
                         Spacer()
-                        Image(systemName: "character.book.closed.fill")
-                            .font(.title2)
-                            .foregroundColor(.white)
+                        BrandMark(size: 72)
                     }
                     Text("N2 của Trung")
                         .font(.system(size: 30, weight: .heavy, design: .rounded))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.78)
                         .foregroundColor(.white)
                     Text("Mỗi ngày một bước đến N2.")
                         .font(.subheadline).foregroundColor(.white.opacity(0.82))
@@ -37,7 +37,8 @@ struct DashboardView: View {
                     in: RoundedRectangle(cornerRadius: 22)
                 )
 
-                HStack(spacing: 10) {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 9),
+                                         count: 3), spacing: 9) {
                     StatBox(number: "\(store.dueCount)", label: "Thẻ cần ôn", symbol: "rectangle.stack")
                     StatBox(number: "\(store.mastered)", label: "Đã nhớ vững", symbol: "checkmark.seal")
                     StatBox(number: "\(store.saved.tests.count)", label: "Bài đã làm", symbol: "pencil.line")
@@ -157,10 +158,14 @@ struct ActionTile: View {
                 .background(color.opacity(0.10), in: RoundedRectangle(cornerRadius: 13))
             VStack(alignment: .leading, spacing: 5) {
                 Text(title).font(.subheadline.weight(.bold)).foregroundColor(Palette.navy)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(detail).font(.caption).foregroundColor(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-            Spacer()
-            Image(systemName: "chevron.right").font(.caption.bold()).foregroundColor(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "chevron.right")
+                .font(.caption.bold()).foregroundColor(.secondary)
+                .fixedSize()
         }
         .padding(14)
         .background(.white, in: RoundedRectangle(cornerRadius: 16))

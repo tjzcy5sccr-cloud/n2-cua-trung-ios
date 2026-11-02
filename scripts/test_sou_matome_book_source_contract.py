@@ -17,8 +17,11 @@ assert "entry.dictionaryHanViet" not in reviews
 assert "hanViet: entry.sourceHanViet" in reviews
 assert "invalidateNonBookHanVietApprovals" in reviews
 assert "invalidateNonBookHanVietApprovals" in entries
-assert "store.selectedSeries != .souMatome" in swipe
-assert "!card.id.hasPrefix(\"sm-reviewed-\")" in swipe
+# Stationary Kanji flashcards never inject an outside dictionary.
+# The separate Kanji detail screen keeps other-series lookups isolated.
+assert "KangxiReference.info" not in swipe
+assert "KangxiReference.radical" not in swipe
+assert "if let label = card.hanViet" in swipe
 assert "if bookSourceOnly {" in details
 assert "study.selectedSeries == .souMatome" in details
 assert '"externalSourcesUsed": False' in audit

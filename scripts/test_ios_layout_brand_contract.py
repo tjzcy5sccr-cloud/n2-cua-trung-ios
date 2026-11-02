@@ -58,11 +58,14 @@ assert ".fixedSize(horizontal: false, vertical: true)" in dashboard
 # iPhones, while never pushing the mastery buttons under the tab bar.
 for deck in (vocab_main, grammar_main, kanji_main):
     assert "let actionHeight: CGFloat = 44" in deck
-    assert ".frame(height: actionHeight)" in deck
+    assert "height: actionHeight" in deck
     assert "let cardHeight = max(72, proxy.size.height - " in deck
     assert ".navigationBarTitleDisplayMode(.inline)" in deck
-assert "if height >= 270 && sentence.count" in vocab_main
-assert "if height >= 260 && example.text.count" in grammar_main
+assert "if height >= 270 && sentence.count" in before_grammar
+assert "if height >= 260 && example.text.count" in after_grammar
+assert ".frame(height: height)" in before_grammar
+assert ".frame(height: height)" in after_grammar
+assert ".frame(height: height)" in kanji
 
 def required_height(kind: str, height: int, has_message: bool) -> float:
     compact = height < 690

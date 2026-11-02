@@ -29,10 +29,22 @@ struct ContentUpdatesView: View {
                         .font(.caption).foregroundColor(.secondary)
                 }
                 if store.selectedSeries == .souMatome {
-                    NavigationLink { SouMatomeLibraryView() } label: {
+                    LessonPanel {
+                        SectionTitle("Bài luyện N2 và sách Sou Matome")
+                        Toggle("Hiện bài luyện N2 độc lập", isOn: Binding(
+                            get: { store.includeIndependentSouMatomePractice },
+                            set: { store.setIndependentSouMatomePractice($0) }
+                        ))
+                        .tint(Palette.teal)
+                        Text("Bài luyện độc lập do dự án biên soạn, không phải bản sao hoặc đáp án được xác nhận từ sách Sou Matome.")
+                            .font(.caption).foregroundColor(.secondary)
+                        Text("Mục đã xác nhận riêng từ PDF cá nhân: \(store.souMatomeVerifiedBookItemCount). Chỉ các mục này mới được tính là đã hiệu đính theo sách.")
+                            .font(.caption.weight(.semibold)).foregroundColor(Palette.navy)
+                    }
+                    NavigationLink { SouMatomeWholeBooksView() } label: {
                         ActionTile(icon: "books.vertical.circle.fill", color: Palette.blue,
-                                   title: "Mở thư viện Sou Matome",
-                                   detail: "5 sách, 3 PDF bổ trợ, nghe MP3 offline và chọn tuần/chương")
+                                   title: "Mở sách và kho nguồn Sou Matome",
+                                   detail: "Nhập PDF, 116 MP3 và mục trích xuất để đối chiếu riêng")
                     }.buttonStyle(.plain)
                 }
                 LessonPanel {
@@ -54,7 +66,16 @@ struct ContentUpdatesView: View {
                         Task {
                             do {
                                 let count = try await store.downloadCourseUpdates()
-                                status = count == 0 ? "Đã tải bản mới nhất. Đang hiển thị bộ \(store.selectedSeries.name)." : "Đã cập nhật \(count) gói; nội dung \(store.selectedSeries.name) đã làm mới trên toàn ứng dụng."
+                                if store.selectedSeries == .souMatome {
+                                    let items = store.itemCount(for: .souMatome)
+                                    status = count == 0
+                                        ? "Đã kiểm tra bản mới nhất. Hiện có \(items) bài được phép hiển thị trong chế độ đã chọn."
+                                        : "Đã tải \(count) gói. Sou Matome hiển thị \(items) mục theo lựa chọn của bạn; mục từ sách chưa xác nhận không tự biến thành flashcard."
+                                } else {
+                                    status = count == 0
+                                        ? "Đã kiểm tra bản mới nhất cho \(store.selectedSeries.name)."
+                                        : "Đã cập nhật \(count) gói; màn học đã làm mới."
+                                }
                             } catch { status = "Cập nhật thất bại: \(error.localizedDescription)" }
                             downloading = false
                         }

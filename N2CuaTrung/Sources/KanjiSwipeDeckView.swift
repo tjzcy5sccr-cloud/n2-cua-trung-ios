@@ -30,53 +30,45 @@ struct KanjiSwipeDeckView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            // Cuộn trang ngoài để nút cuối không bị TabBar che; vùng thẻ vẫn bắt vuốt riêng.
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10) {
-                SectionTitle("Kanji N2", subtitle: "Vuốt ngang / dọc để đổi chữ • Chạm để lật")
-                HStack {
-                    if !cards.isEmpty {
-                        Pill(text: "\(position + 1) / \(cards.count)", color: Palette.blue)
-                    }
-                    Spacer()
+            let compact = proxy.size.height < 610
+            let cardHeight = max(165, min(440, proxy.size.height - 234))
+            VStack(spacing: compact ? 5 : 8) {
+                HStack(spacing: 12) {
+                    Pill(text: cards.isEmpty ? "0/0" : "\(position + 1)/\(cards.count)",
+                         color: Palette.blue)
+                    Spacer(minLength: 3)
                     NavigationLink {
                         KanjiListView()
                     } label: {
                         Label("Tra cứu", systemImage: "list.bullet")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundColor(Palette.blue)
                     }
-                }
-                NavigationLink {
-                    FreshPracticeSessionView(type: "Kanji")
-                } label: {
-                    Label("Luyện câu hỏi Kanji · Bỏ qua / Tiếp / Kết quả",
-                          systemImage: "checklist")
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity, minHeight: 42)
-                        .foregroundColor(.white)
-                        .background(Palette.blue, in: RoundedRectangle(cornerRadius: 12))
-                }
-                .buttonStyle(.plain)
-                if let card = current {
-                    cardSurface(card, height: 330)
-                    // Giữ cố định chiều cao của hàng chi tiết ở cả hai mặt Kanji.
-                    Button {
-                        if revealed { showFullDetails = true }
+                    NavigationLink {
+                        FreshPracticeSessionView(type: "Kanji")
                     } label: {
-                        Label("Xem đầy đủ từ ghép và bộ thủ", systemImage: "text.book.closed")
-                            .font(.caption.weight(.semibold))
-                            .frame(maxWidth: .infinity, minHeight: 32)
+                        Label("Luyện", systemImage: "checklist")
                     }
-                    .opacity(revealed ? 1 : 0)
-                    .disabled(!revealed)
-                    .accessibilityHidden(!revealed)
-                    Text(feedback ?? " ")
-                        .font(.caption.weight(.semibold))
-                        .foregroundColor(Palette.teal)
-                        .lineLimit(1)
-                        .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .leading)
-                    HStack(spacing: 8) {
+                }
+                .font(.caption.weight(.semibold))
+                if let card = current {
+                    cardSurface(card, height: cardHeight, compact: compact)
+                    HStack(spacing: 7) {
+                        actionButton("Chi tiết", symbol: "text.book.closed",
+                                     color: Palette.navy) {
+                            showFullDetails = true
+                        }
+                        .disabled(!revealed).opacity(revealed ? 1 : 0.38)
+                        actionButton("Nghe từ", symbol: "speaker.wave.2",
+                                     color: Palette.blue) {
+                            if let word = approvedRelatedWord(card) {
+                                voice.speak(word)
+                            }
+                        }
+                        .disabled(approvedRelatedWord(card) == nil)
+                        .opacity(approvedRelatedWord(card) == nil ? 0.38 : 1)
+                        actionButton("Dừng đọc", symbol: "stop.fill",
+                                     color: Palette.teal) { voice.stop() }
+                    }
+                    HStack(spacing: 7) {
                         actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                      symbol: autoPlay ? "pause.fill" : "play.fill",
                                      color: autoPlay ? Palette.orange : Palette.teal) {
@@ -84,33 +76,25 @@ struct KanjiSwipeDeckView: View {
                             elapsed = 0
                             if autoPlay { revealed = false; voice.stop() }
                         }
-                        actionButton("Chữ tiếp theo", symbol: "forward.end.fill",
-                                     color: Palette.blue) { advance() }
-                    }
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Đổi Kanji mỗi")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Picker("Chu kỳ tự chạy", selection: $intervalSeconds) {
-                            Text("3 giây").tag(3)
-                            Text("5 giây").tag(5)
-                            Text("8 giây").tag(8)
+                        actionButton("Chữ kế", symbol: "arrow.right", color: Palette.blue) {
+                            advance()
                         }
-                        .pickerStyle(.segmented)
+                        Menu {
+                            Picker("Đổi chữ sau", selection: $intervalSeconds) {
+                                Text("3 giây").tag(3)
+                                Text("5 giây").tag(5)
+                                Text("8 giây").tag(8)
+                            }
+                        } label: {
+                            Label("\(intervalSeconds)s", systemImage: "timer")
+                                .font(.caption.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 42)
+                                .foregroundColor(Palette.navy)
+                                .background(.white, in: RoundedRectangle(cornerRadius: 11))
+                        }
                         .onChange(of: intervalSeconds) { _ in elapsed = 0 }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack(spacing: 8) {
-                        actionButton("Nghe từ ghép", symbol: "speaker.wave.2.fill", color: Palette.blue) {
-                            if let word = approvedRelatedWord(card) { voice.speak(word) }
-                        }
-                        .disabled(approvedRelatedWord(card) == nil)
-                        .opacity(approvedRelatedWord(card) == nil ? 0.38 : 1)
-                        actionButton("Dừng âm thanh", symbol: "stop.fill", color: Palette.navy) {
-                            voice.stop()
-                        }
-                    }
-                    HStack(spacing: 8) {
+                    HStack(spacing: 7) {
                         actionButton("Chưa thuộc", symbol: "arrow.counterclockwise",
                                      color: Palette.orange) {
                             mark(card.id, known: false)
@@ -121,23 +105,30 @@ struct KanjiSwipeDeckView: View {
                     }
                 } else {
                     LessonPanel {
-                        Text("Không tìm thấy Kanji.")
-                        MainButton(title: "Tải lại", symbol: "arrow.clockwise") { reload() }
+                        Text("Chưa có Kanji để học. Chọn bộ có mục đã kiểm chứng.")
+                        MainButton(title: "Tải lại", symbol: "arrow.clockwise") {
+                            reload()
+                        }
+                        if store.selectedSeries == .souMatome {
+                            NavigationLink {
+                                SouMatomeWholeBooksView()
+                            } label: {
+                                Label("Mở thư viện sách Sou Matome",
+                                      systemImage: "books.vertical")
+                            }
+                        }
                     }
+                    Spacer(minLength: 0)
                 }
-                Text(voice.lastError ?? " ")
-                    .font(.caption2)
-                    .foregroundColor(.red)
-                    .lineLimit(1)
-                    .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
+                if let message = feedback ?? voice.lastError, !message.isEmpty {
+                    Text(message).font(.caption2)
+                        .foregroundColor(Palette.teal).lineLimit(1)
+                }
             }
-                .padding(.horizontal, 12)
-                .padding(.top, 12)
-                // Native NavigationStack/TabView manages safe areas. Avoid the
-                // former extra +92pt bottom space that pushed controls away.
-                .padding(.bottom, max(20, proxy.safeAreaInsets.bottom))
-                .frame(maxWidth: .infinity, alignment: .top)
-            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .frame(width: proxy.size.width, height: proxy.size.height,
+                   alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Kanji")
@@ -175,77 +166,54 @@ struct KanjiSwipeDeckView: View {
 
     /// Không đặt ScrollView bên trong vùng vuốt: vuốt thẻ không thể cuộn nội dung.
     /// Vuốt trái/lên: Kanji tiếp theo; phải/xuống: Kanji trước; chạm: lật mặt.
-    private func cardSurface(_ card: Kanji, height: CGFloat) -> some View {
+    private func cardSurface(_ card: Kanji, height: CGFloat,
+                             compact: Bool) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20).fill(.white)
-            VStack(spacing: 10) {
+            VStack(spacing: compact ? 5 : 9) {
+                Spacer(minLength: 0)
+                Text(card.char)
+                    .font(.system(size: revealed ? (compact ? 52 : 63)
+                                               : (compact ? 92 : 110),
+                                  weight: .bold, design: .rounded))
+                    .foregroundColor(Palette.navy)
+                    .minimumScaleFactor(0.7)
                 if revealed {
-                    Text(card.char).font(.system(size: 52, weight: .bold))
-                        .foregroundColor(Palette.navy)
                     Text(card.displayMeaning)
-                        .font(.headline).foregroundColor(Palette.teal)
-                        .multilineTextAlignment(.center).lineLimit(2)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.teal)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(compact ? 2 : 3)
+                        .minimumScaleFactor(0.75)
                     if let label = card.hanViet, !label.isEmpty {
-                        Text(store.selectedSeries == .souMatome ||
-                             card.id.hasPrefix("sm-reviewed-")
-                             ? "Hán–Việt theo sách: " + label
-                             : "Hán–Việt đã đối chiếu: " + label)
-                            .font(.subheadline).foregroundColor(Palette.blue)
-                    } else if store.selectedSeries == .souMatome ||
-                              card.id.hasPrefix("sm-reviewed-") {
-                        Text("Sách chưa có âm Hán–Việt được xác nhận")
-                            .font(.caption).foregroundColor(.secondary)
+                        Text("Hán–Việt: " + label)
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(Palette.blue)
+                            .lineLimit(2)
+                            .multilineTextAlignment(.center)
                     }
-                    if store.selectedSeries != .souMatome &&
-                       !card.id.hasPrefix("sm-reviewed-"),
-                       let info = KangxiReference.info(for: card.char) {
-                        if card.hanViet?.isEmpty != false {
-                            Text("Hán–Việt tham khảo: \(info.sinoVietnamese)")
-                                .font(.subheadline).foregroundColor(Palette.blue)
-                        } else if let label = card.hanViet,
-                                  label.folding(options: [.diacriticInsensitive,
-                                                         .caseInsensitive],
-                                                locale: Locale(identifier: "vi_VN")) !=
-                                  info.sinoVietnamese.folding(
-                                      options: [.diacriticInsensitive, .caseInsensitive],
-                                      locale: Locale(identifier: "vi_VN")) {
-                            Text("Đối chiếu từ điển: " + info.sinoVietnamese)
-                                .font(.caption).foregroundColor(Palette.orange)
-                        }
-                        if let radical = KangxiReference.radical(forKanji: card.char) {
-                            Text("Bộ #\(radical.id): \(radical.character) • \(radical.sinoVietnamese) — \(radical.meaning)")
-                                .font(.subheadline).foregroundColor(Palette.navy)
-                                .multilineTextAlignment(.center)
-                                .lineLimit(2)
-                        }
+                    HStack(spacing: 8) {
+                        Text("On: \(card.on)")
+                        Text("Kun: \(card.kun)")
                     }
-                    HStack(spacing: 12) {
-                        Text("On: \(card.on)").lineLimit(2)
-                        Text("Kun: \(card.kun)").lineLimit(2)
-                    }
-                    .font(.caption).foregroundColor(.secondary)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .lineLimit(compact ? 1 : 2)
+                    .minimumScaleFactor(0.72)
                     if let word = approvedRelatedWord(card) {
                         Text(word)
-                            .font(.subheadline.weight(.medium))
+                            .font(.caption.weight(.medium))
                             .foregroundColor(Palette.navy)
                             .lineLimit(2)
-                            .minimumScaleFactor(0.7)
+                            .multilineTextAlignment(.center)
                     }
-                    Spacer(minLength: 0)
-                    Text("Chạm để xem mặt trước")
-                        .font(.caption2).foregroundColor(.secondary)
-                } else {
-                    Spacer(minLength: 10)
-                    Text(card.char)
-                        .font(.system(size: 106, weight: .bold, design: .rounded))
-                        .foregroundColor(Palette.navy)
-                    Spacer(minLength: 10)
-                    Label("Chạm để lật • Vuốt 4 hướng để đổi", systemImage: "hand.tap")
-                        .font(.caption).foregroundColor(.secondary)
                 }
+                Spacer(minLength: 0)
+                Text(revealed ? "Chạm xem mặt trước" : "Chạm lật · Vuốt ngang đổi chữ")
+                    .font(.caption2).foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(15)
+            .padding(compact ? 10 : 15)
         }
         .frame(height: height)
         .clipped()
@@ -274,8 +242,6 @@ struct KanjiSwipeDeckView: View {
                         flip(card)
                     } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
                         changeCard(by: dx < 0 ? 1 : -1)
-                    } else if abs(dy) >= 45 {
-                        changeCard(by: dy < 0 ? 1 : -1)
                     }
                     isDraggingCard = false
                 }
@@ -300,14 +266,13 @@ struct KanjiSwipeDeckView: View {
                               action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
-                .font(.footnote.weight(.semibold))
+                .font(.caption.weight(.semibold))
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.8)
-                .frame(maxWidth: .infinity, minHeight: 52)
-                .padding(.horizontal, 7)
+                .minimumScaleFactor(0.76)
+                .frame(maxWidth: .infinity, minHeight: 42)
                 .foregroundColor(.white)
-                .background(color, in: RoundedRectangle(cornerRadius: 12))
+                .background(color, in: RoundedRectangle(cornerRadius: 11))
         }
         .buttonStyle(.plain)
     }

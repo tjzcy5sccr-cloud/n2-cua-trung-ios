@@ -26,7 +26,7 @@ enum LearningSeries: String, CaseIterable, Identifiable {
         case .all: return "Toàn bộ dữ liệu ứng dụng, gồm các gói đã cài"
         case .mimikara: return "Từ vựng – giao tiếp – nghe qua ngữ cảnh"
         case .shinKanzen: return "Ngữ pháp – Kanji – đọc và giải thích kỹ"
-        case .souMatome: return "Mở toàn bộ sách N2 theo kỹ năng, không khóa theo tuần"
+        case .souMatome: return "PDF cá nhân và bài luyện N2 độc lập, học không khóa theo tuần"
         case .speedMaster: return "Kanji, từ ghép và luyện phản xạ"
         }
     }

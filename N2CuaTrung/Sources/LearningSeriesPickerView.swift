@@ -11,9 +11,7 @@ struct LearningSeriesPickerView: View {
                              subtitle: "Chọn một bộ để đổi toàn bộ từ vựng, Kanji, ngữ pháp và bài luyện")
                 LessonPanel {
                     HStack(spacing: 10) {
-                        Image(systemName: store.selectedSeries.icon)
-                            .font(.title2)
-                            .foregroundColor(Palette.teal)
+                        SeriesBookMark(active: true)
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Đang học: \(store.selectedSeries.name)")
                                 .font(.headline).foregroundColor(Palette.navy)
@@ -28,10 +26,7 @@ struct LearningSeriesPickerView: View {
                         store.selectSeries(series)
                     } label: {
                         HStack(alignment: .center, spacing: 13) {
-                            Image(systemName: series.icon)
-                                .font(.title2)
-                                .foregroundColor(selected ? Palette.teal : Palette.blue)
-                                .frame(width: 32)
+                            SeriesBookMark(active: selected)
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(series.name)
                                     .font(.headline)
@@ -44,8 +39,8 @@ struct LearningSeriesPickerView: View {
                                     .font(.caption.weight(.semibold))
                                     .foregroundColor(Palette.blue)
                             }
-                            Spacer(minLength: 4)
-                            Image(systemName: selected ? "largecircle.fill.circle" : "circle")
+                            Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                                .font(.title3)
                                 .font(.title3)
                                 .foregroundColor(selected ? Palette.teal : .secondary)
                         }

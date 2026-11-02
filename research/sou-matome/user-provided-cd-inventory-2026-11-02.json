@@ -1,0 +1,36 @@
+{
+  "sourceArchive": "Soumatome N2 Choukai (có CD).rar",
+  "archiveSizeBytes": 233442630,
+  "locatedIn": "user-provided ChatGPT Library archive (not GitHub)",
+  "inspection": "RAR archive directory verified from original bytes on 2026-11-02",
+  "encrypted": false,
+  "audio": {
+    "CD1": {
+      "files": 64,
+      "expected": 64,
+      "first": "01.mp3",
+      "last": "64.mp3",
+      "missing": [],
+      "duplicates": [],
+      "totalUncompressedBytes": 61991628
+    },
+    "CD2": {
+      "files": 52,
+      "expected": 52,
+      "first": "01.mp3",
+      "last": "52.mp3",
+      "missing": [],
+      "duplicates": [],
+      "totalUncompressedBytes": 87617443
+    },
+    "totalFiles": 116,
+    "totalUncompressedBytes": 149609071
+  },
+  "githubStreaming": {
+    "repositoryVisibility": "public",
+    "manifestPath": "content-packs/sou-matome-audio-streams.json",
+    "publishedMP3Count": 0,
+    "requiresPermittedPublication": true
+  },
+  "notes": "Verified archive headers and exact track number inventory, not decoded every file or verified playback. Audio bytes are not committed to public GitHub."
+}

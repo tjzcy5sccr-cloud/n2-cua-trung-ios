@@ -38,6 +38,7 @@ assert "BrandMark(size: 104)" in about
 assert widget.count('Image("BrandLogo")') >= 2
 assert 'Image(systemName: "leaf.fill")' not in widget
 assert "- path: N2Widget/Assets.xcassets" in project
+assert "ASSETCATALOG_COMPILER_APPICON_NAME: ''" in project
 
 # Same identifier: reinstalling a correctly signed 1.9.3 test build may
 # update the old app while preserving user progress.

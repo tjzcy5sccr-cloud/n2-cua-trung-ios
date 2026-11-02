@@ -64,7 +64,9 @@ final class SouMatomeOnlineAudioSource: ObservableObject {
                   (1...maximum).contains(item.track),
                   let mp3URL = URL(string: item.url),
                   mp3URL.scheme == "https",
-                  mp3URL.host == "raw.githubusercontent.com",
+                  (mp3URL.host == "raw.githubusercontent.com" ||
+                    (mp3URL.host == "github.com" &&
+                     mp3URL.path.contains("/releases/download/"))),
                   mp3URL.pathExtension.lowercased() == "mp3",
                   mp3URL.user == nil, mp3URL.password == nil else {
                 throw SouMatomeOnlineAudioError.invalidTrack

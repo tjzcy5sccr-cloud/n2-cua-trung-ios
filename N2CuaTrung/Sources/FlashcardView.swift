@@ -34,8 +34,8 @@ struct FlashcardDeckView: View {
             let showsError = !(voice.lastError ?? "").isEmpty
             let errorHeight: CGFloat = showsError ? 15 : 0
             let gapCount: CGFloat = showsError ? 6 : 5
-            let controlsHeight = pickerHeight + statusHeight + actionHeight * 3
-                + gap * gapCount + verticalPadding * 2 + errorHeight
+            let controlsHeight = (pickerHeight + statusHeight + actionHeight * 3
+                + gap * gapCount + verticalPadding * 2 + errorHeight)
             let cardHeight = max(72, proxy.size.height - controlsHeight)
             VStack(spacing: gap) {
                 Picker("Bộ thẻ", selection: $scope) {
@@ -394,8 +394,8 @@ struct GrammarFlashcardView: View {
             let hasMessage = !(reviewMessage ?? voice.lastError ?? "").isEmpty
             let messageHeight: CGFloat = hasMessage ? 15 : 0
             let gapCount: CGFloat = hasMessage ? 4 : 3
-            let reservedHeight = statusHeight + actionHeight * 2 + messageHeight
-                + gap * gapCount + verticalPadding * 2
+            let reservedHeight = (statusHeight + actionHeight * 2 + messageHeight
+                + gap * gapCount + verticalPadding * 2)
             let cardHeight = max(72, proxy.size.height - reservedHeight)
             VStack(spacing: gap) {
                 if content.indices.contains(position) {

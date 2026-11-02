@@ -18,6 +18,37 @@ struct FlashcardDeckView: View {
         cards.indices.contains(position) ? cards[position] : nil
     }
 
+    /// Âm Hán–Việt trên mặt sau, lấy từ thẻ Kanji đã duyệt hoặc bảng
+    /// tham chiếu Hán–Việt của ứng dụng. Không tự suy đoán âm thiếu.
+    /// Chỉ hiển thị khi tra được toàn bộ Kanji của từ.
+    private func sinoVietnamese(for word: String) -> String? {
+        let studied = Dictionary(uniqueKeysWithValues: store.course.kanji
+            .filter { $0.isApprovedForStudy && ($0.hanViet?.isEmpty == false) }
+            .compactMap { item -> (String, String)? in
+                guard let value = item.hanViet?.trimmingCharacters(in: .whitespacesAndNewlines),
+                      !value.isEmpty else { return nil }
+                return (item.char, value)
+            })
+        var readings: [String] = []
+        for scalar in word.unicodeScalars {
+            let value = scalar.value
+            guard (0x3400...0x9FFF).contains(value) ||
+                  (0xF900...0xFAFF).contains(value) else { continue }
+            let character = String(scalar)
+            let reading = studied[character] ??
+                KangxiReference.info(for: character)?.sinoVietnamese
+            guard let sound = reading?.trimmingCharacters(in: .whitespacesAndNewlines),
+                  !sound.isEmpty,
+                  // Một Kanji có nhiều âm chưa xác định theo ngữ cảnh:
+                  // không tự chọn cách đọc đầu tiên.
+                  !sound.contains(","), !sound.contains("、"),
+                  !sound.contains("/"), !sound.contains("／")
+            else { return nil }
+            readings.append(sound.lowercased())
+        }
+        return readings.isEmpty ? nil : readings.joined(separator: " ")
+    }
+
     var body: some View {
         // No outer ScrollView. The available NavigationStack/TabView safe area
         // sizes one stable card. Gestures never scroll the background.
@@ -200,20 +231,32 @@ struct FlashcardDeckView: View {
             VStack(spacing: compact ? 5 : 8) {
                 Spacer(minLength: 0)
                 if revealed {
+                    // Thứ tự mặt sau: chữ Nhật lớn → âm Hán–Việt → hiragana → nghĩa Việt.
                     Text(card.word)
-                        .font(.system(size: compact ? 23 : 29, weight: .bold))
+                        .font(.system(size: compact ? 33 : 40, weight: .bold))
                         .foregroundColor(Palette.navy)
                         .multilineTextAlignment(.center)
-                        .lineLimit(2).minimumScaleFactor(0.74)
-                    Text(card.reading)
-                        .font(.caption.weight(.semibold))
-                        .foregroundColor(Palette.blue).lineLimit(1)
+                        .lineLimit(2).minimumScaleFactor(0.7)
+                    if let hanViet = sinoVietnamese(for: card.word) {
+                        Text(hanViet)
+                            .font(.system(size: compact ? 17 : 20, weight: .semibold))
+                            .foregroundColor(Palette.orange)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2).minimumScaleFactor(0.75)
+                    }
+                    if !card.reading.isEmpty {
+                        Text(card.reading)
+                            .font(.system(size: compact ? 16 : 19, weight: .medium))
+                            .foregroundColor(Palette.blue)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(1).minimumScaleFactor(0.78)
+                    }
                     Text(card.displayMeaning)
-                        .font(.subheadline.weight(.semibold))
+                        .font(.system(size: compact ? 19 : 23, weight: .semibold))
                         .foregroundColor(Palette.teal)
                         .multilineTextAlignment(.center)
                         .lineLimit(compact ? 2 : 3)
-                        .minimumScaleFactor(0.75)
+                        .minimumScaleFactor(0.74)
                     if let sentence = card.approvedExampleJapanese {
                         Divider()
                         if height >= 270 && sentence.count <= (compact ? 54 : 95) {

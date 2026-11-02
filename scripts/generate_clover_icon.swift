@@ -58,4 +58,9 @@ try FileManager.default.createDirectory(atPath: brandFolder,
                                         withIntermediateDirectories: true)
 let brandPath = brandFolder + "/BrandLogo.png"
 try output.write(to: URL(fileURLWithPath: brandPath), options: .atomic)
+let widgetFolder = "N2Widget/Assets.xcassets/BrandLogo.imageset"
+try FileManager.default.createDirectory(atPath: widgetFolder,
+                                        withIntermediateDirectories: true)
+let widgetPath = widgetFolder + "/BrandLogo.png"
+try output.write(to: URL(fileURLWithPath: widgetPath), options: .atomic)
 print("Đã tạo cùng một logo cỏ ba lá cho AppIcon và BrandLogo: \(path), \(brandPath)")

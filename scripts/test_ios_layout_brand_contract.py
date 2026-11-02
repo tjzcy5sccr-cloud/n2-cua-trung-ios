@@ -33,6 +33,24 @@ for deck in (vocab_main, grammar_main, kanji_main):
 assert "cardSurface(card, height: cardHeight, compact: compact || cardHeight < 270)" in vocab_main
 assert "grammarCard(item, height: cardHeight, compact: compact || cardHeight < 260)" in grammar_main
 assert "cardSurface(card, height: cardHeight, compact: compact || cardHeight < 265)" in kanji_main
+# Mặt sau Flashcard từ vựng: chữ Nhật lớn -> âm Hán–Việt ->
+# hiragana -> nghĩa tiếng Việt. Không in nhãn, không thêm ở mặt trước.
+back = before_grammar.split("if revealed {", 1)[1].split("} else {", 1)[0]
+order = [
+    "Text(card.word)",
+    "if let hanViet = sinoVietnamese(for: card.word)",
+    "Text(hanViet)",
+    "Text(card.reading)",
+    "Text(card.displayMeaning)"
+]
+positions = [back.find(x) for x in order]
+assert all(p >= 0 for p in positions) and positions == sorted(positions)
+assert "private func sinoVietnamese(for word: String) -> String?" in before_grammar
+assert "KangxiReference.info(for: character)?.sinoVietnamese" in before_grammar
+assert "Âm Hán–Việt:" not in back
+assert "Text(hanViet)" not in before_grammar.split("} else {", 1)[-1].split("private func flip", 1)[0]
+assert "private let autoAdvanceSeconds = 3" in before_grammar
+
 assert "FuriganaText(" in before_grammar and "centered: true" in before_grammar
 assert "FuriganaText(" in after_grammar and "centered: true" in after_grammar
 # Vertical swipes CHANGE the displayed card, they never move the page.

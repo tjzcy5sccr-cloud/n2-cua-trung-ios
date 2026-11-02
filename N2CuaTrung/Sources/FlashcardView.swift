@@ -7,7 +7,7 @@ struct FlashcardDeckView: View {
     @State private var position = 0
     @State private var revealed = false
     @State private var autoPlay = false
-    @State private var intervalSeconds = 5
+    private let autoAdvanceSeconds = 3
     @State private var elapsed = 0
     @State private var isDraggingCard = false
     @State private var showFullExample = false
@@ -56,6 +56,7 @@ struct FlashcardDeckView: View {
                     }
                     .frame(height: statusHeight)
                     cardSurface(card, height: cardHeight, compact: compact || cardHeight < 270)
+                    // Full-width, equal-sized audio buttons, matching the mastery row.
                     HStack(spacing: 7) {
                         smallAction("Nghe từ", symbol: "speaker.wave.2", color: Palette.blue, height: actionHeight) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
@@ -65,36 +66,16 @@ struct FlashcardDeckView: View {
                         }
                         .disabled(!card.hasApprovedExample)
                         .opacity(card.hasApprovedExample ? 1 : 0.4)
-                        smallAction("Xem đủ", symbol: "text.book.closed", color: Palette.navy, height: actionHeight) {
-                            showFullExample = true
-                        }
-                        .disabled(!revealed || !card.hasApprovedExample)
-                        .opacity(revealed && card.hasApprovedExample ? 1 : 0.4)
                     }
                     HStack(spacing: 7) {
-                        smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy",
+                        smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy (3 giây)",
                                     symbol: autoPlay ? "pause.fill" : "play.fill",
                                     color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             toggleAuto()
                         }
-                        smallAction("Từ kế", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
+                        smallAction("Từ tiếp theo", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
                             advanceRandom()
                         }
-                        Menu {
-                            Picker("Đổi từ sau", selection: $intervalSeconds) {
-                                Text("3 giây").tag(3)
-                                Text("5 giây").tag(5)
-                                Text("8 giây").tag(8)
-                            }
-                        } label: {
-                            Label("\(intervalSeconds)s", systemImage: "timer")
-                                .font(.footnote.weight(.semibold))
-                                .frame(maxWidth: .infinity)
-                                .frame(height: actionHeight)
-                                .foregroundColor(Palette.navy)
-                                .background(.white, in: RoundedRectangle(cornerRadius: 11))
-                        }
-                        .onChange(of: intervalSeconds) { _ in elapsed = 0 }
                     }
                     HStack(spacing: 7) {
                         smallAction("Chưa thuộc", symbol: "arrow.counterclockwise",
@@ -136,10 +117,22 @@ struct FlashcardDeckView: View {
         .background(Palette.pale)
         .navigationTitle("Flashcard")
         .navigationBarTitleDisplayMode(.inline)
+        // Detail action moves into the navigation bar instead of shrinking audio buttons.
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showFullExample = true
+                } label: {
+                    Image(systemName: "text.book.closed")
+                }
+                .disabled(!revealed || !(current?.hasApprovedExample ?? false))
+                .accessibilityLabel("Xem đầy đủ ví dụ")
+            }
+        }
         .onReceive(ticker) { _ in
             guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }
             elapsed += 1
-            if elapsed >= intervalSeconds { advanceRandom() }
+            if elapsed >= autoAdvanceSeconds { advanceRandom() }
         }
         .sheet(isPresented: $showFullExample) {
             if let card = current {
@@ -187,9 +180,9 @@ struct FlashcardDeckView: View {
                              height: CGFloat, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
-                .font(.caption.weight(.semibold))
+                .font(.subheadline.weight(.semibold))
                 .lineLimit(1)
-                .minimumScaleFactor(0.65)
+                .minimumScaleFactor(0.78)
                 .frame(maxWidth: .infinity)
                 .frame(height: height)
                 .foregroundColor(.white)
@@ -245,7 +238,7 @@ struct FlashcardDeckView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
                         } else {
-                            Label("Ví dụ dài — bấm Xem đủ", systemImage: "text.book.closed")
+                            Label("Ví dụ dài — xem biểu tượng sách phía trên", systemImage: "text.book.closed")
                                 .font(.caption2).foregroundColor(.secondary)
                         }
                     }

@@ -275,7 +275,7 @@ struct FlashcardDeckView: View {
                         flip(card)
                     } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
                         changeCard(by: dx < 0 ? 1 : -1)
-
+                    }
                     isDraggingCard = false
                 }
         )

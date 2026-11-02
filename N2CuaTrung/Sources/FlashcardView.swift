@@ -22,13 +22,13 @@ struct FlashcardDeckView: View {
     /// tham chiếu Hán–Việt của ứng dụng. Không tự suy đoán âm thiếu.
     /// Chỉ hiển thị khi tra được toàn bộ Kanji của từ.
     private func sinoVietnamese(for word: String) -> String? {
-        let studied = Dictionary(uniqueKeysWithValues: store.course.kanji
-            .filter { $0.isApprovedForStudy && ($0.hanViet?.isEmpty == false) }
-            .compactMap { item -> (String, String)? in
-                guard let value = item.hanViet?.trimmingCharacters(in: .whitespacesAndNewlines),
-                      !value.isEmpty else { return nil }
-                return (item.char, value)
-            })
+        let studied = store.course.kanji.reduce(into: [String: String]()) { known, item in
+            guard item.isApprovedForStudy,
+                  let value = item.hanViet?.trimmingCharacters(in: .whitespacesAndNewlines),
+                  !value.isEmpty else { return }
+            // Một chữ có thể thuộc nhiều gói; tránh lỗi trùng khóa khi gộp.
+            if known[item.char] == nil { known[item.char] = value }
+        }
         var readings: [String] = []
         for scalar in word.unicodeScalars {
             let value = scalar.value

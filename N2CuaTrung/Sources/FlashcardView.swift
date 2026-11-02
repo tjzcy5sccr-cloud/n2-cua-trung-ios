@@ -367,54 +367,77 @@ struct GrammarFlashcardView: View {
     @ObservedObject private var voice = JapaneseVoice.shared
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                SectionTitle("Thẻ ngữ pháp", subtitle: "Các mẫu được xáo trộn ở mỗi lượt học")
+        GeometryReader { proxy in
+            let compact = proxy.size.height < 610
+            let cardHeight = max(170, min(470, proxy.size.height - 172))
+            VStack(spacing: compact ? 6 : 10) {
                 if content.indices.contains(position) {
-                    let g = content[position]
-                    Pill(text: "\(position + 1) / \(content.count)", color: Palette.blue)
-                    grammarCard(g)
-                    // Cố định hàng điều khiển chi tiết dù thẻ đang ở mặt nào.
-                    Button {
-                        if revealed { showFullGrammar = true }
-                    } label: {
-                        Label("Xem cách dùng và ví dụ", systemImage: "text.book.closed")
-                            .font(.caption.weight(.semibold))
-                            .frame(maxWidth: .infinity, minHeight: 32)
+                    let item = content[position]
+                    HStack {
+                        Pill(text: "\(position + 1)/\(content.count)", color: Palette.blue)
+                        Spacer()
+                        Text("Chạm lật · Vuốt ngang đổi mẫu")
+                            .font(.caption2).foregroundColor(.secondary)
+                            .lineLimit(1).minimumScaleFactor(0.78)
                     }
-                    .opacity(revealed ? 1 : 0)
-                    .disabled(!revealed)
-                    .accessibilityHidden(!revealed)
-                    MainButton(title: "Nghe ví dụ", symbol: "speaker.wave.2.fill") {
-                        if let approved = GrammarLibrary.examples(for: g).first {
-                            voice.speak(approved.text)
+                    grammarCard(item, height: cardHeight, compact: compact)
+                    HStack(spacing: 7) {
+                        grammarAction("Xem đủ", symbol: "text.book.closed",
+                                      color: Palette.navy) {
+                            showFullGrammar = true
+                        }
+                        .disabled(!revealed).opacity(revealed ? 1 : 0.38)
+                        grammarAction("Nghe ví dụ", symbol: "speaker.wave.2",
+                                      color: Palette.blue) {
+                            if let example = GrammarLibrary.examples(for: item).first {
+                                voice.speak(example.text)
+                            }
+                        }
+                        .disabled(GrammarLibrary.examples(for: item).isEmpty)
+                        .opacity(GrammarLibrary.examples(for: item).isEmpty ? 0.38 : 1)
+                        grammarAction("Mẫu kế", symbol: "arrow.right",
+                                      color: Palette.teal) {
+                            changeGrammarCard(by: 1)
                         }
                     }
-                    .disabled(GrammarLibrary.examples(for: g).isEmpty)
-                    .opacity(GrammarLibrary.examples(for: g).isEmpty ? 0.38 : 1)
-                    Text(reviewMessage ?? " ")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(Palette.teal)
-                        .lineLimit(1)
-                        .frame(maxWidth: .infinity, minHeight: 22, maxHeight: 22, alignment: .leading)
-                    HStack(spacing: 10) {
-                        MainButton(title: "Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) { next(g.id, known: false) }
-                            .disabled(isSavingReview)
-                        MainButton(title: "Đã thuộc", symbol: "checkmark", color: Palette.teal) { next(g.id, known: true) }
-                            .disabled(isSavingReview)
+                    HStack(spacing: 7) {
+                        grammarAction("Chưa thuộc", symbol: "arrow.counterclockwise",
+                                      color: Palette.orange) {
+                            next(item.id, known: false)
+                        }
+                        grammarAction("Đã thuộc", symbol: "checkmark",
+                                      color: Palette.teal) {
+                            next(item.id, known: true)
+                        }
                     }
+                    .disabled(isSavingReview)
                 } else {
                     LessonPanel {
-                        SectionTitle("Hoàn tất lượt ôn")
-                        MainButton(title: "Ôn lại ngẫu nhiên", symbol: "shuffle") { reload() }
+                        SectionTitle("Chưa có thẻ ngữ pháp",
+                                     subtitle: "Chọn một bộ có mục đã kiểm chứng.")
+                        MainButton(title: "Tải lại", symbol: "arrow.clockwise") {
+                            reload()
+                        }
+                        if store.selectedSeries == .souMatome {
+                            NavigationLink {
+                                SouMatomeWholeBooksView()
+                            } label: {
+                                Label("Mở thư viện sách Sou Matome",
+                                      systemImage: "books.vertical")
+                            }
+                        }
                     }
+                    Spacer(minLength: 0)
                 }
-                Text(voice.lastError ?? " ")
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .lineLimit(1)
-                    .frame(maxWidth: .infinity, minHeight: 17, maxHeight: 17, alignment: .leading)
-            }.padding(16)
+                if let message = reviewMessage ?? voice.lastError, !message.isEmpty {
+                    Text(message).font(.caption2)
+                        .foregroundColor(Palette.teal).lineLimit(1)
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .frame(width: proxy.size.width, height: proxy.size.height,
+                   alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Ngữ pháp")
@@ -459,42 +482,76 @@ struct GrammarFlashcardView: View {
     }
 
 
-    /// Thẻ luôn có chiều cao cố định, không ScrollView lồng nhau và không dùng .offset.
-    private func grammarCard(_ g: Grammar) -> some View {
+    private func grammarAction(_ name: String, symbol: String,
+                               color: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label(name, systemImage: symbol)
+                .font(.caption.weight(.semibold))
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.78)
+                .frame(maxWidth: .infinity, minHeight: 43)
+                .foregroundColor(.white)
+                .background(color, in: RoundedRectangle(cornerRadius: 11))
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// One stationary card, sized by the current safe area; only detail sheets scroll.
+    private func grammarCard(_ g: Grammar, height: CGFloat,
+                             compact: Bool) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20).fill(.white)
-            VStack(spacing: 14) {
+            VStack(spacing: compact ? 7 : 12) {
+                Spacer(minLength: 0)
                 Text(g.pattern)
-                    .font(.title2.bold())
+                    .font(.system(size: compact ? 20 : 25, weight: .bold))
                     .foregroundColor(Palette.navy)
                     .lineLimit(3)
                     .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.center)
                 if revealed {
                     Text(g.displayMeaning)
-                        .font(.headline)
+                        .font(.subheadline.weight(.semibold))
                         .foregroundColor(Palette.teal)
-                        .lineLimit(3)
+                        .lineLimit(3).minimumScaleFactor(0.78)
                         .multilineTextAlignment(.center)
-                    Text(GrammarLibrary.structure(for: g))
-                        .font(.subheadline)
-                        .foregroundColor(Palette.navy)
-                        .lineLimit(5)
-                        .minimumScaleFactor(0.75)
-                        .multilineTextAlignment(.center)
-                } else {
-                    Spacer(minLength: 48)
-                    Label("Chạm để xem nghĩa và cách dùng", systemImage: "hand.tap")
-                        .font(.subheadline).foregroundColor(.secondary)
+                    if let example = GrammarLibrary.examples(for: g).first {
+                        Divider()
+                        if example.text.count <= (compact ? 58 : 100) {
+                            FuriganaText(
+                                text: example.text,
+                                highlightTerms: GrammarFocus.terms(from: g.pattern),
+                                size: compact ? 12 : 14, centered: true)
+                            Text(example.translation)
+                                .font(.system(size: compact ? 11 : 13))
+                                .foregroundColor(.secondary)
+                                .lineLimit(compact ? 2 : 3)
+                                .minimumScaleFactor(0.8)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        } else {
+                            Label("Ví dụ dài — bấm Xem đủ",
+                                  systemImage: "text.book.closed")
+                                .font(.caption2).foregroundColor(.secondary)
+                        }
+                    } else {
+                        Text(GrammarLibrary.structure(for: g))
+                            .font(.caption)
+                            .foregroundColor(Palette.navy)
+                            .lineLimit(compact ? 3 : 5)
+                            .minimumScaleFactor(0.76)
+                            .multilineTextAlignment(.center)
+                    }
                 }
                 Spacer(minLength: 0)
-                Text("Vuốt 4 hướng để đổi mẫu")
+                Text(revealed ? "Chạm xem mặt trước" : "Chạm xem nghĩa và ví dụ")
                     .font(.caption2).foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(18)
+            .padding(compact ? 10 : 18)
         }
-        .frame(height: 286)
+        .frame(height: height)
         .clipped()
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Palette.blue.opacity(0.18)))
@@ -507,8 +564,6 @@ struct GrammarFlashcardView: View {
                         flipGrammar()
                     } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
                         changeGrammarCard(by: dx < 0 ? 1 : -1)
-                    } else if abs(dy) >= 45 {
-                        changeGrammarCard(by: dy < 0 ? 1 : -1)
                     }
                 }
         )

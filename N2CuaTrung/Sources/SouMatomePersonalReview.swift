@@ -73,7 +73,7 @@ struct SouMatomePersonalCard: Codable, Identifiable, Equatable {
               reading: entry.reading ?? "", vietnamese: entry.detail, explanation: "",
               exampleJapanese: "", exampleVietnamese: "",
               onReading: "", kunReading: "", relatedWord: "",
-              hanViet: entry.dictionaryHanViet ?? entry.sourceHanViet,
+              hanViet: entry.sourceHanViet,
               sourceChecked: false, translationChecked: false,
               lastApproved: nil)
     }
@@ -146,6 +146,49 @@ final class SouMatomePersonalReviewStore: ObservableObject {
         try data.write(to: file, options: .atomic)
         cards = revised
         lastError = nil
+    }
+
+    /// Legacy versions could prefill Hán-Việt from an outside dictionary.
+    /// Keep the user's draft, but revoke approvals that conflict with the
+    /// matching label in their own PDF. Never silently overwrite the edit.
+    func invalidateNonBookHanVietApprovals(
+        _ candidates: [SouMatomeSourceEntry]
+    ) throws -> Int {
+        let sourceLabels = Dictionary(uniqueKeysWithValues:
+            candidates.compactMap { item -> (String, String)? in
+                guard item.skill == "Kanji",
+                      let label = item.sourceHanViet, !label.isEmpty else {
+                    return nil
+                }
+                return (item.id, label)
+            })
+        func normalized(_ value: String) -> String {
+            value.folding(options: [.caseInsensitive, .widthInsensitive],
+                          locale: Locale(identifier: "vi_VN"))
+                .filter { !$0.isWhitespace }
+        }
+        var revised = cards
+        var count = 0
+        for (id, var card) in revised where card.kind == "Kanji" {
+            guard card.isApproved,
+                  let original = sourceLabels[id],
+                  normalized(card.hanViet ?? "") != normalized(original) else {
+                continue
+            }
+            card.sourceChecked = false
+            card.translationChecked = false
+            card.lastApproved = nil
+            revised[id] = card
+            count += 1
+        }
+        guard count > 0 else { return 0 }
+        try FileManager.default.createDirectory(
+            at: folder, withIntermediateDirectories: true)
+        let bytes = try JSONEncoder().encode(revised)
+        try bytes.write(to: file, options: .atomic)
+        cards = revised
+        lastError = nil
+        return count
     }
 
     func card(for candidate: SouMatomeSourceEntry) -> SouMatomePersonalCard {
@@ -379,12 +422,17 @@ struct SouMatomePersonalCardEditor: View {
                         Text("Dòng cách đọc trong PDF: " + reads)
                             .font(.caption).foregroundColor(Palette.blue)
                     }
-                    if let corrected = candidate.dictionaryHanViet,
-                       !corrected.isEmpty {
-                        Text("Từ điển độc lập gợi ý Hán–Việt: " + corrected)
+                    if let source = candidate.sourceHanViet, !source.isEmpty,
+                       card.hanViet != source {
+                        Label("Âm Hán–Việt đã lưu khác nhãn trong sách; hãy mở đúng trang và kiểm tra lại.",
+                              systemImage: "exclamationmark.triangle")
                             .font(.caption).foregroundColor(Palette.orange)
+                        Button("Đưa âm Hán–Việt từ sách vào bản nháp") {
+                            card.hanViet = source
+                            sourceConfirmed = false
+                        }
                     }
-                    Text("Hán–Việt là âm đọc. Hãy kiểm tra nghĩa tiếng Việt theo ngữ cảnh và phân loại cách đọc On/Kun trước khi xác nhận.")
+                    Text("Chỉ đối chiếu với trang sách đang mở. Âm Hán–Việt không thay cho nghĩa tiếng Việt; dòng On/Kun lấy nguyên từ sách, bạn xác định trước khi duyệt.")
                         .font(.caption).foregroundColor(.secondary)
                 }
             }

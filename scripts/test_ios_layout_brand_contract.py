@@ -114,7 +114,8 @@ for source in (before_grammar, kanji):
     assert 'Picker("Đổi chữ sau"' not in source
     assert 'Text("5 giây")' not in source
     assert 'Text("8 giây")' not in source
-    assert '"Tự chạy (3 giây)"' in source
+    assert '"Tự chạy"' in source
+    assert '"Tự chạy (3 giây)"' not in source
 
 print("PASS: large two-column audio buttons; vocabulary/Kanji autoplay fixed at 3s")
 

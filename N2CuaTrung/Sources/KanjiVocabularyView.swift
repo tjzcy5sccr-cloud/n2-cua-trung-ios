@@ -2,8 +2,14 @@ import SwiftUI
 
 /// Nghĩa Hán tự và các từ liên quan: tận dụng từ điển từ vựng đã lưu trong ứng dụng.
 struct KanjiVocabularyView: View {
+    @EnvironmentObject private var study: StudyStore
     let item: Kanji
     let vocabulary: [Vocabulary]
+
+    private var bookSourceOnly: Bool {
+        study.selectedSeries == .souMatome ||
+        item.id.hasPrefix("sm-reviewed-")
+    }
 
     private var compounds: [String] {
         item.word.components(separatedBy: CharacterSet(charactersIn: "、,，/"))
@@ -31,7 +37,18 @@ struct KanjiVocabularyView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionTitle("Nghĩa chữ Kanji", subtitle: item.displayMeaning)
-            if let info = KangxiReference.info(for: item.char) {
+            if bookSourceOnly {
+                if let label = item.hanViet, !label.isEmpty {
+                    Text("Âm Hán–Việt ghi trong sách: " + label)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.blue)
+                } else {
+                    Text("Chưa có âm Hán–Việt được duyệt từ PDF sách")
+                        .font(.caption).foregroundColor(.secondary)
+                }
+                Text("Bộ Sou Matome chỉ hiển thị dữ liệu từ sách. Không dùng nghĩa bộ thủ hay từ điển khác để bổ sung.")
+                    .font(.caption2).foregroundColor(.secondary)
+            } else if let info = KangxiReference.info(for: item.char) {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Âm Hán–Việt")
@@ -65,8 +82,10 @@ struct KanjiVocabularyView: View {
                 Text("Bộ thủ #\(radical.id): \(radical.character) — \(radical.sinoVietnamese.capitalized) (\(radical.meaning))")
                     .font(.subheadline).foregroundColor(Palette.blue)
             }
-            Text("Bộ thủ dùng để phân loại chữ; không được lấy nghĩa bộ thủ thay cho nghĩa của cả Kanji hoặc từ ghép.")
-                .font(.caption2).foregroundColor(.secondary)
+            if !bookSourceOnly {
+                Text("Bộ thủ dùng để phân loại chữ; không được lấy nghĩa bộ thủ thay cho nghĩa của cả Kanji hoặc từ ghép.")
+                    .font(.caption2).foregroundColor(.secondary)
+            }
             HStack(alignment: .top, spacing: 12) {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Âm On").font(.caption.weight(.semibold)).foregroundColor(.secondary)

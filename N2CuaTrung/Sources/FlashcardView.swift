@@ -19,8 +19,10 @@ struct FlashcardDeckView: View {
     }
 
     var body: some View {
-        GeometryReader { _ in
-            VStack(spacing: 9) {
+        // Scroll all controls as one page on compact iPhones and with larger
+        // accessibility text. The prior fixed VStack could exceed tab height.
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 11) {
                 SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt ngang hoặc dọc để đổi từ")
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
@@ -40,7 +42,7 @@ struct FlashcardDeckView: View {
                             Text(card.topic).font(.caption).foregroundColor(.secondary).lineLimit(1)
                         }
                     }
-                    cardSurface(card, height: 286)
+                    cardSurface(card, height: 338)
                     // Giữ một hàng có chiều cao cố định dù đang ở mặt trước hay sau.
                     Button {
                         if revealed && card.hasApprovedExample { showFullExample = true }
@@ -111,8 +113,10 @@ struct FlashcardDeckView: View {
                     .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                 Spacer(minLength: 0)
             }
-            .padding(12)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .padding(.horizontal, 14)
+            .padding(.top, 14)
+            .padding(.bottom, 28)
+            .frame(maxWidth: .infinity, alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Flashcard")
@@ -167,10 +171,11 @@ struct FlashcardDeckView: View {
                               action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
-                .font(.subheadline.weight(.semibold))
-                .lineLimit(1)
-                .minimumScaleFactor(0.75)
-                .frame(maxWidth: .infinity, minHeight: 48)
+                .font(.footnote.weight(.semibold))
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity, minHeight: 52)
                 .padding(.horizontal, 7)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 12))
@@ -209,7 +214,7 @@ struct FlashcardDeckView: View {
                                     word: card.word, reading: card.reading, example: sentence),
                                 size: 15
                             )
-                            .frame(maxWidth: .infinity, maxHeight: 78, alignment: .leading)
+                            .frame(maxWidth: .infinity, maxHeight: 110, alignment: .leading)
                             .clipped()
                             Text(card.displayExampleTranslation)
                                 .font(.caption)

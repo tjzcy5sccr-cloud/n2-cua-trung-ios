@@ -15,11 +15,11 @@ let canvas = NSImage(size: NSSize(width: side, height: side), flipped: false) { 
     stem.lineCapStyle = .round
     NSColor(calibratedRed: 0.06, green: 0.55, blue: 0.28, alpha: 1).setStroke()
     stem.stroke()
-    for index in 0..<4 {
+    for index in 0..<3 {
         NSGraphicsContext.saveGraphicsState()
         let transform = AffineTransform(translationByX: 496, byY: 602)
         var rotate = transform
-        rotate.rotate(byDegrees: Double(index) * 90)
+        rotate.rotate(byDegrees: Double(index) * 120)
         let t = NSAffineTransform(transform: rotate)
         t.concat()
         let leaf = NSBezierPath()
@@ -53,4 +53,9 @@ let rep = NSBitmapImageRep(data: canvas.tiffRepresentation!)!
 let output = rep.representation(using: .png, properties: [:])!
 let path = "N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
 try output.write(to: URL(fileURLWithPath: path), options: .atomic)
-print("Đã tạo icon cỏ bốn lá: \(path)")
+let brandFolder = "N2CuaTrung/Assets.xcassets/BrandLogo.imageset"
+try FileManager.default.createDirectory(atPath: brandFolder,
+                                        withIntermediateDirectories: true)
+let brandPath = brandFolder + "/BrandLogo.png"
+try output.write(to: URL(fileURLWithPath: brandPath), options: .atomic)
+print("Đã tạo cùng một logo cỏ ba lá cho AppIcon và BrandLogo: \(path), \(brandPath)")

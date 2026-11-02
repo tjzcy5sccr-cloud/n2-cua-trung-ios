@@ -1,4 +1,4 @@
-name: N2 Trung v1.9.4 - iPhone UI and logo review IPA (unsigned)
+name: N2 Trung v1.9.4 - Han Viet flashcard IPA (unsigned)
 "on":
   push:
     branches:
@@ -73,7 +73,7 @@ jobs:
           python3 scripts/validate_ipa_content.py
           cp N2_cua_Trung_unsigned.ipa N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
           shasum -a 256 N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa > sha256.txt
-      - name: Record exact reviewed source revision and auto-play policy
+      - name: Record exact Han Viet flashcard build revision and auto-play policy
         shell: bash
         run: |
           set -euo pipefail
@@ -81,14 +81,17 @@ jobs:
           echo "Branch: $GITHUB_REF_NAME" >> build-revision.txt
           echo "Version: 1.9.4 (14)" >> build-revision.txt
           echo "Flashcard auto advance: 3 seconds; button label: Tu chay" >> build-revision.txt
+          echo "Back of vocabulary card: Japanese -> Han Viet -> hiragana -> Vietnamese" >> build-revision.txt
+          echo "Sou Matome source-only candidates are not verified lessons and are not packaged as approved cards" >> build-revision.txt
           echo "Code signing: disabled - IPA requires Apple signing before device installation" >> build-revision.txt
           grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/FlashcardView.swift
           grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/KanjiSwipeDeckView.swift
           python3 scripts/test_ios_layout_brand_contract.py
-      - name: Upload latest flashcard IPA - unsigned
+          grep -F 'if let hanViet = sinoVietnamese(for: card.word)' N2CuaTrung/Sources/FlashcardView.swift
+      - name: Upload latest Han Viet flashcard IPA - unsigned
         uses: actions/upload-artifact@v4
         with:
-          name: N2-cua-Trung-v1.9.4-Flashcard-3s-unsigned-IPA
+          name: N2-cua-Trung-v1.9.4-HanViet-Flashcard-unsigned-IPA
           path: |
             N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
             sha256.txt

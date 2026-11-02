@@ -48,7 +48,12 @@ study=(ROOT/"N2CuaTrung/Sources/StudyStore.swift").read_text(encoding="utf-8")
 ui=(ROOT/"N2CuaTrung/Sources/LearningSeriesPickerView.swift").read_text(encoding="utf-8")
 updates=(ROOT/"N2CuaTrung/Sources/ContentUpdatesView.swift").read_text(encoding="utf-8")
 project=(ROOT/"project.yml").read_text(encoding="utf-8")
-assert 'let selected = packs.filter { $0.seriesId == series.rawValue }' in source_code
+# Preserve 4 series and source packs, but exclude the old Sou Matome pack
+# from study until its data has direct PDF page provenance.
+assert 'let selected = bookOnlyEligiblePacks(packs)' in source_code
+assert '.filter { $0.seriesId == series.rawValue }' in source_code
+assert '"sou-matome-personal-reviewed"' in source_code
+assert '"sou-matome-personal-exercises"' in source_code
 assert 'if series == .all { return mergedCourse(packs: packs) }' in source_code
 assert 'LearningSeries.allCases.compactMap(\\.packFilename)' in source_code
 assert 'self.course = CoursePackManager.course(for: series, packs: packs)' in study

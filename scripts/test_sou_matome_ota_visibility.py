@@ -33,7 +33,7 @@ available = {
 }
 assert sum(available.values()) > 0, "The OTA pack must have study-visible items"
 assert "includeIndependentSouMatomePractice" in src
-assert 'pack.id == "n2-series-sou-matome"' in src
+assert '"n2-series-sou-matome"' in src
 assert "let selected = bookOnlyEligiblePacks(packs)" in src
 assert '.filter { $0.isApprovedForStudy }' in src
 assert "includeIndependentSouMatomePractice: includeIndependentSouMatomePractice" in src

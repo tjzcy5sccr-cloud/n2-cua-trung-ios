@@ -1,4 +1,4 @@
-name: N2 Trung v1.9.5 - Sou Matome OTA fix IPA (unsigned)
+name: N2 Trung v1.9.6 - Sou Matome extracted preview and GitHub audio (unsigned)
 "on":
   push:
     branches:
@@ -25,6 +25,7 @@ jobs:
           python3 scripts/test_ios_layout_brand_contract.py
           python3 scripts/test_sou_matome_book_source_contract.py
           python3 scripts/test_sou_matome_ota_visibility.py
+          python3 scripts/test_sou_matome_online_audio.py
           python3 scripts/validate_four_series_curriculum.py
           python3 scripts/validate_series_packs.py
           python3 scripts/prepare_approved_app_resources.py
@@ -60,8 +61,8 @@ jobs:
           set -euo pipefail
           APP=build-review/Build/Products/Release-iphoneos/N2CuaTrung.app
           test -f "$APP/Info.plist"
-          /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Info.plist" | grep -Fx '1.9.5'
-          /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP/Info.plist" | grep -Fx '15'
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Info.plist" | grep -Fx '1.9.6'
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP/Info.plist" | grep -Fx '16'
           /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist" | grep -Fx 'vn.trung.n2master2027'
           test -d "$APP/PlugIns/N2WidgetExtension.appex" || find "$APP/PlugIns" -type d -name '*.appex' | grep -q .
           test -f "$APP/Assets.car"
@@ -72,31 +73,32 @@ jobs:
           cp -R build-review/Build/Products/Release-iphoneos/N2CuaTrung.app Payload/
           zip -qry N2_cua_Trung_unsigned.ipa Payload
           python3 scripts/validate_ipa_content.py
-          cp N2_cua_Trung_unsigned.ipa N2_cua_Trung_v1.9.5_SouMatome_OTA_unsigned.ipa
-          shasum -a 256 N2_cua_Trung_v1.9.5_SouMatome_OTA_unsigned.ipa > sha256.txt
+          cp N2_cua_Trung_unsigned.ipa N2_cua_Trung_v1.9.6_SouMatome_Audio_unsigned.ipa
+          shasum -a 256 N2_cua_Trung_v1.9.6_SouMatome_Audio_unsigned.ipa > sha256.txt
       - name: Record exact Han Viet flashcard build revision and auto-play policy
         shell: bash
         run: |
           set -euo pipefail
           echo "GitHub commit: $GITHUB_SHA" > build-revision.txt
           echo "Branch: $GITHUB_REF_NAME" >> build-revision.txt
-          echo "Version: 1.9.5 (15)" >> build-revision.txt
+          echo "Version: 1.9.6 (16)" >> build-revision.txt
           echo "Flashcard auto advance: 3 seconds; button label: Tu chay" >> build-revision.txt
           echo "Back of vocabulary card: Japanese -> Han Viet -> hiragana -> Vietnamese" >> build-revision.txt
           echo "Sou Matome: offline independent N2 practice enabled; book-derived candidates stay private until review" >> build-revision.txt
-          echo "Bundled independent practice version: 7; GitHub data can be upgraded to version 8 later" >> build-revision.txt
+          echo "Bundled independent practice and online CD streaming (authorized links only)" >> build-revision.txt
           echo "Code signing: disabled - IPA requires Apple signing before device installation" >> build-revision.txt
           grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/FlashcardView.swift
           grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/KanjiSwipeDeckView.swift
           python3 scripts/test_ios_layout_brand_contract.py
           python3 scripts/test_sou_matome_ota_visibility.py
+          python3 scripts/test_sou_matome_online_audio.py
           grep -F 'if let hanViet = sinoVietnamese(for: card.word)' N2CuaTrung/Sources/FlashcardView.swift
       - name: Upload Sou Matome OTA fixed IPA - unsigned
         uses: actions/upload-artifact@v4
         with:
-          name: N2-cua-Trung-v1.9.5-SouMatome-OTA-unsigned-IPA
+          name: N2-cua-Trung-v1.9.6-SouMatome-Audio-unsigned-IPA
           path: |
-            N2_cua_Trung_v1.9.5_SouMatome_OTA_unsigned.ipa
+            N2_cua_Trung_v1.9.6_SouMatome_Audio_unsigned.ipa
             sha256.txt
             build-revision.txt
           if-no-files-found: error
@@ -104,7 +106,7 @@ jobs:
       - name: Upload generated canonical logo for review
         uses: actions/upload-artifact@v4
         with:
-          name: N2-cua-Trung-v1.9.5-clover-logo
+          name: N2-cua-Trung-v1.9.6-clover-logo
           path: N2CuaTrung/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
           if-no-files-found: error
           retention-days: 30
@@ -112,6 +114,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: N2-cua-Trung-v1.9.5-build-diagnostics
+          name: N2-cua-Trung-v1.9.6-build-diagnostics
           path: xcodebuild-review.log
           if-no-files-found: ignore

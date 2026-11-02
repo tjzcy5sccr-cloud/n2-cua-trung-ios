@@ -6,15 +6,7 @@ struct AboutView: View {
         ScrollView {
             VStack(spacing: 20) {
                 VStack(spacing: 12) {
-                    Image(systemName: "character.book.closed.fill")
-                        .font(.system(size: 48, weight: .medium))
-                        .foregroundColor(.white)
-                        .frame(width: 104, height: 104)
-                        .background(
-                            LinearGradient(colors: [Palette.blue, Palette.navy],
-                                           startPoint: .topLeading, endPoint: .bottomTrailing),
-                            in: RoundedRectangle(cornerRadius: 26)
-                        )
+                    BrandMark(size: 104)
                         .accessibilityHidden(true)
 
                     Text("N2 của Trung")

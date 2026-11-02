@@ -22,16 +22,29 @@ struct FlashcardDeckView: View {
         // No outer ScrollView. The available NavigationStack/TabView safe area
         // sizes one stable card. Gestures never scroll the background.
         GeometryReader { proxy in
-            let compact = proxy.size.height < 610
-            let available = proxy.size.height
-            let cardHeight = max(160, min(440, available - (compact ? 211 : 235)))
-            VStack(spacing: compact ? 5 : 8) {
+            // Keep ALL controls inside the TabView + NavigationStack safe area.
+            // Reserve exact heights for every control before sizing the stationary card.
+            let compact = proxy.size.height < 690
+            let shortScreen = proxy.size.height < 520
+            let gap: CGFloat = shortScreen ? 3 : (compact ? 5 : 7)
+            let actionHeight: CGFloat = shortScreen ? 34 : (compact ? 38 : 42)
+            let pickerHeight: CGFloat = shortScreen ? 29 : 32
+            let statusHeight: CGFloat = 28
+            let verticalPadding: CGFloat = shortScreen ? 4 : 7
+            let showsError = !(voice.lastError ?? "").isEmpty
+            let errorHeight: CGFloat = showsError ? 15 : 0
+            let gapCount: CGFloat = showsError ? 6 : 5
+            let controlsHeight = pickerHeight + statusHeight + actionHeight * 3
+                + gap * gapCount + verticalPadding * 2 + errorHeight
+            let cardHeight = max(72, proxy.size.height - controlsHeight)
+            VStack(spacing: gap) {
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
                     Text("Đến tuần").tag(1)
                     Text("Tất cả").tag(2)
                 }
                 .pickerStyle(.segmented)
+                .frame(height: pickerHeight)
                 .onChange(of: scope) { _ in reload() }
                 if let card = current {
                     HStack(spacing: 8) {
@@ -41,17 +54,18 @@ struct FlashcardDeckView: View {
                             .font(.caption2).foregroundColor(.secondary)
                             .lineLimit(1).minimumScaleFactor(0.78)
                     }
+                    .frame(height: statusHeight)
                     cardSurface(card, height: cardHeight, compact: compact)
                     HStack(spacing: 7) {
-                        smallAction("Nghe từ", symbol: "speaker.wave.2", color: Palette.blue) {
+                        smallAction("Nghe từ", symbol: "speaker.wave.2", color: Palette.blue, height: actionHeight) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
                         }
-                        smallAction("Nghe ví dụ", symbol: "waveform", color: Palette.teal) {
+                        smallAction("Nghe ví dụ", symbol: "waveform", color: Palette.teal, height: actionHeight) {
                             if let example = card.approvedExampleJapanese { voice.speak(example) }
                         }
                         .disabled(!card.hasApprovedExample)
                         .opacity(card.hasApprovedExample ? 1 : 0.4)
-                        smallAction("Xem đủ", symbol: "text.book.closed", color: Palette.navy) {
+                        smallAction("Xem đủ", symbol: "text.book.closed", color: Palette.navy, height: actionHeight) {
                             showFullExample = true
                         }
                         .disabled(!revealed || !card.hasApprovedExample)
@@ -60,10 +74,10 @@ struct FlashcardDeckView: View {
                     HStack(spacing: 7) {
                         smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                     symbol: autoPlay ? "pause.fill" : "play.fill",
-                                    color: autoPlay ? Palette.orange : Palette.teal) {
+                                    color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             toggleAuto()
                         }
-                        smallAction("Từ kế", symbol: "arrow.right", color: Palette.blue) {
+                        smallAction("Từ kế", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
                             advanceRandom()
                         }
                         Menu {
@@ -75,7 +89,8 @@ struct FlashcardDeckView: View {
                         } label: {
                             Label("\(intervalSeconds)s", systemImage: "timer")
                                 .font(.footnote.weight(.semibold))
-                                .frame(maxWidth: .infinity, minHeight: 41)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: actionHeight)
                                 .foregroundColor(Palette.navy)
                                 .background(.white, in: RoundedRectangle(cornerRadius: 11))
                         }
@@ -83,9 +98,9 @@ struct FlashcardDeckView: View {
                     }
                     HStack(spacing: 7) {
                         smallAction("Chưa thuộc", symbol: "arrow.counterclockwise",
-                                    color: Palette.orange) { mark(false, id: card.id) }
+                                    color: Palette.orange, height: actionHeight) { mark(false, id: card.id) }
                         smallAction("Đã thuộc", symbol: "checkmark",
-                                    color: Palette.teal) { mark(true, id: card.id) }
+                                    color: Palette.teal, height: actionHeight) { mark(true, id: card.id) }
                     }
                 } else {
                     LessonPanel {
@@ -110,15 +125,17 @@ struct FlashcardDeckView: View {
                 if let error = voice.lastError, !error.isEmpty {
                     Text(error)
                         .font(.caption2).foregroundColor(.red).lineLimit(1)
+                        .frame(height: errorHeight)
                 }
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 7)
+            .padding(.vertical, verticalPadding)
             .frame(width: proxy.size.width, height: proxy.size.height,
                    alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Flashcard")
+        .navigationBarTitleDisplayMode(.inline)
         .onReceive(ticker) { _ in
             guard autoPlay, !revealed, !cards.isEmpty, !isDraggingCard else { return }
             elapsed += 1
@@ -167,14 +184,14 @@ struct FlashcardDeckView: View {
     }
 
     private func smallAction(_ title: String, symbol: String, color: Color,
-                             action: @escaping () -> Void) -> some View {
+                             height: CGFloat, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
                 .font(.caption.weight(.semibold))
-                .lineLimit(2)
-                .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.77)
-                .frame(maxWidth: .infinity, minHeight: 41)
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+                .frame(maxWidth: .infinity)
+                .frame(height: height)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 11))
         }
@@ -368,9 +385,19 @@ struct GrammarFlashcardView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            let compact = proxy.size.height < 610
-            let cardHeight = max(170, min(470, proxy.size.height - 172))
-            VStack(spacing: compact ? 6 : 10) {
+            let compact = proxy.size.height < 690
+            let shortScreen = proxy.size.height < 520
+            let gap: CGFloat = shortScreen ? 4 : (compact ? 6 : 8)
+            let actionHeight: CGFloat = shortScreen ? 35 : (compact ? 39 : 43)
+            let statusHeight: CGFloat = 28
+            let verticalPadding: CGFloat = shortScreen ? 4 : 8
+            let hasMessage = !(reviewMessage ?? voice.lastError ?? "").isEmpty
+            let messageHeight: CGFloat = hasMessage ? 15 : 0
+            let gapCount: CGFloat = hasMessage ? 4 : 3
+            let reservedHeight = statusHeight + actionHeight * 2 + messageHeight
+                + gap * gapCount + verticalPadding * 2
+            let cardHeight = max(72, proxy.size.height - reservedHeight)
+            VStack(spacing: gap) {
                 if content.indices.contains(position) {
                     let item = content[position]
                     HStack {
@@ -380,15 +407,16 @@ struct GrammarFlashcardView: View {
                             .font(.caption2).foregroundColor(.secondary)
                             .lineLimit(1).minimumScaleFactor(0.78)
                     }
+                    .frame(height: statusHeight)
                     grammarCard(item, height: cardHeight, compact: compact)
                     HStack(spacing: 7) {
                         grammarAction("Xem đủ", symbol: "text.book.closed",
-                                      color: Palette.navy) {
+                                      color: Palette.navy, height: actionHeight) {
                             showFullGrammar = true
                         }
                         .disabled(!revealed).opacity(revealed ? 1 : 0.38)
                         grammarAction("Nghe ví dụ", symbol: "speaker.wave.2",
-                                      color: Palette.blue) {
+                                      color: Palette.blue, height: actionHeight) {
                             if let example = GrammarLibrary.examples(for: item).first {
                                 voice.speak(example.text)
                             }
@@ -396,17 +424,17 @@ struct GrammarFlashcardView: View {
                         .disabled(GrammarLibrary.examples(for: item).isEmpty)
                         .opacity(GrammarLibrary.examples(for: item).isEmpty ? 0.38 : 1)
                         grammarAction("Mẫu kế", symbol: "arrow.right",
-                                      color: Palette.teal) {
+                                      color: Palette.teal, height: actionHeight) {
                             changeGrammarCard(by: 1)
                         }
                     }
                     HStack(spacing: 7) {
                         grammarAction("Chưa thuộc", symbol: "arrow.counterclockwise",
-                                      color: Palette.orange) {
+                                      color: Palette.orange, height: actionHeight) {
                             next(item.id, known: false)
                         }
                         grammarAction("Đã thuộc", symbol: "checkmark",
-                                      color: Palette.teal) {
+                                      color: Palette.teal, height: actionHeight) {
                             next(item.id, known: true)
                         }
                     }
@@ -432,15 +460,17 @@ struct GrammarFlashcardView: View {
                 if let message = reviewMessage ?? voice.lastError, !message.isEmpty {
                     Text(message).font(.caption2)
                         .foregroundColor(Palette.teal).lineLimit(1)
+                        .frame(height: messageHeight)
                 }
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 8)
+            .padding(.vertical, verticalPadding)
             .frame(width: proxy.size.width, height: proxy.size.height,
                    alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Ngữ pháp")
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showFullGrammar) {
             if content.indices.contains(position) {
                 let item = content[position]
@@ -483,14 +513,15 @@ struct GrammarFlashcardView: View {
 
 
     private func grammarAction(_ name: String, symbol: String,
-                               color: Color, action: @escaping () -> Void) -> some View {
+                               color: Color, height: CGFloat,
+                               action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(name, systemImage: symbol)
                 .font(.caption.weight(.semibold))
-                .lineLimit(2)
-                .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.78)
-                .frame(maxWidth: .infinity, minHeight: 43)
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+                .frame(maxWidth: .infinity)
+                .frame(height: height)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 11))
         }

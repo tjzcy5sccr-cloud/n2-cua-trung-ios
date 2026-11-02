@@ -71,7 +71,10 @@ struct MainButton: View {
         Button(action: action) {
             Label(title, systemImage: symbol)
                 .font(.subheadline.weight(.semibold))
-                .frame(maxWidth: .infinity, minHeight: 46)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.83)
+                .frame(maxWidth: .infinity, minHeight: 52)
                 .padding(.horizontal, 10)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 13))
@@ -88,8 +91,16 @@ struct StatBox: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Image(systemName: symbol).foregroundColor(Palette.blue)
-            Text(number).font(.title2.weight(.bold)).foregroundColor(Palette.navy)
-            Text(label).font(.caption).foregroundColor(.secondary)
+            Text(number)
+                .font(.title2.weight(.bold))
+                .foregroundColor(Palette.navy)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)

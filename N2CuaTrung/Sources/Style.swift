@@ -8,6 +8,20 @@ enum Palette {
     static let orange = Color(red: 0.97, green: 0.54, blue: 0.24)
 }
 
+/// The *same* generated PNG is used in AppIcon, this brand mark and the
+/// widget. Do not substitute unrelated SF Symbols in branded surfaces.
+struct BrandMark: View {
+    var size: CGFloat = 62
+    var body: some View {
+        Image("BrandLogo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: size, height: size)
+            .clipShape(RoundedRectangle(cornerRadius: size * 0.2))
+            .accessibilityLabel("Logo N2 của Trung")
+    }
+}
+
 struct Pill: View {
     let text: String
     let color: Color

@@ -344,6 +344,9 @@ struct SouMatomeLibraryView: View {
     @EnvironmentObject private var store: StudyStore
     @StateObject private var library = SouMatomeLibraryStore()
     @StateObject private var audio = SouMatomeAudioPlayer()
+    @StateObject private var onlineAudio = SouMatomeOnlineAudioSource()
+    @AppStorage("SouMatome.onlineAudioManifest.v1")
+    private var onlineManifestAddress = SouMatomeOnlineAudioSource.defaultManifest
     @State private var selectedBook: SouMatomeDocument?
     @State private var pickPDF = false
     @State private var pickAllPDF = false
@@ -365,7 +368,7 @@ struct SouMatomeLibraryView: View {
                             store.selectSeries(.souMatome)
                         }
                     }
-                    Text("Phần PDF và CD được lưu riêng trên iPhone sau khi bạn nhập từ Tệp. Không tải hoặc đăng sách lên GitHub. Dữ liệu tương tác vẫn là gói JSON được kiểm duyệt riêng, không phải bản chép đầy đủ sách.")
+                    Text("PDF cá nhân vẫn lưu trên iPhone. Nghe MP3 có thể dùng tệp đã nhập hoặc phát trực tuyến qua GitHub khi chủ kho có quyền chia sẻ. Bài học tương tác và dữ liệu trích xuất được quản lý riêng.")
                         .font(.caption).foregroundColor(.secondary)
                 }
                 NavigationLink {
@@ -399,8 +402,44 @@ struct SouMatomeLibraryView: View {
                 }
                 LessonPanel {
                     SectionTitle("CD nghe hiểu – 116 tệp MP3",
-                                 subtitle: "CD1: 64 tệp • CD2: 52 tệp trong bộ đã cung cấp")
-                    Text("Để nhập CD, giải nén RAR trên máy tính rồi chuyển thư mục CD1/CD2 vào Tệp trên iPhone. Chọn thư mục mẹ để nhập cả hai CD.")
+                                 subtitle: "CD1: 64 tệp • CD2: 52 tệp")
+                    Text("Nghe trực tuyến từ GitHub hoặc dùng tệp MP3 đã nhập trên iPhone.")
+                        .font(.caption).foregroundColor(.secondary)
+                    TextField("Liên kết danh mục CD JSON trên GitHub", text: $onlineManifestAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .keyboardType(.URL)
+                        .textFieldStyle(.roundedBorder)
+                    MainButton(title: onlineAudio.loading ? "Đang tải danh sách CD…" :
+                                   "Tải CD nghe trực tuyến từ GitHub",
+                               symbol: "cloud.down.fill") {
+                        Task { await onlineAudio.refresh(from: onlineManifestAddress) }
+                    }.disabled(onlineAudio.loading)
+                    Text(onlineAudio.message.isEmpty
+                         ? "Đường dẫn cần trỏ tới danh mục MP3 bạn có quyền phân phối."
+                         : onlineAudio.message)
+                        .font(.caption)
+                        .foregroundColor(onlineAudio.tracks.isEmpty ? Palette.orange : Palette.teal)
+                    Text("Đã có \(onlineAudio.tracks.count)/116 track trực tuyến · \(library.tracks.count)/116 track ngoại tuyến")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(Palette.blue)
+                    ForEach(onlineAudio.tracks) { track in
+                        Button {
+                            audio.play(track)
+                        } label: {
+                            HStack {
+                                Image(systemName: audio.currentTrack == track.id && audio.playing
+                                      ? "waveform" : "play.circle")
+                                Text("\(track.cd) · \(track.name) · Trực tuyến")
+                                    .font(.subheadline)
+                                Spacer()
+                            }
+                            .foregroundColor(Palette.blue)
+                            .padding(.vertical, 5)
+                        }.buttonStyle(.plain)
+                    }
+                    Text("Ngoại tuyến: giải nén CD rồi chuyển thư mục CD1/CD2 vào Tệp trên iPhone.")
+                        .font(.caption).foregroundColor(.secondary)
                         .font(.caption).foregroundColor(.secondary)
                     MainButton(title: working ? "Đang nhập dữ liệu…" : "Nhập thư mục audio CD",
                                symbol: "folder.badge.plus") {
@@ -466,6 +505,7 @@ struct SouMatomeLibraryView: View {
         .background(Palette.pale)
         .navigationTitle("Sou Matome N2")
         .onAppear { library.refresh() }
+        .task { await onlineAudio.refresh(from: onlineManifestAddress) }
         .fileImporter(isPresented: $pickAllPDF, allowedContentTypes: [.pdf],
                       allowsMultipleSelection: true) { result in
             switch result {

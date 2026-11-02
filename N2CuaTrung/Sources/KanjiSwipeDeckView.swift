@@ -81,7 +81,7 @@ struct KanjiSwipeDeckView: View {
                                      color: Palette.teal, height: actionHeight) { voice.stop() }
                     }
                     HStack(spacing: 7) {
-                        actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy (3 giây)",
+                        actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                      symbol: autoPlay ? "pause.fill" : "play.fill",
                                      color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             autoPlay.toggle()

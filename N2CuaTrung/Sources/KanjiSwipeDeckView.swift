@@ -40,8 +40,8 @@ struct KanjiSwipeDeckView: View {
             let hasFeedback = !(feedback ?? voice.lastError ?? "").isEmpty
             let feedbackHeight: CGFloat = hasFeedback ? 15 : 0
             let gapCount: CGFloat = hasFeedback ? 5 : 4
-            let reservedHeight = statusHeight + actionHeight * 3 + feedbackHeight
-                + gap * gapCount + verticalPadding * 2
+            let reservedHeight = (statusHeight + actionHeight * 3 + feedbackHeight
+                + gap * gapCount + verticalPadding * 2)
             let cardHeight = max(72, proxy.size.height - reservedHeight)
             VStack(spacing: gap) {
                 HStack(spacing: 12) {

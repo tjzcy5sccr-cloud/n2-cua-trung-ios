@@ -19,11 +19,13 @@ struct FlashcardDeckView: View {
     }
 
     var body: some View {
-        // Scroll all controls as one page on compact iPhones and with larger
-        // accessibility text. The prior fixed VStack could exceed tab height.
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 11) {
-                SectionTitle("Flashcard từ vựng", subtitle: "Chạm để lật • Vuốt ngang hoặc dọc để đổi từ")
+        // No outer ScrollView. The available NavigationStack/TabView safe area
+        // sizes one stable card. Gestures never scroll the background.
+        GeometryReader { proxy in
+            let compact = proxy.size.height < 610
+            let available = proxy.size.height
+            let cardHeight = max(160, min(440, available - (compact ? 211 : 235)))
+            VStack(spacing: compact ? 5 : 8) {
                 Picker("Bộ thẻ", selection: $scope) {
                     Text("Cần ôn").tag(0)
                     Text("Đến tuần").tag(1)
@@ -31,92 +33,89 @@ struct FlashcardDeckView: View {
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: scope) { _ in reload() }
-
                 if let card = current {
                     HStack(spacing: 8) {
-                        Pill(text: "\(position + 1) / \(cards.count)", color: Palette.blue)
+                        Pill(text: "\(position + 1)/\(cards.count)", color: Palette.blue)
                         Spacer(minLength: 4)
-                        if autoPlay {
-                            Pill(text: revealed ? "Tạm dừng" : "Tự chạy từ", color: Palette.teal)
-                        } else {
-                            Text(card.topic).font(.caption).foregroundColor(.secondary).lineLimit(1)
-                        }
+                        Text("Chạm lật · Vuốt ngang đổi từ")
+                            .font(.caption2).foregroundColor(.secondary)
+                            .lineLimit(1).minimumScaleFactor(0.78)
                     }
-                    cardSurface(card, height: 338)
-                    // Giữ một hàng có chiều cao cố định dù đang ở mặt trước hay sau.
-                    Button {
-                        if revealed && card.hasApprovedExample { showFullExample = true }
-                    } label: {
-                        Label("Xem đầy đủ câu ví dụ", systemImage: "text.book.closed")
-                            .font(.caption.weight(.semibold))
-                            .frame(maxWidth: .infinity, minHeight: 32)
-                    }
-                    .opacity(revealed && card.hasApprovedExample ? 1 : 0)
-                    .disabled(!revealed || !card.hasApprovedExample)
-                    .accessibilityHidden(!revealed || !card.hasApprovedExample)
-                    HStack(spacing: 8) {
-                        actionButton(
-                            autoPlay ? "Dừng tự chạy" : "Tự chạy",
-                            symbol: autoPlay ? "pause.fill" : "play.fill",
-                            color: autoPlay ? Palette.orange : Palette.teal
-                        ) { toggleAuto() }
-                        actionButton("Từ tiếp theo", symbol: "forward.end.fill", color: Palette.blue) {
-                            advanceRandom()
-                        }
-                    }
-                    HStack(spacing: 8) {
-                        Text("Đổi từ mỗi").font(.caption).foregroundColor(.secondary)
-                        Picker("Thời gian chuyển tự động", selection: $intervalSeconds) {
-                            Text("3 giây").tag(3)
-                            Text("5 giây").tag(5)
-                            Text("8 giây").tag(8)
-                        }
-                        .pickerStyle(.segmented)
-                        .onChange(of: intervalSeconds) { _ in elapsed = 0 }
-                    }
-                    HStack(spacing: 8) {
-                        actionButton("Nghe từ", symbol: "speaker.wave.2.fill", color: Palette.blue) {
+                    cardSurface(card, height: cardHeight, compact: compact)
+                    HStack(spacing: 7) {
+                        smallAction("Nghe từ", symbol: "speaker.wave.2", color: Palette.blue) {
                             voice.speak(card.reading.isEmpty ? card.word : card.reading)
                         }
-                        actionButton("Nghe ví dụ", symbol: "waveform", color: Palette.teal) {
-                            if let sentence = card.approvedExampleJapanese { voice.speak(sentence) }
+                        smallAction("Nghe ví dụ", symbol: "waveform", color: Palette.teal) {
+                            if let example = card.approvedExampleJapanese { voice.speak(example) }
                         }
                         .disabled(!card.hasApprovedExample)
-                        .opacity(card.hasApprovedExample ? 1 : 0.38)
-                    }
-                    HStack(spacing: 8) {
-                        actionButton("Chưa thuộc", symbol: "arrow.counterclockwise", color: Palette.orange) {
-                            mark(false, id: card.id)
+                        .opacity(card.hasApprovedExample ? 1 : 0.4)
+                        smallAction("Xem đủ", symbol: "text.book.closed", color: Palette.navy) {
+                            showFullExample = true
                         }
-                        actionButton("Đã thuộc", symbol: "checkmark", color: Palette.teal) {
-                            mark(true, id: card.id)
-                        }
+                        .disabled(!revealed || !card.hasApprovedExample)
+                        .opacity(revealed && card.hasApprovedExample ? 1 : 0.4)
                     }
-                    Text("Tự chạy đổi từ; chạm thẻ để lật qua lại và tạm dừng khi xem nghĩa.")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    HStack(spacing: 7) {
+                        smallAction(autoPlay ? "Dừng tự chạy" : "Tự chạy",
+                                    symbol: autoPlay ? "pause.fill" : "play.fill",
+                                    color: autoPlay ? Palette.orange : Palette.teal) {
+                            toggleAuto()
+                        }
+                        smallAction("Từ kế", symbol: "arrow.right", color: Palette.blue) {
+                            advanceRandom()
+                        }
+                        Menu {
+                            Picker("Đổi từ sau", selection: $intervalSeconds) {
+                                Text("3 giây").tag(3)
+                                Text("5 giây").tag(5)
+                                Text("8 giây").tag(8)
+                            }
+                        } label: {
+                            Label("\(intervalSeconds)s", systemImage: "timer")
+                                .font(.footnote.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 41)
+                                .foregroundColor(Palette.navy)
+                                .background(.white, in: RoundedRectangle(cornerRadius: 11))
+                        }
+                        .onChange(of: intervalSeconds) { _ in elapsed = 0 }
+                    }
+                    HStack(spacing: 7) {
+                        smallAction("Chưa thuộc", symbol: "arrow.counterclockwise",
+                                    color: Palette.orange) { mark(false, id: card.id) }
+                        smallAction("Đã thuộc", symbol: "checkmark",
+                                    color: Palette.teal) { mark(true, id: card.id) }
+                    }
                 } else {
                     LessonPanel {
-                        SectionTitle("Đã hoàn thành lượt ôn")
-                        MainButton(title: "Ôn lại ngẫu nhiên", symbol: "shuffle") { reload() }
+                        SectionTitle("Chưa có thẻ để ôn",
+                                     subtitle: store.selectedSeries == .souMatome
+                                        ? "Nhập PDF và mục sách, kiểm tra rồi duyệt để học Sou Matome."
+                                        : "Đổi sang Tất cả hoặc một bộ học khác.")
                         MainButton(title: "Xem toàn bộ", symbol: "books.vertical") {
                             scope = 2
                             reload()
                         }
+                        if store.selectedSeries == .souMatome {
+                            NavigationLink {
+                                SouMatomeWholeBooksView()
+                            } label: {
+                                Label("Mở thư viện sách Sou Matome", systemImage: "books.vertical")
+                            }
+                        }
                     }
+                    Spacer(minLength: 0)
                 }
-                Text(voice.lastError ?? " ")
-                    .font(.caption2)
-                    .foregroundColor(.red)
-                    .lineLimit(1)
-                    .frame(maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
-                Spacer(minLength: 0)
+                if let error = voice.lastError, !error.isEmpty {
+                    Text(error)
+                        .font(.caption2).foregroundColor(.red).lineLimit(1)
+                }
             }
-            .padding(.horizontal, 14)
-            .padding(.top, 14)
-            .padding(.bottom, 28)
-            .frame(maxWidth: .infinity, alignment: .top)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .frame(width: proxy.size.width, height: proxy.size.height,
+                   alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Flashcard")
@@ -167,84 +166,87 @@ struct FlashcardDeckView: View {
         }
     }
 
-    private func actionButton(_ title: String, symbol: String, color: Color,
-                              action: @escaping () -> Void) -> some View {
+    private func smallAction(_ title: String, symbol: String, color: Color,
+                             action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
-                .font(.footnote.weight(.semibold))
+                .font(.caption.weight(.semibold))
                 .lineLimit(2)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.8)
-                .frame(maxWidth: .infinity, minHeight: 52)
-                .padding(.horizontal, 7)
+                .minimumScaleFactor(0.77)
+                .frame(maxWidth: .infinity, minHeight: 41)
                 .foregroundColor(.white)
-                .background(color, in: RoundedRectangle(cornerRadius: 12))
+                .background(color, in: RoundedRectangle(cornerRadius: 11))
         }
         .buttonStyle(.plain)
     }
 
     /// Toàn bộ thẻ là một vùng gesture duy nhất, không chứa ScrollView.
-    /// Vuốt trái/lên: tiếp theo; phải/xuống: trước. Chạm: lật thẻ.
-    private func cardSurface(_ card: Vocabulary, height: CGFloat) -> some View {
+    /// Vuốt trái: tiếp theo; phải: trước. Chạm: lật thẻ.
+    private func cardSurface(_ card: Vocabulary, height: CGFloat,
+                             compact: Bool) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20).fill(.white)
-            VStack(spacing: 10) {
+            VStack(spacing: compact ? 5 : 8) {
+                Spacer(minLength: 0)
                 if revealed {
                     Text(card.word)
-                        .font(.system(size: 31, weight: .bold))
+                        .font(.system(size: compact ? 23 : 29, weight: .bold))
                         .foregroundColor(Palette.navy)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2).minimumScaleFactor(0.74)
                     Text(card.reading)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(Palette.blue)
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(Palette.blue).lineLimit(1)
                     Text(card.displayMeaning)
                         .font(.subheadline.weight(.semibold))
                         .foregroundColor(Palette.teal)
                         .multilineTextAlignment(.center)
-                        .lineLimit(3)
+                        .lineLimit(compact ? 2 : 3)
                         .minimumScaleFactor(0.75)
-                    Divider()
                     if let sentence = card.approvedExampleJapanese {
-                        // Câu Nhật và bản dịch có chung mép trái, không bị lệch hàng.
-                        VStack(alignment: .leading, spacing: 8) {
-                            FuriganaText(
-                                text: sentence,
-                                mainWord: card.word,
-                                mainReading: card.reading,
-                                highlightTerms: VocabularyExampleFocus.variants(
-                                    word: card.word, reading: card.reading, example: sentence),
-                                size: 15
-                            )
-                            .frame(maxWidth: .infinity, maxHeight: 110, alignment: .leading)
-                            .clipped()
-                            Text(card.displayExampleTranslation)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.leading)
-                                .lineLimit(3)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        Divider()
+                        if sentence.count <= (compact ? 54 : 95) {
+                            VStack(alignment: .center, spacing: compact ? 5 : 8) {
+                                FuriganaText(
+                                    text: sentence,
+                                    mainWord: card.word,
+                                    mainReading: card.reading,
+                                    highlightTerms: VocabularyExampleFocus.variants(
+                                        word: card.word, reading: card.reading,
+                                        example: sentence),
+                                    size: compact ? 12 : 14,
+                                    centered: true
+                                )
+                                Text(card.displayExampleTranslation)
+                                    .font(.system(size: compact ? 11 : 13))
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(compact ? 2 : 3)
+                                    .minimumScaleFactor(0.76)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        } else {
+                            Label("Ví dụ dài — bấm Xem đủ", systemImage: "text.book.closed")
+                                .font(.caption2).foregroundColor(.secondary)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    Spacer(minLength: 0)
-                    Text("Chạm để xem mặt trước")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
                 } else {
-                    Spacer(minLength: 12)
                     Text(card.word)
-                        .font(.system(size: 50, weight: .bold, design: .rounded))
+                        .font(.system(size: compact ? 43 : 53,
+                                      weight: .bold, design: .rounded))
                         .foregroundColor(Palette.navy)
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                    Spacer(minLength: 12)
-                    Label("Chạm để lật • Vuốt 4 hướng để đổi", systemImage: "hand.tap")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .minimumScaleFactor(0.55)
                 }
+                Spacer(minLength: 0)
+                Text(revealed ? "Chạm để xem mặt trước" : "Chạm để lật")
+                    .font(.caption2).foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(16)
+            .padding(compact ? 10 : 15)
         }
         .frame(height: height)
         .clipped()
@@ -273,9 +275,7 @@ struct FlashcardDeckView: View {
                         flip(card)
                     } else if abs(dx) > abs(dy) && abs(dx) >= 45 {
                         changeCard(by: dx < 0 ? 1 : -1)
-                    } else if abs(dy) >= 45 {
-                        changeCard(by: dy < 0 ? 1 : -1)
-                    }
+
                     isDraggingCard = false
                 }
         )

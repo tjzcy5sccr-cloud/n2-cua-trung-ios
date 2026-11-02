@@ -253,7 +253,9 @@ extension StudyStore {
     private func reloadCoursePacks() {
         let packs = CoursePackManager.allAvailablePacks()
         installedPacks = packs
-        course = CoursePackManager.course(for: selectedSeries, packs: packs)
+        course = CoursePackManager.course(
+            for: selectedSeries, packs: packs,
+            includeIndependentSouMatomePractice: includeIndependentSouMatomePractice)
         contentRevision = UUID()
     }
 

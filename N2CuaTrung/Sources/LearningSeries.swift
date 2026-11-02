@@ -31,15 +31,10 @@ enum LearningSeries: String, CaseIterable, Identifiable {
         }
     }
 
-    var icon: String {
-        switch self {
-        case .all: return "square.stack.3d.up.fill"
-        case .mimikara: return "ear.badge.waveform"
-        case .shinKanzen: return "books.vertical.fill"
-        case .souMatome: return "calendar.badge.clock"
-        case .speedMaster: return "stopwatch.fill"
-        }
-    }
+    /// Same book silhouette for every curriculum. Color and title distinguish
+    /// the series; unrelated SF Symbols no longer look like different logos.
+    var icon: String { "books.vertical.fill" }
+
 
     var packFilename: String? {
         self == .all ? nil : "n2-series-\(rawValue)"

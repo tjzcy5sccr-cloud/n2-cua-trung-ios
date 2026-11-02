@@ -43,7 +43,7 @@ jobs:
           cmp N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png N2CuaTrung/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
           cmp N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png N2Widget/Assets.xcassets/BrandLogo.imageset/BrandLogo.png
           sips -g pixelWidth -g pixelHeight N2CuaTrung/Assets.xcassets/AppIcon.appiconset/AppIcon.png
-      - name: Build unsigned native iOS app for preview
+      - name: Build unsigned native iOS app for preview (widget AppIcon isolated)
         shell: bash
         run: |
           set -euo pipefail

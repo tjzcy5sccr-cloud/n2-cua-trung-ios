@@ -30,9 +30,20 @@ struct KanjiSwipeDeckView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            let compact = proxy.size.height < 610
-            let cardHeight = max(165, min(440, proxy.size.height - 234))
-            VStack(spacing: compact ? 5 : 8) {
+            // Reserve the height of all controls first, then size the single card.
+            let compact = proxy.size.height < 690
+            let shortScreen = proxy.size.height < 520
+            let gap: CGFloat = shortScreen ? 3 : (compact ? 5 : 7)
+            let actionHeight: CGFloat = shortScreen ? 34 : (compact ? 38 : 42)
+            let statusHeight: CGFloat = 30
+            let verticalPadding: CGFloat = shortScreen ? 4 : 8
+            let hasFeedback = !(feedback ?? voice.lastError ?? "").isEmpty
+            let feedbackHeight: CGFloat = hasFeedback ? 15 : 0
+            let gapCount: CGFloat = hasFeedback ? 5 : 4
+            let reservedHeight = statusHeight + actionHeight * 3 + feedbackHeight
+                + gap * gapCount + verticalPadding * 2
+            let cardHeight = max(72, proxy.size.height - reservedHeight)
+            VStack(spacing: gap) {
                 HStack(spacing: 12) {
                     Pill(text: cards.isEmpty ? "0/0" : "\(position + 1)/\(cards.count)",
                          color: Palette.blue)
@@ -49,16 +60,17 @@ struct KanjiSwipeDeckView: View {
                     }
                 }
                 .font(.caption.weight(.semibold))
+                .frame(height: statusHeight)
                 if let card = current {
                     cardSurface(card, height: cardHeight, compact: compact)
                     HStack(spacing: 7) {
                         actionButton("Chi tiết", symbol: "text.book.closed",
-                                     color: Palette.navy) {
+                                     color: Palette.navy, height: actionHeight) {
                             showFullDetails = true
                         }
                         .disabled(!revealed).opacity(revealed ? 1 : 0.38)
                         actionButton("Nghe từ", symbol: "speaker.wave.2",
-                                     color: Palette.blue) {
+                                     color: Palette.blue, height: actionHeight) {
                             if let word = approvedRelatedWord(card) {
                                 voice.speak(word)
                             }
@@ -66,17 +78,17 @@ struct KanjiSwipeDeckView: View {
                         .disabled(approvedRelatedWord(card) == nil)
                         .opacity(approvedRelatedWord(card) == nil ? 0.38 : 1)
                         actionButton("Dừng đọc", symbol: "stop.fill",
-                                     color: Palette.teal) { voice.stop() }
+                                     color: Palette.teal, height: actionHeight) { voice.stop() }
                     }
                     HStack(spacing: 7) {
                         actionButton(autoPlay ? "Dừng tự chạy" : "Tự chạy",
                                      symbol: autoPlay ? "pause.fill" : "play.fill",
-                                     color: autoPlay ? Palette.orange : Palette.teal) {
+                                     color: autoPlay ? Palette.orange : Palette.teal, height: actionHeight) {
                             autoPlay.toggle()
                             elapsed = 0
                             if autoPlay { revealed = false; voice.stop() }
                         }
-                        actionButton("Chữ kế", symbol: "arrow.right", color: Palette.blue) {
+                        actionButton("Chữ kế", symbol: "arrow.right", color: Palette.blue, height: actionHeight) {
                             advance()
                         }
                         Menu {
@@ -88,7 +100,8 @@ struct KanjiSwipeDeckView: View {
                         } label: {
                             Label("\(intervalSeconds)s", systemImage: "timer")
                                 .font(.caption.weight(.semibold))
-                                .frame(maxWidth: .infinity, minHeight: 42)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: actionHeight)
                                 .foregroundColor(Palette.navy)
                                 .background(.white, in: RoundedRectangle(cornerRadius: 11))
                         }
@@ -96,10 +109,10 @@ struct KanjiSwipeDeckView: View {
                     }
                     HStack(spacing: 7) {
                         actionButton("Chưa thuộc", symbol: "arrow.counterclockwise",
-                                     color: Palette.orange) {
+                                     color: Palette.orange, height: actionHeight) {
                             mark(card.id, known: false)
                         }
-                        actionButton("Đã thuộc", symbol: "checkmark", color: Palette.teal) {
+                        actionButton("Đã thuộc", symbol: "checkmark", color: Palette.teal, height: actionHeight) {
                             mark(card.id, known: true)
                         }
                     }
@@ -123,15 +136,17 @@ struct KanjiSwipeDeckView: View {
                 if let message = feedback ?? voice.lastError, !message.isEmpty {
                     Text(message).font(.caption2)
                         .foregroundColor(Palette.teal).lineLimit(1)
+                        .frame(height: feedbackHeight)
                 }
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 8)
+            .padding(.vertical, verticalPadding)
             .frame(width: proxy.size.width, height: proxy.size.height,
                    alignment: .top)
         }
         .background(Palette.pale)
         .navigationTitle("Kanji")
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showFullDetails) {
             if let card = current {
                 NavigationStack {
@@ -263,14 +278,14 @@ struct KanjiSwipeDeckView: View {
     }
 
     private func actionButton(_ title: String, symbol: String, color: Color,
-                              action: @escaping () -> Void) -> some View {
+                              height: CGFloat, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Label(title, systemImage: symbol)
                 .font(.caption.weight(.semibold))
-                .lineLimit(2)
-                .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.76)
-                .frame(maxWidth: .infinity, minHeight: 42)
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+                .frame(maxWidth: .infinity)
+                .frame(height: height)
                 .foregroundColor(.white)
                 .background(color, in: RoundedRectangle(cornerRadius: 11))
         }

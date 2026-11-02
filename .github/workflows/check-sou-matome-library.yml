@@ -79,6 +79,7 @@ jobs:
           python3 scripts/test_sou_matome_book_source_contract.py
           python3 scripts/test_ios_layout_brand_contract.py
           python3 scripts/test_sou_matome_ota_visibility.py
+          python3 scripts/test_sou_matome_online_audio.py
       - name: Execute native Swift multiple-choice regression
         run: |
           swiftc N2CuaTrung/Sources/Models.swift N2CuaTrung/Sources/GrammarExamples.swift scripts/test_sou_matome_question_bank.swift -o /tmp/sou-matome-quiz-tests

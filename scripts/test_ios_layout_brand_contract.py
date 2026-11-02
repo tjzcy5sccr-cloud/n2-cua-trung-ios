@@ -14,16 +14,35 @@ about = read("N2CuaTrung/Sources/AboutView.swift")
 widget = read("N2Widget/N2WordWidget.swift")
 project = read("project.yml")
 icon = read("scripts/generate_clover_icon.swift")
+ruby = read("N2CuaTrung/Sources/JapaneseRuby.swift")
+series = read("N2CuaTrung/Sources/LearningSeries.swift")
+series_picker = read("N2CuaTrung/Sources/LearningSeriesPickerView.swift")
 
-# No screen-fixed stack whose controls extend beneath the TabView.
-before_grammar = flash.split("struct GrammarFlashcardView")[0]
-assert "ScrollView(.vertical, showsIndicators: false)" in before_grammar
-assert "GeometryReader { _ in" not in before_grammar
-assert "cardSurface(card, height: 338)" in before_grammar
-assert ".lineLimit(2)" in before_grammar
+# The actual flashcard/deck screen must NEVER vertically scroll.
+# The separate details sheet may scroll for very long examples only.
+before_grammar, after_grammar = flash.split("struct GrammarFlashcardView")
+vocab_main = before_grammar.split(".sheet(isPresented: $showFullExample)")[0]
+grammar_main = after_grammar.split(".sheet(isPresented: $showFullGrammar)")[0]
+kanji_main = kanji.split(".sheet(isPresented: $showFullDetails)")[0]
+for deck in (vocab_main, grammar_main, kanji_main):
+    assert "GeometryReader { proxy in" in deck
+    assert "ScrollView" not in deck
+    assert "proxy.size.height" in deck
+assert "cardSurface(card, height: cardHeight, compact: compact)" in vocab_main
+assert "grammarCard(item, height: cardHeight, compact: compact)" in grammar_main
+assert "cardSurface(card, height: cardHeight, compact: compact)" in kanji_main
+assert "FuriganaText(" in before_grammar and "centered: true" in before_grammar
+assert "FuriganaText(" in after_grammar and "centered: true" in after_grammar
+assert "abs(dy) >= 45" not in before_grammar
+assert "abs(dy) >= 45" not in after_grammar
+assert "abs(dy) >= 45" not in kanji
 assert ".padding(.bottom, max(24, proxy.safeAreaInsets.bottom) + 92)" not in kanji
-assert "cardSurface(card, height: 330)" in kanji
 assert ".lineLimit(2)" in style and ".minimumScaleFactor(0.83)" in style
+assert 'var centered: Bool = false' in ruby
+assert 'centerRows: centered' in ruby
+assert 'var icon: String { "books.vertical.fill" }' in series
+assert 'SeriesBookMark(active: selected)' in series_picker
+assert 'struct SeriesBookMark' in style
 assert "LazyVGrid(" in dashboard
 assert ".fixedSize(horizontal: false, vertical: true)" in dashboard
 
@@ -45,4 +64,4 @@ assert "ASSETCATALOG_COMPILER_APPICON_NAME: ''" in project
 assert "PRODUCT_BUNDLE_IDENTIFIER: vn.trung.n2master2027" in project
 assert "MARKETING_VERSION: '1.9.3'" in project
 assert "CURRENT_PROJECT_VERSION: '13'" in project
-print("PASS: compact iPhone layout, one canonical 3-leaf app/widget logo, stable iOS bundle/version")
+print("PASS: stationary vocabulary/Kanji/grammar flashcards, centered ruby, unified book/app branding")

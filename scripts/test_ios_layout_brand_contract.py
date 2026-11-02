@@ -94,6 +94,30 @@ for kind in ("vocab", "grammar", "kanji"):
                 f"{kind}: {used}pt content overflows {available_height}pt"
             )
 
+# Audio buttons are half-width like the known/unknown buttons. The detail
+# action remains available in the navigation bar, not as a third narrow button.
+vocab_audio = vocab_main.split("// Full-width, equal-sized audio buttons, matching the mastery row.", 1)[1].split("HStack(spacing: 7) {", 2)[1]
+assert 'smallAction("Nghe từ", symbol: "speaker.wave.2"' in vocab_audio
+assert 'smallAction("Nghe ví dụ", symbol: "waveform"' in vocab_audio
+assert 'smallAction("Xem đủ"' not in vocab_main
+assert ".toolbar {" in vocab_main and 'Image(systemName: "text.book.closed")' in vocab_main
+assert 'accessibilityLabel("Xem đầy đủ ví dụ")' in vocab_main
+assert '.font(.subheadline.weight(.semibold))' in before_grammar
+
+# Auto-advance must be three seconds on both vocabulary and Kanji, with
+# no interval picker and no 5s/8s controls reappearing in the main view.
+for source in (before_grammar, kanji):
+    assert "private let autoAdvanceSeconds = 3" in source
+    assert "if elapsed >= autoAdvanceSeconds" in source
+    assert "intervalSeconds" not in source
+    assert 'Picker("Đổi từ sau"' not in source
+    assert 'Picker("Đổi chữ sau"' not in source
+    assert 'Text("5 giây")' not in source
+    assert 'Text("8 giây")' not in source
+    assert '"Tự chạy (3 giây)"' in source
+
+print("PASS: large two-column audio buttons; vocabulary/Kanji autoplay fixed at 3s")
+
 print("PASS: portrait safe-area layouts keep all controls visible, with 44pt targets")
 
 # Exactly the same PNG generator serves the app icon, brand mark and widget.

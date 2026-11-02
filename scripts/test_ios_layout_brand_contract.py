@@ -27,8 +27,8 @@ grammar_main = after_grammar.split(".sheet(isPresented: $showFullGrammar)")[0]
 kanji_main = kanji.split(".sheet(isPresented: $showFullDetails)")[0]
 for deck in (vocab_main, grammar_main, kanji_main):
     assert "GeometryReader { proxy in" in deck
-    executable = "\\n".join(line.split("//", 1)[0] for line in deck.splitlines())
-    assert not re.search(r"\\bScrollView\\s*[({]", executable), "Flashcards must not scroll"
+    executable = "\n".join(line.split("//", 1)[0] for line in deck.splitlines())
+    assert not re.search(r"\bScrollView\s*[({]", executable), "Flashcards must not scroll"
     assert "proxy.size.height" in deck
 assert "cardSurface(card, height: cardHeight, compact: compact)" in vocab_main
 assert "grammarCard(item, height: cardHeight, compact: compact)" in grammar_main

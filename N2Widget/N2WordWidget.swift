@@ -111,13 +111,15 @@ private struct WordWidgetBody: View {
     private var wideHomeContent: some View {
         VStack(alignment: .leading, spacing: 7) {
             HStack(spacing: 7) {
-                Image(systemName: "leaf.fill")
-                    .font(.system(size: 12, weight: .bold))
+                Image("BrandLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 26, height: 26)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
                 Text("N2 CỦA TRUNG")
                     .font(.system(size: 11, weight: .heavy, design: .rounded))
                     .tracking(0.8)
                 Spacer(minLength: 2)
-                Text("☘").font(.subheadline)
             }
             .foregroundStyle(.white.opacity(0.9))
 
@@ -166,15 +168,16 @@ private struct WordWidgetBody: View {
     private var homeScreenContent: some View {
         VStack(alignment: .leading, spacing: 9) {
             HStack(spacing: 8) {
-                Image(systemName: "leaf.fill")
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundStyle(.white)
+                Image("BrandLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .clipShape(RoundedRectangle(cornerRadius: 7))
                 Text("N2 CỦA TRUNG")
                     .font(.system(size: 12, weight: .heavy, design: .rounded))
                     .tracking(1)
                     .foregroundStyle(.white.opacity(0.95))
                 Spacer()
-                Text("☘").font(.title3)
             }
             Spacer(minLength: 1)
             HStack(alignment: .center, spacing: 12) {

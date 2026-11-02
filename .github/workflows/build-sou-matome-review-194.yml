@@ -73,13 +73,26 @@ jobs:
           python3 scripts/validate_ipa_content.py
           cp N2_cua_Trung_unsigned.ipa N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
           shasum -a 256 N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa > sha256.txt
-      - name: Upload iPhone test build - unsigned IPA
+      - name: Record exact reviewed source revision and auto-play policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "GitHub commit: $GITHUB_SHA" > build-revision.txt
+          echo "Branch: $GITHUB_REF_NAME" >> build-revision.txt
+          echo "Version: 1.9.4 (14)" >> build-revision.txt
+          echo "Flashcard auto advance: 3 seconds; button label: Tu chay" >> build-revision.txt
+          echo "Code signing: disabled - IPA requires Apple signing before device installation" >> build-revision.txt
+          grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/FlashcardView.swift
+          grep -F 'private let autoAdvanceSeconds = 3' N2CuaTrung/Sources/KanjiSwipeDeckView.swift
+          python3 scripts/test_ios_layout_brand_contract.py
+      - name: Upload latest flashcard IPA - unsigned
         uses: actions/upload-artifact@v4
         with:
-          name: N2-cua-Trung-v1.9.4-UI-Logo-unsigned-IPA
+          name: N2-cua-Trung-v1.9.4-Flashcard-3s-unsigned-IPA
           path: |
             N2_cua_Trung_v1.9.4_UI_Logo_unsigned.ipa
             sha256.txt
+            build-revision.txt
           if-no-files-found: error
           retention-days: 30
       - name: Upload generated canonical logo for review

@@ -155,9 +155,9 @@ assert 'Image(systemName: "leaf.fill")' not in widget
 assert "- path: N2Widget/Assets.xcassets" in project
 assert "ASSETCATALOG_COMPILER_APPICON_NAME: ''" in project
 
-# Same identifier: reinstalling a correctly signed 1.9.5 test build may
+# Same identifier: reinstalling a correctly signed 1.9.6 test build may
 # update the old app while preserving user progress.
 assert "PRODUCT_BUNDLE_IDENTIFIER: vn.trung.n2master2027" in project
-assert "MARKETING_VERSION: '1.9.5'" in project
-assert "CURRENT_PROJECT_VERSION: '15'" in project
+assert "MARKETING_VERSION: '1.9.6'" in project
+assert "CURRENT_PROJECT_VERSION: '16'" in project
 print("PASS: stationary vocabulary/Kanji/grammar flashcards with four-way swipe, centered ruby, unified brand")

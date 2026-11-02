@@ -11,6 +11,7 @@ struct FlashcardDeckView: View {
     @State private var elapsed = 0
     @State private var isDraggingCard = false
     @State private var showFullExample = false
+    @State private var importedHanViet: [String: String] = [:]
     @ObservedObject private var voice = JapaneseVoice.shared
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -35,16 +36,19 @@ struct FlashcardDeckView: View {
             guard (0x3400...0x9FFF).contains(value) ||
                   (0xF900...0xFAFF).contains(value) else { continue }
             let character = String(scalar)
-            let reading = studied[character] ??
+            let sourceSound = store.selectedSeries == .souMatome
+                ? importedHanViet[character] : nil
+            let reading = studied[character] ?? sourceSound ??
                 KangxiReference.info(for: character)?.sinoVietnamese
-            guard let sound = reading?.trimmingCharacters(in: .whitespacesAndNewlines),
-                  !sound.isEmpty,
-                  // Một Kanji có nhiều âm chưa xác định theo ngữ cảnh:
-                  // không tự chọn cách đọc đầu tiên.
-                  !sound.contains(","), !sound.contains("、"),
-                  !sound.contains("/"), !sound.contains("／")
-            else { return nil }
-            readings.append(sound.lowercased())
+            if let sound = reading?.trimmingCharacters(in: .whitespacesAndNewlines),
+               !sound.isEmpty, !sound.contains(","),
+               !sound.contains("、"), !sound.contains("/"),
+               !sound.contains("／") {
+                readings.append(sound.lowercased())
+            } else {
+                // Hiện dấu thiếu dữ liệu, không bịa cách đọc để đủ số lượng.
+                readings.append("—")
+            }
         }
         return readings.isEmpty ? nil : readings.joined(separator: " ")
     }
@@ -199,8 +203,14 @@ struct FlashcardDeckView: View {
                 }
             }
         }
-        .onAppear { if cards.isEmpty { reload() } }
-        .onChange(of: store.contentRevision) { _ in reload() }
+        .onAppear {
+            importedHanViet = SouMatomePrivateHanViet.localReadings()
+            if cards.isEmpty { reload() }
+        }
+        .onChange(of: store.contentRevision) { _ in
+            importedHanViet = SouMatomePrivateHanViet.localReadings()
+            reload()
+        }
         .onDisappear {
             autoPlay = false
             voice.stop()

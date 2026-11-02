@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 
 /// Candidate entries are generated ONLY from PDFs on the user's own device.
 /// They are not approved app flashcards until their readings, meanings and
-/// examples have been checked against the book and a separate dictionary.
+/// examples have been checked against the same book PDF, not external sources.
 struct SouMatomeSourceEntry: Codable, Identifiable {
     let id: String
     let bookId: String
@@ -13,20 +13,17 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
     let detail: String
     let skill: String
     let reading: String?
-    /// Hán-Việt and readings from the owner's personal PDF, not confirmed
-    /// contextual meanings. The dictionary suggestion is independent.
+    /// Hán-Việt and readings copied from the user's own PDF only.
+    /// The Hán-Việt sound is not a Vietnamese contextual definition.
     let sourceHanViet: String?
     let sourceOnKun: String?
-    let dictionaryHanViet: String?
-    let dictionaryReference: String?
     /// Private-source automated warnings. Never interpreted as approval.
     let qaFlags: [String]?
 
     init(id: String, bookId: String, page: Int, heading: String,
          detail: String, skill: String, reading: String? = nil,
          qaFlags: [String]? = nil, sourceHanViet: String? = nil,
-         sourceOnKun: String? = nil, dictionaryHanViet: String? = nil,
-         dictionaryReference: String? = nil) {
+         sourceOnKun: String? = nil) {
         self.id = id
         self.bookId = bookId
         self.page = page
@@ -36,8 +33,6 @@ struct SouMatomeSourceEntry: Codable, Identifiable {
         self.reading = reading
         self.sourceHanViet = sourceHanViet
         self.sourceOnKun = sourceOnKun
-        self.dictionaryHanViet = dictionaryHanViet
-        self.dictionaryReference = dictionaryReference
         self.qaFlags = qaFlags
     }
 }
@@ -235,9 +230,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                   card.heading.count <= 250, card.detail.count <= 250,
                   (card.reading?.count ?? 0) <= 150,
                   (card.sourceHanViet?.count ?? 0) <= 70,
-                  (card.sourceOnKun?.count ?? 0) <= 150,
-                  (card.dictionaryHanViet?.count ?? 0) <= 70,
-                  (card.dictionaryReference?.count ?? 0) <= 250
+                  (card.sourceOnKun?.count ?? 0) <= 150
             else { throw SouMatomeReviewError.invalidCandidateFile }
         }
 
@@ -262,8 +255,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                           previous.reading != updated.reading ||
                           previous.skill != updated.skill ||
                           previous.sourceHanViet != updated.sourceHanViet ||
-                          previous.sourceOnKun != updated.sourceOnKun ||
-                          previous.dictionaryHanViet != updated.dictionaryHanViet
+                          previous.sourceOnKun != updated.sourceOnKun
             return changed ? previous.id : nil
         })
         let merged = old.filter { !incomingBooks.contains($0.bookId) } + incoming
@@ -339,9 +331,7 @@ final class SouMatomeSourceEntryStore: ObservableObject {
                 detail: detail, skill: existing.skill,
                 reading: existing.reading, qaFlags: flags,
                 sourceHanViet: existing.sourceHanViet,
-                sourceOnKun: existing.sourceOnKun,
-                dictionaryHanViet: existing.dictionaryHanViet,
-                dictionaryReference: existing.dictionaryReference)
+                sourceOnKun: existing.sourceOnKun)
             if heading != existing.heading ||
                detail != existing.detail || flags != (existing.qaFlags ?? []) {
                 candidates[at] = next
@@ -592,9 +582,8 @@ struct SouMatomeSourceEntriesView: View {
                                             Text("Đọc theo PDF: " + reads)
                                                 .font(.caption).foregroundColor(.secondary)
                                         }
-                                        if let suggestion = entry.dictionaryHanViet,
-                                           !suggestion.isEmpty {
-                                            Text("Từ điển đối chiếu: " + suggestion)
+                                        if entry.sourceHanViet?.isEmpty != false {
+                                            Text("Chưa trích được nhãn Hán–Việt: mở trang PDF gốc.")
                                                 .font(.caption).foregroundColor(Palette.orange)
                                         }
                                     }

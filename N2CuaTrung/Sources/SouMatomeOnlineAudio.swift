@@ -88,7 +88,7 @@ enum SouMatomeOnlineAudioError: LocalizedError {
     case invalidManifest, invalidTrack, duplicateTrack, unavailable
     var errorDescription: String? {
         switch self {
-        case .invalidManifest: return "Danh mục GitHub không hợp lệ. Cần JSON v1 trên raw.githubusercontent.com."
+        case .invalidManifest: return "Danh mục GitHub không hợp lệ. Cần JSON v1 trên GitHub Raw; MP3 có thể từ GitHub Releases."
         case .invalidTrack: return "Đường dẫn MP3 hoặc số track không hợp lệ."
         case .duplicateTrack: return "Danh mục có track CD bị lặp."
         case .unavailable: return "GitHub không trả về danh mục hợp lệ."
